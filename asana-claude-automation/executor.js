@@ -19,8 +19,15 @@ async function runTask(taskGid) {
     console.warn('[Executor] セクション移動に失敗（続行）:', err.message);
   }
 
-  // プロンプトを構築（タスク名 + 説明文）
-  const prompt = [taskInfo.taskName, taskInfo.taskNotes].filter(Boolean).join('\n\n').trim();
+  // プロンプトを構築（システム指示 + タスク名 + 説明文）
+  const systemPrefix =
+    'あなたは自律実行モードで動いています。\n' +
+    '- 質問や確認を返さず、最善の判断で最後まで実行してください。\n' +
+    '- 選択肢がある場合は最も安全な選択肢を自分で選んで実行してください。\n' +
+    '- 実行結果を簡潔に報告してください。\n\n' +
+    '--- 以下がタスクです ---\n\n';
+  const taskContent = [taskInfo.taskName, taskInfo.taskNotes].filter(Boolean).join('\n\n').trim();
+  const prompt = systemPrefix + taskContent;
   console.log(`[Executor] 実行開始: ${taskInfo.taskName}`);
   console.log(`[Executor] プロンプト: ${prompt.substring(0, 100)}...`);
 
