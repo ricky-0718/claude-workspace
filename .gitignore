@@ -1,0 +1,12 @@
+# Claude Code内部ファイル（不要）
+.claude/debug/
+.claude/backups/
+.claude/shell-snapshots/
+.claude/todos/
+.claude/statsig/
+.claude/telemetry/
+nul
+
+# その他
+node_modules/
+*.log

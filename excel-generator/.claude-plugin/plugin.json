@@ -1,0 +1,5 @@
+{
+  "name": "excel-generator",
+  "version": "1.0.0",
+  "description": "Professional Excel spreadsheet creation with openpyxl. Use when creating spreadsheets for organizing, analyzing, and presenting structured data in a clear and professional format."
+}

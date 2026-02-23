@@ -1,0 +1,5 @@
+{
+  "name": "meta-ads-setup",
+  "version": "1.0.0",
+  "description": "Meta広告データ自動取得のセットアップを一括で行うプラグイン。/setup-meta-ads で新規キャンペーンの環境構築を自動化。"
+}
