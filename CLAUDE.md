@@ -3,6 +3,11 @@
 ## User Preferences
 - **Language**: Japanese. Always respond in Japanese.
 - **Browser**: ALWAYS use Edge. NEVER attempt to connect to Chrome. NEVER call switch_browser. Always call tabs_context_mcp directly.
+- **専門用語**: エンジニア用語が出たら、必ず中学生でも分かるように例え話で解説する。
+
+## セッション終了ルール
+- セッションの作業が一区切りついたら、必ず「masterにマージしますか？」とユーザーに確認する
+- ファイルが散らばるのを防ぐため、マージ忘れを防止する
 
 ## Workflow Orchestration
 
