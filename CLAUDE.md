@@ -88,6 +88,20 @@
   - 「GASスクリプトをデプロイ」ではなく「メール添付の自動保存を開始した」
   - AIの活用を社員にアピールする目的なので、ビジネス成果に焦点を当てる
 
+## Node.js Development
+- Node.jsパス: `"C:/Program Files/nodejs/node.exe"` （PATHに入っていないためフルパス必須）
+- Bashでの`cd`+実行: `cd "C:/Users/newgo/Claud用/project" && "C:/Program Files/nodejs/node.exe" script.js`
+- バックグラウンドサーバー起動時: 先に旧プロセスを停止すること。`WMIC PROCESS WHERE "name='node.exe' AND CommandLine LIKE '%server.js%'" GET ProcessId` で確認
+- PowerShellの`$_`はBashから呼ぶとエスケープ問題が起きる。WMIC推奨
+
+## Claude Code CLI (子プロセス起動)
+- 入れ子セッション防止: 環境変数`CLAUDECODE`と`CLAUDE_CODE_ENTRYPOINT`のみ削除（他のCLAUDE_CODE_*は認証情報を含むため残す）
+- stdin待ちハング防止: `stdio: ['ignore', 'pipe', 'pipe']`必須
+- CLIパス自動検出: `%APPDATA%/Claude/claude-code/`以下のバージョンディレクトリをスキャン
+
+## Windows固有の注意
+- Bash(Git Bash)のcurlで日本語JSONを送るとShift-JISで送信され文字化けする。Node.jsのfetchまたはMCPツール経由で送ること
+
 ## Browser Automation
 - Edge extension disconnects frequently. On disconnect, retry via `tabs_context_mcp`
 - GAS editor function dropdown: use `find` to locate option, then `ref` to click
