@@ -1,0 +1,18 @@
+{
+  "instagram": {
+    "url": "https://chat.openai.com/g/XXXXXXXXX",
+    "name": "Instagram ライター"
+  },
+  "x": {
+    "url": "https://chat.openai.com/g/XXXXXXXXX",
+    "name": "X ライター"
+  },
+  "youtube": {
+    "url": "https://chat.openai.com/g/XXXXXXXXX",
+    "name": "YouTube ライター"
+  },
+  "note": {
+    "url": "https://chat.openai.com/g/XXXXXXXXX",
+    "name": "NOTE ライター"
+  }
+}
