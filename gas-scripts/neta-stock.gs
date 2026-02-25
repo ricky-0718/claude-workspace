@@ -44,9 +44,12 @@ const HEADERS = {
 // ===== ヘルパー関数 =====
 
 /**
- * スプレッドシートを取得
+ * スプレッドシートを取得（SPREADSHEET_ID未設定時はエラー）
  */
 function getSpreadsheet() {
+  if (!CONFIG.SPREADSHEET_ID) {
+    throw new Error('CONFIG.SPREADSHEET_ID が未設定です。スプレッドシートIDを設定してください');
+  }
   return SpreadsheetApp.openById(CONFIG.SPREADSHEET_ID);
 }
 
@@ -278,7 +281,15 @@ function callClaudeAPI(prompt) {
   }
 
   var json = JSON.parse(response.getContentText());
-  return json.content[0].text;
+
+  // content配列の最初のtextブロックを取得
+  var textBlock = json.content.find(function(block) {
+    return block.type === 'text';
+  });
+  if (!textBlock) {
+    throw new Error('Claude APIの応答にテキストブロックがありません');
+  }
+  return textBlock.text;
 }
 
 // ===== ネタ生成処理 =====
@@ -401,10 +412,9 @@ function generateNeta() {
       netaSheet.getRange(netaSheet.getLastRow() + 1, 1, rows.length, rows[0].length).setValues(rows);
       totalNeta += rows.length;
 
-      // 収集データの「ネタ生成済み」をTRUEに更新
-      for (var j = 0; j < items.length; j++) {
-        collectedSheet.getRange(items[j].row, 7).setValue(true); // G列 = 7
-      }
+      // 収集データの「ネタ生成済み」をTRUEにバッチ更新（1回のAPI呼び出し）
+      var rangeNotations = items.map(function(item) { return 'G' + item.row; });
+      collectedSheet.getRangeList(rangeNotations).setValue(true);
 
       Logger.log('  -> ' + netas.length + ' 件のネタを生成');
 
