@@ -40,13 +40,80 @@
 
   <!-- ===== ヘッダー ===== -->
   <header class="bg-blue-600 text-white shadow">
-    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center gap-3">
-      <span class="text-2xl">&#x1F4F1;</span>
-      <h1 class="text-xl font-bold tracking-wide">SNS コンテンツ企画</h1>
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">&#x1F4F1;</span>
+        <h1 class="text-xl font-bold tracking-wide">SNS コンテンツ企画</h1>
+      </div>
+      <button onclick="toggleSettings()"
+              class="flex items-center gap-1.5 bg-blue-500 hover:bg-blue-400 text-white text-sm px-3 py-1.5 rounded-lg transition">
+        &#x2699;&#xFE0F; 設定
+      </button>
     </div>
   </header>
 
   <main class="max-w-4xl mx-auto px-4 py-8 space-y-8">
+
+    <!-- ===== GPTs設定セクション（初期非表示） ===== -->
+    <section id="settings-section" class="hidden bg-white rounded-xl shadow p-6 space-y-5">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-semibold text-gray-700">&#x2699;&#xFE0F; GPTs 設定</h2>
+        <button onclick="toggleSettings()" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+      </div>
+      <p class="text-sm text-gray-500">各SNSプラットフォームのGPTs URLと名前を設定します。ライター機能で使用されます。</p>
+
+      <div id="gpts-form" class="space-y-4">
+        <!-- Instagram -->
+        <div class="border border-gray-100 rounded-lg p-4 space-y-2">
+          <label class="block text-sm font-semibold text-gray-600">&#x1F7E3; Instagram</label>
+          <input id="gpts-instagram-name" type="text"
+                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                 placeholder="GPTs名（例: Instagram ライター）" />
+          <input id="gpts-instagram-url" type="url"
+                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                 placeholder="GPTs URL（例: https://chat.openai.com/g/...）" />
+        </div>
+
+        <!-- X -->
+        <div class="border border-gray-100 rounded-lg p-4 space-y-2">
+          <label class="block text-sm font-semibold text-gray-600">&#x1D54F; X</label>
+          <input id="gpts-x-name" type="text"
+                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                 placeholder="GPTs名（例: X ライター）" />
+          <input id="gpts-x-url" type="url"
+                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                 placeholder="GPTs URL（例: https://chat.openai.com/g/...）" />
+        </div>
+
+        <!-- YouTube -->
+        <div class="border border-gray-100 rounded-lg p-4 space-y-2">
+          <label class="block text-sm font-semibold text-gray-600">&#x25B6;&#xFE0F; YouTube</label>
+          <input id="gpts-youtube-name" type="text"
+                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                 placeholder="GPTs名（例: YouTube ライター）" />
+          <input id="gpts-youtube-url" type="url"
+                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                 placeholder="GPTs URL（例: https://chat.openai.com/g/...）" />
+        </div>
+
+        <!-- NOTE -->
+        <div class="border border-gray-100 rounded-lg p-4 space-y-2">
+          <label class="block text-sm font-semibold text-gray-600">&#x1F4DD; NOTE</label>
+          <input id="gpts-note-name" type="text"
+                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                 placeholder="GPTs名（例: NOTE ライター）" />
+          <input id="gpts-note-url" type="url"
+                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                 placeholder="GPTs URL（例: https://chat.openai.com/g/...）" />
+        </div>
+      </div>
+
+      <button id="btn-save-gpts"
+              onclick="saveGptsConfig()"
+              class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-6 rounded-lg transition">
+        保存
+      </button>
+    </section>
 
     <!-- ===== 企画依頼フォーム ===== -->
     <section id="form-section" class="bg-white rounded-xl shadow p-6 space-y-5">

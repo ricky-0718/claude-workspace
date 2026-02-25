@@ -34,6 +34,7 @@ const PLATFORM_LABELS = {
 // ---------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
   loadResults();
+  loadGptsConfig();
 });
 
 // ---------------------------------------------------------------------------
@@ -448,4 +449,80 @@ function showToast(message, isError = false) {
     toast.style.opacity = '0';
     setTimeout(() => toast.remove(), 300);
   }, 2000);
+}
+
+// ---------------------------------------------------------------------------
+// GPTs 設定管理
+// ---------------------------------------------------------------------------
+
+const GPTS_PLATFORMS = ['instagram', 'x', 'youtube', 'note'];
+
+/** 設定セクションの表示/非表示を切り替え */
+function toggleSettings() {
+  const section = document.getElementById('settings-section');
+  const isHidden = section.classList.contains('hidden');
+  if (isHidden) {
+    section.classList.remove('hidden');
+    section.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    section.classList.add('hidden');
+  }
+}
+
+/** GPTs設定をサーバーから読み込んでフォームに反映 */
+async function loadGptsConfig() {
+  try {
+    const res = await fetch('/api/config/gpts');
+    const config = await res.json();
+
+    for (const platform of GPTS_PLATFORMS) {
+      const data = config[platform];
+      if (data) {
+        const nameInput = document.getElementById(`gpts-${platform}-name`);
+        const urlInput = document.getElementById(`gpts-${platform}-url`);
+        if (nameInput) nameInput.value = data.name || '';
+        if (urlInput) urlInput.value = data.url || '';
+      }
+    }
+  } catch (err) {
+    console.error('loadGptsConfig error:', err);
+  }
+}
+
+/** フォームの内容をサーバーに保存 */
+async function saveGptsConfig() {
+  const config = {};
+
+  for (const platform of GPTS_PLATFORMS) {
+    const nameInput = document.getElementById(`gpts-${platform}-name`);
+    const urlInput = document.getElementById(`gpts-${platform}-url`);
+    config[platform] = {
+      name: nameInput ? nameInput.value.trim() : '',
+      url: urlInput ? urlInput.value.trim() : '',
+    };
+  }
+
+  const btn = document.getElementById('btn-save-gpts');
+  btn.disabled = true;
+  btn.textContent = '保存中...';
+
+  try {
+    const res = await fetch('/api/config/gpts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(config),
+    });
+
+    if (!res.ok) {
+      throw new Error('保存に失敗しました');
+    }
+
+    showToast('GPTs設定を保存しました');
+  } catch (err) {
+    showToast(`エラー: ${err.message}`, true);
+    console.error('saveGptsConfig error:', err);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '保存';
+  }
 }

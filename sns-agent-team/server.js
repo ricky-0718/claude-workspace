@@ -6,7 +6,7 @@
  */
 
 import express from 'express';
-import { mkdirSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -394,6 +394,50 @@ app.get('/api/results/:id', (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
+// GPTs 設定 API
+// ---------------------------------------------------------------------------
+const GPTS_CONFIG_PATH = join(__dirname, 'config', 'gpts-urls.json');
+
+/**
+ * GET /api/config/gpts
+ * 現在のGPTs設定を返す
+ */
+app.get('/api/config/gpts', (req, res) => {
+  try {
+    if (existsSync(GPTS_CONFIG_PATH)) {
+      const config = JSON.parse(readFileSync(GPTS_CONFIG_PATH, 'utf-8'));
+      res.json(config);
+    } else {
+      // デフォルト設定を返す
+      res.json({
+        instagram: { url: '', name: 'Instagram ライター' },
+        x: { url: '', name: 'X ライター' },
+        youtube: { url: '', name: 'YouTube ライター' },
+        note: { url: '', name: 'NOTE ライター' },
+      });
+    }
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to read GPTs config' });
+  }
+});
+
+/**
+ * POST /api/config/gpts
+ * GPTs設定を保存する
+ */
+app.post('/api/config/gpts', (req, res) => {
+  try {
+    const config = req.body;
+    // configディレクトリ確保
+    mkdirSync(join(__dirname, 'config'), { recursive: true });
+    writeFileSync(GPTS_CONFIG_PATH, JSON.stringify(config, null, 2), 'utf-8');
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to save GPTs config' });
+  }
+});
+
+// ---------------------------------------------------------------------------
 // サーバー起動
 // ---------------------------------------------------------------------------
 initDB();
@@ -405,4 +449,6 @@ app.listen(PORT, () => {
   console.log(`  GET  /api/generate/:id/stream - SSE進捗配信`);
   console.log(`  GET  /api/results          - 結果一覧`);
   console.log(`  GET  /api/results/:id      - 結果詳細`);
+  console.log(`  GET  /api/config/gpts      - GPTs設定取得`);
+  console.log(`  POST /api/config/gpts      - GPTs設定保存`);
 });
