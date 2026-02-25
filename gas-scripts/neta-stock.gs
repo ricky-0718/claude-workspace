@@ -358,8 +358,16 @@ function generateNeta() {
   var netaSheet = getSheet(CONFIG.SHEET_NETA);
   var collectedSheet = getSheet(CONFIG.SHEET_COLLECTED);
   var totalNeta = 0;
+  var startTime = new Date().getTime();
+  var MAX_EXECUTION_MS = 4 * 60 * 1000; // 4分（6分制限に余裕を持たせる）
 
   for (var g = 0; g < groupKeys.length; g++) {
+    // GAS実行時間制限対策: 4分経過したら中断（残りは次回トリガーで処理）
+    if (new Date().getTime() - startTime > MAX_EXECUTION_MS) {
+      Logger.log('⏰ 実行時間制限に近づいたため中断（残り ' + (groupKeys.length - g) + ' グループは次回処理）');
+      break;
+    }
+
     var key = groupKeys[g];
     var parts = key.split('|||');
     var theme = parts[0];
