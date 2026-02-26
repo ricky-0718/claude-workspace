@@ -5,6 +5,11 @@
  * Agent SDK + SSE によるリアルタイム進捗配信
  */
 
+// Agent SDK の子プロセスが「入れ子セッション」と誤検知しないよう環境変数を削除
+// (Claude Code セッション内からサーバーを起動するケースへの対策)
+delete process.env.CLAUDECODE;
+delete process.env.CLAUDE_CODE_ENTRYPOINT;
+
 import express from 'express';
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'fs';
 import { dirname, join } from 'path';
