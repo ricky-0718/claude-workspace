@@ -526,6 +526,25 @@ function setupTriggers() {
 }
 
 /**
+ * 収集トリガーのみ設定（ネタ生成はスキップ）
+ * Claude API不要で、Brave Search APIによる収集だけ自動化する
+ */
+function setupCollectOnly() {
+  // 既存トリガーを削除（重複防止）
+  removeTriggers();
+
+  // 2時間おき: コンテンツ収集
+  ScriptApp.newTrigger('collectContent')
+    .timeBased()
+    .everyHours(CONFIG.COLLECT_INTERVAL_HOURS)
+    .create();
+
+  Logger.log('収集トリガーのみ設定しました:');
+  Logger.log('  - collectContent: ' + CONFIG.COLLECT_INTERVAL_HOURS + '時間おき');
+  Logger.log('  - generateNeta: スキップ（手動でネタ出し）');
+}
+
+/**
  * collectContent と generateNeta のトリガーを削除
  */
 function removeTriggers() {
@@ -573,6 +592,31 @@ function initHeaders() {
       Logger.log('"' + sheetName + '" は既にデータあり（スキップ）');
     }
   }
+}
+
+// ===== データ投入 =====
+
+/**
+ * 設定シートにテストデータを投入（ブラウザ入力の代わりにGASで確実に入れる）
+ * 既にデータがある場合はスキップ
+ */
+function populateTestData() {
+  var sheet = getSheet(CONFIG.SHEET_SETTINGS);
+
+  // ヘッダー行のみなら投入
+  if (sheet.getLastRow() > 1) {
+    Logger.log('設定シートに既にデータがあります（' + (sheet.getLastRow() - 1) + ' 行）。スキップします');
+    return;
+  }
+
+  var testData = [
+    ['台湾留学', 'instagram', '台湾留学 おすすめ', ''],
+    ['台湾留学', 'youtube', '台湾留学 vlog', ''],
+    ['キャリア', 'instagram', '海外キャリア 転職', ''],
+  ];
+
+  sheet.getRange(2, 1, testData.length, testData[0].length).setValues(testData);
+  Logger.log('設定シートにテストデータを投入しました（' + testData.length + ' 行）');
 }
 
 // ===== テスト関数 =====
