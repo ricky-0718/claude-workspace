@@ -1,12 +1,12 @@
 /**
  * SNSネタ自動ストックシステム
  *
- * Google Custom Search APIで検索上位コンテンツを収集し、
+ * Brave Search APIで検索上位コンテンツを収集し、
  * Claude APIでSNS投稿ネタを自動生成してスプレッドシートにストックする。
  *
  * セットアップ:
  * 1. スプレッドシートを作成し、3シート（設定/収集データ/ネタストック）を用意
- * 2. スクリプトプロパティに CUSTOM_SEARCH_API_KEY, CUSTOM_SEARCH_ENGINE_ID, CLAUDE_API_KEY を設定
+ * 2. スクリプトプロパティに BRAVE_SEARCH_API_KEY, CLAUDE_API_KEY を設定
  * 3. initHeaders() を実行してヘッダーを設定
  * 4. 設定シートにテーマ×検索クエリを入力
  * 5. setupTriggers() を1回実行
@@ -15,15 +15,17 @@
 // ===== 設定 =====
 const CONFIG = {
   // スプレッドシートID（ユーザーが作成したものに置き換え）
-  SPREADSHEET_ID: '', // <- ここにスプレッドシートIDを設定
+  SPREADSHEET_ID: '1k4fBJ7rFU-mELRoC5TPy-Rem63AMIxRDFG--THNmA-A',
 
   // シート名
   SHEET_SETTINGS: '設定',
   SHEET_COLLECTED: '収集データ',
   SHEET_NETA: 'ネタストック',
 
-  // Custom Search API設定
+  // Brave Search API設定
   SEARCH_RESULTS_PER_QUERY: 10, // 1回の検索で取得する件数（最大10）
+  MONTHLY_API_LIMIT: 900,       // 月間API呼び出し上限（安全重視で無料枠の半分以下に設定）
+  COLLECT_INTERVAL_HOURS: 2,    // 収集トリガーの間隔（時間）
 
   // Claude API設定
   CLAUDE_MODEL: 'claude-sonnet-4-20250514',
@@ -78,39 +80,102 @@ function formatDateTime(date) {
   return Utilities.formatDate(date, Session.getScriptTimeZone(), 'yyyy/MM/dd HH:mm:ss');
 }
 
-// ===== Google Custom Search API =====
+// ===== API使用量トラッキング =====
+// ScriptPropertiesに「API_USAGE_2026_2」のようなキーで月別カウントを保存
 
 /**
- * Google Custom Search APIで検索を実行
+ * 今月のAPI使用量キーを生成（例: "API_USAGE_2026_2"）
+ */
+function getApiUsageKey() {
+  var now = new Date();
+  return 'API_USAGE_' + now.getFullYear() + '_' + (now.getMonth() + 1);
+}
+
+/**
+ * 今月のAPI使用回数を取得
+ * @returns {number}
+ */
+function getMonthlyApiUsage() {
+  var key = getApiUsageKey();
+  var count = PropertiesService.getScriptProperties().getProperty(key);
+  return count ? parseInt(count, 10) : 0;
+}
+
+/**
+ * API使用回数を+1してカウントを返す
+ * @returns {number} 更新後のカウント
+ */
+function incrementApiUsage() {
+  var key = getApiUsageKey();
+  var props = PropertiesService.getScriptProperties();
+  var count = getMonthlyApiUsage() + 1;
+  props.setProperty(key, String(count));
+  return count;
+}
+
+/**
+ * 月間上限に達していないかチェック
+ * @returns {boolean} API呼び出し可能ならtrue
+ */
+function canCallApi() {
+  var usage = getMonthlyApiUsage();
+  if (usage >= CONFIG.MONTHLY_API_LIMIT) {
+    Logger.log('⛔ 月間API上限に到達しました (' + usage + '/' + CONFIG.MONTHLY_API_LIMIT + ')。来月まで検索を停止します');
+    return false;
+  }
+  Logger.log('📊 API使用量: ' + usage + '/' + CONFIG.MONTHLY_API_LIMIT + ' (残り ' + (CONFIG.MONTHLY_API_LIMIT - usage) + ' 回)');
+  return true;
+}
+
+// ===== Brave Search API =====
+
+/**
+ * Brave Search APIで検索を実行
  * @param {string} query - 検索クエリ
  * @returns {Array<{title: string, url: string, snippet: string}>}
  */
-function searchWithCustomSearch(query) {
-  const apiKey = getProperty('CUSTOM_SEARCH_API_KEY');
-  const engineId = getProperty('CUSTOM_SEARCH_ENGINE_ID');
+function searchWithBrave(query) {
+  // 月間上限チェック（超えていたら即座に空配列を返す）
+  if (!canCallApi()) {
+    return [];
+  }
 
-  const url = 'https://www.googleapis.com/customsearch/v1'
-    + '?key=' + encodeURIComponent(apiKey)
-    + '&cx=' + encodeURIComponent(engineId)
-    + '&q=' + encodeURIComponent(query)
-    + '&num=' + CONFIG.SEARCH_RESULTS_PER_QUERY;
+  const apiKey = getProperty('BRAVE_SEARCH_API_KEY');
 
-  const response = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+  const url = 'https://api.search.brave.com/res/v1/web/search'
+    + '?q=' + encodeURIComponent(query)
+    + '&count=' + CONFIG.SEARCH_RESULTS_PER_QUERY;
+
+  const options = {
+    method: 'get',
+    headers: {
+      'Accept': 'application/json',
+      'Accept-Encoding': 'gzip',
+      'X-Subscription-Token': apiKey,
+    },
+    muteHttpExceptions: true,
+  };
+
+  const response = UrlFetchApp.fetch(url, options);
   const code = response.getResponseCode();
 
+  // API呼び出し成功・失敗に関わらずカウント（課金されるため）
+  var currentCount = incrementApiUsage();
+  Logger.log('🔍 Brave Search API呼び出し #' + currentCount + ' (クエリ: ' + query + ')');
+
   if (code !== 200) {
-    Logger.log('Custom Search APIエラー (' + code + '): ' + response.getContentText());
+    Logger.log('Brave Search APIエラー (' + code + '): ' + response.getContentText());
     return [];
   }
 
   const json = JSON.parse(response.getContentText());
-  const items = json.items || [];
+  const results = (json.web && json.web.results) || [];
 
-  return items.map(function(item) {
+  return results.map(function(result) {
     return {
-      title: item.title || '',
-      url: item.link || '',
-      snippet: item.snippet || '',
+      title: result.title || '',
+      url: result.url || '',
+      snippet: result.description || '',
     };
   });
 }
@@ -204,7 +269,7 @@ function collectContent() {
   Logger.log('収集開始: ' + target.theme + ' / ' + target.platform + ' / クエリ: ' + target.query);
 
   // 検索実行
-  var results = searchWithCustomSearch(target.query);
+  var results = searchWithBrave(target.query);
   if (results.length === 0) {
     Logger.log('検索結果が0件でした');
     // 最終実行日時は更新する（無限ループ防止）
@@ -440,10 +505,11 @@ function setupTriggers() {
   // 既存トリガーを削除（重複防止）
   removeTriggers();
 
-  // 5分おき: コンテンツ収集
+  // 2時間おき: コンテンツ収集（月間API上限を超えないよう制御）
+  // 2時間 × 12回/日 × 30日 = 360回/月（上限900回の40%で安全）
   ScriptApp.newTrigger('collectContent')
     .timeBased()
-    .everyMinutes(5)
+    .everyHours(CONFIG.COLLECT_INTERVAL_HOURS)
     .create();
 
   // 毎日指定時刻: ネタ生成
@@ -454,8 +520,9 @@ function setupTriggers() {
     .create();
 
   Logger.log('トリガーを設定しました:');
-  Logger.log('  - collectContent: 5分おき');
+  Logger.log('  - collectContent: ' + CONFIG.COLLECT_INTERVAL_HOURS + '時間おき（月間約' + (24 / CONFIG.COLLECT_INTERVAL_HOURS * 30) + '回）');
   Logger.log('  - generateNeta: 毎日 ' + CONFIG.GENERATE_HOUR + '時');
+  Logger.log('  - 月間API上限: ' + CONFIG.MONTHLY_API_LIMIT + ' 回');
 }
 
 /**
@@ -511,6 +578,22 @@ function initHeaders() {
 // ===== テスト関数 =====
 
 /**
+ * テスト: 今月のAPI使用量を確認
+ */
+function testApiUsage() {
+  var usage = getMonthlyApiUsage();
+  var limit = CONFIG.MONTHLY_API_LIMIT;
+  var remaining = limit - usage;
+  Logger.log('===== API使用量レポート =====');
+  Logger.log('  今月の使用回数: ' + usage + ' / ' + limit);
+  Logger.log('  残り: ' + remaining + ' 回');
+  Logger.log('  使用率: ' + Math.round(usage / limit * 100) + '%');
+  if (remaining <= 100) {
+    Logger.log('  ⚠️ 残り少なくなっています！');
+  }
+}
+
+/**
  * テスト: スプレッドシート接続とシート取得
  */
 function testConnection() {
@@ -533,10 +616,10 @@ function testConnection() {
 }
 
 /**
- * テスト: Custom Search API検索
+ * テスト: Brave Search API検索
  */
 function testSearch() {
-  var results = searchWithCustomSearch('台湾留学 おすすめ');
+  var results = searchWithBrave('台湾留学 おすすめ');
   Logger.log('検索結果: ' + results.length + ' 件');
   for (var i = 0; i < results.length; i++) {
     Logger.log('  ' + results[i].title + ' | ' + results[i].url);
