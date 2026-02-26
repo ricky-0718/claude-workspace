@@ -5,6 +5,11 @@
 .claude/todos/
 .claude/statsig/
 .claude/telemetry/
+.claude/.credentials.json
+.claude/mcp-needs-auth-cache.json
+.claude/settings.local.json
+.claude/plugins/
+.claude/projects/
 nul
 
 # その他
