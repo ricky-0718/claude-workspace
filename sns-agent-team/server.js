@@ -142,6 +142,13 @@ async function runAgentTeam(generationId, theme, targetAudience, platforms) {
         model: 'claude-sonnet-4-6',
         maxTurns: 30,
         persistSession: false,
+        stderr: (data) => {
+          console.error(`[Agent SDK stderr] ${data}`);
+          sendSSE(generationId, {
+            type: 'task_progress',
+            description: `[debug] ${data.slice(0, 300)}`,
+          });
+        },
       },
     });
 
