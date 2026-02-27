@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【無料】台湾留学オンライン説明会</title>
+<style>
+/* ========= RESET & BASE ========= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17.6px; scroll-behavior: smooth; }
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  color: #212529;
+  background: #fff;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+/* ========= LAYOUT ========= */
+.page-wrap { max-width: 720px; margin: 0 auto; overflow: hidden; }
+.section { padding: 50px 24px; text-align: center; }
+.section--white { background: #fff; }
+.section--cream { background: #FFFFF7; }
+.section--aliceblue { background: #F0F8FF; }
+.section--lightblue { background: #F5FAFF; }
+.section--lightpink { background: #FFF0F5; }
+.section--blue-header {
+  background: #2451B3;
+  color: #fff;
+  padding: 36px 24px;
+}
+
+/* ========= TYPOGRAPHY ========= */
+.heading-xl {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.4;
+  color: #0000CD;
+  margin-bottom: 24px;
+}
+.heading-lg {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: #0000CD;
+  margin-bottom: 20px;
+}
+.heading-md {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.heading-white {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.5;
+}
+.text { font-size: 1rem; margin-bottom: 16px; }
+.text-lg { font-size: 1.15rem; line-height: 1.9; margin-bottom: 20px; }
+.text-bold { font-weight: 700; }
+.text-blue { color: #0000CD; font-weight: 700; }
+.text-red { color: #FF0000; font-weight: 700; }
+.text-darkred { color: #B51700; font-weight: 700; }
+
+/* ========= CTA BUTTON (FIXED) ========= */
+.cta-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 10px 16px 14px;
+  background: rgba(255,255,255,0.95);
+  text-align: center;
+}
+.cta-btn {
+  display: block;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  background: #30A05C;
+  color: #fff;
+  font-size: 1.65rem;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 60px;
+  transition: opacity 0.2s;
+  line-height: 1.3;
+}
+.cta-btn:hover { opacity: 0.85; }
+
+/* Inline CTA (in-page) */
+.cta-inline {
+  display: block;
+  max-width: 600px;
+  margin: 30px auto 0;
+  padding: 18px 20px;
+  background: #30A05C;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 60px;
+  text-align: center;
+  transition: opacity 0.2s;
+}
+.cta-inline:hover { opacity: 0.85; }
+
+/* ========= BOXES ========= */
+.box-gold {
+  border: 4px solid #DAA520;
+  border-radius: 5px;
+  padding: 24px 20px;
+  margin: 24px auto;
+  max-width: 600px;
+  background: #fff;
+}
+.box-blue {
+  border: 2px solid #0000CD;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  background: #fff;
+}
+.box-light {
+  background: #F5F5F5;
+  border-radius: 8px;
+  padding: 24px 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: left;
+}
+
+/* ========= WORRY CARDS ========= */
+.worry-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 12px auto;
+  max-width: 600px;
+  text-align: left;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.worry-card .text-red { display: inline; }
+
+/* ========= LIST ========= */
+.list-left {
+  text-align: left;
+  max-width: 560px;
+  margin: 0 auto 20px;
+  padding-left: 20px;
+}
+.list-left li {
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.list-none {
+  list-style: none;
+  text-align: left;
+  max-width: 560px;
+  margin: 0 auto 20px;
+  padding: 0;
+}
+.list-none li {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+.list-none li::before { content: "・"; }
+
+/* ========= CHECK BADGES ========= */
+.check-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  max-width: 500px;
+}
+.check-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 2px solid #0000CD;
+  border-radius: 4px;
+  padding: 6px 14px;
+}
+.check-badge::before {
+  content: "✅";
+  font-size: 1.1rem;
+}
+
+/* ========= BENEFITS GRID ========= */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 600px;
+  margin: 24px auto;
+}
+.benefit-card {
+  background: #FFFFF7;
+  border: 2px solid #DAA520;
+  border-radius: 8px;
+  padding: 16px 12px;
+  text-align: left;
+}
+.benefit-num {
+  display: inline-block;
+  background: #2451B3;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 2px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.benefit-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* ========= VOICE CARDS ========= */
+.voice-card {
+  background: #F5FAFF;
+  border-left: 4px solid #2451B3;
+  border-radius: 0 8px 8px 0;
+  padding: 24px 20px;
+  margin: 16px auto;
+  max-width: 600px;
+  text-align: left;
+}
+.voice-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2451B3;
+  margin-bottom: 8px;
+}
+.voice-text {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* ========= Q&A ========= */
+.qa-item {
+  max-width: 600px;
+  margin: 16px auto;
+  text-align: left;
+  padding: 16px 20px;
+  background: #F5F5F5;
+  border-radius: 8px;
+}
+.qa-q {
+  font-weight: 700;
+  color: #2451B3;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+.qa-a { font-size: 1rem; line-height: 1.7; }
+
+/* ========= PROFILE ========= */
+.profile-section { text-align: left; max-width: 560px; margin: 0 auto; }
+
+/* ========= DIVIDER ========= */
+.divider {
+  width: 80px;
+  height: 4px;
+  background: #2451B3;
+  margin: 0 auto 30px;
+  border-radius: 2px;
+}
+
+/* ========= SPACER ========= */
+.spacer { height: 24px; }
+.spacer-lg { height: 48px; }
+
+/* ========= FOOTER ========= */
+.footer {
+  background: #2451B3;
+  color: #fff;
+  padding: 30px 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+.footer a { color: #fff; text-decoration: underline; }
+
+/* ========= BOTTOM PADDING FOR FIXED CTA ========= */
+.bottom-pad { height: 90px; }
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 600px) {
+  html { font-size: 15px; }
+  .heading-xl { font-size: 1.75rem; }
+  .heading-lg { font-size: 1.4rem; }
+  .cta-btn { font-size: 1.35rem; }
+  .cta-inline { font-size: 1.2rem; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .check-row { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<!-- ========== HERO ========== -->
+<section class="section section--aliceblue">
+  <h1 class="heading-xl">「このまま日本の大学でいいの？」<br>と悩む高校生へ。</h1>
+  <p class="text-lg">成績・語学力・経済力に<br>自信がなくても、</p>
+  <p class="text-lg">偏差値に縛られず<br><span class="text-blue">"ふつう"</span>の高校生が</p>
+  <p class="text-lg">アジアトップ大学へ進学する<br><strong>現実的な進路</strong>を、</p>
+  <p class="text-lg"><span class="text-blue">無料説明会</span>で解説します。</p>
+  <div class="spacer"></div>
+  <p class="text"><strong>視聴後には、あなたの状況で「奨学金の可能性／総費用の目安／出願の次の一手」が判断できるようになります。</strong></p>
+  <div class="spacer"></div>
+  <p class="text">【対象】高校3年生／高卒生／保護者<br>
+  【参加形式】オンライン（自動配信）・好きな時間に視聴OK<br>
+  【参加方法】LINEを追加して「席を確保」<br>
+  【費用】完全無料／無理な勧誘なし／親子で参加OK</p>
+  <div class="spacer"></div>
+  <p class="text-red">【特典つき参加は先着20名】<br>次回以降の開催は未定のため、参加希望の方は先に席だけ確保してください。</p>
+  <a href="#line" class="cta-inline">LINE追加で席を確保する</a>
+</section>
+
+<!-- ========== 日本と台湾の差 ========== -->
+<section class="section section--white">
+  <h2 class="heading-lg">知っていますか？<br>日本と台湾、進学の「差」</h2>
+  <p class="text-lg">日本の私大4年間の平均費用は<strong>約500万円</strong>。</p>
+  <p class="text-lg">一方、台湾の国立大学なら<br><span class="text-blue">4年間で約120万円</span>。<br>奨学金を使えば実質0円も現実的です。</p>
+  <div class="spacer"></div>
+  <p class="text-lg">にもかかわらず、台湾トップ大学の世界ランキングは日本の多くの有名私大より上。</p>
+  <p class="text-lg">「安いから質が低い」のではなく、<br><span class="text-red">知らないから選択肢に入っていないだけ</span>です。</p>
+  <div class="spacer"></div>
+  <p class="text">この説明会では、台湾留学を"憧れ"ではなく、<br>【あなたの進路として成立するかどうか】を、<br>数字と手順で判断できるようにします。</p>
+  <a href="#line" class="cta-inline">無料で席を確保する</a>
+</section>
+
+<!-- ========== 実績 ========== -->
+<section class="section section--cream">
+  <div class="section--blue-header" style="margin:-50px -24px 30px; padding:30px 24px;">
+    <h2 class="heading-white">実際の合格・奨学金実績</h2>
+  </div>
+  <p class="heading-md"><span class="text-red" style="font-size:1.8rem;">合格率100%</span><br>（※2学科以上申請した生徒 全員合格）</p>
+  <div class="box-gold">
+    <p class="text-bold" style="font-size:1.1rem;">学費4年間 全額免除<br>＋毎月給付型奨学金</p>
+    <p style="font-size:1.5rem;">↓</p>
+    <p class="text">総額 約450万円の<br>奨学金プログラムに出願した<br><span class="text-red" style="font-size:1.3rem;">12名全員合格</span></p>
+  </div>
+  <div class="spacer"></div>
+  <p class="text-lg"><span class="text-blue">語学力0・評定2.9以下</span>から<br><span class="text-red">学費全額無料の奨学金獲得</span></p>
+  <p class="text-lg">出願手続き <span class="text-blue">最短6日</span></p>
+  <p class="text-lg">高校卒業後でも合格</p>
+  <div class="spacer"></div>
+  <p class="text" style="font-size:0.9rem; color:#666;">※これらはすべて実在する実績です</p>
+</section>
+
+<!-- ========== 不安セクション：高校生 ========== -->
+<section class="section section--aliceblue">
+  <h2 class="heading-lg">こんな不安を<br>抱えていませんか？</h2>
+  <div class="worry-card">
+    <p>今の学力で、<br>国立や有名大学は<span class="text-red">無理だと思っている</span></p>
+  </div>
+  <div class="worry-card">
+    <p>留学には興味があるが、<br>1000万円以上かかると聞いて<span class="text-red">諦めている</span></p>
+  </div>
+  <div class="worry-card">
+    <p>将来やりたいことが決まらず、<br><span class="text-red">このままでいいのかモヤモヤしている</span></p>
+  </div>
+  <div class="worry-card">
+    <p>日本の大学に進んでも、<br><span class="text-red">将来の選択肢が広がる気がしない</span></p>
+  </div>
+</section>
+
+<!-- ========== 不安セクション：保護者 ========== -->
+<section class="section section--cream">
+  <div class="section--blue-header" style="margin:-50px -24px 30px; padding:30px 24px;">
+    <h2 class="heading-white">保護者の方は、<br>こんな気持ちを<br>抱えていませんか？</h2>
+  </div>
+  <div class="worry-card">
+    <p>子どもの進路、<span class="text-red">このままで本当にいいのだろうか</span></p>
+  </div>
+  <div class="worry-card">
+    <p>海外は<span class="text-red">安全面・費用面が心配</span></p>
+  </div>
+  <div class="worry-card">
+    <p><span class="text-red">失敗したら取り返しがつかない</span>のではないか</p>
+  </div>
+  <div class="spacer"></div>
+  <p class="text">この不安は、真っ当です。<br>そして多くの場合、原因は1つです。</p>
+  <p class="heading-md"><span class="text-blue">「判断材料が少ない」だけです。</span></p>
+</section>
+
+<!-- ========== 保護者向け3ポイント ========== -->
+<section class="section section--white">
+  <div class="section--blue-header" style="margin:-50px -24px 30px; padding:30px 24px;">
+    <h2 class="heading-white">【保護者の方へ】<br>意思決定で一番気になる<br>3点だけ、先に整理します</h2>
+  </div>
+  <p class="text">親御さんが止めたくなるポイントは、だいたいここです。<br>説明会では詳細までお話ししますが、まず要点だけ。</p>
+
+  <div class="spacer-lg"></div>
+  <h3 class="heading-md"><span class="text-blue">1）安全面：結局、安心できるのか？</span></h3>
+  <p class="text">台湾は親日で、生活環境の整った都市部の大学も多いです。<br><strong>「どのエリアに住む想定か」「通学動線はどうなるか」まで含めて現実的に判断できる形で説明します。</strong></p>
+
+  <div class="spacer-lg"></div>
+  <h3 class="heading-md"><span class="text-blue">2）費用面：結局、いくら必要なのか？</span></h3>
+  <p class="text">学費だけでなく、生活費・渡航費・住居費まで入れると話が変わります。<br><strong>「最低ライン〜現実ライン」の見積もりを数字で出し、奨学金が絡む場合の差分も整理</strong>します。</p>
+
+  <div class="spacer-lg"></div>
+  <h3 class="heading-md"><span class="text-blue">3）失敗リスク：もし合わなかったら取り返せるのか？</span></h3>
+  <p class="text">「出願ミス」「準備不足」「サポート選び」を外すと、失敗リスクは上がります。<br>だからこそ、<strong>失敗パターンを先に知り、回避の手順を持ってから進める</strong>のが一番安全です。</p>
+</section>
+
+<!-- ========== 失敗パターン ========== -->
+<section class="section section--cream">
+  <h2 class="heading-lg">失敗する人の共通パターン<br><span style="font-size:0.85em;">（ここが一番重要）</span></h2>
+  <p class="text-lg">台湾留学は、<br>正しい順番と<span class="text-red">正しい準備をしないと、<br>失敗します。</span></p>
+  <p class="text">実際に失敗する人の多くは、</p>
+  <div class="box-gold">
+    <ul class="list-none">
+      <li><span class="text-red">ネットや無料情報だけ</span>で何とかしようとする</li>
+      <li><span class="text-red">よく分からない</span>留学エージェントに任せてしまう</li>
+      <li>説明会の一部分だけ聞いて <span class="text-red">「分かった気」になる</span></li>
+    </ul>
+  </div>
+  <div class="spacer"></div>
+  <p class="text">結果、</p>
+  <div class="box-gold">
+    <ul class="list-none">
+      <li>出願ミス・書類不備</li>
+      <li>ビザトラブル</li>
+      <li>語学が伸びず中退</li>
+    </ul>
+  </div>
+  <div class="spacer"></div>
+  <p class="text">だからこそ、この説明会では<br><span class="text-blue">「何を、どの順番で、どこまでやるか」</span>を、<br>最初から最後まで見せます。</p>
+</section>
+
+<!-- ========== 説明会の内容 ========== -->
+<section class="section section--white">
+  <div class="section--blue-header" style="margin:-50px -24px 30px; padding:30px 24px;">
+    <h2 class="heading-white">無料説明会で<br>お話しする内容（全体像）</h2>
+  </div>
+  <p class="text">以下は"きれいごと"ではなく、手順です。</p>
+  <div class="box-light">
+    <ul class="list-none">
+      <li>日本の大学と台湾の大学の「決定的な違い」</li>
+      <li>失敗する人の共通パターンと回避法</li>
+      <li>出願〜合格までの【6ステップ完全ロードマップ】</li>
+      <li>学費／奨学金／生活費のリアルな数字</li>
+      <li>成績／語学力がなくても合格できる理由（制度と準備の話）</li>
+    </ul>
+  </div>
+  <div class="spacer"></div>
+  <p class="text">「参加したけど、結局なにをすればいいの？」にならないように、<br>行動に落ちるところまで具体化します。</p>
+  <a href="#line" class="cta-inline">無料で情報を受け取る</a>
+</section>
+
+<!-- ========== なぜ合格できるのか ========== -->
+<section class="section section--aliceblue">
+  <h2 class="heading-lg">なぜ「ふつうの高校生」が<br>合格できるのか？</h2>
+  <p class="text">ポイントは才能でも根性でもありません。</p>
+  <div class="spacer"></div>
+  <p class="text-lg">台湾の大学入試は、日本のような一発勝負の学力試験ではなく、<br><span class="text-blue">書類審査＋面接</span>が中心。<br>つまり「何を、どう準備するか」で結果が変わります。</p>
+  <div class="spacer"></div>
+  <p class="text">説明会では、実際の合格者が</p>
+  <div class="box-light">
+    <ul class="list-none">
+      <li>どの奨学金に、どのタイミングで申請したか</li>
+      <li>何を提出し、何を避けたか</li>
+    </ul>
+  </div>
+  <p class="text">を、<strong>あなたが再現できる形</strong>で解説します。</p>
+</section>
+
+<!-- ========== 合格者の声 ========== -->
+<section class="section section--cream">
+  <div class="section--blue-header" style="margin:-50px -24px 30px; padding:30px 24px;">
+    <h2 class="heading-white">合格者の声</h2>
+  </div>
+
+  <div class="voice-card">
+    <p class="voice-label">高校生の声 ①</p>
+    <p class="voice-text">「正直、評定も高くないし、留学は無理だと思っていました。でも"どの大学に""何を出すか"が分かって、やることが一気に整理されました。説明会を見てからは、迷いが減って出願準備に集中できました。」</p>
+  </div>
+
+  <div class="voice-card">
+    <p class="voice-label">高校生の声 ②</p>
+    <p class="voice-text">「ネット情報だけだと不安が増えるだけでした。費用のリアルと、奨学金の選び方が"数字"で分かったのが一番大きいです。親にも説明しやすくなりました。」</p>
+  </div>
+
+  <div class="voice-card">
+    <p class="voice-label">高校生の声 ③</p>
+    <p class="voice-text">「語学力がゼロなので怖かったですが、最初にやるべき順番が明確でした。出願の全体像が見えたことで、焦りが減りました。」</p>
+  </div>
+
+  <div class="voice-card">
+    <p class="voice-label">保護者の声 ①</p>
+    <p class="voice-text">「費用面が一番心配でしたが、学費だけでなく生活費まで含めた見積もりが出て、判断材料が揃いました。"何となく不安"が"確認すべき項目"に変わりました。」</p>
+  </div>
+
+  <div class="voice-card">
+    <p class="voice-label">保護者の声 ②</p>
+    <p class="voice-text">「安全面の話が抽象的ではなく、生活のイメージまで具体的でした。親が反対して止めるのではなく、現実的に検討できる状態になりました。」</p>
+  </div>
+</section>
+
+<!-- ========== 講師紹介 ========== -->
+<section class="section section--white">
+  <div class="section--blue-header" style="margin:-50px -24px 30px; padding:30px 24px;">
+    <h2 class="heading-white">講師紹介</h2>
+  </div>
+  <div class="profile-section">
+    <p class="text-lg" style="text-align:center;"><strong>台湾留学101センター代表</strong><br><span class="text-blue" style="font-size:1.4rem;">新良理輝（リッキー）</span></p>
+    <div class="spacer"></div>
+    <p class="text">沖縄県石垣島生まれで、<br>全国高校偏差値ランキングでいうと<br><span class="text-blue">7,077位の高校</span>を卒業しました。</p>
+    <div class="spacer"></div>
+    <p class="text">高校時代は成績も語学力もなく、<br><span class="text-blue">進路が決まらないまま</span><br>高校3年生の夏を迎えました。</p>
+    <div class="spacer"></div>
+    <p class="text">そんな中、<br><span class="text-blue">偶然参加した留学説明会をきっかけに</span><br>台湾留学という選択肢を知り、<br>進学を決意。</p>
+    <div class="spacer"></div>
+    <p class="text">「優等生だったからできた」話ではありません。<br>だからこそ、現実的な進路として"落とし込める"説明ができます。</p>
+    <div class="spacer"></div>
+    <p class="text" style="text-align:center;">年間<span class="text-blue">100名以上</span>の日本人高校生の<br>台湾大学進学をサポート</p>
+  </div>
+</section>
+
+<!-- ========== 8大特典 ========== -->
+<section class="section section--cream">
+  <div class="section--blue-header" style="margin:-50px -24px 30px; padding:30px 24px;">
+    <h2 class="heading-white">説明会参加者限定：<br>8大特典<span style="font-size:0.8em;">（総額10万円相当）</span></h2>
+  </div>
+  <p class="text">視聴後に「次の一手」をすぐ進められるよう、資料をお渡しします。<br><strong>特典名はすべて事前に公開</strong>します。</p>
+
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <span class="benefit-num">特典 1</span>
+      <p class="benefit-title">台湾大学図鑑（厳選24校）</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-num">特典 2</span>
+      <p class="benefit-title">大学教授に刺さる自伝テンプレ</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-num">特典 3</span>
+      <p class="benefit-title">学習計画書テンプレ</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-num">特典 4</span>
+      <p class="benefit-title">推薦書作成ガイド</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-num">特典 5</span>
+      <p class="benefit-title">奨学金パターン整理シート（給付型中心）</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-num">特典 6</span>
+      <p class="benefit-title">費用シミュレーション表（学費・生活費・初期費用）</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-num">特典 7</span>
+      <p class="benefit-title">出願書類チェックリスト（提出物・期限・注意点）</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-num">特典 8</span>
+      <p class="benefit-title">合格までの行動計画シート（6ステップ運用版）</p>
+    </div>
+  </div>
+
+  <p class="text">「知って終わり」ではなく、<br><span class="text-blue">提出物とスケジュールに落とす</span>ための特典です。</p>
+  <div class="spacer"></div>
+  <p class="text-red">【特典つき参加は先着20名】<br>次回以降の開催は未定です。</p>
+  <p class="text">特典付きで参加したい方は、席を先に確保してください。</p>
+  <a href="#line" class="cta-inline">特典付きで席を確保する</a>
+</section>
+
+<!-- ========== なぜ無料？ ========== -->
+<section class="section section--white">
+  <h2 class="heading-lg">なぜ無料で<br>説明会をやるのか？</h2>
+  <p class="text">「無料ってことは、何か裏があるんじゃ…」<br>そう思う方がいるのも自然です。</p>
+  <div class="spacer"></div>
+  <p class="text-lg"><span class="text-blue">この説明会は、<br>決断を迫る場ではありません</span></p>
+  <div class="spacer"></div>
+  <p class="text">結論、無理な勧誘はしません。<br>ただ、台湾留学は"情報の質"で結果が変わります。</p>
+  <div class="spacer"></div>
+  <p class="text">無料の説明会で正しい情報を知ってもらい、<br>「ここなら任せたい」と感じた方にだけ、<br>必要なサポートをご案内します。<br>それが、この説明会を無料で提供する理由です。</p>
+</section>
+
+<!-- ========== 参加方法 ========== -->
+<section class="section section--aliceblue" id="line">
+  <h2 class="heading-lg">参加方法：<br>LINE追加で席を確保</h2>
+  <p class="text">参加は簡単です。<br>下のボタンからLINEを追加して、席を確保してください。</p>
+  <div class="spacer"></div>
+  <div class="check-row">
+    <span class="check-badge">無料</span>
+    <span class="check-badge">無理な勧誘なし</span>
+    <span class="check-badge">親子で参加OK</span>
+  </div>
+  <div class="spacer"></div>
+  <p class="text-red"><strong>次回以降の開催は未定</strong>のため、<br>「いつか見よう」ではなく、席だけ先に確保してください。</p>
+  <a href="#line" class="cta-inline">無料で席を確保する（LINE追加）</a>
+  <div class="spacer"></div>
+  <p class="text">LINE追加後、説明会の視聴案内が届きます。</p>
+</section>
+
+<!-- ========== 最後のメッセージ ========== -->
+<section class="section section--white">
+  <h2 class="heading-lg">最後にもう一度<br>お伝えします</h2>
+  <p class="text-lg">進路は、情報で決まります。<br>そして情報の差は、そのまま<br><span class="text-blue">"進学の選択肢の差"</span>になります。</p>
+  <div class="spacer"></div>
+  <p class="text-lg">もし少しでも<br><span class="text-blue">「このまま日本の大学でいいの？」</span><br>と感じているなら、<br>今のうちに判断材料を揃えてください。</p>
+  <a href="#line" class="cta-inline">今すぐ席を確保する</a>
+</section>
+
+<!-- ========== 追伸 ========== -->
+<section class="section section--cream">
+  <h2 class="heading-md">追伸：</h2>
+  <p class="text" style="text-align:left; max-width:560px; margin:0 auto;">もしあなたがこの文章を読まずに一番下までスクロールしたタイプなら、要点だけまとめます。</p>
+  <div class="spacer"></div>
+  <div class="box-light">
+    <ul class="list-none">
+      <li>台湾留学は「一部の天才だけ」の話ではありません</li>
+      <li>ただし、やり方を間違えると失敗します</li>
+      <li>失敗しないために、数字と手順を無料説明会で解説します</li>
+      <li>親子参加OK／無理な勧誘なし／LINE追加で席確保</li>
+    </ul>
+  </div>
+  <div class="spacer"></div>
+  <p class="text">そして、これは現実の話です。</p>
+  <div class="spacer"></div>
+  <p class="text-lg"><span class="text-blue">高2後半〜高3に入ると、出願できる大学や奨学金の選択肢が"現実的に絞られていくタイミング"に入ります。</span></p>
+  <p class="text">準備の遅れは、そのまま「選べるカードの減少」に直結します。<br>迷っているなら、まずは情報を取りに来てください。</p>
+  <div class="spacer"></div>
+  <p class="text-red">【特典つき参加は先着20名】<br>次回以降の開催は未定</p>
+  <p class="text">席だけ先に確保しておけば、判断が早くなります。</p>
+  <a href="#line" class="cta-inline">LINE追加で情報を受け取る</a>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <p>進路を「なんとなく」で決めないために<br>今、正しい情報を選択してください</p>
+  <div class="spacer"></div>
+  <p>
+    <a href="#">プライバシーポリシー</a>
+    <a href="#">特定商取引法に基づく表記</a>
+    <a href="#">会社概要</a>
+  </p>
+  <div class="spacer"></div>
+  <p>Copyright(c) 2026 台湾留学101センター All Rights Reserved.</p>
+</footer>
+
+<div class="bottom-pad"></div>
+
+</div><!-- /page-wrap -->
+
+<!-- Fixed CTA -->
+<div class="cta-fixed">
+  <a href="#line" class="cta-btn">LINEを追加して席を確保する</a>
+</div>
+
+</body>
+</html>

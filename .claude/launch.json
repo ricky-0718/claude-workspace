@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "sns-agent-team",
+      "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
+      "runtimeArgs": ["server.js"],
+      "port": 3847,
+      "cwd": "sns-agent-team"
+    }
+    ,{
+      "name": "lp-preview",
+      "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
+      "runtimeArgs": ["serve-lp.js"],
+      "port": 3850
+    }
+  ]
+}
