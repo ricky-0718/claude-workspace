@@ -12,6 +12,16 @@
 .claude/projects/
 nul
 
+# ワークツリー
+.claude/worktrees/
+
+# 自動生成ファイル
+.claude.json
+.claude.json.backup
+.cache/
+*.db-shm
+*.db-wal
+
 # その他
 node_modules/
 *.log
