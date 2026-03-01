@@ -1,0 +1,5 @@
+{
+  "name": "youtube-transcript",
+  "version": "1.0.0",
+  "description": "Download YouTube video transcripts using yt-dlp. Use when user provides a YouTube URL and wants to get transcripts, captions, or subtitles."
+}

@@ -4,18 +4,27 @@ const fs = require('fs');
 
 // Claude Code CLIのパスを自動検出
 function findClaudeExe() {
-  const claudeDir = path.join(process.env.APPDATA || '', 'Claude', 'claude-code');
-  if (!fs.existsSync(claudeDir)) return null;
+  // APPDATA が未設定の場合のフォールバック（複数候補を試行）
+  const candidates = [
+    process.env.APPDATA,
+    process.env.USERPROFILE && path.join(process.env.USERPROFILE, 'AppData', 'Roaming'),
+    process.env.HOME && path.join(process.env.HOME, 'AppData', 'Roaming'),
+    'C:/Users/newgo/AppData/Roaming',
+  ].filter(Boolean);
 
-  // バージョンディレクトリを探して最新を使う
-  const versions = fs.readdirSync(claudeDir)
-    .filter(d => fs.statSync(path.join(claudeDir, d)).isDirectory())
-    .sort()
-    .reverse();
+  for (const appData of candidates) {
+    const claudeDir = path.join(appData, 'Claude', 'claude-code');
+    if (!fs.existsSync(claudeDir)) continue;
 
-  for (const ver of versions) {
-    const exe = path.join(claudeDir, ver, 'claude.exe');
-    if (fs.existsSync(exe)) return exe;
+    const versions = fs.readdirSync(claudeDir)
+      .filter(d => fs.statSync(path.join(claudeDir, d)).isDirectory())
+      .sort()
+      .reverse();
+
+    for (const ver of versions) {
+      const exe = path.join(claudeDir, ver, 'claude.exe');
+      if (fs.existsSync(exe)) return exe;
+    }
   }
   return null;
 }
