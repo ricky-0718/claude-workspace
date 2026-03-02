@@ -406,7 +406,30 @@ function freeeGet(endpoint, params) {
 
 // ===== ウェブアプリ =====
 
-function doGet() {
+function doGet(e) {
+  var action = (e && e.parameter && e.parameter.action) || '';
+
+  if (action === 'init') {
+    // 番号リセット＋テストPDF削除
+    setNoticeNumberSeq(7);
+    var folder = DriveApp.getFolderById(CONFIG.PDF_FOLDER_ID);
+    var deleted = [];
+    var files = folder.getFiles();
+    while (files.hasNext()) {
+      var f = files.next();
+      var name = f.getName();
+      if (name.indexOf('PN-0000000008') !== -1 || name.indexOf('PN-0000000009') !== -1) {
+        f.setTrashed(true);
+        deleted.push(name);
+      }
+    }
+    return HtmlService.createHtmlOutput(
+      '<h2>初期化完了</h2><p>通知書番号を7にリセットしました（次回: PN-0000000008）</p>'
+      + '<p>削除したテストPDF: ' + (deleted.length ? deleted.join(', ') : 'なし') + '</p>'
+      + '<p><a href="' + ScriptApp.getService().getUrl() + '">フォームに戻る</a></p>'
+    );
+  }
+
   return HtmlService.createHtmlOutput(getFormHtml())
     .setTitle('支払通知書作成')
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
