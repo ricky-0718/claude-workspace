@@ -1,0 +1,295 @@
+/* ============================================
+   Claude Office - Pixel Art Dashboard v2
+   Multi-agent + Instructions
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #1a1020;
+  --panel-bg: #1e1428;
+  --border: #5a4a60;
+  --border-hi: #8a6a90;
+  --accent: #cc9966;
+  --text: #e0d8cc;
+  --text-dim: #7a6a80;
+  --text-bright: #fff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Press Start 2P', monospace;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+  width: 100%;
+  max-width: 660px;
+}
+
+/* --- Room Canvas --- */
+#room-wrap {
+  width: 100%;
+  border: 3px solid var(--border);
+  border-radius: 2px;
+  line-height: 0;
+  box-shadow:
+    0 0 0 1px #0a0616,
+    0 4px 24px rgba(60, 30, 80, 0.4);
+  position: relative;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* --- Panels --- */
+#panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 2px solid var(--border);
+  border-radius: 2px;
+  padding: 10px 8px;
+  min-height: 140px;
+}
+
+.panel-header {
+  text-align: center;
+  color: var(--accent);
+  font-size: 8px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* --- Activity Log --- */
+#log-list {
+  list-style: none;
+  font-size: 7px;
+  line-height: 2;
+  max-height: 130px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+#log-list li {
+  border-bottom: 1px solid rgba(90, 74, 96, 0.3);
+  padding: 2px 0;
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.log-time {
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.log-icon { flex-shrink: 0; }
+
+.log-agent {
+  color: var(--accent);
+  flex-shrink: 0;
+  font-size: 6px;
+}
+
+.log-state {
+  color: var(--text);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --- Agent List --- */
+#agents-list {
+  font-size: 7px;
+  max-height: 130px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.agent-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 2px;
+  border-bottom: 1px solid rgba(90, 74, 96, 0.3);
+}
+
+.agent-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.agent-dot.offline {
+  opacity: 0.3;
+}
+
+.agent-name {
+  color: var(--text-bright);
+  flex-shrink: 0;
+}
+
+.agent-state {
+  color: var(--text-dim);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.agent-time {
+  color: var(--text-dim);
+  flex-shrink: 0;
+  font-size: 6px;
+}
+
+/* --- Instruction Panel --- */
+#instruction-form {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+#instruction-text {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: 'Segoe UI', 'Meiryo', sans-serif;
+  font-size: 11px;
+  padding: 4px 6px;
+  resize: none;
+}
+
+#instruction-text::placeholder {
+  color: var(--text-dim);
+  font-size: 10px;
+}
+
+#instruction-text:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+#instruction-send {
+  background: var(--accent);
+  border: none;
+  border-radius: 2px;
+  color: #1a1020;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  padding: 4px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  align-self: flex-end;
+}
+
+#instruction-send:hover {
+  background: #ddaa77;
+}
+
+#instruction-send:active {
+  background: #bb8855;
+}
+
+#instruction-list {
+  font-size: 7px;
+  max-height: 80px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.instr-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(90, 74, 96, 0.3);
+}
+
+.instr-status {
+  flex-shrink: 0;
+  font-size: 8px;
+}
+
+.instr-text {
+  flex: 1;
+  font-family: 'Segoe UI', 'Meiryo', sans-serif;
+  font-size: 9px;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.instr-text.done {
+  color: var(--text-dim);
+  text-decoration: line-through;
+}
+
+.instr-time {
+  color: var(--text-dim);
+  flex-shrink: 0;
+  font-size: 6px;
+}
+
+.instr-done-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  font-size: 6px;
+  font-family: 'Press Start 2P', monospace;
+  padding: 1px 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.instr-done-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- Footer --- */
+#footer {
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+  font-size: 8px;
+  color: var(--text-dim);
+  border-top: 1px solid rgba(90, 74, 96, 0.3);
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  #panels {
+    grid-template-columns: 1fr;
+  }
+  .panel { min-height: auto; }
+  #main { padding: 4px; }
+  #footer { font-size: 7px; }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Office</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect x='3' y='2' width='10' height='12' rx='2' fill='%234A90D9'/><rect x='5' y='5' width='2' height='2' fill='white'/><rect x='9' y='5' width='2' height='2' fill='white'/><rect x='6' y='9' width='4' height='1' fill='white'/></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="main">
+    <div id="room-wrap">
+      <canvas id="room" width="640" height="400"></canvas>
+    </div>
+    <div id="panels">
+      <div class="panel" id="panel-log">
+        <div class="panel-header">&#9472; アクティビティ &#9472;</div>
+        <ul id="log-list"></ul>
+      </div>
+      <div class="panel" id="panel-agents">
+        <div class="panel-header">&#9472; エージェント &#9472;</div>
+        <div id="agents-list"></div>
+      </div>
+      <div class="panel" id="panel-instructions">
+        <div class="panel-header">&#9472; 指示キュー &#9472;</div>
+        <div id="instruction-form">
+          <textarea id="instruction-text" placeholder="指示を入力..." rows="2"></textarea>
+          <button id="instruction-send">送信</button>
+        </div>
+        <div id="instruction-list"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <span id="footer-state">[休憩中] 待機中、いつでもサポートいたします</span>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
