@@ -45,9 +45,9 @@ async function pollCycle() {
     for (const msg of newMessages) {
       console.log(`[Pipeline] Processing: ${msg.lineName} - "${msg.message.substring(0, 50)}..."`);
 
-      // 1. 新着通知（LINE Notify）
-      if (config.lineNotify.token) {
-        await notifyNewMessage(config.lineNotify.token, msg);
+      // 1. 新着通知（LINE Messaging API）
+      if (config.line.channelToken && config.line.userId) {
+        await notifyNewMessage(config.line.channelToken, config.line.userId, msg);
       }
 
       // 2. テキストメッセージの場合のみ返信案を生成
@@ -62,8 +62,8 @@ async function pollCycle() {
             console.log(`[Pipeline] Draft generated (${draft.duration}ms)`);
 
             // 3. 返信案生成完了通知
-            if (config.lineNotify.token) {
-              await notifyDraftReady(config.lineNotify.token, msg, draft.draft);
+            if (config.line.channelToken && config.line.userId) {
+              await notifyDraftReady(config.line.channelToken, config.line.userId, msg, draft.draft);
             }
           } else {
             console.error(`[Pipeline] Draft generation failed: ${draft.error}`);

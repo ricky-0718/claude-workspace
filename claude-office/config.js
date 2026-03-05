@@ -35,8 +35,9 @@ export default {
     apiToken: env.CHATWORK_API_TOKEN || "",
     roomId: env.CHATWORK_ROOM_ID || "",
   },
-  lineNotify: {
-    token: env.LINE_NOTIFY_TOKEN || "",
+  line: {
+    channelToken: env.LINE_CHANNEL_ACCESS_TOKEN || "",
+    userId: env.LINE_USER_ID || "",
   },
   utage: {
     chatBase: env.UTAGE_CHAT_BASE || "",

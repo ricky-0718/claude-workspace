@@ -1,6 +1,6 @@
 // ============================================
-// LINE Notify セットアップ & テスト
-// 使い方: node setup-notify.js <トークン>
+// LINE Messaging API セットアップ & テスト
+// 使い方: node setup-notify.js <Channel Access Token> <User ID>
 // ============================================
 import fs from "fs";
 import path from "path";
@@ -9,32 +9,32 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const token = process.argv[2];
+const channelToken = process.argv[2];
+const userId = process.argv[3];
 
-if (!token) {
-  console.log("=== LINE Notify Setup ===");
+if (!channelToken || !userId) {
+  console.log("=== LINE Messaging API Setup ===");
   console.log("");
-  console.log("1. https://notify-bot.line.me/ にアクセス");
-  console.log("2. LINEアカウントでログイン");
-  console.log("3. マイページ → 「トークンを発行する」");
-  console.log("4. トークン名: 「Spectre Agent」");
-  console.log("5. 通知先: 「1:1でLINE Notifyから通知を受け取る」");
-  console.log("6. 発行されたトークンをコピー");
+  console.log("X Trend Collector で作成済みのBotをそのまま使います。");
+  console.log("GASのスクリプトプロパティから以下を取得してください:");
+  console.log("  - LINE_CHANNEL_ACCESS_TOKEN");
+  console.log("  - LINE_USER_ID");
   console.log("");
-  console.log("Usage: node setup-notify.js <発行されたトークン>");
+  console.log("Usage: node setup-notify.js <Channel Access Token> <User ID>");
   process.exit(1);
 }
 
 // テスト送信
-console.log("Sending test notification...");
-const res = await fetch("https://notify-api.line.me/api/notify", {
+console.log("Sending test push message...");
+const res = await fetch("https://api.line.me/v2/bot/message/push", {
   method: "POST",
   headers: {
-    "Authorization": `Bearer ${token}`,
-    "Content-Type": "application/x-www-form-urlencoded",
+    "Authorization": `Bearer ${channelToken}`,
+    "Content-Type": "application/json",
   },
-  body: new URLSearchParams({
-    message: "\n[Spectre Agent] セットアップ完了！LINE通知が正常に動作しています。",
+  body: JSON.stringify({
+    to: userId,
+    messages: [{ type: "text", text: "[Spectre Agent] セットアップ完了！LINE通知が正常に動作しています。" }],
   }),
 });
 
@@ -48,15 +48,23 @@ if (res.ok) {
     envContent = fs.readFileSync(envPath, "utf-8");
   } catch {}
 
-  if (envContent.includes("LINE_NOTIFY_TOKEN=")) {
-    envContent = envContent.replace(/LINE_NOTIFY_TOKEN=.*/, `LINE_NOTIFY_TOKEN=${token}`);
+  // トークン設定
+  if (envContent.includes("LINE_CHANNEL_ACCESS_TOKEN=")) {
+    envContent = envContent.replace(/LINE_CHANNEL_ACCESS_TOKEN=.*/, `LINE_CHANNEL_ACCESS_TOKEN=${channelToken}`);
   } else {
-    envContent += `\nLINE_NOTIFY_TOKEN=${token}\n`;
+    envContent += `\nLINE_CHANNEL_ACCESS_TOKEN=${channelToken}`;
   }
-  fs.writeFileSync(envPath, envContent, "utf-8");
-  console.log("TOKEN saved to .env");
+
+  // ユーザーID設定
+  if (envContent.includes("LINE_USER_ID=")) {
+    envContent = envContent.replace(/LINE_USER_ID=.*/, `LINE_USER_ID=${userId}`);
+  } else {
+    envContent += `\nLINE_USER_ID=${userId}`;
+  }
+
+  fs.writeFileSync(envPath, envContent.trim() + "\n", "utf-8");
+  console.log("Saved to .env");
 } else {
   const body = await res.text();
   console.error(`FAILED: HTTP ${res.status} - ${body}`);
-  console.error("トークンが正しいか確認してください。");
 }
