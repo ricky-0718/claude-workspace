@@ -3,6 +3,10 @@ import { fileURLToPath } from "url";
 import path from "path";
 import fs from "fs";
 import os from "os";
+import { getMessages } from "./chatwork-poller.js";
+import { getDrafts, updateDraftStatus } from "./draft-generator.js";
+import { startPipeline, stopPipeline, getPipelineStats } from "./pipeline.js";
+import { runClaude } from "./claude-runner.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -310,9 +314,72 @@ app.post("/instructions/:id/done", (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
+// Routes: Messages (LINE via Chatwork)
+// ---------------------------------------------------------------------------
+app.get("/api/messages", (_req, res) => {
+  const limit = parseInt(_req.query.limit) || 50;
+  res.json(getMessages(limit));
+});
+
+// ---------------------------------------------------------------------------
+// Routes: Drafts (reply suggestions)
+// ---------------------------------------------------------------------------
+app.get("/api/drafts", (_req, res) => {
+  const limit = parseInt(_req.query.limit) || 50;
+  res.json(getDrafts(limit));
+});
+
+app.post("/api/drafts/:id/approve", (req, res) => {
+  const draft = updateDraftStatus(req.params.id, "approved");
+  if (!draft) return res.status(404).json({ error: "not found" });
+  res.json({ ok: true, draft });
+});
+
+app.post("/api/drafts/:id/reject", (req, res) => {
+  const draft = updateDraftStatus(req.params.id, "rejected");
+  if (!draft) return res.status(404).json({ error: "not found" });
+  res.json({ ok: true, draft });
+});
+
+// ---------------------------------------------------------------------------
+// Routes: Pipeline control
+// ---------------------------------------------------------------------------
+app.get("/api/pipeline/stats", (_req, res) => {
+  res.json(getPipelineStats());
+});
+
+app.post("/api/pipeline/start", (_req, res) => {
+  startPipeline();
+  res.json({ ok: true, status: "started" });
+});
+
+app.post("/api/pipeline/stop", (_req, res) => {
+  stopPipeline();
+  res.json({ ok: true, status: "stopped" });
+});
+
+// ---------------------------------------------------------------------------
+// Routes: Claude CLI (ad-hoc execution)
+// ---------------------------------------------------------------------------
+app.post("/api/claude/run", async (req, res) => {
+  const { prompt, maxTurns, timeout } = req.body || {};
+  if (!prompt) return res.status(400).json({ error: "prompt is required" });
+
+  const result = await runClaude(prompt, {
+    maxTurns: maxTurns || 5,
+    timeout: timeout || 120000,
+    allowedTools: [],
+  });
+  res.json(result);
+});
+
+// ---------------------------------------------------------------------------
 // Start
 // ---------------------------------------------------------------------------
 app.listen(PORT, () => {
   console.log(`Claude Office server running on http://localhost:${PORT}`);
   console.log(`Agents: ${agents.size}, Activity: ${activityLog.length}, Instructions: ${instructions.length}`);
+
+  // Start the Chatwork polling pipeline
+  startPipeline();
 });

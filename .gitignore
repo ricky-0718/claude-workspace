@@ -25,3 +25,4 @@ nul
 # その他
 node_modules/
 *.log
+.env

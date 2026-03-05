@@ -274,6 +274,163 @@ canvas {
   color: var(--accent);
 }
 
+/* --- Pipeline Section --- */
+#pipeline-section {
+  width: 100%;
+  margin-top: 4px;
+}
+
+#pipeline-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+#pipeline-status {
+  font-size: 7px;
+  color: var(--text-dim);
+}
+
+.pipeline-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--accent);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+
+.pipeline-btn:hover {
+  border-color: var(--accent);
+  background: rgba(204, 153, 102, 0.1);
+}
+
+#pipeline-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* --- Message Cards --- */
+.msg-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(90, 74, 96, 0.4);
+  border-radius: 2px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+}
+
+.msg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.msg-name {
+  color: #6ecb63;
+  font-size: 7px;
+}
+
+.msg-time {
+  color: var(--text-dim);
+  font-size: 6px;
+}
+
+.msg-body {
+  font-family: 'Segoe UI', 'Meiryo', sans-serif;
+  font-size: 10px;
+  color: var(--text);
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.msg-link {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 6px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.msg-link:hover { text-decoration: underline; }
+
+/* --- Draft Cards --- */
+.draft-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(90, 74, 96, 0.4);
+  border-radius: 2px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+}
+
+.draft-card.pending { border-left: 3px solid #daa520; }
+.draft-card.approved { border-left: 3px solid #6ecb63; }
+.draft-card.rejected { border-left: 3px solid #c44; }
+.draft-card.error { border-left: 3px solid #c44; }
+
+.draft-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.draft-name {
+  color: #4a90d9;
+  font-size: 7px;
+}
+
+.draft-status {
+  font-size: 6px;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.draft-status.pending { color: #daa520; }
+.draft-status.approved { color: #6ecb63; }
+.draft-status.rejected { color: #c44; }
+
+.draft-body {
+  font-family: 'Segoe UI', 'Meiryo', sans-serif;
+  font-size: 10px;
+  color: var(--text);
+  line-height: 1.5;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.draft-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.draft-actions button {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.draft-approve { color: #6ecb63; }
+.draft-approve:hover { border-color: #6ecb63; background: rgba(110,203,99,0.1); }
+.draft-reject { color: #c44; }
+.draft-reject:hover { border-color: #c44; background: rgba(204,68,68,0.1); }
+
+#messages-list, #drafts-list {
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
 /* --- Footer --- */
 #footer {
   width: 100%;
@@ -287,6 +444,9 @@ canvas {
 /* --- Responsive --- */
 @media (max-width: 600px) {
   #panels {
+    grid-template-columns: 1fr;
+  }
+  #pipeline-panels {
     grid-template-columns: 1fr;
   }
   .panel { min-height: auto; }

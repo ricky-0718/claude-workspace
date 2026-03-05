@@ -743,6 +743,122 @@ function formatRelative(iso) {
 }
 
 // =============================================
+// PIPELINE: Messages & Drafts
+// =============================================
+async function fetchMessages() {
+  try {
+    const r = await fetch('/api/messages?limit=20');
+    if (!r.ok) return;
+    const messages = await r.json();
+    renderMessages(messages);
+  } catch {}
+}
+
+function renderMessages(messages) {
+  const el = document.getElementById('messages-list');
+  if (!messages.length) {
+    el.innerHTML = '<div style="color:var(--text-dim);font-size:7px;text-align:center;padding:12px">メッセージなし</div>';
+    return;
+  }
+  el.innerHTML = messages.map(m => {
+    const d = new Date(m.receivedAt);
+    const time = `${d.getMonth()+1}/${d.getDate()} ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+    const body = escHtml(m.message || '(非テキスト)').substring(0, 200);
+    const link = m.utageUrl ? `<a href="${escHtml(m.utageUrl)}" target="_blank" class="msg-link">UTAGE</a>` : '';
+    return `<div class="msg-card">
+      <div class="msg-header">
+        <span class="msg-name">${escHtml(m.lineName)}</span>
+        <span class="msg-time">${time}</span>
+      </div>
+      <div class="msg-body">${body}</div>
+      ${link}
+    </div>`;
+  }).join('');
+}
+
+async function fetchDrafts() {
+  try {
+    const r = await fetch('/api/drafts?limit=20');
+    if (!r.ok) return;
+    const drafts = await r.json();
+    renderDrafts(drafts);
+  } catch {}
+}
+
+function renderDrafts(drafts) {
+  const el = document.getElementById('drafts-list');
+  if (!drafts.length) {
+    el.innerHTML = '<div style="color:var(--text-dim);font-size:7px;text-align:center;padding:12px">返信案なし</div>';
+    return;
+  }
+  el.innerHTML = drafts.map(d => {
+    const statusLabels = { pending: '承認待ち', approved: '承認済み', rejected: '却下', error: 'エラー' };
+    const statusLabel = statusLabels[d.status] || d.status;
+    const draftText = d.draft ? escHtml(d.draft).substring(0, 500) : '(生成失敗)';
+    const actions = d.status === 'pending' ? `
+      <div class="draft-actions">
+        <button class="draft-approve" onclick="approveDraft('${d.id}')">承認</button>
+        <button class="draft-reject" onclick="rejectDraft('${d.id}')">却下</button>
+      </div>` : '';
+    const link = d.utageUrl ? `<a href="${escHtml(d.utageUrl)}" target="_blank" class="msg-link">UTAGE</a>` : '';
+    return `<div class="draft-card ${d.status}">
+      <div class="draft-header">
+        <span class="draft-name">${escHtml(d.lineName)}</span>
+        <span class="draft-status ${d.status}">${statusLabel}</span>
+      </div>
+      <div class="msg-body" style="font-size:8px;color:var(--text-dim);margin-bottom:4px">${escHtml(d.originalMessage || '').substring(0, 100)}</div>
+      <div class="draft-body">${draftText}</div>
+      ${link}
+      ${actions}
+    </div>`;
+  }).join('');
+}
+
+async function approveDraft(id) {
+  try {
+    await fetch(`/api/drafts/${id}/approve`, { method: 'POST' });
+    fetchDrafts();
+  } catch {}
+}
+
+async function rejectDraft(id) {
+  try {
+    await fetch(`/api/drafts/${id}/reject`, { method: 'POST' });
+    fetchDrafts();
+  } catch {}
+}
+
+window.approveDraft = approveDraft;
+window.rejectDraft = rejectDraft;
+
+async function fetchPipelineStats() {
+  try {
+    const r = await fetch('/api/pipeline/stats');
+    if (!r.ok) return;
+    const stats = await r.json();
+    const statusEl = document.getElementById('pipeline-status');
+    const btnEl = document.getElementById('pipeline-toggle');
+    const running = stats.isRunning;
+    const lastPoll = stats.lastPollAt ? formatRelative(stats.lastPollAt) : '--';
+    statusEl.textContent = running
+      ? `稼働中 | ${stats.totalMessages}件受信 | ${stats.totalDrafts}件生成 | 最終: ${lastPoll}`
+      : '停止中';
+    btnEl.textContent = running ? 'Stop' : 'Start';
+  } catch {}
+}
+
+function setupPipelineToggle() {
+  document.getElementById('pipeline-toggle').addEventListener('click', async () => {
+    const btn = document.getElementById('pipeline-toggle');
+    const action = btn.textContent === 'Start' ? 'start' : 'stop';
+    try {
+      await fetch(`/api/pipeline/${action}`, { method: 'POST' });
+      fetchPipelineStats();
+    } catch {}
+  });
+}
+
+// =============================================
 // INIT
 // =============================================
 function init() {
@@ -753,9 +869,15 @@ function init() {
     fetchStatus();
     fetchActivity();
     fetchInstructions();
+    fetchMessages();
+    fetchDrafts();
+    fetchPipelineStats();
     setInterval(fetchStatus, 2000);
     setInterval(fetchActivity, 5000);
     setInterval(fetchInstructions, 5000);
+    setInterval(fetchMessages, 10000);
+    setInterval(fetchDrafts, 10000);
+    setInterval(fetchPipelineStats, 5000);
   });
 
   // Instruction form handlers
@@ -766,6 +888,9 @@ function init() {
       sendInstruction();
     }
   });
+
+  // Pipeline toggle
+  setupPipelineToggle();
 }
 
 window.addEventListener('resize', () => { if (roomBuffer) buildRoom(); });
