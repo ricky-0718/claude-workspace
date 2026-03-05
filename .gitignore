@@ -26,3 +26,9 @@ nul
 node_modules/
 *.log
 .env
+
+# claude-office runtime data (keep .gitkeep only)
+claude-office/data/*.json
+claude-office/data/messages/*.json
+claude-office/data/drafts/*.json
+claude-office/data/results/*.json
