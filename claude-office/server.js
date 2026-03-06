@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import path from "path";
 import fs from "fs";
 import os from "os";
+import { execSync, spawn } from "child_process";
 import { getMessages } from "./chatwork-poller.js";
 import { getDrafts, updateDraftStatus } from "./draft-generator.js";
 import { startPipeline, stopPipeline, getPipelineStats } from "./pipeline.js";
@@ -371,6 +372,38 @@ app.post("/api/claude/run", async (req, res) => {
     allowedTools: [],
   });
   res.json(result);
+});
+
+// ---------------------------------------------------------------------------
+// Routes: Deploy (remote git pull + restart)
+// ---------------------------------------------------------------------------
+app.post("/api/deploy", (req, res) => {
+  const secret = req.body?.secret;
+  if (!secret || secret !== process.env.DEPLOY_SECRET) {
+    return res.status(403).json({ error: "invalid secret" });
+  }
+
+  try {
+    const repoRoot = path.resolve(__dirname, "..");
+    const pullResult = execSync("git pull", {
+      cwd: repoRoot,
+      encoding: "utf-8",
+      timeout: 30000,
+    });
+
+    res.json({ ok: true, pull: pullResult.trim(), restarting: true });
+
+    // restart.batをバックグラウンドで起動してからサーバー終了
+    setTimeout(() => {
+      spawn("cmd", ["/c", path.join(__dirname, "restart.bat")], {
+        detached: true,
+        stdio: "ignore",
+      }).unref();
+      setTimeout(() => process.exit(0), 500);
+    }, 1000);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 // ---------------------------------------------------------------------------
