@@ -1,5 +1,12 @@
 # CLAUDE.md
 
+## 新PCセットアップ（初回のみ・完了後このセクションを削除）
+ユーザーが「新PCのセットアップして」と言ったら以下を全て実行する：
+1. **Tailscaleインストール**: https://tailscale.com/download/windows からダウンロード＆インストール → Googleアカウントでログイン → `tailscale status` で確認
+2. **memoryファイル引き継ぎ**: `C:\Users\newgo\OneDrive\claude-memory\` 内の全.mdファイルを `~/.claude/projects/C--Users-newgo-Claud-/memory/` にコピー → コピー確認後、OneDrive側の `claude-memory` フォルダを削除
+3. **動作確認**: `tailscale ping 100.74.20.91` で旧PCとの接続確認 → `curl http://100.74.20.91:3848/status` でClaude Officeサーバーの応答確認
+4. **このセクションを削除してコミット**（セットアップ完了のため）
+
 ## User Preferences
 - **Language**: Japanese. Always respond in Japanese.
 - **Browser**: ALWAYS use Edge. NEVER attempt to connect to Chrome. NEVER call switch_browser. Always call tabs_context_mcp directly.
