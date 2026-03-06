@@ -376,6 +376,19 @@ app.post("/api/claude/run", async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
+// Routes: Tunnel URL
+// ---------------------------------------------------------------------------
+app.get("/api/tunnel-url", (_req, res) => {
+  const urlFile = path.join(DATA_DIR, "url.txt");
+  try {
+    const url = fs.readFileSync(urlFile, "utf-8").trim();
+    res.json({ ok: true, url });
+  } catch {
+    res.json({ ok: false, url: null, error: "url.txt not found" });
+  }
+});
+
+// ---------------------------------------------------------------------------
 // Routes: Deploy (remote git pull + restart)
 // ---------------------------------------------------------------------------
 app.post("/api/deploy", (req, res) => {
