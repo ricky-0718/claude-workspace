@@ -4,6 +4,7 @@ import path from "path";
 import fs from "fs";
 import os from "os";
 import { execSync, spawn } from "child_process";
+import config from "./config.js"; // .env → process.env 反映
 import { getMessages } from "./chatwork-poller.js";
 import { getDrafts, updateDraftStatus } from "./draft-generator.js";
 import { startPipeline, stopPipeline, getPipelineStats } from "./pipeline.js";

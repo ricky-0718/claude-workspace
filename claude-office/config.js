@@ -30,6 +30,11 @@ function loadEnv() {
 
 const env = loadEnv();
 
+// process.env にも反映（server.js の deploy endpoint 等で参照するため）
+for (const [key, value] of Object.entries(env)) {
+  if (!process.env[key]) process.env[key] = value;
+}
+
 export default {
   chatwork: {
     apiToken: env.CHATWORK_API_TOKEN || "",
@@ -38,6 +43,9 @@ export default {
   line: {
     channelToken: env.LINE_CHANNEL_ACCESS_TOKEN || "",
     userId: env.LINE_USER_ID || "",
+  },
+  deploy: {
+    secret: env.DEPLOY_SECRET || "",
   },
   utage: {
     chatBase: env.UTAGE_CHAT_BASE || "",
