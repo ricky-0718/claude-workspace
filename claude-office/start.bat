@@ -28,8 +28,8 @@ if %errorlevel%==0 (
 if exist data\tunnel.log del data\tunnel.log
 echo  [..] Starting tunnel...
 powershell -NoProfile -Command "Start-Process -FilePath 'C:\Users\newgo\Claud用\claude-office\cloudflared.exe' -ArgumentList 'tunnel','--url','http://localhost:3848' -WorkingDirectory 'C:\Users\newgo\Claud用\claude-office' -WindowStyle Minimized -RedirectStandardError 'C:\Users\newgo\Claud用\claude-office\data\tunnel.log'"
-echo  [..] Waiting for tunnel URL (max 15s)...
-for /l %%i in (1,1,15) do (
+echo  [..] Waiting for tunnel URL (max 30s)...
+for /l %%i in (1,1,30) do (
     timeout /t 1 /nobreak >nul
     findstr /i "trycloudflare.com" data\tunnel.log >nul 2>&1 && goto :url_found
 )
