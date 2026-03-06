@@ -1,6 +1,6 @@
 @echo off
 chcp 65001 >nul
-cd /d "C:\Users\newgo\Claude用\claude-office"
+cd /d "%~dp0"
 
 echo.
 echo  ==============================
@@ -14,7 +14,7 @@ if %errorlevel%==0 (
     echo  [OK] server.js already running
 ) else (
     echo  [..] Starting server...
-    powershell -NoProfile -Command "Start-Process -FilePath 'C:\Program Files\nodejs\node.exe' -ArgumentList 'server.js' -WorkingDirectory 'C:\Users\newgo\Claude用\claude-office' -WindowStyle Minimized -RedirectStandardOutput 'C:\Users\newgo\Claude用\claude-office\data\server.log' -RedirectStandardError 'C:\Users\newgo\Claude用\claude-office\data\server-error.log'"
+    powershell -NoProfile -Command "Start-Process -FilePath 'C:\Program Files\nodejs\node.exe' -ArgumentList 'server.js' -WorkingDirectory '%~dp0' -WindowStyle Minimized -RedirectStandardOutput '%~dp0data\server.log' -RedirectStandardError '%~dp0data\server-error.log'"
     timeout /t 2 /nobreak >nul
     echo  [OK] server.js started
 )
@@ -27,7 +27,7 @@ if %errorlevel%==0 (
 )
 if exist data\tunnel.log del data\tunnel.log
 echo  [..] Starting tunnel...
-powershell -NoProfile -Command "Start-Process -FilePath 'C:\Users\newgo\Claude用\claude-office\cloudflared.exe' -ArgumentList 'tunnel','--url','http://localhost:3848' -WorkingDirectory 'C:\Users\newgo\Claude用\claude-office' -WindowStyle Minimized -RedirectStandardError 'C:\Users\newgo\Claude用\claude-office\data\tunnel.log'"
+powershell -NoProfile -Command "Start-Process -FilePath '%~dp0cloudflared.exe' -ArgumentList 'tunnel','--url','http://localhost:3848' -WorkingDirectory '%~dp0' -WindowStyle Minimized -RedirectStandardError '%~dp0data\tunnel.log'"
 echo  [..] Waiting for tunnel URL (max 30s)...
 for /l %%i in (1,1,30) do (
     timeout /t 1 /nobreak >nul
