@@ -388,6 +388,16 @@ app.get("/api/tunnel-url", (_req, res) => {
   }
 });
 
+app.get("/api/tunnel-log", (_req, res) => {
+  const logFile = path.join(DATA_DIR, "tunnel.log");
+  try {
+    const log = fs.readFileSync(logFile, "utf-8");
+    res.type("text/plain").send(log);
+  } catch {
+    res.status(404).send("tunnel.log not found");
+  }
+});
+
 // ---------------------------------------------------------------------------
 // Routes: Deploy (remote git pull + restart)
 // ---------------------------------------------------------------------------
