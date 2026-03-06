@@ -4,19 +4,19 @@
     {
       "name": "asana-automation",
       "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
-      "runtimeArgs": ["C:/Users/newgo/Claud用/asana-claude-automation/server.js"],
+      "runtimeArgs": ["C:/Users/newgo/Claude用/asana-claude-automation/server.js"],
       "port": 3000
     },
     {
       "name": "sns-agent-team",
       "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
-      "runtimeArgs": ["C:/Users/newgo/Claud用/sns-agent-team/server.js"],
+      "runtimeArgs": ["C:/Users/newgo/Claude用/sns-agent-team/server.js"],
       "port": 3847
     },
     {
       "name": "lp-preview",
       "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
-      "runtimeArgs": ["C:/Users/newgo/Claud用/serve-lp.js"],
+      "runtimeArgs": ["C:/Users/newgo/Claude用/serve-lp.js"],
       "port": 3850
     }
   ]

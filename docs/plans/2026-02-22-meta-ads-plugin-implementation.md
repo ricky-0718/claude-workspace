@@ -8,7 +8,7 @@
 
 **Tech Stack:** Claude Code Plugin, Markdown (commands/skills), JavaScript (GAS template), Edge Browser Automation
 
-**Plugin Location:** `C:\Users\newgo\Claud用\meta-ads-setup\`
+**Plugin Location:** `C:\Users\newgo\Claude用\meta-ads-setup\`
 
 ---
 

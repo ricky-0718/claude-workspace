@@ -19,15 +19,15 @@
 **Step 1: ディレクトリ作成**
 
 ```bash
-mkdir -p "C:\Users\newgo\Claud用\ナレッジ格納庫\面談分析"
-mkdir -p "C:\Users\newgo\Claud用\ナレッジ格納庫\LINE下書き"
+mkdir -p "C:\Users\newgo\Claude用\ナレッジ格納庫\面談分析"
+mkdir -p "C:\Users\newgo\Claude用\ナレッジ格納庫\LINE下書き"
 ```
 
 **Step 2: 確認**
 
 ```bash
-ls "C:\Users\newgo\Claud用\ナレッジ格納庫\面談分析"
-ls "C:\Users\newgo\Claud用\ナレッジ格納庫\LINE下書き"
+ls "C:\Users\newgo\Claude用\ナレッジ格納庫\面談分析"
+ls "C:\Users\newgo\Claude用\ナレッジ格納庫\LINE下書き"
 ```
 
 Expected: 空のディレクトリが存在する
@@ -42,7 +42,7 @@ Expected: 空のディレクトリが存在する
 **Step 1: commands ディレクトリ作成**
 
 ```bash
-mkdir -p "C:\Users\newgo\Claud用\.claude\commands"
+mkdir -p "C:\Users\newgo\Claude用\.claude\commands"
 ```
 
 **Step 2: mendan.md を作成**

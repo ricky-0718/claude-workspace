@@ -22,7 +22,7 @@
   3. 承認されたらブランチを削除: `git branch -D <ブランチ名>`
   4. バックグラウンドでワークツリー削除を起動（PowerShell経由。日本語パス対応）:
      ```
-     powershell -Command "Start-Process -WindowStyle Hidden -FilePath 'C:/Users/newgo/Claud用/scripts/cleanup-worktree.bat' -ArgumentList '<ワークツリー名>'"
+     powershell -Command "Start-Process -WindowStyle Hidden -FilePath 'C:/Users/newgo/Claude用/scripts/cleanup-worktree.bat' -ArgumentList '<ワークツリー名>'"
      ```
   5. ユーザーに「数秒後にワークツリーが自動削除されます」と伝える
 - **作業途中の場合**: ワークツリーだけ削除してブランチは残す（次回セッションで続きができる）
@@ -77,7 +77,7 @@
 - Trigger API: `.timeBased()` to use (`.timeDriven()` does not exist)
 - Monaco editor bulk set: `window.monaco.editor.getModels()[0].setValue(code)`
 - Gmail search: always include `newer_than:7d` to prevent reprocessing old emails
-- Local copies: `C:\Users\newgo\Claud用\gas-scripts\`
+- Local copies: `C:\Users\newgo\Claude用\gas-scripts\`
 
 ## Asana 日報 自動記入
 - **タスク完了時**: 重要なタスクを完了したら、必ずAsana日報プロジェクトに記入する
@@ -109,7 +109,7 @@
 
 ## Node.js Development
 - Node.jsパス: `"C:/Program Files/nodejs/node.exe"` （PATHに入っていないためフルパス必須）
-- Bashでの`cd`+実行: `cd "C:/Users/newgo/Claud用/project" && "C:/Program Files/nodejs/node.exe" script.js`
+- Bashでの`cd`+実行: `cd "C:/Users/newgo/Claude用/project" && "C:/Program Files/nodejs/node.exe" script.js`
 - バックグラウンドサーバー起動時: 先に旧プロセスを停止すること。`WMIC PROCESS WHERE "name='node.exe' AND CommandLine LIKE '%server.js%'" GET ProcessId` で確認
 - PowerShellの`$_`はBashから呼ぶとエスケープ問題が起きる。WMIC推奨
 

@@ -109,7 +109,7 @@ HiNotes の文字起こしを貼り付けるだけで、分析レポート・LIN
 
 ### ディレクトリ構造
 ```
-C:\Users\newgo\Claud用\
+C:\Users\newgo\Claude用\
 ├── .claude/
 │   └── commands/
 │       └── mendan.md          ← スラッシュコマンド定義

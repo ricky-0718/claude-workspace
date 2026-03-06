@@ -17,7 +17,7 @@ echo  [OK] Sleep disabled, monitor off after 30min
 :: 2. Register auto-start task
 echo.
 echo  [2/3] Registering auto-start task...
-schtasks /create /tn "ClaudeOffice" /tr "C:\Users\newgo\Claud用\claude-office\auto-start.bat" /sc onlogon /rl highest /f
+schtasks /create /tn "ClaudeOffice" /tr "C:\Users\newgo\Claude用\claude-office\auto-start.bat" /sc onlogon /rl highest /f
 if %errorlevel%==0 (
     echo  [OK] Auto-start on login registered
 ) else (

@@ -10,7 +10,7 @@
 
 **設計書:** `docs/plans/2026-02-26-neta-stock-design.md`
 
-**ローカルコピー:** `C:\Users\newgo\Claud用\gas-scripts\neta-stock.gs`
+**ローカルコピー:** `C:\Users\newgo\Claude用\gas-scripts\neta-stock.gs`
 
 ---
 

@@ -8,7 +8,7 @@ echo  ==============================
 echo.
 
 :: Register Windows Task Scheduler task to run on logon
-schtasks /create /tn "ClaudeOffice" /tr "C:\Users\newgo\Claud用\claude-office\auto-start.bat" /sc onlogon /rl highest /f
+schtasks /create /tn "ClaudeOffice" /tr "C:\Users\newgo\Claude用\claude-office\auto-start.bat" /sc onlogon /rl highest /f
 
 if %errorlevel%==0 (
     echo  [OK] Auto-start registered successfully!

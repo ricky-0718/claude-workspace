@@ -134,7 +134,7 @@ GAS一本で完結し、サーバー不要で安定稼働する。
 ## ファイル構成
 
 ```
-C:\Users\newgo\Claud用\gas-scripts\
+C:\Users\newgo\Claude用\gas-scripts\
   └── neta-stock.gs          ← GASコード（ローカルコピー）
 
 スプレッドシート（新規作成）

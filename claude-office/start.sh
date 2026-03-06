@@ -2,7 +2,7 @@
 # Claude Office - Start from Git Bash / Claude Code
 # Uses PowerShell Start-Process for independent, persistent processes
 
-DIR="C:/Users/newgo/Claud用/claude-office"
+DIR="C:/Users/newgo/Claude用/claude-office"
 NODE="C:/Program Files/nodejs/node.exe"
 TUNNEL_LOG="$DIR/data/tunnel.log"
 TUNNEL_URL=""

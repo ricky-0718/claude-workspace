@@ -20,7 +20,7 @@
 
 ### 実装済みGASスクリプト
 - ファイル: `gas-scripts/neta-stock.gs` (577行)
-- ローカルコピー: `C:\Users\newgo\Claud用\gas-scripts\neta-stock.gs`
+- ローカルコピー: `C:\Users\newgo\Claude用\gas-scripts\neta-stock.gs`
 
 #### 主要関数
 | 関数 | 用途 | トリガー |
@@ -85,7 +85,7 @@ testGenerate()      → ネタ生成テスト
 - [ ] ネタの重複検知（類似タイトル判定）
 
 ## sns-agent-teamの現状（参考）
-- パス: `C:/Users/newgo/Claud用/sns-agent-team/`
+- パス: `C:/Users/newgo/Claude用/sns-agent-team/`
 - サーバー: Express on port 3847
 - エージェント4体: trend-researcher, knowledge-analyst, content-planner, sns-writer
 - API: `POST /api/generate` { theme, targetAudience, platforms }

@@ -8,7 +8,7 @@ REM Usage: cleanup-worktree.bat <worktree-name>
 if "%~1"=="" exit /b 1
 
 set WORKTREE_NAME=%~1
-set REPO_DIR=C:\Users\newgo\Claud用
+set REPO_DIR=C:\Users\newgo\Claude用
 set WORKTREE_DIR=%REPO_DIR%\.claude\worktrees\%WORKTREE_NAME%
 set MAX_RETRIES=12
 set RETRY_COUNT=0

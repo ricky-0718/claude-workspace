@@ -54,4 +54,4 @@
 
 ## ブランチ情報
 - ブランチ: `claude/pedantic-tu`
-- ワークツリー: `C:\Users\newgo\Claud用\.claude\worktrees\pedantic-tu`
+- ワークツリー: `C:\Users\newgo\Claude用\.claude\worktrees\pedantic-tu`
