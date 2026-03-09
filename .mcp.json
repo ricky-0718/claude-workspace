@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--browser", "msedge",
+        "--user-data-dir", "C:/Users/newgo/Claude用/.playwright-data",
+        "--viewport-size", "1280x900"
+      ]
+    }
+  }
+}

@@ -22,6 +22,9 @@ nul
 *.db-shm
 *.db-wal
 
+# Playwright browser profile
+.playwright-data/
+
 # その他
 node_modules/
 *.log
