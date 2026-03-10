@@ -9,7 +9,7 @@ import { getMessages } from "./chatwork-poller.js";
 import { getDrafts, updateDraftStatus } from "./draft-generator.js";
 import { startPipeline, stopPipeline, getPipelineStats } from "./pipeline.js";
 import { runClaude } from "./claude-runner.js";
-import { startInvoicePoller, stopInvoicePoller, processInvoiceEmails } from "./invoice-poller.js";
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -377,28 +377,6 @@ app.post("/api/claude/run", async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// Routes: Invoice poller
-// ---------------------------------------------------------------------------
-app.get("/api/invoices/status", (_req, res) => {
-  const stateFile = path.join(DATA_DIR, "invoice-state.json");
-  try {
-    const state = JSON.parse(fs.readFileSync(stateFile, "utf-8"));
-    res.json({ ok: true, ...state });
-  } catch {
-    res.json({ ok: true, lastRun: null, processedIds: [] });
-  }
-});
-
-app.post("/api/invoices/run", async (_req, res) => {
-  try {
-    const result = await processInvoiceEmails();
-    res.json({ ok: true, ...result });
-  } catch (e) {
-    res.status(500).json({ error: e.message });
-  }
-});
-
-// ---------------------------------------------------------------------------
 // Routes: Tunnel URL
 // ---------------------------------------------------------------------------
 app.get("/api/tunnel-url", (_req, res) => {
@@ -462,7 +440,4 @@ app.listen(PORT, () => {
 
   // Start the Chatwork polling pipeline
   startPipeline();
-
-  // Start invoice auto-save poller (5分間隔)
-  startInvoicePoller(5 * 60 * 1000);
 });
