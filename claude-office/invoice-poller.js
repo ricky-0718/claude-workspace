@@ -15,7 +15,7 @@ const STATE_FILE = path.join(__dirname, "data", "invoice-state.json");
 
 // --- 設定 ---
 const CONFIG = {
-  DRIVE_FOLDER_ID: "10NUs7HGd5_36Blp8kpRmMM2tqnsjqz77",
+  DRIVE_FOLDER_ID: "1Za5rERtxwU1XD58JTA4-xYsvC0JCFg4_",
   LABEL_NAME: "自動保存済み",
   SENDERS: [
     { email: "support@cloudsign.jp", prefix: "cloudsign" },
