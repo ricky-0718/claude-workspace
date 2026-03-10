@@ -23,5 +23,18 @@
 - **日報タスクの作り方**: 完了したタスクは既存タスクのnotesに追記するのではなく、**毎回新しい個別タスクとして作成する**
 - **タスク名の日付**: タスク名の冒頭に必ず `M/DD` 形式の日付を付ける（例: `2/23 メール自動保存を開始`）
 
+## Clipboard (Windows)
+- Bashの `clip.exe` にヒアドキュメントやパイプで日本語を渡すと**文字化け（Shift-JIS変換）**する
+- **正解**: PowerShell経由でコピーする
+  ```bash
+  powershell -Command "Get-Content -Path 'ファイルパス' -Encoding UTF8 | Set-Clipboard"
+  ```
+- ファイルがない場合は一時ファイルに書き出してからPowerShellでコピー
+
+## Memory Management
+- **ツール導入・設定完了時は即座にMEMORY.mdに記録する**。セッション終了時まで待つと記録漏れのリスクがある
+- 対象: 新しいCLIツールのインストール、API認証設定、環境構築など
+- セッション終了処理に頼らず、完了した時点でその場で書く
+
 ---
 *This file is auto-updated when corrections are received. See CLAUDE.md > Self-Improvement Loop.*
