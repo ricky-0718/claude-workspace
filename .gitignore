@@ -15,6 +15,9 @@ nul
 # ワークツリー
 .claude/worktrees/
 
+# MCP設定（APIキー含む）
+.mcp.json
+
 # 自動生成ファイル
 .claude.json
 .claude.json.backup
