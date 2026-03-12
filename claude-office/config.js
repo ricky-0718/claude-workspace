@@ -42,6 +42,7 @@ export default {
   },
   line: {
     channelToken: env.LINE_CHANNEL_ACCESS_TOKEN || "",
+    channelSecret: env.LINE_CHANNEL_SECRET || "",
     userId: env.LINE_USER_ID || "",
   },
   deploy: {

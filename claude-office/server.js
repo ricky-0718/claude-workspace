@@ -12,6 +12,7 @@ import { runClaude } from "./claude-runner.js";
 import { loadAllSkills } from "./skills/loader.js";
 import { listSkills } from "./skills/registry.js";
 import { listCustomers, getCustomer, upsertCustomer } from "./memory/customer-store.js";
+import { verifySignature, handleWebhookEvents } from "./webhook/line-handler.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -238,6 +239,29 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   if (req.method === "OPTIONS") return res.sendStatus(204);
   next();
+});
+
+// LINE Webhook route BEFORE express.json() (needs raw body for signature verification)
+app.post("/webhook/line", express.raw({ type: "*/*" }), async (req, res) => {
+  const signature = req.headers["x-line-signature"];
+  const rawBody = typeof req.body === "string" ? req.body : req.body.toString();
+
+  if (!verifySignature(rawBody, signature, config.line.channelSecret)) {
+    console.warn("[Webhook] Invalid signature");
+    return res.status(403).send("Invalid signature");
+  }
+
+  const body = JSON.parse(rawBody);
+
+  // LINE は 200 を即返さないとリトライする
+  res.status(200).send("OK");
+
+  // イベント処理（非同期）
+  if (body.events && body.events.length > 0) {
+    handleWebhookEvents(body.events).catch(err => {
+      console.error("[Webhook] Unhandled error:", err);
+    });
+  }
 });
 
 app.use(express.json());
