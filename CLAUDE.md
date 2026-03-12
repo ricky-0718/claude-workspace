@@ -4,7 +4,7 @@
 - **Language**: Japanese. Always respond in Japanese.
 - **Browser**: ALWAYS use Edge. NEVER attempt to connect to Chrome. NEVER call switch_browser. Always call tabs_context_mcp directly.
 - **専門用語**: エンジニア用語が出たら、必ず中学生でも分かるように例え話で解説する。
-- **LINE返信文の口調**: 語尾に「ね」を使わない。丁寧だがフランクすぎない文体で書く。
+- **LINE返信文の口調**: ビジネス調を基本とする（「ございます」「いたします」等の敬語）。タメ口の相手にはトーンを合わせるが、語尾に「ね」はトーンに関わらず絶対に使わない。
 
 ## セッション終了ルール
 - セッションの作業が一区切りついたら、必ず「masterにマージしますか？」とユーザーに確認する
