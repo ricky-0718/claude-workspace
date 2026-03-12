@@ -1,8 +1,11 @@
 /**
  * 請求書/契約書 自動保存ワークフロー
  *
- * Gmail に届いた請求書・契約書のPDF添付ファイルを
- * 自動的にGoogle Driveの指定フォルダに保存する。
+ * Gmail に届いた請求書・契約書を自動的にGoogle Driveの指定フォルダに保存する。
+ *
+ * 対応パターン:
+ *   A) PDF添付ファイル形式（CloudSign等）
+ *   B) ダウンロードリンク形式（freee等）
  *
  * セットアップ:
  * 1. このスクリプトを Google Apps Script にコピー
@@ -19,9 +22,10 @@ const CONFIG = {
   PROCESSED_LABEL: '自動保存済み',
 
   // 対象送信元の設定
+  // type: 'attachment' = PDF添付形式, 'download_link' = ダウンロードリンク形式
   SENDERS: [
-    { email: 'support@cloudsign.jp', prefix: 'cloudsign' },
-    { email: 'noreply@freee.co.jp', prefix: 'freee' },
+    { email: 'support@cloudsign.jp', prefix: 'cloudsign', type: 'attachment' },
+    { email: 'noreply@freee.co.jp', prefix: 'freee', type: 'download_link' },
   ],
 
   // 1回の実行で処理する最大メール数
@@ -29,27 +33,49 @@ const CONFIG = {
 
   // 検索対象の日数（直近N日のメールのみ処理）
   DAYS_TO_SEARCH: 7,
+
+  // freeeダウンロードリンクの正規表現パターン
+  FREEE_LINK_PATTERNS: [
+    /https:\/\/secure\.freee\.co\.jp\/[^\s"'<>]+\/download[^\s"'<>]*/g,
+    /https:\/\/secure\.freee\.co\.jp\/[^\s"'<>]*\/pdf[^\s"'<>]*/g,
+    /https:\/\/[a-zA-Z0-9.-]*freee[a-zA-Z0-9.-]*\.co\.jp\/[^\s"'<>]*(?:download|pdf)[^\s"'<>]*/g,
+  ],
 };
 
 /**
- * メイン処理: 対象メールからPDF添付ファイルをGoogle Driveに保存
+ * メイン処理: 2段階で請求書を自動保存
+ *   Step 1: PDF添付メール（CloudSign等）
+ *   Step 2: ダウンロードリンク形式メール（freee等）
  */
 function processInvoiceEmails() {
   const folder = DriveApp.getFolderById(CONFIG.DRIVE_FOLDER_ID);
   const label = getOrCreateLabel(CONFIG.PROCESSED_LABEL);
 
-  // 送信元ごとのOR条件を構築
-  const fromQuery = CONFIG.SENDERS
-    .map(s => s.email)
-    .join(' OR ');
+  let totalSaved = 0;
 
+  // Step 1: 添付ファイル形式のメールを処理
+  totalSaved += processAttachmentEmails(folder, label);
+
+  // Step 2: ダウンロードリンク形式のメールを処理
+  totalSaved += processDownloadLinkEmails(folder, label);
+
+  if (totalSaved > 0) {
+    Logger.log('合計 ' + totalSaved + ' 件のPDFを保存しました');
+  }
+}
+
+/**
+ * Step 1: PDF添付ファイル形式のメールを処理（従来のロジック）
+ */
+function processAttachmentEmails(folder, label) {
+  const attachmentSenders = CONFIG.SENDERS.filter(s => s.type === 'attachment');
+  if (attachmentSenders.length === 0) return 0;
+
+  const fromQuery = attachmentSenders.map(s => s.email).join(' OR ');
   const query = `from:(${fromQuery}) has:attachment -label:${CONFIG.PROCESSED_LABEL} newer_than:${CONFIG.DAYS_TO_SEARCH}d`;
 
   const threads = GmailApp.search(query, 0, CONFIG.MAX_THREADS);
-
-  if (threads.length === 0) {
-    return;
-  }
+  if (threads.length === 0) return 0;
 
   let savedCount = 0;
 
@@ -67,7 +93,6 @@ function processInvoiceEmails() {
       for (const attachment of attachments) {
         const name = attachment.getName();
 
-        // PDFファイルのみ対象
         if (!name.toLowerCase().endsWith('.pdf')) {
           continue;
         }
@@ -77,16 +102,187 @@ function processInvoiceEmails() {
 
         folder.createFile(attachment.copyBlob().setName(uniqueName));
         savedCount++;
+        Logger.log('[添付] 保存: ' + uniqueName);
       }
     }
 
-    // 処理済みラベルを付与
     thread.addLabel(label);
   }
 
-  if (savedCount > 0) {
-    Logger.log(`${savedCount} 件のPDFを保存しました`);
+  return savedCount;
+}
+
+/**
+ * Step 2: ダウンロードリンク形式のメールを処理
+ * freee等のメール本文内にPDFダウンロードリンクが含まれるメールが対象
+ */
+function processDownloadLinkEmails(folder, label) {
+  const linkSenders = CONFIG.SENDERS.filter(s => s.type === 'download_link');
+  if (linkSenders.length === 0) return 0;
+
+  const fromQuery = linkSenders.map(s => s.email).join(' OR ');
+  const query = `from:(${fromQuery}) -has:attachment -label:${CONFIG.PROCESSED_LABEL} newer_than:${CONFIG.DAYS_TO_SEARCH}d`;
+
+  const threads = GmailApp.search(query, 0, CONFIG.MAX_THREADS);
+  if (threads.length === 0) return 0;
+
+  let savedCount = 0;
+
+  for (const thread of threads) {
+    const messages = thread.getMessages();
+
+    for (const message of messages) {
+      const from = message.getFrom();
+      const date = message.getDate();
+      const dateStr = formatDate(date);
+      const senderPrefix = getSenderPrefix(from);
+
+      // メール本文からダウンロードリンクを抽出
+      const body = message.getBody();
+      const plainBody = message.getPlainBody();
+      const links = extractDownloadLinks(body, plainBody);
+
+      if (links.length === 0) continue;
+
+      const subject = message.getSubject() || '請求書';
+      const safeName = sanitizeFileName(subject);
+
+      for (let i = 0; i < links.length; i++) {
+        const url = links[i];
+        try {
+          const blob = fetchPdfFromUrl(url);
+          if (!blob) {
+            Logger.log('[リンク] スキップ（PDFではない）: ' + url);
+            continue;
+          }
+
+          const suffix = links.length > 1 ? `_${i + 1}` : '';
+          const fileName = `${dateStr}_${senderPrefix}_${safeName}${suffix}.pdf`;
+          const uniqueName = getUniqueName(folder, fileName);
+
+          folder.createFile(blob.setName(uniqueName));
+          savedCount++;
+          Logger.log('[リンク] 保存: ' + uniqueName);
+        } catch (e) {
+          Logger.log('[リンク] ダウンロード失敗: ' + url + ' - ' + e.message);
+        }
+      }
+    }
+
+    // リンクの有無にかかわらず処理済みラベルを付ける（再処理防止）
+    thread.addLabel(label);
   }
+
+  return savedCount;
+}
+
+/**
+ * メール本文からfreeeのダウンロードリンクを抽出
+ */
+function extractDownloadLinks(htmlBody, plainBody) {
+  const foundUrls = {};
+
+  for (const pattern of CONFIG.FREEE_LINK_PATTERNS) {
+    if (htmlBody) {
+      const regex = new RegExp(pattern.source, pattern.flags);
+      let match;
+      while ((match = regex.exec(htmlBody)) !== null) {
+        foundUrls[cleanUrl(match[0])] = true;
+      }
+    }
+
+    if (plainBody) {
+      const regex2 = new RegExp(pattern.source, pattern.flags);
+      let match;
+      while ((match = regex2.exec(plainBody)) !== null) {
+        foundUrls[cleanUrl(match[0])] = true;
+      }
+    }
+  }
+
+  // HTMLのhref属性からもリンクを抽出
+  if (htmlBody) {
+    const hrefRegex = /href=["']?(https:\/\/[a-zA-Z0-9.-]*freee[a-zA-Z0-9.-]*\.co\.jp\/[^"'\s>]+)["']?/gi;
+    let match;
+    while ((match = hrefRegex.exec(htmlBody)) !== null) {
+      const url = cleanUrl(match[1]);
+      if (/download|pdf|invoice|receipt/i.test(url)) {
+        foundUrls[url] = true;
+      }
+    }
+  }
+
+  const urls = Object.keys(foundUrls);
+  if (urls.length > 0) {
+    Logger.log('[リンク抽出] ' + urls.length + ' 件のダウンロードリンクを発見');
+  }
+  return urls;
+}
+
+/**
+ * URL末尾のHTMLタグ残骸を除去
+ */
+function cleanUrl(url) {
+  let cleaned = url.replace(/&amp;/g, '&');
+  cleaned = cleaned.replace(/[)"'<>\]]+$/, '');
+  return cleaned;
+}
+
+/**
+ * URLからPDFをダウンロード。PDFでない場合はnullを返す
+ */
+function fetchPdfFromUrl(url) {
+  const options = {
+    method: 'get',
+    followRedirects: true,
+    muteHttpExceptions: true,
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    },
+  };
+
+  const response = UrlFetchApp.fetch(url, options);
+  const responseCode = response.getResponseCode();
+
+  if (responseCode !== 200) {
+    Logger.log('[fetch] HTTPエラー ' + responseCode + ': ' + url);
+    return null;
+  }
+
+  const contentType = response.getHeaders()['Content-Type'] || '';
+  const blob = response.getBlob();
+
+  if (contentType.indexOf('application/pdf') !== -1) {
+    return blob;
+  }
+
+  if (blob.getContentType() === 'application/pdf') {
+    return blob;
+  }
+
+  // application/octet-stream の場合、PDFマジックナンバーで判定
+  if (contentType.indexOf('application/octet-stream') !== -1 || contentType === '') {
+    const bytes = blob.getBytes();
+    if (bytes.length > 4 && bytes[0] === 0x25 && bytes[1] === 0x50 && bytes[2] === 0x44 && bytes[3] === 0x46) {
+      blob.setContentType('application/pdf');
+      return blob;
+    }
+  }
+
+  Logger.log('[fetch] PDFではないコンテンツ (' + contentType + '): ' + url);
+  return null;
+}
+
+/**
+ * ファイル名に使えない文字を除去
+ */
+function sanitizeFileName(name) {
+  return name
+    .replace(/[\/\\:*?"<>|]/g, '_')
+    .replace(/\s+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_|_$/g, '')
+    .substring(0, 100);
 }
 
 /**
@@ -147,7 +343,6 @@ function getOrCreateLabel(labelName) {
  * 5分おきに processInvoiceEmails を自動実行
  */
 function setupTrigger() {
-  // 既存のトリガーを削除
   const triggers = ScriptApp.getProjectTriggers();
   for (const trigger of triggers) {
     if (trigger.getHandlerFunction() === 'processInvoiceEmails') {
@@ -155,7 +350,6 @@ function setupTrigger() {
     }
   }
 
-  // 5分おきのトリガーを作成
   ScriptApp.newTrigger('processInvoiceEmails')
     .timeBased()
     .everyMinutes(5)
@@ -179,8 +373,6 @@ function removeTrigger() {
 
 /**
  * 初期化: 既存の古いメールを全て「自動保存済み」ラベルでマーク
- * セットアップ時に1回だけ実行する。
- * これにより、今後は新着メールのみが処理対象になる。
  */
 function markAllAsProcessed() {
   const label = getOrCreateLabel(CONFIG.PROCESSED_LABEL);
@@ -193,7 +385,6 @@ function markAllAsProcessed() {
 
   let totalMarked = 0;
 
-  // バッチ処理（500件ずつ）
   while (true) {
     const threads = GmailApp.search(query, 0, 100);
     if (threads.length === 0) break;
@@ -205,7 +396,6 @@ function markAllAsProcessed() {
 
     Logger.log(`${totalMarked} 件のスレッドをマーク済み...`);
 
-    // GAS実行時間制限対策
     if (totalMarked > 400) {
       Logger.log('処理件数が多いため一旦停止。再度実行してください。');
       break;
@@ -216,8 +406,7 @@ function markAllAsProcessed() {
 }
 
 /**
- * Google Drive保存先フォルダ内の全ファイルを削除（古いファイルのクリーンアップ用）
- * 誤ってダウンロードされた古いファイルを削除する場合に使用
+ * Google Drive保存先フォルダ内の全ファイルを削除（クリーンアップ用）
  */
 function cleanupDriveFolder() {
   const folder = DriveApp.getFolderById(CONFIG.DRIVE_FOLDER_ID);
