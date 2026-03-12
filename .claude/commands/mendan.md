@@ -158,75 +158,66 @@
 - 「本日のアクション」セクションも更新すること（今日送るべきフォローLINEがあれば追加）
 - ファイル冒頭の「最終更新」日付を今日の日付に更新すること
 
-## ステップ7: Asanaタスク作成（ブラウザ+API ハイブリッド方式）
+## ステップ7: Asanaタスク作成（MCP API方式）
 
 **プロジェクト:** オールインワンプラン契約書（GID: `1209960384497212`）
 **セクション:** 見込み客（GID: `1209960384497232`）
 
-> ⚠️ `create_task_preview` ウィジェットは Claude Code 環境で描画されないため、
-> Edgeブラウザ操作 + Asana MCP API のハイブリッド方式を使用する。
+> ブラウザ操作不要。Asana MCPプラグイン（`asana_create_task`）で全て完結する。
+> `create_task_preview` はCLIで描画されないため使わない。`asana_create_task` を直接使う。
+> **担当者（assignee）と期日（due_on）はメインタスクには設定しない**（CLAUDE.mdルール）。
 
-### 7-1. メインタスク作成（Edgeブラウザ）
-1. `tabs_context_mcp` でEdgeタブを取得
-2. Asanaプロジェクトページに移動: `https://app.asana.com/0/1209960384497212/list`
-   - デスクトップアプリにリダイレクトされた場合は「ブラウザで開く」リンクをクリック
-3. 「見込み客」セクションの「タスクを追加...」をクリック
-4. タスク名を入力: `{名前}さん 面談フォロー` → Enter
+### 7-1. メインタスク作成
 
-### 7-2. メインタスクの詳細設定（Asana MCP API）
-1. `search_objects` でタスクGIDを取得（タスク名で検索）
-2. `update_task` で以下を設定:
-   - `due_on`: {面談日+14日}（YYYY-MM-DD形式）
-   - `notes`: **面談分析レポートを貼り付ける**（ステップ4で生成した内容、**文字起こし全文セクションは除く**）
-     - 基本情報（名前・学年・同席者・面談時間）
-     - 自動抽出項目（痛み・理想・障壁・温度感・意思決定者）
-     - SPIN評価スコアカード
-     - よかった点（3つ）・問題点（3つ）・改善アクション（3つ）
-     - 過去データとの比較
+`mcp__plugin_asana_asana__asana_create_task` で作成:
+- `name`: `{名前}さん 面談フォロー`
+- `project_id`: `1209960384497212`
+- `section_id`: `1209960384497232`
+- `notes`: 面談分析レポート（ステップ4の内容、**文字起こし全文セクションは除く**）
+  - 基本情報（名前・学年・同席者・面談時間）
+  - 自動抽出項目（痛み・理想・障壁・温度感・意思決定者）
+  - SPIN評価スコアカード
+  - よかった点（3つ）・問題点（3つ）・改善アクション（3つ）
+  - 過去データとの比較
 
-### 7-3. サブタスク4件作成（Edgeブラウザ → API）
+→ レスポンスからメインタスクの `gid` を取得する。
 
-**ブラウザでサブタスク追加:**
-1. タスク詳細パネルで「＋ サブタスクを追加」をクリック
-2. 以下を順にEnterで入力:
-   - `【当日】お礼LINE送信`
-   - `【3日後】進捗確認LINE`
-   - `【7日後】期限通知LINE`
-   - `【14日後】最終確認LINE`
-3. Escで入力終了
+### 7-2. サブタスク4件作成
 
-**APIで期限＋LINE文面を設定:**
-`search_objects` で各サブタスクのGIDを取得し、`update_task` で期限と説明を一括設定:
+`asana_create_task` で4件作成し、`asana_set_parent_for_task` で親子関係を設定:
 
-| サブタスク名 | 期日 | `notes` に設定する内容 |
-|-------------|------|----------------------|
+| サブタスク名 | `due_on` | `notes` に設定する内容 |
+|-------------|----------|----------------------|
 | 【当日】お礼LINE送信 | {面談日} | ステップ5のLINE下書き「当日」セクション全文 |
 | 【3日後】進捗確認LINE | {面談日+3日} | ステップ5のLINE下書き「3日後」セクション全文 |
 | 【7日後】期限通知LINE | {面談日+7日} | ステップ5のLINE下書き「7日後」セクション全文 |
 | 【14日後】最終確認LINE | {面談日+14日} | ステップ5のLINE下書き「14日後」セクション全文 |
 
+各サブタスクの作成手順:
+1. `asana_create_task` で作成（`name`, `due_on`, `notes` を設定）
+2. `asana_set_parent_for_task` で `parent_id` にメインタスクの `gid` を指定
+
 > 💡 サブタスクを開けばそのまま LINE にコピペできるよう、送信文面をそのまま `notes` に入れる。
 
-## ステップ8: Googleスプレッドシート更新（ClipboardEvent方式）
+## ステップ8: Googleスプレッドシート更新（gws CLI方式）
 
-Edge ブラウザ MCP を使用して、広告分析ダッシュボード（スプレッドシートID: `1lq2N5KtvdNaFqZweEaN2n3nAoFuHRrWKUU8TIseZN_M`）の「面談DB」シートにデータを追記する。
+gws CLI の `values append` で「面談DB」シートにデータを追記する。ブラウザ操作不要。
 
-**操作手順:**
-1. `tabs_context_mcp` でEdgeタブを取得
-2. スプレッドシートURLに移動: `https://docs.google.com/spreadsheets/d/1lq2N5KtvdNaFqZweEaN2n3nAoFuHRrWKUU8TIseZN_M/edit`
-3. 「面談DB」シートタブをクリック（`find` で ref を取得 → `left_click`）
-4. Name Box（左上のセル参照欄）をクリックし、空き行のセル番号（例: `A2`）を入力 → Enter
-5. `javascript_tool` で ClipboardEvent を使ったペースト:
+> 日本語JSONはBash経由だとShift-JIS変換で文字化けするため、Node.js経由で実行する。
+> `append` はテーブル末尾を自動検出するため、空き行を手動で探す必要なし。
 
-```javascript
-const rowData = "{面談日}\t{名前}\t{属性}\t{同席者}\t{温度感}\t{障壁}\t{面談時間}\t{ステータス}\t{次回アクション日}\t{次回アクション内容}\t\t{備考}";
-const dt = new DataTransfer();
-dt.setData('text/plain', rowData);
-const evt = new ClipboardEvent('paste', { clipboardData: dt, bubbles: true, cancelable: true });
-document.activeElement.dispatchEvent(evt);
+**実行方法:**
+
+Node.js の `require('child_process')` 経由で以下のgwsコマンドを組み立てて実行:
+
+```
+gws sheets spreadsheets values append
+  --params '{"spreadsheetId":"1lq2N5KtvdNaFqZweEaN2n3nAoFuHRrWKUU8TIseZN_M","range":"面談DB!A:L","valueInputOption":"USER_ENTERED"}'
+  --json '{"values":[["{面談日}","{名前}","{属性}","{同席者}","{温度感}","{障壁}","{面談時間}","{ステータス}","{次回アクション日}","{次回アクション内容}","","{備考}"]]}'
 ```
 
-> ⚠️ `computer(type)` はIME変換で不安定。`ClipboardEvent` 方式が最も確実。
+- paramsとjsonは `JSON.stringify(JSON.stringify(...))` で二重エスケープしてCLIに渡す
+- レスポンスの `updatedRange` で書き込み先セルを確認できる
 
 **列定義:**
 
