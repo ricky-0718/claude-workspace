@@ -2,18 +2,25 @@
 
 > LP制作パターン、広告分析、ライティングルール、クリエイティブ制作のナレッジ。
 
+## オートウェビナーファネル ★メイン
+
+> **→ [auto-webinar/README.md](auto-webinar/README.md)**
+>
+> ファネル全体（広告・LP・ウェビナー・LINE・分析）を構造化したドキュメント群。
+> オートウェビナー関連の情報はまずここを参照。
+
 ## ローカルファイル
 
 | ファイル | 内容 |
 |---------|------|
 | [utage-lp-patterns.md](utage-lp-patterns.md) | UTAGE LP制作パターン集 |
 | [writing-rules.md](writing-rules.md) | AI生成文を人間らしくするライティングルール |
-| [taiwan-lp-final.md](taiwan-lp-final.md) | 台湾留学LP（最終版） |
-| [taiwan-lp-improved.md](taiwan-lp-improved.md) | 台湾留学LP（改善版） |
-| [meta-ads-report.md](meta-ads-report.md) | Meta広告分析レポート |
-| [lp-diagnosis-report.md](lp-diagnosis-report.md) | LP診断レポート |
-| [new-lp-clarity-analysis.md](new-lp-clarity-analysis.md) | 新LP Clarity分析レポート |
-| [auto-webinar-meta-ads-data.md](auto-webinar-meta-ads-data.md) | オートウェビナー Meta広告データ |
+| [taiwan-lp-final.md](taiwan-lp-final.md) | 台湾留学LP（最終版）— 詳細版 |
+| [taiwan-lp-improved.md](taiwan-lp-improved.md) | 台湾留学LP（改善版）— 詳細版 |
+| [meta-ads-report.md](meta-ads-report.md) | Meta広告分析レポート — 詳細版（46項目チェック） |
+| [lp-diagnosis-report.md](lp-diagnosis-report.md) | LP診断レポート — 詳細版 |
+| [new-lp-clarity-analysis.md](new-lp-clarity-analysis.md) | 新LP Clarity分析レポート — 詳細版 |
+| [auto-webinar-meta-ads-data.md](auto-webinar-meta-ads-data.md) | オートウェビナー Meta広告データ — 日次生データ |
 
 ## Google Drive
 
