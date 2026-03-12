@@ -2,7 +2,11 @@
 import crypto from "crypto";
 import { findSkillByCommand, listSkills } from "../skills/registry.js";
 import { sendLinePush } from "../notifier.js";
+import { getLatestPending, updateApproval } from "../approval/manager.js";
 import config from "../config.js";
+
+const APPROVE_KEYWORDS = ["OK", "ok", "承認", "はい", "送信して", "送って"];
+const REJECT_KEYWORDS = ["却下", "やめて", "キャンセル", "いいえ", "ダメ"];
 
 /**
  * LINE Webhook署名検証
@@ -66,6 +70,25 @@ export async function handleWebhookEvents(events) {
     const replyToken = event.replyToken;
 
     console.log(`[Webhook] Command received: "${text}"`);
+
+    // 承認応答チェック（pendingがある場合のみ）
+    const pending = getLatestPending();
+    if (pending) {
+      const isApprove = APPROVE_KEYWORDS.some(k => text === k || text.startsWith(k));
+      const isReject = REJECT_KEYWORDS.some(k => text === k || text.startsWith(k));
+
+      if (isApprove) {
+        updateApproval(pending.id, "approved");
+        await replyToLine(replyToken, `承認しました: ${pending.description}`);
+        continue;
+      }
+
+      if (isReject) {
+        updateApproval(pending.id, "rejected");
+        await replyToLine(replyToken, `却下しました: ${pending.description}`);
+        continue;
+      }
+    }
 
     // ヘルプコマンド
     if (text === "ヘルプ" || text === "help") {

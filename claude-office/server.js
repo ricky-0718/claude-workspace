@@ -13,6 +13,7 @@ import { loadAllSkills } from "./skills/loader.js";
 import { listSkills } from "./skills/registry.js";
 import { listCustomers, getCustomer, upsertCustomer } from "./memory/customer-store.js";
 import { verifySignature, handleWebhookEvents } from "./webhook/line-handler.js";
+import { listApprovals, getLatestPending } from "./approval/manager.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -417,6 +418,18 @@ app.post("/api/customers/:name/notes", (req, res) => {
   if (tags !== undefined) updates.tags = tags;
   const customer = upsertCustomer(name, updates);
   res.json({ ok: true, customer });
+});
+
+// ---------------------------------------------------------------------------
+// Routes: Approvals
+// ---------------------------------------------------------------------------
+app.get("/api/approvals", (_req, res) => {
+  res.json(listApprovals());
+});
+
+app.get("/api/approvals/pending", (_req, res) => {
+  const pending = getLatestPending();
+  res.json(pending || { none: true });
 });
 
 // ---------------------------------------------------------------------------
