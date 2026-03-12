@@ -11,6 +11,7 @@ import { startPipeline, stopPipeline, getPipelineStats } from "./pipeline.js";
 import { runClaude } from "./claude-runner.js";
 import { loadAllSkills } from "./skills/loader.js";
 import { listSkills } from "./skills/registry.js";
+import { listCustomers, getCustomer, upsertCustomer } from "./memory/customer-store.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -368,6 +369,30 @@ app.post("/api/pipeline/stop", (_req, res) => {
 // ---------------------------------------------------------------------------
 app.get("/api/skills", (_req, res) => {
   res.json(listSkills());
+});
+
+// ---------------------------------------------------------------------------
+// Routes: Customers (memory)
+// ---------------------------------------------------------------------------
+app.get("/api/customers", (_req, res) => {
+  res.json(listCustomers());
+});
+
+app.get("/api/customers/:name", (req, res) => {
+  const customer = getCustomer(decodeURIComponent(req.params.name));
+  if (!customer) return res.status(404).json({ error: "not found" });
+  res.json(customer);
+});
+
+app.post("/api/customers/:name/notes", (req, res) => {
+  const name = decodeURIComponent(req.params.name);
+  const { notes, status, tags } = req.body || {};
+  const updates = {};
+  if (notes !== undefined) updates.notes = notes;
+  if (status !== undefined) updates.status = status;
+  if (tags !== undefined) updates.tags = tags;
+  const customer = upsertCustomer(name, updates);
+  res.json({ ok: true, customer });
 });
 
 // ---------------------------------------------------------------------------

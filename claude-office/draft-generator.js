@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { runClaude, saveResult } from "./claude-runner.js";
+import { getCustomer } from "./memory/customer-store.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,6 +30,26 @@ function sanitizeUserMessage(message) {
  */
 function buildPrompt(parsed) {
   const safeMessage = sanitizeUserMessage(parsed.message);
+  const customer = getCustomer(parsed.lineName);
+
+  // 過去の会話サマリーを構築（最新5件）
+  let historyBlock = "";
+  if (customer && customer.conversations.length > 0) {
+    const recent = customer.conversations.slice(-5);
+    const lines = recent.map(c => {
+      const dir = c.direction === "incoming" ? "顧客" : "返信";
+      const preview = (c.message || "").substring(0, 80);
+      return `[${dir}] ${preview}`;
+    });
+    historyBlock = `\n# この顧客との過去のやりとり（最新${recent.length}件）\n${lines.join("\n")}\n`;
+
+    if (customer.notes) {
+      historyBlock += `\n# 顧客メモ\n${customer.notes}\n`;
+    }
+    if (customer.status && customer.status !== "unknown") {
+      historyBlock += `\n# 顧客ステータス: ${customer.status}\n`;
+    }
+  }
 
   return `あなたは台湾留学エージェント「101センター」のLINEサポート担当です。
 以下のLINEメッセージに対する返信案を作成してください。
@@ -39,7 +60,8 @@ function buildPrompt(parsed) {
 - 専門用語は避け、分かりやすく説明する
 - 相手の質問に直接答える
 - 不明な点は正直に「確認します」と伝える
-
+- 過去のやりとりがある場合、文脈を踏まえて返信する
+${historyBlock}
 # 受信メッセージ情報
 送信者: ${parsed.lineName}
 種類: ${parsed.messageType}

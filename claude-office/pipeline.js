@@ -6,6 +6,7 @@ import config from "./config.js";
 import { pollChatwork, updateMessageStatus } from "./chatwork-poller.js";
 import { notifyNewMessage } from "./notifier.js";
 import { getSkillsByTrigger } from "./skills/registry.js";
+import { addConversation } from "./memory/customer-store.js";
 
 let isProcessing = false;
 let pollTimer = null;
@@ -50,7 +51,15 @@ async function pollCycle() {
         await notifyNewMessage(config.line.channelToken, config.line.userId, msg);
       }
 
-      // 2. トリガー型Skillに処理を委譲
+      // 2. 顧客メモリに受信メッセージを記録
+      addConversation(msg.lineName, {
+        direction: "incoming",
+        messageType: msg.messageType,
+        message: msg.message,
+        utageUrl: msg.utageUrl,
+      });
+
+      // 3. トリガー型Skillに処理を委譲
       const triggerSkills = getSkillsByTrigger("utage-message");
       for (const { name, skill } of triggerSkills) {
         try {
