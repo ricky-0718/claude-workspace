@@ -9,6 +9,8 @@ import { getMessages } from "./chatwork-poller.js";
 import { getDrafts, updateDraftStatus } from "./draft-generator.js";
 import { startPipeline, stopPipeline, getPipelineStats } from "./pipeline.js";
 import { runClaude } from "./claude-runner.js";
+import { loadAllSkills } from "./skills/loader.js";
+import { listSkills } from "./skills/registry.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -362,6 +364,13 @@ app.post("/api/pipeline/stop", (_req, res) => {
 });
 
 // ---------------------------------------------------------------------------
+// Routes: Skills
+// ---------------------------------------------------------------------------
+app.get("/api/skills", (_req, res) => {
+  res.json(listSkills());
+});
+
+// ---------------------------------------------------------------------------
 // Routes: Claude CLI (ad-hoc execution)
 // ---------------------------------------------------------------------------
 app.post("/api/claude/run", async (req, res) => {
@@ -434,9 +443,13 @@ app.post("/api/deploy", (req, res) => {
 // ---------------------------------------------------------------------------
 // Start
 // ---------------------------------------------------------------------------
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Claude Office server running on http://localhost:${PORT}`);
   console.log(`Agents: ${agents.size}, Activity: ${activityLog.length}, Instructions: ${instructions.length}`);
+
+  // Load Skills plugin system
+  await loadAllSkills();
+  console.log(`Skills: ${listSkills().length}`);
 
   // Start the Chatwork polling pipeline
   startPipeline();

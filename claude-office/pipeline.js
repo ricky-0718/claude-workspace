@@ -4,8 +4,8 @@
 // ============================================
 import config from "./config.js";
 import { pollChatwork, updateMessageStatus } from "./chatwork-poller.js";
-import { generateDraft } from "./draft-generator.js";
-import { notifyNewMessage, notifyDraftReady } from "./notifier.js";
+import { notifyNewMessage } from "./notifier.js";
+import { getSkillsByTrigger } from "./skills/registry.js";
 
 let isProcessing = false;
 let pollTimer = null;
@@ -50,31 +50,24 @@ async function pollCycle() {
         await notifyNewMessage(config.line.channelToken, config.line.userId, msg);
       }
 
-      // 2. テキストメッセージの場合のみ返信案を生成
-      if (msg.messageType === "テキスト" && msg.message.trim()) {
+      // 2. トリガー型Skillに処理を委譲
+      const triggerSkills = getSkillsByTrigger("utage-message");
+      for (const { name, skill } of triggerSkills) {
         try {
-          console.log(`[Pipeline] Generating draft for ${msg.lineName}...`);
-          const draft = await generateDraft(msg);
-
-          if (draft.draft) {
+          const result = await skill.handleTrigger("utage-message", { message: msg });
+          if (result && !result.skipped) {
             updateMessageStatus(msg.id, "draft_generated");
             stats.totalDrafts++;
-            console.log(`[Pipeline] Draft generated (${draft.duration}ms)`);
-
-            // 3. 返信案生成完了通知
-            if (config.line.channelToken && config.line.userId) {
-              await notifyDraftReady(config.line.channelToken, config.line.userId, msg, draft.draft);
-            }
-          } else {
-            console.error(`[Pipeline] Draft generation failed: ${draft.error}`);
-            updateMessageStatus(msg.id, "error");
+            console.log(`[Pipeline] Skill "${name}" processed: ${msg.lineName}`);
           }
         } catch (err) {
-          console.error(`[Pipeline] Error generating draft:`, err.message);
+          console.error(`[Pipeline] Skill "${name}" error:`, err.message);
           updateMessageStatus(msg.id, "error");
         }
-      } else {
-        // テキスト以外（画像など）は通知のみ
+      }
+
+      // トリガーSkillが1つもなければ通知のみ
+      if (triggerSkills.length === 0) {
         updateMessageStatus(msg.id, "notified");
       }
     }
