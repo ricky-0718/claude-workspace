@@ -175,7 +175,7 @@ export async function handleWebhookEvents(events) {
       try {
         const { runClaude } = await import("../claude-runner.js");
         const prompt = `${SPECTRE_CHAT_PROMPT}\n\nリッキーさんからのメッセージ:\n${text}\n\n簡潔に回答してください。`;
-        const result = await runClaude(prompt, { maxTurns: 3, timeout: 120000 });
+        const result = await runClaude(prompt, { maxTurns: 1, timeout: 60000, allowedTools: [] });
         let response = result.ok
           ? result.result
           : `申し訳ございません。処理中にエラーが発生いたしました: ${result.error}`;
