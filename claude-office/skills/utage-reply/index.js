@@ -1,13 +1,14 @@
 // skills/utage-reply/index.js
 import { generateDraft } from "../../draft-generator.js";
-import { notifyDraftReady, sendLinePush } from "../../notifier.js";
+import { sendLinePush } from "../../notifier.js";
 import { createApproval } from "../../approval/manager.js";
+import { setActiveDraft } from "../../draft-state.js";
 import config from "../../config.js";
 
 export default {
   name: "utage-reply",
   description: "UTAGE LINE メッセージへの返信案を自動生成",
-  commands: [],  // コマンドではなくトリガーで起動
+  commands: [],
   triggers: ["utage-message"],
 
   async handleTrigger(triggerType, data) {
@@ -21,27 +22,39 @@ export default {
     const draft = await generateDraft(message);
 
     if (draft.draft && config.line.channelToken && config.line.userId) {
-      // LINE に返信案を通知
-      await notifyDraftReady(
+      // スペクターの提案スタイルで返信案を通知
+      const draftPreview = draft.draft.length > 500
+        ? draft.draft.substring(0, 497) + "..."
+        : draft.draft;
+
+      await sendLinePush(
         config.line.channelToken,
         config.line.userId,
-        message,
-        draft.draft
+        `${message.lineName}さんからメッセージがございました。\n「${message.message.substring(0, 60)}」\n\nリッキーさんでしたら、こんな返信はいかがでしょう：\n\n${draftPreview}\n\nUTAGE: ${message.utageUrl}`
       );
 
-      // 承認リクエストを作成
-      createApproval("draft_send", {
+      // 承認リクエスト作成
+      createApproval("draft_confirm", {
         draftId: draft.id,
         lineName: message.lineName,
         draft: draft.draft,
         utageUrl: message.utageUrl,
-      }, `${message.lineName}への返信案を送信`);
+      }, `${message.lineName}への返信案`);
 
-      // 承認待ちメッセージ
+      // アクティブドラフトに設定（フィードバック受付可能にする）
+      setActiveDraft({
+        lineName: message.lineName,
+        originalMessage: message.message,
+        draft: draft.draft,
+        utageUrl: message.utageUrl,
+        messageId: message.id,
+      });
+
+      // 確認メッセージ
       await sendLinePush(
         config.line.channelToken,
         config.line.userId,
-        `この返信案を送りますか？\n「OK」→ 送信  「却下」→ 中止`
+        `「OK」→ 確定  「却下」→ 破棄\nさらに修正があればお申し付けください。`
       );
     }
 

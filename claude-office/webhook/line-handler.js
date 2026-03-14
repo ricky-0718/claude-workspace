@@ -3,16 +3,25 @@ import crypto from "crypto";
 import { findSkillByCommand, listSkills } from "../skills/registry.js";
 import { sendLinePush } from "../notifier.js";
 import { getLatestPending, updateApproval } from "../approval/manager.js";
+import { getActiveDraft, addFeedback, updateDraft, clearActiveDraft } from "../draft-state.js";
+import { refineDraft } from "../draft-generator.js";
 import config from "../config.js";
 
 const APPROVE_KEYWORDS = ["OK", "ok", "承認", "はい", "送信して", "送って"];
 const REJECT_KEYWORDS = ["却下", "やめて", "キャンセル", "いいえ", "ダメ"];
 
+// スペクターの人格（LINE会話用）
+const SPECTRE_CHAT_PROMPT = `あなたは「スペクター」。台湾留学エージェント「101センター」代表リッキーに長年仕える老練な秘書。
+有能で経験豊か、温かみのある老紳士。一人称は「わたくし」。リッキーさんを「リッキーさん」と呼ぶ。
+控えめだが的確な助言をし、時折ユーモアや格言を交える。
+回答は簡潔に。LINEのメッセージなので長文は避ける。
+「ね」を語尾に使わない。`;
+
 /**
  * LINE Webhook署名検証
  */
 export function verifySignature(body, signature, channelSecret) {
-  if (!channelSecret) return true; // Secret未設定時はスキップ（開発用）
+  if (!channelSecret) return true;
   const hash = crypto
     .createHmac("SHA256", channelSecret)
     .update(body)
@@ -49,7 +58,18 @@ function buildHelpMessage() {
     .map(s => `・${s.commands[0]} — ${s.description}`)
     .join("\n");
 
-  return `Spectre コマンド一覧\n─────────────\n${cmdList || "（コマンドなし）"}\n\n「ヘルプ」でこのメッセージを表示`;
+  return `スペクターでございます。\nご用命をお待ちしておりました。\n\n${cmdList || "（コマンドなし）"}\n\nその他のメッセージには会話でお答えいたします。`;
+}
+
+/**
+ * Insight ブロック除去
+ */
+function stripInsight(text) {
+  if (!text) return text;
+  return text
+    .replace(/`★ Insight[^`]*`[\s\S]*?`─+`\n*/g, "")
+    .replace(/^---\n*/gm, "")
+    .trim();
 }
 
 /**
@@ -57,10 +77,8 @@ function buildHelpMessage() {
  */
 export async function handleWebhookEvents(events) {
   for (const event of events) {
-    // テキストメッセージのみ処理
     if (event.type !== "message" || event.message.type !== "text") continue;
 
-    // 自分（オーナー）からのメッセージのみ処理（セキュリティ）
     if (config.line.userId && event.source.userId !== config.line.userId) {
       console.log(`[Webhook] Ignored: unknown user ${event.source.userId}`);
       continue;
@@ -69,9 +87,9 @@ export async function handleWebhookEvents(events) {
     const text = event.message.text.trim();
     const replyToken = event.replyToken;
 
-    console.log(`[Webhook] Command received: "${text}"`);
+    console.log(`[Webhook] Received: "${text}"`);
 
-    // 承認応答チェック（pendingがある場合のみ）
+    // === 1. 承認応答チェック ===
     const pending = getLatestPending();
     if (pending) {
       const isApprove = APPROVE_KEYWORDS.some(k => text === k || text.startsWith(k));
@@ -79,24 +97,61 @@ export async function handleWebhookEvents(events) {
 
       if (isApprove) {
         updateApproval(pending.id, "approved");
-        await replyToLine(replyToken, `承認しました: ${pending.description}`);
+        clearActiveDraft();
+        await replyToLine(replyToken, `了解です（${pending.payload?.lineName || ""}）`);
         continue;
       }
 
       if (isReject) {
         updateApproval(pending.id, "rejected");
-        await replyToLine(replyToken, `却下しました: ${pending.description}`);
+        clearActiveDraft();
+        await replyToLine(replyToken, `破棄しました（${pending.payload?.lineName || ""}）`);
         continue;
       }
     }
 
-    // ヘルプコマンド
+    // === 2. 返信案のフィードバック（反復改善）===
+    const activeDraft = getActiveDraft();
+    if (activeDraft && !text.startsWith("ヘルプ") && !text.startsWith("help")) {
+      // コマンドでもなく、承認/却下でもない → フィードバックとして処理
+      const match = findSkillByCommand(text);
+      if (!match) {
+        await replyToLine(replyToken, "承知いたしました。改善いたします...");
+
+        try {
+          addFeedback(text);
+          const result = await refineDraft(activeDraft, text);
+
+          if (result.ok && result.draft) {
+            updateDraft(result.draft);
+            const msg = `改善いたしました。\n\nリッキーさんでしたら、こちらはいかがでしょう：\n\n${result.draft}\n\n「OK」→ 確定  「却下」→ 破棄\nさらに修正があればお申し付けください。`;
+            await sendLinePush(config.line.channelToken, config.line.userId, msg);
+          } else {
+            await sendLinePush(
+              config.line.channelToken,
+              config.line.userId,
+              `申し訳ございません。改善案の生成に失敗いたしました: ${result.error || "不明なエラー"}`
+            );
+          }
+        } catch (err) {
+          console.error(`[Webhook] Refinement error: ${err.message}`);
+          await sendLinePush(
+            config.line.channelToken,
+            config.line.userId,
+            `改善処理でエラーが発生いたしました: ${err.message}`
+          );
+        }
+        continue;
+      }
+    }
+
+    // === 3. ヘルプコマンド ===
     if (text === "ヘルプ" || text === "help") {
       await replyToLine(replyToken, buildHelpMessage());
       continue;
     }
 
-    // Skillマッチング
+    // === 4. Skillマッチング ===
     const match = findSkillByCommand(text);
     if (match && match.skill.handleCommand) {
       try {
@@ -111,25 +166,33 @@ export async function handleWebhookEvents(events) {
         }
       } catch (err) {
         console.error(`[Webhook] Skill "${match.name}" error:`, err.message);
-        await replyToLine(replyToken, `エラー: ${err.message}`);
+        await replyToLine(replyToken, `エラーが発生いたしました: ${err.message}`);
       }
     } else {
-      // マッチしない場合 → Claude CLI にフォールバック
-      await replyToLine(replyToken, "処理中...");
+      // === 5. スペクターとの自由会話 ===
+      await replyToLine(replyToken, "少々お待ちください...");
 
-      // Push で結果を送信（replyTokenは1回しか使えないため）
       try {
         const { runClaude } = await import("../claude-runner.js");
-        const result = await runClaude(text, { maxTurns: 3, timeout: 120000 });
-        const response = result.ok
+        const prompt = `${SPECTRE_CHAT_PROMPT}\n\nリッキーさんからのメッセージ:\n${text}\n\n簡潔に回答してください。`;
+        const result = await runClaude(prompt, { maxTurns: 3, timeout: 120000 });
+        let response = result.ok
           ? result.result
-          : `エラー: ${result.error}`;
-        await sendLinePush(config.line.channelToken, config.line.userId, response);
+          : `申し訳ございません。処理中にエラーが発生いたしました: ${result.error}`;
+
+        response = stripInsight(response);
+        if (!response) response = "申し訳ございません。応答を生成できませんでした。";
+
+        const pushResult = await sendLinePush(config.line.channelToken, config.line.userId, response);
+        if (!pushResult.ok) {
+          console.error(`[Webhook] Push failed: ${pushResult.error}`);
+        }
       } catch (err) {
+        console.error(`[Webhook] Claude fallback error: ${err.message}`);
         await sendLinePush(
           config.line.channelToken,
           config.line.userId,
-          `Claude実行エラー: ${err.message}`
+          `スペクターでございます。処理中にエラーが発生いたしました: ${err.message}`
         );
       }
     }
