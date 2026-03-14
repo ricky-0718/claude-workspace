@@ -18,8 +18,8 @@ const CONFIG = {
   DRIVE_FOLDER_ID: "1Za5rERtxwU1XD58JTA4-xYsvC0JCFg4_",
   LABEL_NAME: "自動保存済み",
   SENDERS: [
-    { email: "support@cloudsign.jp", prefix: "cloudsign" },
-    { email: "noreply@freee.co.jp", prefix: "freee" },
+    { email: "support@cloudsign.jp", prefix: "cloudsign", type: "attachment" },
+    { email: "noreply@freee.co.jp", prefix: "freee", type: "download_link" },
   ],
   DAYS_TO_SEARCH: 7,
   MAX_MESSAGES: 20,
@@ -59,6 +59,75 @@ function findPdfs(part, results = []) {
   return results;
 }
 
+function extractBody(payload) {
+  if (payload.body && payload.body.data) {
+    const b64 = payload.body.data.replace(/-/g, "+").replace(/_/g, "/");
+    return Buffer.from(b64, "base64").toString("utf-8");
+  }
+  if (payload.parts) {
+    for (const part of payload.parts) {
+      if (part.mimeType === "text/plain" && part.body && part.body.data) {
+        const b64 = part.body.data.replace(/-/g, "+").replace(/_/g, "/");
+        return Buffer.from(b64, "base64").toString("utf-8");
+      }
+    }
+    for (const part of payload.parts) {
+      if (part.mimeType === "text/html" && part.body && part.body.data) {
+        const b64 = part.body.data.replace(/-/g, "+").replace(/_/g, "/");
+        return Buffer.from(b64, "base64").toString("utf-8");
+      }
+    }
+    for (const part of payload.parts) {
+      if (part.parts) {
+        const result = extractBody(part);
+        if (result) return result;
+      }
+    }
+  }
+  return "";
+}
+
+function extractFreeeLinks(body) {
+  const pattern = /https:\/\/[a-zA-Z0-9.-]*freee[a-zA-Z0-9.-]*\.co\.jp\/[^\s"'<>\])]+/g;
+  const matches = body.match(pattern) || [];
+  const cleaned = [...new Set(matches.map((url) => url.replace(/&amp;/g, "&").replace(/[)"'<>\]]+$/, "")))];
+  // freee請求書URLをPDFダウンロードAPI URLに変換
+  // /ivex/dl/{uuid}?... → /api/ivex/dl/{uuid}/0?is_download=1
+  return cleaned.map((url) => {
+    const m = url.match(/^(https:\/\/[^/]+)\/ivex\/dl\/([a-f0-9-]+)/);
+    if (m) return `${m[1]}/api/ivex/dl/${m[2]}/0?is_download=1`;
+    return url;
+  });
+}
+
+async function fetchPdf(url) {
+  try {
+    const res = await fetch(url, {
+      redirect: "follow",
+      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" },
+    });
+    if (!res.ok) {
+      console.log(`[invoice-poller] PDF取得失敗 (HTTP ${res.status}): ${url}`);
+      return null;
+    }
+    const buffer = Buffer.from(await res.arrayBuffer());
+    const contentType = res.headers.get("content-type") || "";
+    if (contentType.includes("application/pdf")) return buffer;
+    if (buffer.length > 4 && buffer[0] === 0x25 && buffer[1] === 0x50 && buffer[2] === 0x44 && buffer[3] === 0x46) {
+      return buffer;
+    }
+    console.log(`[invoice-poller] PDFではないコンテンツ (${contentType}): ${url}`);
+    return null;
+  } catch (e) {
+    console.error(`[invoice-poller] ダウンロード失敗: ${url} - ${e.message}`);
+    return null;
+  }
+}
+
+function sanitizeFileName(name) {
+  return name.replace(/[\/\\:*?"<>|]/g, "_").replace(/\s+/g, "_").replace(/_+/g, "_").replace(/^_|_$/g, "").substring(0, 100);
+}
+
 function loadState() {
   try {
     return JSON.parse(fs.readFileSync(STATE_FILE, "utf-8"));
@@ -90,27 +159,6 @@ export async function processInvoiceEmails() {
   let errors = 0;
 
   try {
-    // Gmail検索: 未処理メール
-    const fromQuery = CONFIG.SENDERS.map((s) => s.email).join(" OR ");
-    const query = `from:(${fromQuery}) has:attachment -label:${CONFIG.LABEL_NAME} newer_than:${CONFIG.DAYS_TO_SEARCH}d`;
-
-    const listRes = await gmail.users.messages.list({
-      userId: "me",
-      q: query,
-      maxResults: CONFIG.MAX_MESSAGES,
-    });
-
-    const messages = listRes.data.messages || [];
-
-    if (messages.length === 0) {
-      console.log("[invoice-poller] 未処理メールなし");
-      state.lastRun = new Date().toISOString();
-      saveState(state);
-      return { saved: 0, errors: 0 };
-    }
-
-    console.log(`[invoice-poller] 未処理メール: ${messages.length}件`);
-
     // ラベルID取得（初回のみ、なければ作成）
     let labelId = null;
     const labelsRes = await gmail.users.labels.list({ userId: "me" });
@@ -126,64 +174,140 @@ export async function processInvoiceEmails() {
       console.log(`[invoice-poller] ラベル作成: ${CONFIG.LABEL_NAME} (${labelId})`);
     }
 
-    for (const msg of messages) {
-      try {
-        // メッセージ詳細取得
-        const fullRes = await gmail.users.messages.get({ userId: "me", id: msg.id, format: "full" });
-        const full = fullRes.data;
-        const dateStr = formatDate(full.internalDate);
-        const fromHeader = full.payload.headers.find((h) => h.name === "From");
-        const from = fromHeader ? fromHeader.value : "";
-        const prefix = getSenderPrefix(from);
+    // === Phase 1: PDF添付メール（CloudSign等） ===
+    const attachmentSenders = CONFIG.SENDERS.filter((s) => s.type === "attachment");
+    if (attachmentSenders.length > 0) {
+      const fromQuery = attachmentSenders.map((s) => s.email).join(" OR ");
+      const query = `from:(${fromQuery}) has:attachment -label:${CONFIG.LABEL_NAME} newer_than:${CONFIG.DAYS_TO_SEARCH}d`;
+      const listRes = await gmail.users.messages.list({ userId: "me", q: query, maxResults: CONFIG.MAX_MESSAGES });
+      const messages = listRes.data.messages || [];
 
-        const pdfs = findPdfs(full.payload);
-        if (pdfs.length === 0) continue;
+      if (messages.length > 0) {
+        console.log(`[invoice-poller] 添付形式: ${messages.length}件`);
+        for (const msg of messages) {
+          try {
+            const fullRes = await gmail.users.messages.get({ userId: "me", id: msg.id, format: "full" });
+            const full = fullRes.data;
+            const dateStr = formatDate(full.internalDate);
+            const fromHeader = full.payload.headers.find((h) => h.name === "From");
+            const from = fromHeader ? fromHeader.value : "";
+            const prefix = getSenderPrefix(from);
 
-        for (const pdf of pdfs) {
-          const newName = `${dateStr}_${prefix}_${pdf.filename}`;
-          console.log(`[invoice-poller] 保存中: ${newName}`);
+            const pdfs = findPdfs(full.payload);
+            if (pdfs.length === 0) continue;
 
-          // 添付ファイル取得
-          const attRes = await gmail.users.messages.attachments.get({
-            userId: "me",
-            messageId: msg.id,
-            id: pdf.attachmentId,
-          });
+            for (const pdf of pdfs) {
+              const newName = `${dateStr}_${prefix}_${pdf.filename}`;
+              console.log(`[invoice-poller] 保存中: ${newName}`);
+              const attRes = await gmail.users.messages.attachments.get({
+                userId: "me", messageId: msg.id, id: pdf.attachmentId,
+              });
+              const base64 = attRes.data.data.replace(/-/g, "+").replace(/_/g, "/");
+              const buffer = Buffer.from(base64, "base64");
+              const { Readable } = await import("stream");
+              const stream = new Readable();
+              stream.push(buffer);
+              stream.push(null);
+              await drive.files.create({
+                requestBody: { name: newName, parents: [CONFIG.DRIVE_FOLDER_ID] },
+                media: { mimeType: "application/pdf", body: stream },
+              });
+              savedCount++;
+            }
 
-          // base64url → Buffer
-          const base64 = attRes.data.data.replace(/-/g, "+").replace(/_/g, "/");
-          const buffer = Buffer.from(base64, "base64");
-
-          // Google Driveにアップロード（ストリームで直接）
-          const { Readable } = await import("stream");
-          const stream = new Readable();
-          stream.push(buffer);
-          stream.push(null);
-
-          await drive.files.create({
-            requestBody: { name: newName, parents: [CONFIG.DRIVE_FOLDER_ID] },
-            media: { mimeType: "application/pdf", body: stream },
-          });
-
-          savedCount++;
+            await gmail.users.messages.modify({
+              userId: "me", id: msg.id,
+              requestBody: { addLabelIds: [labelId] },
+            });
+            state.processedIds.push(msg.id);
+            if (state.processedIds.length > 100) {
+              state.processedIds = state.processedIds.slice(-100);
+            }
+          } catch (e) {
+            console.error(`[invoice-poller] エラー (${msg.id}): ${e.message?.slice(0, 200)}`);
+            errors++;
+          }
         }
-
-        // ラベル付与
-        await gmail.users.messages.modify({
-          userId: "me",
-          id: msg.id,
-          requestBody: { addLabelIds: [labelId] },
-        });
-
-        // 処理済み記録
-        state.processedIds.push(msg.id);
-        if (state.processedIds.length > 100) {
-          state.processedIds = state.processedIds.slice(-100);
-        }
-      } catch (e) {
-        console.error(`[invoice-poller] エラー (${msg.id}): ${e.message?.slice(0, 200)}`);
-        errors++;
       }
+    }
+
+    // === Phase 2: ダウンロードリンク形式メール（freee等） ===
+    const linkSenders = CONFIG.SENDERS.filter((s) => s.type === "download_link");
+    if (linkSenders.length > 0) {
+      const linkFromQuery = linkSenders.map((s) => s.email).join(" OR ");
+      const linkQuery = `from:(${linkFromQuery}) -label:${CONFIG.LABEL_NAME} newer_than:${CONFIG.DAYS_TO_SEARCH}d`;
+      const linkListRes = await gmail.users.messages.list({ userId: "me", q: linkQuery, maxResults: CONFIG.MAX_MESSAGES });
+      const linkMessages = linkListRes.data.messages || [];
+
+      if (linkMessages.length > 0) {
+        console.log(`[invoice-poller] リンク形式: ${linkMessages.length}件`);
+        for (const msg of linkMessages) {
+          try {
+            const fullRes = await gmail.users.messages.get({ userId: "me", id: msg.id, format: "full" });
+            const full = fullRes.data;
+            const dateStr = formatDate(full.internalDate);
+            const fromHeader = full.payload.headers.find((h) => h.name === "From");
+            const from = fromHeader ? fromHeader.value : "";
+            const prefix = getSenderPrefix(from);
+
+            const body = extractBody(full.payload);
+            const links = extractFreeeLinks(body);
+
+            if (links.length === 0) {
+              // リンクなし → ラベルだけ付けて再処理防止
+              await gmail.users.messages.modify({
+                userId: "me", id: msg.id,
+                requestBody: { addLabelIds: [labelId] },
+              });
+              continue;
+            }
+
+            const subjectHeader = full.payload.headers.find((h) => h.name === "Subject");
+            const subject = subjectHeader ? subjectHeader.value : "請求書";
+            const safeName = sanitizeFileName(subject);
+
+            let linkSavedCount = 0;
+            for (let i = 0; i < links.length; i++) {
+              const pdfBuffer = await fetchPdf(links[i]);
+              if (!pdfBuffer) continue;
+
+              const suffix = links.length > 1 ? `_${i + 1}` : "";
+              const newName = `${dateStr}_${prefix}_${safeName}${suffix}.pdf`;
+              console.log(`[invoice-poller] リンクから保存: ${newName}`);
+
+              const { Readable } = await import("stream");
+              const stream = new Readable();
+              stream.push(pdfBuffer);
+              stream.push(null);
+              await drive.files.create({
+                requestBody: { name: newName, parents: [CONFIG.DRIVE_FOLDER_ID] },
+                media: { mimeType: "application/pdf", body: stream },
+              });
+              savedCount++;
+              linkSavedCount++;
+            }
+
+            // PDFを1件以上保存できた場合のみラベル付与
+            if (linkSavedCount > 0) {
+              await gmail.users.messages.modify({
+                userId: "me", id: msg.id,
+                requestBody: { addLabelIds: [labelId] },
+              });
+            }
+            state.processedIds.push(msg.id);
+            if (state.processedIds.length > 100) {
+              state.processedIds = state.processedIds.slice(-100);
+            }
+          } catch (e) {
+            console.error(`[invoice-poller] リンク処理エラー (${msg.id}): ${e.message?.slice(0, 200)}`);
+            errors++;
+          }
+        }
+      }
+    }
+
+    if (savedCount === 0 && errors === 0) {
+      console.log("[invoice-poller] 未処理メールなし");
     }
 
     state.lastRun = new Date().toISOString();

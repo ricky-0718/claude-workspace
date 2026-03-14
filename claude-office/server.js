@@ -14,6 +14,7 @@ import { listSkills } from "./skills/registry.js";
 import { listCustomers, getCustomer, upsertCustomer } from "./memory/customer-store.js";
 import { verifySignature, handleWebhookEvents } from "./webhook/line-handler.js";
 import { listApprovals, getLatestPending } from "./approval/manager.js";
+import { startInvoicePoller } from "./invoice-poller.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -515,4 +516,7 @@ app.listen(PORT, async () => {
 
   // Start the Chatwork polling pipeline
   startPipeline();
+
+  // Start invoice auto-save (every 2 hours)
+  startInvoicePoller(2 * 60 * 60 * 1000);
 });
