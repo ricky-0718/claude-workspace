@@ -170,12 +170,21 @@ export async function handleWebhookEvents(events) {
       }
     } else {
       // === 5. スペクターとの自由会話 ===
-      await replyToLine(replyToken, "少々お待ちください...");
+      // まずPushが動作するか確認（診断用）
+      const pushTest = await sendLinePush(
+        config.line.channelToken,
+        config.line.userId,
+        `スペクターでございます。「${text}」とのご用命、承りました。ただいま考え中でございます...`
+      );
+      console.log(`[Webhook] Push test: ${JSON.stringify(pushTest)}`);
 
       try {
         const { runClaude } = await import("../claude-runner.js");
         const prompt = `${SPECTRE_CHAT_PROMPT}\n\nリッキーさんからのメッセージ:\n${text}\n\n簡潔に回答してください。`;
+        console.log(`[Webhook] Starting Claude CLI (maxTurns=1, timeout=60s, allowedTools=[])`);
         const result = await runClaude(prompt, { maxTurns: 1, timeout: 60000, allowedTools: [] });
+        console.log(`[Webhook] Claude CLI result: ok=${result.ok}, duration=${result.duration}ms, error=${result.error || 'none'}`);
+
         let response = result.ok
           ? result.result
           : `申し訳ございません。処理中にエラーが発生いたしました: ${result.error}`;
