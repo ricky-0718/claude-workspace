@@ -170,39 +170,30 @@ export async function handleWebhookEvents(events) {
       }
     } else {
       // === 5. スペクターとの自由会話 ===
-      // まずPushが動作するか確認（診断用）
-      const pushTest = await sendLinePush(
-        config.line.channelToken,
-        config.line.userId,
-        `スペクターでございます。「${text}」とのご用命、承りました。ただいま考え中でございます...`
-      );
-      console.log(`[Webhook] Push test: ${JSON.stringify(pushTest)}`);
-
+      // Reply APIのみ使用（Push APIは月間通数制限があるため温存）
+      // Reply tokenは約1分有効 → Claude CLI完了後にReplyを試みる
       try {
         const { runClaude } = await import("../claude-runner.js");
         const prompt = `${SPECTRE_CHAT_PROMPT}\n\nリッキーさんからのメッセージ:\n${text}\n\n簡潔に回答してください。`;
-        console.log(`[Webhook] Starting Claude CLI (maxTurns=1, timeout=60s, allowedTools=[])`);
-        const result = await runClaude(prompt, { maxTurns: 1, timeout: 60000, allowedTools: [] });
-        console.log(`[Webhook] Claude CLI result: ok=${result.ok}, duration=${result.duration}ms, error=${result.error || 'none'}`);
+        const result = await runClaude(prompt, { maxTurns: 1, timeout: 50000, allowedTools: [] });
 
         let response = result.ok
           ? result.result
-          : `申し訳ございません。処理中にエラーが発生いたしました: ${result.error}`;
+          : `申し訳ございません。エラーが発生いたしました: ${result.error}`;
 
         response = stripInsight(response);
         if (!response) response = "申し訳ございません。応答を生成できませんでした。";
 
-        const pushResult = await sendLinePush(config.line.channelToken, config.line.userId, response);
-        if (!pushResult.ok) {
-          console.error(`[Webhook] Push failed: ${pushResult.error}`);
+        // まずReply APIで返信（トークンが有効なうちに）
+        const replied = await replyToLine(replyToken, response);
+        if (!replied) {
+          // Reply tokenが期限切れの場合、Pushにフォールバック
+          console.log(`[Webhook] Reply token expired, falling back to Push`);
+          await sendLinePush(config.line.channelToken, config.line.userId, response);
         }
       } catch (err) {
         console.error(`[Webhook] Claude fallback error: ${err.message}`);
-        await sendLinePush(
-          config.line.channelToken,
-          config.line.userId,
-          `スペクターでございます。処理中にエラーが発生いたしました: ${err.message}`
-        );
+        await replyToLine(replyToken, `スペクターでございます。エラーが発生いたしました: ${err.message}`);
       }
     }
   }
