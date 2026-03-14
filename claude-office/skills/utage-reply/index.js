@@ -1,6 +1,6 @@
 // skills/utage-reply/index.js
 import { generateDraft } from "../../draft-generator.js";
-import { sendLinePush } from "../../notifier.js";
+import { notifyDraftReady, notify } from "../../notifier.js";
 import { createApproval } from "../../approval/manager.js";
 import { setActiveDraft } from "../../draft-state.js";
 import config from "../../config.js";
@@ -21,16 +21,13 @@ export default {
 
     const draft = await generateDraft(message);
 
-    if (draft.draft && config.line.channelToken && config.line.userId) {
-      // スペクターの提案スタイルで返信案を通知
-      const draftPreview = draft.draft.length > 500
-        ? draft.draft.substring(0, 497) + "..."
-        : draft.draft;
-
-      await sendLinePush(
+    if (draft.draft) {
+      // Chatwork に返信案を通知（通数無制限）
+      await notifyDraftReady(
         config.line.channelToken,
         config.line.userId,
-        `${message.lineName}さんからメッセージがございました。\n「${message.message.substring(0, 60)}」\n\nリッキーさんでしたら、こんな返信はいかがでしょう：\n\n${draftPreview}\n\nUTAGE: ${message.utageUrl}`
+        message,
+        draft.draft
       );
 
       // 承認リクエスト作成
@@ -49,13 +46,6 @@ export default {
         utageUrl: message.utageUrl,
         messageId: message.id,
       });
-
-      // 確認メッセージ
-      await sendLinePush(
-        config.line.channelToken,
-        config.line.userId,
-        `「OK」→ 確定  「却下」→ 破棄\nさらに修正があればお申し付けください。`
-      );
     }
 
     return draft;

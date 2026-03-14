@@ -1,7 +1,7 @@
 // webhook/line-handler.js
 import crypto from "crypto";
 import { findSkillByCommand, listSkills } from "../skills/registry.js";
-import { sendLinePush } from "../notifier.js";
+import { sendLinePush, notify } from "../notifier.js";
 import { getLatestPending, updateApproval } from "../approval/manager.js";
 import { getActiveDraft, addFeedback, updateDraft, clearActiveDraft } from "../draft-state.js";
 import { refineDraft } from "../draft-generator.js";
@@ -125,21 +125,13 @@ export async function handleWebhookEvents(events) {
           if (result.ok && result.draft) {
             updateDraft(result.draft);
             const msg = `改善いたしました。\n\nリッキーさんでしたら、こちらはいかがでしょう：\n\n${result.draft}\n\n「OK」→ 確定  「却下」→ 破棄\nさらに修正があればお申し付けください。`;
-            await sendLinePush(config.line.channelToken, config.line.userId, msg);
+            await notify(msg);
           } else {
-            await sendLinePush(
-              config.line.channelToken,
-              config.line.userId,
-              `申し訳ございません。改善案の生成に失敗いたしました: ${result.error || "不明なエラー"}`
-            );
+            await notify(`申し訳ございません。改善案の生成に失敗いたしました: ${result.error || "不明なエラー"}`);
           }
         } catch (err) {
           console.error(`[Webhook] Refinement error: ${err.message}`);
-          await sendLinePush(
-            config.line.channelToken,
-            config.line.userId,
-            `改善処理でエラーが発生いたしました: ${err.message}`
-          );
+          await notify(`改善処理でエラーが発生いたしました: ${err.message}`);
         }
         continue;
       }

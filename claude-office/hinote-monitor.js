@@ -5,7 +5,7 @@
 // ============================================
 import { chromium } from 'playwright-core';
 import { runClaude } from './claude-runner.js';
-import { sendLinePush } from './notifier.js';
+import { notify } from './notifier.js';
 import config from './config.js';
 import fs from 'fs';
 import path from 'path';
@@ -379,7 +379,7 @@ async function runMendan(name, date, transcription, participant) {
 // ============================================
 async function notify(message) {
   try {
-    await sendLinePush(config.line.channelToken, config.line.userId, message);
+    await notify(message);
   } catch (err) {
     console.error('[HiNote] LINE通知失敗:', err.message);
   }

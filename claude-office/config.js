@@ -45,6 +45,9 @@ export default {
     channelSecret: env.LINE_CHANNEL_SECRET || "",
     userId: env.LINE_USER_ID || "",
   },
+  spectre: {
+    chatworkRoomId: env.SPECTRE_CHATWORK_ROOM_ID || "425916129",
+  },
   deploy: {
     secret: env.DEPLOY_SECRET || "",
   },

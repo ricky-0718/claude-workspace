@@ -1,22 +1,52 @@
 // ============================================
-// LINE Messaging API 通知モジュール
-// 公式アカウントからPush Messageでスマホに通知を送る
-// （LINE Notifyは2025/3/31終了のためMessaging APIに移行）
+// 通知モジュール（Chatwork + LINE Push）
+// メイン通知先: Chatwork（無制限）
+// LINE Push: フォールバック用（月200通制限あり）
 // ============================================
+import config from "./config.js";
 
 /**
- * LINE Messaging API で Push Message を送信
- * @param {string} channelToken - Channel Access Token
- * @param {string} userId - 送信先ユーザーID
- * @param {string} message - 通知メッセージ（最大5000文字）
- * @returns {Promise<{ok: boolean, error?: string}>}
+ * Chatwork にメッセージを送信（メイン通知手段）
+ */
+export async function sendChatwork(message) {
+  const roomId = config.spectre?.chatworkRoomId;
+  const token = config.chatwork?.apiToken;
+
+  if (!roomId || !token) {
+    console.error("[Notifier] Chatwork room or token not configured");
+    return { ok: false, error: "SPECTRE_CHATWORK_ROOM_ID or CHATWORK_API_TOKEN not set" };
+  }
+
+  try {
+    const res = await fetch(`https://api.chatwork.com/v2/rooms/${roomId}/messages`, {
+      method: "POST",
+      headers: {
+        "X-ChatWorkToken": token,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({ body: message, self_unread: "1" }).toString(),
+    });
+
+    if (!res.ok) {
+      const body = await res.text();
+      return { ok: false, error: `HTTP ${res.status}: ${body}` };
+    }
+
+    const data = await res.json();
+    return { ok: true, messageId: data.message_id };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * LINE Messaging API で Push Message を送信（フォールバック用）
  */
 export async function sendLinePush(channelToken, userId, message) {
   if (!channelToken || !userId) {
     return { ok: false, error: "LINE_CHANNEL_TOKEN or LINE_USER_ID not set" };
   }
 
-  // Messaging APIの制限: テキストメッセージ最大5000文字
   const trimmed = message.length > 5000
     ? message.substring(0, 4997) + "..."
     : message;
@@ -46,18 +76,26 @@ export async function sendLinePush(channelToken, userId, message) {
 }
 
 /**
- * 新着メッセージの通知を送る
+ * スペクターから通知を送る（Chatwork優先）
  */
-export async function notifyNewMessage(channelToken, userId, parsed) {
-  const msg = `[LINE受信] ${parsed.lineName}\n${parsed.message}\n\nUTAGE: ${parsed.utageUrl}`;
-  return sendLinePush(channelToken, userId, msg);
+export async function notify(message) {
+  const result = await sendChatwork(message);
+  if (!result.ok) {
+    console.error(`[Notifier] Chatwork failed: ${result.error}, trying LINE Push`);
+    return sendLinePush(config.line.channelToken, config.line.userId, message);
+  }
+  return result;
 }
 
 /**
  * 返信案生成完了の通知を送る
  */
 export async function notifyDraftReady(channelToken, userId, parsed, draft) {
-  const preview = draft.length > 200 ? draft.substring(0, 197) + "..." : draft;
-  const msg = `[返信案] ${parsed.lineName}\n---\n${preview}\n\nUTAGE: ${parsed.utageUrl}`;
-  return sendLinePush(channelToken, userId, msg);
+  const draftPreview = draft.length > 500
+    ? draft.substring(0, 497) + "..."
+    : draft;
+
+  const msg = `${parsed.lineName}さんからメッセージがございました。\n「${parsed.message.substring(0, 60)}」\n\nリッキーさんでしたら、こんな返信はいかがでしょう：\n\n${draftPreview}\n\nUTAGE: ${parsed.utageUrl}\n\n「OK」→ 確定  「却下」→ 破棄\nさらに修正があればお申し付けください。`;
+
+  return notify(msg);
 }
