@@ -284,11 +284,8 @@ async function lookupParticipant(name) {
       spreadsheetId: UTAGE_SPREADSHEET_ID,
       range: 'A:G',
     });
-    const gwsPath = process.platform === 'win32'
-      ? 'C:/Users/newgo/AppData/Roaming/npm/gws.cmd'
-      : 'gws';
-    const raw = execFileSync(gwsPath, [
-      'sheets', 'spreadsheets', 'values', 'get', '--params', params,
+    const raw = execFileSync(process.env.ComSpec, [
+      '/c', 'gws', 'sheets', 'spreadsheets', 'values', 'get', '--params', params,
     ], { encoding: 'utf-8', timeout: 15000 });
 
     const data = JSON.parse(raw);
