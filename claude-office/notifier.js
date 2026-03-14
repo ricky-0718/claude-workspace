@@ -5,7 +5,8 @@
 // ============================================
 import config from "./config.js";
 
-const SPECTRE_ICON = ":tophat:";
+// App自体にカスタムアイコン設定済みのため、icon指定は不要
+// Webhook送信時はApp設定のアイコンが自動使用される
 const SPECTRE_NAME = "スペクター";
 
 /**
@@ -26,7 +27,6 @@ export async function sendSlack(message) {
       body: JSON.stringify({
         text: message,
         username: SPECTRE_NAME,
-        icon_emoji: SPECTRE_ICON,
       }),
     });
 
