@@ -18,13 +18,14 @@ export async function sendChatwork(message) {
   }
 
   try {
+    const prefixed = `[スペクター]\n${message}`;
     const res = await fetch(`https://api.chatwork.com/v2/rooms/${roomId}/messages`, {
       method: "POST",
       headers: {
         "X-ChatWorkToken": token,
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: new URLSearchParams({ body: message, self_unread: "1" }).toString(),
+      body: new URLSearchParams({ body: prefixed, self_unread: "1" }).toString(),
     });
 
     if (!res.ok) {

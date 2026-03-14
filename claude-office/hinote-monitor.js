@@ -36,7 +36,7 @@ function loadState() {
   try {
     return JSON.parse(fs.readFileSync(STATE_FILE, 'utf-8'));
   } catch {
-    return { processedNoteIds: [], lastRun: null, totalProcessed: 0 };
+    return { processedNoteIds: [], lastRun: null, totalProcessed: 0, failCounts: {} };
   }
 }
 
@@ -75,13 +75,38 @@ async function ensureEdgeCDP() {
 // ============================================
 // HiNote ノートリスト解析
 // ============================================
-// 面談ノートのタイトルパターン（「個別相談」タブが不完全なためタイトルでフィルタ）
-const CONSULTATION_PATTERNS = [
+// 面談判定: タイトル（手動/Google Calendar同期）+ 要約テキスト（AI自動生成タイトル対策）
+const TITLE_PATTERNS = [
   /面談/, /相談/, /ウェビナー後/,
 ];
 
-function isConsultationNote(title) {
-  return CONSULTATION_PATTERNS.some(p => p.test(title));
+// 要約テキストに含まれていれば面談と判定するパターン
+const SUMMARY_PATTERNS = [
+  /高校\d*年生.*(留学|台湾|相談)/,
+  /101センター.*(?:リッキー|リキー|代表)/,
+  /(?:リッキー|リキー).*101センター/,
+  /個別.*相談/,
+  /オールインワンプラン/,
+  /台湾留学.*(?:相談|面談|検討|希望)/,
+];
+
+// タイトルにこれが含まれていたら面談ではない（社内会議等）
+const EXCLUDE_PATTERNS = [
+  /定例/, /営業MTG/, /スタッフ/, /社内/,
+  /動画文字起こし/, /歓迎会/,
+];
+
+function isConsultationNote(title, summary = '') {
+  // 除外パターンに該当 → 面談ではない
+  if (EXCLUDE_PATTERNS.some(p => p.test(title))) return false;
+
+  // タイトルが手動パターンにマッチ → 面談
+  if (TITLE_PATTERNS.some(p => p.test(title))) return true;
+
+  // タイトルにマッチしない場合、要約テキストで判定（AI自動生成タイトル対策）
+  if (summary && SUMMARY_PATTERNS.some(p => p.test(summary))) return true;
+
+  return false;
 }
 
 async function getNotesFromPage(page) {
@@ -108,6 +133,11 @@ async function getNotesFromPage(page) {
       const row = card.parentElement;
       if (!row) continue;
 
+      // h2の兄弟要素のpタグから要約テキストを取得
+      const contentWrapper = h2.parentElement;
+      const summaryEl = contentWrapper?.querySelector('p');
+      const summary = summaryEl?.textContent?.trim() || '';
+
       // 行wrapper内の最後の子要素がタイムスタンプ
       let timestamp = '';
       for (const child of row.children) {
@@ -118,7 +148,7 @@ async function getNotesFromPage(page) {
       }
 
       if (timestamp) {
-        results.push({ title, timestamp });
+        results.push({ title, summary, timestamp });
       }
     }
 
@@ -131,9 +161,9 @@ async function getNotesFromPage(page) {
 async function getNewNotes(page, state) {
   const allNotes = await getNotesFromPage(page);
 
-  // タイトルで面談ノートをフィルタ + 未処理のみ
+  // タイトル+要約で面談ノートをフィルタ + 未処理のみ
   return allNotes.filter(n =>
-    isConsultationNote(n.title) &&
+    isConsultationNote(n.title, n.summary) &&
     !state.processedNoteIds.includes(n.timestamp)
   );
 }
@@ -377,7 +407,7 @@ async function runMendan(name, date, transcription, participant) {
 // ============================================
 // LINE通知
 // ============================================
-async function notify(message) {
+async function safeNotify(message) {
   try {
     await notify(message);
   } catch (err) {
@@ -428,7 +458,7 @@ async function main() {
     });
     if (!isLoggedIn) {
       console.error('[HiNote] ログインセッション切れ');
-      await notify('[HiNote] ログインセッション切れ。Edgeで https://hinotes.hidock.com にログインしてください');
+      await safeNotify('[HiNote] ログインセッション切れ。Edgeで https://hinotes.hidock.com にログインしてください');
       return;
     }
 
@@ -480,10 +510,28 @@ async function main() {
       return;
     }
 
-    console.log(`[HiNote] ${newNotes.length}件の新規ノートを検出`);
+    // 失敗回数が多いノートを除外（3回失敗でスキップ）
+    const MAX_RETRIES = 3;
+    if (!state.failCounts) state.failCounts = {};
+    const retryableNotes = newNotes.filter(n => {
+      const fails = state.failCounts[n.timestamp] || 0;
+      if (fails >= MAX_RETRIES) {
+        console.log(`[HiNote] スキップ（${fails}回失敗）: ${n.title}`);
+        return false;
+      }
+      return true;
+    });
+
+    if (retryableNotes.length === 0) {
+      console.log(`[HiNote] 処理対象なし（${newNotes.length}件は全てスキップ済み）`);
+      saveState(state);
+      return;
+    }
+
+    console.log(`[HiNote] ${retryableNotes.length}件の新規ノートを処理`);
 
     // 5. 各ノートを処理
-    for (const note of newNotes) {
+    for (const note of retryableNotes) {
       console.log(`[HiNote] 処理中: ${note.title}`);
 
       try {
@@ -491,6 +539,8 @@ async function main() {
         const data = await extractTranscription(page, note.title);
         if (!data || !data.transcription) {
           console.error(`[HiNote] 文字起こし抽出失敗: ${note.title}`);
+          state.failCounts[note.timestamp] = (state.failCounts[note.timestamp] || 0) + 1;
+          saveState(state);
           await closeDialog(page);
           continue;
         }
@@ -515,7 +565,7 @@ async function main() {
           state.totalProcessed++;
           saveState(state);
 
-          await notify(
+          await safeNotify(
             `[面談分析完了] ${name || note.title}\n\n` +
             `📊 分析レポート: 面談分析まとめ.md に追記\n` +
             `📱 LINE下書き4通: LINE下書きまとめ.md に追記\n` +
@@ -524,16 +574,20 @@ async function main() {
           const sec = result.duration ? `${Math.round(result.duration / 1000)}秒` : 'dry-run';
           console.log(`[HiNote] 完了: ${note.title} (${sec})`);
         } else {
-          // 5f. 失敗（stateは更新しない → 次回リトライ）
-          console.error(`[HiNote] mendan実行失敗: ${result.error}`);
-          await notify(
+          // 5f. 失敗 → failCountsをインクリメント（MAX_RETRIES回で諦める）
+          state.failCounts[note.timestamp] = (state.failCounts[note.timestamp] || 0) + 1;
+          saveState(state);
+          console.error(`[HiNote] mendan実行失敗 (${state.failCounts[note.timestamp]}/${MAX_RETRIES}): ${result.error}`);
+          await safeNotify(
             `[面談分析エラー] ${name || note.title}\n` +
             `エラー: ${(result.error || '').substring(0, 200)}`
           );
         }
       } catch (err) {
-        console.error(`[HiNote] ノート処理エラー: ${note.title}`, err.message);
-        await notify(`[面談分析エラー] ${note.title}: ${err.message}`);
+        state.failCounts[note.timestamp] = (state.failCounts[note.timestamp] || 0) + 1;
+        saveState(state);
+        console.error(`[HiNote] ノート処理エラー (${state.failCounts[note.timestamp]}/${MAX_RETRIES}): ${note.title}`, err.message);
+        await safeNotify(`[面談分析エラー] ${note.title}: ${err.message}`);
         await closeDialog(page);
       }
     }

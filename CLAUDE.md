@@ -83,13 +83,19 @@
 - Gmail search: always include `newer_than:7d` to prevent reprocessing old emails
 - Local copies: `C:\Users\newgo\Claude用\gas-scripts\`
 
-## Asana 日報 自動記入
+## Asana ルール
+
+### assignee・due_on の設定基準
+- **日報プロジェクト（ID: `1209935959800165`）のみ**: assignee・due_on を**絶対に設定しない**
+- **他の全プロジェクト（オールインワンプラン契約書・マイタスク等）**: assignee・due_on を**必ず設定する**
+
+### 日報 自動記入
 - **タスク完了時**: 重要なタスクを完了したら、必ずAsana日報プロジェクトに記入する
 - **プロジェクトID**: `1209935959800165`（日報・週報）
 - **セクション**: 「新良理輝」セクション
 - **記入方法**: Asana MCPプラグイン（`asana_create_task`）で直接作成
   - 設定する項目: `name`（タスク名）、`project_id`、`section_id`（新良理輝）、`notes`（説明）
-  - **担当者（assignee）と期日（due_on）は絶対に設定しない**
+  - assignee・due_on は設定しない（上記ルール参照）
 - **タスク説明のフォーマット**:
   ```
   ■ やったこと
