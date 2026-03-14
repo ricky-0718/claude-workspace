@@ -1,31 +1,33 @@
 // ============================================
-// 通知モジュール（Chatwork + LINE Push）
-// メイン通知先: Chatwork（無制限）
+// 通知モジュール（Slack Webhook + LINE Push フォールバック）
+// メイン通知先: Slack（無制限、カスタム名・アイコン対応）
 // LINE Push: フォールバック用（月200通制限あり）
 // ============================================
 import config from "./config.js";
 
-/**
- * Chatwork にメッセージを送信（メイン通知手段）
- */
-export async function sendChatwork(message) {
-  const roomId = config.spectre?.chatworkRoomId;
-  const token = config.chatwork?.apiToken;
+const SPECTRE_ICON = ":tophat:";
+const SPECTRE_NAME = "スペクター";
 
-  if (!roomId || !token) {
-    console.error("[Notifier] Chatwork room or token not configured");
-    return { ok: false, error: "SPECTRE_CHATWORK_ROOM_ID or CHATWORK_API_TOKEN not set" };
+/**
+ * Slack Webhook でメッセージを送信（メイン通知手段）
+ */
+export async function sendSlack(message) {
+  const webhookUrl = config.spectre?.slackWebhookUrl;
+
+  if (!webhookUrl) {
+    console.error("[Notifier] Slack Webhook URL not configured");
+    return { ok: false, error: "SPECTRE_SLACK_WEBHOOK_URL not set" };
   }
 
   try {
-    const prefixed = `[スペクター]\n${message}`;
-    const res = await fetch(`https://api.chatwork.com/v2/rooms/${roomId}/messages`, {
+    const res = await fetch(webhookUrl, {
       method: "POST",
-      headers: {
-        "X-ChatWorkToken": token,
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({ body: prefixed, self_unread: "1" }).toString(),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        text: message,
+        username: SPECTRE_NAME,
+        icon_emoji: SPECTRE_ICON,
+      }),
     });
 
     if (!res.ok) {
@@ -33,8 +35,7 @@ export async function sendChatwork(message) {
       return { ok: false, error: `HTTP ${res.status}: ${body}` };
     }
 
-    const data = await res.json();
-    return { ok: true, messageId: data.message_id };
+    return { ok: true };
   } catch (err) {
     return { ok: false, error: err.message };
   }
@@ -77,12 +78,12 @@ export async function sendLinePush(channelToken, userId, message) {
 }
 
 /**
- * スペクターから通知を送る（Chatwork優先）
+ * スペクターから通知を送る（Slack優先）
  */
 export async function notify(message) {
-  const result = await sendChatwork(message);
+  const result = await sendSlack(message);
   if (!result.ok) {
-    console.error(`[Notifier] Chatwork failed: ${result.error}, trying LINE Push`);
+    console.error(`[Notifier] Slack failed: ${result.error}, trying LINE Push`);
     return sendLinePush(config.line.channelToken, config.line.userId, message);
   }
   return result;
