@@ -15,6 +15,7 @@ import { listCustomers, getCustomer, upsertCustomer } from "./memory/customer-st
 import { verifySignature, handleWebhookEvents } from "./webhook/line-handler.js";
 import { listApprovals, getLatestPending } from "./approval/manager.js";
 import { startInvoicePoller } from "./invoice-poller.js";
+import { startSlackListener } from "./slack-listener.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -519,4 +520,7 @@ app.listen(PORT, async () => {
 
   // Start invoice auto-save (every 2 hours)
   startInvoicePoller(2 * 60 * 60 * 1000);
+
+  // Start Slack bidirectional listener
+  startSlackListener();
 });

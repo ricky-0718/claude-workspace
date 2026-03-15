@@ -48,6 +48,8 @@ export default {
   spectre: {
     chatworkRoomId: env.SPECTRE_CHATWORK_ROOM_ID || "425916129",
     slackWebhookUrl: env.SPECTRE_SLACK_WEBHOOK_URL || "",
+    slackBotToken: env.SPECTRE_SLACK_BOT_TOKEN || "",
+    slackChannelId: env.SPECTRE_SLACK_CHANNEL_ID || "C0ALF4DAMH9",
   },
   deploy: {
     secret: env.DEPLOY_SECRET || "",
