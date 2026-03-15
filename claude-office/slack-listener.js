@@ -8,6 +8,7 @@ import { getLatestPending, updateApproval } from "./approval/manager.js";
 import { getActiveDraft, addFeedback, updateDraft, clearActiveDraft } from "./draft-state.js";
 import { refineDraft } from "./draft-generator.js";
 import { sendSlack } from "./notifier.js";
+import { findSkillByCommand, listSkills } from "./skills/registry.js";
 
 const POLL_INTERVAL = 5000; // 5秒ごと
 const APPROVE_KEYWORDS = ["OK", "ok", "承認", "はい", "送信して", "送って"];
@@ -92,7 +93,33 @@ async function processMessage(text, ts) {
     }
   }
 
-  // === 2. 返信案のフィードバック ===
+  // === 2. ヘルプコマンド ===
+  if (text === "ヘルプ" || text === "help") {
+    const skills = listSkills();
+    const cmdList = skills
+      .filter(s => s.commands.length > 0)
+      .map(s => `・${s.commands[0]} — ${s.description}`)
+      .join("\n");
+    await reply(`スペクターでございます。\nご用命をお待ちしておりました。\n\n${cmdList || "（コマンドなし）"}\n\nその他のメッセージには会話でお答えいたします。`, ts);
+    return;
+  }
+
+  // === 3. スキルコマンド ===
+  const skillMatch = findSkillByCommand(text);
+  if (skillMatch && skillMatch.skill.handleCommand) {
+    try {
+      const result = await skillMatch.skill.handleCommand(text, { source: "slack" });
+      if (result) {
+        await reply(result, ts);
+      }
+    } catch (err) {
+      console.error(`[Slack] Skill "${skillMatch.name}" error:`, err.message);
+      await reply(`エラーが発生いたしました: ${err.message}`, ts);
+    }
+    return;
+  }
+
+  // === 4. 返信案のフィードバック ===
   const activeDraft = getActiveDraft();
   if (activeDraft) {
     await reply("承知いたしました。改善いたします...", ts);
@@ -117,7 +144,7 @@ async function processMessage(text, ts) {
     return;
   }
 
-  // === 3. スペクターとの自由会話 ===
+  // === 5. スペクターとの自由会話 ===
   try {
     const { runClaude } = await import("./claude-runner.js");
     const prompt = `${SPECTRE_CHAT_PROMPT}\n\nリッキーさんからのメッセージ:\n${text}\n\n簡潔に回答してください。`;
