@@ -20,8 +20,10 @@ const SPECTRE_CHAT_PROMPT = `あなたは「スペクター」。台湾留学エ
 回答は簡潔に。「ね」を語尾に使わない。`;
 
 let pollTimer = null;
-let lastTs = null; // 最後に処理したメッセージのタイムスタンプ
-let botUserId = null; // ボット自身のユーザーID（自分のメッセージをスキップ用）
+let lastTs = null;
+let botUserId = null;
+let isProcessing = false;
+const processedMessages = new Set(); // 処理済みメッセージtsを記録（重複防止）
 
 /**
  * Slack API 呼び出し
@@ -30,8 +32,7 @@ async function slackApi(method, params = {}) {
   const token = config.spectre?.slackBotToken;
   if (!token) return { ok: false, error: "SPECTRE_SLACK_BOT_TOKEN not set" };
 
-  const url = `https://slack.com/api/${method}`;
-  const res = await fetch(url, {
+  const res = await fetch(`https://slack.com/api/${method}`, {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${token}`,
@@ -43,16 +44,13 @@ async function slackApi(method, params = {}) {
 }
 
 /**
- * Slack にスペクターとして返信
+ * Slack にスペクターとして返信（メインチャンネルに投稿、スレッドなし）
  */
-async function reply(text, threadTs = null) {
-  const params = {
+async function reply(text) {
+  return slackApi("chat.postMessage", {
     channel: config.spectre?.slackChannelId || "C0ALF4DAMH9",
     text,
-    username: "スペクター",
-  };
-  if (threadTs) params.thread_ts = threadTs;
-  return slackApi("chat.postMessage", params);
+  });
 }
 
 /**
@@ -69,7 +67,7 @@ function stripInsight(text) {
 /**
  * メッセージを処理
  */
-async function processMessage(text, ts) {
+async function processMessage(text) {
   console.log(`[Slack] Processing: "${text.substring(0, 50)}"`);
 
   // === 1. 承認応答チェック ===
@@ -81,14 +79,14 @@ async function processMessage(text, ts) {
     if (isApprove) {
       updateApproval(pending.id, "approved");
       clearActiveDraft();
-      await reply(`了解です（${pending.payload?.lineName || ""}）`, ts);
+      await reply(`了解です（${pending.payload?.lineName || ""}）`);
       return;
     }
 
     if (isReject) {
       updateApproval(pending.id, "rejected");
       clearActiveDraft();
-      await reply(`破棄しました（${pending.payload?.lineName || ""}）`, ts);
+      await reply(`破棄しました（${pending.payload?.lineName || ""}）`);
       return;
     }
   }
@@ -100,7 +98,7 @@ async function processMessage(text, ts) {
       .filter(s => s.commands.length > 0)
       .map(s => `・${s.commands[0]} — ${s.description}`)
       .join("\n");
-    await reply(`スペクターでございます。\nご用命をお待ちしておりました。\n\n${cmdList || "（コマンドなし）"}\n\nその他のメッセージには会話でお答えいたします。`, ts);
+    await reply(`スペクターでございます。\nご用命をお待ちしておりました。\n\n${cmdList || "（コマンドなし）"}\n\nその他のメッセージには会話でお答えいたします。`);
     return;
   }
 
@@ -109,12 +107,10 @@ async function processMessage(text, ts) {
   if (skillMatch && skillMatch.skill.handleCommand) {
     try {
       const result = await skillMatch.skill.handleCommand(text, { source: "slack" });
-      if (result) {
-        await reply(result, ts);
-      }
+      if (result) await reply(result);
     } catch (err) {
       console.error(`[Slack] Skill "${skillMatch.name}" error:`, err.message);
-      await reply(`エラーが発生いたしました: ${err.message}`, ts);
+      await reply(`エラーが発生いたしました: ${err.message}`);
     }
     return;
   }
@@ -122,7 +118,7 @@ async function processMessage(text, ts) {
   // === 4. 返信案のフィードバック ===
   const activeDraft = getActiveDraft();
   if (activeDraft) {
-    await reply("承知いたしました。改善いたします...", ts);
+    await reply("承知いたしました。改善いたします...");
 
     try {
       addFeedback(text);
@@ -131,15 +127,14 @@ async function processMessage(text, ts) {
       if (result.ok && result.draft) {
         updateDraft(result.draft);
         await reply(
-          `改善いたしました。\n\nリッキーさんでしたら、こちらはいかがでしょう：\n\n${result.draft}\n\n「OK」→ 確定  「却下」→ 破棄\nさらに修正があればお申し付けください。`,
-          ts
+          `改善いたしました。\n\nリッキーさんでしたら、こちらはいかがでしょう：\n\n${result.draft}\n\n「OK」→ 確定  「却下」→ 破棄\nさらに修正があればお申し付けください。`
         );
       } else {
-        await reply(`申し訳ございません。改善案の生成に失敗いたしました: ${result.error || "不明なエラー"}`, ts);
+        await reply(`申し訳ございません。改善案の生成に失敗いたしました: ${result.error || "不明なエラー"}`);
       }
     } catch (err) {
       console.error(`[Slack] Refinement error: ${err.message}`);
-      await reply(`改善処理でエラーが発生いたしました: ${err.message}`, ts);
+      await reply(`改善処理でエラーが発生いたしました: ${err.message}`);
     }
     return;
   }
@@ -157,10 +152,10 @@ async function processMessage(text, ts) {
     response = stripInsight(response);
     if (!response) response = "申し訳ございません。応答を生成できませんでした。";
 
-    await reply(response, ts);
+    await reply(response);
   } catch (err) {
     console.error(`[Slack] Claude error: ${err.message}`);
-    await reply(`スペクターでございます。処理中にエラーが発生いたしました: ${err.message}`, ts);
+    await reply(`スペクターでございます。処理中にエラーが発生いたしました: ${err.message}`);
   }
 }
 
@@ -168,23 +163,25 @@ async function processMessage(text, ts) {
  * ポーリングサイクル
  */
 async function pollCycle() {
+  if (isProcessing) return; // 前回の処理が終わっていなければスキップ
+  isProcessing = true;
+
   try {
     const channelId = config.spectre?.slackChannelId || "C0ALF4DAMH9";
     const params = {
       channel: channelId,
-      limit: 10,
+      limit: 5,
     };
     if (lastTs) params.oldest = lastTs;
 
     const result = await slackApi("conversations.history", params);
     if (!result.ok) {
       if (result.error === "not_in_channel") {
-        // ボットをチャンネルに参加させる
         await slackApi("conversations.join", { channel: channelId });
         console.log("[Slack] Joined channel");
-        return;
+      } else {
+        console.error(`[Slack] Poll error: ${result.error}`);
       }
-      console.error(`[Slack] Poll error: ${result.error}`);
       return;
     }
 
@@ -199,32 +196,42 @@ async function pollCycle() {
 
     const messages = (result.messages || [])
       .filter(m => {
-        // ボット自身のメッセージをスキップ
         if (m.bot_id || m.user === botUserId) return false;
-        // サブタイプ（channel_join等）をスキップ
         if (m.subtype) return false;
-        // テキストメッセージのみ
         if (!m.text || !m.text.trim()) return false;
-        // 既に処理済みのメッセージをスキップ
+        // 処理済みメッセージをスキップ（Set で厳密に管理）
+        if (processedMessages.has(m.ts)) return false;
+        // lastTs以前のメッセージをスキップ
         if (lastTs && parseFloat(m.ts) <= parseFloat(lastTs)) return false;
         return true;
       })
-      .sort((a, b) => parseFloat(a.ts) - parseFloat(b.ts)); // 古い順
+      .sort((a, b) => parseFloat(a.ts) - parseFloat(b.ts));
 
     for (const msg of messages) {
-      await processMessage(msg.text.trim(), msg.ts);
-      lastTs = msg.ts;
+      // 処理済みとして即座にマーク（重複防止）
+      processedMessages.add(msg.ts);
+      await processMessage(msg.text.trim());
     }
 
-    // メッセージがなくてもタイムスタンプを更新（重複防止）
+    // タイムスタンプを更新（全メッセージの最大tsに）
     if (result.messages && result.messages.length > 0) {
       const maxTs = Math.max(...result.messages.map(m => parseFloat(m.ts)));
       if (!lastTs || maxTs > parseFloat(lastTs)) {
         lastTs = String(maxTs);
       }
     }
+
+    // processedMessages が大きくなりすぎないよう制限
+    if (processedMessages.size > 200) {
+      const arr = [...processedMessages];
+      arr.splice(0, arr.length - 100);
+      processedMessages.clear();
+      arr.forEach(ts => processedMessages.add(ts));
+    }
   } catch (err) {
     console.error(`[Slack] Poll error: ${err.message}`);
+  } finally {
+    isProcessing = false;
   }
 }
 
