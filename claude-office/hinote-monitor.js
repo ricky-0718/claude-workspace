@@ -5,6 +5,7 @@
 // ============================================
 import { chromium } from 'playwright-core';
 import { runClaude } from './claude-runner.js';
+import { executeMendan } from './mendan-executor.js';
 import { notify } from './notifier.js';
 import config from './config.js';
 import fs from 'fs';
@@ -18,7 +19,7 @@ const __dirname = path.dirname(__filename);
 const CDP_PORT = 9222;
 const HINOTE_URL = 'https://hinotes.hidock.com/notes';
 const STATE_FILE = path.join(__dirname, 'data', 'hinote-state.json');
-const PROMPT_TEMPLATE = path.join(__dirname, 'prompts', 'mendan-auto.md');
+const PROMPT_TEMPLATE = path.join(__dirname, 'prompts', 'mendan-lightweight.md');
 const START_EDGE_BAT = path.join(__dirname, '..', 'scripts', 'start-edge-cdp.bat');
 const TMP_TRANSCRIPTION = path.join(__dirname, 'data', 'tmp-transcription.txt');
 const UTAGE_SPREADSHEET_ID = '1prDgc-Uc3Tm_OEU3ErCs5CK864O87ZJUCtrB_YvK8_U';
@@ -394,10 +395,10 @@ async function runMendan(name, date, transcription, participant) {
   }
 
   return runClaude(prompt, {
-    maxTurns: 25,
-    timeout: 10 * 60 * 1000,
+    maxTurns: 15,
+    timeout: 15 * 60 * 1000,
     allowedTools: [
-      'Read', 'Write', 'Edit', 'Bash', 'Glob', 'Grep',
+      'Read', 'Bash',
       'mcp__plugin_asana_asana__asana_create_task',
       'mcp__plugin_asana_asana__asana_set_parent_for_task',
     ],
@@ -439,12 +440,22 @@ async function main() {
 
   const state = loadState();
   let page;
+  let reusingTab = false;
 
   try {
-    // 3. 新タブでHiNoteを開く
+    // 3. 既存のHiNoteタブを再利用（なければ新タブ）
     const context = browser.contexts()[0];
-    page = await context.newPage();
-    await page.goto(HINOTE_URL, { waitUntil: 'load', timeout: 30000 });
+    const existingPages = context.pages();
+    page = existingPages.find(p => p.url().includes('hinotes.hidock.com'));
+
+    if (page) {
+      reusingTab = true;
+      console.log('[HiNote] 既存タブを再利用');
+      await page.reload({ waitUntil: 'load', timeout: 30000 });
+    } else {
+      page = await context.newPage();
+      await page.goto(HINOTE_URL, { waitUntil: 'load', timeout: 30000 });
+    }
     await page.waitForTimeout(3000); // SPA描画完了を待つ
 
     // ログイン確認: main内にh2要素があるか（ノートが表示されているか）
@@ -560,17 +571,26 @@ async function main() {
         const result = await runMendan(name, data.date, data.transcription, participant);
 
         if (result.ok) {
-          // 5e. 成功
-          state.processedNoteIds.push(note.timestamp);
-          state.totalProcessed++;
-          saveState(state);
+          // 5e. 成功 → executorでファイル書き込み + git push
+          if (!DRY_RUN) {
+            const written = await executeMendan(result.result, name, data.date);
+            if (written) {
+              console.log(`[HiNote] ファイル書き込み+git push完了`);
+            } else {
+              console.warn(`[HiNote] ファイル書き込み失敗（区切りタグなし？）`);
+            }
 
-          await safeNotify(
-            `[面談分析完了] ${name || note.title}\n\n` +
-            `📊 分析レポート: 面談分析まとめ.md に追記\n` +
-            `📱 LINE下書き4通: LINE下書きまとめ.md に追記\n` +
-            `📋 Asana: メインタスク + サブタスク4件作成`
-          );
+            state.processedNoteIds.push(note.timestamp);
+            state.totalProcessed++;
+            saveState(state);
+
+            await safeNotify(
+              `[面談分析完了] ${name || note.title}\n\n` +
+              `📊 分析レポート: 面談分析まとめ.md に追記\n` +
+              `📱 LINE下書き4通: LINE下書きまとめ.md に追記\n` +
+              `📋 Asana: メインタスク + サブタスク4件作成`
+            );
+          }
           const sec = result.duration ? `${Math.round(result.duration / 1000)}秒` : 'dry-run';
           console.log(`[HiNote] 完了: ${note.title} (${sec})`);
         } else {
@@ -592,8 +612,8 @@ async function main() {
       }
     }
   } finally {
-    // 6. タブを閉じる（Edgeは閉じない）
-    if (page) await page.close().catch(() => {});
+    // 6. 新規作成したタブのみ閉じる（再利用タブは残す）
+    if (page && !reusingTab) await page.close().catch(() => {});
     if (browser) browser.close().catch(() => {});
   }
 
