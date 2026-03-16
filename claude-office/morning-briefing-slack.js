@@ -203,7 +203,7 @@ async function fetchCalendar() {
     endOfDay.setDate(endOfDay.getDate() + 1);
 
     const res = await calendar.events.list({
-      calendarId: "primary",
+      calendarId: "newgoodriki@gmail.com",
       timeMin: startOfDay.toISOString(),
       timeMax: endOfDay.toISOString(),
       singleEvents: true,
