@@ -16,6 +16,7 @@ import { verifySignature, handleWebhookEvents } from "./webhook/line-handler.js"
 import { listApprovals, getLatestPending } from "./approval/manager.js";
 import { startInvoicePoller } from "./invoice-poller.js";
 import { startSlackListener } from "./slack-listener.js";
+import { startSalaryScheduler } from "./salary-task-creator.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -523,4 +524,7 @@ app.listen(PORT, async () => {
 
   // Start Slack bidirectional listener
   startSlackListener();
+
+  // Start salary task auto-creator (checks every 6h, creates on 1st-3rd)
+  startSalaryScheduler();
 });
