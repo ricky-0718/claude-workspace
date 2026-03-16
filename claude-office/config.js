@@ -30,6 +30,20 @@ function loadEnv() {
 
 const env = loadEnv();
 
+// asana-claude-automation/.env からASANA_PATをフォールバック取得
+if (!env.ASANA_PAT) {
+  try {
+    const fallbackPath = path.join(__dirname, "..", "asana-claude-automation", ".env");
+    const lines = fs.readFileSync(fallbackPath, "utf-8").split("\n");
+    for (const line of lines) {
+      if (line.startsWith("ASANA_PAT=")) {
+        env.ASANA_PAT = line.substring("ASANA_PAT=".length).trim();
+        break;
+      }
+    }
+  } catch {}
+}
+
 // process.env にも反映（server.js の deploy endpoint 等で参照するため）
 for (const [key, value] of Object.entries(env)) {
   if (!process.env[key]) process.env[key] = value;
