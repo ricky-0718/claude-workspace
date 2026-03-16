@@ -511,6 +511,30 @@ app.post("/api/mendan/:id/done", (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
+// Routes: Remote Exec (SSHの代替 — 新PCからコマンド実行)
+// ---------------------------------------------------------------------------
+app.post("/api/exec", (req, res) => {
+  const secret = req.body?.secret;
+  if (!secret || secret !== process.env.DEPLOY_SECRET) {
+    return res.status(403).json({ error: "invalid secret" });
+  }
+
+  const { command, timeout: cmdTimeout } = req.body;
+  if (!command) return res.status(400).json({ error: "command is required" });
+
+  try {
+    const result = execSync(command, {
+      encoding: "utf-8",
+      timeout: cmdTimeout || 30000,
+      cwd: path.resolve(__dirname, ".."),
+    });
+    res.json({ ok: true, output: result.trim() });
+  } catch (e) {
+    res.json({ ok: false, error: e.message, output: e.stdout?.trim() || "", stderr: e.stderr?.trim() || "" });
+  }
+});
+
+// ---------------------------------------------------------------------------
 // Routes: Deploy (remote git pull + restart)
 // ---------------------------------------------------------------------------
 app.post("/api/deploy", (req, res) => {
