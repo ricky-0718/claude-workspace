@@ -17,6 +17,11 @@ const PIPELINE_SECTIONS = [
   "締結済", "入金確認済", "BAND招待済み", "担当者挨拶済み",
 ];
 
+// ブリーフィングで除外するセクション（終了済み・マイルストーン系）
+const EXCLUDED_SECTIONS = [
+  "契約不成立", "TOCFL A2合格", "志望校確定",
+];
+
 async function asanaApi(endpoint, params = {}) {
   const pat = config.asana?.pat;
   if (!pat) return { data: [], error: "ASANA_PAT not set" };
@@ -48,7 +53,7 @@ async function fetchAsanaTasks() {
       "projects.any": projectId,
       completed: "false",
       "due_on.before": futureStr,
-      "opt_fields": "name,due_on,memberships.section.name",
+      "opt_fields": "name,due_on,memberships.section.name,parent.name",
       limit: "50",
       sort_by: "due_date",
       sort_ascending: "true",
@@ -62,14 +67,33 @@ async function fetchAsanaTasks() {
   const todayTasks = [];
   const upcoming = [];
 
+  // 期限超過は14日前まで（それ以上古いタスクはノイズ）
+  const cutoffDate = new Date(today);
+  cutoffDate.setDate(cutoffDate.getDate() - 14);
+  const cutoffStr = cutoffDate.toISOString().split("T")[0];
+
   for (const t of tasks) {
     if (!t.due_on) continue;
     const section = t.memberships?.[0]?.section?.name || "";
-    const entry = { name: t.name, due: t.due_on, section };
 
-    if (t.due_on < todayStr) overdue.push(entry);
-    else if (t.due_on === todayStr) todayTasks.push(entry);
-    else upcoming.push(entry);
+    // 終了系セクションのタスクを除外
+    if (EXCLUDED_SECTIONS.includes(section)) continue;
+
+    // サブタスク（【3日後】等）に親タスク名を付与
+    const parentName = t.parent?.name || "";
+    const displayName = parentName && !t.name.includes(parentName.split("さん")[0])
+      ? `${t.name}（${parentName.replace(/さん.*/, "さん")}）`
+      : t.name;
+    const entry = { name: displayName, due: t.due_on, section };
+
+    if (t.due_on < todayStr) {
+      // 14日以上前の期限超過はスキップ
+      if (t.due_on >= cutoffStr) overdue.push(entry);
+    } else if (t.due_on === todayStr) {
+      todayTasks.push(entry);
+    } else {
+      upcoming.push(entry);
+    }
   }
 
   return { overdue, today: todayTasks, upcoming, error: null };
@@ -196,6 +220,10 @@ async function fetchCalendar() {
 
     return { events, error: null };
   } catch (err) {
+    // スコープ不足の場合は静かにスキップ
+    if (err.message?.includes("insufficient authentication scopes")) {
+      return { events: [], error: null, note: "Calendar APIスコープ未設定" };
+    }
     return { events: [], error: err.message };
   }
 }
@@ -272,6 +300,7 @@ function formatGmail(gmail) {
 
 function formatCalendar(cal) {
   if (cal.error) return `取得エラー: ${cal.error}`;
+  if (cal.note) return cal.note;
   if (cal.events.length === 0) return "予定なし";
   return cal.events.map(e => `・${e.time} ${e.summary}`).join("\n");
 }
