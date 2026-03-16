@@ -17,6 +17,7 @@ import { listApprovals, getLatestPending } from "./approval/manager.js";
 import { startInvoicePoller } from "./invoice-poller.js";
 import { startSlackListener } from "./slack-listener.js";
 import { runMorningBriefing } from "./morning-briefing-slack.js";
+import { startSalaryScheduler } from "./salary-task-creator.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -539,6 +540,9 @@ app.listen(PORT, async () => {
 
   // Schedule morning briefing (daily 8:00 JST)
   scheduleMorningBriefing();
+
+  // Start salary task auto-creator (checks every 6h, creates on 1st-3rd)
+  startSalaryScheduler();
 });
 
 // ---------------------------------------------------------------------------

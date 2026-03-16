@@ -54,6 +54,7 @@ export default {
   asana: {
     pat: env.ASANA_PAT || "",
     workspaceId: "1208442893224580",
+    assigneeId: "1208498758664385",
     contractProjectId: "1209960384497212",
   },
   deploy: {
