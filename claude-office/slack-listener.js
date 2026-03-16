@@ -9,6 +9,8 @@ import { getActiveDraft, addFeedback, updateDraft, clearActiveDraft } from "./dr
 import { refineDraft } from "./draft-generator.js";
 import { sendSlack } from "./notifier.js";
 import { findSkillByCommand, listSkills } from "./skills/registry.js";
+import { runMorningBriefing } from "./morning-briefing-slack.js";
+import { lookupCustomerContext, formatContextForPrompt } from "./context-lookup.js";
 
 const POLL_INTERVAL = 5000; // 5秒ごと
 const APPROVE_KEYWORDS = ["OK", "ok", "承認", "はい", "送信して", "送って"];
@@ -102,6 +104,17 @@ async function processMessage(text) {
     return;
   }
 
+  // === 2.5. ブリーフィングコマンド ===
+  if (text === "ブリーフィング" || text === "briefing" || text === "おはよう") {
+    await reply("ブリーフィングを準備いたします...");
+    try {
+      await runMorningBriefing();
+    } catch (err) {
+      await reply(`ブリーフィング生成でエラーが発生いたしました: ${err.message}`);
+    }
+    return;
+  }
+
   // === 3. スキルコマンド ===
   const skillMatch = findSkillByCommand(text);
   if (skillMatch && skillMatch.skill.handleCommand) {
@@ -139,10 +152,16 @@ async function processMessage(text) {
     return;
   }
 
-  // === 5. スペクターとの自由会話 ===
+  // === 5. スペクターとの自由会話（コンテキスト付き） ===
   try {
+    const ctx = lookupCustomerContext(text);
+    const contextBlock = formatContextForPrompt(ctx);
+    const contextInfo = contextBlock
+      ? `\n\n以下の顧客情報が見つかりました:\n${contextBlock}\n`
+      : "";
+
     const { runClaude } = await import("./claude-runner.js");
-    const prompt = `${SPECTRE_CHAT_PROMPT}\n\nリッキーさんからのメッセージ:\n${text}\n\n簡潔に回答してください。`;
+    const prompt = `${SPECTRE_CHAT_PROMPT}${contextInfo}\n\nリッキーさんからのメッセージ:\n${text}\n\n簡潔に回答してください。`;
     const result = await runClaude(prompt, { maxTurns: 1, timeout: 50000, allowedTools: [] });
 
     let response = result.ok

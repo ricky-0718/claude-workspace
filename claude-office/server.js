@@ -16,6 +16,7 @@ import { verifySignature, handleWebhookEvents } from "./webhook/line-handler.js"
 import { listApprovals, getLatestPending } from "./approval/manager.js";
 import { startInvoicePoller } from "./invoice-poller.js";
 import { startSlackListener } from "./slack-listener.js";
+import { runMorningBriefing } from "./morning-briefing-slack.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -473,6 +474,18 @@ app.get("/api/tunnel-log", (_req, res) => {
 });
 
 // ---------------------------------------------------------------------------
+// Routes: Morning Briefing
+// ---------------------------------------------------------------------------
+app.post("/api/briefing", async (_req, res) => {
+  try {
+    const result = await runMorningBriefing();
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ---------------------------------------------------------------------------
 // Routes: Deploy (remote git pull + restart)
 // ---------------------------------------------------------------------------
 app.post("/api/deploy", (req, res) => {
@@ -523,4 +536,37 @@ app.listen(PORT, async () => {
 
   // Start Slack bidirectional listener
   startSlackListener();
+
+  // Schedule morning briefing (daily 8:00 JST)
+  scheduleMorningBriefing();
 });
+
+// ---------------------------------------------------------------------------
+// Cron: Morning Briefing (毎朝 8:00 JST)
+// ---------------------------------------------------------------------------
+function scheduleMorningBriefing() {
+  function msUntilNext8am() {
+    const now = new Date();
+    const next = new Date(now);
+    next.setHours(8, 0, 0, 0);
+    if (now >= next) next.setDate(next.getDate() + 1);
+    return next - now;
+  }
+
+  function schedule() {
+    const ms = msUntilNext8am();
+    const hours = (ms / 3600000).toFixed(1);
+    console.log(`[Cron] Next morning briefing in ${hours}h`);
+
+    setTimeout(async () => {
+      try {
+        await runMorningBriefing();
+      } catch (err) {
+        console.error("[Cron] Morning briefing error:", err.message);
+      }
+      schedule();
+    }, ms);
+  }
+
+  schedule();
+}

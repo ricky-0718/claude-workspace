@@ -51,6 +51,11 @@ export default {
     slackBotToken: env.SPECTRE_SLACK_BOT_TOKEN || "",
     slackChannelId: env.SPECTRE_SLACK_CHANNEL_ID || "C0ALF4DAMH9",
   },
+  asana: {
+    pat: env.ASANA_PAT || "",
+    workspaceId: "1208442893224580",
+    contractProjectId: "1209960384497212",
+  },
   deploy: {
     secret: env.DEPLOY_SECRET || "",
   },
