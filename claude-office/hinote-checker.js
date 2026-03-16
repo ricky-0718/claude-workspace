@@ -23,6 +23,8 @@ const CHECK_INTERVAL = 10 * 60 * 1000; // 10分
 
 let checkTimer = null;
 let isChecking = false; // 重複実行防止
+let persistentBrowser = null; // ブラウザ接続を保持
+let persistentPage = null;    // HiNoteタブを保持
 
 // ============================================
 // State管理
@@ -81,8 +83,8 @@ function ensureEdgeCDP() {
     return false;
   }
 
-  const userDataDir = path.join(__dirname, '..', '.playwright-data');
-  if (!fs.existsSync(userDataDir)) fs.mkdirSync(userDataDir, { recursive: true });
+  // ユーザーの通常Edgeプロファイルを使用（ログインセッション共有）
+  const userDataDir = path.join(process.env.LOCALAPPDATA || '', 'Microsoft', 'Edge', 'User Data');
 
   spawn(edgePath, [
     `--remote-debugging-port=${CDP_PORT}`,
@@ -100,6 +102,85 @@ function ensureEdgeCDP() {
   }
   console.error('[HiNote] Edge CDP起動タイムアウト');
   return false;
+}
+
+// ============================================
+// 自動再ログイン（Google SSO経由）
+// ============================================
+async function attemptAutoLogin(page) {
+  try {
+    // ログインページへ遷移（セッション切れの場合、自動リダイレクトされることもある）
+    const url = page.url();
+    if (!url.includes('hinotes.hidock.com')) {
+      await page.goto(HINOTE_URL, { waitUntil: 'load', timeout: 30000 });
+      await page.waitForTimeout(2000);
+    }
+
+    // Googleログインボタンを探してクリック
+    const clicked = await page.evaluate(() => {
+      const buttons = document.querySelectorAll('button, a, [role="button"]');
+      for (const btn of buttons) {
+        const text = btn.textContent?.toLowerCase() || '';
+        if (text.includes('google') || text.includes('ログイン') || text.includes('sign in') || text.includes('log in')) {
+          btn.click();
+          return true;
+        }
+      }
+      // Google OAuthのリンクを探す
+      const links = document.querySelectorAll('a[href*="google"], a[href*="oauth"], a[href*="accounts.google"]');
+      if (links.length > 0) {
+        links[0].click();
+        return true;
+      }
+      return false;
+    });
+
+    if (!clicked) {
+      console.log('[HiNote] ログインボタンが見つからない');
+      return false;
+    }
+
+    // Google SSO完了を待つ（Googleアカウント選択画面 → 自動認証 → HiNoteにリダイレクト）
+    // 最大30秒待機
+    for (let i = 0; i < 15; i++) {
+      await page.waitForTimeout(2000);
+      const currentUrl = page.url();
+
+      // Googleアカウント選択画面の場合、アカウントをクリック
+      if (currentUrl.includes('accounts.google.com')) {
+        const accountClicked = await page.evaluate(() => {
+          // アカウント選択のリストアイテムをクリック
+          const items = document.querySelectorAll('[data-identifier], [data-email], .JDAKTe');
+          if (items.length > 0) {
+            items[0].click();
+            return true;
+          }
+          return false;
+        });
+        if (accountClicked) {
+          console.log('[HiNote] Googleアカウントを選択');
+        }
+        continue;
+      }
+
+      // HiNoteに戻ってきたか確認
+      if (currentUrl.includes('hinotes.hidock.com')) {
+        const loggedIn = await page.evaluate(() => {
+          const all = document.querySelectorAll('*');
+          for (const el of all) {
+            if (el.textContent?.trim() === 'すべてのノート' && el.children.length === 0) return true;
+          }
+          return false;
+        });
+        if (loggedIn) return true;
+      }
+    }
+
+    return false;
+  } catch (err) {
+    console.error('[HiNote] 自動再ログインエラー:', err.message);
+    return false;
+  }
 }
 
 // ============================================
@@ -172,9 +253,13 @@ async function getNotesFromPage(page) {
 
 async function getNewNotes(page, state) {
   const allNotes = await getNotesFromPage(page);
+  const pending = loadPending();
+  const pendingTimestamps = new Set(pending.map(p => p.noteTimestamp));
+
   return allNotes.filter(n =>
     isConsultationNote(n.title, n.summary) &&
-    !state.processedNoteIds.includes(n.timestamp)
+    !state.processedNoteIds.includes(n.timestamp) &&
+    !pendingTimestamps.has(n.timestamp)
   );
 }
 
@@ -339,6 +424,66 @@ async function lookupParticipant(name) {
 // ============================================
 // メインチェック処理
 // ============================================
+async function ensureBrowserConnection() {
+  // 既存接続が生きているか確認
+  if (persistentBrowser) {
+    try {
+      persistentBrowser.contexts(); // 接続テスト
+      return true;
+    } catch {
+      console.log('[HiNote] ブラウザ接続が切れていました。再接続します');
+      persistentBrowser = null;
+      persistentPage = null;
+    }
+  }
+
+  const cdpReady = ensureEdgeCDP();
+  if (!cdpReady) return false;
+
+  try {
+    persistentBrowser = await chromium.connectOverCDP(`http://localhost:${CDP_PORT}`);
+    console.log('[HiNote] ブラウザに接続しました');
+    return true;
+  } catch (err) {
+    console.error('[HiNote] CDP接続エラー:', err.message);
+    return false;
+  }
+}
+
+async function ensurePage() {
+  // 既存ページが生きているか確認
+  if (persistentPage) {
+    try {
+      await persistentPage.url(); // ページが生きているか確認
+      if (persistentPage.url().includes('hinotes.hidock.com')) {
+        console.log('[HiNote] 既存タブを再利用');
+        await persistentPage.reload({ waitUntil: 'load', timeout: 30000 });
+        await persistentPage.waitForTimeout(3000);
+        return persistentPage;
+      }
+    } catch {
+      console.log('[HiNote] 既存タブが無効。新規取得します');
+      persistentPage = null;
+    }
+  }
+
+  const context = persistentBrowser.contexts()[0];
+  const existingPages = context.pages();
+  const hinotePage = existingPages.find(p => p.url().includes('hinotes.hidock.com'));
+
+  if (hinotePage) {
+    persistentPage = hinotePage;
+    console.log('[HiNote] 既存HiNoteタブを発見・再利用');
+    await persistentPage.reload({ waitUntil: 'load', timeout: 30000 });
+  } else {
+    persistentPage = await context.newPage();
+    await persistentPage.goto(HINOTE_URL, { waitUntil: 'load', timeout: 30000 });
+    console.log('[HiNote] 新規タブでHiNoteを開きました');
+  }
+  await persistentPage.waitForTimeout(3000);
+  return persistentPage;
+}
+
 async function checkHiNote() {
   if (isChecking) {
     console.log('[HiNote] 前回のチェックがまだ実行中。スキップ');
@@ -349,38 +494,16 @@ async function checkHiNote() {
   console.log(`[HiNote] チェック開始: ${new Date().toISOString()}`);
 
   try {
-    const cdpReady = ensureEdgeCDP();
-    if (!cdpReady) {
+    if (!await ensureBrowserConnection()) {
       console.error('[HiNote] Edge CDP接続不可');
-      return;
-    }
-
-    let browser;
-    try {
-      browser = await chromium.connectOverCDP(`http://localhost:${CDP_PORT}`);
-    } catch (err) {
-      console.error('[HiNote] CDP接続エラー:', err.message);
       return;
     }
 
     const state = loadState();
     let page;
-    let reusingTab = false;
 
     try {
-      const context = browser.contexts()[0];
-      const existingPages = context.pages();
-      page = existingPages.find(p => p.url().includes('hinotes.hidock.com'));
-
-      if (page) {
-        reusingTab = true;
-        console.log('[HiNote] 既存タブを再利用');
-        await page.reload({ waitUntil: 'load', timeout: 30000 });
-      } else {
-        page = await context.newPage();
-        await page.goto(HINOTE_URL, { waitUntil: 'load', timeout: 30000 });
-      }
-      await page.waitForTimeout(3000);
+      page = await ensurePage();
 
       // ログイン確認
       const isLoggedIn = await page.evaluate(() => {
@@ -391,9 +514,14 @@ async function checkHiNote() {
         return false;
       });
       if (!isLoggedIn) {
-        console.error('[HiNote] ログインセッション切れ');
-        await notify('[HiNote] ログインセッション切れ。旧PCのEdgeで https://hinotes.hidock.com にログインしてください');
-        return;
+        console.log('[HiNote] セッション切れ検出。自動再ログインを試行...');
+        const reloggedIn = await attemptAutoLogin(page);
+        if (!reloggedIn) {
+          console.error('[HiNote] 自動再ログイン失敗');
+          await notify('[HiNote] 自動再ログイン失敗。旧PCのEdgeで https://hinotes.hidock.com に手動ログインしてください');
+          return;
+        }
+        console.log('[HiNote] 自動再ログイン成功');
       }
 
       // 新規ノート検出
@@ -490,14 +618,18 @@ async function checkHiNote() {
           await closeDialog(page);
         }
       }
-    } finally {
-      if (page && !reusingTab) await page.close().catch(() => {});
-      if (browser) browser.close().catch(() => {});
+    } catch (innerErr) {
+      console.error('[HiNote] ページ処理エラー:', innerErr.message);
+      // 接続が壊れた場合はリセット
+      persistentBrowser = null;
+      persistentPage = null;
     }
 
     console.log('[HiNote] チェック完了');
   } catch (err) {
     console.error('[HiNote] 致命的エラー:', err.message);
+    persistentBrowser = null;
+    persistentPage = null;
   } finally {
     isChecking = false;
   }
@@ -523,8 +655,13 @@ export function stopHiNoteChecker() {
   if (checkTimer) {
     clearInterval(checkTimer);
     checkTimer = null;
-    console.log('[HiNote] 監視停止');
   }
+  if (persistentBrowser) {
+    persistentBrowser.close().catch(() => {});
+    persistentBrowser = null;
+    persistentPage = null;
+  }
+  console.log('[HiNote] 監視停止');
 }
 
 export function getPendingMendans() {
