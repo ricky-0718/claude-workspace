@@ -18,6 +18,7 @@ import { startInvoicePoller } from "./invoice-poller.js";
 import { startSlackListener } from "./slack-listener.js";
 import { runMorningBriefing } from "./morning-briefing-slack.js";
 import { startSalaryScheduler } from "./salary-task-creator.js";
+import { startHiNoteChecker, stopHiNoteChecker, getPendingMendans, getAllMendans, claimMendan, completeMendan } from "./hinote-checker.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -487,6 +488,29 @@ app.post("/api/briefing", async (_req, res) => {
 });
 
 // ---------------------------------------------------------------------------
+// Routes: Mendan (HiNote面談検出)
+// ---------------------------------------------------------------------------
+app.get("/api/mendan/pending", (_req, res) => {
+  res.json(getPendingMendans());
+});
+
+app.get("/api/mendan/all", (_req, res) => {
+  res.json(getAllMendans());
+});
+
+app.post("/api/mendan/:id/claim", (req, res) => {
+  const entry = claimMendan(req.params.id);
+  if (!entry) return res.status(404).json({ error: "not found or already claimed" });
+  res.json({ ok: true, mendan: entry });
+});
+
+app.post("/api/mendan/:id/done", (req, res) => {
+  const entry = completeMendan(req.params.id);
+  if (!entry) return res.status(404).json({ error: "not found" });
+  res.json({ ok: true, mendan: entry });
+});
+
+// ---------------------------------------------------------------------------
 // Routes: Deploy (remote git pull + restart)
 // ---------------------------------------------------------------------------
 app.post("/api/deploy", (req, res) => {
@@ -543,6 +567,9 @@ app.listen(PORT, async () => {
 
   // Start salary task auto-creator (checks every 6h, creates on 1st-3rd)
   startSalaryScheduler();
+
+  // Start HiNote mendan checker (every 10 min)
+  startHiNoteChecker();
 });
 
 // ---------------------------------------------------------------------------
