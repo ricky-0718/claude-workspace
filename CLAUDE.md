@@ -5,6 +5,7 @@
 - **Browser**: ALWAYS use Edge. NEVER attempt to connect to Chrome. NEVER call switch_browser. Always call tabs_context_mcp directly.
 - **専門用語**: エンジニア用語が出たら、必ず中学生でも分かるように例え話で解説する。
 - **LINE返信文の口調**: ビジネス調を基本とする（「ございます」「いたします」等の敬語）。タメ口の相手にはトーンを合わせるが、語尾に「ね」はトーンに関わらず絶対に使わない。
+- **LINE返信ドラフト**: 前回のメッセージ内容を繰り返さない。常に全文を含め、要約しない。トーンに迷ったら下書き前にユーザーに確認する。
 
 ## タスク完了時のルール
 - 作業が一区切りついたら、**今の状況に応じて最善のアクションを提案する**
@@ -85,6 +86,9 @@
 
 ## Asana ルール
 
+### タスク操作の原則
+- タスク作成・更新前に、**対象プロジェクト固有のルール**（下記）を必ず再確認すること
+
 ### assignee・due_on の設定基準
 - **日報プロジェクト（ID: `1209935959800165`）のみ**: assignee・due_on を**絶対に設定しない**
 - **他の全プロジェクト（オールインワンプラン契約書・マイタスク等）**: assignee・due_on を**必ず設定する**
@@ -127,8 +131,20 @@
 - stdin待ちハング防止: `stdio: ['ignore', 'pipe', 'pipe']`必須
 - CLIパス自動検出: `%APPDATA%/Claude/claude-code/`以下のバージョンディレクトリをスキャン
 
+## リモート操作（旧PC）
+- 旧PC（hp-spectre-14）はWindows環境。**Node.jsまたはPowerShell互換コマンドのみ使用** — sed, grep, awk等のUnixツールは絶対に使わない
+- exec APIやSSH経由でコマンドを送る際も、Windows CMD/PowerShellで動くコマンドを選ぶ
+- 認証情報やトークン（ASANA_PAT、OAuthトークン等）をユーザーに要求する前に、プロジェクト内の.envや既存設定を確認すること
+
+## ファイル＆Drive操作
+- Google DriveフォルダのURLやIDを推測しない。**ローカルのDrive同期パス**（プロジェクト内の既存パス規則を確認）を優先使用
+- Driveフォルダを参照する際は、変更する前に**ユーザーが以前提供したフォルダIDと照合**すること
+- メモリやナレッジファイルに記録されたIDを勝手に変更しない
+
 ## Windows固有の注意
 - Bash(Git Bash)のcurlで日本語JSONを送るとShift-JISで送信され文字化けする。Node.jsのfetchまたはMCPツール経由で送ること
+- Bashの `clip.exe` に日本語を渡すと文字化けする → `powershell -Command "Get-Content -Path 'ファイルパス' -Encoding UTF8 | Set-Clipboard"`
+- gws CLIでSpreadsheet日本語書き込み: Node.js `execSync` でJSON構築→`gws sheets ...` が安定。Bashから直接日本語JSONを送ると文字化け
 
 ## Browser Automation
 - Edge extension disconnects frequently. On disconnect, retry via `tabs_context_mcp`
