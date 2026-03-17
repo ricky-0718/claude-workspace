@@ -12,8 +12,23 @@ import { lookupCustomerContext, formatContextForPrompt } from "./context-lookup.
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DRAFTS_DIR = path.join(__dirname, "data", "drafts");
+const REPO_ROOT = path.resolve(__dirname, "..");
 
 if (!fs.existsSync(DRAFTS_DIR)) fs.mkdirSync(DRAFTS_DIR, { recursive: true });
+
+// ============================================
+// LINE返信ルール＆フィードバックの動的読み込み
+// ============================================
+
+function loadLineRules() {
+  const rulesPath = path.join(REPO_ROOT, "knowledge", "operations", "utage-line-rules.md");
+  const feedbackPath = path.join(REPO_ROOT, "knowledge", "operations", "utage-line-feedback.md");
+  let rules = "";
+  let feedback = "";
+  try { rules = fs.readFileSync(rulesPath, "utf-8"); } catch { /* ファイルなければスキップ */ }
+  try { feedback = fs.readFileSync(feedbackPath, "utf-8"); } catch { /* ファイルなければスキップ */ }
+  return { rules, feedback };
+}
 
 // ============================================
 // スペクター ペルソナ
@@ -86,17 +101,16 @@ function buildPrompt(parsed) {
   const ctx = lookupCustomerContext(parsed.lineName);
   const contextBlock = formatContextForPrompt(ctx);
 
+  // LINE返信ルール＆フィードバックを動的読み込み
+  const { rules, feedback } = loadLineRules();
+
   return `${SPECTRE_PERSONA}
 
 # 返信文のルール（リッキーさんの口調）
-- ビジネス調で統一（「ございます」「いたします」等の敬語を基本）
-- ただし、フランクなタメ口でやり取りしている相手には同じトーンで返す。一律に丁寧語にしない
-- 語尾に「ね」は絶対に使わない（トーンに関わらず全体共通ルール）
-- 返信案作成前に必ず直前のやり取りのトーンを確認し、合わせる
-- 相手の質問の意図を文脈から読む（表面的な質問に答えるのではなく意図を汲み取る）
-- 不明な点は正直に「確認します」と伝える。憶測で情報を作らない
-- 面談済みの顧客には、面談内容・温度感・フォロー期限を踏まえて返信する
-- 相手の属性を必ず確認する（参加歴、学年、流入経路、過去の面談有無）
+${rules || "- ビジネス調で統一。語尾に「ね」は絶対に使わない。"}
+
+# 過去のフィードバックから学んだパターン
+${feedback || "(フィードバック履歴なし)"}
 ${contextBlock ? `\n# 面談・顧客情報（自動検索結果）\n${contextBlock}\n` : ""}${historyBlock}
 # 受信メッセージ
 送信者: ${parsed.lineName}${ctx.realName ? `（実名: ${ctx.realName}）` : ""}
@@ -127,13 +141,16 @@ export function buildRefinementPrompt(activeDraft, feedback) {
     feedbackHistory = `\n# これまでのフィードバック\n${feedbackHistory}\n`;
   }
 
+  // LINE返信ルール＆フィードバックを動的読み込み
+  const { rules, feedback: feedbackRules } = loadLineRules();
+
   return `${SPECTRE_PERSONA}
 
 # 返信文のルール（リッキーさんの口調）
-- ビジネス調で統一（「ございます」「いたします」等の敬語を基本）
-- ただし、フランクなタメ口でやり取りしている相手には同じトーンで返す
-- 語尾に「ね」は絶対に使わない（トーンに関わらず全体共通ルール）
-- 返信案作成前に直前のやり取りのトーンを確認し、合わせる
+${rules || "- ビジネス調で統一。語尾に「ね」は絶対に使わない。"}
+
+# 過去のフィードバックから学んだパターン
+${feedbackRules || "(フィードバック履歴なし)"}
 ${contextBlock ? `\n# 面談・顧客情報\n${contextBlock}\n` : ""}
 # 元のメッセージ
 送信者: ${activeDraft.lineName}
