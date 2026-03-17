@@ -14,6 +14,7 @@ nul
 
 # ワークツリー
 .claude/worktrees/
+.worktrees/
 
 # MCP設定（APIキー含む）
 .mcp.json
