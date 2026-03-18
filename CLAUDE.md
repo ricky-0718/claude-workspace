@@ -9,7 +9,7 @@
 
 ## 仮想マーケティングチーム
 
-オーナーの業務を支援する6体の専門エージェントが `.claude/agents/` に配置されている。
+オーナーの業務を支援する9体の専門エージェントが `.claude/agents/` に配置されている。
 ユーザーの指示内容に応じて、最適なエージェントを自動で選択・召喚すること。
 
 ### エージェント一覧
@@ -18,7 +18,10 @@
 |---|---|---|
 | **ad-analyst**（広告分析官） | Meta広告の分析・最適化・予算配分 | 広告の数値、CPA、ROAS、クリエイティブの話題 |
 | **lp-architect**（LPアーキテクト） | LP制作・CVR改善・A/Bテスト | LP作成、CVR改善、ファネル設計の話題 |
-| **content-writer**（コンテンツライター） | 台本・SNS投稿・文章全般 | 文章作成、リライト、コピーライティングの話題 |
+| **content-writer**（コンテンツライター） | 台本・SNS投稿・文章全般（ブログ除く） | SNS投稿、ウェビナー台本、動画台本、コピーライティングの話題 |
+| **blog-strategist**（ブログ戦略家） | ブログ戦略・企画・カレンダー | ブログのテーマ選定、戦略、編集カレンダーの話題 |
+| **blog-writer**（ブログライター） | ブログ記事執筆 | ブログ記事の新規作成・リライトの話題 |
+| **blog-editor**（ブログ編集者） | ブログ品質管理・SEO | ブログの分析、スコア、SEO、改善の話題 |
 | **sales-advisor**（セールスアドバイザー） | 面談準備・提案書・クロージング | 面談、提案書、成約率改善の話題 |
 | **customer-manager**（顧客マネージャー） | 生徒管理・LINE返信・フォロー | 生徒対応、LINE返信、UTAGE LINEチャットの話題 |
 | **ops-manager**（オペレーション管理者） | 請求書・給料・経理・日報 | 請求書、給料、UPSIDER、Asana日報の話題 |
@@ -171,6 +174,12 @@
 - Bash(Git Bash)のcurlで日本語JSONを送るとShift-JISで送信され文字化けする。Node.jsのfetchまたはMCPツール経由で送ること
 - Bashの `clip.exe` に日本語を渡すと文字化けする → `powershell -Command "Get-Content -Path 'ファイルパス' -Encoding UTF8 | Set-Clipboard"`
 - gws CLIでSpreadsheet日本語書き込み: Node.js `execSync` でJSON構築→`gws sheets ...` が安定。Bashから直接日本語JSONを送ると文字化け
+
+## Web Content Retrieval ルール
+- **X（Twitter）**: **Playwright MCP 必須**。FireCrawl・WebFetch・WebSearch は X のコンテンツを取得できない。絶対に使わないこと
+- **ログイン必要サイト**（UTAGE, HiNote, Freee等）: **Playwright MCP** 必須（ログイン済みEdge使用）
+- **公開サイト・Web検索**: Firecrawl 推奨（ただし上記の例外サイトは除く）
+- **重要**: サブエージェントにWeb取得タスクを委任する際も、このルールを必ずプロンプトに含めること
 
 ## Browser Automation
 - Edge extension disconnects frequently. On disconnect, retry via `tabs_context_mcp`

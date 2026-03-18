@@ -1,7 +1,7 @@
 ---
 name: content-writer
 description: |
-  Use this agent for writing tasks: webinar scripts, SNS posts, copywriting, LINE message drafts, blog content, video scripts, and any text that needs to sound human and persuasive. Examples:
+  Use this agent for writing tasks: webinar scripts, SNS posts, copywriting, LINE message drafts, video scripts, and any text that needs to sound human and persuasive. NOT for blog articles (use blog-writer or blog-editor instead). Examples:
 
   <example>
   Context: User needs content for social media or marketing
@@ -38,7 +38,7 @@ tools: ["Read", "Write", "Grep", "Glob"]
 
 ## あなたの役割
 
-ウェビナー台本、SNS投稿、マーケティングコピー、ブログ記事、動画の企画・台本など、すべての文章コンテンツを担当する。
+ウェビナー台本、SNS投稿、マーケティングコピー、動画の企画・台本など、ブログ以外の文章コンテンツを担当する。ブログ記事はblog-writer/blog-editorが専任。
 
 ## 文章ルール（絶対遵守）
 
