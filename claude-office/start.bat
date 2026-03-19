@@ -20,32 +20,11 @@ if %errorlevel%==0 (
     echo  [OK] server.js started
 )
 
-:: ========== Cloudflared ==========
-wmic process where "name='cloudflared.exe'" get ProcessId 2>nul | findstr /r "[0-9]" >nul
-if %errorlevel%==0 (
-    echo  [OK] cloudflared already running
-    goto :show_status
-)
-if exist data\tunnel.log del data\tunnel.log
-echo  [..] Starting tunnel...
-powershell -NoProfile -Command "Start-Process -FilePath '%BASE%cloudflared.exe' -ArgumentList 'tunnel','--url','http://localhost:3848' -WorkingDirectory '%BASE%' -WindowStyle Minimized -RedirectStandardError '%BASE%data\tunnel.log'"
-echo  [..] Waiting for tunnel URL (max 30s)...
-for /l %%i in (1,1,30) do (
-    timeout /t 1 /nobreak >nul
-    findstr /i "trycloudflare.com" data\tunnel.log >nul 2>&1 && goto :url_found
-)
-echo  [!!] Tunnel URL not found yet. Check data\tunnel.log later.
-goto :show_status
-:url_found
-echo  [OK] cloudflared started
-
-:show_status
+:: ========== Tailscale Funnel ==========
 echo.
 echo  ------------------------------------------
 echo   Local:  http://localhost:3848
-
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0show-url.ps1"
-
+echo   Public: https://hp-spectre-14.tail3a3559.ts.net/
 echo  ------------------------------------------
 echo.
 pause

@@ -453,26 +453,12 @@ app.post("/api/claude/run", async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// Routes: Tunnel URL
+// Routes: Public URL (Tailscale Funnel — fixed URL)
 // ---------------------------------------------------------------------------
-app.get("/api/tunnel-url", (_req, res) => {
-  const urlFile = path.join(DATA_DIR, "url.txt");
-  try {
-    const url = fs.readFileSync(urlFile, "utf-8").trim();
-    res.json({ ok: true, url });
-  } catch {
-    res.json({ ok: false, url: null, error: "url.txt not found" });
-  }
-});
+const PUBLIC_URL = "https://hp-spectre-14.tail3a3559.ts.net";
 
-app.get("/api/tunnel-log", (_req, res) => {
-  const logFile = path.join(DATA_DIR, "tunnel.log");
-  try {
-    const log = fs.readFileSync(logFile, "utf-8");
-    res.type("text/plain").send(log);
-  } catch {
-    res.status(404).send("tunnel.log not found");
-  }
+app.get("/api/tunnel-url", (_req, res) => {
+  res.json({ ok: true, url: PUBLIC_URL });
 });
 
 // ---------------------------------------------------------------------------
