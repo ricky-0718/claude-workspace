@@ -1,7 +1,10 @@
 ---
 name: content-writer
 description: |
-  Use this agent for writing tasks: webinar scripts, SNS posts, copywriting, LINE message drafts, video scripts, and any text that needs to sound human and persuasive. NOT for blog articles (use blog-writer or blog-editor instead). Examples:
+  SNS投稿・ウェビナー台本・動画台本・コピーライティングの専門エージェント（ブログ除く）。
+  Trigger when: 「SNS投稿文作って」「ウェビナー台本」「動画の台本」「AIっぽいから直して」「LINE配信文」「コピーライティング」と言われたとき。
+  Do NOT trigger for: ブログ記事（→blog-writer）、LINE個別返信（→customer-manager）、LP文言（→lp-architect）
+  Examples:
 
   <example>
   Context: User needs content for social media or marketing

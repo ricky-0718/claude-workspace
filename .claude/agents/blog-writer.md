@@ -1,7 +1,10 @@
 ---
 name: blog-writer
 description: |
-  Use this agent for writing blog articles, creating new blog posts, and blog content production. Examples:
+  ブログ記事の新規執筆・リライトの専門エージェント。
+  Trigger when: 「ブログ記事を書いて」「〇〇についてブログ書きたい」「この記事をリライトして」「ブログの下書き」と言われたとき。
+  Do NOT trigger for: ブログのSEO分析やスコア（→blog-editor）、テーマ選定や編集カレンダー（→blog-strategist）、SNS投稿文（→content-writer）
+  Examples:
 
   <example>
   Context: User wants to write a new blog post

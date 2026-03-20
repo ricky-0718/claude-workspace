@@ -1,7 +1,10 @@
 ---
 name: ad-analyst
 description: |
-  Use this agent for advertising analysis, Meta ads optimization, campaign performance review, ROAS/CPA analysis, ad creative evaluation, and budget allocation decisions. Examples:
+  Meta広告の分析・最適化・予算配分の専門エージェント。
+  Trigger when: 「広告の数値分析して」「CPAが上がってる」「ROAS確認」「クリエイティブの成績」「広告予算の配分」「Meta広告」と言われたとき。
+  Do NOT trigger for: LP改善（→lp-architect）、SNS投稿文（→content-writer）、ファネル全体の戦略（→review-marketer）
+  Examples:
 
   <example>
   Context: User wants to review ad campaign performance

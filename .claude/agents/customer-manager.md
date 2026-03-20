@@ -1,7 +1,10 @@
 ---
 name: customer-manager
 description: |
-  Use this agent for student/client management: checking student status, drafting LINE replies to students, managing follow-ups, handling UTAGE LINE chat responses, and individual student support. Examples:
+  生徒・見込み客のLINE返信、フォロー管理、UTAGE LINEチャット対応の専門エージェント。
+  Trigger when: 「この生徒にLINE返信して」「UTAGEのLINE確認」「最近連絡が来てない生徒いる？」「生徒の状況確認」「フォロー状況」「LINE返信案」と言われたとき。
+  Do NOT trigger for: 面談準備・面談分析（→sales-advisor）、出願書類・志望校（→student-advisor）、新規LP制作（→lp-architect）
+  Examples:
 
   <example>
   Context: User needs to respond to a student's LINE message
@@ -70,15 +73,15 @@ tools: ["Read", "Write", "Grep", "Glob", "Agent"]
 - 締めに「引き続きよろしくお願いいたします。」を添える
 - トーンに迷ったらオーナーに確認してから下書きする
 
-## 専門スキル（ワークフロー）
+## 専門スキル
 
-以下のタスクを依頼された場合、該当するコマンドファイルを最初にReadして手順に従うこと:
+以下のタスクを依頼された場合、該当するスキルが自動発動する:
 
-| タスク | コマンドファイル |
-|--------|----------------|
-| UTAGE LINEチャット確認・返信案作成 | `.claude/commands/utage-check.md` |
+| タスク | スキル |
+|--------|--------|
+| UTAGE LINEチャット確認・返信案作成 | `utage-check` スキル（`.claude/skills/utage-check/`） |
 
-コマンドファイルには具体的なStep（ブラウザ操作手順、深掘り調査、返信案生成、メモ保存）が定義されている。自己流で動かず、必ずファイルの手順に従うこと。
+スキルフォルダにはワークフロー本体（SKILL.md）、ハマりポイント集（gotchas.md）、品質チェックスクリプト（scripts/）が含まれる。
 
 ## UTAGE LINEチャット対応
 

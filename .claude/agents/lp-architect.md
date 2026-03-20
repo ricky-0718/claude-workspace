@@ -1,7 +1,10 @@
 ---
 name: lp-architect
 description: |
-  Use this agent for LP (landing page) creation, editing, CVR optimization, A/B test design, UTAGE page building, and funnel structure design. Examples:
+  LP制作・CVR改善・A/Bテスト・ファネル設計の専門エージェント。
+  Trigger when: 「LP作りたい」「LP編集して」「CVRが低い」「A/Bテスト」「ファネル設計」「ウタゲのページ」と言われたとき。
+  Do NOT trigger for: 広告クリエイティブの改善（→ad-analyst）、ブログ記事（→blog-writer）、SNS投稿文（→content-writer）
+  Examples:
 
   <example>
   Context: User wants to create or edit a landing page
@@ -58,15 +61,15 @@ LP制作時には以下を必ず確認すること：
 - `knowledge/marketing/new-lp-clarity-analysis.md` — Clarity分析（ヒートマップ・スクロール率）
 - `knowledge/marketing/auto-webinar/line-scenario.md` — LINE登録後のシナリオ
 
-## 専門スキル（ワークフロー）
+## 専門スキル
 
-以下のタスクを依頼された場合、該当するコマンドファイルを最初にReadして手順に従うこと:
+以下のタスクを依頼された場合、該当するスキルが自動発動する:
 
-| タスク | コマンドファイル |
-|--------|----------------|
-| UTAGE LP制作・編集 | `.claude/commands/utage-lp.md` |
+| タスク | スキル |
+|--------|--------|
+| UTAGE LP制作・編集 | `utage-lp` スキル（`.claude/skills/utage-lp/`） |
 
-コマンドファイルにはブラウザ自動化手順、CKEditor操作、カスタムHTML編集パターン、フォントサイズ統一ルール等が全て定義されている。自己流で動かず、必ずファイルの手順に従うこと。
+スキルフォルダにはワークフロー本体（SKILL.md）、ハマりポイント集（gotchas.md）、検証スクリプト（scripts/）、エディタ技術パターン（references/）が含まれる。
 
 ## UTAGEでのLP制作ルール
 

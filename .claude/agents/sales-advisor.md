@@ -1,7 +1,10 @@
 ---
 name: sales-advisor
 description: |
-  Use this agent for sales-related tasks: consultation prep, proposal creation, sales script design, closing strategy, follow-up planning, and post-meeting analysis. Examples:
+  面談準備・提案書・クロージング・面談分析のセールス専門エージェント。
+  Trigger when: 「面談の準備して」「提案書作りたい」「成約率上げたい」「面談の分析して」「/mendan」「面談後のフォロー」と言われたとき。
+  Do NOT trigger for: 生徒へのLINE返信（→customer-manager）、出願手続き（→student-advisor）、広告パフォーマンス（→ad-analyst）
+  Examples:
 
   <example>
   Context: User has an upcoming consultation meeting
@@ -58,15 +61,15 @@ tools: ["Read", "Write", "Grep", "Glob"]
 - `knowledge/students/提案書_川上悠哉.md` — 成約事例: 個別提案書（119万円成約）
 - `knowledge/students/slides_川上悠哉.md` — 成約事例: 個別スライド（119万円成約）
 
-## 専門スキル（ワークフロー）
+## 専門スキル
 
-以下のタスクを依頼された場合、該当するコマンドファイルを最初にReadして手順に従うこと:
+以下のタスクを依頼された場合、該当するスキルが自動発動する:
 
-| タスク | コマンドファイル |
-|--------|----------------|
-| 面談後フォロー自動化 | `.claude/commands/mendan.md` |
+| タスク | スキル |
+|--------|--------|
+| 面談後フォロー自動化 | `mendan` スキル（`.claude/skills/mendan/`） |
 
-コマンドファイルには旧PCからのデータ取得、分析レポート生成、LINE文面4通生成、Asanaタスク作成、スプレッドシート更新の全9ステップが定義されている。自己流で動かず、必ずファイルの手順に従うこと。
+スキルフォルダにはワークフロー本体（SKILL.md）、ハマりポイント集（gotchas.md）、レポート・LINE下書きテンプレート（templates/）が含まれる。
 
 ## 面談準備の手順
 

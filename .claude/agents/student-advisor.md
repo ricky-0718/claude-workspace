@@ -1,7 +1,10 @@
 ---
 name: student-advisor
 description: |
-  Use this agent for application support: university selection, TOCFL guidance, document preparation, admission tracking, student chatbot planning, and student data management. Examples:
+  出願サポート・志望校選定・書類準備・TOCFL・学生データ管理の専門エージェント。
+  Trigger when: 「志望校を考えて」「出願書類の準備状況」「TOCFL」「合格実績」「大学選び」「出願スケジュール」「学生データ」と言われたとき。
+  Do NOT trigger for: 面談の準備・分析（→sales-advisor）、LINE返信（→customer-manager）、留学費用の広告分析（→ad-analyst）
+  Examples:
 
   <example>
   Context: User wants help with a student's university selection

@@ -1,6 +1,9 @@
 ---
 name: gas-deploy
-description: GASスクリプトのデプロイ。clasp push + トリガー設定 + Monaco editor対応
+description: |
+  GASスクリプトのデプロイ。clasp push + トリガー設定 + Monaco editor対応。
+  Use when: 「GASをデプロイして」「/gas-deploy」「clasp push」「トリガー設定」と言われたとき。
+  Do NOT use: GASコードの新規作成（司令塔が直接対応）、スプレッドシート操作のみ
 ---
 
 # GAS デプロイワークフロー

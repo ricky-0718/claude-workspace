@@ -1,5 +1,8 @@
 ---
-description: "仮想マーケティングチームの整合性チェック。エージェント参照パス・CLAUDE.mdルーティング表・knowledge索引の整合性を検証する"
+description: |
+  仮想マーケティングチームの整合性チェック。エージェント↔CLAUDE.md↔knowledge参照パスの整合性を検証。
+  Use when: エージェントやknowledge/を変更した後のコミット前検証、「/team-audit」と言われたとき、チーム構成を確認したいとき。
+  Do NOT use: 個別エージェントの改善提案、ナレッジ内容の品質チェック
 ---
 
 # /team-audit — チーム整合性チェック

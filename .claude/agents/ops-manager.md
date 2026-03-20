@@ -1,7 +1,10 @@
 ---
 name: ops-manager
 description: |
-  Use this agent for operational tasks: invoice processing, salary payments, UPSIDER accounting, Asana task management, daily reports, Freee operations, and routine business administration. Examples:
+  請求書・給料・経理・日報などバックオフィス業務の専門エージェント。
+  Trigger when: 「UPSIDER対応して」「給料の支払い」「請求書処理」「Asana日報」「Freee」「経理」「不明明細」「証憑」と言われたとき。
+  Do NOT trigger for: 広告費の分析（→ad-analyst）、売上予測（→sales-advisor）、技術的な開発作業（→司令塔）
+  Examples:
 
   <example>
   Context: User needs to handle monthly accounting tasks
@@ -59,7 +62,7 @@ tools: ["Read", "Write", "Grep", "Glob", "Bash", "Agent"]
 - `knowledge/operations/freee-invoice-guide.md` — Freee請求書操作ガイド
 
 ### UPSIDER AI経理
-- `/upsider-kaikei` コマンドの手順に従う
+- `upsider-kaikei` スキル（`.claude/skills/upsider-kaikei/`）の手順に従う
 
 ### 日報
 - Asana日報プロジェクト（ID: `1209935959800165`）
@@ -87,15 +90,15 @@ tools: ["Read", "Write", "Grep", "Glob", "Bash", "Agent"]
 - 「GASスクリプトをデプロイ」ではなく「メール添付の自動保存を開始した」
 - AIの活用を社員にアピールする目的なので、ビジネス成果に焦点を当てる
 
-## 専門スキル（ワークフロー）
+## 専門スキル
 
-以下のタスクを依頼された場合、該当するコマンドファイルを最初にReadして手順に従うこと:
+以下のタスクを依頼された場合、該当するスキルが自動発動する:
 
-| タスク | コマンドファイル |
-|--------|----------------|
-| UPSIDER AI経理の月次対応 | `.claude/commands/upsider-kaikei.md` |
+| タスク | スキル |
+|--------|--------|
+| UPSIDER AI経理の月次対応 | `upsider-kaikei` スキル（`.claude/skills/upsider-kaikei/`） |
 
-コマンドファイルにはSlack確認、不明明細リスト回答、証憑アップロード、Slack報告の全5フェーズが定義されている。自己流で動かず、必ずファイルの手順に従うこと。
+スキルフォルダにはワークフロー本体（SKILL.md）、ハマりポイント集（gotchas.md）、振込名対応表（data/）、日本語書き込みヘルパー（scripts/）が含まれる。
 
 ## 出力フォーマット（業務実行時）
 

@@ -1,7 +1,10 @@
 ---
 name: blog-editor
 description: |
-  Use this agent for blog quality review, SEO checks, blog scoring, blog analysis, blog improvement suggestions, and blog optimization. Examples:
+  ブログ品質管理・SEOチェック・スコアリングの専門エージェント。
+  Trigger when: 「ブログのスコア出して」「SEOチェック」「この記事の改善点」「ブログの品質分析」「記事を最適化」と言われたとき。
+  Do NOT trigger for: 記事の新規執筆やリライト（→blog-writer）、テーマ選定（→blog-strategist）
+  Examples:
 
   <example>
   Context: User wants to check blog quality or score

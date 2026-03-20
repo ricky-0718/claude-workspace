@@ -1,6 +1,9 @@
 ---
 name: youtube-transcript
-description: YouTube動画の文字起こしを取得・保存・要約する
+description: |
+  YouTube動画の文字起こしを取得・保存・要約する。
+  Use when: 「YouTubeの文字起こし取って」「/youtube-transcript」「この動画の内容を要約して」と言われたとき。
+  Do NOT use: YouTube以外の動画、ライブ配信中の文字起こし
 ---
 
 # YouTube 文字起こし取得ワークフロー

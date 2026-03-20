@@ -1,5 +1,8 @@
 ---
-description: "マーケ責任者視点でレビュー。ファネル全体での最適性・KPI・優先順位を検証する"
+description: |
+  マーケ責任者視点でレビュー。ファネル全体での最適性・KPI・優先順位を検証する。
+  Use when: 「/review-marketer」「マーケ目線で見て」「ファネル的にどう？」「KPI達成に効く？」と言われたとき。
+  Do NOT use: 経営判断（→/review-ceo）、顧客体験の検証（→/review-customer）
 ---
 
 # /review-marketer — マーケティング責任者視点レビュー
