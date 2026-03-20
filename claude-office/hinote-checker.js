@@ -25,6 +25,8 @@ let checkTimer = null;
 let isChecking = false; // 重複実行防止
 let persistentBrowser = null; // ブラウザ接続を保持
 let persistentPage = null;    // HiNoteタブを保持
+let lastLoginFailNotify = 0;  // 最後にログイン失敗通知を送った時刻（スパム防止）
+const LOGIN_FAIL_NOTIFY_COOLDOWN = 60 * 60 * 1000; // 1時間に1回まで
 
 // ============================================
 // State管理
@@ -105,81 +107,188 @@ function ensureEdgeCDP() {
 }
 
 // ============================================
-// 自動再ログイン（Google SSO経由）
+// 自動再ログイン（Google initTokenClient経由）
+// HiNoteはinitTokenClientでGoogleアクセストークンを取得し、
+// credential=<token> を /v1/oauth2/signin/google に送信する仕組み。
 // ============================================
+const HINOTE_GOOGLE_CLIENT_ID = '122776600569-vi9kuatv0lltcut7f8hrpq5e5ln7qf3j.apps.googleusercontent.com';
+const HINOTE_GOOGLE_ACCOUNT = process.env.HINOTE_GOOGLE_ACCOUNT || 'ricky@ryugaku101.com';
+
 async function attemptAutoLogin(page) {
   try {
-    // ログインページへ遷移（セッション切れの場合、自動リダイレクトされることもある）
+    // HiNoteのトップページにいることを確認
     const url = page.url();
     if (!url.includes('hinotes.hidock.com')) {
-      await page.goto(HINOTE_URL, { waitUntil: 'load', timeout: 30000 });
-      await page.waitForTimeout(2000);
+      await page.goto('https://hinotes.hidock.com', { waitUntil: 'load', timeout: 30000 });
+      await page.waitForTimeout(3000);
     }
 
-    // Googleログインボタンを探してクリック
-    const clicked = await page.evaluate(() => {
-      const buttons = document.querySelectorAll('button, a, [role="button"]');
-      for (const btn of buttons) {
-        const text = btn.textContent?.toLowerCase() || '';
-        if (text.includes('google') || text.includes('ログイン') || text.includes('sign in') || text.includes('log in')) {
-          btn.click();
-          return true;
-        }
+    // GSIライブラリがロードされるのを待つ
+    const gsiReady = await page.evaluate(() => {
+      return typeof google !== 'undefined' && !!google.accounts?.oauth2?.initTokenClient;
+    });
+    if (!gsiReady) {
+      console.log('[HiNote] GSIライブラリが未ロード。ページをリロード...');
+      await page.goto('https://hinotes.hidock.com', { waitUntil: 'load', timeout: 30000 });
+      await page.waitForTimeout(5000);
+      const retry = await page.evaluate(() => typeof google !== 'undefined' && !!google.accounts?.oauth2?.initTokenClient);
+      if (!retry) {
+        console.error('[HiNote] GSIライブラリをロードできない');
+        return false;
       }
-      // Google OAuthのリンクを探す
-      const links = document.querySelectorAll('a[href*="google"], a[href*="oauth"], a[href*="accounts.google"]');
-      if (links.length > 0) {
-        links[0].click();
+    }
+
+    // ポップアップが開くのを監視する準備
+    const context = page.context();
+    const popupPromise = context.waitForEvent('page', { timeout: 30000 });
+
+    // initTokenClient でアクセストークンをリクエスト
+    await page.evaluate(({ clientId, hint }) => {
+      window._hiNoteAutoLoginResult = null;
+      window._hiNoteAutoLoginError = null;
+
+      const client = google.accounts.oauth2.initTokenClient({
+        client_id: clientId,
+        scope: 'openid email profile',
+        hint: hint,
+        callback: async (response) => {
+          if (!response.access_token) {
+            window._hiNoteAutoLoginError = 'No access_token: ' + JSON.stringify(response);
+            return;
+          }
+          try {
+            const res = await fetch('/v1/oauth2/signin/google', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: 'credential=' + encodeURIComponent(response.access_token),
+            });
+            const text = await res.text();
+            // レスポンスからトークンを抽出: <data>TOKEN</data>
+            const match = text.match(/<data>([^<]+)<\/data>/);
+            if (match && match[1]) {
+              localStorage.setItem('accessToken', match[1]);
+              window._hiNoteAutoLoginResult = 'success';
+            } else {
+              window._hiNoteAutoLoginError = 'API failed: ' + text.substring(0, 200);
+            }
+          } catch (e) {
+            window._hiNoteAutoLoginError = 'Fetch error: ' + e.message;
+          }
+        },
+      });
+      client.requestAccessToken();
+    }, { clientId: HINOTE_GOOGLE_CLIENT_ID, hint: HINOTE_GOOGLE_ACCOUNT });
+
+    console.log('[HiNote] Google認証ポップアップを待機中...');
+
+    // ポップアップ（Googleアカウント選択画面）を処理
+    let popup;
+    try {
+      popup = await popupPromise;
+    } catch {
+      console.error('[HiNote] ポップアップが開かなかった');
+      return false;
+    }
+
+    await popup.waitForLoadState('load').catch(() => {});
+    await popup.waitForTimeout(2000);
+
+    // アカウントを選択
+    const accountSelected = await selectGoogleAccount(popup);
+    if (!accountSelected) {
+      console.error('[HiNote] Googleアカウント選択に失敗');
+      try { await popup.close(); } catch {}
+      return false;
+    }
+    console.log('[HiNote] Googleアカウントを選択');
+
+    // 同意画面が出た場合は「次へ」「許可」をクリック
+    await popup.waitForTimeout(3000);
+    try {
+      const popupUrl = popup.url();
+      if (popupUrl.includes('accounts.google.com')) {
+        await handleConsentScreen(popup);
+      }
+    } catch {
+      // ポップアップが閉じた = 認証完了
+    }
+
+    // コールバックの結果を待つ（最大15秒）
+    for (let i = 0; i < 15; i++) {
+      await page.waitForTimeout(1000);
+      const result = await page.evaluate(() => ({
+        success: window._hiNoteAutoLoginResult,
+        error: window._hiNoteAutoLoginError,
+      }));
+
+      if (result.success) {
+        console.log('[HiNote] 自動再ログイン成功（トークン取得・保存完了）');
+        // ノートページに遷移して確認
+        await page.goto(HINOTE_URL, { waitUntil: 'load', timeout: 30000 });
+        await page.waitForTimeout(3000);
         return true;
       }
-      return false;
-    });
-
-    if (!clicked) {
-      console.log('[HiNote] ログインボタンが見つからない');
-      return false;
-    }
-
-    // Google SSO完了を待つ（Googleアカウント選択画面 → 自動認証 → HiNoteにリダイレクト）
-    // 最大30秒待機
-    for (let i = 0; i < 15; i++) {
-      await page.waitForTimeout(2000);
-      const currentUrl = page.url();
-
-      // Googleアカウント選択画面の場合、アカウントをクリック
-      if (currentUrl.includes('accounts.google.com')) {
-        const accountClicked = await page.evaluate(() => {
-          // アカウント選択のリストアイテムをクリック
-          const items = document.querySelectorAll('[data-identifier], [data-email], .JDAKTe');
-          if (items.length > 0) {
-            items[0].click();
-            return true;
-          }
-          return false;
-        });
-        if (accountClicked) {
-          console.log('[HiNote] Googleアカウントを選択');
-        }
-        continue;
-      }
-
-      // HiNoteに戻ってきたか確認
-      if (currentUrl.includes('hinotes.hidock.com')) {
-        const loggedIn = await page.evaluate(() => {
-          const all = document.querySelectorAll('*');
-          for (const el of all) {
-            if (el.textContent?.trim() === 'すべてのノート' && el.children.length === 0) return true;
-          }
-          return false;
-        });
-        if (loggedIn) return true;
+      if (result.error) {
+        console.error('[HiNote] 自動再ログインAPIエラー:', result.error);
+        return false;
       }
     }
 
+    console.error('[HiNote] 自動再ログインタイムアウト');
     return false;
   } catch (err) {
     console.error('[HiNote] 自動再ログインエラー:', err.message);
     return false;
+  }
+}
+
+/**
+ * Googleアカウント選択画面でアカウントをクリック
+ */
+async function selectGoogleAccount(popup) {
+  try {
+    // アカウントリスト表示を待つ
+    await popup.waitForSelector('ul', { timeout: 10000 }).catch(() => {});
+
+    const clicked = await popup.evaluate((targetEmail) => {
+      // data-identifier属性でアカウントを探す
+      const byIdentifier = document.querySelector(`[data-identifier="${targetEmail}"]`);
+      if (byIdentifier) { byIdentifier.click(); return true; }
+
+      // テキストでアカウントを探す
+      const allElements = document.querySelectorAll('li, [role="link"], div[tabindex]');
+      for (const el of allElements) {
+        if (el.textContent?.includes(targetEmail)) {
+          el.click();
+          return true;
+        }
+      }
+
+      // 最初のアカウントをクリック（1つしかない場合）
+      const items = document.querySelectorAll('[data-identifier], [data-email]');
+      if (items.length > 0) { items[0].click(); return true; }
+
+      return false;
+    }, HINOTE_GOOGLE_ACCOUNT);
+
+    return clicked;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Google同意画面の「次へ」「許可」「Continue」をクリック
+ */
+async function handleConsentScreen(popup) {
+  const labels = ['次へ', '許可', 'Continue', 'Allow', '続行'];
+  for (const label of labels) {
+    try {
+      await popup.click(`button:has-text("${label}")`, { timeout: 3000 });
+      console.log('[HiNote] 同意画面クリック:', label);
+      await popup.waitForTimeout(2000);
+      return;
+    } catch {}
   }
 }
 
@@ -518,9 +627,15 @@ async function checkHiNote() {
         const reloggedIn = await attemptAutoLogin(page);
         if (!reloggedIn) {
           console.error('[HiNote] 自動再ログイン失敗');
-          await notify('[HiNote] 自動再ログイン失敗。旧PCのEdgeで https://hinotes.hidock.com に手動ログインしてください');
+          const now = Date.now();
+          if (now - lastLoginFailNotify > LOGIN_FAIL_NOTIFY_COOLDOWN) {
+            lastLoginFailNotify = now;
+            await notify('[HiNote] 自動再ログイン失敗。旧PCのEdgeで https://hinotes.hidock.com に手動ログインしてください');
+          }
           return;
         }
+        // ログイン成功したらクールダウンをリセット
+        lastLoginFailNotify = 0;
         console.log('[HiNote] 自動再ログイン成功');
       }
 
