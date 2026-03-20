@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個別面談スライド台本V2 — 台湾留学101センター</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-serif; background: #f0f0f0; }
+
+/* ===== SLIDE CONTAINER ===== */
+.presentation {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1920px;
+  height: 1080px;
+  background: #FFFFFF;
+  transform-origin: top left;
+  display: none;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+.slide.active { display: flex; }
+
+/* ===== TOP BORDER ===== */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: #2BA6CB;
+  z-index: 10;
+}
+
+/* ===== PROGRESS BAR ===== */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2BA6CB, #F5A623);
+  z-index: 9999;
+  transition: width 0.3s ease;
+}
+
+/* ===== LOGO ===== */
+.slide-logo {
+  position: absolute;
+  top: 20px; left: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2BA6CB;
+  letter-spacing: 2px;
+  z-index: 5;
+}
+
+/* ===== PHASE BADGE ===== */
+.phase-badge {
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+/* ===== SLIDE CONTENT AREA ===== */
+.slide-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 120px 60px;
+}
+
+.slide-title {
+  font-size: 48px;
+  font-weight: 900;
+  color: #1B3A5C;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+
+.slide-script {
+  font-size: 28px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.8;
+  max-width: 1400px;
+}
+
+.slide-script em {
+  font-style: normal;
+  color: #F5A623;
+  font-weight: 700;
+}
+
+.slide-script strong {
+  color: #1B3A5C;
+  font-weight: 700;
+}
+
+/* ===== COVER SLIDE ===== */
+.slide.cover .slide-body {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.slide.cover .slide-title {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+.slide.cover .slide-subtitle {
+  font-size: 32px;
+  color: #2BA6CB;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.slide.cover .slide-meta {
+  font-size: 20px;
+  color: #999;
+  margin-top: 12px;
+}
+
+/* ===== TOC SLIDE ===== */
+.toc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1400px;
+}
+.toc-item {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px 32px;
+  border-left: 6px solid;
+  transition: transform 0.2s;
+}
+.toc-item .toc-num {
+  font-size: 36px;
+  font-weight: 900;
+  color: #1B3A5C;
+  margin-right: 24px;
+  min-width: 50px;
+}
+.toc-item .toc-label {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1B3A5C;
+}
+.toc-item .toc-time {
+  font-size: 18px;
+  color: #888;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ===== Q&A SLIDES ===== */
+.objection-label {
+  display: inline-block;
+  background: #FFF3E0;
+  color: #E65100;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 8px 24px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.objection-title {
+  font-size: 42px;
+  font-weight: 900;
+  color: #1B3A5C;
+  margin-bottom: 32px;
+}
+.objection-response {
+  font-size: 28px;
+  color: #333;
+  line-height: 1.8;
+  background: #f8fbfd;
+  border-left: 5px solid #673AB7;
+  padding: 32px 40px;
+  border-radius: 0 12px 12px 0;
+  max-width: 1400px;
+}
+
+/* ===== SLIDE COUNTER ===== */
+#slide-counter {
+  position: fixed;
+  bottom: 20px; right: 40px;
+  font-size: 16px;
+  color: #999;
+  z-index: 9998;
+  font-weight: 500;
+}
+
+/* ===== SPEAKER NOTES ===== */
+#notes-panel {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 160px;
+  background: rgba(27, 58, 92, 0.95);
+  color: #fff;
+  padding: 20px 40px;
+  font-size: 18px;
+  line-height: 1.6;
+  z-index: 9997;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+}
+#notes-panel.visible {
+  transform: translateY(0);
+}
+#notes-panel .notes-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #F5A623;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+/* ===== KEYBOARD HINT ===== */
+#keyboard-hint {
+  position: fixed;
+  bottom: 20px; left: 40px;
+  font-size: 13px;
+  color: #bbb;
+  z-index: 9998;
+}
+#keyboard-hint kbd {
+  display: inline-block;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 12px;
+  color: #666;
+  margin: 0 2px;
+}
+
+/* ===== PRINT ===== */
+@media print {
+  html, body { overflow: visible; background: #fff; }
+  .presentation { overflow: visible; }
+  .slide {
+    display: flex !important;
+    position: relative !important;
+    page-break-after: always;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh;
+  }
+  #progress-bar, #slide-counter, #notes-panel, #keyboard-hint { display: none !important; }
+}
+
+/* ===== FULLSCREEN ===== */
+:fullscreen .presentation,
+:-webkit-full-screen .presentation {
+  background: #000;
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<div class="presentation" id="presentation">
+
+<!-- ============================== -->
+<!-- SLIDE 1: 表紙 (Cover)         -->
+<!-- ============================== -->
+<div class="slide cover active" data-phase="導入" data-phase-color="#2BA6CB" data-notes="売り込み感を完全に除去する。「聞きに来てよかった」と思わせる空気をつくる。最初の30秒で面談のフレームを決める。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2BA6CB;">導入</div>
+    <div class="slide-title">台湾留学オールインワンプラン</div>
+    <div class="slide-subtitle">個別面談スライド台本</div>
+    <div class="slide-script" style="font-size:24px; max-width:1100px; text-align:center; margin:0 auto;">
+      「本日はありがとうございます。今日は<em>"台湾留学がいいですよ"と一方的に説明する場ではありません</em>。今の進路のまま進んだときに本当に後悔しないかを整理して、その上で合う方にだけ具体策をお話しします。」
+    </div>
+    <div class="slide-meta">台湾留学101センター ｜ 45分 個別面談</div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 2: 目次 (TOC)            -->
+<!-- ============================== -->
+<div class="slide" data-phase="導入" data-phase-color="#2BA6CB" data-notes="全体構成を見せることで、45分間の見通しを持たせる。相手が「今どこにいるか」を常に分かるようにする。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2BA6CB;">導入</div>
+    <div class="slide-title">本日の全体構成</div>
+    <div class="toc-grid">
+      <div class="toc-item" style="border-color:#2BA6CB;">
+        <span class="toc-num">1</span>
+        <span class="toc-label">導入・場づくり</span>
+        <span class="toc-time">0〜5分</span>
+      </div>
+      <div class="toc-item" style="border-color:#4CAF50;">
+        <span class="toc-num">2</span>
+        <span class="toc-label">ヒアリング（SPIN＋分岐）</span>
+        <span class="toc-time">5〜20分</span>
+      </div>
+      <div class="toc-item" style="border-color:#607D8B;">
+        <span class="toc-num">3</span>
+        <span class="toc-label">ギャップ確認・テストクロージング</span>
+        <span class="toc-time">20〜23分</span>
+      </div>
+      <div class="toc-item" style="border-color:#2196F3;">
+        <span class="toc-num">4</span>
+        <span class="toc-label">価値提供・講座案内</span>
+        <span class="toc-time">23〜36分</span>
+      </div>
+      <div class="toc-item" style="border-color:#FF5722;">
+        <span class="toc-num">5</span>
+        <span class="toc-label">価格・比較・投資化</span>
+        <span class="toc-time">36〜41分</span>
+      </div>
+      <div class="toc-item" style="border-color:#E91E63;">
+        <span class="toc-num">6</span>
+        <span class="toc-label">クロージング</span>
+        <span class="toc-time">41〜45分</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 3: 本日の進め方          -->
+<!-- ============================== -->
+<div class="slide" data-phase="導入" data-phase-color="#2BA6CB" data-notes="時間管理と主導権の確立。45分という枠を明確にすることで、ダラダラ面談を防止。「次に何をするか」まで決めると宣言することで、持ち帰り防止の布石を打つ。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2BA6CB;">導入</div>
+    <div class="slide-title">本日の進め方</div>
+    <div class="slide-script">
+      「今日は<strong>45分以内</strong>で進めます。<br><br>
+      前半で現状と本音を整理して、後半で必要な方にだけ具体策をお見せします。<br><br>
+      最後は、進む・保留にするではなく、<em>"次に何をするか"まで決めて終わります</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 4: 今日の約束            -->
+<!-- ============================== -->
+<div class="slide" data-phase="導入" data-phase-color="#2BA6CB" data-notes="安心感と緊張感を同時に与える。「無理に決めさせない」→安心、「ふわっと終わらない」→真剣に向き合う姿勢を伝える。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2BA6CB;">導入</div>
+    <div class="slide-title">今日の約束</div>
+    <div class="slide-script">
+      「無理に決めさせることはしません。<br><br>
+      ただ、<em>ふわっと終わる面談は絶対にしません</em>。<br><br>
+      皆さんにとって意味のある45分にします。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 5: 意思決定者の確認      -->
+<!-- ============================== -->
+<div class="slide" data-phase="導入" data-phase-color="#2BA6CB" data-notes="家族反対の事前処理。この場にいない意思決定者がいると、最後にひっくり返されるリスクがある。事前に把握し、保護者面談の設定につなげる布石。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2BA6CB;">導入</div>
+    <div class="slide-title">意思決定者の確認</div>
+    <div class="slide-script">
+      「最初にだけ確認させてください。<br><br>
+      今日この場にいないけれど、<strong>最終判断に関わる方</strong>はいらっしゃいますか？<br><br>
+      ここを最初に整理しておかないと、<em>後で必ずズレます</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 6: 相談したきっかけ      -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-S" data-phase-color="#4CAF50" data-notes="自発的動機の言語化。相手が自分の口で「こういう理由で来た」と言うことで、面談に対するコミットメントが生まれる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#4CAF50;">SPIN-S</div>
+    <div class="slide-title">相談したきっかけ</div>
+    <div class="slide-script">
+      「まず、今回この面談を受けようと思った<strong>きっかけ</strong>から聞かせてください。<br><br>
+      何が一番引っかかって、<em>今日ここに来ようと思いましたか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 7: 本人の温度感確認      -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-S" data-phase-color="#4CAF50" data-notes="温度感の見極め。本人が主体的に来たのか、親に言われて来たのかで、後半のアプローチが180度変わる。正直に答えてもらうことが重要。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#4CAF50;">SPIN-S</div>
+    <div class="slide-title">本人の温度感確認</div>
+    <div class="slide-script">
+      「ご本人にも率直に聞きたいです。<br><br>
+      今日は<strong>"自分でも聞いてみたい"</strong>という気持ちで来ましたか？<br><br>
+      それとも、まずは<em>親御さんに言われて来た</em>感じですか？」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 8: 保護者から背景を聞く  -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-S" data-phase-color="#4CAF50" data-notes="温度が低い本人への自然な分岐。本人がまだ整理できていない場合、無理に聞き続けるより保護者に切り替えた方が情報が出る。本人のプレッシャーも軽減。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#4CAF50;">SPIN-S 分岐</div>
+    <div class="slide-title">保護者から背景を聞く</div>
+    <div class="slide-script">
+      「もし今まだご本人が整理しきれていなくても大丈夫です。<br><br>
+      では親御さんに伺います。<br><br>
+      今回、<em>どんな思いでこの面談を受けようと思われましたか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 9: 現在の進路状況        -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-S" data-phase-color="#4CAF50" data-notes="現状把握と先生ポジションの確立。成績・志望校・語学力を聞くことで、「この人は具体的に見てくれる」という信頼を築く。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#4CAF50;">SPIN-S</div>
+    <div class="slide-title">現在の進路状況</div>
+    <div class="slide-script">
+      「今の成績、志望校、英語力、中国語、出願時期。<br><br>
+      このあたりを一度フラットに整理させてください。<br><br>
+      <strong>今どんな状況ですか？</strong>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 10: 海外志向の原点       -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-S" data-phase-color="#4CAF50" data-notes="感情の原点に戻す。論理ではなく感情に触れることで、本人の本音が出やすくなる。「心が動いた瞬間」を思い出させることで、面談の温度が上がる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#4CAF50;">SPIN-S</div>
+    <div class="slide-title">海外志向の原点</div>
+    <div class="slide-script">
+      「そもそも、大学も海外に行きたいと思った<strong>原点</strong>って何でしたか？<br><br>
+      交換留学でも、旅行でも、何か<em>心が動いた瞬間</em>があったと思うんです。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 11: 今一番モヤモヤ       -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-P" data-phase-color="#FF9800" data-notes="自分の言葉で問題を語らせる。「ありますよね」と誘導するのではなく、オープンクエスチョンで本人に語らせる。自分で言った問題は、自分で解決したくなる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#FF9800;">SPIN-P</div>
+    <div class="slide-title">今一番モヤモヤしていること</div>
+    <div class="slide-script">
+      「ぶっちゃけ、今の進路について<br><br>
+      <em>一番モヤモヤしていることって何ですか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 12: 費用面の本音         -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-P" data-phase-color="#FF9800" data-notes="費用不安の具体化。「お金が心配」という漠然とした不安を、具体的な金額感・許容範囲に落とし込む。後の価格提示で響かせるための伏線。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#FF9800;">SPIN-P</div>
+    <div class="slide-title">費用面の本音</div>
+    <div class="slide-script">
+      「進学先を考える中で、<strong>お金のこと</strong>ってどのくらい引っかかっていますか？<br><br>
+      どこが不安で、<em>どこまでなら現実的</em>だと感じていますか？」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 13: 間に合うかの不安     -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-P" data-phase-color="#FF9800" data-notes="期限不安の言語化。「間に合わないかも」という焦りを引き出す。この焦りが後半で「だからこそ今動くべき」という行動の動機になる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#FF9800;">SPIN-P</div>
+    <div class="slide-title">間に合うかの不安</div>
+    <div class="slide-script">
+      「時期の面ではどうですか？<br><br>
+      <em>"まだ間に合うのか"</em><br>
+      <em>"準備が遅いんじゃないか"</em><br><br>
+      みたいな不安はありますか？」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 14: 中国語への不安       -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-P" data-phase-color="#FF9800" data-notes="中国語ゼロ不安の引き出し。多くの相談者が「中国語できないのに大丈夫か」という不安を抱えている。ここで出しておくことで、後半の語学設計スライドが刺さる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#FF9800;">SPIN-P</div>
+    <div class="slide-title">中国語への不安</div>
+    <div class="slide-script">
+      「語学面ではどうでしょう。<br><br>
+      <strong>英語よりも、中国語の方が不安</strong>ですか？<br><br>
+      それとも、<em>語学全体に対して不安がありますか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 15: 将来像の曖昧さ       -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-P" data-phase-color="#FF9800" data-notes="漠然不安の言語化。「やりたいことが分からない」は高校生の最大の悩み。この不安を顕在化させることで、台湾留学を「視野を広げる手段」として提示しやすくなる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#FF9800;">SPIN-P</div>
+    <div class="slide-title">将来像の曖昧さ</div>
+    <div class="slide-script">
+      「将来やりたいことがまだハッキリしていない、という悩みはありますか？<br><br>
+      もしあるなら、<em>どこが一番見えにくいですか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 16: 今のまま進んだ4年後  -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-I" data-phase-color="#F44336" data-notes="現状維持のリスクを可視化。SPIN-Iの核心。「4年後の自分」を想像させることで、現状維持が実はリスクであることに気づかせる。厳しめのトーンで本音を引き出す。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#F44336;">SPIN-I</div>
+    <div class="slide-title">今のまま進んだ4年後</div>
+    <div class="slide-script">
+      「少し厳しめに聞きます。<br><br>
+      今のまま何となく日本の大学に進んだとして、<br><br>
+      <em>4年後の自分ってどうなっていると思いますか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 17: 後悔の確認            -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-I" data-phase-color="#F44336" data-notes="認知的不協和の発生。「胸を張って言えるか？」と問われると、多くの人は言えない。その不協和が「変えなきゃ」という動機に変わる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#F44336;">SPIN-I</div>
+    <div class="slide-title">後悔の確認</div>
+    <div class="slide-script">
+      「その4年後を想像したときに、<br><br>
+      <em>"この選択で良かった"って<br>
+      胸を張って言えそうですか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 18: 保護者の本音         -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-I" data-phase-color="#F44336" data-notes="保護者を当事者化。保護者にも「どうなってほしいか」「何が心配か」を語らせることで、面談の問題を家族全体の問題に昇華させる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#F44336;">SPIN-I</div>
+    <div class="slide-title">保護者の本音</div>
+    <div class="slide-script">
+      「親御さんにも伺いたいです。<br><br>
+      <strong>お子さまにどうなってほしいですか？</strong><br><br>
+      逆に、今の進路のままだと<em>何が一番心配ですか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 19: 理想の未来           -->
+<!-- ============================== -->
+<div class="slide" data-phase="SPIN-N" data-phase-color="#9C27B0" data-notes="理想像の具体化。SPIN-Nの核心。痛みを深掘った後に、理想の未来を語らせる。この理想と現実のギャップが、解決策への渇望を生む。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#9C27B0;">SPIN-N</div>
+    <div class="slide-title">理想の未来</div>
+    <div class="slide-script">
+      「逆に、<strong>理想の未来</strong>はどんな状態ですか？<br><br>
+      大学生活、語学、就職、自立、家族としての安心感まで含めて、<br><br>
+      <em>こうなったら最高だなという姿</em>を聞かせてください。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 20: ギャップの確認       -->
+<!-- ============================== -->
+<div class="slide" data-phase="Phase4" data-phase-color="#607D8B" data-notes="必要条件を本人に言わせる。「ギャップを埋めるには何が必要？」と聞くことで、相手自身に解決策の要件を語らせる。押し売りではなく、相手が求めたから提案する構造。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#607D8B;">Phase4</div>
+    <div class="slide-title">ギャップの確認</div>
+    <div class="slide-script">
+      「今話してくれた<strong>"現状"</strong>と<strong>"理想の未来"</strong>の間には、<br>かなり大きなギャップがありますよね。<br><br>
+      では、そのギャップを埋めるには<em>何が必要だと思いますか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 21: 必要なものの言語化   -->
+<!-- ============================== -->
+<div class="slide" data-phase="Phase4" data-phase-color="#607D8B" data-notes="解決策の受容準備。具体的な要素（環境・サポート・出願戦略・語学設計）を挙げることで、相手の頭の中を整理させる。後の価値提供で「まさにそれ」と思わせる布石。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#607D8B;">Phase4</div>
+    <div class="slide-title">必要なものの言語化</div>
+    <div class="slide-script">
+      「環境なのか、サポートなのか、出願戦略なのか、語学設計なのか…。<br><br>
+      <em>今の皆さんに必要なのは何だと思いますか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 22: テストクロージング    -->
+<!-- ============================== -->
+<div class="slide" data-phase="分岐" data-phase-color="#607D8B" data-notes="Yes取得と一貫性の原理。「詳しく聞いてみたいですか？」にYesと言わせることで、後半の提案を聞く姿勢が確定する。一度Yesと言った人は、その一貫性を保とうとする。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#607D8B;">分岐</div>
+    <div class="slide-title">テストクロージング</div>
+    <div class="slide-script">
+      「ありがとうございます。今の話を聞く限り、<br>必要なのは<strong>"気合い"ではなく"正しい環境と伴走"</strong>ですよね。<br><br>
+      もしそれを全部まとめて用意できる選択肢があるなら、<br><em>詳しく聞いてみたいですか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 23: 台湾留学はサードドア -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="新しい選択肢の提示。「日本でも欧米でもない第三の道」という枠組みで、台湾留学を独自のポジションに置く。ここから初めて解決策の話をするという区切りが重要。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">台湾留学はサードドア</div>
+    <div class="slide-script">
+      「ここから初めて解決策の話をします。<br><br>
+      断言します。台湾留学は、日本でも欧米でもない、<br><br>
+      <em>"人生を逆転させるサードドア"</em>です。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 24: 4年後の卒業生の姿   -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="未来像の具体化。抽象的な「いい大学」ではなく、トリリンガル・複数内定・選べる人、という具体的な未来を見せる。SPIN-Iで見た「暗い4年後」との対比。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">4年後の卒業生の姿</div>
+    <div class="slide-script">
+      「実際に卒業後どうなるのか。ここが大事です。<br><br>
+      うちのルートで進んだ学生は、<strong>日本語・中国語・英語のトリリンガル環境</strong>に身を置きながら、就活で複数内定を取れる土台を作っています。<br><br>
+      <em>『日本だけで就職先を探す人』ではなく、<br>『どこでも選べる人』</em>に近づいていくんです。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 25: キャリアの伸びしろ   -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="過剰表現を避けつつ魅力化。「年収1000万を保証」ではなく「そこを狙える土台に乗る」という表現で、誠実さを保ちながら魅力を伝える。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">キャリアの伸びしろ</div>
+    <div class="slide-script">
+      「就職においても、<strong>海外大卒、中国語、英語</strong>、この3つが揃うだけで見え方は大きく変わります。<br><br>
+      年収1000万クラスの仕事を最初から保証するわけではありません。<br><br>
+      ただ、<em>そこを本気で狙える土台に乗る</em>。ここが大きいんです。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 26: なぜ台湾なのか       -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="論理提示。感情ではなく3つの具体的理由で台湾を選ぶ合理性を示す。保護者は特にこのロジカルな説明に反応する。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">なぜ台湾なのか</div>
+    <div class="slide-script">
+      「なぜ台湾か。理由はシンプルです。<br><br>
+      <strong>① 学費と生活費が現実的</strong><br>
+      <strong>② 大学の選択肢が広い</strong><br>
+      <strong>③ 中国語と英語の両方に触れられる</strong><br><br>
+      <em>この3つが同時に成立する</em>からです。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 27: 代表ストーリー①     -->
+<!-- ============================== -->
+<div class="slide" data-phase="権威性" data-phase-color="#3F51B5" data-notes="共感と親近感。「優等生ではなかった」という自己開示で、相談者（特に成績に自信がない層）との距離を一気に縮める。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#3F51B5;">権威性</div>
+    <div class="slide-title">代表ストーリー①</div>
+    <div class="slide-script">
+      「僕は<strong>沖縄の石垣島出身</strong>で、高校時代は生徒指導2回。<br><br>
+      正直、優等生とは真逆でした。高3は体育クラスで、数学もほとんどちゃんとやっていない。<br><br>
+      そんな<em>"問題児側"の人間</em>でした。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 28: 代表ストーリー②     -->
+<!-- ============================== -->
+<div class="slide" data-phase="権威性" data-phase-color="#3F51B5" data-notes="リアルな失敗で信頼形成。「8単位しか取れなかった」という具体的な失敗談が、成功体験だけ語る人よりも圧倒的に信頼される。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#3F51B5;">権威性</div>
+    <div class="slide-title">代表ストーリー②</div>
+    <div class="slide-script">
+      「それでも台湾に行ったんです。<br>でも最初は本当に大失敗でした。<br><br>
+      大学からの通知も読めない、履修も分からない、<br>何をどう動けばいいかも分からない。<br><br>
+      1年目は、<em>たった8単位しか取れませんでした</em>。<br>正直、絶望しました。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 29: 代表ストーリー③     -->
+<!-- ============================== -->
+<div class="slide" data-phase="権威性" data-phase-color="#3F51B5" data-notes="共感から理念へ接続。「先輩に救われた→だからこの仕組みを作った」というストーリーが、商品の存在理由を感情的に正当化する。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#3F51B5;">権威性</div>
+    <div class="slide-title">代表ストーリー③</div>
+    <div class="slide-script">
+      「そこで救ってくれたのが、<strong>日本人の先輩</strong>でした。<br><br>
+      何をどう進めればいいか、現地でどう生きればいいか、<br>実際に手を差し伸べてもらった。<br><br>
+      その経験で痛感したんです。<br><em>留学は根性ではなく、仕組みと伴走が必要だ</em>と。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 30: だからこの仕組みを作った -->
+<!-- ============================== -->
+<div class="slide" data-phase="権威性" data-phase-color="#3F51B5" data-notes="ストーリーと商品の接続。代表の原体験が商品設計の根拠になっている。「困ったから作った」が最も強い商品理由。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#3F51B5;">権威性</div>
+    <div class="slide-title">だからこの仕組みを作った</div>
+    <div class="slide-script">
+      「だから僕は、出願だけで終わるサポートではなく、<br><br>
+      <strong>渡航してからも、在学中も、卒業後も繋がる仕組み</strong>を作りました。<br><br>
+      <em>僕が困ったことを、次の世代には困らせないため</em>です。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 31: 実績の全体像         -->
+<!-- ============================== -->
+<div class="slide" data-phase="権威性" data-phase-color="#3F51B5" data-notes="社会的証明。年間100名以上という数字で「多くの人が選んでいる」という安心感を与える。思いつきではなく再現性のある支援であることを強調。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#3F51B5;">権威性</div>
+    <div class="slide-title">実績の全体像</div>
+    <div class="slide-script">
+      「実績も見てください。<br><br>
+      <strong>年間100名以上</strong>を台湾へ送り出し、<br>説明会参加者も<strong>100名以上</strong>。<br><br>
+      思いつきではなく、<em>再現性のある支援</em>として積み上げてきました。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 32: 合格率・大学実績     -->
+<!-- ============================== -->
+<div class="slide" data-phase="権威性" data-phase-color="#3F51B5" data-notes="権威性の最大化。合格率100%（2学科以上出願時）、15大学以上の出願実績、国立大学との提携。具体的な数字で権威性を確立。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#3F51B5;">権威性</div>
+    <div class="slide-title">合格率・大学実績</div>
+    <div class="slide-script">
+      「2学科以上出願した生徒に限れば<strong>合格率は100%</strong>。<br><br>
+      出願実績は<strong>15大学以上</strong>。<br><br>
+      台湾大学、政治大学、師範大学を含め、<br><em>国立大学とも提携</em>しています。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 33: 奨学金実績           -->
+<!-- ============================== -->
+<div class="slide" data-phase="権威性" data-phase-color="#3F51B5" data-notes="費用不安の解除。TSMC半導体プログラムの圧倒的な実績（12名全員合格・450万円相当）で、費用面の不安を一気に払拭する。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#3F51B5;">権威性</div>
+    <div class="slide-title">奨学金実績</div>
+    <div class="slide-script">
+      「<strong>TSMC半導体プログラム</strong>では<br>12名出願して<strong>12名全員合格</strong>。<br><br>
+      4年間の学費免除に加えて毎月5万円給付。<br><br>
+      1人あたり<em>約450万円相当</em>です。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 34: 逆転合格の実例       -->
+<!-- ============================== -->
+<div class="slide" data-phase="権威性" data-phase-color="#3F51B5" data-notes="希望形成。評定平均2.8〜2.9でも国立大合格・奨学金獲得という実績が、「自分でもいけるかも」という希望を生む。偏差値社会へのアンチテーゼ。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#3F51B5;">権威性</div>
+    <div class="slide-title">逆転合格の実例</div>
+    <div class="slide-script">
+      「評定平均<strong>2.8〜2.9</strong>の生徒でも、<br>国立大合格と奨学金獲得の実績があります。<br><br>
+      偏差値だけで進路が決まるわけではありません。<br><br>
+      <em>環境と戦略で逆転できます</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 35: 中国語学習の設計     -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="語学不安の解除。業界平均720時間→250時間という具体的な数字の差で、「設計されている」安心感を与える。根性論ではなく設計の問題だと定義し直す。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">中国語学習の設計</div>
+    <div class="slide-script">
+      「中国語も、根性論ではありません。<br><br>
+      業界平均<strong>720時間</strong>かかるところを、<br>うちは<strong>約250時間</strong>でTOCFL A2合格を目指す設計です。<br><br>
+      安心してください。<em>ゼロ前提で作っています</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 36: このプランの本質     -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="商品の再定義。「出願代行」ではなく「5年間の丸ごと伴走」と再定義することで、149万円の価値の見え方が変わる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">このプランの本質</div>
+    <div class="slide-script">
+      「このプランの価値は<strong>"出願代行"ではありません</strong>。<br><br>
+      出願準備から渡航、在学、卒業、就職まで、<br><br>
+      <em>約5年間を丸ごと伴走する</em>ことです。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 37: 出願戦略             -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="専門性の提示。「5学科まで戦略設計」「闇雲には出させない」で、プロフェッショナルとしての姿勢を示す。出願のプロがいる安心感。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">出願戦略</div>
+    <div class="slide-script">
+      「出願は<strong>5学科まで</strong>戦略設計します。<br><br>
+      どこに出すかで合否も、その後の人生も変わります。<br><br>
+      だから<em>闇雲には出させません</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 38: 書類作成支援         -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="他社差別化。日本語→日本人添削→台湾人翻訳という二段階品質管理は、他社にはない独自の強み。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">書類作成支援</div>
+    <div class="slide-script">
+      「書類は日本語で土台を作り、<br>日本人が添削し、<br>最後に台湾人が<strong>"刺さる形"に翻訳</strong>します。<br><br>
+      <em>この二段階品質が、かなり強い</em>です。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 39: 現地サポート         -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="保護者の安心材料。空港迎え・寮同行・SIM・口座開設・病院対応という具体的な項目列挙で、「子どもを海外に送る不安」を一つずつ潰す。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">現地サポート</div>
+    <div class="slide-script">
+      「渡航後も放置しません。<br><br>
+      <strong>空港迎え、寮同行、SIM、口座開設、病院対応</strong>まで、<br><br>
+      <em>現地で詰まりやすいところを先回りして潰します</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 40: 在学・再出願・就職   -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="長期伴走の価値。「追加料金なし」「就職サポートまで」という文言で、149万円の中に含まれる価値の総量を認識させる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">在学・再出願・就職まで</div>
+    <div class="slide-script">
+      「在学中も<strong>定期面談とLINE相談が無制限</strong>。<br><br>
+      転学や再出願も<strong>追加料金なし</strong>。<br><br>
+      <em>卒業後の就職サポートまで繋げます</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 41: 条件付き合格保証     -->
+<!-- ============================== -->
+<div class="slide" data-phase="価値提供" data-phase-color="#2196F3" data-notes="リスクリバーサル。「全不合格なら翌年無償対応」は、相談者にとって最大の不安（落ちたらどうなる？）を完全に消す。投資判断のハードルが大幅に下がる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#2196F3;">価値提供</div>
+    <div class="slide-title">条件付き合格保証</div>
+    <div class="slide-script">
+      「さらに、もし<strong>全不合格</strong>だった場合は<br>次年度の出願を<strong>無償で対応</strong>します。<br><br>
+      挑戦させて終わりではなく、<br><em>結果が出るところまで責任を持つ</em>ということです。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 42: 総額比較①           -->
+<!-- ============================== -->
+<div class="slide" data-phase="価格" data-phase-color="#FF5722" data-notes="アンカリング。149万円を単体で見せるのではなく、日本私大4年間1,000〜1,500万円と比較することで、相対的に安く感じさせる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#FF5722;">価格</div>
+    <div class="slide-title">総額比較①</div>
+    <div class="slide-script">
+      「ここから費用です。<br><br>
+      <strong>149万円</strong>だけを見ると高く感じると思います。<br>だからこそ、単体ではなく<em>総額で見てください</em>。<br><br>
+      日本の私立大4年間は<strong>1,000万〜1,500万円</strong>。<br>台湾留学は合計<strong>約589万円</strong>です。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 43: 総額比較②           -->
+<!-- ============================== -->
+<div class="slide" data-phase="価格" data-phase-color="#FF5722" data-notes="価格の投資化。差額500〜900万円、さらに奨学金で450万円減。149万円は「費用」ではなく「将来コストを下げる投資」というフレームに変換。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#FF5722;">価格</div>
+    <div class="slide-title">総額比較②</div>
+    <div class="slide-script">
+      「差額は<strong>500万〜900万円</strong>。<br>さらに奨学金で<strong>最大450万円下がる</strong>可能性もあります。<br><br>
+      つまり149万円は、ただの手数料ではありません。<br><br>
+      <em>将来コストを下げながら、選択肢を増やす投資</em>です。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 44: 保護者への問いかけ   -->
+<!-- ============================== -->
+<div class="slide" data-phase="価格" data-phase-color="#FF5722" data-notes="保護者を投資判断者にする。「高いですか？ それとも合理的ですか？」という二択で、保護者自身に判断を下させる。「合理的」と答えさせる設計。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#FF5722;">価格</div>
+    <div class="slide-title">保護者への問いかけ</div>
+    <div class="slide-script">
+      「お母様、お父様、ここはぜひ<strong>親御さんの視点</strong>で見ていただきたいです。<br><br>
+      日本の大学4年間にそのまま進むケースと比べて、<br>今の数字をどう感じられますか？<br><br>
+      <em>"高い"ですか、それとも"むしろ合理的"ですか？</em>」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 45: 他エージェントとの違い -->
+<!-- ============================== -->
+<div class="slide" data-phase="比較" data-phase-color="#795548" data-notes="比較検討の先回り。「比べてください」と自ら言うことで、防衛姿勢を取らない余裕を見せる。比較基準を「5年間の責任」に設定し、有利な土俵で戦う。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#795548;">比較</div>
+    <div class="slide-title">他エージェントとの違い</div>
+    <div class="slide-script">
+      「他社と比較したい方は、ぜひ比べてください。<br><br>
+      ただ、比べる基準は1つです。<br><strong>出願だけで終わるのか、5年間の結果まで責任を持つのか</strong>。<br><br>
+      <em>この一点で見れば、違いはかなり明確です</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 46: 反対者の洗い出し     -->
+<!-- ============================== -->
+<div class="slide" data-phase="事前処理" data-phase-color="#78909C" data-notes="第三者反対の事前処理。持ち帰って反対される前に、反対しそうな人物を洗い出す。ここで出しておけば、その場で対策を練れる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#78909C;">事前処理</div>
+    <div class="slide-title">反対者の洗い出し</div>
+    <div class="slide-script">
+      「ここで最後の確認です。<br><br>
+      今日の話を持ち帰ったときに、<strong>反対しそうな方や相談したい第三者</strong>はいますか？<br><br>
+      もう一人の保護者、主治医、学校の先生、カウンセラー。<br><em>このあたりは先に洗い出しておきたいです</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 47: 支払い方法           -->
+<!-- ============================== -->
+<div class="slide" data-phase="条件提示" data-phase-color="#009688" data-notes="支払いハードルの緩和。一括以外の選択肢（Stripe分割・頭金後払い）を提示することで、「お金がないから無理」という断り文句を先に潰す。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#009688;">条件提示</div>
+    <div class="slide-title">支払い方法</div>
+    <div class="slide-script">
+      「お支払いは<strong>銀行振込一括</strong>、<strong>Stripe分割</strong>、<br><strong>頭金20万〜50万円で残金後払い</strong>にも対応できます。<br><br>
+      なので、<em>"一括が厳しいから無理"で終わる話ではありません</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 48: 仮申込の考え方       -->
+<!-- ============================== -->
+<div class="slide" data-phase="クロージング" data-phase-color="#E91E63" data-notes="持ち帰り防止。「検討します」は死語。仮申込（無料・7日間枠確保・キャンセル無料）で、行動のハードルを最大限下げる。「契約ではなく枠取り」というリフレーミング。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#E91E63;">クロージング</div>
+    <div class="slide-title">仮申込の考え方</div>
+    <div class="slide-script">
+      「ここで<em>"検討します"だけで終わると、かなりの確率で熱が冷めます</em>。<br><br>
+      だから当社では、<strong>無料の仮申込で7日間枠を確保</strong>する形をおすすめしています。<br><br>
+      キャンセルも無料です。<br>つまり契約ではなく、<em>"可能性を消さないための枠取り"</em>です。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 49: 最終提案             -->
+<!-- ============================== -->
+<div class="slide" data-phase="クロージング" data-phase-color="#E91E63" data-notes="CTAの明確化。「仮申込で枠を押さえる」「保護者面談日程を切る」の2つの具体的アクションを提示。選択肢を明確にすることで、相手が動きやすくなる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#E91E63;">クロージング</div>
+    <div class="slide-title">最終提案</div>
+    <div class="slide-script">
+      「今日ここまで聞いて、<strong>進む価値がある</strong>と感じたなら、<br>まずは仮申込で枠を押さえましょう。<br><br>
+      意思決定者がまだ揃っていない場合は、<br><em>その場で次回の保護者面談日程まで切りましょう</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 50: 温かい着地           -->
+<!-- ============================== -->
+<div class="slide" data-phase="クロージング" data-phase-color="#E91E63" data-notes="温度感のあるクロージング。進む人には「一緒に頑張りましょう」、迷っている人には次の一歩を決める、見送る人にもドアを開ける。どのパターンでも温かく終える。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#E91E63;">クロージング</div>
+    <div class="slide-title">温かい着地</div>
+    <div class="slide-script">
+      「ここで進まれるなら、僕は本当に嬉しいです。<strong>一緒に頑張りましょう</strong>。<br><br>
+      もし今日はまだ判断しきれない場合でも、<br>状況が整理できるように次の一歩を決めて終えましょう。<br><br>
+      今回は見送る判断でも大丈夫です。<br>ただ、その場合でもまた状況が変わったら、<em>いつでも連絡してください</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 51: Q&Aと次アクション    -->
+<!-- ============================== -->
+<div class="slide" data-phase="クロージング" data-phase-color="#E91E63" data-notes="事務処理で終わらせず伴走感を残す。3択（仮申込・保護者面談・見送り）を明確にし、「一緒に整理して決めましょう」で最後まで伴走者でいる。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#E91E63;">クロージング</div>
+    <div class="slide-title">Q&Aと次アクション</div>
+    <div class="slide-script">
+      「最後に質問を全部受けます。<br><br>
+      その上で今日は、<br>
+      <strong>① 仮申込に進む</strong><br>
+      <strong>② 保護者面談を設定する</strong><br>
+      <strong>③ 今回は一旦見送る</strong><br><br>
+      この3つのどれにするかを、<em>一緒に整理して決めましょう</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- Q&A SLIDES (7 objections)      -->
+<!-- ============================== -->
+
+<!-- Q&A 1: 149万円が高い -->
+<div class="slide" data-phase="Q&A" data-phase-color="#673AB7" data-notes="最頻出の反論。149万円を単体で見せない。「4年間の総額と将来の選択肢がどう変わるか」というフレームで返す。感情ではなく数字で論理的に。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#673AB7;">Q&A</div>
+    <div class="slide-title" style="font-size:36px;">Q&A対策</div>
+    <div class="objection-label">反論 1</div>
+    <div class="objection-title">「149万円が高い」</div>
+    <div class="objection-response">
+      「その感覚は自然です。なので、149万円単体では見ないでください。<br><br>
+      重要なのは、<em>"この投資を入れることで4年間の総額と将来の選択肢がどう変わるか"</em>です。<br><br>
+      日本の私大に普通に進むより、<strong>むしろ合理的になるケースが多い</strong>です。」
+    </div>
+  </div>
+</div>
+
+<!-- Q&A 2: 親と相談します -->
+<div class="slide" data-phase="Q&A" data-phase-color="#673AB7" data-notes="「相談します」は断り文句の可能性大。契約ではなく無料の仮申込で枠を押さえる、というハードルの低い代替案を提示して熱が冷めることを防ぐ。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#673AB7;">Q&A</div>
+    <div class="slide-title" style="font-size:36px;">Q&A対策</div>
+    <div class="objection-label">反論 2</div>
+    <div class="objection-title">「親と相談します」</div>
+    <div class="objection-response">
+      「もちろん相談は必要です。<br><br>
+      ただ、<em>"相談してから考えます"は、ほとんどの場合、熱が冷めて終わります</em>。<br><br>
+      だからこそ、今日は契約ではなく、<strong>無料の仮申込で7日だけ枠を押さえる形</strong>をご案内しています。」
+    </div>
+  </div>
+</div>
+
+<!-- Q&A 3: 今日いない親の判断が必要 -->
+<div class="slide" data-phase="Q&A" data-phase-color="#673AB7" data-notes="意思決定者不在パターン。結論を先送りさせず、「この場で次回の保護者面談を設定する」という具体的アクションに落とし込む。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#673AB7;">Q&A</div>
+    <div class="slide-title" style="font-size:36px;">Q&A対策</div>
+    <div class="objection-label">反論 3</div>
+    <div class="objection-title">「今日いない親の判断が必要」</div>
+    <div class="objection-response">
+      「そこが一番大事です。<br><br>
+      だから今日は結論を先送りするのではなく、<strong>この場で次回の保護者面談を設定</strong>しましょう。<br><br>
+      <em>話が新鮮なうちに全員で整理した方が、ズレません</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- Q&A 4: 中国語ゼロで不安 -->
+<div class="slide" data-phase="Q&A" data-phase-color="#673AB7" data-notes="語学不安パターン。「ゼロ前提で設計している」「才能の問題ではなく設計の問題」と明確に定義し直す。不安を論理で消す。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#673AB7;">Q&A</div>
+    <div class="slide-title" style="font-size:36px;">Q&A対策</div>
+    <div class="objection-label">反論 4</div>
+    <div class="objection-title">「中国語ゼロで不安」</div>
+    <div class="objection-response">
+      「大丈夫です。中国語ができる人向けのサービスではありません。<br><br>
+      <strong>ゼロ前提</strong>で、どの順番で、どこまでやれば出願に間に合うのかまで設計しています。<br><br>
+      <em>才能の問題ではなく、設計の問題</em>です。」
+    </div>
+  </div>
+</div>
+
+<!-- Q&A 5: 自信がない、続けられるか不安 -->
+<div class="slide" data-phase="Q&A" data-phase-color="#673AB7" data-notes="自信不足パターン。「気合いではなく環境と伴走」で変わるという構造に持っていく。1人で頑張らせない設計を強調。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#673AB7;">Q&A</div>
+    <div class="slide-title" style="font-size:36px;">Q&A対策</div>
+    <div class="objection-label">反論 5</div>
+    <div class="objection-title">「自信がない、続けられるか不安」</div>
+    <div class="objection-response">
+      「気持ちはすごく分かります。<br><br>
+      ただ、続けられるかどうかは、本人の気合いだけで決まるものではありません。<br><br>
+      <strong>環境と伴走の設計</strong>でかなり変わります。<br>だから<em>1人で頑張らせる形にはしていません</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- Q&A 6: 他社と比較したい -->
+<div class="slide" data-phase="Q&A" data-phase-color="#673AB7" data-notes="比較検討パターン。「比較は大歓迎」と余裕を見せつつ、比較基準を「出願で終わるか、卒業まで責任を持つか」に設定して有利な土俵に誘導。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#673AB7;">Q&A</div>
+    <div class="slide-title" style="font-size:36px;">Q&A対策</div>
+    <div class="objection-label">反論 6</div>
+    <div class="objection-title">「他社と比較したい」</div>
+    <div class="objection-response">
+      「比較は大歓迎です。<br><br>
+      その代わり、安いか高いかだけで比べると本質を外します。<br><br>
+      <strong>出願して終わるのか、卒業と就職まで責任を持つのか</strong>。<br><em>この視点で見ると、かなり差が出ます</em>。」
+    </div>
+  </div>
+</div>
+
+<!-- Q&A 7: 主治医・学校カウンセラーに相談したい -->
+<div class="slide" data-phase="Q&A" data-phase-color="#673AB7" data-notes="第三者相談パターン。感情で押し切らず、懸念点を整理して一緒に共有方法まで考える姿勢を見せる。味方感を出す。">
+  <div class="slide-logo">台湾留学101センター</div>
+  <div class="slide-body">
+    <div class="phase-badge" style="background:#673AB7;">Q&A</div>
+    <div class="slide-title" style="font-size:36px;">Q&A対策</div>
+    <div class="objection-label">反論 7</div>
+    <div class="objection-title">「主治医・学校カウンセラーに相談したい」</div>
+    <div class="objection-response">
+      「それは大切です。<br><br>
+      なので感情論で押し切るのではなく、<strong>どこが懸念になりそうかを今整理</strong>しておきましょう。<br><br>
+      反対される論点を先に明確にして、その上で必要なら<em>一緒に共有の仕方まで考えます</em>。」
+    </div>
+  </div>
+</div>
+
+</div><!-- /presentation -->
+
+<!-- ===== SLIDE COUNTER ===== -->
+<div id="slide-counter"></div>
+
+<!-- ===== SPEAKER NOTES ===== -->
+<div id="notes-panel">
+  <div class="notes-label">SPEAKER NOTES</div>
+  <div id="notes-content"></div>
+</div>
+
+<!-- ===== KEYBOARD HINT ===== -->
+<div id="keyboard-hint">
+  <kbd>&larr;</kbd> <kbd>&rarr;</kbd> ナビ &nbsp; <kbd>N</kbd> ノート &nbsp; <kbd>F</kbd> フルスクリーン
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  let notesVisible = false;
+
+  const progressBar = document.getElementById('progress-bar');
+  const slideCounter = document.getElementById('slide-counter');
+  const notesPanel = document.getElementById('notes-panel');
+  const notesContent = document.getElementById('notes-content');
+
+  function updateSlide() {
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === currentIndex);
+    });
+
+    // Progress
+    const pct = ((currentIndex + 1) / totalSlides) * 100;
+    progressBar.style.width = pct + '%';
+
+    // Counter
+    slideCounter.textContent = (currentIndex + 1) + ' / ' + totalSlides;
+
+    // Notes
+    const note = slides[currentIndex].getAttribute('data-notes') || '';
+    notesContent.textContent = note;
+
+    // Scale
+    scaleSlide();
+  }
+
+  function scaleSlide() {
+    const slide = slides[currentIndex];
+    if (!slide) return;
+
+    const wRatio = window.innerWidth / 1920;
+    const hRatio = window.innerHeight / 1080;
+    const scale = Math.min(wRatio, hRatio);
+
+    slides.forEach(s => {
+      s.style.transform = 'scale(' + scale + ')';
+      s.style.transformOrigin = 'top left';
+    });
+
+    // Center horizontally
+    const offsetX = (window.innerWidth - 1920 * scale) / 2;
+    const offsetY = (window.innerHeight - 1080 * scale) / 2;
+    document.getElementById('presentation').style.paddingLeft = Math.max(0, offsetX) + 'px';
+    document.getElementById('presentation').style.paddingTop = Math.max(0, offsetY) + 'px';
+  }
+
+  function goTo(index) {
+    if (index < 0) index = 0;
+    if (index >= totalSlides) index = totalSlides - 1;
+    currentIndex = index;
+    updateSlide();
+  }
+
+  function next() { goTo(currentIndex + 1); }
+  function prev() { goTo(currentIndex - 1); }
+
+  function toggleNotes() {
+    notesVisible = !notesVisible;
+    notesPanel.classList.toggle('visible', notesVisible);
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    switch(e.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+      case ' ':
+      case 'PageDown':
+        e.preventDefault();
+        next();
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+      case 'PageUp':
+        e.preventDefault();
+        prev();
+        break;
+      case 'Home':
+        e.preventDefault();
+        goTo(0);
+        break;
+      case 'End':
+        e.preventDefault();
+        goTo(totalSlides - 1);
+        break;
+      case 'n':
+      case 'N':
+        e.preventDefault();
+        toggleNotes();
+        break;
+      case 'f':
+      case 'F':
+        e.preventDefault();
+        toggleFullscreen();
+        break;
+    }
+  });
+
+  // Click navigation (left half = prev, right half = next)
+  document.getElementById('presentation').addEventListener('click', function(e) {
+    if (e.clientX < window.innerWidth / 2) {
+      prev();
+    } else {
+      next();
+    }
+  });
+
+  // Touch support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  });
+  document.addEventListener('touchend', function(e) {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+  });
+
+  // Resize
+  window.addEventListener('resize', scaleSlide);
+
+  // Init
+  updateSlide();
+})();
+</script>
+</body>
+</html>
