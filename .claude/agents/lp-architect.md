@@ -58,9 +58,18 @@ LP制作時には以下を必ず確認すること：
 - `knowledge/marketing/new-lp-clarity-analysis.md` — Clarity分析（ヒートマップ・スクロール率）
 - `knowledge/marketing/auto-webinar/line-scenario.md` — LINE登録後のシナリオ
 
+## 専門スキル（ワークフロー）
+
+以下のタスクを依頼された場合、該当するコマンドファイルを最初にReadして手順に従うこと:
+
+| タスク | コマンドファイル |
+|--------|----------------|
+| UTAGE LP制作・編集 | `.claude/commands/utage-lp.md` |
+
+コマンドファイルにはブラウザ自動化手順、CKEditor操作、カスタムHTML編集パターン、フォントサイズ統一ルール等が全て定義されている。自己流で動かず、必ずファイルの手順に従うこと。
+
 ## UTAGEでのLP制作ルール
 
-- `/utage-lp` コマンドの手順に従うこと
 - HTMLブロックでのカスタマイズが可能
 - 画像はCanvaで作成し、UTAGEにアップロード
 - フォームはUTAGE標準のものを使用
