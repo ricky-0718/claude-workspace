@@ -5,6 +5,25 @@ description: |
   Trigger when: ユーザーが「UPSIDER対応して」「不明明細の回答」「AI経理」「証憑提出」「経理の月次対応」と言ったとき、
   またはops-managerエージェントがUPSIDER業務を実行するとき。
   Do NOT trigger for: 日常の経費精算、Freee操作、給料支払い
+hooks:
+  PreToolUse:
+    - matcher: "Bash"
+      type: prompt
+      prompt: |
+        UPSIDER経理スキル: Bashコマンド実行前の金額チェック。
+        このコマンドがGoogle Sheetsへの書き込み（gws sheets）を含む場合:
+        1. 書き込む金額がSpreadsheetのD列（元データ）と矛盾しないか
+        2. 振込名→実態の対応が data/transaction-map.json と一致するか
+        問題があれば 'deny' で理由を説明。問題なければ 'allow'。
+  Stop:
+    - matcher: "*"
+      type: prompt
+      prompt: |
+        UPSIDER経理の完了前チェック:
+        1. 全ての未記入G列セルに回答を書き込んだか？
+        2. 証憑のアップロードは完了したか？
+        3. Slack報告文をユーザーに確認してもらったか（自動送信していないか）？
+        未完了があれば 'block'。全て完了なら 'approve'。
 ---
 
 # UPSIDER AI経理 月次対応
@@ -14,6 +33,10 @@ description: |
 ## Gotchas
 
 技術的な注意点・トラブルシューティングは `gotchas.md` を参照。
+
+## 実行ログ
+
+過去の実行履歴は `execution-log.md` を参照。新しい振込パターンが見つかったら `data/transaction-map.json` も更新すること。
 
 ## 前提情報
 

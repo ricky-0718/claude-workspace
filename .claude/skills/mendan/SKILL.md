@@ -5,6 +5,19 @@ description: |
   Trigger when: ユーザーが「面談の分析して」「面談後のフォロー」「/mendan」「面談データある？」と言ったとき、
   またはsales-advisorエージェントが面談後フォロー業務を実行するとき。
   Do NOT trigger for: 面談の準備（sales-advisorが直接対応）、面談スクリプトの改善相談
+hooks:
+  Stop:
+    - matcher: "*"
+      type: prompt
+      prompt: |
+        面談後フォローの完了前チェック（全9ステップ）:
+        1. 分析レポートを knowledge/students/面談分析まとめ.md に追記したか？
+        2. LINE文面4通を knowledge/students/LINE下書きまとめ.md に追記したか？
+        3. 顧客カードを knowledge/students/顧客コンテキスト.md に追加したか？
+        4. Asanaメインタスク + サブタスク4件を作成したか？
+        5. Googleスプレッドシート（面談DB）を更新したか？
+        6. 旧PCに完了通知を送ったか（ケースAの場合）？
+        1つでも未完了があれば 'block' で該当ステップを指摘。全て完了なら 'approve'。
 ---
 
 # 面談後フォロー自動化
@@ -14,6 +27,10 @@ description: |
 ## Gotchas
 
 技術的な注意点・ハマりポイントは `gotchas.md` を参照。
+
+## 実行ログ
+
+過去の面談分析履歴は `execution-log.md` を参照。温度感・SPINスコア・テンプレ選択パターンを蓄積し、次回の判断に活用する。
 
 ## ステップ1: 旧PCから面談データを取得（自動）
 

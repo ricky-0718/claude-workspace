@@ -5,6 +5,17 @@ description: |
   Trigger when: ユーザーが「LPを作りたい」「LP編集して」「ウタゲのページ修正」「UTAGEのLP」と言ったとき、
   またはlp-architectエージェントがUTAGE LP制作を実行するとき。
   Do NOT trigger for: LP戦略の相談（lp-architectが直接対応）、CVR分析のみの場合
+hooks:
+  PreToolUse:
+    - matcher: "mcp__playwright__browser_click"
+      type: prompt
+      prompt: |
+        ウタゲLP保存ボタンのクリック検出。
+        クリック対象が保存ボタン（.fn-save-page-btn）の場合:
+        1. font-check スクリプトを実行済みか？（22px未満の要素がないか確認済みか）
+        2. color-check スクリプトを実行済みか？（濃い背景に黒文字がないか確認済みか）
+        未実行の検証がある場合は 'deny' で「先に検証スクリプトを実行してください」と返す。
+        保存ボタン以外のクリックなら 'allow'。
 ---
 
 # ウタゲLP制作ワークフロー
@@ -15,6 +26,10 @@ description: |
 ## Gotchas
 
 技術的な注意点・ハマりポイントは `gotchas.md` を参照。
+
+## 実行ログ
+
+過去のLP編集履歴は `execution-log.md` を参照。ハマりポイントや検証結果を蓄積する。
 
 ## エディタ技術パターン
 
