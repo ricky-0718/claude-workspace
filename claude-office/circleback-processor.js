@@ -284,9 +284,9 @@ function isExcludedMeeting(payload) {
   for (const pattern of SKIP_PATTERNS) {
     if (pattern.test(name)) return { skip: true, reason: `除外: ${pattern}` };
   }
-  // 極端に短い（5分未満）は誤検出の可能性
-  if (payload.duration && payload.duration < 300) {
-    return { skip: true, reason: "5分未満の会議" };
+  // 極端に短い（1分未満）は誤検出の可能性
+  if (payload.duration && payload.duration < 60) {
+    return { skip: true, reason: "1分未満の会議" };
   }
   return { skip: false };
 }
