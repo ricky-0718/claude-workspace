@@ -1,6 +1,8 @@
 ---
 name: marketer-review-criteria
-description: "/review-marketer が参照するファネル基準値・ボトルネック判定ルール。LP診断・Clarity実データに基づく"
+description: |
+  /review-marketer が参照するファネル基準値・ボトルネック判定ルール。LP診断・Clarity実データに基づく。
+  Trigger when: /review-marketer コマンドが実行されたとき（自動読み込み）。直接呼び出す必要はない。
 ---
 
 # マーケ責任者視点レビュー 判断基準

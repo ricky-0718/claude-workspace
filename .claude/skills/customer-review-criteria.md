@@ -1,6 +1,9 @@
 ---
 name: customer-review-criteria
-description: "/review-customer が参照する顧客判断基準。面談28件＋Asana照合＋UTAGE LINEフォロー実会話分析（12件）。成約11件・失注5件の実データから不安・離脱パターン・意思決定構造・フォロー成功/失敗パターン・失注4類型を抽出"
+description: |
+  /review-customer が参照する顧客判断基準。面談28件＋Asana照合＋UTAGE LINEフォロー実会話分析（12件）。
+  成約11件・失注5件の実データから不安・離脱パターン・意思決定構造・フォロー成功/失敗パターン・失注4類型を抽出。
+  Trigger when: /review-customer コマンドが実行されたとき（自動読み込み）。直接呼び出す必要はない。
 ---
 
 # 顧客視点レビュー 判断基準

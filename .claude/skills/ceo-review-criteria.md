@@ -1,6 +1,8 @@
 ---
 name: ceo-review-criteria
-description: "/review-ceo が参照する経営判断基準。実データに基づくROI判定・優先順位ルール・投資回収基準"
+description: |
+  /review-ceo が参照する経営判断基準。実データに基づくROI判定・優先順位ルール・投資回収基準。
+  Trigger when: /review-ceo コマンドが実行されたとき（自動読み込み）。直接呼び出す必要はない。
 ---
 
 # 経営者視点レビュー 判断基準
