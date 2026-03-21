@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 import { runClaude } from "./claude-runner.js";
 import { parseClaudeOutput, executeMendan } from "./mendan-executor.js";
 import { createMendanTasks } from "./asana-mendan.js";
+import { recordMeeting } from "./asana-meeting-recorder.js";
 import { sendSlack } from "./notifier.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -275,7 +276,53 @@ async function runAnalysis(meetingData) {
 }
 
 // ============================================
-// 完全自動パイプライン
+// 除外判定（記録不要な会議）
+// ============================================
+function isExcludedMeeting(payload) {
+  const name = payload.name || "";
+  const SKIP_PATTERNS = [/歓迎会/, /忘年会/, /新年会/];
+  for (const pattern of SKIP_PATTERNS) {
+    if (pattern.test(name)) return { skip: true, reason: `除外: ${pattern}` };
+  }
+  // 極端に短い（5分未満）は誤検出の可能性
+  if (payload.duration && payload.duration < 300) {
+    return { skip: true, reason: "5分未満の会議" };
+  }
+  return { skip: false };
+}
+
+// ============================================
+// 定例会議パイプライン（Claude分析なし、Asanaに議事録書き込みのみ）
+// ============================================
+async function processMeetingRecord(payload) {
+  console.log(`[Pipeline:会議] 議事録記録: "${payload.name}"`);
+
+  await sendSlack(
+    `📝 会議Webhook受信: ${payload.name}\n` +
+    `参加者: ${(payload.attendees || []).map(a => a.name).join("、")}\n` +
+    `→ Asana MTG議事録に自動記録...`
+  );
+
+  try {
+    const result = await recordMeeting(payload);
+    markProcessed(payload.id);
+
+    await sendSlack(
+      `✅ 議事録記録完了: ${result.taskName}\n` +
+      `→ Asana「${result.section}」セクション`
+    );
+
+    return { ok: true, type: "meeting", ...result };
+  } catch (err) {
+    console.error(`[Pipeline:会議] エラー:`, err.message);
+    markProcessed(payload.id);
+    await sendSlack(`❌ 議事録記録失敗: ${payload.name}\nエラー: ${err.message}`);
+    return { ok: false, type: "meeting", error: err.message };
+  }
+}
+
+// ============================================
+// メインルーター: 3分岐（除外 / 面談 / 定例会議）
 // ============================================
 export async function processWebhook(payload) {
   const meetingId = payload.id;
@@ -286,11 +333,21 @@ export async function processWebhook(payload) {
     return { ok: true, skipped: true, reason: "already processed" };
   }
 
-  // 面談判定
+  // 1. 除外チェック（記録不要な会議）
+  const excluded = isExcludedMeeting(payload);
+  if (excluded.skip) {
+    console.log(`[Pipeline] スキップ: ${excluded.reason}`);
+    markProcessed(meetingId);
+    return { ok: true, skipped: true, reason: excluded.reason };
+  }
+
+  // 2. 面談判定
   const judgment = isConsultationMeeting(payload);
-  console.log(`[Pipeline] 面談判定: ${judgment.pass ? "✓" : "✗"} (${judgment.reason})`);
+  console.log(`[Pipeline] ルーティング: ${judgment.pass ? "面談パイプライン" : "定例会議レコーダー"} (${judgment.reason})`);
+
+  // 3. 面談でなければ → 定例会議レコーダー
   if (!judgment.pass) {
-    return { ok: true, skipped: true, reason: judgment.reason };
+    return processMeetingRecord(payload);
   }
 
   // データ抽出
