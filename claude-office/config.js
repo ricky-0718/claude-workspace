@@ -77,6 +77,9 @@ export default {
   utage: {
     chatBase: env.UTAGE_CHAT_BASE || "",
   },
+  circleback: {
+    signingSecret: env.CIRCLEBACK_SIGNING_SECRET || "",
+  },
   polling: {
     intervalMs: 30_000, // 30秒
   },
