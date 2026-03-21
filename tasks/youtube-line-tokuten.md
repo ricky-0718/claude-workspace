@@ -44,3 +44,30 @@
 | TOCFL FAQ | `knowledge/students/band-chat-analysis.md` | 4期生のよくある質問 |
 
 > これらはアイデアの「種」であって、最終的な特典の内容はおさるAIとの壁打ちで決める
+
+---
+
+## 制作進捗（2026-03-21 セッション）
+
+| # | 特典名 | ステータス | 保存先 |
+|---|--------|-----------|--------|
+| ① | 台湾留学ガイドブック | 既存 | UTAGEファネル |
+| ② | 合格実績データブック | 未着手 | — |
+| ③ | 保護者向け費用比較＋安全判断ブック | **合格** | `knowledge/marketing/tokuten-03-hogosya-hiyou-anzen.md` |
+| ④ | 失敗回避レポート | **合格** | `knowledge/marketing/tokuten-04-shippai-kaihi-report.md` |
+| ⑤ | 大学診断カルテ | 未着手 | — |
+| ⑥ | 中国語ゼロからA2資料 | **合格** | `knowledge/marketing/tokuten-06-chinese-zero-to-a2.md` |
+| ⑦ | 親子別Q&Aブック | 未着手 | — |
+
+### 次セッションでやること
+- 特典②（合格実績データブック）: `knowledge/students/admission-results-3rd-cohort.md`の65件データを整形
+- 特典⑤（大学診断カルテ）: Googleフォームまたはインタラクティブ形式の設計
+- 特典⑦（親子別Q&Aブック）: `knowledge/students/band-chat-analysis.md`をベースにQ&A整理
+- 全特典のPDF化（Canvaデザイン）
+- YouTube概要欄の訴求文作成
+- LINE登録後の配布導線設計（UTAGE）
+
+### おさるAI連携ワークフロー実績
+- GPTs: 特典アイデア出し → 特典作成
+- ラリー: アイデア出し3往復 + 作成（④: 4往復, ⑥: 1往復, ③: 2往復）
+- 批判的レビューで改善した点: 数字の追加、チェックリスト欠落、口調調整、既存特典との重複排除
