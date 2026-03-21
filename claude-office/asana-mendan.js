@@ -78,7 +78,7 @@ export async function createMendanTasks({ name, date, reportText, lineDrafts }) 
 
   const subtaskGids = [];
   for (const st of subtasks) {
-    const subRes = await asanaRequest("POST", "/tasks", {
+    const subRes = await asanaRequest("POST", `/tasks/${mainGid}/subtasks`, {
       name: st.name,
       assignee: ASSIGNEE_ID,
       due_on: addDays(date, st.days),
@@ -86,11 +86,6 @@ export async function createMendanTasks({ name, date, reportText, lineDrafts }) 
     });
     const subGid = subRes.data.gid;
     subtaskGids.push(subGid);
-
-    // 親子関係を設定
-    await asanaRequest("POST", `/tasks/${subGid}/setParent`, {
-      parent: mainGid,
-    });
     console.log(`[Asana] サブタスク作成: ${st.name} (${subGid})`);
   }
 
