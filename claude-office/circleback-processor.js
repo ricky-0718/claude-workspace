@@ -1,11 +1,14 @@
 // ============================================
-// Circleback Processor
-// Webhook ペイロードの判定・変換・Claude CLI 起動
+// Circleback Processor — 完全自動パイプライン
+// Webhook受信 → Claude分析 → ファイル書き込み → Asana → git push → Slack通知
+// 旧PCで24時間自律稼働。新PCは不要。
 // ============================================
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { runClaude } from "./claude-runner.js";
+import { parseClaudeOutput, executeMendan } from "./mendan-executor.js";
+import { createMendanTasks } from "./asana-mendan.js";
 import { sendSlack } from "./notifier.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -64,14 +67,12 @@ export function isConsultationMeeting(payload) {
   const name = payload.name || "";
   const attendees = payload.attendees || [];
 
-  // 1. 除外パターンチェック
   for (const pattern of EXCLUDE_PATTERNS) {
     if (pattern.test(name)) {
       return { pass: false, reason: `除外パターン: ${pattern}` };
     }
   }
 
-  // 2. 出席者全員が社内ドメイン → 社内会議として除外
   const externalAttendees = attendees.filter(
     (a) => a.email && !a.email.endsWith(OUR_DOMAIN)
   );
@@ -80,30 +81,23 @@ export function isConsultationMeeting(payload) {
     return { pass: false, reason: "社内会議（外部参加者なし）" };
   }
 
-  // 3. タイトルパターンマッチ
   for (const pattern of INCLUDE_PATTERNS) {
     if (pattern.test(name)) {
       return { pass: true, reason: `タイトル: ${pattern}` };
     }
   }
 
-  // 4. transcript内容チェック（タイトルにヒットしなかった場合）
   const transcript = payload.transcript || [];
   const fullText = transcript.map((t) => t.text).join(" ");
   const contentKeywords = [
-    "101センター",
-    "台湾留学101",
-    "リッキー",
-    "留学",
-    "オールインワンプラン",
-    "台湾の大学",
+    "101センター", "台湾留学101", "リッキー",
+    "留学", "オールインワンプラン", "台湾の大学",
   ];
   const matchedKeyword = contentKeywords.find((kw) => fullText.includes(kw));
   if (matchedKeyword) {
     return { pass: true, reason: `transcript内容: "${matchedKeyword}"` };
   }
 
-  // 5. タグに「面談」が含まれるか
   const tags = payload.tags || [];
   if (tags.some((t) => t === "面談" || t === "相談")) {
     return { pass: true, reason: `タグ: ${tags.join(",")}` };
@@ -159,8 +153,6 @@ export function extractMeetingData(payload) {
 
   const notes = fixMisrecognition(payload.notes || "");
   const transcriptText = formatTranscript(payload.transcript || []);
-
-  // 全出席者名リスト（同席者の特定用）
   const allNames = attendees.map((a) => a.name).filter(Boolean);
 
   return {
@@ -183,11 +175,8 @@ export function extractMeetingData(payload) {
 // Pending キュー管理
 // ============================================
 function loadPending() {
-  try {
-    return JSON.parse(fs.readFileSync(PENDING_FILE, "utf-8"));
-  } catch {
-    return [];
-  }
+  try { return JSON.parse(fs.readFileSync(PENDING_FILE, "utf-8")); }
+  catch { return []; }
 }
 
 function savePendingFile(data) {
@@ -195,11 +184,8 @@ function savePendingFile(data) {
 }
 
 function loadState() {
-  try {
-    return JSON.parse(fs.readFileSync(STATE_FILE, "utf-8"));
-  } catch {
-    return { processedIds: [] };
-  }
+  try { return JSON.parse(fs.readFileSync(STATE_FILE, "utf-8")); }
+  catch { return { processedIds: [] }; }
 }
 
 function saveState(state) {
@@ -213,11 +199,7 @@ export function isAlreadyProcessed(meetingId) {
 
 export function addToPending(meetingData) {
   const pending = loadPending();
-  pending.push({
-    ...meetingData,
-    receivedAt: new Date().toISOString(),
-    status: "pending",
-  });
+  pending.push({ ...meetingData, receivedAt: new Date().toISOString(), status: "pending" });
   savePendingFile(pending);
 }
 
@@ -226,18 +208,15 @@ export function getPending() {
 }
 
 export function markProcessed(meetingId) {
-  // pending から除去
   const pending = loadPending();
   const updated = pending.map((p) =>
     p.id === meetingId ? { ...p, status: "done", doneAt: new Date().toISOString() } : p
   );
   savePendingFile(updated);
 
-  // state に追加
   const state = loadState();
   if (!state.processedIds.includes(meetingId)) {
     state.processedIds.push(meetingId);
-    // 最大200件保持
     if (state.processedIds.length > 200) {
       state.processedIds = state.processedIds.slice(-200);
     }
@@ -246,19 +225,35 @@ export function markProcessed(meetingId) {
 }
 
 // ============================================
-// Claude CLI で面談分析を実行
+// LINE下書きからサブタスク用テキストを抽出
 // ============================================
-export async function triggerAnalysis(meetingData) {
+function extractLineDrafts(lineText) {
+  if (!lineText) return {};
+  const extract = (label) => {
+    const re = new RegExp(`##\\s*${label}[\\s\\S]*?(?=\\n---\\n|\\n##\\s|$)`);
+    const m = lineText.match(re);
+    return m ? m[0].trim() : "";
+  };
+  return {
+    today: extract("【当日】"),
+    day3: extract("【3日後】"),
+    day7: extract("【7日後】"),
+    day14: extract("【14日後】"),
+  };
+}
+
+// ============================================
+// Step 1: Claude CLI で分析テキストを生成（出力のみ、ファイル操作なし）
+// ============================================
+async function runAnalysis(meetingData) {
   const promptPath = path.join(__dirname, "prompts", "mendan-circleback.md");
   let promptTemplate;
   try {
     promptTemplate = fs.readFileSync(promptPath, "utf-8");
   } catch (err) {
-    console.error("[Processor] プロンプトテンプレートの読み込みに失敗:", err.message);
-    return { ok: false, error: "プロンプトテンプレートなし" };
+    return { ok: false, error: "プロンプトテンプレートなし: " + err.message };
   }
 
-  // テンプレートの変数を置換
   const prompt = promptTemplate
     .replace("{{name}}", meetingData.name)
     .replace("{{date}}", meetingData.date)
@@ -267,79 +262,108 @@ export async function triggerAnalysis(meetingData) {
     .replace("{{notes}}", meetingData.notes)
     .replace("{{transcription}}", meetingData.transcript);
 
-  console.log(`[Processor] Claude CLI 起動: ${meetingData.name}（${meetingData.date}）`);
+  console.log(`[Pipeline] Step 1/5: Claude CLI 分析開始 — ${meetingData.name}`);
 
+  // Claude CLIは分析テキスト生成のみ（Readツールでナレッジ参照 + テキスト出力）
   const result = await runClaude(prompt, {
-    maxTurns: 15,
-    timeout: 8 * 60 * 1000, // 8分（mendan分析は長い）
-    allowedTools: [
-      "Read", "Write", "Edit", "Bash", "Glob", "Grep",
-      "mcp__plugin_asana_asana__asana_create_task",
-      "mcp__plugin_asana_asana__asana_set_parent_for_task",
-    ],
+    maxTurns: 5,
+    timeout: 5 * 60 * 1000,
+    allowedTools: ["Read"],
   });
-
-  if (result.ok) {
-    markProcessed(meetingData.id);
-    console.log(`[Processor] 分析完了: ${meetingData.name}（${result.duration}ms）`);
-  } else {
-    console.error(`[Processor] 分析失敗: ${result.error}`);
-  }
 
   return result;
 }
 
 // ============================================
-// Webhook 受信時のメイン処理フロー
+// 完全自動パイプライン
 // ============================================
 export async function processWebhook(payload) {
   const meetingId = payload.id;
 
   // 重複チェック
   if (isAlreadyProcessed(meetingId)) {
-    console.log(`[Processor] 処理済みスキップ: ID=${meetingId}`);
+    console.log(`[Pipeline] 処理済みスキップ: ID=${meetingId}`);
     return { ok: true, skipped: true, reason: "already processed" };
   }
 
   // 面談判定
   const judgment = isConsultationMeeting(payload);
-  console.log(`[Processor] 面談判定: ${judgment.pass ? "✓" : "✗"} (${judgment.reason})`);
-
+  console.log(`[Pipeline] 面談判定: ${judgment.pass ? "✓" : "✗"} (${judgment.reason})`);
   if (!judgment.pass) {
     return { ok: true, skipped: true, reason: judgment.reason };
   }
 
   // データ抽出
   const meetingData = extractMeetingData(payload);
-  console.log(`[Processor] 面談データ: ${meetingData.name}（${meetingData.date}）${meetingData.duration || "?"}分`);
+  console.log(`[Pipeline] ${meetingData.name}（${meetingData.date}）${meetingData.duration || "?"}分`);
 
   // Pending キューに追加
   addToPending(meetingData);
 
-  // Slack通知
+  // Slack: 受信通知
   await sendSlack(
     `📋 面談Webhook受信: ${meetingData.name}（${meetingData.date}）\n` +
     `参加者: ${meetingData.attendees.join("、")}\n` +
-    `時間: ${meetingData.duration || "?"}分\n` +
-    `判定: ${judgment.reason}\n` +
-    `→ Claude分析を開始します...`
+    `→ 自動分析パイプライン開始...`
   );
 
-  // Claude CLI で自動分析（非同期）
-  const analysisResult = await triggerAnalysis(meetingData);
+  try {
+    // ── Step 1: Claude CLI 分析 ──
+    const analysisResult = await runAnalysis(meetingData);
+    if (!analysisResult.ok) {
+      throw new Error(`Claude CLI失敗: ${analysisResult.error}`);
+    }
+    const claudeOutput = analysisResult.result;
+    console.log(`[Pipeline] Step 1/5 完了: Claude分析 (${Math.round(analysisResult.duration / 1000)}秒)`);
 
-  if (analysisResult.ok) {
+    // ── Step 2: 区切りタグ解析 ──
+    const sections = parseClaudeOutput(claudeOutput);
+    if (!sections.report && !sections.line && !sections.customer) {
+      throw new Error("Claude出力から区切りタグが見つかりません");
+    }
+    console.log(`[Pipeline] Step 2/5 完了: タグ解析 (report=${!!sections.report} line=${!!sections.line} customer=${!!sections.customer})`);
+
+    // ── Step 3: ファイル書き込み + git push ──
+    const execResult = await executeMendan(claudeOutput, meetingData.name, meetingData.date);
+    console.log(`[Pipeline] Step 3/5 完了: ファイル書き込み + git push`);
+
+    // ── Step 4: Asana タスク作成 ──
+    const lineDrafts = extractLineDrafts(sections.line);
+    const asanaResult = await createMendanTasks({
+      name: meetingData.name,
+      date: meetingData.date,
+      reportText: sections.report || "",
+      lineDrafts,
+    });
+    console.log(`[Pipeline] Step 4/5 完了: Asanaタスク作成 (main=${asanaResult.mainGid})`);
+
+    // ── Step 5: 完了処理 ──
+    markProcessed(meetingId);
+    console.log(`[Pipeline] Step 5/5 完了: ステータス更新`);
+
+    // Slack: 完了通知
     await sendSlack(
       `✅ 面談分析完了: ${meetingData.name}（${meetingData.date}）\n` +
-      `所要時間: ${Math.round(analysisResult.duration / 1000)}秒`
+      `所要時間: ${Math.round(analysisResult.duration / 1000)}秒\n` +
+      `・分析レポート → knowledge/students/面談分析まとめ.md\n` +
+      `・LINE下書き4通 → knowledge/students/LINE下書きまとめ.md\n` +
+      `・顧客カード → knowledge/students/顧客コンテキスト.md\n` +
+      `・Asanaタスク: メイン + サブ4件\n` +
+      `・git push 完了`
     );
-  } else {
-    await sendSlack(
-      `❌ 面談分析失敗: ${meetingData.name}\n` +
-      `エラー: ${analysisResult.error}\n` +
-      `→ /mendan で手動実行してください`
-    );
-  }
 
-  return { ok: true, meetingData, analysisResult };
+    return { ok: true, meetingData, asanaResult };
+
+  } catch (err) {
+    console.error(`[Pipeline] エラー:`, err.message);
+    markProcessed(meetingId); // 無限リトライ防止
+
+    await sendSlack(
+      `❌ 面談自動分析失敗: ${meetingData.name}\n` +
+      `エラー: ${err.message}\n` +
+      `→ 新PCで /mendan を手動実行してください`
+    );
+
+    return { ok: false, error: err.message };
+  }
 }

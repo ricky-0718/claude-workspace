@@ -19,6 +19,7 @@ import { startSlackListener } from "./slack-listener.js";
 import { runMorningBriefing } from "./morning-briefing-slack.js";
 import { startSalaryScheduler } from "./salary-task-creator.js";
 import { startHiNoteChecker, stopHiNoteChecker, getPendingMendans, getAllMendans, claimMendan, completeMendan } from "./hinote-checker.js";
+import { processWebhook, getPending as getCirclebackPending } from "./circleback-processor.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -268,6 +269,48 @@ app.post("/webhook/line", express.raw({ type: "*/*" }), async (req, res) => {
       console.error("[Webhook] Unhandled error:", err);
     });
   }
+});
+
+// Circleback Webhook route BEFORE express.json() (needs raw body for signature verification)
+app.post("/webhook/circleback", express.raw({ type: "*/*", limit: "5mb" }), async (req, res) => {
+  const rawBody = req.body.toString();
+  const signature = req.headers["x-signature"];
+
+  // HMAC-SHA256 署名検証
+  const secret = process.env.CIRCLEBACK_SIGNING_SECRET;
+  if (secret && signature) {
+    const crypto = await import("crypto");
+    const expected = crypto.default
+      .createHmac("sha256", secret)
+      .update(rawBody)
+      .digest("hex");
+    if (!crypto.default.timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) {
+      console.warn("[Circleback] 署名検証失敗");
+      return res.status(403).json({ error: "Invalid signature" });
+    }
+  }
+
+  let payload;
+  try {
+    payload = JSON.parse(rawBody);
+  } catch {
+    return res.status(400).json({ error: "Invalid JSON" });
+  }
+
+  console.log(`[Circleback] Webhook受信: "${payload.name || "不明"}" (ID: ${payload.id})`);
+
+  // 即座に200を返す（タイムアウト防止）
+  res.status(200).json({ ok: true, received: true });
+
+  // 非同期で完全自動パイプライン実行
+  processWebhook(payload).catch(err => {
+    console.error("[Circleback] Pipeline error:", err);
+  });
+});
+
+// Circleback pending queue
+app.get("/webhook/circleback/pending", (_req, res) => {
+  res.json(getCirclebackPending());
 });
 
 app.use(express.json());
