@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    font-weight: 700;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* === Design Tokens === */
+  :root {
+    --blue: #2B4F82;
+    --navy: #1E3550;
+    --bg: #dce6f0;
+    --accent: #F0A030;
+    --accent-light: #FFDA50;
+    --muted: #4a6a8a;
+    --light: #64748b;
+    --table-alt: #f0f4f8;
+    --rule: #b0c4d8;
+  }
+
+  /* === Page Shell === */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    border: 4px solid var(--blue);
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .header {
+    background: var(--blue);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .header .logo {
+    width: 26px; height: 26px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 9px; font-weight: 800;
+  }
+  .header .name { color: white; font-size: 16px; font-weight: 600; letter-spacing: 2px; }
+
+  .content {
+    flex: 1;
+    padding: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 10px 24px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--muted);
+  }
+
+  /* === Section Header (full-width blue bar) === */
+  .section-header {
+    background: var(--blue);
+    padding: 18px 24px;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  /* === Typography === */
+  .label { font-size: 22px; color: var(--blue); font-weight: 500; letter-spacing: 3px; }
+  .title { font-size: 56px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+  .title .accent { color: var(--blue); }
+  .divider { width: 60px; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); margin: 20px auto; }
+  .subtitle { font-size: 22px; color: var(--muted); line-height: 1.8; }
+  .body-text { font-size: 22px; color: var(--navy); line-height: 2.0; text-align: center; }
+  .emphasis { color: var(--blue); font-weight: 700; }
+  .num-accent { color: var(--accent); font-weight: 800; }
+
+  /* === Stat Block (ruled lines, no cards) === */
+  .stat-block {
+    border-top: 3px solid var(--blue);
+    border-bottom: 3px solid var(--blue);
+    padding: 24px 0;
+    width: 70%;
+  }
+  .stat-item { margin-bottom: 18px; }
+  .stat-item:last-child { margin-bottom: 0; }
+  .stat-num { font-size: 72px; font-weight: 800; line-height: 1; }
+  .stat-num .unit { font-size: 40px; }
+  .stat-label { font-size: 24px; color: var(--light); margin-top: 6px; }
+  .stat-sep { width: 30px; height: 2px; background: var(--rule); margin: 0 auto 18px; }
+
+  /* === Table === */
+  table { width: 94%; border-collapse: collapse; margin: 0 auto; }
+  th { background: var(--blue); color: white; padding: 14px 10px; font-size: 18px; font-weight: 600; text-align: center; }
+  td { padding: 14px 10px; font-size: 18px; color: var(--navy); text-align: center; border-bottom: 1px solid #dde5ed; }
+  tr:nth-child(even) td { background: var(--table-alt); }
+  .td-strong { font-weight: 700; color: var(--blue); }
+  .td-accent { font-weight: 700; color: var(--accent); }
+
+  /* === White content area for inner pages === */
+  .white-area {
+    background: white;
+    padding: 24px 28px;
+    width: 92%;
+    text-align: center;
+  }
+
+  /* === Page number === */
+  .page-num { font-size: 16px; color: var(--rule); }
+
+  /* === Checklist === */
+  .checklist { text-align: left; display: inline-block; font-size: 18px; color: var(--navy); line-height: 2.2; }
+  .checklist span { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="content">
+    <div class="label" style="margin-bottom: 20px;">LINE登録特典 ③</div>
+    <div class="title">費用比較</div>
+    <div class="title" style="font-size: 44px; margin-bottom: 16px;">＋安全サポート<span class="accent">判断ブック</span></div>
+    <div class="divider"></div>
+    <div class="subtitle" style="margin-bottom: 28px;">
+      日本進学・欧米留学・台湾留学を<br>
+      費用・距離・治安・サポートの4視点で徹底比較
+    </div>
+    <div class="stat-block">
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue);">4<span class="unit">視点</span></div>
+        <div class="stat-label">費用・距離・治安・サポートで比較</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--accent);">5<span class="unit">年間</span></div>
+        <div class="stat-label">追加料金なしの継続支援</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue);">45<span class="unit">万円/年</span></div>
+        <div class="stat-label">台湾留学の年間学費目安</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+<!-- ==================== PAGE 2: はじめに ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">はじめに</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 24px; line-height: 1.8;">
+      こんにちは、リッキーです。<br><br>
+      この資料は、台湾留学に興味を持った<br>
+      高校生の保護者の方向けに作りました。<br><br>
+      最初にお伝えしたいのは、<br>
+      台湾留学は<span class="emphasis">「なんとなく良さそう」で選ぶ進路ではなく、</span><br>
+      <span class="emphasis">数字と体制で判断しやすい進路</span>だということです。<br><br>
+      保護者の方が気になるのは、主にこの3つだと思います。<br><br>
+      <span class="emphasis">「日本進学や欧米留学と比べて、本当に家計に合うのか」</span><br>
+      <span class="emphasis">「海外なのに、安全面は大丈夫なのか」</span><br>
+      <span class="emphasis">「合格したあと、子どもが一人で困らないのか」</span><br><br>
+      この視点は、すべて正しいです。<br>
+      むしろ、ここを見ずに<br>
+      「本人が行きたいから」で決めてしまう方が危険です。<br><br>
+      この資料では、台湾留学を勧めるためではなく、<br>
+      <span class="emphasis">比較して納得できる材料をお渡しします。</span>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">2</span></div>
+</div>
+
+<!-- ==================== PAGE 3: 目次 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">この資料でわかること</div>
+  <div class="content">
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">01</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">まず結論：保護者が比較すべきポイント</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">02</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">日本進学・欧米留学・台湾留学の費用比較</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">03</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">学費以外に見落としやすい費用</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">04</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">台湾留学が「距離・治安・生活」で判断しやすい理由</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">05</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">到着後サポートの具体範囲</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">06</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">5年間継続支援の全体像</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">07</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">「入学までで終わり」にならない仕組み</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">08</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">奨学金・学費免除の考え方</div>
+      </div>
+
+      <div style="padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">09</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">保護者が最後に確認すべき判断ポイント</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">3</span></div>
+</div>
+
+<!-- ==================== PAGE 4: まず結論 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">まず結論：保護者が見るべきポイント</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8; margin-bottom: 24px;">
+      進路比較でよくある失敗は、<br>
+      <span class="emphasis">学費だけを見て判断してしまうこと</span>です。<br><br>
+      学費は安いけれど、現地で放置される。<br>
+      留学費用は高いけれど、サポートは入学まで。<br>
+      出願までは手厚いけれど、渡航後は自己責任。<br><br>
+      こういうケースだと、最初の見積もりが安く見えても、<br>
+      あとから家計にも精神的負担にも跳ね返ってきます。
+    </div>
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">視点 1</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">学費だけでなく、4年間の総額</div>
+        <div style="font-size: 16px; color: var(--muted);">学費、生活費、渡航、初期費用、もしもの対応まで含めて見る</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">視点 2</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">距離と生活環境</div>
+        <div style="font-size: 16px; color: var(--muted);">遠すぎる国か、治安はどうか、何かあった時に動きやすいか</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">視点 3</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">入学後のサポート</div>
+        <div style="font-size: 16px; color: var(--muted);">空港到着から生活立ち上げまで、誰が支えるのか</div>
+      </div>
+
+      <div style="padding: 14px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">視点 4</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">途中でズレた時の修正力</div>
+        <div style="font-size: 16px; color: var(--muted);">転学、再出願、体調不良。追加料金なしで対応できるか</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">4</span></div>
+</div>
+
+<!-- ==================== PAGE 5: 費用比較テーブル ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">日本進学・欧米留学・台湾留学の全体比較</div>
+  <div class="content" style="justify-content: center;">
+    <table style="margin-bottom: 20px;">
+      <tr><th>比較項目</th><th>日本の国立大学</th><th>日本の私立大学</th><th>欧米留学</th><th style="background: var(--accent);">台湾留学</th></tr>
+      <tr><td class="td-strong">年間学費</td><td>約60万円＋入学金</td><td>約100〜150万円</td><td>約300〜500万円</td><td class="td-accent">約45万円</td></tr>
+      <tr><td class="td-strong">4年間学費</td><td>約240万円＋入学金</td><td>約400〜600万円</td><td>約1,200〜2,000万円</td><td class="td-accent">約180万円</td></tr>
+      <tr><td class="td-strong">生活費</td><td>自宅か一人暮らしで変動</td><td>自宅か一人暮らしで変動</td><td>高額になりやすい</td><td class="td-accent">月約5〜8万円</td></tr>
+      <tr><td class="td-strong">距離</td><td>国内</td><td>国内</td><td>遠距離</td><td class="td-accent">飛行機で約3〜4時間</td></tr>
+      <tr><td class="td-strong">時差・連絡</td><td>問題なし</td><td>問題なし</td><td>時差が大きい</td><td class="td-accent">比較的取りやすい</td></tr>
+      <tr><td class="td-strong">治安・生活</td><td>国内基準</td><td>国内基準</td><td>国・地域差が大きい</td><td class="td-accent">安心材料が多い</td></tr>
+      <tr><td class="td-strong">入学後サポート</td><td>大学ごと</td><td>大学ごと</td><td>エージェントで差</td><td class="td-accent">支援体制次第</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 85%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        台湾留学は、欧米留学ほど高額ではなく、<br>
+        日本進学と比べても<span class="emphasis">十分に比較検討に値する現実的な選択肢</span>です。<br><br>
+        <span class="emphasis">「海外留学 = とにかく高い」</span>というイメージとは、<br>
+        台湾はかなり違います。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">5</span></div>
+</div>
+
+<!-- ==================== PAGE 6: 4年間総額 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">台湾留学4年間の総額イメージ</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 24px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      台湾留学は「学費」より「総額の透明さ」が強みです
+    </div>
+    <table style="margin-bottom: 24px;">
+      <tr><th>項目</th><th>概算</th></tr>
+      <tr><td class="td-strong">学費（年間約45万円 × 4年）</td><td class="td-accent">約180万円</td></tr>
+      <tr><td class="td-strong">生活費（月約5〜8万円 × 48ヶ月）</td><td class="td-accent">約240〜384万円</td></tr>
+      <tr><td class="td-strong">合計（学費＋生活費）</td><td class="td-accent">約420〜564万円</td></tr>
+    </table>
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 24px;">
+      ここに、渡航費、保険、寮の初期費用、生活立ち上げ費用などが加わります。<br>
+      それでも、欧米留学よりかなり見通しが立てやすいのが台湾留学です。
+    </div>
+    <div style="border-top: 2px solid var(--blue); border-bottom: 2px solid var(--blue); padding: 20px 0; width: 85%;">
+      <div style="font-size: 22px; color: var(--blue); font-weight: 700; margin-bottom: 10px;">
+        オールインワンプラン 149万円の考え方
+      </div>
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        この149万円は、単なる「出願代行費」ではありません。<br><br>
+        出願設計・書類作成支援・中国語学習・台湾現地合宿<br>
+        到着後の生活立ち上げ・現地安全サポート<br>
+        在学中の相談・卒業・就職までの支援<br><br>
+        まで含めた、<span class="emphasis">約5年間の一括サポート費</span>です。<br><br>
+        見るべきなのは「149万円高いか安いか」ではなく、<br>
+        <span class="emphasis">何年分の、どこまでの支援が含まれているか</span>です。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">6</span></div>
+</div>
+
+<!-- ==================== PAGE 7: 見落としやすい費用 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">学費以外に見落としやすい費用</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      家計でズレやすいのは、学費以外の部分です
+    </div>
+    <table style="margin-bottom: 20px;">
+      <tr><th>見落としやすい費用</th><th>日本進学</th><th>欧米留学</th><th style="background: var(--accent);">台湾留学</th></tr>
+      <tr><td class="td-strong">入学金</td><td>あり</td><td>あり</td><td class="td-accent">多くは不要または軽い</td></tr>
+      <tr><td class="td-strong">渡航費</td><td>なし</td><td>高い</td><td class="td-accent">比較的抑えやすい</td></tr>
+      <tr><td class="td-strong">寮・住居立ち上げ費</td><td>一人暮らしなら必要</td><td>必要</td><td>必要</td></tr>
+      <tr><td class="td-strong">通信環境（SIM等）</td><td>国内契約で完結</td><td>必要</td><td>必要</td></tr>
+      <tr><td class="td-strong">口座開設・手続き</td><td>国内で完結</td><td>必要</td><td>必要</td></tr>
+      <tr><td class="td-strong">病院・緊急対応</td><td>国内前提</td><td>体制差が大きい</td><td>支援体制で差が出る</td></tr>
+      <tr><td class="td-strong">再出願・進路変更</td><td>進路次第</td><td>高額化しやすい</td><td>支援体制次第</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 85%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        ここで一番大事なのは、<br>
+        <span class="emphasis">「費用」にはお金だけでなく、親の手間と不安も含まれる</span>ということです。<br><br>
+        書類の不備を親が確認する時間、<br>
+        体調不良時に日本から指示を出す不安、<br>
+        進路変更時の再整理——<br><br>
+        だからこそ、保護者視点では<br>
+        <span class="emphasis">費用の安さより、負担の見通しが立つかどうか</span>が重要です。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">7</span></div>
+</div>
+
+<!-- ==================== PAGE 8: 安全面 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">台湾は「遠すぎない海外」だから判断しやすい</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 24px;">
+      海外進学で保護者の方が最初に気になるのは、<br>
+      やはり安全面だと思います。<br><br>
+      ここで台湾留学が比較的判断しやすい理由は、<br>
+      主に3つあります。
+    </div>
+
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 16px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">理由 1｜日本から近い</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.7;">
+          飛行機で約3〜4時間。欧米のように長距離移動ではない。<br>
+          何かあった時に、心理的にも物理的にも距離が近い。<br>
+          これは保護者にとってかなり大きいです。
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 16px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">理由 2｜生活コストが読みやすい</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.7;">
+          生活費は月約5〜8万円が目安で、<br>
+          寮に入れるケースも多く、住居コストも整理しやすい。<br>
+          「どこに住むか」で家計が大きくブレにくいのも判断材料です。
+        </div>
+      </div>
+
+      <div style="padding: 16px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">理由 3｜治安・生活環境の安心材料</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.7;">
+          100%安全という言い方はできません。<br>
+          ただ、欧米留学のように距離も費用も大きくはなく、<br>
+          日本から見て比較的近く、情報も集めやすい。<br>
+          <span class="emphasis">リスクを把握しやすく、準備でかなり減らせる留学先</span>です。
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">8</span></div>
+</div>
+
+<!-- ==================== PAGE 9: 到着後サポート ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">到着後サポートの具体範囲</div>
+  <div class="content">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      保護者が本当に見たいのは<br>「現地到着から誰が動くか」です
+    </div>
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 24px;">
+      留学は、合格通知が来た時点では終わりません。<br>
+      むしろ保護者にとって本番は、そこからです。
+    </div>
+    <table style="margin-bottom: 24px;">
+      <tr><th>到着後サポート一覧</th></tr>
+      <tr><td class="td-strong">空港迎え</td></tr>
+      <tr><td>寮同行・入寮手続き</td></tr>
+      <tr><td class="td-strong">SIM契約</td></tr>
+      <tr><td>口座開設</td></tr>
+      <tr><td class="td-strong">現地生活の初期設定</td></tr>
+      <tr><td>病院対応</td></tr>
+      <tr><td class="td-strong">大学生活の立ち上げ相談</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 85%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        お子さまは、<span class="emphasis">大学生活のスタートと</span><br>
+        <span class="emphasis">海外生活のスタートが同時に来ます。</span><br><br>
+        初めての土地、初めての言語、初めての寮、初めての手続き。<br>
+        これが全部同時です。<br><br>
+        <span class="emphasis">誰が迎えて、誰が同行して、誰が初期手続きを支えるのか</span><br>
+        ここは必ず確認すべきポイントです。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">9</span></div>
+</div>
+
+<!-- ==================== PAGE 10: 5年間支援 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">5年間継続支援の全体像</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      本当に必要なのは「入学まで」ではなく「卒業まで」の線の支援です
+    </div>
+    <div class="stat-block" style="margin-bottom: 20px;">
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--accent);">149<span class="unit">万円</span></div>
+        <div class="stat-label">約5年間・追加料金なしの一括サポート費</div>
+      </div>
+    </div>
+    <table style="margin-bottom: 20px;">
+      <tr><th>フェーズ</th><th>支援内容</th></tr>
+      <tr><td class="td-strong">出願前</td><td>進路設計、大学選定、スケジュール管理、中国語学習スタート</td></tr>
+      <tr><td class="td-strong">出願期</td><td>書類作成、添削、翻訳、申請サポート、大学ごとの対応</td></tr>
+      <tr><td class="td-strong">合格後</td><td>入学手続き、渡航準備、寮・生活準備</td></tr>
+      <tr><td class="td-strong">到着直後</td><td>空港迎え、寮同行、SIM、口座、現地生活立ち上げ</td></tr>
+      <tr><td class="td-strong">在学中</td><td>チャット相談、定期面談、生活・学習・進路相談</td></tr>
+      <tr><td class="td-strong">卒業前後</td><td>就職相談、進路相談、必要に応じた方向修正</td></tr>
+    </table>
+    <div style="font-size: 18px; color: var(--navy); line-height: 1.8; width: 85%;">
+      保護者の本音として、<br>
+      <span class="emphasis">「留学後に放置されないか」</span>はかなり大きい不安だと思います。<br><br>
+      その不安に対する答えは、<br>
+      <span class="emphasis">線でつながった支援があるかどうか</span>です。
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">10</span></div>
+</div>
+
+<!-- ==================== PAGE 11: 単発支援との違い ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">「入学までで終わり」と「5年間伴走」の違い</div>
+  <div class="content" style="justify-content: center;">
+    <table style="margin-bottom: 20px;">
+      <tr><th>比較項目</th><th>単発型サポート</th><th style="background: var(--accent);">線で支えるサポート</th></tr>
+      <tr><td class="td-strong">出願サポート</td><td>ある</td><td class="td-accent">ある</td></tr>
+      <tr><td class="td-strong">書類添削</td><td>ある場合あり</td><td class="td-accent">ある</td></tr>
+      <tr><td class="td-strong">翻訳品質</td><td>外注や簡易対応も多い</td><td class="td-accent">日本語作成→日本人添削→台湾人翻訳</td></tr>
+      <tr><td class="td-strong">合格後の手続き</td><td>薄い場合がある</td><td class="td-accent">継続対応</td></tr>
+      <tr><td class="td-strong">空港・寮・生活立ち上げ</td><td>ない場合がある</td><td class="td-accent">ある</td></tr>
+      <tr><td class="td-strong">病院・緊急時対応</td><td>基本なし</td><td class="td-accent">ある</td></tr>
+      <tr><td class="td-strong">在学中相談</td><td>ほぼなし</td><td class="td-accent">継続あり</td></tr>
+      <tr><td class="td-strong">転学・再出願対応</td><td>別料金になりやすい</td><td class="td-accent">追加料金なしで対応実例あり</td></tr>
+      <tr><td class="td-strong">卒業・就職支援</td><td>ほぼなし</td><td class="td-accent">あり</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 85%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        特に書類面では、<br>
+        <span class="emphasis">日本語作成 → 日本人が添削 → 台湾人が通る形に翻訳</span><br>
+        という二段階品質で仕上げています。<br><br>
+        支援の価値は「申請してくれるか」ではなく、<br>
+        <span class="emphasis">通る形に整え、合格後も継続して支えるか</span>で決まります。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">11</span></div>
+</div>
+
+<!-- ==================== PAGE 12: 実例と奨学金 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">実例と奨学金</div>
+  <div class="content">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 20px;">
+      家計判断を変えるのは、制度だけでなく実例です
+    </div>
+    <div style="width: 88%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding-bottom: 16px; margin-bottom: 16px;">
+        <div style="font-size: 20px; color: var(--blue); font-weight: 600; margin-bottom: 6px;">奨学金・学費免除の実例</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+          雲林科技大学の半導体プログラムでは、<br>
+          <span class="emphasis">12名出願して12名全員合格。</span><br>
+          さらに、<span class="num-accent">4年間学費免除＋毎月5万円給付</span>で、<br>
+          1人あたり<span class="num-accent">約450万円相当</span>の支援。<br><br>
+          <span class="emphasis">評定2.8〜3.0台でも国立大学合格＋奨学金獲得の事例</span>あり。
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding-bottom: 16px; margin-bottom: 16px;">
+        <div style="font-size: 20px; color: var(--blue); font-weight: 600; margin-bottom: 6px;">安全面の実例</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+          <span class="emphasis">深夜に怪我をして大量出血し、</span><br>
+          <span class="emphasis">救急対応から手術手続きまでサポートしたケース</span>があります。<br><br>
+          この時に保護者の方が一番感じるのは、<br>
+          「誰が動いてくれるのか」です。
+        </div>
+      </div>
+
+      <div style="padding-bottom: 8px;">
+        <div style="font-size: 20px; color: var(--blue); font-weight: 600; margin-bottom: 6px;">進路修正の実例</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+          入学後に「学科が合わない」「別の大学の方が合っている」<br>
+          というケースも。<br>
+          <span class="emphasis">転学・再出願を追加料金なしで対応した実例</span>あり。<br><br>
+          保護者として安心できるのは、<br>
+          <span class="emphasis">ズレた時に、修正できる体制があること</span>です。
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">12</span></div>
+</div>
+
+<!-- ==================== PAGE 13: 最後に ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">保護者が最後に確認すべきこと</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 24px;">
+      台湾留学は、「安いから選ぶ」進路ではありません。<br><br>
+      <span class="emphasis">費用・距離・治安・支援範囲のバランスがよく、</span><br>
+      <span class="emphasis">保護者として判断しやすい留学先だから</span><br>
+      <span class="emphasis">選択肢になる進路</span>です。
+    </div>
+    <div style="font-size: 22px; color: var(--blue); font-weight: 600; margin-bottom: 16px;">
+      保護者の判断チェックリスト
+    </div>
+    <div class="checklist" style="margin-bottom: 24px;">
+      □ 学費だけでなく、4年間の総額で比較しているか<br>
+      □ 合格後の生活立ち上げを誰が支えるか見えているか<br>
+      □ 病院・緊急時対応の体制まで確認できているか<br>
+      □ 入学後に放置されない仕組みがあるか<br>
+      □ 進路修正が必要になった時の対応まで確認しているか
+    </div>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 80%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        お子さまの進路は、<br>
+        「行きたい」で決めるものでも、<br>
+        「不安だからやめる」で決めるものでもありません。<br><br>
+        <span class="emphasis">比較して、納得して、</span><br>
+        <span class="emphasis">家庭として支えられる形で決めるもの</span>です。<br><br>
+        説明会では、ご家庭の状況に合わせて、<br>
+        保護者目線で整理しています。
+      </div>
+    </div>
+    <div style="margin-top: 20px; font-size: 20px; color: var(--navy); font-weight: 700;">
+      台湾留学101センター 代表 リッキー
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+</body>
+</html>

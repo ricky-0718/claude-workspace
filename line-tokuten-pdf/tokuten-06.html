@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    font-weight: 700;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* === Design Tokens === */
+  :root {
+    --blue: #2B4F82;
+    --navy: #1E3550;
+    --bg: #dce6f0;
+    --accent: #F0A030;
+    --accent-light: #FFDA50;
+    --muted: #4a6a8a;
+    --light: #64748b;
+    --table-alt: #f0f4f8;
+    --rule: #b0c4d8;
+  }
+
+  /* === Page Shell === */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    border: 4px solid var(--blue);
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .header {
+    background: var(--blue);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .header .logo {
+    width: 26px; height: 26px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 9px; font-weight: 800;
+  }
+  .header .name { color: white; font-size: 16px; font-weight: 600; letter-spacing: 2px; }
+
+  .content {
+    flex: 1;
+    padding: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 10px 24px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--muted);
+  }
+
+  /* === Section Header (full-width blue bar) === */
+  .section-header {
+    background: var(--blue);
+    padding: 18px 24px;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  /* === Typography === */
+  .label { font-size: 22px; color: var(--blue); font-weight: 500; letter-spacing: 3px; }
+  .title { font-size: 56px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+  .title .accent { color: var(--blue); }
+  .divider { width: 60px; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); margin: 20px auto; }
+  .subtitle { font-size: 22px; color: var(--muted); line-height: 1.8; }
+  .body-text { font-size: 22px; color: var(--navy); line-height: 2.0; text-align: center; }
+  .emphasis { color: var(--blue); font-weight: 700; }
+  .num-accent { color: var(--accent); font-weight: 800; }
+
+  /* === Stat Block (ruled lines, no cards) === */
+  .stat-block {
+    border-top: 3px solid var(--blue);
+    border-bottom: 3px solid var(--blue);
+    padding: 24px 0;
+    width: 70%;
+  }
+  .stat-item { margin-bottom: 18px; }
+  .stat-item:last-child { margin-bottom: 0; }
+  .stat-num { font-size: 72px; font-weight: 800; line-height: 1; }
+  .stat-num .unit { font-size: 40px; }
+  .stat-label { font-size: 24px; color: var(--light); margin-top: 6px; }
+  .stat-sep { width: 30px; height: 2px; background: var(--rule); margin: 0 auto 18px; }
+
+  /* === Table === */
+  table { width: 94%; border-collapse: collapse; margin: 0 auto; }
+  th { background: var(--blue); color: white; padding: 14px 10px; font-size: 18px; font-weight: 600; text-align: center; }
+  td { padding: 14px 10px; font-size: 18px; color: var(--navy); text-align: center; border-bottom: 1px solid #dde5ed; }
+  tr:nth-child(even) td { background: var(--table-alt); }
+  .td-strong { font-weight: 700; color: var(--blue); }
+  .td-accent { font-weight: 700; color: var(--accent); }
+
+  /* === Page number === */
+  .page-num { font-size: 16px; color: var(--rule); }
+
+  /* === Checklist === */
+  .checklist { text-align: left; display: inline-block; font-size: 18px; color: var(--navy); line-height: 2.2; }
+  .checklist span { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="content">
+    <div class="label" style="margin-bottom: 20px;">LINE登録特典 ⑥</div>
+    <div class="title">中国語ゼロから</div>
+    <div class="title" style="margin-bottom: 16px;"><span class="accent">A2</span>までの現実</div>
+    <div class="divider"></div>
+    <div class="subtitle" style="margin-bottom: 28px;">
+      いつ始めれば、どこまで届くのか<br>
+      数字と実例ベースで完全整理
+    </div>
+    <div class="stat-block">
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--accent);">250<span class="unit">時間</span></div>
+        <div class="stat-label">A2到達の平均学習時間</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue);">3<span class="unit">ヶ月</span></div>
+        <div class="stat-label">ゼロからA2合格までの平均期間</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+<!-- ==================== PAGE 2: INTRODUCTION ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">はじめに</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 24px; line-height: 1.8;">
+      こんにちは、リッキーです。<br>
+      まず最初に、安心してください。<br><br>
+      <span class="emphasis">中国語ゼロでも、台湾留学は十分に間に合います。</span><br><br>
+      「もう遅いかも」「台湾留学は無理ゲーかも」<br>
+      って思う人が多いんですが、断言します。<br><br>
+      ゼロだから無理なんじゃないです。<br>
+      遅すぎることより、<br>
+      <span class="emphasis">"順番を間違えること"の方が危ない</span>です。<br><br>
+      実際、僕たちの受講生は<br>
+      ゼロから始める人が多いです。<br><br>
+      そして、一般的にA2到達まで約720時間かかると<br>
+      言われる中で、僕たちは<br>
+      <span class="emphasis">平均約250時間、3ヶ月でA2合格</span>を目指す<br>
+      設計で進めています。
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">2</span></div>
+</div>
+
+<!-- ==================== PAGE 3: TABLE OF CONTENTS ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">目次</div>
+  <div class="content">
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">01</div>
+        <div style="font-size: 22px; color: var(--navy);">なぜ台湾留学にA2が必要なのか</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">02</div>
+        <div style="font-size: 22px; color: var(--navy);">中国語ゼロからA2までの現実ライン</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">03</div>
+        <div style="font-size: 22px; color: var(--navy);">業界平均720時間 → 自社250時間の理由</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">04</div>
+        <div style="font-size: 22px; color: var(--navy);">高3春・高3夏・卒業後スタートの見通し</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">05</div>
+        <div style="font-size: 22px; color: var(--navy);">日本人が中国語で有利な理由</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">06</div>
+        <div style="font-size: 22px; color: var(--navy);">独学で詰まりやすい3つのポイント</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">07</div>
+        <div style="font-size: 22px; color: var(--navy);">「現地で何とかなる」が危ない理由</div>
+      </div>
+
+      <div style="padding: 18px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">08</div>
+        <div style="font-size: 22px; color: var(--navy);">説明会で確認すべき学習条件</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">3</span></div>
+</div>
+
+<!-- ==================== PAGE 4: WHY A2 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">01 なぜ台湾留学にA2が必要なのか</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8; margin-bottom: 24px;">
+      台湾の大学に出願する際、多くの大学が<br>
+      TOCFL（華語文能力測験）のスコアを求めます。<br><br>
+      特にA2（基礎級）は、<br>
+      「日常的なやりとりが最低限できる」ことの証明として、<br>
+      出願時の<span class="emphasis">実質的なボーダーライン</span>になっています。
+    </div>
+    <div style="font-size: 24px; color: var(--blue); font-weight: 600; margin-bottom: 14px;">A2がないとどうなるのか</div>
+    <table style="margin-bottom: 24px; width: 85%;">
+      <tr><th>リスク</th></tr>
+      <tr><td>出願できる大学の選択肢が大幅に狭まる</td></tr>
+      <tr><td>書類審査で「中国語力不足」と判断されるリスクが上がる</td></tr>
+      <tr><td>入学後の授業についていけず、休学・退学に至るケースもある</td></tr>
+    </table>
+    <div style="font-size: 24px; color: var(--blue); font-weight: 600; margin-bottom: 14px;">A2があると何が変わるのか</div>
+    <table style="width: 85%;">
+      <tr><th>メリット</th></tr>
+      <tr><td>出願時の書類審査で加点される</td></tr>
+      <tr><td>面接がある大学では、基本的な受け答えができる</td></tr>
+      <tr><td>入学後の授業理解度が格段に上がる</td></tr>
+    </table>
+    <div style="margin-top: 20px; font-size: 18px; color: var(--navy); line-height: 1.8;">
+      A2は、「合格するため」だけでなく、<br>
+      <span class="emphasis">「入学後に生き残るため」にも必要なライン</span>です。
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">4</span></div>
+</div>
+
+<!-- ==================== PAGE 5: REALITY LINE ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">02 中国語ゼロからA2までの現実ライン</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 24px; color: var(--navy); font-weight: 700; margin-bottom: 14px;">
+      業界の一般的な数字
+    </div>
+    <table style="margin-bottom: 28px;">
+      <tr><th>指標</th><th>数値</th></tr>
+      <tr><td>A2到達に必要な一般的な学習時間</td><td class="td-strong">約720時間</td></tr>
+      <tr><td>独学の場合の平均期間</td><td class="td-strong">12〜18ヶ月</td></tr>
+      <tr><td>スクール利用の場合の平均期間</td><td class="td-strong">6〜12ヶ月</td></tr>
+    </table>
+    <div style="font-size: 24px; color: var(--navy); font-weight: 700; margin-bottom: 14px;">
+      台湾留学101センターの実績
+    </div>
+    <table style="margin-bottom: 28px;">
+      <tr><th>指標</th><th>数値</th></tr>
+      <tr><td>A2到達の平均学習時間</td><td class="td-accent">約250時間</td></tr>
+      <tr><td>A2到達の平均期間</td><td class="td-accent">約3ヶ月</td></tr>
+      <tr><td>ゼロスタートの受講生比率</td><td class="td-accent">大多数</td></tr>
+    </table>
+    <div class="stat-block" style="width: 75%;">
+      <div class="stat-item">
+        <div style="font-size: 20px; color: var(--muted); margin-bottom: 6px;">業界平均との差</div>
+        <div class="stat-num" style="color: var(--accent);">-65<span class="unit">%</span></div>
+        <div class="stat-label">学習時間を約65%短縮</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">5</span></div>
+</div>
+
+<!-- ==================== PAGE 6: WHY 250 HOURS ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">03 業界平均720時間 → 自社250時間の理由</div>
+  <div class="content" style="justify-content: center;">
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 20px;">
+      「250時間でA2」と聞くと、「詰め込みでしょ？」<br>
+      と思うかもしれません。違います。<br>
+      短縮できる理由は、<span class="emphasis">学習の順番と環境設計</span>にあります。
+    </div>
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">理由 1</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">発音ファーストの設計</div>
+        <div style="font-size: 16px; color: var(--muted); line-height: 1.7;">
+          中国語は声調言語。発音の土台がないまま進めると、<br>
+          後から全部やり直しになる。最初の1ヶ月を発音に集中投下。
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">理由 2</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">国立大学との共同開発カリキュラム</div>
+        <div style="font-size: 16px; color: var(--muted); line-height: 1.7;">
+          台湾の国立大学と共同で開発したプログラム。<br>
+          「試験のための中国語」ではなく「使える中国語」が身につく。
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">理由 3</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">オンライン＋現地合宿のハイブリッド</div>
+        <div style="font-size: 16px; color: var(--muted); line-height: 1.7;">
+          オンラインで基礎を固め、台湾現地合宿で実践力を一気に上げる。<br>
+          「教室で学ぶ」と「現地で使う」の両方で定着スピードが加速。
+        </div>
+      </div>
+
+      <div style="padding: 14px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">理由 4</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">途中修正のフィードバック設計</div>
+        <div style="font-size: 16px; color: var(--muted); line-height: 1.7;">
+          独学で720時間かかる最大の理由は「間違いに気づかないまま進む」こと。<br>
+          定期的なフィードバックで軌道修正し、無駄な遠回りを防ぐ。
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">6</span></div>
+</div>
+
+<!-- ==================== PAGE 7: TIMING ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">04 高3春・高3夏・卒業後スタートの見通し</div>
+  <div class="content" style="justify-content: center;">
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 20px;">
+      「いつ始めるか」によって、<br>
+      到達レベルと心理的な余裕が大きく変わります。
+    </div>
+    <table style="margin-bottom: 24px;">
+      <tr><th>開始時期</th><th>出願までの期間</th><th>余裕度</th><th>ポイント</th></tr>
+      <tr><td class="td-strong">高3春（4〜5月）</td><td>約6ヶ月</td><td class="td-accent">余裕あり</td><td>最もおすすめ</td></tr>
+      <tr><td class="td-strong">高3夏（7〜8月）</td><td>約3〜4ヶ月</td><td style="color: var(--navy);">やや急ぎ</td><td>夏休み活用がカギ</td></tr>
+      <tr><td class="td-strong">卒業後（3月〜）</td><td>状況による</td><td style="color: var(--navy);">要相談</td><td>2月入学なら余裕</td></tr>
+    </table>
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">高3春スタート（4〜5月）</div>
+        <div style="font-size: 16px; color: var(--navy); line-height: 1.7;">
+          出願時期（秋〜冬）までに約6ヶ月。A2取得に十分な時間がある。<br>
+          学校生活と両立しながら、週10〜15時間ペースで無理なく進められる。
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 6px;">高3夏スタート（7〜8月）</div>
+        <div style="font-size: 16px; color: var(--navy); line-height: 1.7;">
+          出願時期まで約3〜4ヶ月。A2取得は可能だが、集中的な学習が必要。<br>
+          夏休みを活用して一気に基礎を固めるのがカギ。部活引退後のスタートとして現実的。
+        </div>
+      </div>
+
+      <div style="padding: 14px 0;">
+        <div style="font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 6px;">卒業後スタート（3月以降）</div>
+        <div style="font-size: 16px; color: var(--navy); line-height: 1.7;">
+          9月入学の出願に間に合わせるには、かなりタイト。<br>
+          ただし、2月入学を目指すなら十分に時間がある。<br>
+          浪人期間を「中国語の集中期間」に転換できる。
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">7</span></div>
+</div>
+
+<!-- ==================== PAGE 8: JAPANESE ADVANTAGE ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">05 日本人が中国語で有利な理由</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8; margin-bottom: 24px;">
+      「中国語って難しそう…」というイメージが<br>
+      あるかもしれませんが、<br>
+      実は日本人は中国語学習において、<br>
+      <span class="emphasis">世界で最も有利なポジション</span>にいます。
+    </div>
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 6px;">漢字の知識がそのまま武器になる</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+          中国語の文字は漢字。日本人はすでに数千の漢字を<br>
+          読み書きできるため、他の国の学習者がゼロから<br>
+          覚えるところを、大幅にスキップできます。
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 6px;">文法構造が英語より近い</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+          修飾語の位置や助詞の使い方は日本語に近い部分も。<br>
+          英語圏の学習者よりも感覚的に理解しやすい要素が多いです。
+        </div>
+      </div>
+
+      <div style="padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 6px;">同じ漢字文化圏の感覚</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+          ニュアンスや表現の背景にある文化的な感覚が近いため、<br>
+          「なぜこう言うのか」の理解が早い。<br>
+          教科書では学べない、<span class="emphasis">日本人だけのアドバンテージ</span>です。
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">8</span></div>
+</div>
+
+<!-- ==================== PAGE 9: PITFALLS ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">06 独学で詰まりやすい3つのポイント</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 24px;">
+      独学で中国語を始める人は多いですが、<br>
+      途中で止まってしまう人も多いです。<br>
+      よくあるパターンを3つ紹介します。
+    </div>
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 6px;">ポイント 1</div>
+        <div style="font-size: 22px; color: var(--navy); font-weight: 600; margin-bottom: 6px;">声調を軽視して進めてしまう</div>
+        <div style="font-size: 17px; color: var(--muted); line-height: 1.7;">
+          中国語には4つの声調があり、<br>
+          同じ音でも声調が違えば意味が変わります。<br>
+          独学では「なんとなく」で進めてしまい、<br>
+          後から通じない中国語が身についてしまうケースが非常に多い。
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 6px;">ポイント 2</div>
+        <div style="font-size: 22px; color: var(--navy); font-weight: 600; margin-bottom: 6px;">インプット偏重でアウトプットが足りない</div>
+        <div style="font-size: 17px; color: var(--muted); line-height: 1.7;">
+          単語帳やアプリで覚えることに時間を使いすぎて、<br>
+          実際に話す・書く練習が不足するパターン。<br>
+          試験対策としても、実践力としても、<br>
+          アウトプットなしでは伸びません。
+        </div>
+      </div>
+
+      <div style="padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 6px;">ポイント 3</div>
+        <div style="font-size: 22px; color: var(--navy); font-weight: 600; margin-bottom: 6px;">進捗が見えず、モチベーションが続かない</div>
+        <div style="font-size: 17px; color: var(--muted); line-height: 1.7;">
+          独学は自分のペースで進められる反面、<br>
+          「今どのくらいのレベルなのか」が分かりにくい。<br>
+          目標までの距離が見えないと、<br>
+          続けること自体が難しくなります。
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">9</span></div>
+</div>
+
+<!-- ==================== PAGE 10: DANGER OF "WING IT" ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">07 「現地で何とかなる」が危ない理由</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8; margin-bottom: 24px;">
+      「台湾に行けば自然に中国語ができるようになる」<br>
+      これは、留学における<br>
+      <span class="emphasis">最も危険な思い込みの一つ</span>です。
+    </div>
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 16px 0;">
+        <div style="font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 6px;">現実：授業は初日から中国語</div>
+        <div style="font-size: 17px; color: var(--navy); line-height: 1.7;">
+          台湾の大学では、留学生向けの授業も<br>
+          基本的に中国語で行われます。<br>
+          英語で受けられるコースもありますが、選択肢は限られます。<br>
+          中国語がゼロの状態で入学すると、<br>
+          授業内容が全く理解できない期間が長く続きます。
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 16px 0;">
+        <div style="font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 6px;">現実：生活も中国語</div>
+        <div style="font-size: 17px; color: var(--navy); line-height: 1.7;">
+          寮の手続き、銀行口座の開設、病院の受診、<br>
+          アルバイトの面接——<br>
+          生活のあらゆる場面で中国語が必要です。<br>
+          「現地で何とかなる」と思って渡航した結果、<br>
+          孤立してしまう留学生は少なくありません。
+        </div>
+      </div>
+
+      <div style="padding: 16px 0;">
+        <div style="font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 6px;">現実：中国語力と留学満足度は直結する</div>
+        <div style="font-size: 17px; color: var(--navy); line-height: 1.7;">
+          中国語ができる状態で渡航した学生と、<br>
+          ゼロで渡航した学生では、<br>
+          最初の半年間の充実度がまるで違います。<br>
+          友人関係、授業理解、課外活動への参加——<br>
+          <span class="emphasis">すべてに中国語力が影響します。</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">10</span></div>
+</div>
+
+<!-- ==================== PAGE 11: CHECKLIST ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">08 説明会で確認すべき学習条件</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 20px;">
+      中国語プログラムを選ぶとき、<br>
+      説明会やカウンセリングで確認しておくべきポイントを<br>
+      まとめました。
+    </div>
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">確認 1</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">発音指導の有無と方法</div>
+        <div style="font-size: 16px; color: var(--muted);">「発音は自分で練習してください」というプログラムは要注意。</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">確認 2</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">到達目標と期間の明示</div>
+        <div style="font-size: 16px; color: var(--muted);">「〇ヶ月で〇〇レベル」と明確に言えるプログラムを選ぶ。</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">確認 3</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">アウトプットの機会</div>
+        <div style="font-size: 16px; color: var(--muted);">実際に話す・書く機会がカリキュラムに組み込まれているか。</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">確認 4</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">進捗管理の仕組み</div>
+        <div style="font-size: 16px; color: var(--muted);">定期的なテストやフィードバックがあるか。「やりっぱなし」にならない仕組み。</div>
+      </div>
+
+      <div style="padding: 14px 0;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">確認 5</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">ゼロスタートの実績</div>
+        <div style="font-size: 16px; color: var(--muted);">「ゼロから始めた受講生が、実際にA2を取得した実績があるか」を聞く。</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">11</span></div>
+</div>
+
+<!-- ==================== PAGE 12: CLOSING ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">最後に</div>
+  <div class="content">
+    <div style="font-size: 16px; color: var(--navy); font-weight: 700; margin-bottom: 20px;">
+      中国語ゼロでも、台湾留学は間に合います
+    </div>
+    <div class="stat-block" style="margin-bottom: 24px;">
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--accent); font-size: 36px;">250<span class="unit">時間</span></div>
+        <div class="stat-label">A2到達の平均学習時間</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue); font-size: 36px;">3<span class="unit">ヶ月</span></div>
+        <div class="stat-label">ゼロからA2合格までの平均期間</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--accent); font-size: 36px;">-65<span class="unit">%</span></div>
+        <div class="stat-label">業界平均比の学習時間短縮</div>
+      </div>
+    </div>
+    <div style="font-size: 18px; color: var(--navy); line-height: 2; width: 80%;">
+      大事なのは、<span class="emphasis">「いつ始めるか」</span>と<br>
+      <span class="emphasis">「どう学ぶか」</span>。この2つだけです。<br><br>
+      台湾留学101センターでは、<br>
+      中国語ゼロからA2取得までの現実的なロードマップを、<br>
+      一人ひとりの状況に合わせてご提案しています。<br><br>
+      まずは無料説明会で、あなたの「今」から<br>
+      間に合うプランを一緒に確認しましょう。
+    </div>
+    <div style="margin-top: 20px; border-top: 2px solid var(--blue); padding-top: 16px; width: 80%;">
+      <div style="font-size: 16px; color: var(--muted); line-height: 1.8;">
+        国立大学との共同開発プログラム<br>
+        ゼロスタートからA2取得の実績多数<br>
+        オンライン＋現地合宿のハイブリッド設計<br>
+        台湾留学専門のプロがマンツーマンでサポート
+      </div>
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+</body>
+</html>

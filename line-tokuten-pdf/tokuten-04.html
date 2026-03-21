@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    font-weight: 700;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* === Design Tokens === */
+  :root {
+    --blue: #2B4F82;
+    --navy: #1E3550;
+    --bg: #dce6f0;
+    --accent: #F0A030;
+    --accent-light: #FFDA50;
+    --muted: #4a6a8a;
+    --light: #64748b;
+    --table-alt: #f0f4f8;
+    --rule: #b0c4d8;
+  }
+
+  /* === Page Shell === */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    border: 4px solid var(--blue);
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .header {
+    background: var(--blue);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .header .logo {
+    width: 26px; height: 26px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 9px; font-weight: 800;
+  }
+  .header .name { color: white; font-size: 16px; font-weight: 600; letter-spacing: 2px; }
+
+  .content {
+    flex: 1;
+    padding: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 10px 24px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--muted);
+  }
+
+  /* === Section Header (full-width blue bar) === */
+  .section-header {
+    background: var(--blue);
+    padding: 18px 24px;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  /* === Typography === */
+  .label { font-size: 22px; color: var(--blue); font-weight: 500; letter-spacing: 3px; }
+  .title { font-size: 56px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+  .title .accent { color: var(--blue); }
+  .divider { width: 60px; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); margin: 20px auto; }
+  .subtitle { font-size: 22px; color: var(--muted); line-height: 1.8; }
+  .body-text { font-size: 22px; color: var(--navy); line-height: 2.0; text-align: center; }
+  .emphasis { color: var(--blue); font-weight: 700; }
+  .num-accent { color: var(--accent); font-weight: 800; }
+
+  /* === Stat Block (ruled lines, no cards) === */
+  .stat-block {
+    border-top: 3px solid var(--blue);
+    border-bottom: 3px solid var(--blue);
+    padding: 24px 0;
+    width: 70%;
+  }
+  .stat-item { margin-bottom: 18px; }
+  .stat-item:last-child { margin-bottom: 0; }
+  .stat-num { font-size: 72px; font-weight: 800; line-height: 1; }
+  .stat-num .unit { font-size: 40px; }
+  .stat-label { font-size: 24px; color: var(--light); margin-top: 6px; }
+  .stat-sep { width: 30px; height: 2px; background: var(--rule); margin: 0 auto 18px; }
+
+  /* === Table === */
+  table { width: 94%; border-collapse: collapse; margin: 0 auto; }
+  th { background: var(--blue); color: white; padding: 14px 10px; font-size: 18px; font-weight: 600; text-align: center; }
+  td { padding: 14px 10px; font-size: 18px; color: var(--navy); text-align: center; border-bottom: 1px solid #dde5ed; }
+  tr:nth-child(even) td { background: var(--table-alt); }
+  .td-strong { font-weight: 700; color: var(--blue); }
+  .td-accent { font-weight: 700; color: var(--accent); }
+
+  /* === White content area for inner pages === */
+  .white-area {
+    background: white;
+    padding: 24px 28px;
+    width: 92%;
+    text-align: center;
+  }
+
+  /* === Page number === */
+  .page-num { font-size: 16px; color: var(--rule); }
+
+  /* === Checklist === */
+  .checklist { text-align: left; display: inline-block; font-size: 18px; color: var(--navy); line-height: 2.2; }
+  .checklist span { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="content">
+    <div class="label" style="margin-bottom: 20px;">LINE登録特典 ④</div>
+    <div class="title" style="font-size: 48px;">失敗する人の</div>
+    <div class="title" style="margin-bottom: 16px;"><span class="accent">3</span>つの共通点</div>
+    <div class="divider"></div>
+    <div class="subtitle" style="margin-bottom: 28px;">
+      知っていれば避けられる落とし穴<br>
+      高校生本人と保護者が出願前に読むべきレポート
+    </div>
+    <div class="stat-block">
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue);">3<span class="unit">つ</span></div>
+        <div class="stat-label">失敗する人の共通パターン</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--accent);">100<span class="unit">%</span></div>
+        <div class="stat-label">2学科以上申請した生徒の合格率</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue);">250<span class="unit">時間</span></div>
+        <div class="stat-label">中国語A2到達の設計時間</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+<!-- ==================== PAGE 2: はじめに ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">はじめに</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8;">
+      こんにちは、リッキーです。<br><br>
+      このレポートは、台湾留学に興味がある高校生本人と、<br>
+      その進路を一緒に考える保護者の方のために作りました。<br><br>
+      最初に、安心してください。<br>
+      <span class="emphasis">台湾留学は、正しく進めれば十分に現実的な進路です。</span><br><br>
+      実際に僕たちは、<span class="emphasis">年間100名以上を台湾へ送り出していて、</span><br>
+      <span class="emphasis">2学科以上申請した生徒の合格率は100%</span>です。<br><br>
+      でも、断言します。<br>
+      <span class="emphasis">台湾留学は"知っただけ"でうまくいくほど甘くないです。</span><br><br>
+      実は僕自身、最初はかなり失敗しました。<br>
+      出願締切に間に合わない。不合格が続く。<br>
+      学費の支払い方法がわからない。<br>
+      大学1年目は本当に苦しくて、<br>
+      順調とは言えないスタートでした。<br><br>
+      だからこそ今は、はっきり言えます。<br>
+      台湾留学でつまずく人には、才能の差よりも、<br>
+      <span class="emphasis">最初の進め方のズレ</span>があります。
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">2</span></div>
+</div>
+
+<!-- ==================== PAGE 3: 目次 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">このレポートでわかること</div>
+  <div class="content">
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 24px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 6px;">共通点 1</div>
+        <div style="font-size: 22px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">情報を集めた安心感で止まってしまう</div>
+        <div style="font-size: 16px; color: var(--muted);">無料情報だけで進める／書類・期限で詰まる</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 24px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 6px;">共通点 2</div>
+        <div style="font-size: 22px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">大学選びを感覚で決めてしまう</div>
+        <div style="font-size: 16px; color: var(--muted);">データなしで決める／中国語を後回しにする</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 24px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--blue); margin-bottom: 6px;">共通点 3</div>
+        <div style="font-size: 22px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">合格をゴールだと思ってしまう</div>
+        <div style="font-size: 16px; color: var(--muted);">入学後の生活を軽く見て後悔する</div>
+      </div>
+
+      <div style="padding: 24px 0;">
+        <div style="font-size: 28px; font-weight: 800; color: var(--accent); margin-bottom: 6px;">最後に</div>
+        <div style="font-size: 22px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">失敗を避ける人が最初に持っている考え方</div>
+        <div style="font-size: 16px; color: var(--muted);">今日からできる確認チェックリスト</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">3</span></div>
+</div>
+
+<!-- ==================== PAGE 4: 共通点1 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">共通点1：情報を集めた安心感で止まってしまう</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8;">
+      台湾留学で最初につまずく人の多くは、<br>
+      能力が足りないのではなく、<br>
+      <span class="emphasis">「わかったつもり」で進んでしまう</span>ことが原因です。<br><br>
+      今は、SNS、YouTube、ブログ、大学サイト、体験談など、<br>
+      情報自体はたくさんあります。<br>
+      なので、少し調べるとこう思いやすいです。<br><br>
+      「思ったよりいけそう」<br>
+      「出願方法も書いてある」<br>
+      「テンプレもあるし、自分たちでも進められそう」<br><br>
+      この感覚自体は悪くありません。<br>
+      ただ、ここで危ないのは、<br>
+      <span class="emphasis">"情報があること"と、</span><br>
+      <span class="emphasis">"自分に合う進め方がわかっていること"を</span><br>
+      <span class="emphasis">同じにしてしまうこと</span>です。<br><br>
+      台湾留学は「正しい情報」だけでは足りず、<br>
+      <span class="emphasis">「正しい順番」と</span><br>
+      <span class="emphasis">「途中でズレを直すフィードバック」</span>まで必要です。<br><br>
+      失敗する人は、最初からやる気がないわけではありません。<br>
+      むしろ逆で、自分で頑張ろうとする人ほど、<br>
+      確認役がいないまま進めてしまうのです。
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">4</span></div>
+</div>
+
+<!-- ==================== PAGE 5: 無料情報のズレ ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">無料情報だけで進めると、どこでズレるのか</div>
+  <div class="content">
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 6px;">ズレ 1</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">情報が"全体向け"なので、自分向けに変換できない</div>
+        <div style="font-size: 16px; color: var(--muted); line-height: 1.7;">
+          「この時期に出願です」と聞いても、<br>
+          自分が高3の何月なのか、今の評定がどのくらいなのか、<br>
+          国立を狙うのか私立を狙うのかで、動き方は変わります。
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 6px;">ズレ 2</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">ズレても誰も止めてくれない</div>
+        <div style="font-size: 16px; color: var(--muted); line-height: 1.7;">
+          志望理由書、学習計画、出願順、語学の優先順位。<br>
+          本人は頑張っているつもりでも、少しズレるだけで<br>
+          結果に大きく影響します。
+        </div>
+      </div>
+
+      <div style="padding: 18px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 6px;">ズレ 3</div>
+        <div style="font-size: 20px; color: var(--navy); font-weight: 600; margin-bottom: 4px;">"やった感"が出やすい</div>
+        <div style="font-size: 16px; color: var(--muted); line-height: 1.7;">
+          説明会を見た。PDFを読んだ。大学を調べた。<br>
+          かなり前進した気になります。でも実際は、<br>
+          台湾留学で結果を分けるのは「知った」ことではなく<br>
+          「正しく実行した」ことです。
+        </div>
+      </div>
+
+    </div>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 85%; margin-top: 8px;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        高校生本人にとっては、<span class="emphasis">確認なしの自己流が危ない</span>。<br>
+        保護者にとっては、<span class="emphasis">「うちの子は調べているから大丈夫」が</span><br>
+        <span class="emphasis">あとで一番大きなズレになる</span>ことがあります。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">5</span></div>
+</div>
+
+<!-- ==================== PAGE 6: 書類・期限 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">書類や期限で詰まる人は、管理で負けている</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 20px;">
+      台湾留学でかなり多いのが、<br>
+      <span class="emphasis">書類と期限で詰まるパターン</span>です。<br><br>
+      これも、本人の頭が悪いとか、やる気がないとかではありません。<br>
+      単純に、想像しているより細かくて、変数が多いのです。
+    </div>
+    <table style="margin-bottom: 20px;">
+      <tr><th>出願で必要な確認事項</th></tr>
+      <tr><td class="td-strong">いつ募集が始まるのか</td></tr>
+      <tr><td>国立と私立で時期がどう違うのか</td></tr>
+      <tr><td class="td-strong">オンライン出願の仕様</td></tr>
+      <tr><td>推薦書や成績証明など学校に頼む書類</td></tr>
+      <tr><td class="td-strong">翻訳や形式の確認</td></tr>
+      <tr><td>大学側で正しく反映されているか</td></tr>
+      <tr><td class="td-strong">追加提出の連絡を見落としていないか</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 85%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        さらに怖いのが、<span class="emphasis">去年の情報で進めること</span>です。<br>
+        台湾留学は、制度・期限・書類要件が毎年変わることがあります。<br><br>
+        書類は<span class="emphasis">"作る"だけでなく、</span><br>
+        <span class="emphasis">"通る状態で届いているか"まで確認して初めて完了</span>です。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">6</span></div>
+</div>
+
+<!-- ==================== PAGE 7: 共通点2 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">共通点2：大学選びを感覚で決めてしまう</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8; margin-bottom: 24px;">
+      次の共通点は、<span class="emphasis">大学選びを感覚で決めてしまう</span>ことです。<br>
+      これは本当によくあります。<br><br>
+      台北が有名だから台北がいい。<br>
+      国立だから良さそう。<br>
+      なんとなくこの大学は聞いたことがある。<br>
+      とにかく受かりそうなところでいい。<br><br>
+      こういう決め方をしてしまうと、あとでズレます。
+    </div>
+    <div style="width: 85%; text-align: center;">
+      <div style="font-size: 22px; color: var(--blue); font-weight: 600; margin-bottom: 16px;">
+        大学選びで見るべき5つの視点
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 12px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 2px;">1</div>
+        <div style="font-size: 18px; color: var(--navy);">学科内容が本人の興味や将来と合っているか</div>
+      </div>
+      <div style="border-bottom: 1px solid var(--rule); padding: 12px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 2px;">2</div>
+        <div style="font-size: 18px; color: var(--navy);">今の成績・語学状況で現実的に狙えるか</div>
+      </div>
+      <div style="border-bottom: 1px solid var(--rule); padding: 12px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 2px;">3</div>
+        <div style="font-size: 18px; color: var(--navy);">出願時期や方式が本人の準備状況と合うか</div>
+      </div>
+      <div style="border-bottom: 1px solid var(--rule); padding: 12px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 2px;">4</div>
+        <div style="font-size: 18px; color: var(--navy);">立地・生活費・生活環境が家庭に合うか</div>
+      </div>
+      <div style="padding: 12px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 2px;">5</div>
+        <div style="font-size: 18px; color: var(--navy);">卒業後の進路とつながっているか</div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; font-size: 18px; color: var(--navy); line-height: 1.8;">
+      大学選びは夢を見るパートでもありますが、<br>
+      夢を現実にするには、<span class="emphasis">データで判断する視点</span>が必要です。
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">7</span></div>
+</div>
+
+<!-- ==================== PAGE 8: 「行きたい場所」vs「続けられる場所」 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">「行きたい場所」で選ぶと「続けられる場所」とズレる</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8; margin-bottom: 20px;">
+      高校生本人が「やっぱり台北に行きたい」と思うことは自然です。<br><br>
+      でも、ここで考えたいのは、<br>
+      <span class="emphasis">"行きたい場所"と</span><br>
+      <span class="emphasis">"続けやすい場所"は同じとは限らない</span>ということです。<br><br>
+      大学や学科によって、学びの内容、出願難易度、<br>
+      必要な準備、生活コスト、卒業後の進路、<br>
+      奨学金の取りやすさはかなり変わります。
+    </div>
+    <div style="border-top: 2px solid var(--blue); border-bottom: 2px solid var(--blue); padding: 20px 0; width: 85%; margin-bottom: 20px;">
+      <div style="font-size: 24px; color: var(--accent); font-weight: 800; margin-bottom: 10px;">
+        好き × 現実性 × 将来性
+      </div>
+      <div style="font-size: 20px; color: var(--navy);">
+        この3つで見られると、大学選びの精度は一気に上がります。
+      </div>
+    </div>
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8;">
+      高校生本人にとって大事なのは、<br>
+      <span class="emphasis">"今の気分で選ぶこと"ではなく、</span><br>
+      <span class="emphasis">"4年間走れる場所を選ぶこと"</span>です。<br><br>
+      保護者の方にとって大事なのは、<br>
+      "安心そうに見える大学"ではなく、<br>
+      <span class="emphasis">"本人の条件に合っていて、</span><br>
+      <span class="emphasis">家庭として支えられる大学"</span>かどうかです。
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">8</span></div>
+</div>
+
+<!-- ==================== PAGE 9: 中国語 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">中国語を後回しにすると、全部しんどくなる</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 20px;">
+      まず、安心してください。<br>
+      <span class="emphasis">中国語ゼロからのスタート自体は問題ありません。</span><br>
+      実際、最初はゼロの人が多いです。<br><br>
+      ただ、断言します。<br>
+      <span class="emphasis">ゼロなのは大丈夫。でも、ゼロのまま後回しにするのが一番危険です。</span>
+    </div>
+    <div class="stat-block" style="margin-bottom: 20px;">
+      <div class="stat-item">
+        <div style="font-size: 20px; color: var(--muted); margin-bottom: 6px;">一般的なTOCFL A2到達時間</div>
+        <div class="stat-num" style="color: var(--navy); font-size: 56px;">720<span class="unit">時間</span></div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div style="font-size: 20px; color: var(--muted); margin-bottom: 6px;">台湾留学101センターの設計</div>
+        <div class="stat-num" style="color: var(--accent); font-size: 56px;">250<span class="unit">時間</span></div>
+        <div class="stat-label">業界平均の約3分の1</div>
+      </div>
+    </div>
+    <div style="width: 85%; text-align: center;">
+      <div style="border-bottom: 1px solid var(--rule); padding: 10px 0;">
+        <div style="font-size: 18px; color: var(--blue); font-weight: 600;">後回しにすると起こること 1</div>
+        <div style="font-size: 16px; color: var(--navy);">出願準備と同時進行で苦しくなる</div>
+      </div>
+      <div style="border-bottom: 1px solid var(--rule); padding: 10px 0;">
+        <div style="font-size: 18px; color: var(--blue); font-weight: 600;">後回しにすると起こること 2</div>
+        <div style="font-size: 16px; color: var(--navy);">入学後の生活不安が大きくなる</div>
+      </div>
+      <div style="padding: 10px 0;">
+        <div style="font-size: 18px; color: var(--blue); font-weight: 600;">後回しにすると起こること 3</div>
+        <div style="font-size: 16px; color: var(--navy);">自信を失いやすくなる</div>
+      </div>
+    </div>
+    <div style="margin-top: 14px; font-size: 18px; color: var(--navy); line-height: 1.8; width: 85%;">
+      高校生本人にとって中国語は、合格のためだけではありません。<br>
+      <span class="emphasis">現地で自分を守る力</span>です。
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">9</span></div>
+</div>
+
+<!-- ==================== PAGE 10: 共通点3 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">共通点3：合格をゴールだと思ってしまう</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8; margin-bottom: 24px;">
+      3つ目の共通点は、<br>
+      <span class="emphasis">合格をゴールだと思ってしまうこと</span>です。<br><br>
+      でも実際の台湾留学は、合格してからが本番です。<br>
+      ここを軽く見ると、かなり高い確率で後悔します。
+    </div>
+    <table style="margin-bottom: 20px;">
+      <tr><th>合格後に実際に必要になること</th></tr>
+      <tr><td class="td-strong">渡航準備</td></tr>
+      <tr><td>現地到着後の動き</td></tr>
+      <tr><td class="td-strong">寮の手続き・SIM・口座など生活の立ち上げ</td></tr>
+      <tr><td>履修登録・先生や大学とのやりとり</td></tr>
+      <tr><td class="td-strong">体調不良やトラブル時の対応</td></tr>
+      <tr><td>友人関係や孤独への対処</td></tr>
+      <tr><td class="td-strong">将来の進路の相談</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 85%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        出願だけ、合格だけ、入学までだけ。<br>
+        この切り方だと、本人も保護者も、<br>
+        あとから一番不安になります。<br><br>
+        逆に、出願から現地生活、在学、卒業・就職まで<br>
+        <span class="emphasis">5年間を線で見ておく</span>と、<br>
+        台湾留学は一気に現実的になります。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">10</span></div>
+</div>
+
+<!-- ==================== PAGE 11: 入学後の実例 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">入学後の生活を軽く見ると、想定外で崩れる</div>
+  <div class="content">
+    <div style="width: 88%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding-bottom: 18px; margin-bottom: 18px;">
+        <div style="font-size: 20px; color: var(--blue); font-weight: 600; margin-bottom: 8px;">緊急対応の実例</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+          <span class="emphasis">深夜に寮でガラス瓶で手を切って大量出血。</span><br>
+          そのまま救急対応になったケースがあります。<br>
+          現地スタッフがすぐ動いて、<br>
+          救急車、病院同行、手術手続きまでサポートしました。<br><br>
+          もし本人ひとりだったら？<br>
+          深夜。海外。言語の壁。手続きもわからない。<br>
+          <span class="emphasis">こういう時に動ける体制があるかどうかで、</span><br>
+          <span class="emphasis">留学の安心度はまるで変わります。</span>
+        </div>
+      </div>
+
+      <div style="padding-bottom: 8px;">
+        <div style="font-size: 20px; color: var(--blue); font-weight: 600; margin-bottom: 8px;">進路修正の実例</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+          入学後には別のズレも起こります。<br>
+          「やってみたら、この学科は違った」<br>
+          「別の大学の方が合っていた」<br><br>
+          実際に、<span class="emphasis">転学や再出願を追加料金なしで</span><br>
+          <span class="emphasis">対応したケース</span>もあります。<br><br>
+          大事なのは、最初に完璧を当てることより、<br>
+          <span class="emphasis">ズレた時に修正できる体制を持っていること</span>です。
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">11</span></div>
+</div>
+
+<!-- ==================== PAGE 12: まとめ ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">失敗する人と、うまくいく人の差</div>
+  <div class="content" style="justify-content: center;">
+    <div style="width: 85%; text-align: center; margin-bottom: 20px;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 12px 0;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">共通点 1</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">情報を集めた安心感で止まる</div>
+        <div style="font-size: 15px; color: var(--muted);">無料情報だけで進める／フィードバックがない／書類管理が甘くなる</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 12px 0;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">共通点 2</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">大学選びを感覚で決める</div>
+        <div style="font-size: 15px; color: var(--muted);">データを見ない／条件照合しない／中国語準備を後回しにする</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 12px 0;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">共通点 3</div>
+        <div style="font-size: 18px; color: var(--navy); font-weight: 600;">合格をゴールだと思う</div>
+        <div style="font-size: 15px; color: var(--muted);">入学後の生活を軽く見る／トラブル対応を考えていない／相談先がない</div>
+      </div>
+
+    </div>
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      うまくいく人は、<span class="emphasis">正しい順番と、環境と、フィードバック</span>を持っています
+    </div>
+    <div class="stat-block" style="width: 80%;">
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue); font-size: 36px;">100<span class="unit">%</span></div>
+        <div class="stat-label" style="font-size: 16px;">2学科以上申請した生徒の合格率</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--accent); font-size: 36px;">450<span class="unit">万</span></div>
+        <div class="stat-label" style="font-size: 16px;">雲林科技大学 奨学金相当額（1人あたり）</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue); font-size: 36px;">250<span class="unit">時間</span></div>
+        <div class="stat-label" style="font-size: 16px;">中国語A2到達の設計時間（業界平均の約1/3）</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">12</span></div>
+</div>
+
+<!-- ==================== PAGE 13: チェックリスト ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">今日からできる確認チェックリスト</div>
+  <div class="content">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 20px;">
+      親子で一度チェックしてみてください
+    </div>
+    <div class="checklist" style="margin-bottom: 24px; font-size: 20px;">
+      □ 今の学年・評定を正確に把握しているか<br>
+      □ 志望大学を3校以上リストアップしているか<br>
+      □ 出願スケジュールを逆算で把握しているか<br>
+      □ 2学科以上で出願設計を考えているか<br>
+      □ 中国語学習をすでに開始している、または開始時期を決めているか<br>
+      □ 保護者と費用・安全面について具体的に話し合っているか<br>
+      □ 合格後のサポート範囲まで確認しているか<br>
+      □ 困った時に、誰に相談するかが決まっているか
+    </div>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 80%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        <span class="emphasis">1つでも「いいえ」があれば、まだ整理の余地があります。</span><br>
+        でもそれは悪いことではありません。<br>
+        むしろ、今気づけたなら大丈夫です。<br><br>
+        <span class="emphasis">この段階で整理できれば、</span><br>
+        <span class="emphasis">避けられる失敗はかなり多いです。</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">13</span></div>
+</div>
+
+<!-- ==================== PAGE 14: 最後に ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">最後に</div>
+  <div class="content">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 20px;">
+      知っていれば、避けられる失敗は多い
+    </div>
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 24px;">
+      台湾留学は、特別な人だけの選択肢ではありません。<br><br>
+      評定2.8台から国立大学に合格して、<br>
+      奨学金まで取った子もいます。<br>
+      中国語ゼロから始めて、必要なレベルまで届いた子もいます。<br>
+      12人出して12人全員合格したプログラムもあります。<br><br>
+      <span class="emphasis">台湾留学は無理ゲーじゃないです。</span><br>
+      ただし、<span class="emphasis">自己流で遠回りしやすい進路</span>なのは事実です。<br><br>
+      このレポートで一番伝えたかったのは、<br>
+      「台湾留学は怖い」ではなく、<br>
+      <span class="emphasis">「台湾留学は、知っていれば</span><br>
+      <span class="emphasis">避けられる失敗が多い」</span>ということです。<br><br>
+      本人に必要なのは、才能よりも正しい順番。<br>
+      保護者に必要なのは、心配だけでなく判断材料。<br>
+      そして両方に必要なのは、<br>
+      <span class="emphasis">途中でズレを直せる環境</span>です。
+    </div>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 80%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        <span class="emphasis">今日やらない人は、明日もやらないです。</span><br>
+        でも、今日動く人は、1年後の景色を変えられます。<br><br>
+        台湾留学は、選択肢が少ないのではありません。<br>
+        <span class="emphasis">知られていないだけです。</span>
+      </div>
+    </div>
+    <div style="margin-top: 20px; font-size: 20px; color: var(--navy); font-weight: 700;">
+      台湾留学101センター 代表 リッキー
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+</body>
+</html>

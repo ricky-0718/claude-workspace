@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    font-weight: 700;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* === Design Tokens === */
+  :root {
+    --blue: #2B4F82;
+    --navy: #1E3550;
+    --bg: #dce6f0;
+    --accent: #F0A030;
+    --accent-light: #FFDA50;
+    --muted: #4a6a8a;
+    --light: #64748b;
+    --table-alt: #f0f4f8;
+    --rule: #b0c4d8;
+  }
+
+  /* === Page Shell === */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    border: 4px solid var(--blue);
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .header {
+    background: var(--blue);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .header .logo {
+    width: 26px; height: 26px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 9px; font-weight: 800;
+  }
+  .header .name { color: white; font-size: 16px; font-weight: 600; letter-spacing: 2px; }
+
+  .content {
+    flex: 1;
+    padding: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 10px 24px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--muted);
+  }
+
+  /* === Section Header (full-width blue bar) === */
+  .section-header {
+    background: var(--blue);
+    padding: 18px 24px;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  /* === Typography === */
+  .label { font-size: 22px; color: var(--blue); font-weight: 500; letter-spacing: 3px; }
+  .title { font-size: 56px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+  .title .accent { color: var(--blue); }
+  .divider { width: 60px; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); margin: 20px auto; }
+  .subtitle { font-size: 22px; color: var(--muted); line-height: 1.8; }
+  .body-text { font-size: 22px; color: var(--navy); line-height: 2.0; text-align: center; }
+  .emphasis { color: var(--blue); font-weight: 700; }
+  .num-accent { color: var(--accent); font-weight: 800; }
+
+  /* === Stat Block (ruled lines, no cards) === */
+  .stat-block {
+    border-top: 3px solid var(--blue);
+    border-bottom: 3px solid var(--blue);
+    padding: 24px 0;
+    width: 70%;
+  }
+  .stat-item { margin-bottom: 18px; }
+  .stat-item:last-child { margin-bottom: 0; }
+  .stat-num { font-size: 72px; font-weight: 800; line-height: 1; }
+  .stat-num .unit { font-size: 40px; }
+  .stat-label { font-size: 24px; color: var(--light); margin-top: 6px; }
+  .stat-sep { width: 30px; height: 2px; background: var(--rule); margin: 0 auto 18px; }
+
+  /* === Table === */
+  table { width: 94%; border-collapse: collapse; margin: 0 auto; }
+  th { background: var(--blue); color: white; padding: 14px 10px; font-size: 18px; font-weight: 600; text-align: center; }
+  td { padding: 14px 10px; font-size: 18px; color: var(--navy); text-align: center; border-bottom: 1px solid #dde5ed; }
+  tr:nth-child(even) td { background: var(--table-alt); }
+  .td-strong { font-weight: 700; color: var(--blue); }
+  .td-accent { font-weight: 700; color: var(--accent); }
+
+  /* === White content area for inner pages === */
+  .white-area {
+    background: white;
+    padding: 24px 28px;
+    width: 92%;
+    text-align: center;
+  }
+
+  /* === Page number === */
+  .page-num { font-size: 16px; color: var(--rule); }
+
+  /* === Checklist === */
+  .checklist { text-align: left; display: inline-block; font-size: 18px; color: var(--navy); line-height: 2.2; }
+  .checklist span { color: var(--blue); }
+
+  /* === Form field === */
+  .form-field {
+    border-bottom: 2px solid var(--rule);
+    padding: 8px 0;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .form-label {
+    font-size: 18px;
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .form-options {
+    font-size: 16px;
+    color: var(--navy);
+    line-height: 1.8;
+  }
+  .form-blank {
+    display: inline-block;
+    width: 200px;
+    border-bottom: 2px dotted var(--rule);
+    height: 30px;
+    margin: 4px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="content">
+    <div class="label" style="margin-bottom: 20px;">LINE登録特典 ⑤</div>
+    <div class="title" style="font-size: 48px;">大学診断</div>
+    <div class="title" style="margin-bottom: 16px;"><span class="accent">カルテ</span></div>
+    <div class="divider"></div>
+    <div class="subtitle" style="margin-bottom: 28px;">
+      あなたの条件で狙える大学がわかる<br>
+      5分で書けて、一生の進路判断に使える
+    </div>
+    <div class="stat-block">
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue);">100<span class="unit">校+</span></div>
+        <div class="stat-label">台湾の大学数</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--accent);">3<span class="unit">STEP</span></div>
+        <div class="stat-label">自己診断 → マッチング → 行動計画</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue);">5<span class="unit">分</span></div>
+        <div class="stat-label">書き込むだけで狙える大学が見える</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+<!-- ==================== PAGE 2: はじめに ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">はじめに</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.8;">
+      こんにちは、リッキーです。<br><br>
+      台湾留学を考え始めると、<br>
+      最初にぶつかるのがこの壁です。<br><br>
+      <span class="emphasis">「大学が多すぎて、どこを選べばいいかわからない」</span><br><br>
+      台湾には100以上の大学があって、学科は何千もある。<br>
+      ネットで調べても情報が多すぎて、むしろ混乱する。<br>
+      親に聞いても台湾の大学のことはわからない。<br><br>
+      結果、「なんとなく有名そうな大学」<br>
+      「台北にある大学」「友達が行くと言っている大学」<br>
+      ——こういう基準で決めてしまう人がかなり多いです。<br><br>
+      でもそれ、めちゃくちゃ危ないです。<br><br>
+      大学選びで大事なのは、<span class="emphasis">「行きたい場所」ではなく</span><br>
+      <span class="emphasis">「自分の条件で合格できて、4年間続けられる場所」</span>です。<br><br>
+      この診断カルテは、あなたの条件を整理して、<br>
+      データに基づいて「狙える大学」を見つけるためのツールです。<br><br>
+      <span style="font-size: 18px; color: var(--muted);">注意：この診断カルテは、あくまで目安です。<br>
+      実際の出願設計は、最新の募集要項と個別の状況を踏まえて行う必要があります。</span>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">2</span></div>
+</div>
+
+<!-- ==================== PAGE 3: STEP1 基本情報カルテ ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">STEP 1：自分の「今」を書き出す</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      あなたの基本情報カルテ
+    </div>
+    <div style="font-size: 16px; color: var(--muted); margin-bottom: 16px;">
+      正直に書き出してください。正確な「今」が、正確な「行き先」を教えてくれます。
+    </div>
+
+    <div style="width: 85%; text-align: center;">
+      <div class="form-field">
+        <div class="form-label">① 学年</div>
+        <div class="form-options">□ 高校1年　□ 高校2年　□ 高校3年　□ 高校卒業済み</div>
+      </div>
+      <div class="form-field">
+        <div class="form-label">② 評定平均（5段階で小数点第1位まで）</div>
+        <div class="form-options"><span class="form-blank"></span></div>
+      </div>
+      <div class="form-field">
+        <div class="form-label">③ 中国語レベル</div>
+        <div class="form-options">□ まったくゼロ　□ 独学で少し勉強した<br>□ TOCFL A1 取得済み　□ TOCFL A2 取得済み　□ TOCFL B1 以上</div>
+      </div>
+      <div class="form-field">
+        <div class="form-label">④ 英語力</div>
+        <div class="form-options">□ 英検準2級以下 / TOEIC 400未満　□ 英検2級 / TOEIC 400〜549<br>□ 英検準1級 / TOEIC 550以上　□ IELTS 5.5以上 / TOEFL 72以上</div>
+      </div>
+      <div class="form-field">
+        <div class="form-label">⑤ 興味のある分野（複数可）</div>
+        <div class="form-options">□ ビジネス・経営・貿易　□ 工学・半導体・IT　□ 語学・文学・教育<br>□ 医療・看護・薬学　□ 政治・外交・国際関係　□ 観光・ホスピタリティ　□ まだ決まっていない</div>
+      </div>
+      <div class="form-field">
+        <div class="form-label">⑥ 奨学金の希望</div>
+        <div class="form-options">□ 必須（ないと厳しい）　□ あればうれしい　□ 特にこだわらない</div>
+      </div>
+      <div class="form-field" style="border-bottom: none;">
+        <div class="form-label">⑦ 留学先の立地の希望</div>
+        <div class="form-options">□ 台北（都会がいい）　□ 地方でもOK（費用が安い方がいい）　□ どちらでもいい</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">3</span></div>
+</div>
+
+<!-- ==================== PAGE 4: パターンA ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">STEP 2：条件別 大学マッチングテーブル</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 22px; color: var(--blue); font-weight: 700; margin-bottom: 4px;">
+      パターンA
+    </div>
+    <div style="font-size: 18px; color: var(--navy); font-weight: 600; margin-bottom: 16px;">
+      評定3.0〜3.7 × TOCFL なし〜A2
+    </div>
+    <table style="margin-bottom: 20px;">
+      <tr><th>大学名</th><th>種別</th><th>立地</th><th>主な学科</th><th>奨学金</th><th>3期生実績</th></tr>
+      <tr><td class="td-strong">雲林科技大学</td><td class="td-accent">国立</td><td>雲林（地方）</td><td>工学系</td><td class="td-accent">全員獲得</td><td>評定3.0で合格</td></tr>
+      <tr><td class="td-strong">中國文化大學</td><td>私立</td><td>台北</td><td>観光・地理・語学</td><td class="td-accent">あり</td><td>評定3.3で合格</td></tr>
+      <tr><td class="td-strong">淡江大學（全英語）</td><td>私立</td><td>台北近郊</td><td>経営・外交</td><td>なし</td><td>評定3.1で合格（TOCFLなし）</td></tr>
+      <tr><td class="td-strong">實踐大學</td><td>私立</td><td>台北</td><td>経営・貿易</td><td>なし</td><td>評定3.7で合格</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 14px; width: 90%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        <span class="emphasis">評定3.0台でも選択肢はあります。</span><br>
+        特に雲林科技大学は奨学金が手厚いので、<br>
+        費用面で最もコスパが良い選択肢です。<br>
+        英語力がある人は淡江の全英語課程も有力です。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">4</span></div>
+</div>
+
+<!-- ==================== PAGE 5: パターンB ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">条件別 大学マッチングテーブル</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 22px; color: var(--blue); font-weight: 700; margin-bottom: 4px;">
+      パターンB
+    </div>
+    <div style="font-size: 18px; color: var(--navy); font-weight: 600; margin-bottom: 16px;">
+      評定3.0〜3.7 × TOCFL B1
+    </div>
+    <table style="margin-bottom: 20px;">
+      <tr><th>大学名</th><th>種別</th><th>立地</th><th>主な学科</th><th>奨学金</th><th>3期生実績</th></tr>
+      <tr><td class="td-strong">國立師範大學</td><td class="td-accent">国立</td><td>台北</td><td>教育・語学・東アジア</td><td class="td-accent">あり</td><td>評定3.3で合格</td></tr>
+      <tr><td class="td-strong">雲林科技大学</td><td class="td-accent">国立</td><td>雲林（地方）</td><td>工学系</td><td class="td-accent">全員獲得</td><td>評定3.0で合格</td></tr>
+      <tr><td class="td-strong">中國文化大學</td><td>私立</td><td>台北</td><td>観光・地理・語学</td><td class="td-accent">あり</td><td>評定3.3で合格</td></tr>
+      <tr><td class="td-strong">東吳大學</td><td>私立</td><td>台北</td><td>政治・経営・語学</td><td>なし</td><td>評定3.3で合格</td></tr>
+      <tr><td class="td-strong">淡江大學</td><td>私立</td><td>台北近郊</td><td>経営・外交・貿易</td><td>なし</td><td>評定3.6で合格</td></tr>
+      <tr><td class="td-strong">逢甲大學</td><td>私立</td><td>台中</td><td>経営・貿易</td><td>なし</td><td>評定3.7で合格</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 14px; width: 90%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        <span class="emphasis">B1があると選択肢が一気に広がります。</span><br>
+        師範大學は国立で奨学金もあり、台北立地。<br>
+        評定3.3でも合格実績あり。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">5</span></div>
+</div>
+
+<!-- ==================== PAGE 6: パターンC ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">条件別 大学マッチングテーブル</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 22px; color: var(--blue); font-weight: 700; margin-bottom: 4px;">
+      パターンC
+    </div>
+    <div style="font-size: 18px; color: var(--navy); font-weight: 600; margin-bottom: 16px;">
+      評定4.0以上 × TOCFL B1
+    </div>
+    <table style="margin-bottom: 16px;">
+      <tr><th>大学名</th><th>種別</th><th>立地</th><th>主な学科</th><th>奨学金</th><th>3期生実績</th></tr>
+      <tr><td class="td-strong">國立師範大學</td><td class="td-accent">国立</td><td>台北</td><td>教育・語学・東アジア</td><td class="td-accent">あり</td><td>評定4.8〜4.9で合格</td></tr>
+      <tr><td class="td-strong">雲林科技大学</td><td class="td-accent">国立</td><td>雲林（地方）</td><td>工学系</td><td class="td-accent">全員獲得</td><td>評定4.3〜4.9で合格</td></tr>
+      <tr><td class="td-strong">中國醫藥大學</td><td>私立</td><td>台中</td><td>看護・薬学</td><td>なし</td><td>評定3.0〜3.4で合格</td></tr>
+      <tr><td class="td-strong">東吳大學</td><td>私立</td><td>台北</td><td>政治・経営・語学</td><td>なし</td><td>評定4.4で合格</td></tr>
+      <tr><td class="td-strong">淡江大學</td><td>私立</td><td>台北近郊</td><td>経営・外交・貿易</td><td>なし</td><td>評定4.5で合格</td></tr>
+    </table>
+    <div style="font-size: 20px; color: var(--accent); font-weight: 700; margin-bottom: 10px;">
+      挑戦校（3期生は不合格だった大学）
+    </div>
+    <table style="margin-bottom: 16px;">
+      <tr><th>大学名</th><th>種別</th><th>立地</th><th>備考</th></tr>
+      <tr><td class="td-strong">政治大學</td><td>私立</td><td>台北</td><td>3期生は全員不合格。ただし毎年合格者は出ている</td></tr>
+      <tr><td class="td-strong">台湾大學</td><td class="td-accent">国立</td><td>台北</td><td>最難関。評定4.9でも不合格</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 12px; width: 90%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        評定4.0以上なら国立大学は十分に射程圏内。<br>
+        ただし政治大・台湾大は別格の難しさ。<br>
+        <span class="emphasis">「挑戦校＋実力校＋安全校」の3段構え</span>が鉄則です。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">6</span></div>
+</div>
+
+<!-- ==================== PAGE 7: パターンD + 財力証明 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">パターンD ＋ 財力証明チェック</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 22px; color: var(--blue); font-weight: 700; margin-bottom: 4px;">
+      パターンD
+    </div>
+    <div style="font-size: 18px; color: var(--navy); font-weight: 600; margin-bottom: 14px;">
+      TOCFL なし × 英語力あり（TOEIC 550以上）
+    </div>
+    <table style="margin-bottom: 20px;">
+      <tr><th>大学名</th><th>種別</th><th>立地</th><th>主な学科</th><th>備考</th></tr>
+      <tr><td class="td-strong">淡江大學</td><td>私立</td><td>台北近郊</td><td>外交・経営（全英語）</td><td>3期生 評定3.1で合格</td></tr>
+      <tr><td class="td-strong">台北科技大学</td><td class="td-accent">国立</td><td>台北</td><td>半導体プログラム</td><td>オールイングリッシュ</td></tr>
+      <tr><td class="td-strong">逢甲大學</td><td>私立</td><td>台中</td><td>1+3プログラム</td><td>英語＋中国語混合</td></tr>
+    </table>
+    <div style="font-size: 18px; color: var(--muted); margin-bottom: 20px;">
+      中国語がゼロでも、英語力があれば狙える大学はあります。<br>ただし、入学後の生活を考えるとA2取得は強く推奨。
+    </div>
+
+    <div style="font-size: 22px; color: var(--blue); font-weight: 700; margin-bottom: 14px;">
+      大学ごとに求められる残高証明
+    </div>
+    <table>
+      <tr><th>大学名</th><th>必要金額（日本円目安）</th></tr>
+      <tr><td class="td-strong">雲林科技大学</td><td>約50万円</td></tr>
+      <tr><td class="td-strong">淡江大學</td><td>約50万円</td></tr>
+      <tr><td class="td-strong">中國文化大學</td><td>約50万円</td></tr>
+      <tr><td class="td-strong">東吳大學</td><td>約60万円</td></tr>
+      <tr><td class="td-strong">實踐大學</td><td>約60万円</td></tr>
+      <tr><td class="td-strong">中原大学</td><td>約62万円</td></tr>
+      <tr><td class="td-strong">師範大學</td><td>約75万円</td></tr>
+      <tr><td class="td-strong">中國醫藥大學</td><td>約78万円</td></tr>
+      <tr><td class="td-strong">政治大學・輔仁大學・台湾大學</td><td class="td-accent">約100万円</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span class="page-num">7</span></div>
+</div>
+
+<!-- ==================== PAGE 8: STEP3 出願設計シート ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">STEP 3：あなたの出願設計シート</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      マッチング結果を書き込もう
+    </div>
+    <div style="font-size: 16px; color: var(--muted); margin-bottom: 20px;">
+      STEP 1の条件と、STEP 2のテーブルを照らし合わせて記入してください。
+    </div>
+
+    <div style="width: 85%; text-align: center;">
+      <div style="border-bottom: 2px solid var(--blue); padding: 16px 0;">
+        <div style="font-size: 22px; color: var(--accent); font-weight: 800; margin-bottom: 4px;">挑戦校</div>
+        <div style="font-size: 16px; color: var(--muted); margin-bottom: 8px;">合格したら最高。でも落ちても覚悟がある大学</div>
+        <div style="font-size: 18px; color: var(--navy);">大学名：<span class="form-blank"></span></div>
+        <div style="font-size: 18px; color: var(--navy);">学科：<span class="form-blank"></span></div>
+        <div style="font-size: 18px; color: var(--navy);">狙える根拠：<span class="form-blank"></span></div>
+      </div>
+
+      <div style="border-bottom: 2px solid var(--blue); padding: 16px 0;">
+        <div style="font-size: 22px; color: var(--blue); font-weight: 800; margin-bottom: 4px;">実力校</div>
+        <div style="font-size: 16px; color: var(--muted); margin-bottom: 8px;">条件にマッチしていて、合格の可能性が高い大学</div>
+        <div style="font-size: 18px; color: var(--navy);">大学名①：<span class="form-blank"></span>　学科：<span class="form-blank"></span></div>
+        <div style="font-size: 18px; color: var(--navy);">大学名②：<span class="form-blank"></span>　学科：<span class="form-blank"></span></div>
+      </div>
+
+      <div style="border-bottom: 2px solid var(--blue); padding: 16px 0;">
+        <div style="font-size: 22px; color: var(--blue); font-weight: 800; margin-bottom: 4px;">安全校</div>
+        <div style="font-size: 16px; color: var(--muted); margin-bottom: 8px;">よほどのことがない限り合格できる大学</div>
+        <div style="font-size: 18px; color: var(--navy);">大学名：<span class="form-blank"></span></div>
+        <div style="font-size: 18px; color: var(--navy);">学科：<span class="form-blank"></span></div>
+      </div>
+
+      <div style="padding: 16px 0;">
+        <div style="font-size: 22px; color: var(--blue); font-weight: 800; margin-bottom: 8px;">今の自分に足りないもの</div>
+        <div class="checklist" style="font-size: 17px;">
+          □ TOCFLのスコア → いつまでに取る？ <span class="form-blank" style="width: 80px;"></span>月<br>
+          □ 英語のスコア → いつまでに取る？ <span class="form-blank" style="width: 80px;"></span>月<br>
+          □ 書類の準備 → いつから動く？ <span class="form-blank" style="width: 80px;"></span>月<br>
+          □ 費用の確認 → 保護者と話し合った？ □はい □まだ<br>
+          □ 情報が足りない → 説明会に参加する？ □はい □検討中
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">8</span></div>
+</div>
+
+<!-- ==================== PAGE 9: 思い込みを壊す ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">よくある「思い込み」を壊す</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      思い込み vs データ
+    </div>
+    <table style="margin-bottom: 24px;">
+      <tr><th>よくある思い込み</th><th>データが示す現実</th></tr>
+      <tr><td>「評定3.0じゃ国立は無理」</td><td class="td-accent">雲林科技大学は評定3.0で合格＋奨学金</td></tr>
+      <tr><td>「中国語ゼロじゃ出願できない」</td><td class="td-accent">全英語課程ならTOCFLなしで出願可能</td></tr>
+      <tr><td>「奨学金はトップ成績の人だけ」</td><td class="td-accent">雲林科技大学は合格者全員に奨学金</td></tr>
+      <tr><td>「国立大学=超難関」</td><td class="td-accent">師範大は3期生全員合格（評定3.3〜4.9）</td></tr>
+      <tr><td>「評定が高ければどこでも受かる」</td><td class="td-accent">評定4.9でも台湾大は不合格</td></tr>
+      <tr><td>「有名な大学に行けば安心」</td><td class="td-accent">大学名より学科の適性と卒業後が大事</td></tr>
+    </table>
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 85%;">
+      <div style="font-size: 18px; color: var(--navy); line-height: 1.8;">
+        思い込みで可能性を狭めるのはもったいない。<br>
+        でも逆に、根拠のない楽観で動くのも危ない。<br><br>
+        <span class="emphasis">データに基づいて、</span><br>
+        <span class="emphasis">自分の条件に合った大学を選ぶ。</span><br>
+        これがこの診断カルテの目的です。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">9</span></div>
+</div>
+
+<!-- ==================== PAGE 10: 保護者の方へ ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">保護者の方へ</div>
+  <div class="content">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 20px;">
+      お子さんと一緒に、このカルテを使ってみてください
+    </div>
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 24px;">
+      保護者の方にとって、台湾留学の大学選びは不安が大きいと思います。<br>
+      日本の大学なら偏差値で比較できるけど、<br>
+      台湾の大学にはそれがない。<br><br>
+      だからこそ、この診断カルテを使って、<br>
+      <span class="emphasis">お子さんと一緒に「今の条件」と</span><br>
+      <span class="emphasis">「狙える大学」を可視化してみてください。</span>
+    </div>
+
+    <div style="width: 85%; text-align: center;">
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 16px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">確認ポイント 1｜費用の現実</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.7;">
+          財力証明に必要な金額を確認しましたか？<br>
+          奨学金の可能性がある大学はどこですか？<br>
+          4年間の総費用を試算しましたか？
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 16px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">確認ポイント 2｜安全と環境</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.7;">
+          その大学に日本人学生はいますか？<br>
+          寮はありますか？<br>
+          緊急時のサポート体制はどうなっていますか？
+        </div>
+      </div>
+
+      <div style="padding: 16px 0;">
+        <div style="font-size: 24px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">確認ポイント 3｜卒業後の進路</div>
+        <div style="font-size: 18px; color: var(--navy); line-height: 1.7;">
+          その学科を卒業した先に、どんなキャリアがありますか？<br>
+          台湾に残るのか、日本に帰るのか、話し合いましたか？
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top: 16px; font-size: 18px; color: var(--navy); line-height: 1.8; width: 85%;">
+      <span class="emphasis">大学選びは、お子さんだけで完結するものではありません。</span><br>
+      保護者が費用と安全を把握し、お子さんが学びたい内容と<br>
+      将来を考える。この両輪が揃って初めて、<br>
+      後悔のない大学選びができます。
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">10</span></div>
+</div>
+
+<!-- ==================== PAGE 11: 最後に ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">最後に</div>
+  <div class="content">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 20px;">
+      この診断カルテは「スタート地点」です
+    </div>
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.8; margin-bottom: 24px;">
+      ここまで書き込んでみて、いかがでしたか？<br><br>
+      「自分が狙える大学が見えてきた」と感じた人もいれば、<br>
+      「まだわからないことだらけ」と感じた人もいると思います。<br><br>
+      どちらでも大丈夫です。<br><br>
+      この診断カルテは、<br>
+      <span class="emphasis">最終的な出願先を決めるためのものではありません。</span><br>
+      自分の「今」を整理して、<br>
+      「どの方向に進めばいいか」のヒントを見つけるためのツールです。
+    </div>
+    <div style="border-top: 2px solid var(--blue); border-bottom: 2px solid var(--blue); padding: 20px 0; width: 85%; margin-bottom: 20px;">
+      <div style="font-size: 20px; color: var(--navy); line-height: 1.8;">
+        実際の出願設計は、もっと細かい情報が必要です。<br><br>
+        今年の最新の募集要項、大学ごとの出願時期と書類要件、<br>
+        あなたの評定とTOCFLの組み合わせで本当に現実的な大学はどこか、<br>
+        奨学金を狙うならどういう戦略で出すか——<br><br>
+        <span class="emphasis">だからこそ、この診断カルテを持って</span><br>
+        <span class="emphasis">説明会に来てください。</span><br><br>
+        あなたが書き込んだ条件をベースに、<br>
+        最新のデータで出願設計を一緒に組みます。
+      </div>
+    </div>
+    <div style="font-size: 22px; color: var(--blue); font-weight: 700; margin-bottom: 16px;">
+      5分で書けるカルテが、<br>
+      あなたの4年間を変えるかもしれません。
+    </div>
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700;">
+      台湾留学101センター 代表 リッキー
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+</body>
+</html>
