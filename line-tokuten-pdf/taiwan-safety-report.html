@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    font-weight: 700;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* === Design Tokens === */
+  :root {
+    --blue: #2B4F82;
+    --navy: #1E3550;
+    --bg: #dce6f0;
+    --accent: #F0A030;
+    --accent-light: #FFDA50;
+    --muted: #4a6a8a;
+    --light: #64748b;
+    --table-alt: #f0f4f8;
+    --rule: #b0c4d8;
+  }
+
+  /* === Page Shell === */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    border: 4px solid var(--blue);
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .header {
+    background: var(--blue);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .header .logo {
+    width: 26px; height: 26px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 9px; font-weight: 800;
+  }
+  .header .name { color: white; font-size: 16px; font-weight: 600; letter-spacing: 2px; }
+
+  .content {
+    flex: 1;
+    padding: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 10px 24px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--muted);
+  }
+
+  /* === Section Header (full-width blue bar) === */
+  .section-header {
+    background: var(--blue);
+    padding: 18px 24px;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  /* === Typography === */
+  .label { font-size: 22px; color: var(--blue); font-weight: 500; letter-spacing: 3px; }
+  .title { font-size: 56px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+  .title .accent { color: var(--blue); }
+  .divider { width: 60px; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); margin: 20px auto; }
+  .subtitle { font-size: 22px; color: var(--muted); line-height: 1.8; }
+  .body-text { font-size: 22px; color: var(--navy); line-height: 2.0; text-align: center; }
+  .emphasis { color: var(--blue); font-weight: 700; }
+  .num-accent { color: var(--accent); font-weight: 800; }
+
+  /* === Stat Block (ruled lines, no cards) === */
+  .stat-block {
+    border-top: 3px solid var(--blue);
+    border-bottom: 3px solid var(--blue);
+    padding: 24px 0;
+    width: 70%;
+  }
+  .stat-item { margin-bottom: 18px; }
+  .stat-item:last-child { margin-bottom: 0; }
+  .stat-num { font-size: 72px; font-weight: 800; line-height: 1; }
+  .stat-num .unit { font-size: 40px; }
+  .stat-label { font-size: 24px; color: var(--light); margin-top: 6px; }
+  .stat-sep { width: 30px; height: 2px; background: var(--rule); margin: 0 auto 18px; }
+
+  /* === Table === */
+  table { width: 94%; border-collapse: collapse; margin: 0 auto; }
+  th { background: var(--blue); color: white; padding: 14px 10px; font-size: 18px; font-weight: 600; text-align: center; }
+  td { padding: 14px 10px; font-size: 18px; color: var(--navy); text-align: center; border-bottom: 1px solid #dde5ed; }
+  tr:nth-child(even) td { background: var(--table-alt); }
+  .td-strong { font-weight: 700; color: var(--blue); }
+  .td-accent { font-weight: 700; color: var(--accent); }
+
+  /* === White content area for inner pages === */
+  .white-area {
+    background: white;
+    padding: 24px 28px;
+    width: 92%;
+    text-align: center;
+  }
+
+  /* === Page number === */
+  .page-num { font-size: 16px; color: var(--rule); }
+
+  /* === Checklist === */
+  .checklist { text-align: left; display: inline-block; font-size: 18px; color: var(--navy); line-height: 2.2; }
+  .checklist span { color: var(--blue); }
+
+  /* === Source list === */
+  .source-list { text-align: left; display: inline-block; font-size: 13px; color: var(--light); line-height: 1.9; width: 90%; }
+  .source-list a { color: var(--muted); text-decoration: none; }
+
+  /* === Flow chart table === */
+  .flow-table { width: 94%; }
+  .flow-table th { font-size: 16px; padding: 12px 10px; }
+  .flow-table td { font-size: 16px; padding: 12px 10px; text-align: left; line-height: 1.6; }
+  .flow-phase { font-weight: 800; color: var(--blue); font-size: 17px; }
+  .flow-arrow { text-align: center !important; font-size: 20px; color: var(--accent); padding: 4px 0 !important; border-bottom: none !important; }
+
+  /* === Compact table variant === */
+  .compact-table td { padding: 10px 10px; font-size: 16px; }
+  .compact-table th { padding: 10px 10px; font-size: 16px; }
+
+  /* === Timeline === */
+  .timeline-item { border-bottom: 1px solid var(--rule); padding: 10px 0; display: flex; align-items: baseline; gap: 16px; text-align: left; }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-date { font-size: 15px; font-weight: 800; color: var(--blue); white-space: nowrap; min-width: 100px; }
+  .timeline-desc { font-size: 15px; color: var(--navy); line-height: 1.5; }
+
+  /* === Support item blocks === */
+  .support-block { border-bottom: 1px solid var(--rule); padding: 12px 0; text-align: left; width: 88%; }
+  .support-block:last-child { border-bottom: none; }
+  .support-title { font-size: 19px; font-weight: 800; color: var(--blue); margin-bottom: 4px; }
+  .support-desc { font-size: 16px; color: var(--navy); line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="content">
+    <div class="label" style="margin-bottom: 20px;">FACT REPORT 2026</div>
+    <div class="title" style="font-size: 48px;">台湾情勢と留学安全性</div>
+    <div class="title" style="font-size: 48px;"><span class="accent">ファクトレポート</span></div>
+    <div class="divider"></div>
+    <div class="subtitle" style="margin-bottom: 28px;">
+      事実とデータで理解する、台湾留学の安全設計
+    </div>
+    <div class="stat-block">
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue);">27<span class="unit">件</span></div>
+        <div class="stat-label">公的出典に基づくデータ収集</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--accent);">6<span class="unit">セクション</span></div>
+        <div class="stat-label">平時安全・地政学・有事対応を網羅</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num" style="color: var(--blue);">2024<span class="unit">-2026</span></div>
+        <div class="stat-label">最新データに基づく客観分析</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+<!-- ==================== PAGE 2: はじめに ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">はじめに</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.9;">
+      こんにちは、リッキーです。<br><br>
+      「台湾って、今は危ないのでは？」<br>
+      この問いかけは、<span class="emphasis">正しい疑問</span>です。<br><br>
+      お子さまの留学先を検討するとき、<br>
+      安全面を確認するのは保護者として当然の判断です。<br><br>
+      ただ、この疑問に対して<br>
+      「大丈夫ですよ」とも「危険です」とも言いません。<br><br>
+      この資料は、<span class="emphasis">感情論ではなく、</span><br>
+      <span class="emphasis">公的データと事実で台湾の安全性を整理したもの</span>です。<br><br>
+      最も重要な考え方は、<br>
+      <span class="emphasis">「平時の生活安全」と「地政学リスク」を分けて考える</span>こと。<br><br>
+      そのうえで、判断に必要な条件は以下の4点です。<br><br>
+      <span class="emphasis">① 在留届・連絡網の整備</span><br>
+      <span class="emphasis">② 緊急連絡先の一本化</span><br>
+      <span class="emphasis">③ 退避判断基準の事前合意</span><br>
+      <span class="emphasis">④ 日常リスク対策の実装</span><br><br>
+      これらは情勢の良し悪しに関係なく、<br>
+      <span class="emphasis">実装すればするほど安全側に寄ります。</span>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">2</span></div>
+</div>
+
+<!-- ==================== PAGE 3: 在台日本人の現状 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">在台日本人・日本企業の現状</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      数字で見る「台湾に住んでいる日本人」の事実
+    </div>
+    <table class="compact-table" style="margin-bottom: 16px;">
+      <tr><th>年（10月1日時点）</th><th>在留邦人数</th></tr>
+      <tr><td class="td-strong">2021年</td><td><strong>21,816</strong>人</td></tr>
+      <tr><td class="td-strong">2022年</td><td><strong>21,684</strong>人</td></tr>
+      <tr><td class="td-strong">2023年</td><td><strong>21,700</strong>人</td></tr>
+      <tr><td class="td-strong">2024年</td><td><strong>21,696</strong>人</td></tr>
+      <tr><td class="td-strong">2025年</td><td class="td-accent">21,755人</td></tr>
+    </table>
+    <div style="font-size: 13px; color: var(--light); margin-bottom: 16px;">出典: 外務省「海外在留邦人数調査統計」</div>
+
+    <div style="width: 88%; text-align: center;">
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 20px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">日系企業</div>
+        <div style="font-size: 18px; color: var(--navy);">台湾に進出する日系企業 <span class="num-accent">2,988社</span></div>
+        <div style="font-size: 13px; color: var(--light);">出典: 帝国データバンク（2024年2月時点）</div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 20px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">日本人学生</div>
+        <div style="font-size: 18px; color: var(--navy);">台湾で学ぶ日本人学生 <span class="num-accent">8,427人</span><br>
+        うち学位課程 <strong>2,633人</strong>、中国語学習 <strong>4,282人</strong></div>
+        <div style="font-size: 13px; color: var(--light);">出典: 台湾教育部統計（2023年）</div>
+      </div>
+
+      <div style="padding: 14px 0;">
+        <div style="font-size: 20px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">TSMC熊本（JASM）</div>
+        <div style="font-size: 18px; color: var(--navy);">日本政府の助成 <span class="num-accent">最大7,320億円</span><br>
+        株主: TSMC・ソニー・デンソー・トヨタ</div>
+        <div style="font-size: 13px; color: var(--light);">出典: 経済産業省資料 / JASM説明資料</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">3</span></div>
+</div>
+
+<!-- ==================== PAGE 4: 日本政府の公式見解 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">日本政府の公式見解</div>
+  <div class="content" style="justify-content: center;">
+    <div style="width: 88%; text-align: center; margin-bottom: 16px;">
+      <div style="border: 3px solid var(--blue); padding: 20px; margin-bottom: 20px;">
+        <div style="font-size: 20px; color: var(--blue); font-weight: 800; margin-bottom: 8px;">外務省 海外安全情報 — 台湾</div>
+        <div style="font-size: 28px; color: var(--navy); font-weight: 800; line-height: 1.5;">
+          「現在、危険情報は<br>出ておりません」
+        </div>
+        <div style="font-size: 15px; color: var(--light); margin-top: 8px;">
+          = 危険レベル地図が塗られていない状態（最も安全な分類）
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 12px;">
+      他のアジア留学先との比較
+    </div>
+    <table class="compact-table" style="margin-bottom: 16px;">
+      <tr><th>留学先</th><th>外務省 危険レベル</th><th>備考</th></tr>
+      <tr><td class="td-strong">台湾</td><td class="td-accent">レベルなし（発出なし）</td><td style="font-size: 14px;">危険情報が出ていない</td></tr>
+      <tr><td class="td-strong">フィリピン</td><td style="color: #c0392b; font-weight: 700;">レベル2〜3</td><td style="font-size: 14px;">ミンダナオ等にレベル3（渡航中止勧告）</td></tr>
+      <tr><td class="td-strong">タイ</td><td style="color: #c0392b; font-weight: 700;">レベル2〜3</td><td style="font-size: 14px;">国境付近にレベル2・3が設定</td></tr>
+    </table>
+    <div style="font-size: 13px; color: var(--light); margin-bottom: 20px;">出典: 外務省 海外安全ホームページ（各国ページ）</div>
+
+    <div style="border-top: 2px solid var(--blue); padding-top: 16px; width: 85%;">
+      <div style="font-size: 19px; font-weight: 800; color: var(--blue); margin-bottom: 8px;">
+        日本台湾交流協会の体制
+      </div>
+      <div style="font-size: 17px; color: var(--navy); line-height: 1.8;">
+        台北・高雄に事務所を設置。<br>
+        緊急時の邦人保護、「安全の手引き」の発行、<br>
+        事件・事故時の通報受付など、<br>
+        <span class="emphasis">制度として邦人保護の実務体制が存在</span>します。
+      </div>
+      <div style="font-size: 13px; color: var(--light); margin-top: 6px;">出典: 日本台湾交流協会</div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">4</span></div>
+</div>
+
+<!-- ==================== PAGE 5: 米台安全保障 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">米国と台湾の安全保障</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      台湾関係法（Taiwan Relations Act）の3つの柱
+    </div>
+
+    <div style="width: 88%; text-align: center; margin-bottom: 20px;">
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 20px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">柱 1｜防衛装備の提供</div>
+        <div style="font-size: 17px; color: var(--navy); line-height: 1.7;">
+          台湾に対し防衛装備・防衛サービスを提供すること
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 14px 0;">
+        <div style="font-size: 20px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">柱 2｜米国の能力維持</div>
+        <div style="font-size: 17px; color: var(--navy); line-height: 1.7;">
+          武力等による威圧に対抗する米国の能力を維持すること
+        </div>
+      </div>
+
+      <div style="padding: 14px 0;">
+        <div style="font-size: 20px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">柱 3｜平和的解決の期待</div>
+        <div style="font-size: 17px; color: var(--navy); line-height: 1.7;">
+          台湾の将来を平和的手段で決定することへの期待
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 12px;">
+      2024〜2025年の武器売却実績（議会通知ベース）
+    </div>
+    <table class="compact-table" style="margin-bottom: 12px;">
+      <tr><th>時期</th><th>主要装備</th><th>金額</th></tr>
+      <tr><td class="td-strong">2024年12月</td><td style="font-size: 15px; text-align: left;">C4近代化 / Mk75 76mm砲</td><td class="td-accent">約2.95億ドル</td></tr>
+      <tr><td class="td-strong">2025年12月</td><td style="font-size: 15px; text-align: left;">HIMARS</td><td class="td-accent">40.5億ドル</td></tr>
+      <tr><td class="td-strong">2025年12月</td><td style="font-size: 15px; text-align: left;">M109A7 自走榴弾砲</td><td class="td-accent">40.3億ドル</td></tr>
+      <tr><td class="td-strong">2025年12月</td><td style="font-size: 15px; text-align: left;">戦術ネットワーク関連</td><td class="td-accent">10.1億ドル</td></tr>
+    </table>
+    <div style="font-size: 13px; color: var(--light); margin-bottom: 16px;">出典: 米国防安全保障協力局（DSCA）</div>
+
+    <div style="border-top: 2px solid var(--blue); padding-top: 14px; width: 85%;">
+      <div style="font-size: 17px; color: var(--navy); line-height: 1.8;">
+        この枠組みは<span class="emphasis">「抑止の制度的要素」</span>として存在します。<br>
+        ただし「自動的な安全保証」ではないため、<br>
+        <span class="emphasis">抑止の存在と、自助・退避計画は別で設計</span>する必要があります。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">5</span></div>
+</div>
+
+<!-- ==================== PAGE 6: 軍事情勢 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">台湾海峡の軍事情勢 ― 客観分析</div>
+  <div class="content" style="justify-content: center;">
+    <div style="width: 88%; text-align: center;">
+
+      <div style="border: 3px solid var(--blue); padding: 16px; margin-bottom: 16px;">
+        <div style="font-size: 18px; color: var(--blue); font-weight: 800; margin-bottom: 6px;">米国情報機関の評価（2026年3月報道）</div>
+        <div style="font-size: 22px; color: var(--navy); font-weight: 800; line-height: 1.5;">
+          「中国は2027年に侵攻する<br>計画ではない」
+        </div>
+        <div style="font-size: 14px; color: var(--light); margin-top: 6px;">
+          ただし「武力行使の選択肢を放棄した」ではない点に注意<br>
+          出典: Reuters
+        </div>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--rule); padding: 12px 0;">
+        <div style="font-size: 18px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">CSISウォーゲーム分析</div>
+        <div style="font-size: 16px; color: var(--navy); line-height: 1.7;">
+          上陸侵攻想定: <span class="emphasis">「多くの想定で侵攻阻止は可能だが代償は大きい」</span><br>
+          封鎖想定（2025年7月公表）: 侵攻とは別系統のリスクとして分析
+        </div>
+        <div style="font-size: 13px; color: var(--light);">出典: CSIS（2023年/2025年）</div>
+      </div>
+
+      <div style="padding: 14px 0; margin-bottom: 12px;">
+        <div style="font-size: 18px; font-weight: 800; color: var(--blue); margin-bottom: 8px;">現状維持が合理的な3つの構造的理由</div>
+        <div style="text-align: left; font-size: 16px; color: var(--navy); line-height: 1.8; padding-left: 16px;">
+          <strong style="color: var(--accent);">1.</strong> 上陸侵攻は海上輸送・航空優勢・補給の連続が必要で、<br>
+          　 長射程攻撃に対して脆弱になり得る<br>
+          <strong style="color: var(--accent);">2.</strong> 侵攻が起きた場合、米中の直接衝突やより広い<br>
+          　 戦域への拡大リスクを伴う<br>
+          <strong style="color: var(--accent);">3.</strong> 封鎖など「侵攻未満」の手段でも政治目的に<br>
+          　 近づく余地がある（＝全面侵攻は最適解ではない）
+        </div>
+        <div style="font-size: 13px; color: var(--light); margin-top: 6px;">出典: CSIS / RAND研究所 / 米国防総省年次報告</div>
+      </div>
+
+      <div style="font-size: 18px; font-weight: 800; color: var(--blue); margin-bottom: 8px;">主要事象タイムライン（2024〜2026）</div>
+      <div style="width: 100%;">
+        <div class="timeline-item">
+          <div class="timeline-date">2024.01</div>
+          <div class="timeline-desc">米国務省が台湾選挙に関する声明を公表</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2024.04</div>
+          <div class="timeline-desc">台湾東部M7.4地震（花蓮付近）</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2024.12</div>
+          <div class="timeline-desc">JASM熊本第1工場が量産開始 / 対台FMS通知</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2025.12</div>
+          <div class="timeline-desc">DSCAが台湾向け複数のFMS案件を公表</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2026.03</div>
+          <div class="timeline-desc">米情報機関「2027侵攻計画なし」と評価</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">6</span></div>
+</div>
+
+<!-- ==================== PAGE 7: 治安・生活安全 ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">台湾の治安・生活安全</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 14px;">
+      2024年 台湾の犯罪統計（外務省安全対策基礎データ）
+    </div>
+    <table class="compact-table" style="margin-bottom: 12px;">
+      <tr><th>指標</th><th>数値</th><th>備考</th></tr>
+      <tr><td class="td-strong">刑法犯認知件数</td><td><strong>384,877</strong>件</td><td style="font-size: 14px;">人口10万人あたり日本の約<strong>2.8倍</strong></td></tr>
+      <tr><td class="td-strong">殺人</td><td><strong>135</strong>件</td><td style="font-size: 14px;">日本と大差のない水準</td></tr>
+      <tr><td class="td-strong">強盗</td><td><strong>82</strong>件</td><td style="font-size: 14px;">日本と大差のない水準</td></tr>
+      <tr><td class="td-strong">窃盗</td><td><strong>54,608</strong>件</td><td style="font-size: 14px;"></td></tr>
+      <tr><td class="td-strong">詐欺</td><td class="td-accent">122,805件</td><td style="font-size: 14px; color: #c0392b;">前年比 <strong>+224.7%</strong>（急増の主因）</td></tr>
+    </table>
+    <div style="font-size: 13px; color: var(--light); margin-bottom: 16px;">出典: 外務省 安全対策基礎データ（2025年11月28日更新）</div>
+
+    <div style="width: 88%; border-top: 2px solid var(--blue); padding-top: 14px; margin-bottom: 14px;">
+      <div style="font-size: 17px; color: var(--navy); line-height: 1.8; text-align: center;">
+        「約2.8倍」の主因は<span class="emphasis">詐欺の急増</span>です。<br>
+        殺人・強盗は日本と大差のない水準であり、<br>
+        <span class="emphasis">凶悪犯罪が多発する環境ではありません。</span><br>
+        ただし、若年層を狙う詐欺対策は必須です。
+      </div>
+    </div>
+
+    <div style="width: 88%; text-align: center;">
+      <div style="border-bottom: 1px solid var(--rule); padding: 12px 0;">
+        <div style="font-size: 18px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">地震対応力</div>
+        <div style="font-size: 16px; color: var(--navy); line-height: 1.7;">
+          2024年4月 M7.4花蓮地震 — 建築基準の厳格さ、<br>
+          緊急対応体制の実績あり。台湾は日本と同じ地震国として<br>
+          <span class="emphasis">耐震技術・防災意識が高い</span>
+        </div>
+        <div style="font-size: 13px; color: var(--light);">出典: USGS / NCREE</div>
+      </div>
+
+      <div style="padding: 12px 0;">
+        <div style="font-size: 18px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">日本との距離</div>
+        <div style="font-size: 16px; color: var(--navy); line-height: 1.7;">
+          台北→那覇 <span class="num-accent">約655km</span>（飛行機で約1.5時間）<br>
+          台北→福岡 <span class="num-accent">約1,300km</span>（飛行機で約2時間）<br>
+          <span class="emphasis">何かあった時に「帰れる距離」</span>であることは大きな安心材料です
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">7</span></div>
+</div>
+
+<!-- ==================== PAGE 8: 弊社サポート ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">台湾留学101センターの安全サポート体制</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 16px;">
+      「現地で誰が動くのか」に対する、具体的な答え
+    </div>
+
+    <div style="width: 88%;">
+      <div class="support-block">
+        <div class="support-title">現地スタッフによる緊急対応</div>
+        <div class="support-desc">
+          深夜の救急搬送・手術手続きまでサポートした実績あり。<br>
+          「電話一本で動ける人間がいる」ことが、保護者にとっての最大の安心材料です。
+        </div>
+      </div>
+
+      <div class="support-block">
+        <div class="support-title">寮・大学との連携体制</div>
+        <div class="support-desc">
+          入寮手続き同行、大学側との情報共有、<br>
+          学校の危機対応（授業継続・宿舎・安否確認）の個別確認を実施。
+        </div>
+      </div>
+
+      <div class="support-block">
+        <div class="support-title">海外旅行保険の案内</div>
+        <div class="support-desc">
+          キャッシュレス診療の可否、提携病院の確認、<br>
+          保険会社への連絡サポートまでカバー。
+        </div>
+      </div>
+
+      <div class="support-block">
+        <div class="support-title">在留届提出サポート</div>
+        <div class="support-desc">
+          日本台湾交流協会への在留届は邦人保護の基礎。<br>
+          渡航後すぐに提出できるよう手続きを支援します。
+        </div>
+      </div>
+
+      <div class="support-block" style="border-bottom: none;">
+        <div class="support-title">3層の避難設計</div>
+        <div class="support-desc">
+          <span class="emphasis">第1層</span>: 在住都市内の安全確保（寮・大学の集合場所・連絡網）<br>
+          <span class="emphasis">第2層</span>: 島内移動（空港・港への移動、交通遮断時の代替）<br>
+          <span class="emphasis">第3層</span>: 域外移動（日本直行 or 第三地経由の両方を想定）
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top: 2px solid var(--blue); padding-top: 12px; width: 85%; margin-top: 8px;">
+      <div style="font-size: 17px; color: var(--navy); line-height: 1.8; text-align: center;">
+        安全サポートの価値は、<span class="emphasis">「普段は使わない」</span>ものです。<br>
+        しかし必要な瞬間に<span class="emphasis">すぐ動ける体制があるかどうか</span>が、<br>
+        留学の安心材料として最も重要です。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">8</span></div>
+</div>
+
+<!-- ==================== PAGE 9: 有事対応フローチャート ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">有事対応の手順フローチャート</div>
+  <div class="content" style="justify-content: center;">
+    <div style="font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 14px;">
+      「何が起きたら、何をするか」を事前に決めておく
+    </div>
+
+    <table class="flow-table" style="margin-bottom: 10px;">
+      <tr><th style="width: 28%;">フェーズ</th><th>やること</th><th style="width: 25%;">具体的な行動</th></tr>
+
+      <tr>
+        <td><span class="flow-phase">平時の準備</span></td>
+        <td style="text-align: left;">
+          保護者・学生で事前合意
+        </td>
+        <td style="font-size: 15px; text-align: left;">
+          連絡手段 / 合言葉<br>
+          集合場所の決定
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td style="text-align: left;">
+          基盤整備
+        </td>
+        <td style="font-size: 15px; text-align: left;">
+          在留届 / 学校登録<br>
+          保険加入
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td style="text-align: left;">
+          日常リスク対策
+        </td>
+        <td style="font-size: 15px; text-align: left;">
+          詐欺・窃盗・交通<br>
+          送金二重承認
+        </td>
+      </tr>
+    </table>
+
+    <div style="font-size: 24px; color: var(--accent); font-weight: 800; padding: 6px 0;">▼</div>
+
+    <table class="flow-table" style="margin-bottom: 10px;">
+      <tr>
+        <td style="width: 28%;"><span class="flow-phase">異常事態発生</span></td>
+        <td style="text-align: left;">
+          情報収集を<span class="emphasis">公式一次</span>に寄せる
+        </td>
+        <td style="font-size: 15px; text-align: left; width: 25%;">
+          外務省 / 交流協会<br>
+          学校の公式連絡
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td style="text-align: left;">
+          寮・大学の指示に従い待機
+        </td>
+        <td style="font-size: 15px; text-align: left;">
+          安否確認を定時化<br>
+          SNS情報は鵜呑みにしない
+        </td>
+      </tr>
+    </table>
+
+    <div style="font-size: 24px; color: var(--accent); font-weight: 800; padding: 6px 0;">▼</div>
+
+    <table class="flow-table" style="margin-bottom: 10px;">
+      <tr>
+        <td style="width: 28%;"><span class="flow-phase">退避判断</span></td>
+        <td style="text-align: left;">
+          段階的に検討
+        </td>
+        <td style="font-size: 15px; text-align: left; width: 25%;">
+          <span class="emphasis">島内移動</span>を先に検討<br>
+          →次に<span class="emphasis">域外移動</span>
+        </td>
+      </tr>
+    </table>
+
+    <div style="font-size: 24px; color: var(--accent); font-weight: 800; padding: 6px 0;">▼</div>
+
+    <table class="flow-table" style="margin-bottom: 10px;">
+      <tr>
+        <td style="width: 28%;"><span class="flow-phase">出国アクション</span></td>
+        <td style="text-align: left;">
+          日本直行 / 第三地経由の両方を想定
+        </td>
+        <td style="font-size: 15px; text-align: left; width: 25%;">
+          航空便確認<br>
+          第三地ルートの事前把握
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td style="text-align: left;">
+          日本到着後の連絡確定
+        </td>
+        <td style="font-size: 15px; text-align: left;">
+          保険手続き<br>
+          学校への報告
+        </td>
+      </tr>
+    </table>
+
+    <div style="border-top: 2px solid var(--blue); padding-top: 10px; width: 85%; margin-top: 6px;">
+      <div style="font-size: 16px; color: var(--navy); line-height: 1.8; text-align: center;">
+        このフローは<span class="emphasis">情勢の予測精度が低い時ほど効果を発揮</span>します。<br>
+        「何が起きるか」を予測するのではなく、<br>
+        <span class="emphasis">「何が起きても動ける準備」</span>を整えることが目的です。
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="page-num">9</span></div>
+</div>
+
+<!-- ==================== PAGE 10: まとめ ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="logo">101</div>
+    <div class="name">台湾留学101センター</div>
+  </div>
+  <div class="section-header">まとめ ― 保護者の方へ</div>
+  <div class="content">
+    <div class="body-text" style="width: 85%; font-size: 21px; line-height: 1.9; margin-bottom: 20px;">
+      この資料で最もお伝えしたかったことは、<br><br>
+      <span class="emphasis">「安全か危険か」の二択ではなく、</span><br>
+      <span class="emphasis">「どう設計するか」で安全性は変わる</span><br><br>
+      ということです。<br><br>
+      台湾留学101センターは、<br>
+      入学前の出願設計から、入学後の生活立ち上げ、<br>
+      在学中の相談、緊急時の対応まで、<br>
+      <span class="emphasis">一貫してお子さまの留学をサポート</span>します。<br><br>
+      不安を「なくす」のではなく、<br>
+      <span class="emphasis">不安を「準備」に変える</span>こと。<br>
+      それが、私たちの安全設計の考え方です。
+    </div>
+
+    <div style="border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); padding: 16px 0; width: 75%; margin-bottom: 16px;">
+      <div style="font-size: 24px; color: var(--navy); font-weight: 800; line-height: 1.6;">
+        お子さまの挑戦を、<br>
+        事実とデータで支えます。
+      </div>
+      <div style="margin-top: 10px; font-size: 18px; color: var(--blue); font-weight: 700;">
+        台湾留学101センター 代表 リッキー
+      </div>
+    </div>
+
+    <div style="font-size: 16px; color: var(--blue); font-weight: 700; margin-bottom: 10px;">主要出典一覧</div>
+    <div class="source-list">
+      1. 外務省 海外安全ホームページ — https://www.anzen.mofa.go.jp/<br>
+      2. 外務省 海外在留邦人数調査統計 — https://www.mofa.go.jp/mofaj/toko/tokei/hojin/<br>
+      3. 外務省 安全対策基礎データ（台湾）— https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html<br>
+      4. 日本台湾交流協会 — https://www.koryu.or.jp/<br>
+      5. 帝国データバンク 台湾日系企業動向 — https://www.tdb.co.jp/report/economic/20240604-tw2024/<br>
+      6. JETRO 台湾基礎データ — https://www.jetro.go.jp/world/asia/tw/basic_01.html<br>
+      7. 台湾教育部 国際比較統計 — https://stats.moe.gov.tw/<br>
+      8. 米国防安全保障協力局（DSCA）— https://www.dsca.mil/<br>
+      9. CSIS ウォーゲーム分析 — https://www.csis.org/<br>
+      10. USGS 花蓮地震データ — https://earthquake.usgs.gov/
+    </div>
+  </div>
+  <div class="footer">台湾留学101センター</div>
+</div>
+
+</body>
+</html>

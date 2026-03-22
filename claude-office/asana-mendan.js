@@ -9,6 +9,7 @@ const ASANA_BASE = "https://app.asana.com/api/1.0";
 const PROJECT_ID = "1209960384497212"; // オールインワンプラン契約書
 const SECTION_ID = "1209960384497232"; // 見込み客セクション
 const ASSIGNEE_ID = "1208498758664385"; // 新良理輝
+const LINE_NAME_FIELD_ID = "1209960385083651"; // カスタムフィールド: LINE名
 
 function getHeaders() {
   const pat = config.asana?.pat || process.env.ASANA_PAT;
@@ -48,18 +49,23 @@ function addDays(dateStr, days) {
  * @param {string} params.date - 面談日 "2026/3/21"
  * @param {string} params.reportText - 分析レポート全文（メインタスクのnotes）
  * @param {object} params.lineDrafts - { today, day3, day7, day14 } 各LINE全文
+ * @param {string} [params.lineName] - LINE名（スプレッドシートから取得）
  */
-export async function createMendanTasks({ name, date, reportText, lineDrafts }) {
+export async function createMendanTasks({ name, date, reportText, lineDrafts, lineName }) {
   console.log(`[Asana] メインタスク作成: ${name}さん 面談フォロー`);
 
-  // 1. メインタスク作成
-  const mainRes = await asanaRequest("POST", "/tasks", {
+  // 1. メインタスク作成（LINE名があればカスタムフィールドに設定）
+  const taskData = {
     name: `${name}さん 面談フォロー`,
     projects: [PROJECT_ID],
     assignee: ASSIGNEE_ID,
     due_on: addDays(date, 14),
     notes: reportText || "",
-  });
+  };
+  if (lineName) {
+    taskData.custom_fields = { [LINE_NAME_FIELD_ID]: lineName };
+  }
+  const mainRes = await asanaRequest("POST", "/tasks", taskData);
   const mainGid = mainRes.data.gid;
   console.log(`[Asana] メインタスク作成完了: ${mainGid}`);
 

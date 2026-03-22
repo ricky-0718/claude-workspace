@@ -11,6 +11,7 @@ import { parseClaudeOutput, executeMendan } from "./mendan-executor.js";
 import { createMendanTasks } from "./asana-mendan.js";
 import { recordMeeting } from "./asana-meeting-recorder.js";
 import { sendSlack } from "./notifier.js";
+import { lookupByDate, lookupByName } from "./spreadsheet-lookup.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -145,8 +146,11 @@ export function extractMeetingData(payload) {
       ? externalAttendees[0].name
       : attendees[0]?.name || "不明";
 
+  // JST（UTC+9）で日付を取得 — UTCのままだと日本時間で1日ずれる可能性がある
   const createdAt = new Date(payload.createdAt);
-  const dateStr = `${createdAt.getFullYear()}/${createdAt.getMonth() + 1}/${createdAt.getDate()}`;
+  const jstMs = createdAt.getTime() + 9 * 60 * 60 * 1000;
+  const jstDate = new Date(jstMs);
+  const dateStr = `${jstDate.getUTCFullYear()}/${jstDate.getUTCMonth() + 1}/${jstDate.getUTCDate()}`;
 
   const durationMin = payload.duration
     ? Math.round(payload.duration / 60)
@@ -241,6 +245,22 @@ function extractLineDrafts(lineText) {
     day7: extract("【7日後】"),
     day14: extract("【14日後】"),
   };
+}
+
+// ============================================
+// 分析レポートから正しい名前を抽出
+// Circlebackは外部参加者を"Participant 1"と匿名化するため、
+// Claude分析後のレポートから文字起こし内の実名を取得する
+// ============================================
+function extractRealName(reportText) {
+  if (!reportText) return null;
+  // レポートの "# 面談分析レポート: 尾曲さやこ" から名前を取得
+  const m = reportText.match(/^# 面談分析レポート:\s*(.+)$/m);
+  if (m) return m[1].trim();
+  // フォールバック: "- 名前: 尾曲さやこ" から取得
+  const m2 = reportText.match(/^- 名前:\s*(.+)$/m);
+  if (m2) return m2[1].trim();
+  return null;
 }
 
 // ============================================
@@ -380,19 +400,50 @@ export async function processWebhook(payload) {
     }
     console.log(`[Pipeline] Step 2/5 完了: タグ解析 (report=${!!sections.report} line=${!!sections.line} customer=${!!sections.customer})`);
 
+    // ── Step 2.5: スプレッドシート照合 + 名前補正 ──
+    // 3段階の名前解決: スプレッドシート → Claude分析レポート → Circlebackメタデータ
+    let realName = meetingData.name;
+    let lineName = null;
+
+    // まずスプレッドシート（面談DB）から照合（UTAGEの予約フォームが正確）
+    const sheetEntry = lookupByDate(meetingData.date);
+    if (sheetEntry) {
+      // スプレッドシートから苗字を抽出（"尾曲 清子" → "尾曲"）
+      const sheetSurname = sheetEntry.name.split(/\s+/)[0];
+      // レポートから抽出した名前にスプレッドシートの苗字が含まれていれば信頼できる
+      const reportName = extractRealName(sections.report);
+      if (reportName && reportName.includes(sheetSurname)) {
+        realName = reportName; // レポートの名前を採用（ひらがな名前の場合がある）
+      } else if (reportName) {
+        realName = reportName; // レポートの名前をフォールバック
+      } else {
+        realName = sheetEntry.name; // スプレッドシートの名前を使用
+      }
+      lineName = sheetEntry.lineName;
+      console.log(`[Pipeline] スプレッドシート照合: 名前="${realName}" LINE名="${lineName}"`);
+    } else {
+      // スプレッドシートにない場合はレポートから抽出
+      realName = extractRealName(sections.report) || meetingData.name;
+    }
+
+    if (realName !== meetingData.name) {
+      console.log(`[Pipeline] 名前補正: "${meetingData.name}" → "${realName}"`);
+    }
+
     // ── Step 3: ファイル書き込み + git push ──
-    const execResult = await executeMendan(claudeOutput, meetingData.name, meetingData.date);
+    const execResult = await executeMendan(claudeOutput, realName, meetingData.date);
     console.log(`[Pipeline] Step 3/5 完了: ファイル書き込み + git push`);
 
-    // ── Step 4: Asana タスク作成 ──
+    // ── Step 4: Asana タスク作成（LINE名も設定） ──
     const lineDrafts = extractLineDrafts(sections.line);
     const asanaResult = await createMendanTasks({
-      name: meetingData.name,
+      name: realName,
       date: meetingData.date,
       reportText: sections.report || "",
       lineDrafts,
+      lineName,
     });
-    console.log(`[Pipeline] Step 4/5 完了: Asanaタスク作成 (main=${asanaResult.mainGid})`);
+    console.log(`[Pipeline] Step 4/5 完了: Asanaタスク作成 (main=${asanaResult.mainGid}${lineName ? ` LINE名=${lineName}` : ""})`);
 
     // ── Step 5: 完了処理 ──
     markProcessed(meetingId);
@@ -400,7 +451,7 @@ export async function processWebhook(payload) {
 
     // Slack: 完了通知
     await sendSlack(
-      `✅ 面談分析完了: ${meetingData.name}（${meetingData.date}）\n` +
+      `✅ 面談分析完了: ${realName}（${meetingData.date}）\n` +
       `所要時間: ${Math.round(analysisResult.duration / 1000)}秒\n` +
       `・分析レポート → knowledge/students/面談分析まとめ.md\n` +
       `・LINE下書き4通 → knowledge/students/LINE下書きまとめ.md\n` +
