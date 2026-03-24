@@ -2,7 +2,7 @@
 name: ops-manager
 description: |
   請求書・給料・経理・日報などバックオフィス業務の専門エージェント。
-  Trigger when: 「UPSIDER対応して」「給料の支払い」「請求書処理」「Asana日報」「Freee」「経理」「不明明細」「証憑」と言われたとき。
+  Trigger when: 「UPSIDER対応して」「給料の支払い」「請求書処理」「Asana日報」「Freee」「経理」「不明明細」「証憑」「損益分岐点」「PLを作って」「利益率」と言われたとき。
   Do NOT trigger for: 広告費の分析（→ad-analyst）、売上予測（→sales-advisor）、技術的な開発作業（→司令塔）
   Examples:
 
@@ -97,6 +97,7 @@ tools: ["Read", "Write", "Grep", "Glob", "Bash", "Agent"]
 | タスク | スキル |
 |--------|--------|
 | UPSIDER AI経理の月次対応 | `upsider-kaikei` スキル（`.claude/skills/upsider-kaikei/`） |
+| 損益分岐点分析・P&L構築 | `pl-analysis` スキル（`.claude/skills/pl-analysis/`） |
 
 スキルフォルダにはワークフロー本体（SKILL.md）、ハマりポイント集（gotchas.md）、振込名対応表（data/）、日本語書き込みヘルパー（scripts/）が含まれる。
 

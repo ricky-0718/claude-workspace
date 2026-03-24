@@ -38,6 +38,7 @@
     flex-direction: column;
     page-break-after: always;
     overflow: hidden;
+    padding-bottom: 8px;
   }
   .page:last-child { page-break-after: auto; }
 
@@ -69,10 +70,11 @@
   }
 
   .footer {
-    padding: 10px 24px;
+    padding: 10px 24px 30px;
     text-align: center;
     font-size: 18px;
     color: var(--muted);
+    margin-bottom: 10px;
   }
 
   /* === Section Header (full-width blue bar) === */
@@ -110,7 +112,7 @@
   .stat-sep { width: 30px; height: 2px; background: var(--rule); margin: 0 auto 18px; }
 
   /* === Table === */
-  table { width: 94%; border-collapse: collapse; margin: 0 auto; }
+  table { width: 94%; border-collapse: collapse; margin: 0 auto; border: 2px solid var(--blue); border-radius: 4px; }
   th { background: var(--blue); color: white; padding: 14px 10px; font-size: 18px; font-weight: 600; text-align: center; }
   td { padding: 14px 10px; font-size: 18px; color: var(--navy); text-align: center; border-bottom: 1px solid #dde5ed; }
   tr:nth-child(even) td { background: var(--table-alt); }
@@ -133,15 +135,15 @@
   .checklist span { color: var(--blue); }
 
   /* === Source list === */
-  .source-list { text-align: left; display: inline-block; font-size: 13px; color: var(--light); line-height: 1.9; width: 90%; }
+  .source-list { text-align: left; display: inline-block; font-size: 11px; color: var(--light); line-height: 1.6; width: 90%; }
   .source-list a { color: var(--muted); text-decoration: none; }
 
   /* === Flow chart table === */
   .flow-table { width: 94%; }
-  .flow-table th { font-size: 16px; padding: 12px 10px; }
-  .flow-table td { font-size: 16px; padding: 12px 10px; text-align: left; line-height: 1.6; }
-  .flow-phase { font-weight: 800; color: var(--blue); font-size: 17px; }
-  .flow-arrow { text-align: center !important; font-size: 20px; color: var(--accent); padding: 4px 0 !important; border-bottom: none !important; }
+  .flow-table th { font-size: 14px; padding: 8px 8px; }
+  .flow-table td { font-size: 14px; padding: 8px 8px; text-align: center; line-height: 1.5; }
+  .flow-phase { font-weight: 800; color: var(--blue); font-size: 15px; }
+  .flow-arrow { text-align: center !important; font-size: 18px; color: var(--accent); padding: 2px 0 !important; border-bottom: none !important; }
 
   /* === Compact table variant === */
   .compact-table td { padding: 10px 10px; font-size: 16px; }
@@ -204,7 +206,7 @@
   </div>
   <div class="section-header">はじめに</div>
   <div class="content">
-    <div class="body-text" style="width: 85%; font-size: 22px; line-height: 1.9;">
+    <div class="body-text" style="width: 85%; font-size: 21px; line-height: 1.7;">
       こんにちは、リッキーです。<br><br>
       「台湾って、今は危ないのでは？」<br>
       この問いかけは、<span class="emphasis">正しい疑問</span>です。<br><br>
@@ -466,7 +468,7 @@
       <tr><td class="td-strong">刑法犯認知件数</td><td><strong>384,877</strong>件</td><td style="font-size: 14px;">人口10万人あたり日本の約<strong>2.8倍</strong></td></tr>
       <tr><td class="td-strong">殺人</td><td><strong>135</strong>件</td><td style="font-size: 14px;">日本と大差のない水準</td></tr>
       <tr><td class="td-strong">強盗</td><td><strong>82</strong>件</td><td style="font-size: 14px;">日本と大差のない水準</td></tr>
-      <tr><td class="td-strong">窃盗</td><td><strong>54,608</strong>件</td><td style="font-size: 14px;"></td></tr>
+      <tr><td class="td-strong">窃盗</td><td><strong>54,608</strong>件</td><td style="font-size: 14px;">スリ・置き引きが中心</td></tr>
       <tr><td class="td-strong">詐欺</td><td class="td-accent">122,805件</td><td style="font-size: 14px; color: #c0392b;">前年比 <strong>+224.7%</strong>（急増の主因）</td></tr>
     </table>
     <div style="font-size: 13px; color: var(--light); margin-bottom: 16px;">出典: 外務省 安全対策基礎データ（2025年11月28日更新）</div>
@@ -582,15 +584,15 @@
       「何が起きたら、何をするか」を事前に決めておく
     </div>
 
-    <table class="flow-table" style="margin-bottom: 10px;">
+    <table class="flow-table" style="margin-bottom: 4px;">
       <tr><th style="width: 28%;">フェーズ</th><th>やること</th><th style="width: 25%;">具体的な行動</th></tr>
 
       <tr>
         <td><span class="flow-phase">平時の準備</span></td>
-        <td style="text-align: left;">
+        <td>
           保護者・学生で事前合意
         </td>
-        <td style="font-size: 15px; text-align: left;">
+        <td style="font-size: 15px;">
           連絡手段 / 合言葉<br>
           集合場所の決定
         </td>
@@ -598,10 +600,10 @@
 
       <tr>
         <td></td>
-        <td style="text-align: left;">
+        <td>
           基盤整備
         </td>
-        <td style="font-size: 15px; text-align: left;">
+        <td style="font-size: 15px;">
           在留届 / 学校登録<br>
           保険加入
         </td>
@@ -609,10 +611,10 @@
 
       <tr>
         <td></td>
-        <td style="text-align: left;">
+        <td>
           日常リスク対策
         </td>
-        <td style="font-size: 15px; text-align: left;">
+        <td style="font-size: 15px;">
           詐欺・窃盗・交通<br>
           送金二重承認
         </td>
@@ -621,13 +623,13 @@
 
     <div style="font-size: 24px; color: var(--accent); font-weight: 800; padding: 6px 0;">▼</div>
 
-    <table class="flow-table" style="margin-bottom: 10px;">
+    <table class="flow-table" style="margin-bottom: 4px;">
       <tr>
         <td style="width: 28%;"><span class="flow-phase">異常事態発生</span></td>
-        <td style="text-align: left;">
+        <td>
           情報収集を<span class="emphasis">公式一次</span>に寄せる
         </td>
-        <td style="font-size: 15px; text-align: left; width: 25%;">
+        <td style="font-size: 15px; width: 25%;">
           外務省 / 交流協会<br>
           学校の公式連絡
         </td>
@@ -635,10 +637,10 @@
 
       <tr>
         <td></td>
-        <td style="text-align: left;">
+        <td>
           寮・大学の指示に従い待機
         </td>
-        <td style="font-size: 15px; text-align: left;">
+        <td style="font-size: 15px;">
           安否確認を定時化<br>
           SNS情報は鵜呑みにしない
         </td>
@@ -647,13 +649,13 @@
 
     <div style="font-size: 24px; color: var(--accent); font-weight: 800; padding: 6px 0;">▼</div>
 
-    <table class="flow-table" style="margin-bottom: 10px;">
+    <table class="flow-table" style="margin-bottom: 4px;">
       <tr>
         <td style="width: 28%;"><span class="flow-phase">退避判断</span></td>
-        <td style="text-align: left;">
+        <td>
           段階的に検討
         </td>
-        <td style="font-size: 15px; text-align: left; width: 25%;">
+        <td style="font-size: 15px; width: 25%;">
           <span class="emphasis">島内移動</span>を先に検討<br>
           →次に<span class="emphasis">域外移動</span>
         </td>
@@ -662,13 +664,13 @@
 
     <div style="font-size: 24px; color: var(--accent); font-weight: 800; padding: 6px 0;">▼</div>
 
-    <table class="flow-table" style="margin-bottom: 10px;">
+    <table class="flow-table" style="margin-bottom: 4px;">
       <tr>
         <td style="width: 28%;"><span class="flow-phase">出国アクション</span></td>
-        <td style="text-align: left;">
+        <td>
           日本直行 / 第三地経由の両方を想定
         </td>
-        <td style="font-size: 15px; text-align: left; width: 25%;">
+        <td style="font-size: 15px; width: 25%;">
           航空便確認<br>
           第三地ルートの事前把握
         </td>
@@ -676,18 +678,18 @@
 
       <tr>
         <td></td>
-        <td style="text-align: left;">
+        <td>
           日本到着後の連絡確定
         </td>
-        <td style="font-size: 15px; text-align: left;">
+        <td style="font-size: 15px;">
           保険手続き<br>
           学校への報告
         </td>
       </tr>
     </table>
 
-    <div style="border-top: 2px solid var(--blue); padding-top: 10px; width: 85%; margin-top: 6px;">
-      <div style="font-size: 16px; color: var(--navy); line-height: 1.8; text-align: center;">
+    <div style="border-top: 2px solid var(--blue); padding-top: 6px; width: 85%; margin-top: 4px;">
+      <div style="font-size: 13px; color: var(--navy); line-height: 1.6; text-align: center;">
         このフローは<span class="emphasis">情勢の予測精度が低い時ほど効果を発揮</span>します。<br>
         「何が起きるか」を予測するのではなく、<br>
         <span class="emphasis">「何が起きても動ける準備」</span>を整えることが目的です。
@@ -705,7 +707,7 @@
   </div>
   <div class="section-header">まとめ ― 保護者の方へ</div>
   <div class="content">
-    <div class="body-text" style="width: 85%; font-size: 21px; line-height: 1.9; margin-bottom: 20px;">
+    <div class="body-text" style="width: 85%; font-size: 20px; line-height: 1.7; margin-bottom: 12px;">
       この資料で最もお伝えしたかったことは、<br><br>
       <span class="emphasis">「安全か危険か」の二択ではなく、</span><br>
       <span class="emphasis">「どう設計するか」で安全性は変わる</span><br><br>
@@ -743,7 +745,7 @@
       10. USGS 花蓮地震データ — https://earthquake.usgs.gov/
     </div>
   </div>
-  <div class="footer">台湾留学101センター</div>
+  <div class="footer" style="padding-bottom: 40px;">台湾留学101センター</div>
 </div>
 
 </body>

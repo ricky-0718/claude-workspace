@@ -28,6 +28,7 @@
     "excel-generator@local": true,
     "youtube-transcript@local": true,
     "meta-ads-analyzer@local": true,
-    "meta-ads-setup@local": true
+    "meta-ads-setup@local": true,
+    "firebase@claude-plugins-official": true
   }
 }

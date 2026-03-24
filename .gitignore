@@ -28,6 +28,24 @@ nul
 
 # Playwright browser profile
 .playwright-data/
+.playwright-mcp/
+
+# ツール内部ディレクトリ
+.firecrawl/
+.superpowers/
+
+# バイナリ実行ファイル
+claude-office/cloudflared.exe
+
+# Drive同期PDF（リポジトリ管理不要）
+knowledge/students/drive-pdfs/
+
+# おさる教材PDF（大容量）
+osaru-pdf*.pdf
+
+# 一時ファイル
+.tmp-*
+.tmp.driveupload/
 
 # その他
 node_modules/
@@ -39,3 +57,7 @@ claude-office/data/*.json
 claude-office/data/messages/*.json
 claude-office/data/drafts/*.json
 claude-office/data/results/*.json
+
+# claude-office runtime text data
+claude-office/data/*.txt
+claude-office/data/*.md
