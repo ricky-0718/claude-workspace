@@ -2,7 +2,7 @@
 
 ## 優先度: 高
 - [ ] **台湾情勢レポートPDF フッター余白修正** — 最終ページの「台湾留学101センター」下に余白がない。`overflow: hidden` が原因の可能性。修正後にPDF再生成 + Google Driveに再アップロード
-- [ ] **circleback-processor.js を旧PCにデプロイ** — 名前補正・JST変換・LINE名自動設定・spreadsheet-lookup.js の4ファイルを旧PCに反映
+- [x] **circleback-processor.js を旧PCにデプロイ** — git pull成功（450bbaf）。サーバー再起動が必要（restart.bat失敗 → 手動start.bat実行）
 
 ## 優先度: 中
 - [ ] **尾曲さやこ【3日後】進捗確認LINE（3/25）** — Asanaサブタスク `1213753789113543` に下書きあり。送信前に内容を確認・カスタマイズ
