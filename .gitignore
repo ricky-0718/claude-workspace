@@ -47,6 +47,18 @@ osaru-pdf*.pdf
 .tmp-*
 .tmp.driveupload/
 
+# 成果物PDF/HTML（Driveで管理）
+*_提案書*.html
+*_提案書*.pdf
+*_留学プラン*.html
+*_留学プラン*.pdf
+line-tokuten-pdf/*.pdf
+line-tokuten-pdf/*.png
+cycu-brochure.pdf
+openclaw-guide.html
+blog-test/
+tasks/revenue-diversification-proposal.html
+
 # その他
 node_modules/
 *.log
