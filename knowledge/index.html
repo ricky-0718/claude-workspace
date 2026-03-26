@@ -3,346 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Knowledge Base Map</title>
+<title>Knowledge Base - Directory Map</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'Segoe UI', 'Meiryo', sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-    padding: 40px 20px;
-    min-height: 100vh;
+    font-family: 'Cascadia Code', 'Consolas', 'Meiryo', monospace;
+    background: #0f172a; color: #cbd5e1;
+    padding: 40px 24px;
   }
-  .container { max-width: 900px; margin: 0 auto; }
-  h1 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #f8fafc;
-  }
-  .subtitle {
-    color: #94a3b8;
-    font-size: 14px;
-    margin-bottom: 32px;
-  }
-  .stats {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-  .stat-card {
-    background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 16px 24px;
-    flex: 1;
-    min-width: 140px;
-  }
-  .stat-card .num {
-    font-size: 28px;
-    font-weight: 700;
-    color: #38bdf8;
-  }
-  .stat-card .label {
-    font-size: 12px;
-    color: #94a3b8;
-    margin-top: 4px;
-  }
-  .folder {
-    background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .folder:hover { border-color: #475569; }
-  .folder-header {
-    display: flex;
-    align-items: center;
-    padding: 16px 20px;
-    cursor: pointer;
-    user-select: none;
-    gap: 12px;
-  }
-  .folder-header:hover { background: #253348; }
-  .folder-icon { font-size: 20px; flex-shrink: 0; }
-  .folder-name {
-    font-size: 16px;
-    font-weight: 600;
-    color: #f1f5f9;
-    flex: 1;
-  }
-  .folder-desc {
-    font-size: 12px;
-    color: #64748b;
-  }
-  .folder-count {
-    background: #334155;
-    color: #94a3b8;
-    font-size: 11px;
-    padding: 2px 10px;
-    border-radius: 99px;
-    font-weight: 600;
-  }
-  .chevron {
-    color: #475569;
-    font-size: 12px;
-    transition: transform 0.2s;
-  }
-  .folder.open .chevron { transform: rotate(90deg); }
-  .folder-content {
-    display: none;
-    padding: 0 20px 16px;
-    border-top: 1px solid #293548;
-  }
-  .folder.open .folder-content { display: block; }
-  .file-list { list-style: none; }
-  .file-item {
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
-    border-radius: 8px;
-    gap: 10px;
-    font-size: 14px;
-    color: #cbd5e1;
-  }
-  .file-item:hover { background: #293548; }
-  .file-icon { font-size: 14px; flex-shrink: 0; opacity: 0.7; }
-  .file-name { flex: 1; }
-  .file-tag {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-  .tag-local { background: #1e3a5f; color: #7dd3fc; }
-  .tag-drive { background: #1a3329; color: #6ee7b7; }
-  .tag-important { background: #4c1d2e; color: #fda4af; }
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 16px 0 8px 12px;
-  }
-  .drive-link {
-    color: #6ee7b7;
-    text-decoration: none;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: 6px;
-  }
-  .drive-link:hover { background: #1a3329; }
-  .rule-box {
-    background: linear-gradient(135deg, #4c1d2e, #3b1764);
-    border: 1px solid #7c3aed44;
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-top: 24px;
-  }
-  .rule-box h3 { color: #e879f9; font-size: 14px; margin-bottom: 8px; }
-  .rule-box p { color: #d4bfff; font-size: 13px; line-height: 1.7; }
-  .flow-diagram {
-    background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 24px;
-    margin-top: 24px;
-    text-align: center;
-  }
-  .flow-diagram h3 { color: #f1f5f9; font-size: 14px; margin-bottom: 16px; }
-  .flow-steps {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .flow-step {
-    background: #0f172a;
-    border: 1px solid #475569;
-    border-radius: 8px;
-    padding: 10px 16px;
-    font-size: 13px;
-    color: #e2e8f0;
-  }
-  .flow-arrow { color: #38bdf8; font-size: 18px; }
-  .updated { color: #64748b; font-size: 12px; text-align: right; margin-top: 24px; }
+  .container { max-width: 780px; margin: 0 auto; }
+  h1 { font-size: 18px; color: #f8fafc; font-weight: 600; }
+  .sub { color: #64748b; font-size: 13px; margin: 4px 0 28px; }
+  .tree { font-size: 12.5px; line-height: 1.85; white-space: pre; }
+  .dir { color: #38bdf8; font-weight: 600; }
+  .note { color: #64748b; }
+  .imp { color: #f472b6; }
+  .cnt { color: #475569; }
+  .updated { color: #475569; font-size: 11px; text-align: right; margin-top: 32px; }
 </style>
 </head>
 <body>
 <div class="container">
-  <h1>Knowledge Base Map</h1>
-  <p class="subtitle">knowledge/ -- 事業ナレッジの一元管理フォルダ</p>
-
-  <div class="stats">
-    <div class="stat-card">
-      <div class="num">5</div>
-      <div class="label">Categories</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">21</div>
-      <div class="label">Local Files</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">6</div>
-      <div class="label">READMEs</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">10+</div>
-      <div class="label">Drive Links</div>
-    </div>
-  </div>
-
-  <!-- Sales -->
-  <div class="folder open">
-    <div class="folder-header" onclick="this.parentElement.classList.toggle('open')">
-      <span class="folder-icon">&#128176;</span>
-      <span class="folder-name">sales/</span>
-      <span class="folder-desc">セールス・面談手法</span>
-      <span class="folder-count">3 files</span>
-      <span class="chevron">&#9654;</span>
-    </div>
-    <div class="folder-content">
-      <div class="section-label">Local Files</div>
-      <ul class="file-list">
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">SPIN型面談スクリプト.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">面談後フォロー3-7-14ルール.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">個別相談セールス分析レポート.md</span><span class="file-tag tag-local">local</span></li>
-      </ul>
-      <div class="section-label">Google Drive</div>
-      <a class="drive-link" href="https://docs.google.com/document/d/1AMmn2zY8gM_ZM0yCXDWmEAJOiGo_2ZjrgYoDXFFojrE" target="_blank">&#128279; 相談会</a>
-      <a class="drive-link" href="https://docs.google.com/document/d/1BavHHJ5BPpzAPSaJiQsG_6ApZJerpGtTt2qu8Skhxjw" target="_blank">&#128279; 【2026年版】台湾留学ガイドブック</a>
-      <a class="drive-link" href="https://drive.google.com/drive/folders/1-dB0IDA0PMfPI1ZiYUTLXHm0arM9FiRs" target="_blank">&#128279; 講座生FAQまとめ / ウェビナートーク全履歴（ナレッジ格納庫）</a>
-    </div>
-  </div>
-
-  <!-- Students -->
-  <div class="folder">
-    <div class="folder-header" onclick="this.parentElement.classList.toggle('open')">
-      <span class="folder-icon">&#127891;</span>
-      <span class="folder-name">students/</span>
-      <span class="folder-desc">生徒個別記録</span>
-      <span class="folder-count">3 files</span>
-      <span class="chevron">&#9654;</span>
-    </div>
-    <div class="folder-content">
-      <div class="section-label">Local Files</div>
-      <ul class="file-list">
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">面談分析まとめ.md</span><span class="file-tag tag-local">11名統合</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">LINE下書きまとめ.md</span><span class="file-tag tag-local">11名統合</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">karin-送信済み.md</span><span class="file-tag tag-local">local</span></li>
-      </ul>
-      <div class="section-label">Google Drive</div>
-      <a class="drive-link" href="https://drive.google.com/drive/folders/1t5BP6SAste89WMOr1SzOQHtKMjJ0cInp" target="_blank">&#128279; オールインワンプラン生フォルダ</a>
-      <a class="drive-link" href="https://docs.google.com/spreadsheets/d/1CiPIRh1RC1CwLwvpXp8C9L_GQKIDG0dRzxQZrOyYAjw" target="_blank">&#128279; 【名簿】オールインワンプラン生</a>
-      <a class="drive-link" href="https://docs.google.com/spreadsheets/d/1gvFuU_StP_VYt0ZlYFIKyPmYS4vQpL4wX8m2d_qafA0" target="_blank">&#128279; クラス管理表</a>
-      <a class="drive-link" href="https://docs.google.com/spreadsheets/d/1_Mg0HcOKLp6jE9r642pXuzKqx1VpSV-VY6LDV475mvs" target="_blank">&#128279; LINE返信DB</a>
-    </div>
-  </div>
-
-  <!-- Marketing -->
-  <div class="folder">
-    <div class="folder-header" onclick="this.parentElement.classList.toggle('open')">
-      <span class="folder-icon">&#128226;</span>
-      <span class="folder-name">marketing/</span>
-      <span class="folder-desc">LP・広告・SNS・文章</span>
-      <span class="folder-count">8 files</span>
-      <span class="chevron">&#9654;</span>
-    </div>
-    <div class="folder-content">
-      <div class="section-label">Local Files</div>
-      <ul class="file-list">
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">utage-lp-patterns.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">writing-rules.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">taiwan-lp-final.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">taiwan-lp-improved.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">meta-ads-report.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">lp-diagnosis-report.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">new-lp-clarity-analysis.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">auto-webinar-meta-ads-data.md</span><span class="file-tag tag-local">local</span></li>
-      </ul>
-      <div class="section-label">Google Drive</div>
-      <a class="drive-link" href="https://drive.google.com/drive/folders/1ihIYk-jKoLPpWwd8XbOqlBzBJyc7QvDw" target="_blank">&#128279; 広告分析フォルダ</a>
-      <a class="drive-link" href="https://docs.google.com/spreadsheets/d/1pEdR7RfD0_SWC-77J0CXF0aw1jPUYQO7WXFwZ0kWr7Y" target="_blank">&#128279; LINEステップ作成シート</a>
-      <div class="section-label" style="color: #fda4af;">&#9733; IMPORTANT</div>
-      <a class="drive-link" href="https://drive.google.com/drive/folders/1-dB0IDA0PMfPI1ZiYUTLXHm0arM9FiRs" target="_blank" style="color: #fda4af;">&#9733; パーソナルナレッジ / 発信ソースナレッジ（クリエイティブ制作時に必須参照）</a>
-    </div>
-  </div>
-
-  <!-- Operations -->
-  <div class="folder">
-    <div class="folder-header" onclick="this.parentElement.classList.toggle('open')">
-      <span class="folder-icon">&#9881;</span>
-      <span class="folder-name">operations/</span>
-      <span class="folder-desc">業務手順・ツール設定</span>
-      <span class="folder-count">4 files</span>
-      <span class="chevron">&#9654;</span>
-    </div>
-    <div class="folder-content">
-      <div class="section-label">Local Files</div>
-      <ul class="file-list">
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">freee-invoice-guide.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">utage-line-feedback.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">x-trend-collector.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">project-lessons-x-trend.md</span><span class="file-tag tag-local">local</span></li>
-      </ul>
-      <div class="section-label">Related Resources</div>
-      <ul class="file-list">
-        <li class="file-item"><span class="file-icon">&#128193;</span><span class="file-name">gas-scripts/</span><span class="file-tag tag-local">GASコード</span></li>
-        <li class="file-item"><span class="file-icon">&#128193;</span><span class="file-name">claude-office/invoice-poller.js</span><span class="file-tag tag-local">請求書自動保存</span></li>
-      </ul>
-      <a class="drive-link" href="https://drive.google.com/drive/folders/1P4vxxIp3lJJUjsJlYifcUzZfuV51PLDy" target="_blank">&#128279; 契約書ひな形フォルダ</a>
-    </div>
-  </div>
-
-  <!-- Business -->
-  <div class="folder">
-    <div class="folder-header" onclick="this.parentElement.classList.toggle('open')">
-      <span class="folder-icon">&#128200;</span>
-      <span class="folder-name">business/</span>
-      <span class="folder-desc">事業データ・戦略</span>
-      <span class="folder-count">3 files</span>
-      <span class="chevron">&#9654;</span>
-    </div>
-    <div class="folder-content">
-      <div class="section-label">Local Files</div>
-      <ul class="file-list">
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">会社全事業データ総覧.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">統合提案書.md</span><span class="file-tag tag-local">local</span></li>
-        <li class="file-item"><span class="file-icon">&#128196;</span><span class="file-name">事業戦略ロードマップ.md</span><span class="file-tag tag-local">local</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- How it works -->
-  <div class="flow-diagram">
-    <h3>Claude Code Reference Flow</h3>
-    <div class="flow-steps">
-      <div class="flow-step">&#128172; User Request</div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step">&#128214; MEMORY.md</div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step">&#128193; knowledge/</div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step">&#128196; Read File</div>
-      <div class="flow-arrow">&#8594;</div>
-      <div class="flow-step">&#9989; Response</div>
-    </div>
-  </div>
-
-  <div class="rule-box">
-    <h3>&#9733; Important Rule</h3>
-    <p>SNS台本・クリエイティブ制作時は、Google Drive「ナレッジ格納庫」内の<br><strong>パーソナルナレッジ</strong> + <strong>発信ソースナレッジ</strong> を必ず参照すること。</p>
-  </div>
-
-  <p class="updated">Last updated: 2026-03-10</p>
+<h1>knowledge/ Directory Map</h1>
+<p class="sub">台湾留学101センター ナレッジベース構造 &mdash; 全116ファイル / 6カテゴリ</p>
+<div class="tree"><span class="dir">knowledge/</span>
+│
+├── <span class="dir">sales/</span>                                   <span class="cnt">(7)</span>
+│   ├── SPIN型面談スクリプト.md
+│   ├── 個別相談セールス分析レポート.md
+│   ├── セミナー個別面談スライド台本V2.md
+│   ├── 面談スライド台本V2.html
+│   ├── 面談後フォロー3-7-14ルール.md
+│   ├── 講座生FAQまとめ.txt
+│   └── ウェビナー後個別相談トーク全履歴まとめ.txt
+│
+├── <span class="dir">students/</span>                                <span class="cnt">(59)</span>
+│   ├── <span class="imp">顧客コンテキスト.md</span>                      <span class="note">★ 全見込み客の状況</span>
+│   ├── 面談分析まとめ.md
+│   ├── LINE下書きまとめ.md
+│   ├── asana-mendan-records.md
+│   ├── asana-application-management.md
+│   ├── university-database.md
+│   ├── admission-results-3rd-cohort.md
+│   ├── application-manual-miro.md
+│   ├── application-6steps-webinar.md
+│   ├── visa-application-guide.md
+│   ├── staff-manuals-and-resources.md
+│   ├── video-manual-progress.md
+│   ├── band-chat-analysis.md
+│   ├── 提案書_川上悠哉.md
+│   ├── slides_川上悠哉.md / .html / _review.html
+│   ├── 提案書_オライオン.md
+│   ├── taidan-ueno-wataru.md
+│   ├── <span class="dir">band-conversations/</span>                  <span class="cnt">(10)</span>
+│   │   ├── application-documents.md          <span class="note">出願書類</span>
+│   │   ├── application-system.md             <span class="note">出願制度</span>
+│   │   ├── tocfl-language.md                 <span class="note">TOCFL・語学</span>
+│   │   ├── university-selection.md           <span class="note">志望校選び</span>
+│   │   ├── autobio-study-plan.md             <span class="note">自伝・学習計画</span>
+│   │   ├── financial-scholarship.md          <span class="note">費用・奨学金</span>
+│   │   ├── parent-communication.md           <span class="note">保護者対応</span>
+│   │   ├── class-homework.md                 <span class="note">授業・宿題</span>
+│   │   ├── staff-templates.md                <span class="note">スタッフ定型文</span>
+│   │   └── travel-logistics.md               <span class="note">渡航・ロジ</span>
+│   ├── <span class="dir">drive-pdfs/</span>                          <span class="cnt">(15)</span>
+│   │   ├── 大学図鑑.pdf / 生活費レポート.pdf / よくある質問.pdf
+│   │   ├── 認証手続きガイド.pdf / 認証申請書_札幌東京.pdf
+│   │   ├── 推薦書ガイド.pdf / 自伝学習計画書フォーマット.pdf
+│   │   ├── 自伝見本_雲林.pdf / 学習計画書見本_雲林.pdf
+│   │   ├── 自伝テンプレート.docx / 学習計画テンプレート.docx
+│   │   ├── 卒業見込み書見本_英語.pdf / 成績証明見本_英語.pdf
+│   │   ├── 高校必要書類準備のお願い.pdf / 委任状_個人.pdf
+│   │   └── <span class="note">（全15ファイル）</span>
+│   └── <span class="dir">drive-texts/</span>                         <span class="cnt">(15)</span>
+│       └── <span class="note">上記PDFのテキスト版 .md（Claude読取用）</span>
+│
+├── <span class="dir">marketing/</span>                               <span class="cnt">(38)</span>
+│   ├── <span class="imp">osaru-methodology.md</span>                   <span class="note">★ おさる式メソドロジー</span>
+│   ├── osaru-funnel-templates.md             <span class="note">ファネル11パターン + GPTs56種</span>
+│   ├── osaru-sales-writing-12types.md        <span class="note">セールスライティング12の型</span>
+│   ├── osaru-masterclass-index.md
+│   ├── osaru-ai-gpts-workflow.md
+│   ├── tokuten-02 〜 07                       <span class="note">LINE特典コンテンツ x6</span>
+│   ├── youtube-taidan-template.md            <span class="note">対談動画テンプレート</span>
+│   ├── youtube-taidan-checklist.md
+│   ├── youtube-taidan-hearing-sheet.md
+│   ├── youtube-description-template.md
+│   ├── voice-guide-ricky-blog.md             <span class="note">ブログVoice Guide</span>
+│   ├── writing-rules.md                      <span class="note">文章生成ルール</span>
+│   ├── utage-lp-patterns.md / meta-ads-report.md
+│   ├── lp-diagnosis-report.md / new-lp-clarity-analysis.md
+│   ├── auto-webinar-meta-ads-data.md
+│   ├── <span class="imp">パーソナルナレッジ.txt</span>                    <span class="note">★ クリエイティブ制作時必須</span>
+│   ├── <span class="imp">発信ソースナレッジ.txt</span>                    <span class="note">★ クリエイティブ制作時必須</span>
+│   ├── YouTube関連ナレッジ.txt / chatGPTとのやり取りまとめ.txt
+│   └── <span class="dir">auto-webinar/</span>                        <span class="cnt">(8)</span>
+│       ├── webinar-script.md / webinar-transcript.md
+│       ├── line-scenario.md
+│       ├── lp/current.md / lp/ab-test.md
+│       ├── ads/meta-ads.md / ads/creatives.md
+│       └── analytics/clarity.md
+│
+├── <span class="dir">operations/</span>                              <span class="cnt">(7)</span>
+│   ├── freee-invoice-guide.md / salary-payment-config.md
+│   ├── 5ki-taiwan-costs.md
+│   ├── utage-line-rules.md / utage-line-feedback.md
+│   ├── asana-api-notes.md
+│   └── 業務マスター.txt
+│
+├── <span class="dir">business/</span>                                <span class="cnt">(2)</span>
+│   ├── 会社全事業データ総覧.md
+│   └── 事業戦略ロードマップ.md
+│
+└── <span class="dir">archive/</span>                                 <span class="cnt">(3)</span>
+    ├── karin-送信済み.md
+    ├── x-trend-collector.md
+    └── project-lessons-x-trend.md
+</div>
+<p class="updated">2026-03-26 更新</p>
 </div>
 </body>
 </html>

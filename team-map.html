@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>チーム & ナレッジマップ - 台湾留学101センター</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'Meiryo', sans-serif;
+    background: #0f172a; color: #cbd5e1;
+    padding: 48px 24px;
+  }
+  .container { max-width: 920px; margin: 0 auto; }
+  h1 { font-size: 22px; color: #f8fafc; font-weight: 700; }
+  .sub { color: #64748b; font-size: 13px; margin: 4px 0 36px; }
+
+  /* Commander */
+  .commander { text-align: center; margin-bottom: 6px; }
+  .commander-box {
+    display: inline-block; background: linear-gradient(135deg, #1e3a5f, #1e293b);
+    border: 2px solid #38bdf8; border-radius: 14px; padding: 14px 36px;
+  }
+  .commander-box .name { font-size: 17px; font-weight: 700; color: #38bdf8; }
+  .commander-box .role { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+  .pipe { text-align: center; color: #334155; font-size: 22px; line-height: 1.1; }
+
+  /* Section */
+  .section {
+    font-size: 11px; font-weight: 700; color: #475569;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin: 28px 0 10px; display: flex; align-items: center; gap: 10px;
+  }
+  .section::after { content: ''; flex: 1; height: 1px; background: #293548; }
+
+  /* Agent row */
+  .agent-row { display: grid; grid-template-columns: 260px 1fr; gap: 0; margin-bottom: 8px; }
+  .agent-card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 12px 0 0 12px;
+    padding: 12px 16px; display: flex; align-items: flex-start; gap: 10px;
+  }
+  .agent-card:hover { border-color: #475569; }
+  .agent-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .agent-id { font-size: 13px; font-weight: 700; color: #f1f5f9; }
+  .agent-name { font-size: 11px; color: #64748b; }
+  .agent-desc { font-size: 11px; color: #94a3b8; margin-top: 2px; line-height: 1.5; }
+
+  .knowledge-panel {
+    background: #162033; border: 1px solid #334155; border-left: none;
+    border-radius: 0 12px 12px 0; padding: 10px 16px;
+    display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px 6px;
+  }
+  .k-tag {
+    font-size: 10px; padding: 3px 8px; border-radius: 4px;
+    white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis;
+  }
+  .k-folder { background: #1e3a5f; color: #7dd3fc; }
+  .k-file { background: #1a2332; color: #94a3b8; border: 1px solid #293548; }
+  .k-important { background: #4c1d2e; color: #fda4af; }
+  .k-core { background: #3b1764; color: #c4b5fd; }
+  .k-arrow { color: #334155; font-size: 10px; padding: 3px 2px; }
+
+  /* Spectre */
+  .spectre-row {
+    background: #1a1a2e; border: 1px dashed #475569; border-radius: 12px;
+    padding: 12px 18px; display: flex; align-items: center; gap: 10px;
+  }
+  .spectre-row .agent-id { color: #a78bfa; }
+
+  /* Knowledge tree */
+  .tree-section { margin-top: 48px; }
+  .tree-section h2 { font-size: 18px; color: #f8fafc; margin-bottom: 4px; }
+  .tree-sub { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .tree {
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 12.5px; line-height: 1.85; white-space: pre;
+  }
+  .dir { color: #38bdf8; font-weight: 600; }
+  .note { color: #64748b; }
+  .imp { color: #f472b6; }
+  .cnt { color: #475569; }
+
+  .updated { color: #475569; font-size: 11px; text-align: right; margin-top: 36px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>仮想マーケティングチーム & ナレッジマップ</h1>
+<p class="sub">台湾留学101センター &mdash; 11体の専門エージェント + 常駐監視 / 116ファイルのナレッジベース</p>
+
+<!-- ===== Commander ===== -->
+<div class="commander">
+  <div class="commander-box">
+    <div class="name">司令塔（Claude Code 本体）</div>
+    <div class="role">ルーティング・技術開発・全体統括</div>
+  </div>
+</div>
+<div class="pipe">│</div>
+
+<!-- ===== 集客 ===== -->
+<div class="section">集客・マーケティング</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#128200;</span>
+    <div>
+      <div class="agent-id">ad-analyst <span class="agent-name">広告分析官</span></div>
+      <div class="agent-desc">Meta広告の分析・最適化・予算配分</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">marketing/</span>
+    <span class="k-tag k-file">meta-ads-report.md</span>
+    <span class="k-tag k-file">auto-webinar-meta-ads-data.md</span>
+    <span class="k-tag k-file">auto-webinar/ads/meta-ads.md</span>
+    <span class="k-tag k-file">auto-webinar/ads/creatives.md</span>
+    <span class="k-tag k-file">new-lp-clarity-analysis.md</span>
+  </div>
+</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#127960;</span>
+    <div>
+      <div class="agent-id">lp-architect <span class="agent-name">LPアーキテクト</span></div>
+      <div class="agent-desc">LP戦略・CVR改善・A/Bテスト設計</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">marketing/</span>
+    <span class="k-tag k-file">utage-lp-patterns.md</span>
+    <span class="k-tag k-file">lp-diagnosis-report.md</span>
+    <span class="k-tag k-file">auto-webinar/lp/current.md</span>
+    <span class="k-tag k-file">auto-webinar/lp/ab-test.md</span>
+    <span class="k-tag k-file">auto-webinar/analytics/clarity.md</span>
+  </div>
+</div>
+
+<!-- ===== コンテンツ ===== -->
+<div class="section">コンテンツ制作</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#9997;</span>
+    <div>
+      <div class="agent-id">content-writer <span class="agent-name">コンテンツライター</span></div>
+      <div class="agent-desc">SNS投稿・台本・コピーライティング</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">marketing/</span>
+    <span class="k-tag k-important">パーソナルナレッジ.txt</span>
+    <span class="k-tag k-important">発信ソースナレッジ.txt</span>
+    <span class="k-tag k-file">writing-rules.md</span>
+    <span class="k-tag k-core">osaru-sales-writing-12types.md</span>
+    <span class="k-tag k-file">youtube-taidan-template.md</span>
+  </div>
+</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#127912;</span>
+    <div>
+      <div class="agent-id">brand-designer <span class="agent-name">ブランドデザイナー</span></div>
+      <div class="agent-desc">成果物のデザイン・実装全般</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">marketing/</span>
+    <span class="k-tag k-folder">students/</span>
+    <span class="k-tag k-file">utage-lp-patterns.md</span>
+    <span class="k-tag k-file">提案書_*.md</span>
+    <span class="k-tag k-file">slides_*.html</span>
+  </div>
+</div>
+
+<!-- ===== ブログ ===== -->
+<div class="section">ブログ（strategist &rarr; writer &rarr; editor）</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#128161;</span>
+    <div>
+      <div class="agent-id">blog-strategist <span class="agent-name">ブログ戦略家</span></div>
+      <div class="agent-desc">テーマ選定・編集カレンダー</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">marketing/</span>
+    <span class="k-tag k-core">osaru-methodology.md</span>
+    <span class="k-tag k-core">osaru-funnel-templates.md</span>
+    <span class="k-tag k-file">voice-guide-ricky-blog.md</span>
+  </div>
+</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#128221;</span>
+    <div>
+      <div class="agent-id">blog-writer <span class="agent-name">ブログライター</span></div>
+      <div class="agent-desc">記事の新規執筆・リライト</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">marketing/</span>
+    <span class="k-tag k-important">パーソナルナレッジ.txt</span>
+    <span class="k-tag k-important">発信ソースナレッジ.txt</span>
+    <span class="k-tag k-file">voice-guide-ricky-blog.md</span>
+    <span class="k-tag k-core">osaru-methodology.md</span>
+    <span class="k-tag k-file">writing-rules.md</span>
+  </div>
+</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#128269;</span>
+    <div>
+      <div class="agent-id">blog-editor <span class="agent-name">ブログ編集者</span></div>
+      <div class="agent-desc">品質管理・SEO・スコアリング</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">marketing/</span>
+    <span class="k-tag k-file">voice-guide-ricky-blog.md</span>
+    <span class="k-tag k-file">writing-rules.md</span>
+  </div>
+</div>
+
+<!-- ===== セールス・顧客 ===== -->
+<div class="section">セールス・顧客対応</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#128176;</span>
+    <div>
+      <div class="agent-id">sales-advisor <span class="agent-name">セールスアドバイザー</span></div>
+      <div class="agent-desc">面談準備・提案書・クロージング</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">sales/</span>
+    <span class="k-tag k-folder">students/</span>
+    <span class="k-tag k-file">SPIN型面談スクリプト.md</span>
+    <span class="k-tag k-file">面談後フォロー3-7-14ルール.md</span>
+    <span class="k-tag k-file">個別相談セールス分析レポート.md</span>
+    <span class="k-tag k-important">顧客コンテキスト.md</span>
+  </div>
+</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#128172;</span>
+    <div>
+      <div class="agent-id">customer-manager <span class="agent-name">顧客マネージャー</span></div>
+      <div class="agent-desc">LINE返信・フォロー・UTAGEチャット</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">students/</span>
+    <span class="k-tag k-folder">operations/</span>
+    <span class="k-tag k-important">顧客コンテキスト.md</span>
+    <span class="k-tag k-file">LINE下書きまとめ.md</span>
+    <span class="k-tag k-file">utage-line-rules.md</span>
+    <span class="k-tag k-file">面談分析まとめ.md</span>
+  </div>
+</div>
+
+<!-- ===== 出願・バックオフィス ===== -->
+<div class="section">出願サポート・バックオフィス</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#127891;</span>
+    <div>
+      <div class="agent-id">student-advisor <span class="agent-name">出願アドバイザー</span></div>
+      <div class="agent-desc">志望校選定・書類準備・TOCFL</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">students/</span>
+    <span class="k-tag k-file">university-database.md</span>
+    <span class="k-tag k-file">admission-results-3rd-cohort.md</span>
+    <span class="k-tag k-file">visa-application-guide.md</span>
+    <span class="k-tag k-file">band-conversations/*</span>
+    <span class="k-tag k-file">drive-texts/*</span>
+  </div>
+</div>
+
+<div class="agent-row">
+  <div class="agent-card">
+    <span class="agent-icon">&#9881;</span>
+    <div>
+      <div class="agent-id">ops-manager <span class="agent-name">オペレーション管理者</span></div>
+      <div class="agent-desc">請求書・給料・経理・日報</div>
+    </div>
+  </div>
+  <div class="knowledge-panel">
+    <span class="k-tag k-folder">operations/</span>
+    <span class="k-tag k-file">freee-invoice-guide.md</span>
+    <span class="k-tag k-file">salary-payment-config.md</span>
+    <span class="k-tag k-file">5ki-taiwan-costs.md</span>
+    <span class="k-tag k-file">業務マスター.txt</span>
+  </div>
+</div>
+
+<!-- ===== Spectre ===== -->
+<div class="section">常駐型（別システム）</div>
+
+<div class="spectre-row">
+  <span class="agent-icon">&#128123;</span>
+  <div>
+    <div class="agent-id">Spectre <span class="agent-name">24時間自律エージェント（旧PCで稼働）</span></div>
+    <div class="agent-desc">Slack / LINE / HiNote を24時間監視。召喚型とは別の仕組みで常駐動作。</div>
+  </div>
+</div>
+
+<!-- ===== Knowledge Tree ===== -->
+<div class="tree-section">
+<h2>ナレッジベース ディレクトリ構造</h2>
+<p class="tree-sub">knowledge/ &mdash; 全116ファイル / 6カテゴリ</p>
+<div class="tree"><span class="dir">knowledge/</span>
+│
+├── <span class="dir">sales/</span>                                   <span class="cnt">(7)</span>
+│   ├── SPIN型面談スクリプト.md
+│   ├── 個別相談セールス分析レポート.md
+│   ├── セミナー個別面談スライド台本V2.md
+│   ├── 面談スライド台本V2.html
+│   ├── 面談後フォロー3-7-14ルール.md
+│   ├── 講座生FAQまとめ.txt
+│   └── ウェビナー後個別相談トーク全履歴まとめ.txt
+│
+├── <span class="dir">students/</span>                                <span class="cnt">(59)</span>
+│   ├── <span class="imp">顧客コンテキスト.md</span>                      <span class="note">★ 全見込み客の状況</span>
+│   ├── 面談分析まとめ.md
+│   ├── LINE下書きまとめ.md
+│   ├── asana-mendan-records.md
+│   ├── asana-application-management.md
+│   ├── university-database.md
+│   ├── admission-results-3rd-cohort.md
+│   ├── application-manual-miro.md
+│   ├── application-6steps-webinar.md
+│   ├── visa-application-guide.md
+│   ├── staff-manuals-and-resources.md
+│   ├── video-manual-progress.md
+│   ├── band-chat-analysis.md
+│   ├── 提案書_川上悠哉.md
+│   ├── slides_川上悠哉.md / .html / _review.html
+│   ├── 提案書_オライオン.md
+│   ├── taidan-ueno-wataru.md
+│   ├── <span class="dir">band-conversations/</span>                  <span class="cnt">(10)</span>
+│   │   ├── application-documents.md          <span class="note">出願書類</span>
+│   │   ├── application-system.md             <span class="note">出願制度</span>
+│   │   ├── tocfl-language.md                 <span class="note">TOCFL・語学</span>
+│   │   ├── university-selection.md           <span class="note">志望校選び</span>
+│   │   ├── autobio-study-plan.md             <span class="note">自伝・学習計画</span>
+│   │   ├── financial-scholarship.md          <span class="note">費用・奨学金</span>
+│   │   ├── parent-communication.md           <span class="note">保護者対応</span>
+│   │   ├── class-homework.md                 <span class="note">授業・宿題</span>
+│   │   ├── staff-templates.md                <span class="note">スタッフ定型文</span>
+│   │   └── travel-logistics.md               <span class="note">渡航・ロジ</span>
+│   ├── <span class="dir">drive-pdfs/</span>                          <span class="cnt">(15)</span>
+│   │   ├── 大学図鑑.pdf / 生活費レポート.pdf / よくある質問.pdf
+│   │   ├── 認証手続きガイド.pdf / 認証申請書_札幌東京.pdf
+│   │   ├── 推薦書ガイド.pdf / 自伝学習計画書フォーマット.pdf
+│   │   ├── 自伝見本_雲林.pdf / 学習計画書見本_雲林.pdf
+│   │   ├── 自伝テンプレート.docx / 学習計画テンプレート.docx
+│   │   ├── 卒業見込み書見本_英語.pdf / 成績証明見本_英語.pdf
+│   │   ├── 高校必要書類準備のお願い.pdf / 委任状_個人.pdf
+│   │   └── <span class="note">（全15ファイル）</span>
+│   └── <span class="dir">drive-texts/</span>                         <span class="cnt">(15)</span>
+│       └── <span class="note">上記PDFのテキスト版 .md（Claude読取用）</span>
+│
+├── <span class="dir">marketing/</span>                               <span class="cnt">(38)</span>
+│   ├── <span class="imp">osaru-methodology.md</span>                   <span class="note">★ おさる式メソドロジー</span>
+│   ├── osaru-funnel-templates.md             <span class="note">ファネル11パターン + GPTs56種</span>
+│   ├── osaru-sales-writing-12types.md        <span class="note">セールスライティング12の型</span>
+│   ├── osaru-masterclass-index.md
+│   ├── osaru-ai-gpts-workflow.md
+│   ├── tokuten-02 〜 07                       <span class="note">LINE特典コンテンツ x6</span>
+│   ├── youtube-taidan-template.md            <span class="note">対談動画テンプレート</span>
+│   ├── youtube-taidan-checklist.md
+│   ├── youtube-taidan-hearing-sheet.md
+│   ├── youtube-description-template.md
+│   ├── voice-guide-ricky-blog.md             <span class="note">ブログVoice Guide</span>
+│   ├── writing-rules.md                      <span class="note">文章生成ルール</span>
+│   ├── utage-lp-patterns.md / meta-ads-report.md
+│   ├── lp-diagnosis-report.md / new-lp-clarity-analysis.md
+│   ├── auto-webinar-meta-ads-data.md
+│   ├── <span class="imp">パーソナルナレッジ.txt</span>                    <span class="note">★ クリエイティブ制作時必須</span>
+│   ├── <span class="imp">発信ソースナレッジ.txt</span>                    <span class="note">★ クリエイティブ制作時必須</span>
+│   ├── YouTube関連ナレッジ.txt / chatGPTとのやり取りまとめ.txt
+│   └── <span class="dir">auto-webinar/</span>                        <span class="cnt">(8)</span>
+│       ├── webinar-script.md / webinar-transcript.md
+│       ├── line-scenario.md
+│       ├── lp/current.md / lp/ab-test.md
+│       ├── ads/meta-ads.md / ads/creatives.md
+│       └── analytics/clarity.md
+│
+├── <span class="dir">operations/</span>                              <span class="cnt">(7)</span>
+│   ├── freee-invoice-guide.md / salary-payment-config.md
+│   ├── 5ki-taiwan-costs.md
+│   ├── utage-line-rules.md / utage-line-feedback.md
+│   ├── asana-api-notes.md
+│   └── 業務マスター.txt
+│
+├── <span class="dir">business/</span>                                <span class="cnt">(2)</span>
+│   ├── 会社全事業データ総覧.md
+│   └── 事業戦略ロードマップ.md
+│
+└── <span class="dir">archive/</span>                                 <span class="cnt">(3)</span>
+    ├── karin-送信済み.md
+    ├── x-trend-collector.md
+    └── project-lessons-x-trend.md
+</div>
+</div>
+
+<p class="updated">2026-03-26 更新</p>
+</div>
+</body>
+</html>
