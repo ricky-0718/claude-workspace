@@ -56,6 +56,8 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob"]
 
 1. `knowledge/marketing/voice-guide-ricky-blog.md` — Voice Guideとの一致検証に使用
 2. `knowledge/marketing/osaru-methodology.md` — おさる式構成の適合検証に使用
+3. `knowledge/marketing/blog-operations-guide.md` — **品質基準・CTA配置ルール・リードマグネットマッピング**（LINE導線チェックに必須）
+4. `knowledge/marketing/blog-100-article-map.md` — 記事の位置づけ・内部リンク先の検証に使用
 
 ## 6段階チェックフロー
 
@@ -95,7 +97,20 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob"]
 - 「〜と言えるでしょう」「〜ではないでしょうか」の連発
 - 過剰な安全クッション（「一般的に」「状況によりますが」）
 
-### Check 6: SEO・スキーマ・AI Citation
+### Check 6: LINE CTA配置検証
+`blog-operations-guide.md`のCTA配置ルールに照合して：
+- CTA 3箇所（冒頭・中盤・末尾）が配置されているか
+- リードマグネットが記事カテゴリに合った特典番号（②〜⑦）になっているか
+- CTAの文言が押し売りになっていないか（おさる式Anti-Pattern準拠）
+- 特典の「価値」を先に見せてから登録を促しているか
+
+### Check 7: 内部リンク検証
+- クラスター内リンクが最低3本配置されているか
+- ピラーページへの戻りリンクがあるか
+- アンカーテキストがキーワードを含む自然な表現か
+- リンク先記事番号が`blog-100-article-map.md`と整合しているか
+
+### Check 8: SEO・スキーマ・AI Citation
 - `/blog-seo-check` でSEOバリデーション
 - `/blog-geo` でAI Citation Readinessスコア
 - `/blog-schema` でJSON-LDスキーマを生成または検証
@@ -127,6 +142,17 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob"]
 ■ AI臭さ検出
 ・検出パターン: [具体的な箇所と修正案]
 
+■ LINE CTA配置
+・冒頭CTA: [○/×] — [使用特典番号]
+・中盤CTA: [○/×] — [配置位置]
+・末尾CTA: [○/×] — [特典価値の訴求]
+・リードマグネット適合: [○/×] — [記事カテゴリとの整合]
+
+■ 内部リンク
+・クラスター内リンク: [X本/最低3本]
+・ピラーへの戻りリンク: [○/×]
+・クロスクラスターリンク: [X本]
+
 ■ SEO/AI Citation
 ・SEOスコア: [pass/fail項目サマリー]
 ・AI Citation Readiness: [スコア]
@@ -137,9 +163,18 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob"]
 3. [以降...]
 ```
 
+## 品質ゲート（公開判定基準）
+
+- **80点以上**: 公開許可
+- **60〜79点**: blog-writerに改善指示を返しリライト→再スコアリング
+- **60点未満**: blog-strategistに差し戻してブリーフから再設計
+- **LINE CTA 3箇所未配置**: 点数に関係なく差し戻し
+- **内部リンク3本未満**: 点数に関係なく差し戻し
+
 ## やってはいけないこと
 
 - 「全体的に良いです」で終わる。具体的な改善ポイントを必ず示す
 - Voice Guideを確認せずにトーンを評価する
 - SEOスコアだけで記事の良し悪しを判断する（おさる式構成も同等に重要）
 - 改善案なしで問題指摘だけする
+- LINE CTAの有無を見落とす（100記事プロジェクトの生命線）
