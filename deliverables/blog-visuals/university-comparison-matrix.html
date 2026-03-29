@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大学比較マトリクス</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', 'Yu Gothic', sans-serif;
+    background: #ffffff;
+    color: #333;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .chart-wrap {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 48px 60px 40px;
+  }
+
+  .chart-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 6px;
+  }
+
+  .chart-subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 36px;
+  }
+
+  /* ===== Table ===== */
+  .matrix-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+  }
+
+  .matrix-table thead th {
+    background: #2c3e50;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 14px 12px;
+    text-align: center;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+
+  .matrix-table thead th:first-child {
+    border-radius: 8px 0 0 0;
+    text-align: left;
+    padding-left: 20px;
+    min-width: 180px;
+  }
+
+  .matrix-table thead th:last-child {
+    border-radius: 0 8px 0 0;
+  }
+
+  .matrix-table tbody tr {
+    transition: background 0.15s;
+  }
+
+  .matrix-table tbody tr:nth-child(even) {
+    background: #f8f9fa;
+  }
+
+  .matrix-table tbody td {
+    padding: 14px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+  }
+
+  .matrix-table tbody td:first-child {
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  /* University name cell */
+  .uni-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.4;
+  }
+
+  .uni-name-en {
+    font-size: 10px;
+    color: #aaa;
+    font-weight: 400;
+  }
+
+  /* Type badge */
+  .type-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .type-national {
+    background: #e3f2fd;
+    color: #1565c0;
+  }
+
+  .type-private {
+    background: #fce4ec;
+    color: #c62828;
+  }
+
+  /* Location */
+  .location {
+    font-weight: 500;
+    color: #555;
+  }
+
+  /* Tuition */
+  .tuition {
+    font-weight: 700;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  .tuition-note {
+    font-size: 10px;
+    color: #999;
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* Language tags */
+  .lang-tags {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .lang-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .lang-zh {
+    background: #fff3e0;
+    color: #e65100;
+  }
+
+  .lang-en {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  /* Difficulty dots */
+  .difficulty {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+  }
+
+  .diff-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e0e0e0;
+  }
+
+  .diff-dot.filled { background: #c49a4a; }
+
+  /* Scholarship indicator */
+  .scholarship-ind {
+    font-weight: 700;
+  }
+
+  .scholarship-strong {
+    color: #2a7d4f;
+  }
+
+  .scholarship-mid {
+    color: #c49a4a;
+  }
+
+  .scholarship-low {
+    color: #999;
+  }
+
+  /* Feature highlight row */
+  .highlight-row td {
+    background: #f0f7f3 !important;
+  }
+
+  .highlight-label {
+    display: inline-block;
+    background: #3a8a5c;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== Legend ===== */
+  .legend-section {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+    flex-wrap: wrap;
+  }
+
+  .legend-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .legend-label {
+    font-size: 11px;
+    color: #888;
+    font-weight: 500;
+  }
+
+  .legend-dots {
+    display: flex;
+    gap: 2px;
+  }
+
+  .chart-footer {
+    margin-top: 20px;
+    font-size: 10px;
+    color: #bbb;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="chart-wrap">
+
+  <div class="chart-title">日本人留学生のための台湾の大学比較</div>
+  <div class="chart-subtitle">台湾留学101センターの送り出し実績がある主要大学を5軸で比較｜3期生データ基準</div>
+
+  <table class="matrix-table">
+    <thead>
+      <tr>
+        <th>大学名</th>
+        <th>種別</th>
+        <th>所在地</th>
+        <th>年間学費</th>
+        <th>授業言語</th>
+        <th>語学要件</th>
+        <th>難易度</th>
+        <th>奨学金</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 雲林科技大学 (TSMC) -->
+      <tr class="highlight-row">
+        <td>
+          <div class="uni-name">雲林科技大学<span class="highlight-label">TSMC提携</span></div>
+          <div class="uni-name-en">National Yunlin University of Science & Technology</div>
+        </td>
+        <td><span class="type-badge type-national">国立</span></td>
+        <td class="location">雲林県</td>
+        <td class="tuition">12〜15万円<span class="tuition-note">奨学金で実質0円</span></td>
+        <td>
+          <div class="lang-tags">
+            <span class="lang-tag lang-zh">中国語</span>
+          </div>
+        </td>
+        <td>TOCFL A2</td>
+        <td>
+          <div class="difficulty">
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+          </div>
+        </td>
+        <td class="scholarship-ind scholarship-strong">全員獲得</td>
+      </tr>
+
+      <!-- 台北科技大学 -->
+      <tr>
+        <td>
+          <div class="uni-name">台北科技大学<span class="highlight-label">TSMC提携</span></div>
+          <div class="uni-name-en">National Taipei University of Technology</div>
+        </td>
+        <td><span class="type-badge type-national">国立</span></td>
+        <td class="location">台北市</td>
+        <td class="tuition">15〜20万円</td>
+        <td>
+          <div class="lang-tags">
+            <span class="lang-tag lang-en">全英語</span>
+          </div>
+        </td>
+        <td>CEFR B1</td>
+        <td>
+          <div class="difficulty">
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+          </div>
+        </td>
+        <td class="scholarship-ind scholarship-mid">審査制</td>
+      </tr>
+
+      <!-- 師範大学 -->
+      <tr>
+        <td>
+          <div class="uni-name">師範大学</div>
+          <div class="uni-name-en">National Taiwan Normal University</div>
+        </td>
+        <td><span class="type-badge type-national">国立</span></td>
+        <td class="location">台北市</td>
+        <td class="tuition">15〜20万円</td>
+        <td>
+          <div class="lang-tags">
+            <span class="lang-tag lang-zh">中国語</span>
+          </div>
+        </td>
+        <td>TOCFL A2</td>
+        <td>
+          <div class="difficulty">
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+          </div>
+        </td>
+        <td class="scholarship-ind scholarship-strong">実績あり</td>
+      </tr>
+
+      <!-- 成功大学 -->
+      <tr>
+        <td>
+          <div class="uni-name">成功大学</div>
+          <div class="uni-name-en">National Cheng Kung University</div>
+        </td>
+        <td><span class="type-badge type-national">国立</span></td>
+        <td class="location">台南市</td>
+        <td class="tuition">15〜25万円</td>
+        <td>
+          <div class="lang-tags">
+            <span class="lang-tag lang-zh">中国語</span>
+            <span class="lang-tag lang-en">英語</span>
+          </div>
+        </td>
+        <td>A2 / B2</td>
+        <td>
+          <div class="difficulty">
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot"></div>
+          </div>
+        </td>
+        <td class="scholarship-ind scholarship-mid">あり</td>
+      </tr>
+
+      <!-- 淡江大学 -->
+      <tr>
+        <td>
+          <div class="uni-name">淡江大学</div>
+          <div class="uni-name-en">Tamkang University</div>
+        </td>
+        <td><span class="type-badge type-private">私立</span></td>
+        <td class="location">新北市</td>
+        <td class="tuition">35〜50万円</td>
+        <td>
+          <div class="lang-tags">
+            <span class="lang-tag lang-zh">中国語</span>
+            <span class="lang-tag lang-en">英語</span>
+          </div>
+        </td>
+        <td>A2 / TOEIC 550</td>
+        <td>
+          <div class="difficulty">
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+          </div>
+        </td>
+        <td class="scholarship-ind scholarship-mid">あり</td>
+      </tr>
+
+      <!-- 文化大学 -->
+      <tr>
+        <td>
+          <div class="uni-name">文化大学</div>
+          <div class="uni-name-en">Chinese Culture University</div>
+        </td>
+        <td><span class="type-badge type-private">私立</span></td>
+        <td class="location">台北市</td>
+        <td class="tuition">30〜45万円</td>
+        <td>
+          <div class="lang-tags">
+            <span class="lang-tag lang-zh">中国語</span>
+          </div>
+        </td>
+        <td>TOCFL A2</td>
+        <td>
+          <div class="difficulty">
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+          </div>
+        </td>
+        <td class="scholarship-ind scholarship-strong">3/4名獲得</td>
+      </tr>
+
+      <!-- 銘傳大学 -->
+      <tr>
+        <td>
+          <div class="uni-name">銘傳大学</div>
+          <div class="uni-name-en">Ming Chuan University</div>
+        </td>
+        <td><span class="type-badge type-private">私立</span></td>
+        <td class="location">台北市</td>
+        <td class="tuition">35〜55万円</td>
+        <td>
+          <div class="lang-tags">
+            <span class="lang-tag lang-zh">中国語</span>
+            <span class="lang-tag lang-en">英語</span>
+          </div>
+        </td>
+        <td>B1 / TOEIC 550</td>
+        <td>
+          <div class="difficulty">
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+            <div class="diff-dot"></div>
+          </div>
+        </td>
+        <td class="scholarship-ind scholarship-mid">あり</td>
+      </tr>
+
+      <!-- 政治大学 -->
+      <tr>
+        <td>
+          <div class="uni-name">政治大学</div>
+          <div class="uni-name-en">National Chengchi University</div>
+        </td>
+        <td><span class="type-badge type-national">国立</span></td>
+        <td class="location">台北市</td>
+        <td class="tuition">15〜20万円</td>
+        <td>
+          <div class="lang-tags">
+            <span class="lang-tag lang-zh">中国語</span>
+            <span class="lang-tag lang-en">英語</span>
+          </div>
+        </td>
+        <td>B1+ / B2</td>
+        <td>
+          <div class="difficulty">
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+            <div class="diff-dot filled"></div>
+          </div>
+        </td>
+        <td class="scholarship-ind scholarship-low">—</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Legend -->
+  <div class="legend-section">
+    <div class="legend-group">
+      <span class="legend-label">難易度:</span>
+      <div class="legend-dots">
+        <div class="diff-dot filled" style="width:8px;height:8px;border-radius:50%;background:#c49a4a;display:inline-block;"></div>
+      </div>
+      <span class="legend-label">= 易しい</span>
+      <div class="legend-dots">
+        <div class="diff-dot filled" style="width:8px;height:8px;border-radius:50%;background:#c49a4a;display:inline-block;"></div>
+        <div class="diff-dot filled" style="width:8px;height:8px;border-radius:50%;background:#c49a4a;display:inline-block;"></div>
+        <div class="diff-dot filled" style="width:8px;height:8px;border-radius:50%;background:#c49a4a;display:inline-block;"></div>
+        <div class="diff-dot filled" style="width:8px;height:8px;border-radius:50%;background:#c49a4a;display:inline-block;"></div>
+        <div class="diff-dot filled" style="width:8px;height:8px;border-radius:50%;background:#c49a4a;display:inline-block;"></div>
+      </div>
+      <span class="legend-label">= 非常に難</span>
+    </div>
+    <div class="legend-group">
+      <span class="type-badge type-national" style="font-size:10px;padding:2px 8px;">国立</span>
+      <span class="type-badge type-private" style="font-size:10px;padding:2px 8px;">私立</span>
+    </div>
+    <div class="legend-group">
+      <span class="lang-tag lang-zh" style="font-size:10px;">中国語課程</span>
+      <span class="lang-tag lang-en" style="font-size:10px;">英語課程</span>
+    </div>
+  </div>
+
+  <div class="chart-footer">
+    <p>台湾留学101センター 3期生の出願・合格データに基づく（2025年度）。学費は年間の概算。難易度は弊社の送り出し実績に基づく相対評価。奨学金は年度・学部により異なります。</p>
+  </div>
+
+</div>
+
+</body>
+</html>

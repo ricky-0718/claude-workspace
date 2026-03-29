@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSMC合格実績チャート</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', 'Yu Gothic', sans-serif;
+    background: #ffffff;
+    color: #333;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .chart-wrap {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 48px 60px 40px;
+  }
+
+  .chart-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 6px;
+  }
+
+  .chart-subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 40px;
+  }
+
+  /* ===== Main Stats Row ===== */
+  .stats-row {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .stat-card {
+    flex: 1;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 32px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+  }
+
+  .stat-card.applicants::before { background: #5a7a9e; }
+  .stat-card.accepted::before { background: #3a8a5c; }
+  .stat-card.rate::before { background: #c49a4a; }
+  .stat-card.scholarship::before { background: #8b5a9e; }
+
+  .stat-number {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-card.applicants .stat-number { color: #5a7a9e; }
+  .stat-card.accepted .stat-number { color: #3a8a5c; }
+  .stat-card.rate .stat-number { color: #c49a4a; }
+  .stat-card.scholarship .stat-number { color: #8b5a9e; }
+
+  .stat-unit {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+  }
+
+  /* ===== Department Breakdown ===== */
+  .dept-section {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+
+  .dept-col {
+    flex: 1;
+  }
+
+  .dept-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e5e5e5;
+  }
+
+  .dept-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .dept-icon.mech { background: #5a7a9e; }
+  .dept-icon.ie { background: #3a8a5c; }
+
+  .dept-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .dept-name-en {
+    font-size: 11px;
+    color: #999;
+    margin-top: 2px;
+  }
+
+  .dept-count {
+    margin-left: auto;
+    font-size: 24px;
+    font-weight: 900;
+    color: #222;
+  }
+
+  .dept-count span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #888;
+  }
+
+  /* Student list */
+  .student-list {
+    list-style: none;
+  }
+
+  .student-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .student-item:last-child {
+    border-bottom: none;
+  }
+
+  .student-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .student-dot.mech { background: #5a7a9e; }
+  .student-dot.ie { background: #3a8a5c; }
+
+  .student-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    flex: 1;
+  }
+
+  .student-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  .badge-gpa {
+    background: #e8f0fe;
+    color: #4a6fa5;
+  }
+
+  .badge-school {
+    background: #f0f0f0;
+    color: #666;
+  }
+
+  /* ===== GPA Range Bar ===== */
+  .gpa-section {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+
+  .gpa-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .gpa-bar-container {
+    position: relative;
+    height: 56px;
+    margin-bottom: 12px;
+  }
+
+  .gpa-bar-bg {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    right: 0;
+    height: 24px;
+    background: #e8e8e8;
+    border-radius: 12px;
+  }
+
+  .gpa-bar-fill {
+    position: absolute;
+    top: 16px;
+    height: 24px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #c49a4a, #3a8a5c);
+  }
+
+  /* 3.0 starts at 60% of the scale (1.0-5.0), 4.9 at 98% */
+  /* Scale: left=1.0, right=5.0. So 3.0 = (3.0-1.0)/(5.0-1.0) = 50%, 4.9 = 97.5% */
+  /* But let's use 2.0-5.0 for better visual: 3.0 = 33%, 4.9 = 97% */
+
+  .gpa-marker {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .gpa-marker-value {
+    font-size: 18px;
+    font-weight: 900;
+    color: #222;
+  }
+
+  .gpa-marker-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #333;
+    margin: 4px auto 0;
+  }
+
+  .gpa-scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #bbb;
+    padding: 0 4px;
+  }
+
+  .gpa-message {
+    font-size: 13px;
+    color: #666;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  .gpa-message strong {
+    color: #3a8a5c;
+    font-weight: 700;
+  }
+
+  /* ===== Scholarship Callout ===== */
+  .scholarship-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #f0f7f3;
+    border-left: 4px solid #3a8a5c;
+    border-radius: 0 12px 12px 0;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+  }
+
+  .scholarship-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .scholarship-text {
+    flex: 1;
+  }
+
+  .scholarship-headline {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2a7d4f;
+    margin-bottom: 4px;
+  }
+
+  .scholarship-detail {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .scholarship-amount {
+    font-size: 36px;
+    font-weight: 900;
+    color: #2a7d4f;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .scholarship-amount span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    display: block;
+  }
+
+  /* ===== Footer ===== */
+  .chart-footer {
+    margin-top: 20px;
+    font-size: 10px;
+    color: #bbb;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="chart-wrap">
+
+  <div class="chart-title">3期生 TSMC合格実績データ</div>
+  <div class="chart-subtitle">台湾留学101センター｜雲林科技大学 TSMC半導体プログラム（2025年度）</div>
+
+  <!-- Stats Row -->
+  <div class="stats-row">
+    <div class="stat-card applicants">
+      <div class="stat-number">14<span class="stat-unit">名</span></div>
+      <div class="stat-label">出願者数</div>
+    </div>
+    <div class="stat-card accepted">
+      <div class="stat-number">11<span class="stat-unit">名</span></div>
+      <div class="stat-label">合格者数</div>
+    </div>
+    <div class="stat-card rate">
+      <div class="stat-number">79<span class="stat-unit">%</span></div>
+      <div class="stat-label">合格率</div>
+    </div>
+    <div class="stat-card scholarship">
+      <div class="stat-number">100<span class="stat-unit">%</span></div>
+      <div class="stat-label">奨学金獲得率</div>
+    </div>
+  </div>
+
+  <!-- Department Breakdown -->
+  <div class="dept-section">
+
+    <!-- 機械工程系 -->
+    <div class="dept-col">
+      <div class="dept-header">
+        <div class="dept-icon mech">機</div>
+        <div>
+          <div class="dept-name">機械工程系</div>
+          <div class="dept-name-en">Mechanical Engineering</div>
+        </div>
+        <div class="dept-count">5<span>名合格</span></div>
+      </div>
+      <ul class="student-list">
+        <li class="student-item">
+          <div class="student-dot mech"></div>
+          <span class="student-name">小久保 恭輔</span>
+        </li>
+        <li class="student-item">
+          <div class="student-dot mech"></div>
+          <span class="student-name">本田 琢磨</span>
+        </li>
+        <li class="student-item">
+          <div class="student-dot mech"></div>
+          <span class="student-name">花谷 蕾</span>
+          <span class="student-badge badge-gpa">評定 4.5</span>
+          <span class="student-badge badge-school">広島叡智学園</span>
+        </li>
+        <li class="student-item">
+          <div class="student-dot mech"></div>
+          <span class="student-name">堺 人和</span>
+        </li>
+        <li class="student-item">
+          <div class="student-dot mech"></div>
+          <span class="student-name">飯塚 駿原</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 工業工程與管理系 -->
+    <div class="dept-col">
+      <div class="dept-header">
+        <div class="dept-icon ie">工</div>
+        <div>
+          <div class="dept-name">工業工程與管理系</div>
+          <div class="dept-name-en">Industrial Engineering & Management</div>
+        </div>
+        <div class="dept-count">6<span>名合格</span></div>
+      </div>
+      <ul class="student-list">
+        <li class="student-item">
+          <div class="student-dot ie"></div>
+          <span class="student-name">川口 太朗</span>
+        </li>
+        <li class="student-item">
+          <div class="student-dot ie"></div>
+          <span class="student-name">大塚 羽琉</span>
+          <span class="student-badge badge-gpa">評定 4.3</span>
+          <span class="student-badge badge-school">N高校</span>
+        </li>
+        <li class="student-item">
+          <div class="student-dot ie"></div>
+          <span class="student-name">中澤 遥斗</span>
+          <span class="student-badge badge-gpa">評定 3.0</span>
+          <span class="student-badge badge-school">札幌新川高校</span>
+        </li>
+        <li class="student-item">
+          <div class="student-dot ie"></div>
+          <span class="student-name">髙原 利仁</span>
+          <span class="student-badge badge-gpa">評定 4.9</span>
+          <span class="student-badge badge-school">N高校</span>
+        </li>
+        <li class="student-item">
+          <div class="student-dot ie"></div>
+          <span class="student-name">慶松 政弘</span>
+        </li>
+        <li class="student-item">
+          <div class="student-dot ie"></div>
+          <span class="student-name">田中 玄大</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- GPA Range -->
+  <div class="gpa-section">
+    <div class="gpa-title">合格者の評定平均値の幅</div>
+    <div class="gpa-bar-container">
+      <div class="gpa-bar-bg"></div>
+      <!-- 3.0 to 4.9 on 1.0-5.0 scale: left = (3.0-1.0)/(5.0-1.0)*100 = 50%, width = (4.9-3.0)/(5.0-1.0)*100 = 47.5% -->
+      <div class="gpa-bar-fill" style="left: 50%; width: 47.5%;"></div>
+      <div class="gpa-marker" style="left: 50%;">
+        <div class="gpa-marker-value">3.0</div>
+        <div class="gpa-marker-dot"></div>
+      </div>
+      <div class="gpa-marker" style="left: 97.5%;">
+        <div class="gpa-marker-value">4.9</div>
+        <div class="gpa-marker-dot"></div>
+      </div>
+    </div>
+    <div class="gpa-scale">
+      <span>1.0</span>
+      <span>2.0</span>
+      <span>3.0</span>
+      <span>4.0</span>
+      <span>5.0</span>
+    </div>
+    <div class="gpa-message">
+      <strong>評定3.0（5段階の真ん中）でも合格実績あり。</strong>成績だけで判断されないのがTSMCプログラムの特徴です。通信制高校（N高校）出身者も複数合格しています。
+    </div>
+  </div>
+
+  <!-- Scholarship -->
+  <div class="scholarship-bar">
+    <div class="scholarship-icon">🎓</div>
+    <div class="scholarship-text">
+      <div class="scholarship-headline">合格者全員が奨学金を獲得</div>
+      <div class="scholarship-detail">4年間の学費全額免除＋毎月約5万円の給付型奨学金（返済不要）。合格＝自動的に奨学金が付く仕組みです。</div>
+    </div>
+    <div class="scholarship-amount">
+      約450万円<span>1人あたりの支援総額</span>
+    </div>
+  </div>
+
+  <div class="chart-footer">
+    <p>台湾留学101センター 3期生の実績データに基づく（2025年度出願）。評定は判明分のみ記載。奨学金額は学費免除＋生活費補助の4年間総額概算。</p>
+  </div>
+
+</div>
+
+</body>
+</html>
