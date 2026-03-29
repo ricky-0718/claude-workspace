@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>費用比較チャート</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #ffffff;
+    color: #333;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .chart-wrap {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 48px 60px 40px;
+    position: relative;
+  }
+
+  /* ===== Header ===== */
+  .chart-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 6px;
+  }
+
+  .chart-subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 56px;
+  }
+
+  /* ===== Exchange Rate ===== */
+  .exchange-info {
+    font-size: 11px;
+    color: #999;
+    line-height: 1.6;
+    position: absolute;
+    top: 48px;
+    right: 60px;
+    text-align: right;
+  }
+
+  /* ===== Chart Area ===== */
+  .chart-area {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    height: 500px;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    margin-top: 0;
+  }
+
+  /* Y-axis grid lines */
+  .y-axis {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .y-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px dashed #e8e8e8;
+  }
+
+  .y-label {
+    position: absolute;
+    left: 0;
+    font-size: 11px;
+    color: #aaa;
+    transform: translateY(-50%);
+    width: 58px;
+    text-align: right;
+    padding-right: 8px;
+  }
+
+  /* ===== Bar Column ===== */
+  .bar-col {
+    flex: 1;
+    max-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .bar-col + .bar-col {
+    margin-left: 24px;
+  }
+
+  /* Vertical separator between groups */
+  .bar-separator {
+    width: 2px;
+    align-self: stretch;
+    background: #4a6fa5;
+    margin: 0 32px;
+    opacity: 0.5;
+  }
+
+  .bar-stack {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* ===== Segments ===== */
+  .seg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .seg-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Horizontal stripe pattern overlay */
+  .seg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 8px,
+      rgba(255,255,255,0.15) 8px,
+      rgba(255,255,255,0.15) 10px
+    );
+    z-index: 1;
+  }
+
+  /* Color definitions */
+  .seg-tuition { background: #5a7a9e; }
+  .seg-living  { background: #6b9e6b; }
+  .seg-rent    { background: #c49a4a; }
+  .seg-other   { background: #c46b6b; }
+  .seg-scholarship { background: #3a8a5c; }
+  .seg-zero    { background: #d0d0d0; }
+
+  /* Special: TSMC free tuition */
+  .seg-free {
+    background: repeating-linear-gradient(
+      45deg,
+      #e8e8e8,
+      #e8e8e8 6px,
+      #f5f5f5 6px,
+      #f5f5f5 12px
+    );
+    border: 2px dashed #bbb;
+  }
+
+  .seg-free::after { display: none; }
+
+  .seg-free .seg-label {
+    color: #999;
+    text-shadow: none;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  /* ===== Total Label ===== */
+  .bar-total {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .bar-total-amount {
+    font-size: 22px;
+    font-weight: 900;
+    color: #222;
+    white-space: nowrap;
+  }
+
+  .bar-total-amount.is-saving {
+    color: #2a7d4f;
+  }
+
+  .bar-total-sub {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  /* ===== Bar Name ===== */
+  .bar-name {
+    text-align: center;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 2px solid #ddd;
+    width: 100%;
+  }
+
+  .bar-name-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  .bar-name-sub {
+    font-size: 11px;
+    color: #999;
+    margin-top: 2px;
+  }
+
+  /* ===== Legend ===== */
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .legend-color::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 4px,
+      rgba(255,255,255,0.2) 4px,
+      rgba(255,255,255,0.2) 5px
+    );
+  }
+
+  .legend-text {
+    font-size: 12px;
+    color: #555;
+    font-weight: 500;
+  }
+
+  /* savings callout removed — AI臭いため */
+
+  /* ===== Footer ===== */
+  .chart-footer {
+    margin-top: 20px;
+    font-size: 10px;
+    color: #bbb;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="chart-wrap">
+
+  <div class="chart-title">4年間の留学費用を比較する</div>
+  <div class="chart-subtitle">日本の私立理系 / 台湾の大学 / TSMCプログラム（雲林科技大学）</div>
+
+  <div class="exchange-info">
+    1台湾ドル＝約4.5円<br>
+    1米ドル＝約145円
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-area">
+
+    <!-- Y-axis (グリッドラインのみ、ラベルなし。金額は各バーの上に直接表示) -->
+    <div class="y-axis">
+      <div class="y-line" style="bottom: 0%;"></div>
+      <div class="y-line" style="bottom: 25%;"></div>
+      <div class="y-line" style="bottom: 50%;"></div>
+      <div class="y-line" style="bottom: 75%;"></div>
+      <div class="y-line" style="bottom: 100%;"></div>
+    </div>
+
+    <!-- Bar 1: 日本の私立理系（アパート）1123/1200 * 430 = 402px -->
+    <div class="bar-col">
+      <div class="bar-total">
+        <div class="bar-total-amount">約1,123万円</div>
+      </div>
+      <div class="bar-stack">
+        <div class="seg seg-rent" style="height: 103px;">
+          <span class="seg-label">家賃<br>288万</span>
+        </div>
+        <div class="seg seg-living" style="height: 147px;">
+          <span class="seg-label">生活費等<br>410万</span>
+        </div>
+        <div class="seg seg-tuition" style="height: 152px;">
+          <span class="seg-label">学費等<br>425万</span>
+        </div>
+      </div>
+      <div class="bar-name">
+        <div class="bar-name-text">日本の私立理系大学</div>
+        <div class="bar-name-sub">アパート</div>
+      </div>
+    </div>
+
+    <!-- Bar 2: 台湾の国立大学（寮）498/1200 * 430 = 178px -->
+    <div class="bar-col">
+      <div class="bar-total">
+        <div class="bar-total-amount">約498万円</div>
+      </div>
+      <div class="bar-stack">
+        <div class="seg seg-rent" style="height: 22px;">
+          <span class="seg-label">家賃 48万</span>
+        </div>
+        <div class="seg seg-living" style="height: 90px;">
+          <span class="seg-label">生活費等<br>250万</span>
+        </div>
+        <div class="seg seg-tuition" style="height: 72px;">
+          <span class="seg-label">学費等<br>200万</span>
+        </div>
+      </div>
+      <div class="bar-name">
+        <div class="bar-name-text">台湾の大学</div>
+        <div class="bar-name-sub">国・私ともにほぼ同額・寮</div>
+      </div>
+    </div>
+
+    <!-- Separator -->
+    <div class="bar-separator"></div>
+
+    <!-- Bar 3: TSMCプログラム 298/1200 * 430 = 107px -->
+    <div class="bar-col">
+      <div class="bar-total">
+        <div class="bar-total-amount is-saving">実質58万円</div>
+        <div class="bar-total-sub">奨学金240万で大部分を相殺</div>
+      </div>
+      <div class="bar-stack">
+        <div class="seg seg-rent" style="height: 22px;">
+          <span class="seg-label">家賃 48万</span>
+        </div>
+        <div class="seg seg-living" style="height: 90px;">
+          <span class="seg-label">生活費等<br>250万</span>
+        </div>
+        <div class="seg seg-free" style="height: 22px;">
+          <span class="seg-label">学費 0円</span>
+        </div>
+      </div>
+      <div class="bar-name">
+        <div class="bar-name-text">TSMCプログラム</div>
+        <div class="bar-name-sub">雲林科技大学・寮</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-color" style="background: #5a7a9e;"></div>
+      <span class="legend-text">学費等（入学金・授業料・施設費）</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: #6b9e6b;"></div>
+      <span class="legend-text">生活費等（食費・通信・交通・雑費）</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: #c49a4a;"></div>
+      <span class="legend-text">家賃（寮費 or 賃貸）</span>
+    </div>
+  </div>
+
+  <div class="chart-footer">
+    <p>2024年度実績に基づく目安。日本の学費は文部科学省「私立大学等の令和5年度入学者に係る学生納付金等調査」、生活費・家賃は日本学生支援機構「令和4年度学生生活調査」を参考。台湾の費用は台湾留学101センターの実績データに基づく。為替レート・個人の生活スタイルにより変動します。</p>
+  </div>
+
+</div>
+
+</body>
+</html>
