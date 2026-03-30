@@ -1,12 +1,8 @@
 {
   "source": "Google Spreadsheet「台湾の大学データベース」",
   "academic_year": 115,
-  "extracted_at": "2026-03-30T12:06:35.200Z",
+  "extracted_at": "2026-03-30T12:13:43.521Z",
   "financial_proof": {
-    "|---|---|---": {
-      "amount": "| 雲林科技大學 | USD 3,500",
-      "jpy_estimate": "約50万円"
-    },
     "輔仁大學": {
       "amount": "20万元",
       "jpy_estimate": "約100万円"
@@ -64,7 +60,63 @@
       "jpy_estimate": "約47万円"
     }
   },
-  "language_requirements": {},
+  "language_requirements": {
+    "雲林科技大學": {
+      "chinese": "A2以上（HSKもOK）",
+      "english": "CEFR B1以上"
+    },
+    "輔仁大學": {
+      "chinese": "A2以上",
+      "english": "CEFR B1以上"
+    },
+    "中國醫藥大學": {
+      "chinese": "TOCFL A2 or B1"
+    },
+    "師範大學": {
+      "chinese": "TOCFL A2",
+      "english": "CEFR B1"
+    },
+    "政治大學": {
+      "chinese": "TOCFL A2（学部による）",
+      "english": "TOEIC 550（学部による）"
+    },
+    "淡江大學": {
+      "chinese": "TOCFL A2",
+      "english": "CEFR B1以上"
+    },
+    "實踐大學": {
+      "chinese": "TOCFL A2",
+      "english": "CEFR B1"
+    },
+    "文化大学": {
+      "chinese": "A2以上",
+      "english": "CEFR B1"
+    },
+    "成功大學": {
+      "chinese": "TOCFL A2",
+      "english": "CEFR B2"
+    },
+    "台湾科技大学": {
+      "chinese": "TOCFL level3以上",
+      "english": "CEFR B1"
+    },
+    "台湾大学": {
+      "chinese": "最低A2（B2望ましい）",
+      "english": "IELTS5.5/TOEFL72/TOEIC785"
+    },
+    "東吳大學": {
+      "chinese": "最低TOCFL A2",
+      "english": "最低CEFR A2"
+    },
+    "銘傳大学": {
+      "chinese": "B1以上",
+      "english": "TOEIC 550"
+    },
+    "中原大学": {
+      "chinese": "最低TOCFL A2",
+      "english": "TOEIC 550 / CEFR B1"
+    }
+  },
   "toeic550_eligible": [
     {
       "name": "朝陽科技大學",

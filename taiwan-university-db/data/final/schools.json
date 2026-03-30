@@ -30,6 +30,10 @@
       "amount": "NTD 200,000",
       "jpy_estimate": "約100万円"
     },
+    "language_req": {
+      "chinese": "最低A2（B2望ましい）",
+      "english": "IELTS5.5/TOEFL72/TOEIC785"
+    },
     "ja_description": "1928年に設立\n台湾No.1の大学\n交通が良く立地が良い\nキャンパス外は飲食店が充実している\nMRT公館駅に接している",
     "tuition": [
       {
@@ -163,6 +167,10 @@
       "amount": "NTD 150,000",
       "jpy_estimate": "約75万円"
     },
+    "language_req": {
+      "chinese": "TOCFL A2",
+      "english": "CEFR B1"
+    },
     "department_count": 37,
     "data_completeness": "enriched",
     "data_sources": [
@@ -264,6 +272,10 @@
       "amount": "NTD 120,000",
       "jpy_estimate": "約60万円"
     },
+    "language_req": {
+      "chinese": "TOCFL A2",
+      "english": "CEFR B2"
+    },
     "department_count": 45,
     "data_completeness": "enriched",
     "data_sources": [
@@ -300,6 +312,10 @@
     "financial_proof": {
       "amount": "NTD 200,000",
       "jpy_estimate": "約100万円"
+    },
+    "language_req": {
+      "chinese": "TOCFL A2（学部による）",
+      "english": "TOEIC 550（学部による）"
     },
     "department_count": 43,
     "data_completeness": "enriched",
@@ -1204,6 +1220,9 @@
       "amount": "USD 5,000",
       "jpy_estimate": "約78万円"
     },
+    "language_req": {
+      "chinese": "TOCFL A2 or B1"
+    },
     "department_count": 23,
     "data_completeness": "enriched",
     "data_sources": [
@@ -1242,6 +1261,10 @@
     "financial_proof": {
       "amount": "100,000元",
       "jpy_estimate": "約50万円"
+    },
+    "language_req": {
+      "chinese": "TOCFL A2",
+      "english": "CEFR B1以上"
     },
     "ja_description": "台北北部に位置する\n外国人の数が台湾トップ\n台湾留学101センター代表リッキーの創設した日本学生連盟会がある",
     "tuition": [
@@ -1334,6 +1357,10 @@
       "amount": "USD 4,000",
       "jpy_estimate": "約62万円"
     },
+    "language_req": {
+      "chinese": "最低TOCFL A2",
+      "english": "TOEIC 550 / CEFR B1"
+    },
     "department_count": 43,
     "data_completeness": "enriched",
     "data_sources": [
@@ -1370,6 +1397,10 @@
     "financial_proof": {
       "amount": "20万元",
       "jpy_estimate": "約100万円"
+    },
+    "language_req": {
+      "chinese": "A2以上",
+      "english": "CEFR B1以上"
     },
     "department_count": 58,
     "data_completeness": "enriched",
@@ -1440,6 +1471,10 @@
       "amount": "TWD 100,000",
       "jpy_estimate": "約50万円"
     },
+    "language_req": {
+      "chinese": "A2以上",
+      "english": "CEFR B1"
+    },
     "department_count": 50,
     "data_completeness": "enriched",
     "data_sources": [
@@ -1509,6 +1544,10 @@
     "financial_proof": {
       "amount": "NTD 120,000",
       "jpy_estimate": "約60万円"
+    },
+    "language_req": {
+      "chinese": "最低TOCFL A2",
+      "english": "最低CEFR A2"
     },
     "ja_description": "台北中正と士林にキャンパスがある\n士林キャンパスは緑が豊かで故宮博物院の近く\n2022年企業が求める大学生ランキング法政部門で私立大学1位",
     "tuition": [
@@ -1702,6 +1741,10 @@
     "financial_proof": {
       "amount": "120,000元",
       "jpy_estimate": "約60万円"
+    },
+    "language_req": {
+      "chinese": "TOCFL A2",
+      "english": "CEFR B1"
     },
     "department_count": 20,
     "data_completeness": "enriched",
@@ -2219,6 +2262,10 @@
       "amount": "195,000元",
       "jpy_estimate": "約97万円"
     },
+    "language_req": {
+      "chinese": "B1以上",
+      "english": "TOEIC 550"
+    },
     "department_count": 12,
     "data_completeness": "enriched",
     "data_sources": [
@@ -2674,10 +2721,15 @@
       "available": true,
       "url": "https://tdx.yuntech.edu.tw/index.php/arc-ocs/item/330-scholarship"
     },
+    "language_req": {
+      "chinese": "A2以上（HSKもOK）",
+      "english": "CEFR B1以上"
+    },
     "department_count": 14,
-    "data_completeness": "basic",
+    "data_completeness": "enriched",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "spreadsheet"
     ],
     "last_updated": "2026-03-30"
   },
@@ -2895,6 +2947,10 @@
       "available": false,
       "info_ja": "なし"
     },
+    "language_req": {
+      "chinese": "TOCFL level3以上",
+      "english": "CEFR B1"
+    },
     "ja_description": "台北中心部に位置する\nMRT公館駅から徒歩約15分\n1912年に創立されている歴史のある大学\n台湾の中でもトップの科技大学",
     "tuition": [
       {
@@ -2964,9 +3020,10 @@
       "japanese": 13
     },
     "department_count": 12,
-    "data_completeness": "enriched",
+    "data_completeness": "full",
     "data_sources": [
       "hailian",
+      "spreadsheet",
       "guide"
     ],
     "last_updated": "2026-03-30"

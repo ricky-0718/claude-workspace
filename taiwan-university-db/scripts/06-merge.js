@@ -97,6 +97,14 @@ async function main() {
     console.log('詳細データなし（01-fetchのみで統合）');
   }
 
+  // --- NTNU API読み込み ---
+  let ntnuDepts = [];
+  try {
+    const ntnuData = JSON.parse(await readFile(join(RAW_DIR, 'ntnu-departments.json'), 'utf-8'));
+    ntnuDepts = ntnuData.departments || [];
+    console.log(`NTNU API: ${ntnuDepts.length}学科`);
+  } catch { console.log('NTNUデータなし（スキップ）'); }
+
   // --- 翻訳辞書読み込み ---
   const uniNames = await loadTranslation('university-names.json');
   const deptNames = await loadTranslation('department-names.json');
@@ -199,9 +207,13 @@ async function main() {
     };
   });
 
+  // --- NTNU学科名寄せマップ（dep_no → 海聯會の学科名で照合）---
+  const ntnuByName = new Map(ntnuDepts.map(d => [d.name_cht, d]));
+
   // --- 3. departments.json ---
   console.log('[3/3] 学科データ生成...');
   const departments = [];
+  let ntnuMatchCount = 0;
 
   for (const schoolGroup of deptsListRaw) {
     const schoolId = schoolGroup.id;
@@ -213,6 +225,10 @@ async function main() {
     for (const dept of schoolGroup.departments) {
       const detail = detailMap.get(dept.id) || {};
       const trans = deptNames[dept.id] || {};
+
+      // NTNU補完: 師範大学（school_id=07）の学科名で照合
+      const ntnuData = schoolId === '07' ? ntnuByName.get(dept.title) : null;
+      if (ntnuData) ntnuMatchCount++;
 
       departments.push({
         id: dept.id,
@@ -256,9 +272,19 @@ async function main() {
           en: dept.main_group_data.eng_title
         } : undefined,
         ioh_url: dept.ioh?.url || undefined,
+
+        // NTNU補完（37学科のみ）
+        tocfl_requirement: ntnuData?.tocfl_requirement || undefined,
+        curriculum_cht: ntnuData?.curriculum || undefined,
+        career_paths_cht: ntnuData?.career_paths || undefined,
+
         translation_status: trans.ja ? 'ai_draft' : 'untranslated'
       });
     }
+  }
+
+  if (ntnuDepts.length > 0) {
+    console.log(`  NTNU補完: ${ntnuMatchCount}/${ntnuDepts.length}学科がマッチ`);
   }
 
   // 学科数を大学・学群に反映

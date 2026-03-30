@@ -25,7 +25,7 @@ async function main() {
   let match;
   while ((match = financialRegex.exec(financialSection)) !== null) {
     const name = match[1].trim();
-    if (name === '大学名' || name.startsWith('---')) continue;
+    if (name === '大学名' || name.startsWith('---') || name.startsWith('|')) continue;
     financialData[name] = {
       amount: match[2].trim(),
       jpy_estimate: match[3].trim()
@@ -35,11 +35,11 @@ async function main() {
 
   // --- 語学要件テーブルのパース ---
   const languageData = {};
-  const langSection = md.split('### 語学要件の大学別比較')[1]?.split('###')[0]?.split('---')[0] || '';
+  const langSection = md.split('### 語学要件の大学別比較')[1]?.split(/\n## /)[0]?.split(/\n---\n/)[0] || '';
   const langRegex = /\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|/g;
   while ((match = langRegex.exec(langSection)) !== null) {
     const name = match[1].trim();
-    if (name === '大学名' || name.startsWith('---')) continue;
+    if (name === '大学名' || name.startsWith('---') || name.startsWith('|')) continue;
     languageData[name] = {
       chinese: match[2].trim(),
       english: match[3].trim() === '—' ? undefined : match[3].trim()
