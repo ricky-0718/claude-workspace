@@ -1,0 +1,44 @@
+{
+  "school_id": "13",
+  "school_name": "國立政治大學",
+  "category": "foreign_student",
+  "data_source": "web_research",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://oic.nccu.edu.tw/",
+  "foreign_admission_url": "https://nccuadmission.nccu.edu.tw/Post/13664",
+  "jianzhang_url": "https://nccuadmission.nccu.edu.tw/Upload/FileManager/d00571ea-530f-44f2-8706-b0beb3c4e559.pdf",
+  "jianzhang_year": 115,
+  "application_periods": [
+    {
+      "round": 1,
+      "start": "2025-09-24",
+      "end": "2025-10-16"
+    },
+    {
+      "round": 2,
+      "start": "2026-02-02",
+      "end": "2026-03-09"
+    }
+  ],
+  "application_fee": "NTD 1,600 / USD 60",
+  "language_req": {
+    "chinese": "TOCFL Superior or HSK 4 推奨",
+    "english": "TOEFL iBT 80 / IELTS 6.0 / TOEIC 700"
+  },
+  "financial_proof": {
+    "amount": "NTD 200,000",
+    "usd_equivalent": "USD 7,000",
+    "jpy_estimate": "約100万円"
+  },
+  "tuition_info": "学部: NTD 49,020〜56,860/学期、大学院: NTD 78,910〜118,700/学期",
+  "required_documents": [
+    "パスポートのコピー",
+    "卒業証明書",
+    "成績証明書",
+    "語学能力証明（TOCFL/TOEFL/IELTS等）",
+    "財力証明",
+    "学習計画書",
+    "推薦状"
+  ],
+  "notes": "NCCUは語学要件の推奨レベルが他校より高い（TOCFL Superior推奨）"
+}
