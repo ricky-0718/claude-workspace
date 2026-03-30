@@ -146,33 +146,111 @@ for (const d of departments) {
     )}
   </div>
 
-  <!-- Financial & Language Requirements -->
-  {(school.financial_proof || school.language_req) && (
-    <section class="mt-6 bg-white border border-gray-200 rounded-xl p-4">
-      <h2 class="text-base font-bold text-gray-800 mb-3">出願要件</h2>
+  <!-- Foreign Student Admission (外國學生向け出願情報) -->
+  {(() => {
+    const fs = school.foreign_student;
+    const fp = fs?.financial_proof || school.financial_proof;
+    const lr = fs?.language_req || school.language_req;
+    const hasData = fp || lr || fs?.application_periods || fs?.required_documents;
+    return hasData;
+  })() && (
+    <section class="mt-6 bg-primary-light/50 border border-primary/10 rounded-xl p-4">
+      <h2 class="text-base font-bold text-gray-800 mb-1">外国人学生の出願情報</h2>
+      <p class="text-[11px] text-gray-400 mb-3">※ 以下は外國學生（非華僑）向けの情報です</p>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-        {school.financial_proof && (
+        {/* 財力証明 */}
+        {(school.foreign_student?.financial_proof || school.financial_proof) && (
           <div>
-            <div class="text-xs text-gray-500 mb-1">財力証明</div>
-            <div class="text-gray-800 font-medium">{school.financial_proof.amount}</div>
-            {school.financial_proof.jpy_estimate && (
-              <div class="text-xs text-gray-400">（{school.financial_proof.jpy_estimate}）</div>
+            <div class="text-xs text-gray-500 mb-1">💰 財力証明</div>
+            <div class="text-gray-800 font-medium">
+              {school.foreign_student?.financial_proof?.amount || school.financial_proof?.amount}
+            </div>
+            {(school.foreign_student?.financial_proof?.jpy_estimate || school.financial_proof?.jpy_estimate) && (
+              <div class="text-xs text-gray-400">
+                （{school.foreign_student?.financial_proof?.jpy_estimate || school.financial_proof?.jpy_estimate}）
+              </div>
             )}
           </div>
         )}
-        {school.language_req?.chinese && (
+
+        {/* 語学要件 */}
+        {(school.foreign_student?.language_req?.chinese || school.language_req?.chinese) && (
           <div>
-            <div class="text-xs text-gray-500 mb-1">中国語要件</div>
-            <div class="text-gray-800">{school.language_req.chinese}</div>
+            <div class="text-xs text-gray-500 mb-1">🗣️ 中国語要件</div>
+            <div class="text-gray-800">
+              {school.foreign_student?.language_req?.chinese || school.language_req?.chinese}
+            </div>
           </div>
         )}
-        {school.language_req?.english && (
+        {(school.foreign_student?.language_req?.english || school.language_req?.english) && (
           <div>
-            <div class="text-xs text-gray-500 mb-1">英語要件</div>
-            <div class="text-gray-800">{school.language_req.english}</div>
+            <div class="text-xs text-gray-500 mb-1">🌐 英語要件</div>
+            <div class="text-gray-800">
+              {school.foreign_student?.language_req?.english || school.language_req?.english}
+            </div>
+          </div>
+        )}
+
+        {/* 出願料 */}
+        {school.foreign_student?.application_fee && (
+          <div>
+            <div class="text-xs text-gray-500 mb-1">📋 出願料</div>
+            <div class="text-gray-800">{school.foreign_student.application_fee}</div>
           </div>
         )}
       </div>
+
+      {/* 出願期間 */}
+      {school.foreign_student?.application_periods && school.foreign_student.application_periods.length > 0 && (
+        <div class="mt-4 pt-3 border-t border-primary/10">
+          <div class="text-xs text-gray-500 mb-2">📅 出願期間</div>
+          <div class="space-y-1.5">
+            {school.foreign_student.application_periods.map(p => (
+              <div class="flex items-center gap-2 text-sm">
+                <span class="bg-primary/10 text-primary text-xs px-1.5 py-0.5 rounded">
+                  第{p.round}回{p.type ? ` (${p.type})` : ''}
+                </span>
+                <span class="text-gray-700">{p.start} 〜 {p.end}</span>
+                {p.notes && <span class="text-xs text-gray-400">{p.notes}</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 必要書類 */}
+      {school.foreign_student?.required_documents && school.foreign_student.required_documents.length > 0 && (
+        <div class="mt-4 pt-3 border-t border-primary/10">
+          <div class="text-xs text-gray-500 mb-2">📄 必要書類</div>
+          <ul class="space-y-1">
+            {school.foreign_student.required_documents.map(doc => (
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <span class="text-primary mt-0.5">•</span>
+                <span>{doc}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* 簡章リンク */}
+      {(school.foreign_student?.jianzhang_url || school.foreign_student?.admission_url) && (
+        <div class="mt-4 pt-3 border-t border-primary/10 flex flex-wrap gap-2">
+          {school.foreign_student?.admission_url && (
+            <a href={school.foreign_student.admission_url} target="_blank" rel="noopener noreferrer"
+              class="text-xs text-primary border border-primary/20 rounded-lg px-3 py-1.5 hover:bg-white transition-colors">
+              外國學生招生ページ →
+            </a>
+          )}
+          {school.foreign_student?.oia_url && (
+            <a href={school.foreign_student.oia_url} target="_blank" rel="noopener noreferrer"
+              class="text-xs text-primary border border-primary/20 rounded-lg px-3 py-1.5 hover:bg-white transition-colors">
+              國際處 →
+            </a>
+          )}
+        </div>
+      )}
     </section>
   )}
 

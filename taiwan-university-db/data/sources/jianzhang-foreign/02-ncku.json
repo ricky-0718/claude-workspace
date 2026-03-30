@@ -1,0 +1,40 @@
+{
+  "school_id": "02",
+  "school_name": "國立成功大學",
+  "category": "foreign_student",
+  "data_source": "web_research",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://oia.ncku.edu.tw/",
+  "foreign_admission_url": "https://oia.ncku.edu.tw/p/404-1032-229816.php?Lang=zh-tw",
+  "jianzhang_url": "https://oia.ncku.edu.tw/var/file/32/1032/img/5041/NCKUAdmissionProspectusforInternationalStudentsFall2026Spring2027.pdf",
+  "jianzhang_year": 115,
+  "application_periods": [
+    {
+      "round": 1,
+      "start": "2025-12-20",
+      "end": "2026-03-15",
+      "notes": "1回のみ、約3ヶ月間"
+    }
+  ],
+  "max_applications": 3,
+  "application_fee": "NTD 2,000",
+  "language_req": {
+    "chinese": "TOCFL A2以上（中国語プログラム）",
+    "english": "中英双語プログラムはA2+英語B1以上"
+  },
+  "financial_proof": {
+    "amount": "NTD 120,000",
+    "usd_equivalent": "USD 4,000",
+    "jpy_estimate": "約60万円"
+  },
+  "required_documents": [
+    "最高学歴の卒業証明書（台湾在外公館認証必要）",
+    "最高学歴の成績証明書",
+    "語学能力証明",
+    "財力証明",
+    "学習計画書",
+    "自伝",
+    "健康保険証明"
+  ],
+  "notes": "115學年度の招生簡章PDFが既に公開済み。3校中で最も確実なデータ。出願期間が長い（12月〜3月）"
+}

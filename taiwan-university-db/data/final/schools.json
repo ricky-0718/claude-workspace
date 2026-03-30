@@ -104,7 +104,63 @@
       "spreadsheet",
       "guide"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oia.ntu.edu.tw/",
+      "admission_url": "https://admissions.ntu.edu.tw/apply/degree-students/international-students/",
+      "admission_links": [
+        {
+          "href": "https://admissions.ntu.edu.tw/",
+          "text": "招生"
+        },
+        {
+          "href": "https://admissions.ntu.edu.tw/",
+          "text": "招生"
+        }
+      ],
+      "financial_proof": {
+        "amount": "NTD 200,000",
+        "usd_equivalent": "USD 6,000",
+        "jpy_estimate": "約100万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL Level 2 (A2) 以上。条件付き入学制度あり",
+        "english": "学科による"
+      },
+      "data_sources": [
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "https://admissions.ntu.edu.tw/wp-content/uploads/114-1-Admission-Guidelines-for-Intl-Degree-Students_ENG_revised.pdf",
+      "jianzhang_year": 114,
+      "application_periods": [
+        {
+          "round": 1,
+          "start": "2025-10-01",
+          "end": "2025-12-05",
+          "notes": "114學年度ベース推定"
+        },
+        {
+          "round": 2,
+          "start": "2025-12-16",
+          "end": "2026-02-13",
+          "notes": "114學年度ベース推定"
+        }
+      ],
+      "application_fee": "NTD 2,000/学科 (3学科目以降 NTD 1,500)",
+      "max_applications": 5,
+      "required_documents": [
+        "パスポートのコピー",
+        "最高学歴の卒業証明書",
+        "最高学歴の成績証明書",
+        "推薦状2通",
+        "志望動機書",
+        "財力証明",
+        "健康診断書",
+        "履歴書 (CV)"
+      ],
+      "notes": "115學年度の正式日程は未公開の可能性。Scribd上に115學年度版の簡章が存在"
+    }
   },
   {
     "id": "04",
@@ -136,7 +192,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.ncnu.edu.tw/p/406-1000-33606,r30.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://admission.ncnu.edu.tw/",
+          "text": "招生資訊網首頁"
+        },
+        {
+          "href": "https://exam.ncnu.edu.tw/",
+          "text": "招生網路報名"
+        },
+        {
+          "href": "https://exam.ncnu.edu.tw/ApplyUni/",
+          "text": "申請入學專區"
+        }
+      ]
+    }
   },
   {
     "id": "07",
@@ -177,7 +250,49 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.ntnu.edu.tw/oia/",
+      "financial_proof": {
+        "amount": "NTD 100,000",
+        "jpy_estimate": "約50万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2以上 (HSK・語学学校成績も参考受理)",
+        "english": "学科による"
+      },
+      "data_sources": [
+        "spreadsheet",
+        "web_research"
+      ],
+      "admission_url": "https://bds.oia.ntnu.edu.tw/bds/web/admission",
+      "jianzhang_year": 115,
+      "application_periods": [
+        {
+          "round": 1,
+          "start": "2025-11-03",
+          "end": "2025-12-15",
+          "notes": "修士・博士のみ"
+        },
+        {
+          "round": 2,
+          "start": "2026-01-12",
+          "end": "2026-03-02",
+          "notes": "全学位（学部出願はこちらのみ）"
+        }
+      ],
+      "application_fee": "NTD 1,200/学科",
+      "required_documents": [
+        "出願フォーム",
+        "最高学歴の卒業証明書",
+        "最高学歴の成績証明書",
+        "語学能力証明",
+        "財力証明",
+        "学習計画書",
+        "推薦状"
+      ],
+      "notes": "華語教育のトップ校。出願システム独自で簡章はシステム内で閲覧。学部出願は2nd Roundのみ"
+    }
   },
   {
     "id": "11",
@@ -209,7 +324,21 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.nycu.edu.tw/oia/ch/index",
+      "admission_url": "https://www.nycu.edu.tw/oia/ch/app/folder/381",
+      "admission_links": [
+        {
+          "href": "https://www.nycu.edu.tw/oia/ch/app/folder/381",
+          "text": "外國學生"
+        },
+        {
+          "href": "https://www.nycu.edu.tw/oia/ch/app/folder/381",
+          "text": "外國學生"
+        }
+      ]
+    }
   },
   {
     "id": "17",
@@ -241,7 +370,21 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oga.site.nthu.edu.tw/",
+      "admission_url": "https://apply.nthu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://apply.nthu.edu.tw/",
+          "text": "未來學生"
+        },
+        {
+          "href": "https://oga.site.nthu.edu.tw/#cmb_2934_1",
+          "text": "招生資訊"
+        }
+      ]
+    }
   },
   {
     "id": "02",
@@ -282,7 +425,52 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oia.ncku.edu.tw/",
+      "admission_url": "https://oia.ncku.edu.tw/p/404-1032-229816.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://web.ncku.edu.tw/p/412-1000-211.php?Lang=zh-tw",
+          "text": "招生"
+        }
+      ],
+      "financial_proof": {
+        "amount": "NTD 120,000",
+        "usd_equivalent": "USD 4,000",
+        "jpy_estimate": "約60万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2以上（中国語プログラム）",
+        "english": "中英双語プログラムはA2+英語B1以上"
+      },
+      "data_sources": [
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "https://oia.ncku.edu.tw/var/file/32/1032/img/5041/NCKUAdmissionProspectusforInternationalStudentsFall2026Spring2027.pdf",
+      "jianzhang_year": 115,
+      "application_periods": [
+        {
+          "round": 1,
+          "start": "2025-12-20",
+          "end": "2026-03-15",
+          "notes": "1回のみ、約3ヶ月間"
+        }
+      ],
+      "application_fee": "NTD 2,000",
+      "max_applications": 3,
+      "required_documents": [
+        "最高学歴の卒業証明書（台湾在外公館認証必要）",
+        "最高学歴の成績証明書",
+        "語学能力証明",
+        "財力証明",
+        "学習計画書",
+        "自伝",
+        "健康保険証明"
+      ],
+      "notes": "115學年度の招生簡章PDFが既に公開済み。3校中で最も確実なデータ。出願期間が長い（12月〜3月）"
+    }
   },
   {
     "id": "13",
@@ -323,7 +511,28 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.nccu.edu.tw/p/406-1000-22256,r17.php?Lang=zh-tw",
+      "admission_url": "https://www.nccu.edu.tw/p/426-1000-16.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.nccu.edu.tw/p/426-1000-16.php?Lang=zh-tw",
+          "text": "招生專區"
+        }
+      ],
+      "financial_proof": {
+        "amount": "NTD 200,000",
+        "jpy_estimate": "約100万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2（学部による）",
+        "english": "TOEIC 550（学部による）"
+      },
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "09",
@@ -387,7 +596,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://new.ntpu.edu.tw/oia/",
+      "admission_links": [
+        {
+          "href": "https://new.ntpu.edu.tw/oia/news/69b11d6d63f5a608851fb42d/%E8%B7%A8%E8%B6%8A%E6%96%87%E5%8C%96%E7%9B%B8%E9%81%87%E5%9C%A8%E5%8C%97%E5%A4%A7%E5%85%B1%E5%89%B5%E9%9D%92%E6%98%A5%E5%9B%9E%E6%86%B6%E2%80%94%E2%80%94%E5%8C%97%E5%A4%A7%E5%9C%8B%E9%9A%9B%E8%99%95%E8%BE%A6%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E8%BF%8E%E6%96%B0%E6%B4%BB%E5%8B%95EncounteringCultures,CreatingMemoriesatNTPUOIAHostsWelcomeEventforInternationalStudents",
+          "text": "跨越文化相遇 在北大共創青春回憶——北大國際處辦外國學生迎新活動"
+        },
+        {
+          "href": "https://new.ntpu.edu.tw/oia/news/69b11d6d63f5a608851fb42d/%E8%B7%A8%E8%B6%8A%E6%96%87%E5%8C%96%E7%9B%B8%E9%81%87%E5%9C%A8%E5%8C%97%E5%A4%A7%E5%85%B1%E5%89%B5%E9%9D%92%E6%98%A5%E5%9B%9E%E6%86%B6%E2%80%94%E2%80%94%E5%8C%97%E5%A4%A7%E5%9C%8B%E9%9A%9B%E8%99%95%E8%BE%A6%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E8%BF%8E%E6%96%B0%E6%B4%BB%E5%8B%95EncounteringCultures,CreatingMemoriesatNTPUOIAHostsWelcomeEventforInternationalStudents",
+          "text": "SYSTEM.NEWS.閱讀全文 關於跨越文化相遇 在北大共創青春回憶——北大國際處辦外國學生迎新活動"
+        },
+        {
+          "href": "https://new.ntpu.edu.tw/oia/news/69c25b2aba76cd07fcaa8e55/%F0%9F%93%A3115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%AC%AC2%E5%AD%B8%E6%9C%9F%E8%B5%B4%E5%A4%96%E4%BA%A4%E6%8F%9B%E7%B0%A1%E7%AB%A0%E5%85%AC%E5%91%8A!%E7%94%B3%E8%AB%8B%E6%97%A5%E6%9C%9F%E8%87%AA115%E5%B9%B44%E6%9C%881%E6%97%A5%E8%B5%B7%E8%87%B3115%E5%B9%B44%E6%9C%8830%E6%97%A516%E6%99%82%E6%AD%A2SpringSemesterofAcademicYear2026ExchangeProgramAnnouncement!",
+          "text": "📣115學年度第2學期赴外交換簡章公告! (申請日期自115年4月1日起至115年4月30日16時止)"
+        }
+      ]
+    }
   },
   {
     "id": "05",
@@ -419,7 +645,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oias.nchu.edu.tw/asknchu-ch/",
+      "admission_url": "https://iss.nchu.edu.tw/ufaq-tag/admission-zh/",
+      "admission_links": [
+        {
+          "href": "https://iss.nchu.edu.tw/ufaq-tag/admission-zh/",
+          "text": "入學 (1)"
+        },
+        {
+          "href": "https://iss.nchu.edu.tw/ufaq-tag/international-student-activity/",
+          "text": "International Student Activity (37)"
+        },
+        {
+          "href": "https://iss.nchu.edu.tw/ufaq-tag/admission/",
+          "text": "Admission (11)"
+        }
+      ]
+    }
   },
   {
     "id": "06",
@@ -450,7 +694,20 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://exams.ccu.edu.tw/index.php",
+      "admission_links": [
+        {
+          "href": "https://exams.ccu.edu.tw/index.php",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.cac.edu.tw/cacportal/index.php",
+          "text": "大學甄選入學委員會"
+        }
+      ]
+    }
   },
   {
     "id": "15",
@@ -482,7 +739,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://ncusec.ncu.edu.tw/news/headlines_content.php?H_ID=4644"
+    }
   },
   {
     "id": "19",
@@ -514,7 +774,20 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://www.nsysu.edu.tw/p/412-1000-94.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.nsysu.edu.tw/p/412-1000-94.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.nsysu.edu.tw/#cmb_476_1",
+          "text": "招生公告"
+        }
+      ]
+    }
   },
   {
     "id": "08",
@@ -546,7 +819,30 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oia.ndhu.edu.tw/",
+      "admission_url": "https://oia.ndhu.edu.tw/p/412-1027-21548.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://oia.ndhu.edu.tw/p/412-1027-21548.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://rc149.ndhu.edu.tw/",
+          "text": "臺灣教育大學系統聯合招生資訊入口網"
+        },
+        {
+          "href": "https://oia.ndhu.edu.tw/p/412-1027-21529.php?Lang=zh-tw",
+          "text": "招生資訊"
+        }
+      ],
+      "english_program_period": "2026/01/02~03/15",
+      "english_program_qualification": "CEFR B1",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "03",
@@ -578,7 +874,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.ncyu.edu.tw/oia/",
+      "admission_url": "https://www.ncyu.edu.tw/oia/Subject?nodeId=58425",
+      "admission_links": [
+        {
+          "href": "https://www.ncyu.edu.tw/oia/Subject?nodeId=58425",
+          "text": "招生公告"
+        },
+        {
+          "href": "https://www.ncyu.edu.tw/oia/Subject?nodeId=63027",
+          "text": "申請須知 (除宣傳、推廣及協助學生辦理來臺必要程序外，本校並未委外辦理招生事務。)"
+        },
+        {
+          "href": "https://www.ncyu.edu.tw/oia/Subject?nodeId=62826",
+          "text": "招生簡章"
+        }
+      ]
+    }
   },
   {
     "id": "23",
@@ -673,7 +987,16 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://www.nqu.edu.tw/p/412-1000-881.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.nqu.edu.tw/p/412-1000-881.php?Lang=zh-tw",
+          "text": "招生資訊"
+        }
+      ]
+    }
   },
   {
     "id": "14",
@@ -705,7 +1028,20 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://isa.niu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://isa.niu.edu.tw/p/412-1073-5944.php",
+          "text": "招生簡章"
+        },
+        {
+          "href": "https://isa.niu.edu.tw/p/412-1073-5945.php",
+          "text": "入學條件"
+        }
+      ]
+    }
   },
   {
     "id": "E0",
@@ -736,7 +1072,17 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "http://international.utaipei.edu.tw/index.php",
+      "admission_url": "https://admission.utaipei.edu.tw/p/412-1033-4307.php?Lang=en",
+      "admission_links": [
+        {
+          "href": "https://admission.utaipei.edu.tw/p/412-1033-4307.php?Lang=en",
+          "text": "學位生入學"
+        }
+      ]
+    }
   },
   {
     "id": "26",
@@ -768,7 +1114,17 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.ntcu.edu.tw/Errors/Http404",
+      "admission_url": "https://www.ntcu.edu.tw/Tag?ID=9",
+      "admission_links": [
+        {
+          "href": "https://www.ntcu.edu.tw/Tag?ID=9",
+          "text": "招生"
+        }
+      ]
+    }
   },
   {
     "id": "F0",
@@ -800,7 +1156,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://admission.nptu.edu.tw/p/426-1005-1.php",
+      "admission_links": [
+        {
+          "href": "https://admission.nptu.edu.tw/p/426-1005-1.php",
+          "text": "入學導航"
+        },
+        {
+          "href": "https://admission.nptu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://admission.nptu.edu.tw/",
+          "text": "招生資訊"
+        }
+      ]
+    }
   },
   {
     "id": "20",
@@ -832,7 +1205,17 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://english.nttu.edu.tw/",
+      "admission_url": "https://english.nttu.edu.tw/#Dyn_2_4",
+      "admission_links": [
+        {
+          "href": "https://english.nttu.edu.tw/#Dyn_2_4",
+          "text": "Admissions"
+        }
+      ]
+    }
   },
   {
     "id": "18",
@@ -863,7 +1246,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.nutn.edu.tw/oia/"
+    }
   },
   {
     "id": "12",
@@ -895,7 +1281,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://dia.nuk.edu.tw/p/404-1034-41655.php?Lang=zh-tw",
+      "admission_url": "https://dia.nuk.edu.tw/p/403-1034-1419.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://dia.nuk.edu.tw/p/403-1034-1419.php?Lang=zh-tw",
+          "text": "國際招生訊息"
+        },
+        {
+          "href": "https://dia.nuk.edu.tw/p/403-1034-1419-1.php?Lang=zh-tw",
+          "text": "國際招生訊息International Admissions News"
+        },
+        {
+          "href": "https://rinteradmission.nuk.edu.tw/",
+          "text": "入學申請網站International Admissions Website"
+        }
+      ]
+    }
   },
   {
     "id": "34",
@@ -927,7 +1331,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.ntua.edu.tw/oia/"
+    }
   },
   {
     "id": "28",
@@ -1062,7 +1469,17 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.ntus.edu.tw/news/index.php?act=article&code=list&ids=139&new_kind_id=6",
+      "admission_url": "https://www.ntus.edu.tw/news/index.php?act=article&code=list&ids=138&new_kind_id=4",
+      "admission_links": [
+        {
+          "href": "https://www.ntus.edu.tw/news/index.php?act=article&code=list&ids=138&new_kind_id=4",
+          "text": "招生"
+        }
+      ]
+    }
   },
   {
     "id": "32",
@@ -1094,7 +1511,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://iec.ntsu.edu.tw/",
+      "admission_url": "https://admissions.ntsu.edu.tw/app/home.php",
+      "admission_links": [
+        {
+          "href": "https://admissions.ntsu.edu.tw/app/home.php",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://admissions.ntsu.edu.tw/app/home.php",
+          "text": "招生專區 Admissions"
+        },
+        {
+          "href": "https://admissions.ntsu.edu.tw/p/404-1046-62826.php?Lang=zh-tw",
+          "text": ""
+        }
+      ]
+    }
   },
   {
     "id": "35",
@@ -1125,7 +1560,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://www.tnnua.edu.tw/p/412-1000-2026.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.tnnua.edu.tw/p/412-1000-2026.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://acad.tnnua.edu.tw/p/406-1003-51875,r2071.php?Lang=zh-tw",
+          "text": "115學年度中國音樂學系入學考試"
+        },
+        {
+          "href": "https://acad.tnnua.edu.tw/p/412-1003-3744.php?Lang=zh-tw",
+          "text": "115學年度音樂學系入學考試"
+        }
+      ]
+    }
   },
   {
     "id": "22",
@@ -1157,7 +1609,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://sas.ndmctsgh.edu.tw/IASS/FrontShowAdmissionList.aspx?D=OAS.API&N=OAS.API#",
+      "admission_links": [
+        {
+          "href": "https://sas.ndmctsgh.edu.tw/IASS/FrontShowAdmissionList.aspx?D=OAS.API&N=OAS.API#",
+          "text": "研究所網路報名"
+        },
+        {
+          "href": "https://wwwndmc.ndmutsgh.edu.tw/unit/100143/1861",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://wwwndmc.ndmutsgh.edu.tw/unit/100143/1861",
+          "text": "招生專區"
+        }
+      ]
+    }
   },
   {
     "id": "16",
@@ -1189,7 +1658,17 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "http://secretary.nuu.edu.tw/p/404-1003-77785.php?Lang=zh-tw",
+      "admission_url": "http://enroll.nuu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "http://enroll.nuu.edu.tw/",
+          "text": "招生平台"
+        }
+      ]
+    }
   },
   {
     "id": "68",
@@ -1229,7 +1708,20 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "financial_proof": {
+        "amount": "USD 5,000",
+        "jpy_estimate": "約78万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2 or B1",
+        "english": null
+      },
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "37",
@@ -1326,7 +1818,23 @@
       "spreadsheet",
       "guide"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.tku.edu.tw/oia/",
+      "financial_proof": {
+        "amount": "100,000元",
+        "jpy_estimate": "約50万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2",
+        "english": "CEFR B1以上"
+      },
+      "english_program_period": "2026/02/24~03/23",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "61",
@@ -1367,7 +1875,38 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.cycu.edu.tw/oia/",
+      "admission_url": "https://icare.cycu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://icare.cycu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://icare.cycu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://icare.cycu.edu.tw/",
+          "text": "招生資訊"
+        }
+      ],
+      "financial_proof": {
+        "amount": "USD 4,000",
+        "jpy_estimate": "約62万円"
+      },
+      "language_req": {
+        "chinese": "最低TOCFL A2",
+        "english": "TOEIC 550 / CEFR B1"
+      },
+      "english_program_period": "2025/12/01~2026/04/15",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "45",
@@ -1408,7 +1947,38 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.fju.edu.tw/sitemap.jsp?choice=1",
+      "admission_url": "https://www.fju.edu.tw/resource.jsp?labelID=22#",
+      "admission_links": [
+        {
+          "href": "https://www.fju.edu.tw/resource.jsp?labelID=22#",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://exam.fju.edu.tw/",
+          "text": "招生資訊平台"
+        },
+        {
+          "href": "http://idsa.oie.fju.edu.tw/",
+          "text": "外國學生申請入學"
+        }
+      ],
+      "financial_proof": {
+        "amount": "20万元",
+        "jpy_estimate": "約100万円"
+      },
+      "language_req": {
+        "chinese": "A2以上",
+        "english": "CEFR B1以上"
+      },
+      "english_program_period": "2026/02/09~03/05",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "39",
@@ -1440,7 +2010,23 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_links": [
+        {
+          "href": "https://exam2.thu.edu.tw/EXAM/indextt.jsp",
+          "text": "各學制招生資訊\n                遇見知識 看見未來 最好的選擇趕緊報名\n                東海大學歡迎你"
+        },
+        {
+          "href": "http://csr.thu.edu.tw/",
+          "text": "招生策略中心\n                Let’s have fun at THU"
+        },
+        {
+          "href": "https://www.thu.edu.tw/web/user/user.php?did=1",
+          "text": "新生入學"
+        }
+      ]
+    }
   },
   {
     "id": "36",
@@ -1481,7 +2067,38 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "http://www.pccu.edu.tw/#",
+      "admission_url": "https://futurestudent.pccu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://futurestudent.pccu.edu.tw/",
+          "text": "招生入學"
+        },
+        {
+          "href": "https://futurestudent.pccu.edu.tw/",
+          "text": "招生入學"
+        },
+        {
+          "href": "http://www.pccu.edu.tw/#1",
+          "text": "中國文化大學112學年度大學申請入學第二階段指定項目甄試資訊"
+        }
+      ],
+      "financial_proof": {
+        "amount": "TWD 100,000",
+        "jpy_estimate": "約50万円"
+      },
+      "language_req": {
+        "chinese": "A2以上",
+        "english": "CEFR B1"
+      },
+      "english_program_period": "2026/02/24~04/15",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "44",
@@ -1513,7 +2130,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://freshman.fcu.edu.tw/en/overseas-students/",
+      "admission_url": "https://isofcu.wixsite.com/enfreshmanguide",
+      "admission_links": [
+        {
+          "href": "https://isofcu.wixsite.com/enfreshmanguide",
+          "text": "New International Students"
+        },
+        {
+          "href": "https://isofcu.wixsite.com/enfreshmanguide",
+          "text": "New International Students"
+        },
+        {
+          "href": "https://admissions-fee.fcu.edu.tw/W710107/StudReply/ReplyForm.aspx#/login",
+          "text": "1.Reply to the study intention"
+        }
+      ]
+    }
   },
   {
     "id": "55",
@@ -1584,7 +2219,46 @@
       "spreadsheet",
       "guide"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "financial_proof": {
+        "amount": "NTD 120,000",
+        "jpy_estimate": "約60万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2以上（推定）",
+        "english": "CEFR A2以上（推定）"
+      },
+      "data_sources": [
+        "spreadsheet",
+        "web_research"
+      ],
+      "oia_url": "https://icae.scu.edu.tw/en",
+      "admission_url": "https://icae.scu.edu.tw/en/admission",
+      "jianzhang_year": 115,
+      "application_periods": [
+        {
+          "round": 1,
+          "start": "2026-02-02",
+          "end": "2026-03-27"
+        },
+        {
+          "round": 2,
+          "start": "2026-03-30",
+          "end": "2026-05-08"
+        },
+        {
+          "round": 3,
+          "start": "2026-05-11",
+          "end": "2026-06-30"
+        }
+      ],
+      "required_documents": [
+        "簡章PDF確認が必要"
+      ],
+      "tuition_info": "NTD 96,740〜112,920/年（私立だが比較的安価）",
+      "notes": "3梯次制（出願期間が3回）。外部機関への出願委託禁止方針あり。簡章PDF直リンク未取得"
+    }
   },
   {
     "id": "57",
@@ -1616,7 +2290,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://sites.google.com/g.yzu.edu.tw/yzu-ilcc-web/",
+      "admission_url": "https://localadmissions.yzu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://localadmissions.yzu.edu.tw/",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://www.yzu.edu.tw/admissions/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://localadmissions.yzu.edu.tw/",
+          "text": "招生專區"
+        }
+      ]
+    }
   },
   {
     "id": "65",
@@ -1648,7 +2340,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.cgu.edu.tw/oia/",
+      "admission_url": "https://www.cgu.edu.tw/recruit_intl",
+      "admission_links": [
+        {
+          "href": "https://www.cgu.edu.tw/recruit_intl",
+          "text": "Admission Application"
+        },
+        {
+          "href": "https://www.cgu.edu.tw/oia/ContentSection?nodeId=17012",
+          "text": "Registration Guidelines (Spring 2026) for new students"
+        },
+        {
+          "href": "https://www.cgu.edu.tw/recruit_intl",
+          "text": "Apply to CGU"
+        }
+      ]
+    }
   },
   {
     "id": "48",
@@ -1679,7 +2389,30 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.shu.edu.tw/oia/",
+      "admission_url": "https://www.shu.edu.tw/oia/Admission.aspx",
+      "admission_links": [
+        {
+          "href": "https://www.shu.edu.tw/oia/Admission.aspx",
+          "text": "招生與入學"
+        },
+        {
+          "href": "https://www.shu.edu.tw/oia/Shu-Admmision-apply.html",
+          "text": "Apply"
+        },
+        {
+          "href": "https://www.shu.edu.tw/oia/Admission.aspx",
+          "text": "招生與入學"
+        }
+      ],
+      "english_program_period": "2025/12/17~2026/03/04",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "66",
@@ -1711,7 +2444,17 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://msg.csmu.edu.tw/news/main2Pagenew.aspx?MessageID=73335",
+      "admission_url": "https://recruit.csmu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.csmu.edu.tw/",
+          "text": "招生"
+        }
+      ]
+    }
   },
   {
     "id": "40",
@@ -1752,7 +2495,32 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.usc.edu.tw/p/412-1000-95.php?Lang=zh-tw",
+      "admission_url": "https://www.usc.edu.tw/p/412-1000-404.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.usc.edu.tw/p/412-1000-404.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://recruit.usc.edu.tw/?p=5217",
+          "text": "Admissions"
+        }
+      ],
+      "financial_proof": {
+        "amount": "120,000元",
+        "jpy_estimate": "約60万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2",
+        "english": "CEFR B1"
+      },
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "40A",
@@ -1784,7 +2552,21 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.kh.usc.edu.tw/p/406-1000-53666,r519.php?Lang=zh-tw",
+      "admission_url": "https://recruit.kh.usc.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.kh.usc.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://recruit.kh.usc.edu.tw/",
+          "text": "招生資訊"
+        }
+      ]
+    }
   },
   {
     "id": "41",
@@ -1816,7 +2598,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.isu.edu.tw/",
+      "admission_url": "https://www.isu.edu.tw/admissions",
+      "admission_links": [
+        {
+          "href": "https://www.isu.edu.tw/admissions",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://oica.ishouuniversity.com/tw/",
+          "text": "境外生招生"
+        },
+        {
+          "href": "https://www.isu.edu.tw/admissions",
+          "text": "招生資訊"
+        }
+      ]
+    }
   },
   {
     "id": "69",
@@ -1848,7 +2648,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "http://oge.tmu.edu.tw/zh-hant/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/%E7%9B%9F%E6%A0%A1%E4%B8%80%E8%A6%BD/",
+      "admission_url": "https://oge.tmu.edu.tw/zh-hant/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/%E7%9B%9F%E6%A0%A1%E4%B8%80%E8%A6%BD/#",
+      "admission_links": [
+        {
+          "href": "https://oge.tmu.edu.tw/zh-hant/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/%E7%9B%9F%E6%A0%A1%E4%B8%80%E8%A6%BD/#",
+          "text": "外國學生"
+        },
+        {
+          "href": "https://oge.tmu.edu.tw/zh-hant/%e5%a4%96%e5%9c%8b%e5%ad%b8%e7%94%9f%e5%b7%a5%e4%bd%9c%e8%a8%b1%e5%8f%af%e8%ad%89/",
+          "text": "外國學生工作許可證"
+        },
+        {
+          "href": "https://oge.tmu.edu.tw/zh-hant/%e5%a4%96%e5%9c%8b%e5%ad%b8%e7%94%9f%e5%a4%a7%e5%ad%b8%e9%83%a8%e7%94%b3%e8%ab%8b/",
+          "text": "外國學生大學部申請"
+        }
+      ]
+    }
   },
   {
     "id": "42",
@@ -1880,7 +2698,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oia.pu.edu.tw/app/home.php#start-C",
+      "admission_url": "https://oia.pu.edu.tw/p/426-1048-11.php",
+      "admission_links": [
+        {
+          "href": "https://oia.pu.edu.tw/p/426-1048-11.php",
+          "text": "僑外陸生申請入學"
+        },
+        {
+          "href": "https://oia.pu.edu.tw/p/426-1048-42.php?Lang=zh-tw",
+          "text": "國際專修部申請入學"
+        },
+        {
+          "href": "https://oia.pu.edu.tw/p/426-1048-41.php?Lang=zh-tw",
+          "text": "新型專班申請入學"
+        }
+      ]
+    }
   },
   {
     "id": "46",
@@ -1912,7 +2748,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.cjcu.edu.tw/oia/"
+    }
   },
   {
     "id": "43",
@@ -1976,7 +2815,14 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "english_program_period": "2025/10/13~12/05",
+      "english_program_qualification": "TOEIC 600",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "49",
@@ -2008,7 +2854,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://www.dyu.edu.tw/%7B%7B%20Enroll.ExMainLink%20%7D%7D",
+      "admission_links": [
+        {
+          "href": "https://www.dyu.edu.tw/%7B%7B%20Enroll.ExMainLink%20%7D%7D",
+          "text": "開啟招生訊息"
+        },
+        {
+          "href": "https://www.dyu.edu.tw/news.html?pool_ID=2950",
+          "text": "{{ L.EnrollTitle }}\r\n                              \r\n                              招生訊息"
+        },
+        {
+          "href": "https://www.dyu.edu.tw/%7B%7B%20d.ExLink%20%7D%7D",
+          "text": "招生消息"
+        }
+      ]
+    }
   },
   {
     "id": "63",
@@ -2040,7 +2903,17 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "http://www.ttu.edu.tw/p/406-1000-42304,r12.php",
+      "admission_url": "https://recruit.ttu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.ttu.edu.tw/",
+          "text": "招生資訊"
+        }
+      ]
+    }
   },
   {
     "id": "62",
@@ -2072,7 +2945,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "http://www.hfu.edu.tw/Front/Announce/Announce-02/News.aspx?id=%2BCcwjg98bKg=&Sn=2369",
+      "admission_url": "http://www.hfu.edu.tw/Front/Admission/Admissions-01/Page.aspx?id=lAxlbSsJ6R4=",
+      "admission_links": [
+        {
+          "href": "http://www.hfu.edu.tw/Front/Admission/Admissions-01/Page.aspx?id=lAxlbSsJ6R4=",
+          "text": "招生專區"
+        },
+        {
+          "href": "http://www.hfu.edu.tw/FrontPointOfEntry.aspx?Sn=84",
+          "text": "招生簡章與報名"
+        },
+        {
+          "href": "https://edupass.azurewebsites.net/Pages/RegOnline.aspx?Group=01",
+          "text": "入學網路報名"
+        }
+      ]
+    }
   },
   {
     "id": "60",
@@ -2104,7 +2995,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www3.nhu.edu.tw/Web/NewsDetail?nid=52372&n=News",
+      "admission_url": "https://admission3.nhu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://admission3.nhu.edu.tw/",
+          "text": "入學招生"
+        },
+        {
+          "href": "https://admission3.nhu.edu.tw/",
+          "text": "本國學生"
+        },
+        {
+          "href": "https://admission3.nhu.edu.tw/",
+          "text": "就學服務處"
+        }
+      ]
+    }
   },
   {
     "id": "59",
@@ -2168,7 +3077,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oica.fgu.edu.tw/?locale=en",
+      "admission_url": "https://oica.fgu.edu.tw/en/intro1/intro2/ICEC",
+      "admission_links": [
+        {
+          "href": "https://oica.fgu.edu.tw/en/intro1/intro2/ICEC",
+          "text": "International Cooperation and exchange Center (115-1 International Cooperation Center) (115-1 International Student Center)"
+        },
+        {
+          "href": "https://oica.fgu.edu.tw/en/intro1/intro2/IAC",
+          "text": "Cross-Strait Cooperation and Exchange Center (115-1 International Admission Center)"
+        },
+        {
+          "href": "https://oica.fgu.edu.tw/en/admission",
+          "text": "Admission"
+        }
+      ]
+    }
   },
   {
     "id": "F1",
@@ -2199,7 +3126,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.mmu.edu.tw/oia/"
+    }
   },
   {
     "id": "53",
@@ -2231,7 +3161,14 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "english_program_period": "2026/01/01~04/30",
+      "english_program_qualification": "TOEIC 600",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "38",
@@ -2272,7 +3209,59 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://iee.mcu.edu.tw/en/",
+      "admission_url": "https://iee.mcu.edu.tw/en/international-application/",
+      "admission_links": [
+        {
+          "href": "https://admission.wp.mcu.edu.tw/",
+          "text": ""
+        }
+      ],
+      "financial_proof": {
+        "amount": "USD 6,500",
+        "jpy_estimate": "約100万円",
+        "notes": "NTUSTの4,000より高い"
+      },
+      "language_req": {
+        "chinese": "TOCFL B1 (Level 3) — 他校のA2より高い基準",
+        "english": "TOEIC 550"
+      },
+      "english_program_period": "2026/02/01~05/31",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "114學年度版PDF発見済み（Application Handbook英語版もあり）",
+      "jianzhang_year": 114,
+      "application_periods": [
+        {
+          "round": 1,
+          "season": "fall",
+          "start": "2026-02-01",
+          "end": "2026-05-31"
+        },
+        {
+          "round": 2,
+          "season": "spring",
+          "start": "2025-09-15",
+          "end": "2025-10-15"
+        }
+      ],
+      "application_fee": "USD 60 / NTD 1,800",
+      "required_documents": [
+        "パスポートのコピー",
+        "卒業証明書",
+        "成績証明書",
+        "語学能力証明（TOCFL B1）",
+        "財力証明",
+        "Application Handbook参照"
+      ],
+      "tuition_info": "約USD 5,000/年。国際学院は初年度40%免除",
+      "notes": "アジア初のMSCHE（米国認定）。全英語の国際学院あり。115學年度版は公開待ち"
+    }
   },
   {
     "id": "38A",
@@ -2304,7 +3293,17 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://academic.mcu.edu.tw/mcuinternationalsymposia/",
+      "admission_url": "https://admission.wp.mcu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://admission.wp.mcu.edu.tw/",
+          "text": ""
+        }
+      ]
+    }
   },
   {
     "id": "67",
@@ -2335,7 +3334,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://olis.kmu.edu.tw/error.html"
+    }
   },
   {
     "id": "47",
@@ -2398,7 +3400,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.tcu.edu.tw/p/412-1033-4850.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://admissions.tcu.edu.tw/?page_id=4183",
+          "text": "大學部招生"
+        },
+        {
+          "href": "https://admissions.tcu.edu.tw/?page_id=22279",
+          "text": "五專部招生"
+        },
+        {
+          "href": "https://cec.tcu.edu.tw/?page_id=3227",
+          "text": "進修二技招生專區"
+        }
+      ]
+    }
   },
   {
     "id": "52",
@@ -2430,7 +3449,26 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.ukn.edu.tw/p/406-1000-41810,r28.php?Lang=zh-tw",
+      "admission_url": "https://recruit.ukn.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.ukn.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://recruit.ukn.edu.tw/",
+          "text": "招生專區"
+        }
+      ],
+      "english_program_period": "2026/01/21~02/28",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "D6",
@@ -2462,7 +3500,17 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www-old.dila.edu.tw/en",
+      "admission_url": "https://www-old.dila.edu.tw/en/Admission",
+      "admission_links": [
+        {
+          "href": "https://www-old.dila.edu.tw/en/Admission",
+          "text": "Admissions"
+        }
+      ]
+    }
   },
   {
     "id": "F4",
@@ -2493,7 +3541,21 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.cct.edu.tw/Administration/pao/pao.html",
+      "admission_url": "https://www.cct.edu.tw/mobile/2.html",
+      "admission_links": [
+        {
+          "href": "https://www.cct.edu.tw/mobile/2.html",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://www.cct.edu.tw/Recruitment/recruitment.html",
+          "text": "招生資訊"
+        }
+      ]
+    }
   },
   {
     "id": "75",
@@ -2557,7 +3619,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.nfu.edu.tw/",
+      "admission_url": "http://oia.nfu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "http://oia.nfu.edu.tw/",
+          "text": "International Student"
+        },
+        {
+          "href": "https://enrollstudents.nfu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://aac.nfu.edu.tw/",
+          "text": "招生事務中心"
+        }
+      ]
+    }
   },
   {
     "id": "74",
@@ -2589,7 +3669,26 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://presidential-hackathon.taiwan.gov.tw/",
+      "admission_url": "https://presidential-hackathon.taiwan.gov.tw/@demo2wsx6RFV/wish2024demo@1qaz3EDC/wishPersonalApply.aspx",
+      "admission_links": [
+        {
+          "href": "https://presidential-hackathon.taiwan.gov.tw/@demo2wsx6RFV/wish2024demo@1qaz3EDC/wishPersonalApply.aspx",
+          "text": "自我推薦"
+        },
+        {
+          "href": "https://presidential-hackathon.taiwan.gov.tw/forms/w/wishPersonalApply.aspx",
+          "text": "自我推薦"
+        }
+      ],
+      "english_program_period": "2026/01/01~03/31",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "82",
@@ -2621,7 +3720,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oia.nutc.edu.tw/",
+      "admission_url": "https://oia.nutc.edu.tw/p/412-1042-9963.php",
+      "admission_links": [
+        {
+          "href": "https://oia.nutc.edu.tw/p/412-1042-9963.php",
+          "text": "Admissions"
+        },
+        {
+          "href": "https://oia.nutc.edu.tw/p/412-1042-9963.php",
+          "text": "Admissions 境外生入學"
+        },
+        {
+          "href": "https://oia.nutc.edu.tw/p/404-1042-45902.php",
+          "text": "本校外國學生獎助金資訊 NTCUST Scholarship for International Students"
+        }
+      ]
+    }
   },
   {
     "id": "73",
@@ -2694,7 +3811,23 @@
       "hailian",
       "guide"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_links": [
+        {
+          "href": "https://www.ntut.edu.tw/p/404-1007-85221.php",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://aps-stu.ntut.edu.tw/sert/ApplyTranscript/LoginUser",
+          "text": "線上成績單申請"
+        },
+        {
+          "href": "https://www.jctv.ntut.edu.tw/",
+          "text": "技專校院招生委員會聯合會"
+        }
+      ]
+    }
   },
   {
     "id": "72",
@@ -2731,7 +3864,34 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://admissions-oia.yuntech.edu.tw/intladmission/index/index/applyIntladmissionSn/68",
+      "admission_url": "https://admissions-oia.yuntech.edu.tw/intladmission/application",
+      "admission_links": [
+        {
+          "href": "https://admissions-oia.yuntech.edu.tw/intladmission/application",
+          "text": "YunTech-Office of International Affairs"
+        },
+        {
+          "href": "https://admissions-oia.yuntech.edu.tw/intladmission/index/login",
+          "text": "Login"
+        },
+        {
+          "href": "https://admissions-oia.yuntech.edu.tw/ckfinder_upload/files/20230823094616.pptx",
+          "text": "Application System Guidebook"
+        }
+      ],
+      "language_req": {
+        "chinese": "A2以上（HSKもOK）",
+        "english": "CEFR B1以上"
+      },
+      "english_program_period": "2026/03/02~04/15",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "D7",
@@ -2762,7 +3922,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.npu.edu.tw/error.html?aspxerrorpath=/oia/"
+    }
   },
   {
     "id": "85",
@@ -2794,7 +3957,28 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://secr.ntunhs.edu.tw/p/404-1008-81898.php?Lang=zh-tw",
+      "admission_url": "https://adm-acad.ntunhs.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://adm-acad.ntunhs.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.ntunhs.edu.tw/#cmb_12_4",
+          "text": "招生公告"
+        }
+      ],
+      "financial_proof": {
+        "amount": "NTD 100,000",
+        "jpy_estimate": "約50万円"
+      },
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "84",
@@ -2826,7 +4010,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://mplngt.ntub.edu.tw/p/404-1040-107904.php?Lang=zh-tw",
+      "admission_url": "https://mplngt.ntub.edu.tw/p/412-1040-4793.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://mplngt.ntub.edu.tw/p/412-1040-4793.php?Lang=zh-tw",
+          "text": "招生資訊 Admissions"
+        },
+        {
+          "href": "https://mplngt.ntub.edu.tw/p/412-1040-4793.php?Lang=zh-tw",
+          "text": "招生說明 Admissions"
+        },
+        {
+          "href": "https://mplngt.ntub.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MelF3TDNCMFlWODVOekF4TjE4M01UazVOalV4WHpVNU5ETXlMbkJrWmc9PQ==&fname=WW54RPOKIC4441MPHCLKRKZWQOTWWT14QO3435HGTX25LK40FCNKA054WW54FGOKPOPOZX10A404GDXTRKPKTSIG34B0NOYSVXVXDCTSWSB0VSOKUSKKYWFCNPPO44OOHCA0UWIGTWMODC35WSB040MKZTGDQPROWS30IGB4GGOK45USPOWSB510DGFGA0SXKO30B4ICIGRO35WWNPVX04OKYSB4JGUSPKKKICFCXSQOXTKKDGLK54TX1430DGHC20B0YSGCLPJDWSTSNKROGHPO50HGFGOKVWPOTT15A404POXTFCZWEG1034B0NOWSIH35VSTWLKMKXWTWCCTS4550MK44A51500JCWWHGDCKOCG30STEGQKWSQPUXYXA0KP3030B0QOOKLKFCICCC210544EG35YWQO14MKYSWS2410XSVXNPPKOKLKROWXFGQO54DGDCSSLKTTXX04EGNKGDRKNKHGICSSQKCCICIHA1DGCCNKFCYWA4YS10NKXXWW00ZXZX20XSFC14RKDGGGNPIGB0USMK00VXNODCNKTSZSTWB0DCXSGHRK44WWLPFGA0EGGDTW14GDA1PK34CGYSMLA1LOVSA0QOJGA020TSSTB0NPCCA5KKB0FGQKCHZS30LOGCQOROB1MOQPIDLKB0A0B414A0&cg=6726",
+          "text": "115學年度外國學生申請入學招生簡章_NTUB_Admission_Brochure_for_International_Students_Application,_Academic_Year_2026-2027.pdf"
+        }
+      ]
+    }
   },
   {
     "id": "81",
@@ -3026,7 +4228,66 @@
       "spreadsheet",
       "guide"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.oia.ntust.edu.tw/",
+      "admission_url": "https://www.admission.ntust.edu.tw/index.php?Lang=en",
+      "admission_links": [
+        {
+          "href": "https://www.admission.ntust.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.admission.ntust.edu.tw/p/404-1052-145791.php?Lang=zh-tw",
+          "text": "115學年度博士班115年3月26日9:00起開放報名"
+        },
+        {
+          "href": "https://www.admission.ntust.edu.tw/p/405-1052-145031,c8738.php?Lang=zh-tw",
+          "text": "115年度秋季班產業碩士專班招生115年3月10日9:00起開放報名"
+        }
+      ],
+      "language_req": {
+        "chinese": "学科により異なる",
+        "english": "学科により異なる"
+      },
+      "data_sources": [
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "115學年度版 学士班・大学院ともにPDF発見済み",
+      "jianzhang_year": 115,
+      "application_periods": [
+        {
+          "round": 1,
+          "type": "graduate",
+          "start": "2026-01-01",
+          "end": "2026-03-11",
+          "notes": "大学院のみ"
+        },
+        {
+          "round": 1,
+          "type": "undergraduate",
+          "start": "2026-01-29",
+          "end": "2026-04-06",
+          "notes": "学士のみ"
+        }
+      ],
+      "application_fee": "USD 30/学科",
+      "financial_proof": {
+        "amount": "USD 4,000",
+        "jpy_estimate": "約62万円",
+        "notes": "英文銀行残高証明"
+      },
+      "required_documents": [
+        "パスポートのコピー",
+        "卒業証明書",
+        "成績証明書",
+        "語学能力証明",
+        "財力証明（英文銀行残高証明）"
+      ],
+      "tuition_info": "NTD 3,340/単位（国立のため安価）",
+      "notes": "学部生は奨学金対象外。秋季入学のみ"
+    }
   },
   {
     "id": "87",
@@ -3058,7 +4319,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.stust.edu.tw/en/admission/",
+      "admission_url": "https://www.stust.edu.tw/en/admission/#C",
+      "admission_links": [
+        {
+          "href": "https://www.stust.edu.tw/en/admission/#C",
+          "text": "To the main content area"
+        },
+        {
+          "href": "https://www.stust.edu.tw/en/admission/#U",
+          "text": ":::"
+        },
+        {
+          "href": "https://www.stust.edu.tw/en/admission",
+          "text": "Admission(current)"
+        }
+      ]
+    }
   },
   {
     "id": "94",
@@ -3089,7 +4368,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oia.csu.edu.tw/",
+      "admission_url": "https://applycsu.csu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://applycsu.csu.edu.tw/",
+          "text": "入學申請系統"
+        },
+        {
+          "href": "https://oia.csu.edu.tw/p/412-1075-225.php?Lang=zh-tw",
+          "text": "申請入學"
+        },
+        {
+          "href": "https://oia.csu.edu.tw/p/412-1075-225.php?Lang=zh-tw",
+          "text": "招生訊息"
+        }
+      ]
+    }
   },
   {
     "id": "86",
@@ -3121,7 +4418,12 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "90",
@@ -3153,7 +4455,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.cnu.edu.tw/content.asp?fid=142&id=969",
+      "admission_url": "https://www.cnu.edu.tw/content.asp?fid=142",
+      "admission_links": [
+        {
+          "href": "https://www.cnu.edu.tw/content.asp?fid=142",
+          "text": "入學轉學"
+        },
+        {
+          "href": "https://www.cnu.edu.tw/content.asp?fid=142&id=964",
+          "text": "招生公告"
+        },
+        {
+          "href": "https://www.cnu.edu.tw/content-text.asp?fid=142&id=969&funcname=%E6%B8%AF%E6%BE%B3%20/%20%E5%9C%8B%E9%9A%9B%E6%8B%9B%E7%94%9F%20/%20%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8#collapse3",
+          "text": "招生系所"
+        }
+      ]
+    }
   },
   {
     "id": "88",
@@ -3185,7 +4505,16 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://recruit.ksu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.ksu.edu.tw/",
+          "text": "招生暨新生資訊網"
+        }
+      ]
+    }
   },
   {
     "id": "A4",
@@ -3217,7 +4546,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oiss-rd.tut.edu.tw/",
+      "admission_url": "https://oiss-rd.tut.edu.tw/#cmb_279_0",
+      "admission_links": [
+        {
+          "href": "https://oiss-rd.tut.edu.tw/#cmb_279_0",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://oiss-rd.tut.edu.tw/var/file/42/1042/img/1440/539674474.pdf",
+          "text": "招生文宣(簡英雙語版)1"
+        },
+        {
+          "href": "https://oiss-rd.tut.edu.tw/var/file/42/1042/img/1440/651655665.pdf",
+          "text": "招生文宣(簡英雙語版)2"
+        }
+      ]
+    }
   },
   {
     "id": "B8",
@@ -3280,7 +4627,20 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://recruit.cgust.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.cgust.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.cgust.edu.tw/#cmb_2_1",
+          "text": "招生資訊"
+        }
+      ]
+    }
   },
   {
     "id": "93",
@@ -3344,7 +4704,16 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://admissions.uch.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://admissions.uch.edu.tw/",
+          "text": ""
+        }
+      ]
+    }
   },
   {
     "id": "A8",
@@ -3376,7 +4745,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://ic.nkut.edu.tw/index.php",
+      "admission_url": "https://ic.nkut.edu.tw/redirect.php?ID=admission_schedule",
+      "admission_links": [
+        {
+          "href": "https://ic.nkut.edu.tw/redirect.php?ID=admission_schedule",
+          "text": "招生期程"
+        },
+        {
+          "href": "https://ic.nkut.edu.tw/redirect.php?ID=admission_hkmc2",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://ic.nkut.edu.tw/redirect.php?ID=apply_hk1",
+          "text": "申請管道"
+        }
+      ]
+    }
   },
   {
     "id": "B7",
@@ -3413,7 +4800,32 @@
       "hailian",
       "spreadsheet"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://gla.aeust.edu.tw/?Lang=zh-tw",
+      "admission_url": "https://recruit.aeust.edu.tw/?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://recruit.aeust.edu.tw/?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://recruit.aeust.edu.tw/p/404-1014-56179.php?Lang=zh-tw",
+          "text": "亞東科技大學115學年度四技申請入學第二階段複試公告"
+        },
+        {
+          "href": "https://www.aeust.edu.tw/#cmb_2_1",
+          "text": "招生"
+        }
+      ],
+      "financial_proof": {
+        "amount": "3,000米ドル",
+        "jpy_estimate": "約47万円"
+      },
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "D2",
@@ -3445,7 +4857,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://ia.dyhu.edu.tw/",
+      "admission_url": "https://ia.dyhu.edu.tw/p/412-1009-2356.php",
+      "admission_links": [
+        {
+          "href": "https://ia.dyhu.edu.tw/p/412-1009-2356.php",
+          "text": "國際招生組"
+        },
+        {
+          "href": "https://ia.dyhu.edu.tw/var/file/9/1009/img/538175324.pdf",
+          "text": "招生簡介"
+        },
+        {
+          "href": "https://ia.dyhu.edu.tw/p/412-1009-2356.php",
+          "text": "國際招生組"
+        }
+      ]
+    }
   },
   {
     "id": "D9",
@@ -3477,7 +4907,20 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://recruit.ctu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.ctu.edu.tw/",
+          "text": "查詢招生訊息"
+        },
+        {
+          "href": "https://www.ctu.edu.tw/app/home.php",
+          "text": "進入學校官網"
+        }
+      ]
+    }
   },
   {
     "id": "C2",
@@ -3604,7 +5047,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://choice.hwu.edu.tw/choice/course.html",
+      "admission_url": "https://b024.hwu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://b024.hwu.edu.tw/",
+          "text": "招生處"
+        },
+        {
+          "href": "https://www.hwu.edu.tw/#",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://b024.hwu.edu.tw/",
+          "text": "醒吾招生專頁"
+        }
+      ]
+    }
   },
   {
     "id": "96",
@@ -3636,7 +5097,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.vnu.edu.tw/oia/"
+    }
   },
   {
     "id": "89",
@@ -3668,7 +5132,21 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.stu.edu.tw/%E5%9C%8B%E9%9A%9B%E5%AD%B8%E7%94%9F/",
+      "admission_url": "https://reg.aca.stu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://reg.aca.stu.edu.tw/",
+          "text": "招生訊息"
+        },
+        {
+          "href": "https://freshman.stu.edu.tw/",
+          "text": "新生入學服務網"
+        }
+      ]
+    }
   },
   {
     "id": "A9",
@@ -3731,7 +5209,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oia.takming.edu.tw/p/426-1036-8.php?Lang=zh-tw",
+      "admission_url": "https://oia.takming.edu.tw/p/404-1036-14820.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://oia.takming.edu.tw/p/404-1036-14820.php?Lang=zh-tw",
+          "text": "外國學生專班"
+        },
+        {
+          "href": "https://oia.takming.edu.tw/p/404-1036-15143.php?Lang=zh-tw",
+          "text": "一般外國學生"
+        },
+        {
+          "href": "https://oia.takming.edu.tw/p/426-1036-8.php?Lang=zh-tw#cmb_97_1",
+          "text": "最新錄取名單資訊  Admission List"
+        }
+      ]
+    }
   },
   {
     "id": "B0",
@@ -3762,7 +5258,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://int.mitust.edu.tw/",
+      "admission_url": "https://acad.mitust.edu.tw/p/412-1004-144.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://acad.mitust.edu.tw/p/412-1004-144.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://int.mitust.edu.tw/p/412-1017-1057.php",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://int.mitust.edu.tw/var/file/17/1017/img/447743668.pdf",
+          "text": "114學年度新南向產學合作國際專班錄取申請入學榜單"
+        }
+      ]
+    }
   },
   {
     "id": "E4",
@@ -3794,7 +5308,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.lit.edu.tw/international/",
+      "admission_url": "https://www.lit.edu.tw/recruit/",
+      "admission_links": [
+        {
+          "href": "https://www.lit.edu.tw/recruit/",
+          "text": "招生中心"
+        },
+        {
+          "href": "https://www.lit.edu.tw/iacp/",
+          "text": "境外學生/International student"
+        },
+        {
+          "href": "https://www.lit.edu.tw/international/61367/",
+          "text": "115 學年度外國學生申請入學招生簡章(研究所)/2026-2027 International Students   Application Information Brochure for Admission  (Graduate Program)"
+        }
+      ]
+    }
   },
   {
     "id": "91",
@@ -3826,7 +5358,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.must.edu.tw/#",
+      "admission_url": "https://www.must.edu.tw/admissions.php",
+      "admission_links": [
+        {
+          "href": "https://www.must.edu.tw/admissions.php",
+          "text": "未來學生"
+        },
+        {
+          "href": "https://www.must.edu.tw/admissions.php",
+          "text": "招生資訊"
+        },
+        {
+          "href": "http://admission.must.edu.tw/",
+          "text": "入學服務"
+        }
+      ]
+    }
   },
   {
     "id": "C3",
@@ -3858,7 +5408,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://exam.chihlee.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://exam.chihlee.edu.tw/",
+          "text": "招生快訊"
+        },
+        {
+          "href": "https://www.chihlee.edu.tw/p/403-1000-606.php?Lang=zh-tw",
+          "text": "招生影片"
+        },
+        {
+          "href": "https://exam.chihlee.edu.tw/",
+          "text": "招生快訊"
+        }
+      ]
+    }
   },
   {
     "id": "B2",
@@ -3890,7 +5457,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.wzu.edu.tw/"
+    }
   },
   {
     "id": "A1",
@@ -3922,7 +5492,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://aisweb.ltu.edu.tw/eis/",
+      "admission_links": [
+        {
+          "href": "https://aisweb.ltu.edu.tw/eis/",
+          "text": "115入學意願登記"
+        },
+        {
+          "href": "https://ltu1480.video.ltu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://ais.ltu.edu.tw/recnst//",
+          "text": "招生報名系統"
+        }
+      ]
+    }
   },
   {
     "id": "D8",
@@ -3954,7 +5541,21 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oia.lhu.edu.tw/p/412-1007-274.php?Lang=zh-tw&tr=vn",
+      "admission_url": "https://oia.lhu.edu.tw/p/412-1007-728.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://oia.lhu.edu.tw/p/412-1007-728.php?Lang=zh-tw",
+          "text": "入學申請"
+        },
+        {
+          "href": "https://oia.lhu.edu.tw/p/412-1007-793.php?Lang=zh-tw",
+          "text": "招生辦法"
+        }
+      ]
+    }
   },
   {
     "id": "97",
@@ -3986,7 +5587,22 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oia.mcut.edu.tw/?Lang=zh-tw",
+      "admission_url": "https://oia.mcut.edu.tw/p/412-1036-9005.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://oia.mcut.edu.tw/p/412-1036-9005.php?Lang=zh-tw",
+          "text": "國際招生專區"
+        }
+      ],
+      "english_program_period": "2026/01/01~04/30",
+      "english_program_qualification": "TOEIC 550",
+      "data_sources": [
+        "spreadsheet"
+      ]
+    }
   },
   {
     "id": "92",
@@ -4050,7 +5666,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://oaic.ctust.edu.tw/",
+      "admission_url": "https://oaic.ctust.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://oaic.ctust.edu.tw/",
+          "text": "招生公告"
+        },
+        {
+          "href": "https://oaic.ctust.edu.tw/var/file/15/1015/img/2167/584842179.pdf",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://oaic.ctust.edu.tw/p/412-1015-5358.php?Lang=zh-tw",
+          "text": "入學管道總表"
+        }
+      ]
+    }
   },
   {
     "id": "C0",
@@ -4082,7 +5716,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://www.wfu.edu.tw/campus_guideline/",
+      "admission_links": [
+        {
+          "href": "https://www.wfu.edu.tw/campus_guideline/",
+          "text": "校園導覽"
+        },
+        {
+          "href": "https://sp.wfu.edu.tw/gradeApply/",
+          "text": "&nbsp;  線上申請成績單"
+        },
+        {
+          "href": "https://www.wfu.edu.tw/campus_guideline/",
+          "text": "校園導覽"
+        }
+      ]
+    }
   },
   {
     "id": "E1",
@@ -4114,7 +5765,21 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://secretary.hwai.edu.tw/p/404-1010-71369.php?Lang=zh-tw",
+      "admission_url": "https://rd.hwai.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://rd.hwai.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.hwai.edu.tw/#cmb_10_1",
+          "text": "招生快訊"
+        }
+      ]
+    }
   },
   {
     "id": "A6",
@@ -4146,7 +5811,16 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://top.ypu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://top.ypu.edu.tw/",
+          "text": "招生訊息Admission"
+        }
+      ]
+    }
   },
   {
     "id": "D5",
@@ -4241,7 +5915,25 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www1.ydu.edu.tw/?locale=zh_tw/oia/",
+      "admission_url": "https://oia.ydu.edu.tw/zh_tw/Admission",
+      "admission_links": [
+        {
+          "href": "https://oia.ydu.edu.tw/zh_tw/Admission",
+          "text": "Việt"
+        },
+        {
+          "href": "https://www1.ydu.edu.tw/zh_tw/announcement/admiss1",
+          "text": "考試招生"
+        },
+        {
+          "href": "http://entry.ydu.edu.tw/",
+          "text": "招生資訊"
+        }
+      ]
+    }
   },
   {
     "id": "B9",
@@ -4304,7 +5996,10 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.tnu.edu.tw/oia/"
+    }
   },
   {
     "id": "C8",
@@ -4335,7 +6030,20 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "http://registry.hdut.edu.tw/",
+      "admission_links": [
+        {
+          "href": "http://registry.hdut.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.hdut.edu.tw/#cmb_10_3",
+          "text": "招生訊息"
+        }
+      ]
+    }
   },
   {
     "id": "A5",
@@ -4367,7 +6075,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://sdc.ctbctech.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://sdc.ctbctech.edu.tw/",
+          "text": "招生入學"
+        },
+        {
+          "href": "https://sdc.ctbctech.edu.tw/",
+          "text": "招生事宜"
+        },
+        {
+          "href": "https://sdc.ctbctech.edu.tw/",
+          "text": "招生事宜"
+        }
+      ]
+    }
   },
   {
     "id": "99",
@@ -4431,7 +6156,24 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "admission_url": "https://exam.tsust.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://exam.tsust.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.tsust.edu.tw/#cmb_18_2",
+          "text": "招生公告"
+        },
+        {
+          "href": "https://www.tsust.edu.tw/p/406-1000-7161,r94.php?Lang=zh-tw",
+          "text": "台鋼科技大學115學年度招生影片"
+        }
+      ]
+    }
   },
   {
     "id": "C7",
@@ -4463,7 +6205,21 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://ieco.meiho.edu.tw/p/404-1009-62947.php?Lang=zh-tw",
+      "admission_url": "https://ieco.meiho.edu.tw/p/412-1009-217.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://ieco.meiho.edu.tw/p/412-1009-217.php?Lang=zh-tw",
+          "text": "外國學生專區"
+        },
+        {
+          "href": "https://ieco.meiho.edu.tw/p/412-1009-4656.php?Lang=zh-tw",
+          "text": "招生專區"
+        }
+      ]
+    }
   },
   {
     "id": "A2",
@@ -4527,6 +6283,16 @@
     "data_sources": [
       "hailian"
     ],
-    "last_updated": "2026-03-30"
+    "last_updated": "2026-03-30",
+    "foreign_student": {
+      "oia_url": "https://www.nups.ntnu.edu.tw/international/",
+      "admission_url": "https://www.nups.ntnu.edu.tw/international/upfiles/%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0/%E4%B8%AD%E6%96%87-2022%E5%B9%B4%E5%83%91%E7%94%9F%E5%85%88%E4%BF%AE%E9%83%A8%E8%A9%A6%E8%BE%A6%E5%A4%96%E7%B1%8D%E7%94%9F%E5%85%88%E4%BF%AE%E7%8F%AD%E7%B0%A1%E7%AB%A0.pdf",
+      "admission_links": [
+        {
+          "href": "https://www.nups.ntnu.edu.tw/international/upfiles/%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0/%E4%B8%AD%E6%96%87-2022%E5%B9%B4%E5%83%91%E7%94%9F%E5%85%88%E4%BF%AE%E9%83%A8%E8%A9%A6%E8%BE%A6%E5%A4%96%E7%B1%8D%E7%94%9F%E5%85%88%E4%BF%AE%E7%8F%AD%E7%B0%A1%E7%AB%A0.pdf",
+          "text": "招生簡章下載"
+        }
+      ]
+    }
   }
 ]

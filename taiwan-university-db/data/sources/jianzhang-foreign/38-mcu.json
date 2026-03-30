@@ -1,0 +1,45 @@
+{
+  "school_id": "38",
+  "school_name": "銘傳大學",
+  "category": "foreign_student",
+  "data_source": "web_research",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://iee.mcu.edu.tw/en/",
+  "foreign_admission_url": "https://iee.mcu.edu.tw/en/international-application/",
+  "jianzhang_url": "114學年度版PDF発見済み（Application Handbook英語版もあり）",
+  "jianzhang_year": 114,
+  "application_periods": [
+    {
+      "round": 1,
+      "season": "fall",
+      "start": "2026-02-01",
+      "end": "2026-05-31"
+    },
+    {
+      "round": 2,
+      "season": "spring",
+      "start": "2025-09-15",
+      "end": "2025-10-15"
+    }
+  ],
+  "application_fee": "USD 60 / NTD 1,800",
+  "language_req": {
+    "chinese": "TOCFL B1 (Level 3) — 他校のA2より高い基準",
+    "english": "TOEIC 550"
+  },
+  "financial_proof": {
+    "amount": "USD 6,500",
+    "jpy_estimate": "約100万円",
+    "notes": "NTUSTの4,000より高い"
+  },
+  "tuition_info": "約USD 5,000/年。国際学院は初年度40%免除",
+  "required_documents": [
+    "パスポートのコピー",
+    "卒業証明書",
+    "成績証明書",
+    "語学能力証明（TOCFL B1）",
+    "財力証明",
+    "Application Handbook参照"
+  ],
+  "notes": "アジア初のMSCHE（米国認定）。全英語の国際学院あり。115學年度版は公開待ち"
+}
