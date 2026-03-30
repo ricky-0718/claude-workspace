@@ -1,0 +1,19 @@
+{
+  "name": "taiwan-university-website",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "sync-data": "node scripts/copy-data.js"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.2",
+    "astro-pagefind": "^1.8.6",
+    "tailwindcss": "^4.2.2",
+    "wrangler": "^4.78.0"
+  }
+}

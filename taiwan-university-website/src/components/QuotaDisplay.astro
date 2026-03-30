@@ -1,0 +1,45 @@
+---
+import type { Quota } from '../data/loaders';
+
+interface Props {
+  quota: Quota;
+}
+
+const { quota } = Astro.props;
+const ud = quota.united_distribution;
+const ia = quota.individual_application;
+---
+
+<div class="text-sm">
+  {ia != null && ia > 0 && (
+    <div class="flex justify-between py-1.5 border-b border-gray-50">
+      <span class="text-gray-500">個人申請</span>
+      <span class="font-medium text-gray-800">{ia}名</span>
+    </div>
+  )}
+  {ud && ud.total > 0 && (
+    <>
+      <div class="flex justify-between py-1.5 border-b border-gray-50">
+        <span class="text-gray-500">聯合分発 合計</span>
+        <span class="font-medium text-gray-800">{ud.total}名</span>
+      </div>
+      <div class="grid grid-cols-5 gap-2 mt-2 text-center text-xs">
+        {[
+          { label: '第1志望', value: ud.s1 },
+          { label: '第2志望', value: ud.s2 },
+          { label: '第3志望', value: ud.s3 },
+          { label: '第4志望', value: ud.s4 },
+          { label: '第5志望', value: ud.s5 },
+        ].map(s => (
+          <div>
+            <div class="text-gray-400">{s.label}</div>
+            <div class="font-medium text-gray-700 mt-0.5">{s.value || 0}</div>
+          </div>
+        ))}
+      </div>
+    </>
+  )}
+  {(!ud || ud.total === 0) && (!ia || ia === 0) && (
+    <p class="text-gray-400 text-xs">定員情報はまだ掲載されていません。</p>
+  )}
+</div>

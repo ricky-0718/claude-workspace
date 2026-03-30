@@ -1,0 +1,25 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LineCTA from '../components/LineCTA.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogType?: string;
+}
+
+const { title, description, path, ogType } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} path={path} ogType={ogType}>
+  <slot name="head" slot="head" />
+  <Header />
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    <slot />
+  </main>
+  <Footer />
+  <LineCTA />
+</BaseLayout>
