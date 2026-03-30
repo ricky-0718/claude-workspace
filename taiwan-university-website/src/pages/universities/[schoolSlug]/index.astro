@@ -1,0 +1,237 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Badge from '../../../components/Badge.astro';
+import TuitionTable from '../../../components/TuitionTable.astro';
+import DataCompletenessNote from '../../../components/DataCompletenessNote.astro';
+import {
+  schools, deptsBySchool, groupById,
+  getSchoolTypeLabel, isNational,
+  type School, type Department,
+} from '../../../data/loaders';
+
+export function getStaticPaths() {
+  return schools.map(school => ({
+    params: { schoolSlug: school.resolvedSlug },
+    props: {
+      school,
+      departments: (deptsBySchool.get(school.id) || []).sort((a, b) =>
+        a.name.ja.localeCompare(b.name.ja, 'ja')
+      ),
+    },
+  }));
+}
+
+interface Props {
+  school: School;
+  departments: Department[];
+}
+
+const { school, departments } = Astro.props;
+const typeLabel = getSchoolTypeLabel(school.type);
+const national = isNational(school.type);
+
+// Group departments by group
+const deptGroups = new Map<string, Department[]>();
+for (const d of departments) {
+  const groupName = groupById.get(d.group_id)?.name.ja || '分類なし';
+  const list = deptGroups.get(groupName) || [];
+  list.push(d);
+  deptGroups.set(groupName, list);
+}
+---
+
+<PageLayout
+  title={`${school.name.ja} | 台湾大学データベース`}
+  description={`${school.name.ja}の学費・奨学金・寮・学科一覧。${school.region}にある${typeLabel}大学。`}
+  path={`/universities/${school.resolvedSlug}/`}
+>
+  <Breadcrumb items={[
+    { label: '大学一覧', href: '/universities/' },
+    { label: school.name.ja },
+  ]} />
+
+  <!-- Header -->
+  <div class="flex items-start gap-4 mb-6">
+    <div class="w-14 h-14 rounded-xl bg-primary-light flex items-center justify-center text-primary font-bold text-xl shrink-0">
+      {school.name.ja.charAt(0)}
+    </div>
+    <div>
+      <h1 class="text-xl sm:text-2xl font-bold text-gray-900">{school.name.ja}</h1>
+      <p class="text-sm text-gray-400 mt-0.5">{school.name.cht} / {school.name.en}</p>
+      <div class="flex flex-wrap gap-1.5 mt-2">
+        <Badge variant={national ? 'national' : 'private'} label={typeLabel} />
+        <span class="inline-block px-2 py-0.5 rounded text-xs bg-gray-100 text-gray-600">{school.region}</span>
+      </div>
+    </div>
+  </div>
+
+  <DataCompletenessNote level={school.data_completeness} />
+
+  <!-- Description -->
+  {school.ja_description && (
+    <section class="mt-6">
+      <h2 class="text-base font-bold text-gray-800 mb-2">大学概要</h2>
+      <div class="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+        {school.ja_description}
+      </div>
+    </section>
+  )}
+
+  <!-- Key Info Grid -->
+  <section class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+    {school.student_count?.total != null && (
+      <div class="bg-gray-50 rounded-lg p-3">
+        <div class="text-xs text-gray-500">全学生数</div>
+        <div class="text-lg font-bold text-gray-800 mt-1">{school.student_count.total.toLocaleString()}</div>
+      </div>
+    )}
+    {school.student_count?.foreign != null && (
+      <div class="bg-gray-50 rounded-lg p-3">
+        <div class="text-xs text-gray-500">留学生数</div>
+        <div class="text-lg font-bold text-gray-800 mt-1">{school.student_count.foreign.toLocaleString()}</div>
+      </div>
+    )}
+    {school.student_count?.japanese != null && (
+      <div class="bg-gray-50 rounded-lg p-3">
+        <div class="text-xs text-gray-500">日本人学生</div>
+        <div class="text-lg font-bold text-primary mt-1">{school.student_count.japanese}</div>
+      </div>
+    )}
+    {departments.length > 0 && (
+      <div class="bg-gray-50 rounded-lg p-3">
+        <div class="text-xs text-gray-500">学科数</div>
+        <div class="text-lg font-bold text-gray-800 mt-1">{departments.length}</div>
+      </div>
+    )}
+  </section>
+
+  <!-- Dormitory & Scholarship -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+    {school.dormitory && (
+      <section class="bg-white border border-gray-200 rounded-xl p-4">
+        <h3 class="font-bold text-sm text-gray-800 flex items-center gap-1.5">
+          🏠 寮情報
+          {school.dormitory.available ? (
+            <span class="text-xs font-normal text-green">（あり）</span>
+          ) : (
+            <span class="text-xs font-normal text-gray-400">（なし）</span>
+          )}
+        </h3>
+        {school.dormitory.info_ja && (
+          <p class="text-xs text-gray-600 mt-2 leading-relaxed whitespace-pre-line">{school.dormitory.info_ja}</p>
+        )}
+      </section>
+    )}
+
+    {school.scholarship && (
+      <section class="bg-white border border-gray-200 rounded-xl p-4">
+        <h3 class="font-bold text-sm text-gray-800 flex items-center gap-1.5">
+          🎓 奨学金
+          {school.scholarship.available ? (
+            <span class="text-xs font-normal text-green">（あり）</span>
+          ) : (
+            <span class="text-xs font-normal text-gray-400">（なし）</span>
+          )}
+        </h3>
+        {school.scholarship.info_ja && (
+          <p class="text-xs text-gray-600 mt-2 leading-relaxed whitespace-pre-line">{school.scholarship.info_ja}</p>
+        )}
+        {school.scholarship.url && (
+          <a href={school.scholarship.url} target="_blank" rel="noopener noreferrer" class="text-xs text-primary hover:underline mt-2 inline-block">
+            奨学金の詳細 →
+          </a>
+        )}
+      </section>
+    )}
+  </div>
+
+  <!-- Financial & Language Requirements -->
+  {(school.financial_proof || school.language_req) && (
+    <section class="mt-6 bg-white border border-gray-200 rounded-xl p-4">
+      <h2 class="text-base font-bold text-gray-800 mb-3">出願要件</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+        {school.financial_proof && (
+          <div>
+            <div class="text-xs text-gray-500 mb-1">財力証明</div>
+            <div class="text-gray-800 font-medium">{school.financial_proof.amount}</div>
+            {school.financial_proof.jpy_estimate && (
+              <div class="text-xs text-gray-400">（{school.financial_proof.jpy_estimate}）</div>
+            )}
+          </div>
+        )}
+        {school.language_req?.chinese && (
+          <div>
+            <div class="text-xs text-gray-500 mb-1">中国語要件</div>
+            <div class="text-gray-800">{school.language_req.chinese}</div>
+          </div>
+        )}
+        {school.language_req?.english && (
+          <div>
+            <div class="text-xs text-gray-500 mb-1">英語要件</div>
+            <div class="text-gray-800">{school.language_req.english}</div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- Tuition -->
+  {school.tuition && school.tuition.length > 0 && (
+    <section class="mt-6">
+      <h2 class="text-base font-bold text-gray-800 mb-3">学費一覧</h2>
+      <div class="bg-white border border-gray-200 rounded-xl p-4">
+        <TuitionTable items={school.tuition} />
+      </div>
+    </section>
+  )}
+
+  <!-- Departments by Group -->
+  <section class="mt-8">
+    <h2 class="text-base font-bold text-gray-800 mb-4">
+      学科一覧 <span class="text-sm font-normal text-gray-400">（{departments.length}学科）</span>
+    </h2>
+    {[...deptGroups.entries()].map(([groupName, depts]) => (
+      <div class="mb-4">
+        <h3 class="text-sm font-medium text-gray-500 mb-2 px-1">{groupName}</h3>
+        <div class="bg-white border border-gray-200 rounded-xl divide-y divide-gray-100">
+          {depts.map(dept => (
+            <a
+              href={`/universities/${school.resolvedSlug}/departments/${dept.id}/`}
+              class="flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors"
+            >
+              <div class="min-w-0">
+                <div class="text-sm text-gray-800 truncate">{dept.name.ja}</div>
+                <div class="text-xs text-gray-400 truncate mt-0.5">{dept.name.en}</div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0 ml-2">
+                {dept.has_eng_taught && (
+                  <span class="px-1.5 py-0.5 text-[10px] rounded bg-english-tag-bg text-english-tag">英語</span>
+                )}
+                <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- External Links -->
+  <section class="mt-6 flex flex-wrap gap-3">
+    {school.website?.cht && (
+      <a href={school.website.cht} target="_blank" rel="noopener noreferrer"
+        class="text-sm text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-primary-light transition-colors">
+        公式サイト（中文）→
+      </a>
+    )}
+    {school.website?.en && (
+      <a href={school.website.en} target="_blank" rel="noopener noreferrer"
+        class="text-sm text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-primary-light transition-colors">
+        公式サイト（English）→
+      </a>
+    )}
+  </section>
+</PageLayout>

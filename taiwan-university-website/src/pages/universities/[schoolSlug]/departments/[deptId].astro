@@ -1,0 +1,138 @@
+---
+import PageLayout from '../../../../layouts/PageLayout.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
+import Badge from '../../../../components/Badge.astro';
+import QuotaDisplay from '../../../../components/QuotaDisplay.astro';
+import DataCompletenessNote from '../../../../components/DataCompletenessNote.astro';
+import {
+  departments, schools, schoolById, groupById,
+  type Department, type School, type DepartmentGroup,
+} from '../../../../data/loaders';
+
+export function getStaticPaths() {
+  return departments.map(dept => {
+    const school = schoolById.get(dept.school_id)!;
+    const group = groupById.get(dept.group_id);
+    return {
+      params: {
+        schoolSlug: school.resolvedSlug,
+        deptId: dept.id,
+      },
+      props: { dept, school, group },
+    };
+  });
+}
+
+interface Props {
+  dept: Department;
+  school: School;
+  group?: DepartmentGroup;
+}
+
+const { dept, school, group } = Astro.props;
+---
+
+<PageLayout
+  title={`${dept.name.ja} - ${school.name.ja} | 台湾留学101`}
+  description={`${school.name.ja} ${dept.name.ja}の出願情報・必要書類・面接情報。${group?.name.ja || ''}。`}
+  path={`/universities/${school.resolvedSlug}/departments/${dept.id}/`}
+>
+  <Breadcrumb items={[
+    { label: '大学一覧', href: '/universities/' },
+    { label: school.name.ja, href: `/universities/${school.resolvedSlug}/` },
+    { label: dept.name.ja },
+  ]} />
+
+  <!-- Header -->
+  <div class="mb-6">
+    <h1 class="text-xl sm:text-2xl font-bold text-gray-900">{dept.name.ja}</h1>
+    <p class="text-sm text-gray-400 mt-1">{dept.name.cht} / {dept.name.en}</p>
+    <div class="flex flex-wrap items-center gap-2 mt-3">
+      <a href={`/universities/${school.resolvedSlug}/`} class="text-sm text-primary hover:underline">
+        {school.name.ja}
+      </a>
+      {group && (
+        <a href={`/groups/${group.slug}/`} class="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded hover:text-primary transition-colors">
+          {group.name.ja}
+        </a>
+      )}
+      {dept.has_eng_taught && <Badge variant="english" label="英語授業あり" />}
+      {dept.has_interview && <Badge variant="interview" label="面接あり" />}
+    </div>
+  </div>
+
+  <DataCompletenessNote level={school.data_completeness} />
+
+  <!-- Introduction -->
+  {dept.introduction && (dept.introduction.cht || dept.introduction.en) && (
+    <section class="mt-6">
+      <h2 class="text-base font-bold text-gray-800 mb-2">学科紹介</h2>
+      {dept.introduction.en && (
+        <div class="bg-white border border-gray-200 rounded-xl p-4">
+          <p class="text-sm text-gray-600 leading-relaxed">{dept.introduction.en}</p>
+        </div>
+      )}
+      {dept.introduction.cht && (
+        <details class="mt-2">
+          <summary class="text-xs text-gray-400 cursor-pointer hover:text-primary">中文で読む</summary>
+          <div class="bg-gray-50 rounded-xl p-4 mt-1">
+            <p class="text-sm text-gray-600 leading-relaxed">{dept.introduction.cht}</p>
+          </div>
+        </details>
+      )}
+    </section>
+  )}
+
+  <!-- Quota -->
+  {dept.quota && (
+    <section class="mt-6">
+      <h2 class="text-base font-bold text-gray-800 mb-2">募集定員</h2>
+      <div class="bg-white border border-gray-200 rounded-xl p-4">
+        <QuotaDisplay quota={dept.quota} />
+      </div>
+    </section>
+  )}
+
+  <!-- Required Documents -->
+  {dept.required_documents && dept.required_documents.length > 0 && (
+    <section class="mt-6">
+      <h2 class="text-base font-bold text-gray-800 mb-2">出願に必要な書類</h2>
+      <div class="bg-white border border-gray-200 rounded-xl p-4">
+        <ul class="space-y-1.5">
+          {dept.required_documents.map(doc => (
+            <li class="flex items-start gap-2 text-sm text-gray-700">
+              <span class="text-primary mt-0.5">•</span>
+              <span>{doc}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <!-- Interview -->
+  {dept.has_interview && (
+    <section class="mt-6">
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+        <h3 class="text-sm font-bold text-amber-800">面接あり</h3>
+        <p class="text-xs text-amber-700 mt-1">この学科は面接試験が実施されます。詳細は大学の公式サイトをご確認ください。</p>
+      </div>
+    </section>
+  )}
+
+  <!-- Links -->
+  <section class="mt-6 flex flex-wrap gap-3">
+    {dept.website?.cht && (
+      <a href={dept.website.cht} target="_blank" rel="noopener noreferrer"
+        class="text-sm text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-primary-light transition-colors">
+        学科公式サイト →
+      </a>
+    )}
+    {dept.ioh_url && (
+      <a href={dept.ioh_url} target="_blank" rel="noopener noreferrer"
+        class="text-sm text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-primary-light transition-colors">
+        IOH体験談を見る →
+      </a>
+    )}
+  </section>
+</PageLayout>

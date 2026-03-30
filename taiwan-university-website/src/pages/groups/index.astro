@@ -1,0 +1,24 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import GroupCard from '../../components/GroupCard.astro';
+import { groups } from '../../data/loaders';
+---
+
+<PageLayout
+  title="学群一覧（全18学群） | 台湾大学データベース"
+  description="台湾の大学を18の学群（分野）から探せます。情報学、工学、医療、経営など2,371学科を網羅。"
+  path="/groups/"
+>
+  <Breadcrumb items={[{ label: '学群一覧' }]} />
+
+  <h1 class="text-xl font-bold text-gray-900 mb-6">
+    学群一覧 <span class="text-base font-normal text-gray-400">全{groups.length}学群</span>
+  </h1>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+    {groups.map(group => (
+      <GroupCard group={group} />
+    ))}
+  </div>
+</PageLayout>
