@@ -31,6 +31,35 @@ export interface StudentCount {
   japanese?: number;
 }
 
+export interface ApplicationPeriod {
+  round: number;
+  start?: string;
+  end?: string;
+  type?: string;
+  season?: string;
+  notes?: string;
+}
+
+export interface ForeignStudent {
+  oia_url?: string;
+  admission_url?: string;
+  jianzhang_url?: string;
+  jianzhang_year?: number;
+  application_periods?: ApplicationPeriod[];
+  application_fee?: string;
+  max_applications?: number;
+  language_req?: { chinese?: string; english?: string };
+  financial_proof?: { amount?: string; jpy_estimate?: string; usd_equivalent?: string; notes?: string };
+  required_documents?: string[];
+  tuition_info?: string;
+  english_program_period?: string;
+  english_program_qualification?: string;
+  special_programs?: { type?: string; department?: string; curriculum_summary?: string; application_period?: string }[];
+  notes?: string;
+  data_sources?: string[];
+  admission_links?: { href: string; text: string }[];
+}
+
 export interface School {
   id: string;
   slug: string;
@@ -52,6 +81,7 @@ export interface School {
   data_completeness: 'full' | 'enriched' | 'basic';
   data_sources?: string[];
   last_updated?: string;
+  foreign_student?: ForeignStudent;
 }
 
 export interface Quota {
