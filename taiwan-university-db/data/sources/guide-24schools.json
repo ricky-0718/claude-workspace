@@ -1,0 +1,843 @@
+{
+  "source": "大学図鑑 2023年版（PDF → テキスト化）",
+  "extracted_at": "2026-03-30T12:06:39.538Z",
+  "universities": [
+    {
+      "name_ja": "国立台北商業大学",
+      "name_en": "National Taipei University of Business",
+      "url": "https://www.ntub.edu.tw/",
+      "student_count": {
+        "total": 7290,
+        "foreign": 226,
+        "japanese": 5
+      },
+      "area": "台北",
+      "description_ja": "台湾唯一の商業大学\n応用外語学科では中国語＋英語＋経営学が同時に学べる\n1917年設立、100年以上の歴史を誇る名門校",
+      "dormitory_info_ja": "2人部屋: NT$6,000/6ヵ月\n4人部屋: NT$3,800/6ヵ月（圓通雅筑宿舎）",
+      "tuition": [
+        {
+          "faculty": "応用外語学科",
+          "requirement": "中国語のリスニング、ライティング、リーディング、スピーキング基礎能力",
+          "amount": "NT$43,040"
+        },
+        {
+          "faculty": "財政学部（4年制のみ）",
+          "requirement": "同上",
+          "amount": "NT$53,426"
+        },
+        {
+          "faculty": "マネジメント学部（4年制、2年制）",
+          "requirement": "同上",
+          "amount": "NT$43,040"
+        },
+        {
+          "faculty": "デザインマネジメント学部（4年制のみ）",
+          "requirement": "同上",
+          "amount": "NT$51,560"
+        }
+      ],
+      "scholarship_ja": "学内独自の奨学金制度あり。留学生も申し込み可能。"
+    },
+    {
+      "name_ja": "国立台北教育大学",
+      "name_en": "National Taipei University of Education",
+      "url": "https://www.ntue.edu.tw",
+      "student_count": {
+        "total": 5955,
+        "foreign": 249,
+        "japanese": 6
+      },
+      "area": "台北",
+      "description_ja": "台北中心部に位置する\nMRT科技大樓駅から徒歩約10分\n1895年に創立、歴史のある大学\nキャンパス外は飲食店やビルがたくさんある",
+      "dormitory_info_ja": "NT$8,350（校内/毎学期）\nNT$25,200（臥龍宿舍/6ヵ月）",
+      "tuition": [
+        {
+          "faculty": "学部・学科",
+          "requirement": "入学条件",
+          "amount": "学費"
+        },
+        {
+          "faculty": "教育学部 教育経営管理学科",
+          "requirement": "中国語：4技能とも流暢（TOCFL Level3 or HSK5級以上）",
+          "amount": "NT$45,700"
+        },
+        {
+          "faculty": "教育学部 特殊教育学科",
+          "requirement": "中国語：4技能とも流暢（TOCFL Level3 or HSK5級以上）。必修：推薦書",
+          "amount": "NT$53,200"
+        },
+        {
+          "faculty": "教育学部 社会地域発展學部",
+          "requirement": "中国語：4技能とも流暢（TOCFL Level3 or HSK5級以上）",
+          "amount": "NT$45,700"
+        },
+        {
+          "faculty": "人文芸術学部 音楽学科",
+          "requirement": "中国語レベル：特になし。必修：英語エッセイ、学習計画書（英語）、演奏映像10分、自己紹介映像5〜10分、知的財産誓約書",
+          "amount": "NT$53,200"
+        },
+        {
+          "faculty": "理学部 自然科学教育学科",
+          "requirement": "中国語レベル：特になし",
+          "amount": "NT$53,200"
+        }
+      ],
+      "scholarship_ja": "「国立台北教育大学外国籍学制奨学金」：1年間受け取り可能、毎月4,000〜6,000元"
+    },
+    {
+      "name_ja": "國立臺灣大學",
+      "name_en": "National Taiwan University",
+      "url": "https://www.ntu.edu.tw",
+      "student_count": {
+        "total": 33422,
+        "foreign": 3380,
+        "japanese": 194
+      },
+      "area": "台北",
+      "description_ja": "1928年に設立\n台湾No.1の大学\n交通が良く立地が良い\nキャンパス外は飲食店が充実している\nMRT公館駅に接している",
+      "dormitory_info_ja": "校内: NT$7,900 − 46,800\n校外: NT$36,000 − 72,000",
+      "tuition": [
+        {
+          "faculty": "文学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$50,460"
+        },
+        {
+          "faculty": "社会科学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$50,460"
+        },
+        {
+          "faculty": "理学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$58,520"
+        },
+        {
+          "faculty": "公共衛生学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$62,100"
+        },
+        {
+          "faculty": "医学部（医学学科と歯科学科は含まない）",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$62,100"
+        },
+        {
+          "faculty": "工学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$58,940"
+        },
+        {
+          "faculty": "生物資源農学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$58,520"
+        },
+        {
+          "faculty": "管理学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$51,220"
+        },
+        {
+          "faculty": "電気情報学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$58,940"
+        },
+        {
+          "faculty": "法律学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$50,460"
+        },
+        {
+          "faculty": "生命科学学部",
+          "requirement": "中国語：CEFR A2以上",
+          "amount": "NT$60,520"
+        }
+      ],
+      "scholarship_ja": "- 国際学位生奨学金：備品大無料、毎月NT$8,000付与\r\n- 各学部学科国際学位性奨学金"
+    },
+    {
+      "name_ja": "国立台湾師範大學",
+      "name_en": "National Taiwan Normal University",
+      "url": "https://www.ntnu.edu.tw",
+      "student_count": {
+        "total": 16262,
+        "foreign": 1626,
+        "japanese": 114
+      },
+      "area": "台北",
+      "description_ja": "設立60年以上の歴史がある台湾1の教育大学\n本部、公館、林口の3つにキャンパスがある\n交通が良く立地のいい大学。キャンパス外は飲食店が充実している\n中学、高校教師を目指すなら右に出る大学はない",
+      "dormitory_info_ja": "",
+      "tuition": [
+        {
+          "faculty": "芸術学部",
+          "requirement": "英語中国語共にCEFR B2以上",
+          "amount": "NT$33,700"
+        },
+        {
+          "faculty": "文学部",
+          "requirement": "中国語：CEFR B1以上",
+          "amount": "NT$33,380"
+        },
+        {
+          "faculty": "理学部",
+          "requirement": "中国語：CEFR B2以上",
+          "amount": "NT$33,700"
+        },
+        {
+          "faculty": "科学工学学部",
+          "requirement": "中国語：CEFR B1以上",
+          "amount": "NT$33,700"
+        },
+        {
+          "faculty": "教育学部",
+          "requirement": "英語中国語：CEFR B2以上",
+          "amount": "NT$33,380〜33,700"
+        },
+        {
+          "faculty": "国際と社会学部",
+          "requirement": "中国語：CEFR B1以上",
+          "amount": "NT$33,380"
+        },
+        {
+          "faculty": "スポーツレジャー学部",
+          "requirement": "中国語：CEFR B1以上",
+          "amount": "NT$33,700"
+        },
+        {
+          "faculty": "音楽学部",
+          "requirement": "中国語：CEFR B1以上",
+          "amount": "NT$33,700"
+        },
+        {
+          "faculty": "マネジメント学部",
+          "requirement": "中国語：CEFR B1以上",
+          "amount": "NT$33,700"
+        }
+      ],
+      "scholarship_ja": "- 国際学位生奨学金：備品大無料、毎月NT$8,000付与\r\n- 各学部学科国際学位性奨学金"
+    },
+    {
+      "name_ja": "国立台湾科技大学",
+      "name_en": "National Taiwan University of Science and Technology",
+      "url": "https://www.ntust.edu.tw/",
+      "student_count": {
+        "total": 11648,
+        "foreign": 1475,
+        "japanese": 13
+      },
+      "area": "台北",
+      "description_ja": "台北中心部に位置する\nMRT公館駅から徒歩約15分\n1912年に創立されている歴史のある大学\n台湾の中でもトップの科技大学",
+      "dormitory_info_ja": "",
+      "tuition": [
+        {
+          "faculty": "学部・学科",
+          "requirement": "入学条件",
+          "amount": "学費"
+        },
+        {
+          "faculty": "工学部 メディカルサイエンスとエンジニアリング学科",
+          "requirement": "中国語：TOCFL Band B Level3、英語：TOEIC 550",
+          "amount": "NT$17,320"
+        },
+        {
+          "faculty": "工学部 営建工学科",
+          "requirement": "中国語：TOCFL Band A Level2、英語：TOEIC 550",
+          "amount": "NT$17,320"
+        },
+        {
+          "faculty": "工学部 化学工学学科",
+          "requirement": "中国語：TOCFL Band B Level3、英語：TOEIC 550",
+          "amount": "NT$17,320"
+        },
+        {
+          "faculty": "電資学部 電子工学学科",
+          "requirement": "中国語：TOCFL Band B Level3、英語：TOEIC 550",
+          "amount": "NT$17,320"
+        },
+        {
+          "faculty": "電資学部 電気工学学科",
+          "requirement": "中国語：TOCFL Band B Level3、英語：TOEIC 750",
+          "amount": "NT$17,320"
+        },
+        {
+          "faculty": "電資学部 情報工学学科",
+          "requirement": "中国語：TOCFL Band B Level4、英語：TOEIC 550",
+          "amount": "NT$17,320"
+        },
+        {
+          "faculty": "マネジメント学部 工業マネジメント学科",
+          "requirement": "中国語：TOCFL Band B Level4、英語：TOEIC 550",
+          "amount": "NT$17,220"
+        },
+        {
+          "faculty": "マネジメント学部 企業マネジメント学科",
+          "requirement": "中国語：TOCFL Band C Level5、英語：TOEIC 550",
+          "amount": "NT$17,220"
+        },
+        {
+          "faculty": "マネジメント学部 情報マネジメント学科",
+          "requirement": "中国語：TOCFL Band C Level5、英語：TOEIC 550",
+          "amount": "NT$17,220"
+        },
+        {
+          "faculty": "デザイン学部 デザイン学科（工業デザイン/商業デザイン）",
+          "requirement": "中国語：TOCFL Band B Level3、英語：TOEIC 550",
+          "amount": "NT$17,320"
+        },
+        {
+          "faculty": "デザイン学部 建築学科",
+          "requirement": "中国語：TOCFL Band B Level4、英語：TOEIC 550",
+          "amount": "NT$17,320"
+        }
+      ],
+      "scholarship_ja": "なし"
+    },
+    {
+      "name_ja": "国立台北科技大学",
+      "name_en": "National Taipei University of Science and Technology",
+      "url": "https://www.ntust.edu.tw/",
+      "student_count": {
+        "total": 13633,
+        "foreign": 1025,
+        "japanese": 10
+      },
+      "area": "台北",
+      "description_ja": "台北中心部に位置する\nMRT忠孝新生駅から徒歩約15分\nキャンパス外には飲食店やビルが多くある\n現在、台湾に上場している企業の責任者は10％以上がこの学校の卒業生であり、多くの起業家を生んでいる",
+      "dormitory_info_ja": "女子寮: 9,000元\n男子寮: 7,850元",
+      "tuition": [
+        {
+          "faculty": "機電学部",
+          "requirement": "英語：CEFR B2以上",
+          "amount": "NT$54,837"
+        },
+        {
+          "faculty": "電子学科",
+          "requirement": "英語：CEFR B2以上",
+          "amount": "NT$54,837"
+        },
+        {
+          "faculty": "工学部",
+          "requirement": "英語：CEFR B2以上",
+          "amount": "NT$54,837"
+        },
+        {
+          "faculty": "ビジネスマネジメント学部",
+          "requirement": "英語：CEFR B2以上",
+          "amount": "NT$54,837"
+        },
+        {
+          "faculty": "デザイン学部",
+          "requirement": "英語：CEFR B2以上",
+          "amount": "NT$54,837"
+        },
+        {
+          "faculty": "人文社会学部",
+          "requirement": "英語：CEFR B2以上",
+          "amount": "NT$47,378"
+        }
+      ],
+      "scholarship_ja": "華語奨学金：TOCFL B以上の成績が必要"
+    },
+    {
+      "name_ja": "淡江大学",
+      "name_en": "Tamkang University",
+      "url": "https://www.tku.edu.tw/",
+      "student_count": {
+        "total": 23328,
+        "foreign": 1680,
+        "japanese": 131
+      },
+      "area": "台北",
+      "description_ja": "台北北部に位置する\n外国人の数が台湾トップ\n台湾留学101センター代表リッキーの創設した日本学生連盟会がある",
+      "dormitory_info_ja": "NT$12,300〜25,400（2人部屋〜4人部屋）\nNT$19,250（3〜4人部屋）",
+      "tuition": [
+        {
+          "faculty": "文学部",
+          "requirement": "TOCFL A2以上",
+          "amount": "NT$39,000"
+        },
+        {
+          "faculty": "理学部",
+          "requirement": "TOCFL A2以上",
+          "amount": "NT$40,800"
+        },
+        {
+          "faculty": "工学部",
+          "requirement": "TOCFL A2以上",
+          "amount": "NT$40,800"
+        },
+        {
+          "faculty": "ビジネスマネジメント学部",
+          "requirement": "TOCFL A2以上",
+          "amount": "NT$40,800"
+        },
+        {
+          "faculty": "情報コミュニケーション学科",
+          "requirement": "TOCFL A2以上",
+          "amount": "NT$40,800"
+        },
+        {
+          "faculty": "外国語文学部",
+          "requirement": "TOCFL A2以上",
+          "amount": "NT$39,000"
+        },
+        {
+          "faculty": "国際事務学部",
+          "requirement": "TOCFL A2以上",
+          "amount": "NT$39,000"
+        },
+        {
+          "faculty": "教育学部",
+          "requirement": "TOCFL A2以上",
+          "amount": "NT$39,000"
+        },
+        {
+          "faculty": "AI学部",
+          "requirement": "TOCFL A2以上",
+          "amount": "NT$40,800"
+        }
+      ],
+      "scholarship_ja": "優秀外国学生入学奨学金：1年受け取り可能"
+    },
+    {
+      "name_ja": "東呉大学",
+      "name_en": "Soochow University",
+      "url": "https://www-ch.scu.edu.tw/october/",
+      "student_count": {
+        "total": 15287,
+        "foreign": 521,
+        "japanese": 78
+      },
+      "area": "台北",
+      "description_ja": "台北中正と士林にキャンパスがある\n士林キャンパスは緑が豊かで故宮博物院の近く\n2022年企業が求める大学生ランキング法政部門で私立大学1位",
+      "dormitory_info_ja": "",
+      "tuition": [
+        {
+          "faculty": "人文社会学部",
+          "requirement": "中国語：TOCFL B1 or CEFR B1（※歴史学学科のみTOCFL A2 or CEFR A2）",
+          "amount": "NT$48,370"
+        },
+        {
+          "faculty": "外国語文学部",
+          "requirement": "中国語：TOCFL A2 or CEFR A2（※ドイツ文化学科のみドイツ語学習時間200時間以上 or CEFR A1以上）",
+          "amount": "NT$48,370"
+        },
+        {
+          "faculty": "理学部",
+          "requirement": "中国語：TOCFL A2 or CEFL A2",
+          "amount": "NT$48,370"
+        },
+        {
+          "faculty": "商学部",
+          "requirement": "財務工業と精算数学学科：TOCFL B2 or CEFR B2 / 企業管理学科：TOCFL A2 or CEFL A2 / 情報管理学科：TOCFL B2 or CEFR B2",
+          "amount": "NT$49,110"
+        }
+      ],
+      "scholarship_ja": "本校徳育中心及各学系相関奨助学金\r\nhttp://www.scu.edu.tw/life"
+    },
+    {
+      "name_ja": "中原大學",
+      "name_en": "Chung Yuan Christian University",
+      "url": "https://www.cycu.edu.tw",
+      "student_count": {
+        "total": 16629,
+        "foreign": 1129,
+        "japanese": 113
+      },
+      "area": "桃園",
+      "description_ja": "中原大学は桃園市にあるカトリック系私立大学\n世界大学ランキングセンターで台湾私立総合大学ランキング1位を獲得\n世界優秀経営学部の5％にも選出",
+      "dormitory_info_ja": "",
+      "tuition": [
+        {
+          "faculty": "工学部",
+          "requirement": "中国語：TOCFL B1以上",
+          "amount": "NT$41,380"
+        },
+        {
+          "faculty": "商学部",
+          "requirement": "中国語：TOCFL B1以上",
+          "amount": "NT$38,190〜109,700"
+        },
+        {
+          "faculty": "デザイン学部",
+          "requirement": "中国語：TOCFL B1以上",
+          "amount": "NT$41,380"
+        },
+        {
+          "faculty": "人文と教育学",
+          "requirement": "中国語：TOCFL B1以上",
+          "amount": "NT$39,350〜39,670"
+        },
+        {
+          "faculty": "法学部",
+          "requirement": "中国語：TOCFL B1以上",
+          "amount": "NT$38,190"
+        },
+        {
+          "faculty": "電気情報学部",
+          "requirement": "中国語：TOCFL B1以上",
+          "amount": "NT$41,380〜124,410"
+        },
+        {
+          "faculty": "理学部",
+          "requirement": "中国語：TOCFL B1以上",
+          "amount": "NT$39,350〜41,380"
+        }
+      ],
+      "scholarship_ja": "新生奨学金：学費、諸経費免除"
+    },
+    {
+      "name_ja": "天主教輔仁大學",
+      "name_en": "Fu Jen Catholic University",
+      "url": "https://www.fju.edu.tw",
+      "student_count": {
+        "total": 25981,
+        "foreign": 1082,
+        "japanese": 63
+      },
+      "area": "台北・新北",
+      "description_ja": "天主教輔仁大學の隣に台湾では珍しく病院がある\nカトリック協会によって設立\nクリスマスの時期にどの大学より盛り上がる",
+      "dormitory_info_ja": "",
+      "tuition": [
+        {
+          "faculty": "文学部",
+          "requirement": "TOCFL A2",
+          "amount": "NT$47,430"
+        },
+        {
+          "faculty": "教育学部",
+          "requirement": "TOCFL A2",
+          "amount": "NT$47,430〜54,890"
+        },
+        {
+          "faculty": "メディア学部",
+          "requirement": "TOCFL A2",
+          "amount": "NT$54,890"
+        },
+        {
+          "faculty": "美術学部",
+          "requirement": "TOCFL A2",
+          "amount": "NT$54,890"
+        },
+        {
+          "faculty": "医学部（※医学学科NT$72,500）",
+          "requirement": "TOCFL A2",
+          "amount": "NT$58,200"
+        },
+        {
+          "faculty": "理工学部",
+          "requirement": "TOCFL A2",
+          "amount": "NT$54,890〜55,350"
+        },
+        {
+          "faculty": "外国語文学部",
+          "requirement": "TOCFL A2",
+          "amount": "NT$47,430"
+        },
+        {
+          "faculty": "人間生態学部",
+          "requirement": "TOCFL A2",
+          "amount": "NT$54,890"
+        },
+        {
+          "faculty": "織物装飾学部（※織物装飾学科のみTOCFL C1）",
+          "requirement": "TOCFL A2",
+          "amount": "NT$54,890"
+        },
+        {
+          "faculty": "法律学部",
+          "requirement": "TOCFL C1",
+          "amount": "NT$47,430"
+        },
+        {
+          "faculty": "マネジメント学部",
+          "requirement": "TOCFL A2",
+          "amount": "NT$48,140（※情報管理学科：NT$54,890）"
+        },
+        {
+          "faculty": "社会科学部",
+          "requirement": "TOCFL A2",
+          "amount": "NT$47,430（※経済学科：NT$48,140、心理学学科：NT$54,890）"
+        }
+      ],
+      "scholarship_ja": "新生奨学金：英語もしくは中国語の検定証明、国際コンテスト受賞証明"
+    },
+    {
+      "name_ja": "国立政治大學",
+      "name_en": "National Chengchi University",
+      "url": "https://www.nccu.edu.tw",
+      "student_count": {
+        "total": 16727,
+        "foreign": 1650,
+        "japanese": 84
+      },
+      "area": "台北",
+      "description_ja": "バスケット部が有名で強い\n交換留学提携校の数が多い\n台湾でトップ5に入る大学\n外語学院は台湾大学よりも優れている",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "- 國合會高等人力資源培訓計畫\r\n- 国際新生対象奨学金：諸経費免除\r\n- 外国新生奨学金：諸経費免除、毎学期15万台湾元給付"
+    },
+    {
+      "name_ja": "国立台北大學",
+      "name_en": "National Taipei University",
+      "url": "https://new.ntpu.edu.tw",
+      "student_count": {
+        "total": 10277,
+        "foreign": 461,
+        "japanese": 12
+      },
+      "area": "台北",
+      "description_ja": "世界176校の大学と姉妹協定\n大学卒業後の就職率は90％を超える\n国立台北科技大学、台北医学大学とともに「台北大学連合システム」を構築",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "台湾奨学金、校内外奨学金あり、各学部に奨学金あり"
+    },
+    {
+      "name_ja": "台北市立大學",
+      "name_en": "University of Taipei",
+      "url": "https://www.utaipei.edu.tw",
+      "student_count": {
+        "total": 8031,
+        "foreign": 188,
+        "japanese": 8
+      },
+      "area": "台北",
+      "description_ja": "「金メダルを取る選手を育成する」大学\n台湾で市立はこの大学しかない\n台北駅から近く立地がいい",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "台北市立大学外国学制奨助学金"
+    },
+    {
+      "name_ja": "中国文化大學",
+      "name_en": "Chinese Culture University",
+      "url": "https://www.pccu.edu.tw",
+      "student_count": {
+        "total": 22265,
+        "foreign": 1091,
+        "japanese": 94
+      },
+      "area": "台北",
+      "description_ja": "全台湾の大学の中で一番高い位置に建っている\n姉妹校が400校近く提携している\n教育での実績が多くある",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "中国文化大学奨学金：非台湾国籍であること、身体検査あり、成績優秀者、他の奨学金との併用不可"
+    },
+    {
+      "name_ja": "国立台湾芸術大學",
+      "name_en": "National Taiwan University of Arts",
+      "url": "https://www.pccu.edu.tw",
+      "student_count": {
+        "total": 5614,
+        "foreign": 317,
+        "japanese": 16
+      },
+      "area": "台北・新北",
+      "description_ja": "新北にある台湾で最も歴史の長い国立芸術大学\n台湾で最も専門的な総合芸術大学\n定期的に学校外や学校内で展示会がある",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "- 文部省台湾奨学金\r\n- 外務省台湾奨学金"
+    },
+    {
+      "name_ja": "実践大學",
+      "name_en": "Shih Chien University",
+      "url": "https://www.usc.edu.tw/",
+      "student_count": {
+        "total": 11875,
+        "foreign": 600,
+        "japanese": 106
+      },
+      "area": "台北・高雄",
+      "description_ja": "台北と高雄の二か所にキャンパスを置く私立の総合大学であり、1958年に設立された\n民生、設計、管理、商業と情報、文化と創意の5学院からなり、33の学科を擁する",
+      "dormitory_info_ja": "女子 4〜6人: 9,900元\n男子 2〜8人: 27,000〜35,000元",
+      "tuition": null,
+      "scholarship_ja": "1-5 英語力向上奨学金：台北キャンパス定員15名、高雄キャンパス定員10名。1人当たり3,000元。"
+    },
+    {
+      "name_ja": "国立体育大學",
+      "name_en": "National Taiwan Sport University",
+      "url": "https://www.ntsu.edu.tw",
+      "student_count": {
+        "total": 2733,
+        "foreign": 93,
+        "japanese": 1
+      },
+      "area": "桃園",
+      "description_ja": "スポーツや健康に興味のある学生が多く集まっている\n桃園空港が近く、台北までは30分で遊びに行ける\n学校内の施設も充実していて、ロッククライミングやアーチェリー場などがある",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "外国研究生奨助学金：補助内容は選択できる"
+    },
+    {
+      "name_ja": "国立清華大學",
+      "name_en": "National Tsing Hua University",
+      "url": "https://www.nthu.edu.tw",
+      "student_count": {
+        "total": 18034,
+        "foreign": 1857,
+        "japanese": 51
+      },
+      "area": "新竹",
+      "description_ja": "台湾の大学の中で上位4大学に入る\n「東のハーバード」と呼ばれており、工学やコンピューターサイエンスにおいて世界一の大学として世界から評価を受けている",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "国立清華大学国際学生奨学金：毎月2,000元から4,000元。その他政府の奨学金など。"
+    },
+    {
+      "name_ja": "国立陽明交通大學",
+      "name_en": "National Yang Ming Chiao University",
+      "url": "https://www.nycu.edu.tw",
+      "student_count": {
+        "total": 20707,
+        "foreign": 1311,
+        "japanese": 11
+      },
+      "area": "台北・新竹",
+      "description_ja": "大学院の学生数が大学生よりも多く全台湾の中でも上位4大学に入る\n台湾で唯一の医学教育を中心とした総合大学\n1970年大阪万博の際、台湾館前に設置された作品「鳳凰來儀」が存在する",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "- 陽明交通大学学生奨学金\r\n- 台湾奨学金"
+    },
+    {
+      "name_ja": "銘傳大學",
+      "name_en": "Ming Chuan University",
+      "url": "https://web2.mcu.edu.tw",
+      "student_count": {
+        "total": 18256,
+        "foreign": 2063,
+        "japanese": 86
+      },
+      "area": "桃園",
+      "description_ja": "台湾で唯一アメリカの認証を受けている私立大学\n大学の国際化を目指しており世界中から留学生がやってくる",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "奨学金制度あり"
+    },
+    {
+      "name_ja": "東海大學",
+      "name_en": "Tunghai University",
+      "url": "https://www.thu.edu.tw",
+      "student_count": {
+        "total": 15283,
+        "foreign": 1000,
+        "japanese": 68
+      },
+      "area": "台中",
+      "description_ja": "キャンパス内に牧場があり、自然が豊かで勉強に集中できる\n台湾で最も美しい大学と呼ばれている",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "- 台湾奨学金\r\n- 東海大学外国学生奨助学金"
+    },
+    {
+      "name_ja": "逢甲大學",
+      "name_en": "Feng Chia University",
+      "url": "https://www.fcu.edu.tw/",
+      "student_count": {
+        "total": 21441,
+        "foreign": 1126,
+        "japanese": 146
+      },
+      "area": "台中",
+      "description_ja": "学生数が2万人を超えており、教員も2,000人弱いる規模が大きな大学\n2021年「企業が選ぶ大学」において全台湾中私立総合大学で第1位を獲得した実績あり",
+      "dormitory_info_ja": "",
+      "tuition": null,
+      "scholarship_ja": "- 台湾奨学金\r\n- 逢甲大學外国学生奨助学金"
+    },
+    {
+      "name_ja": "国立中山大學",
+      "name_en": "National Sun Yat-sen University",
+      "url": "https://www.nsysu.edu.tw",
+      "student_count": {
+        "total": 10296,
+        "foreign": 763,
+        "japanese": 17
+      },
+      "area": "高雄",
+      "description_ja": "台湾中南部で2位の難関大学として知られ、指定国立研究大学6校の内1つである\n台湾南部・高雄の人気観光スポット「西子湾」と「壽山」が近くにあり、自然豊かなキャンパス",
+      "dormitory_info_ja": "",
+      "tuition": [
+        {
+          "faculty": "学部・学科",
+          "requirement": "入学条件",
+          "amount": "学費"
+        },
+        {
+          "faculty": "文学部 中国文学学科",
+          "requirement": "TOCFLレベル4 / HSK6",
+          "amount": "NT$49,460"
+        },
+        {
+          "faculty": "文学部 音楽学科",
+          "requirement": "TOCFL B1 / New HSK5",
+          "amount": "NT$49,460"
+        },
+        {
+          "faculty": "理学部 生物科学科",
+          "requirement": "iBT-TOEFL 61点 / TOCFL A2 / New HSK4",
+          "amount": "NT$57,420"
+        },
+        {
+          "faculty": "理学部 物理学科",
+          "requirement": "iBT-TOEFL 61点 / TOCFL B1 / New HSK5",
+          "amount": "NT$57,420"
+        },
+        {
+          "faculty": "理学部 応用数学科",
+          "requirement": "iBT-TOEFL 61点 / TOCFL B1 / New HSK5",
+          "amount": "NT$57,420"
+        },
+        {
+          "faculty": "マネジメント学部 企業管理学科",
+          "requirement": "iBT-TOEFL 61点 / TOCFL B2 / HSK6",
+          "amount": "NT$50,260"
+        },
+        {
+          "faculty": "マネジメント学部 財務管理学科",
+          "requirement": "iBT-TOEFL 61点 / TOCFL B2 / HSK6",
+          "amount": "NT$50,260"
+        }
+      ],
+      "scholarship_ja": "国立中山大学外国優秀生（毎月6,000元の支給）"
+    },
+    {
+      "name_ja": "国立高雄大學",
+      "name_en": "National University of Kaohsiung",
+      "url": "https://www.nuk.edu.tw",
+      "student_count": {
+        "total": 5986,
+        "foreign": 246,
+        "japanese": 22
+      },
+      "area": "高雄",
+      "description_ja": "台湾で5番目に大きい大学キャンパスとして有名\n校内に独自のレンタル自転車があり、学生は自由に使うことができる",
+      "dormitory_info_ja": "校内: 6ヵ月 7,250〜9,900元\n校外: 6ヵ月 18,000〜30,000元",
+      "tuition": [
+        {
+          "faculty": "人文社会科学部",
+          "requirement": "中国語：TOCFL A2 / HSK4（※西洋語文学学科のみ英語：iBT-TOEFL 79 or IELTS 6.5も必要）",
+          "amount": "NT$54,000"
+        },
+        {
+          "faculty": "法学部",
+          "requirement": "中国語：TOCFL A2 / HSK4",
+          "amount": "NT$46,000"
+        },
+        {
+          "faculty": "管理学部",
+          "requirement": "中国語：TOCFL A2 / HSK4（※応用経済学科のみiBT-TOEFL 61 or IELTS 6.0）",
+          "amount": "NT$47,000"
+        },
+        {
+          "faculty": "理学部",
+          "requirement": "中国語：TOCFL A2 / HSK4",
+          "amount": "NT$54,000"
+        },
+        {
+          "faculty": "工学部",
+          "requirement": "中国語：TOCFL A2 / HSK4",
+          "amount": "NT$54,000"
+        }
+      ],
+      "scholarship_ja": "NUK 外国人留学生奨学金（TOCFL A2またはHSK4級が最低条件）"
+    }
+  ]
+}

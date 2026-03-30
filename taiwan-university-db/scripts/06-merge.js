@@ -1,8 +1,12 @@
 /**
  * 06-merge.js
- * 海聯會の生データを統合して schools.json + departments.json + department-groups.json を生成
+ * 4ソースを統合して schools.json + departments.json + department-groups.json を生成
  *
- * 現時点では海聯會データのみ。Phase 2でスプレッドシート・大学図鑑・NTNUデータを追加統合する。
+ * ソース:
+ *   1. 海聯會API（基盤: 129校・2,371学科）
+ *   2. スプレッドシート（26校の財力証明・語学要件）
+ *   3. 大学図鑑（24校の日本語概要・学費・寮費・生徒数）
+ *   4. 名寄せマッピング（海聯會ID ↔ 他ソースの大学名）
  */
 
 import { readFile, readdir, writeFile, mkdir } from 'node:fs/promises';
@@ -13,6 +17,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const RAW_DIR = join(__dirname, '..', 'data', 'raw');
 const DETAILS_DIR = join(RAW_DIR, 'hailian-dept-details');
 const TRANSLATIONS_DIR = join(__dirname, '..', 'data', 'translations');
+const SOURCES_DIR = join(__dirname, '..', 'data', 'sources');
 const FINAL_DIR = join(__dirname, '..', 'data', 'final');
 
 function slugify(enName) {
@@ -60,6 +65,24 @@ async function main() {
   const groupsRaw = JSON.parse(await readFile(join(RAW_DIR, 'hailian-groups.json'), 'utf-8'));
   const deptsListRaw = JSON.parse(await readFile(join(RAW_DIR, 'hailian-departments.json'), 'utf-8'));
 
+  // --- 補完ソース読み込み ---
+  let spreadsheetData = null;
+  let guideData = null;
+  let nameMapping = {};
+  try {
+    spreadsheetData = JSON.parse(await readFile(join(SOURCES_DIR, 'spreadsheet-26schools.json'), 'utf-8'));
+    console.log(`スプレッドシート: 財力証明${Object.keys(spreadsheetData.financial_proof).length}校`);
+  } catch { console.log('スプレッドシートデータなし（スキップ）'); }
+  try {
+    guideData = JSON.parse(await readFile(join(SOURCES_DIR, 'guide-24schools.json'), 'utf-8'));
+    console.log(`大学図鑑: ${guideData.universities.length}校`);
+  } catch { console.log('大学図鑑データなし（スキップ）'); }
+  try {
+    nameMapping = JSON.parse(await readFile(join(SOURCES_DIR, 'name-mapping.json'), 'utf-8'));
+    delete nameMapping._comment;
+    console.log(`名寄せマッピング: ${Object.keys(nameMapping).length}校`);
+  } catch { console.log('名寄せマッピングなし（スキップ）'); }
+
   // 詳細データ読み込み（ある場合）
   let detailsBySchool = {};
   try {
@@ -92,16 +115,52 @@ async function main() {
     department_count: 0 // 後で計算
   }));
 
+  // --- スプレッドシートの名寄せヘルパー ---
+  function findSpreadsheetData(schoolId) {
+    const mapping = nameMapping[schoolId];
+    if (!mapping?.spreadsheet || !spreadsheetData) return null;
+    const ssName = mapping.spreadsheet;
+    const financial = Object.entries(spreadsheetData.financial_proof)
+      .find(([name]) => name.includes(ssName) || ssName.includes(name));
+    const language = Object.entries(spreadsheetData.language_requirements)
+      .find(([name]) => name.includes(ssName) || ssName.includes(name));
+    return { financial: financial?.[1], language: language?.[1] };
+  }
+
+  // --- 大学図鑑の名寄せヘルパー ---
+  function findGuideData(schoolId) {
+    const mapping = nameMapping[schoolId];
+    if (!mapping?.guide || !guideData) return null;
+    const guideName = mapping.guide;
+    return guideData.universities.find(u =>
+      u.name_ja === guideName || u.name_ja.includes(guideName) || guideName.includes(u.name_ja)
+    );
+  }
+
   // --- 2. schools.json ---
   console.log('[2/3] 大学データ生成...');
+  let enrichedCount = 0;
+  let fullCount = 0;
   const schools = schoolsRaw.map(s => {
     const trans = uniNames[s.id] || {};
+    const ssData = findSpreadsheetData(s.id);
+    const guide = findGuideData(s.id);
+
+    const dataSources = ['hailian'];
+    if (ssData?.financial || ssData?.language) dataSources.push('spreadsheet');
+    if (guide) dataSources.push('guide');
+
+    const completeness = dataSources.length >= 3 ? 'full'
+      : dataSources.length >= 2 ? 'enriched' : 'basic';
+    if (completeness === 'full') fullCount++;
+    else if (completeness === 'enriched') enrichedCount++;
+
     return {
       id: s.id,
       slug: slugify(s.eng_title || s.title),
       name: {
         cht: s.title,
-        ja: trans.ja || s.title,
+        ja: guide?.name_ja || trans.ja || s.title,
         en: s.eng_title
       },
       type: s.type,
@@ -115,15 +174,27 @@ async function main() {
       dormitory: {
         available: s.has_dorm,
         info_cht: s.dorm_info || undefined,
-        info_en: s.eng_dorm_info || undefined
+        info_en: s.eng_dorm_info || undefined,
+        info_ja: guide?.dormitory_info_ja || undefined
       },
       scholarship: {
         available: s.has_scholarship,
-        url: s.scholarship_url || undefined
+        url: s.scholarship_url || undefined,
+        info_ja: guide?.scholarship_ja || undefined
       },
+
+      // スプレッドシート補完
+      financial_proof: ssData?.financial || undefined,
+      language_req: ssData?.language || undefined,
+
+      // 大学図鑑補完
+      ja_description: guide?.description_ja || undefined,
+      tuition: guide?.tuition || undefined,
+      student_count: guide?.student_count?.total ? guide.student_count : undefined,
+
       department_count: 0, // 後で計算
-      data_completeness: 'basic',
-      data_sources: ['hailian'],
+      data_completeness: completeness,
+      data_sources: dataSources,
       last_updated: new Date().toISOString().split('T')[0]
     };
   });
@@ -208,6 +279,11 @@ async function main() {
   console.log(`学科: ${departments.length}件 → departments.json`);
   console.log(`学群: ${departmentGroups.length}件 → department-groups.json`);
   console.log(`保存先: ${FINAL_DIR}`);
+
+  // 補完レベル
+  const basicCount = schools.length - fullCount - enrichedCount;
+  console.log(`\n補完レベル:`);
+  console.log(`  full: ${fullCount}校 / enriched: ${enrichedCount}校 / basic: ${basicCount}校`);
 
   // 地域分布
   const regionCount = {};

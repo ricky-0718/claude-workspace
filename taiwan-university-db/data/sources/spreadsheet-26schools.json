@@ -1,0 +1,234 @@
+{
+  "source": "Google Spreadsheet「台湾の大学データベース」",
+  "academic_year": 115,
+  "extracted_at": "2026-03-30T12:06:35.200Z",
+  "financial_proof": {
+    "|---|---|---": {
+      "amount": "| 雲林科技大學 | USD 3,500",
+      "jpy_estimate": "約50万円"
+    },
+    "輔仁大學": {
+      "amount": "20万元",
+      "jpy_estimate": "約100万円"
+    },
+    "中國醫藥大學": {
+      "amount": "USD 5,000",
+      "jpy_estimate": "約78万円"
+    },
+    "師範大學": {
+      "amount": "NTD 150,000",
+      "jpy_estimate": "約75万円"
+    },
+    "政治大學": {
+      "amount": "NTD 200,000",
+      "jpy_estimate": "約100万円"
+    },
+    "淡江大學": {
+      "amount": "100,000元",
+      "jpy_estimate": "約50万円"
+    },
+    "實踐大學": {
+      "amount": "120,000元",
+      "jpy_estimate": "約60万円"
+    },
+    "文化大学": {
+      "amount": "TWD 100,000",
+      "jpy_estimate": "約50万円"
+    },
+    "成功大學": {
+      "amount": "NTD 120,000",
+      "jpy_estimate": "約60万円"
+    },
+    "台北護理健康大學": {
+      "amount": "NTD 100,000",
+      "jpy_estimate": "約50万円"
+    },
+    "台湾大学": {
+      "amount": "NTD 200,000",
+      "jpy_estimate": "約100万円"
+    },
+    "東吳大學": {
+      "amount": "NTD 120,000",
+      "jpy_estimate": "約60万円"
+    },
+    "銘傳大学": {
+      "amount": "195,000元",
+      "jpy_estimate": "約97万円"
+    },
+    "中原大学": {
+      "amount": "USD 4,000",
+      "jpy_estimate": "約62万円"
+    },
+    "亜東科技大学": {
+      "amount": "3,000米ドル",
+      "jpy_estimate": "約47万円"
+    }
+  },
+  "language_requirements": {},
+  "toeic550_eligible": [
+    {
+      "name": "朝陽科技大學",
+      "qualification": "TOEIC 460",
+      "application_period": "—"
+    },
+    {
+      "name": "淡江大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2026/02/24~03/23"
+    },
+    {
+      "name": "中原大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2025/12/01~2026/04/15"
+    },
+    {
+      "name": "輔仁大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2026/02/09~03/05"
+    },
+    {
+      "name": "銘傳大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2026/02/01~05/31"
+    },
+    {
+      "name": "中国文化大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2026/02/24~04/15"
+    },
+    {
+      "name": "明志科技大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2026/01/01~04/30"
+    },
+    {
+      "name": "東海大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2026/01/21~02/28"
+    },
+    {
+      "name": "國立屏東科技大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2026/01/01~03/31"
+    },
+    {
+      "name": "逢甲大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2025/12/17~2026/03/04"
+    },
+    {
+      "name": "國立雲林科技大學",
+      "qualification": "TOEIC 550",
+      "application_period": "2026/03/02~04/15"
+    },
+    {
+      "name": "静宜大學",
+      "qualification": "TOEIC 600",
+      "application_period": "2026/01/01~04/30"
+    },
+    {
+      "name": "長庚大學",
+      "qualification": "TOEIC 600",
+      "application_period": "2025/10/13~12/05"
+    },
+    {
+      "name": "実践大學",
+      "qualification": "CEFR B1",
+      "application_period": "—"
+    },
+    {
+      "name": "慈濟大學",
+      "qualification": "CEFR B1",
+      "application_period": "2025/11/20~12/31"
+    },
+    {
+      "name": "義守大學",
+      "qualification": "CEFR B1",
+      "application_period": "—"
+    },
+    {
+      "name": "國立東華大學",
+      "qualification": "CEFR B1",
+      "application_period": "2026/01/02~03/15"
+    }
+  ],
+  "chinese_english_programs": [
+    {
+      "name": "淡江大學",
+      "language_req": "TOCFL A2",
+      "department": "英文學系",
+      "curriculum": "英語四技能",
+      "application_period": "2026/02/24~03/23"
+    },
+    {
+      "name": "世新大學",
+      "language_req": "TOCFL A2",
+      "department": "英語暨傳播應用學系",
+      "curriculum": "メディア・観光英語",
+      "application_period": "—"
+    },
+    {
+      "name": "文藻外語大學",
+      "language_req": "TOCFL A2",
+      "department": "英國語文系",
+      "curriculum": "貿易/商業/マスコミ英語",
+      "application_period": "2025/12/01~2026/06/30"
+    },
+    {
+      "name": "台北商業大學",
+      "language_req": "TOCFL A2",
+      "department": "應用英文系",
+      "curriculum": "ビジネス系英語",
+      "application_period": "2026/01/06~05/01"
+    },
+    {
+      "name": "僑光科技大學",
+      "language_req": "TOCFL A2",
+      "department": "應用英文系",
+      "curriculum": "観光系英語",
+      "application_period": "—"
+    },
+    {
+      "name": "國立勤益科技大學",
+      "language_req": "TOCFL A2",
+      "department": "應用英文系",
+      "curriculum": "工業系英語",
+      "application_period": "—"
+    },
+    {
+      "name": "國立臺中科技大學",
+      "language_req": "TOCFL A2",
+      "department": "應用英文系",
+      "curriculum": "観光・教育ビジネス英語",
+      "application_period": "2025/11/18~2026/01/06"
+    },
+    {
+      "name": "弘光科技大學",
+      "language_req": "TOCFL A2",
+      "department": "國際溝通英語系",
+      "curriculum": "商業・観光系英語",
+      "application_period": "2025/10/05~12/20"
+    },
+    {
+      "name": "致理科技大學",
+      "language_req": "TOCFL A2",
+      "department": "應用英文系",
+      "curriculum": "国際ビジネス英語",
+      "application_period": "—"
+    },
+    {
+      "name": "國立屏東大學",
+      "language_req": "TOCFL A2",
+      "department": "應用英文系",
+      "curriculum": "一般英語・言語学",
+      "application_period": "~2026/04/15"
+    },
+    {
+      "name": "朝陽科技大學",
+      "language_req": "TOCFL A2",
+      "department": "應用英文系",
+      "curriculum": "実践的英語",
+      "application_period": "—"
+    }
+  ]
+}
