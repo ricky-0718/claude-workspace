@@ -1,0 +1,15 @@
+{
+  "name": "taiwan-university-db",
+  "version": "1.0.0",
+  "description": "台湾の全大学・全学科データベース（日本語版）",
+  "type": "module",
+  "scripts": {
+    "fetch:hailian": "node scripts/01-fetch-hailian.js",
+    "fetch:details": "node scripts/02-fetch-hailian-details.js",
+    "fetch:ntnu": "node scripts/03-fetch-ntnu.js",
+    "merge": "node scripts/06-merge.js",
+    "translate": "node scripts/07-translate.js",
+    "validate": "node scripts/08-validate.js",
+    "pipeline": "node scripts/01-fetch-hailian.js && node scripts/06-merge.js && node scripts/07-translate.js && node scripts/08-validate.js"
+  }
+}

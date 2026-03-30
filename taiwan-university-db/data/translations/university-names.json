@@ -1,0 +1,776 @@
+{
+  "10": {
+    "cht": "國立臺北大學",
+    "ja": "国立台北大学",
+    "en": "National Taipei University",
+    "status": "auto"
+  },
+  "11": {
+    "cht": "國立陽明交通大學",
+    "ja": "国立陽明交通大学",
+    "en": "National Yang Ming Chiao Tung University",
+    "status": "auto"
+  },
+  "12": {
+    "cht": "國立高雄大學",
+    "ja": "国立高雄大学",
+    "en": "National University of Kaohsiung",
+    "status": "auto"
+  },
+  "13": {
+    "cht": "國立政治大學",
+    "ja": "国立政治大学",
+    "en": "National Chengchi University",
+    "status": "auto"
+  },
+  "14": {
+    "cht": "國立宜蘭大學",
+    "ja": "国立宜蘭大学",
+    "en": "National Ilan University",
+    "status": "auto"
+  },
+  "15": {
+    "cht": "國立中央大學",
+    "ja": "国立中央大学",
+    "en": "National Central University",
+    "status": "auto"
+  },
+  "16": {
+    "cht": "國立聯合大學",
+    "ja": "国立連合大学",
+    "en": "National United University",
+    "status": "auto"
+  },
+  "17": {
+    "cht": "國立清華大學",
+    "ja": "国立清華大学",
+    "en": "National Tsing Hua University",
+    "status": "auto"
+  },
+  "18": {
+    "cht": "國立臺南大學",
+    "ja": "国立台南大学",
+    "en": "National University of Tainan",
+    "status": "auto"
+  },
+  "19": {
+    "cht": "國立中山大學",
+    "ja": "国立中山大学",
+    "en": "National Sun Yat-sen University",
+    "status": "auto"
+  },
+  "20": {
+    "cht": "國立臺東大學",
+    "ja": "国立台東大学",
+    "en": "National Taitung University",
+    "status": "auto"
+  },
+  "22": {
+    "cht": "國防醫學大學",
+    "ja": "国防医学大学",
+    "en": "National Defense Medical University",
+    "status": "auto"
+  },
+  "23": {
+    "cht": "國立彰化師範大學",
+    "ja": "国立彰化師範大学",
+    "en": "National Changhua University of Education",
+    "status": "auto"
+  },
+  "26": {
+    "cht": "國立臺中教育大學",
+    "ja": "国立台中教育大学",
+    "en": "National Taichung University of Education",
+    "status": "auto"
+  },
+  "27": {
+    "cht": "國立高雄師範大學",
+    "ja": "国立高雄師範大学",
+    "en": "National Kaohsiung Normal University",
+    "status": "auto"
+  },
+  "28": {
+    "cht": "國立臺北教育大學",
+    "ja": "国立台北教育大学",
+    "en": "National Taipei University of Education",
+    "status": "auto"
+  },
+  "30": {
+    "cht": "國立臺灣體育運動大學",
+    "ja": "国立台湾体育運動大学",
+    "en": "National Taiwan University of Sport",
+    "status": "auto"
+  },
+  "32": {
+    "cht": "國立體育大學",
+    "ja": "国立体育大学",
+    "en": "National Taiwan Sport University",
+    "status": "auto"
+  },
+  "33": {
+    "cht": "國立臺北藝術大學",
+    "ja": "国立台北芸術大学",
+    "en": "Taipei National University of the Arts",
+    "status": "auto"
+  },
+  "34": {
+    "cht": "國立臺灣藝術大學",
+    "ja": "国立台湾芸術大学",
+    "en": "National Taiwan University of Arts",
+    "status": "auto"
+  },
+  "35": {
+    "cht": "國立臺南藝術大學",
+    "ja": "国立台南芸術大学",
+    "en": "Tainan National University of the Arts",
+    "status": "auto"
+  },
+  "36": {
+    "cht": "中國文化大學",
+    "ja": "中国文化大学",
+    "en": "Chinese Culture University",
+    "status": "auto"
+  },
+  "37": {
+    "cht": "淡江大學",
+    "ja": "淡江大学",
+    "en": "Tamkang University",
+    "status": "auto"
+  },
+  "38": {
+    "cht": "銘傳大學(臺北)",
+    "ja": "銘伝大学(台北)",
+    "en": "Ming Chuan University",
+    "status": "auto"
+  },
+  "39": {
+    "cht": "東海大學",
+    "ja": "東海大学",
+    "en": "Tunghai University",
+    "status": "auto"
+  },
+  "40": {
+    "cht": "實踐大學",
+    "ja": "実践大学",
+    "en": "Shih Chien University",
+    "status": "auto"
+  },
+  "41": {
+    "cht": "義守大學",
+    "ja": "義守大学",
+    "en": "I-Shou University",
+    "status": "auto"
+  },
+  "42": {
+    "cht": "靜宜大學",
+    "ja": "靜宜大学",
+    "en": "Providence University",
+    "status": "auto"
+  },
+  "43": {
+    "cht": "真理大學",
+    "ja": "真理大学",
+    "en": "Aletheia University",
+    "status": "auto"
+  },
+  "44": {
+    "cht": "逢甲大學",
+    "ja": "逢甲大学",
+    "en": "Feng Chia University",
+    "status": "auto"
+  },
+  "45": {
+    "cht": "天主教輔仁大學",
+    "ja": "天主教輔仁大学",
+    "en": "Fu Jen Catholic University",
+    "status": "auto"
+  },
+  "46": {
+    "cht": "長榮大學",
+    "ja": "長榮大学",
+    "en": "Chang Jung Christian University",
+    "status": "auto"
+  },
+  "47": {
+    "cht": "亞洲大學",
+    "ja": "亜洲大学",
+    "en": "Asia University",
+    "status": "auto"
+  },
+  "48": {
+    "cht": "世新大學",
+    "ja": "世新大学",
+    "en": "Shih Hsin University",
+    "status": "auto"
+  },
+  "49": {
+    "cht": "大葉大學",
+    "ja": "大葉大学",
+    "en": "Dayeh University",
+    "status": "auto"
+  },
+  "52": {
+    "cht": "康寧大學",
+    "ja": "康寧大学",
+    "en": "University of Kang Ning",
+    "status": "auto"
+  },
+  "53": {
+    "cht": "中信金融管理學院",
+    "ja": "中信金融管理学院",
+    "en": "CTBC Business School",
+    "status": "auto"
+  },
+  "55": {
+    "cht": "東吳大學",
+    "ja": "東吳大学",
+    "en": "Soochow University",
+    "status": "auto"
+  },
+  "56": {
+    "cht": "開南大學",
+    "ja": "開南大学",
+    "en": "Kainan University",
+    "status": "auto"
+  },
+  "57": {
+    "cht": "元智大學",
+    "ja": "元智大学",
+    "en": "Yuan Ze University",
+    "status": "auto"
+  },
+  "59": {
+    "cht": "玄奘大學",
+    "ja": "玄奘大学",
+    "en": "Hsuan Chuang University",
+    "status": "auto"
+  },
+  "60": {
+    "cht": "南華大學",
+    "ja": "南華大学",
+    "en": "Nanhua University",
+    "status": "auto"
+  },
+  "61": {
+    "cht": "中原大學",
+    "ja": "中原大学",
+    "en": "Chung Yuan Christian University",
+    "status": "auto"
+  },
+  "62": {
+    "cht": "華梵大學",
+    "ja": "華梵大学",
+    "en": "Huafan University",
+    "status": "auto"
+  },
+  "63": {
+    "cht": "大同大學",
+    "ja": "大同大学",
+    "en": "Tatung University",
+    "status": "auto"
+  },
+  "64": {
+    "cht": "佛光大學",
+    "ja": "仏光大学",
+    "en": "Fo Guang University",
+    "status": "auto"
+  },
+  "65": {
+    "cht": "長庚大學",
+    "ja": "長庚大学",
+    "en": "Chang Gung University",
+    "status": "auto"
+  },
+  "66": {
+    "cht": "中山醫學大學",
+    "ja": "中山医学大学",
+    "en": "Chung Shan Medical University",
+    "status": "auto"
+  },
+  "67": {
+    "cht": "高雄醫學大學",
+    "ja": "高雄医学大学",
+    "en": "Kaohsiung Medical University",
+    "status": "auto"
+  },
+  "68": {
+    "cht": "中國醫藥大學",
+    "ja": "中国医薬大学",
+    "en": "China Medical University",
+    "status": "auto"
+  },
+  "69": {
+    "cht": "臺北醫學大學",
+    "ja": "台北医学大学",
+    "en": "Taipei Medical University",
+    "status": "auto"
+  },
+  "70": {
+    "cht": "慈濟大學",
+    "ja": "慈済大学",
+    "en": "Tzu Chi University",
+    "status": "auto"
+  },
+  "71": {
+    "cht": "國立臺灣科技大學",
+    "ja": "国立台湾科技大学",
+    "en": "National Taiwan University of Science and Technology",
+    "status": "auto"
+  },
+  "72": {
+    "cht": "國立雲林科技大學",
+    "ja": "国立雲林科技大学",
+    "en": "National Yunlin University of Science and Technology",
+    "status": "auto"
+  },
+  "73": {
+    "cht": "國立臺北科技大學",
+    "ja": "国立台北科技大学",
+    "en": "National Taipei University of Technology",
+    "status": "auto"
+  },
+  "74": {
+    "cht": "國立屏東科技大學",
+    "ja": "国立屏東科技大学",
+    "en": "National Pingtung University of Science and Technology",
+    "status": "auto"
+  },
+  "75": {
+    "cht": "國立高雄科技大學",
+    "ja": "国立高雄科技大学",
+    "en": "National Kaohsiung University of Science and Technology",
+    "status": "auto"
+  },
+  "78": {
+    "cht": "國立虎尾科技大學",
+    "ja": "国立虎尾科技大学",
+    "en": "National Formosa University",
+    "status": "auto"
+  },
+  "80": {
+    "cht": "國立金門大學",
+    "ja": "国立金門大学",
+    "en": "National Quemoy University",
+    "status": "auto"
+  },
+  "81": {
+    "cht": "國立勤益科技大學",
+    "ja": "国立勤益科技大学",
+    "en": "National Chin-Yi University of Technology",
+    "status": "auto"
+  },
+  "82": {
+    "cht": "國立臺中科技大學",
+    "ja": "国立台中科技大学",
+    "en": "National Taichung University of Science and Technology",
+    "status": "auto"
+  },
+  "83": {
+    "cht": "國立高雄餐旅大學",
+    "ja": "国立高雄餐旅大学",
+    "en": "National Kaohsiung University of Hospitality and Tourism",
+    "status": "auto"
+  },
+  "84": {
+    "cht": "國立臺北商業大學",
+    "ja": "国立台北商業大学",
+    "en": "National Taipei University of Business",
+    "status": "auto"
+  },
+  "85": {
+    "cht": "國立臺北護理健康大學",
+    "ja": "国立台北護理健康大学",
+    "en": "National Taipei University of Nursing and Health Sciences",
+    "status": "auto"
+  },
+  "86": {
+    "cht": "朝陽科技大學",
+    "ja": "朝陽科技大学",
+    "en": "Chaoyang University of Technology",
+    "status": "auto"
+  },
+  "87": {
+    "cht": "南臺科技大學",
+    "ja": "南台科技大学",
+    "en": "Southern Taiwan University of Science and Technology",
+    "status": "auto"
+  },
+  "88": {
+    "cht": "崑山科技大學",
+    "ja": "崑山科技大学",
+    "en": "Kun Shan University",
+    "status": "auto"
+  },
+  "89": {
+    "cht": "樹德科技大學",
+    "ja": "樹德科技大学",
+    "en": "Shu-Te University",
+    "status": "auto"
+  },
+  "90": {
+    "cht": "嘉藥學校財團法人嘉南藥理大學",
+    "ja": "嘉薬学校財團法人嘉南薬理大学",
+    "en": "Chia Nan University of Pharmacy and Science",
+    "status": "auto"
+  },
+  "91": {
+    "cht": "明新科技大學",
+    "ja": "明新科技大学",
+    "en": "Minghsin University of Science and Technology",
+    "status": "auto"
+  },
+  "92": {
+    "cht": "輔英科技大學",
+    "ja": "輔英科技大学",
+    "en": "Fooyin University",
+    "status": "auto"
+  },
+  "93": {
+    "cht": "弘光科技大學",
+    "ja": "弘光科技大学",
+    "en": "HungKuang University",
+    "status": "auto"
+  },
+  "94": {
+    "cht": "正修科技大學",
+    "ja": "正修科技大学",
+    "en": "Cheng Shiu University",
+    "status": "auto"
+  },
+  "95": {
+    "cht": "健行科技大學",
+    "ja": "健行科技大学",
+    "en": "Chien Hsin University of Science and Technology",
+    "status": "auto"
+  },
+  "96": {
+    "cht": "萬能學校財團法人萬能科技大學",
+    "ja": "万能学校財團法人万能科技大学",
+    "en": "Vanung University",
+    "status": "auto"
+  },
+  "97": {
+    "cht": "明志科技大學",
+    "ja": "明志科技大学",
+    "en": "MING CHI UNIVERSITY OF TECHNOLOGY",
+    "status": "auto"
+  },
+  "98": {
+    "cht": "中國科技大學",
+    "ja": "中国科技大学",
+    "en": "China University of Technology",
+    "status": "auto"
+  },
+  "99": {
+    "cht": "大仁科技大學",
+    "ja": "大仁科技大学",
+    "en": "Tajen University",
+    "status": "auto"
+  },
+  "01": {
+    "cht": "國立臺灣大學",
+    "ja": "国立台湾大学",
+    "en": "National Taiwan University",
+    "status": "auto"
+  },
+  "04": {
+    "cht": "國立暨南國際大學",
+    "ja": "国立暨南国際大学",
+    "en": "National Chi Nan University",
+    "status": "auto"
+  },
+  "07": {
+    "cht": "國立臺灣師範大學",
+    "ja": "国立台湾師範大学",
+    "en": "National Taiwan Normal University",
+    "status": "auto"
+  },
+  "02": {
+    "cht": "國立成功大學",
+    "ja": "国立成功大学",
+    "en": "National Cheng Kung University",
+    "status": "auto"
+  },
+  "09": {
+    "cht": "國立臺灣海洋大學",
+    "ja": "国立台湾海洋大学",
+    "en": "National Taiwan Ocean University",
+    "status": "auto"
+  },
+  "05": {
+    "cht": "國立中興大學",
+    "ja": "国立中興大学",
+    "en": "National Chung Hsing University",
+    "status": "auto"
+  },
+  "06": {
+    "cht": "國立中正大學",
+    "ja": "国立中正大学",
+    "en": "National Chung Cheng University",
+    "status": "auto"
+  },
+  "08": {
+    "cht": "國立東華大學",
+    "ja": "国立東華大学",
+    "en": "National Dong Hwa University",
+    "status": "auto"
+  },
+  "03": {
+    "cht": "國立嘉義大學",
+    "ja": "国立嘉義大学",
+    "en": "National Chiayi University",
+    "status": "auto"
+  },
+  "E0": {
+    "cht": "臺北市立大學",
+    "ja": "台北市立大学",
+    "en": "University of Taipei",
+    "status": "auto"
+  },
+  "F0": {
+    "cht": "國立屏東大學",
+    "ja": "国立屏東大学",
+    "en": "National Pingtung University",
+    "status": "auto"
+  },
+  "40A": {
+    "cht": "實踐大學(高雄)",
+    "ja": "実践大学(高雄)",
+    "en": "Shih Chien University",
+    "status": "auto"
+  },
+  "F1": {
+    "cht": "馬偕學校財團法人馬偕醫學大學",
+    "ja": "馬偕学校財團法人馬偕医学大学",
+    "en": "MacKay Medical University",
+    "status": "auto"
+  },
+  "38A": {
+    "cht": "銘傳大學(桃園)",
+    "ja": "銘伝大学(桃園)",
+    "en": "Ming Chuan University",
+    "status": "auto"
+  },
+  "D6": {
+    "cht": "法鼓學校財團法人法鼓文理學院",
+    "ja": "法鼓学校財團法人法鼓文理学院",
+    "en": "Dharma Drum Institute of Liberal Arts",
+    "status": "auto"
+  },
+  "F4": {
+    "cht": "臺北基督學院",
+    "ja": "台北基督学院",
+    "en": "Christ's College Taipei",
+    "status": "auto"
+  },
+  "D7": {
+    "cht": "國立澎湖科技大學",
+    "ja": "国立澎湖科技大学",
+    "en": "National Penghu University of Science and Technology",
+    "status": "auto"
+  },
+  "F2": {
+    "cht": "國立臺灣戲曲學院",
+    "ja": "国立台湾戯曲学院",
+    "en": "National Taiwan College of Performing Arts",
+    "status": "auto"
+  },
+  "A4": {
+    "cht": "台南家專學校財團法人台南應用科技大學",
+    "ja": "台南家専学校財團法人台南応用科技大学",
+    "en": "Tainan University of Technology",
+    "status": "auto"
+  },
+  "B8": {
+    "cht": "城市學校財團法人臺北城市科技大學",
+    "ja": "城市学校財團法人台北城市科技大学",
+    "en": "Taipei City University of Science and Technology",
+    "status": "auto"
+  },
+  "E5": {
+    "cht": "長庚學校財團法人長庚科技大學",
+    "ja": "長庚学校財團法人長庚科技大学",
+    "en": "Chang Gung University of Science and Technology",
+    "status": "auto"
+  },
+  "A8": {
+    "cht": "南開科技大學",
+    "ja": "南開科技大学",
+    "en": "Nan Kai University of Technology",
+    "status": "auto"
+  },
+  "B7": {
+    "cht": "亞東學校財團法人亞東科技大學",
+    "ja": "亜東学校財團法人亜東科技大学",
+    "en": "Asia Eastern University of Science and Technology",
+    "status": "auto"
+  },
+  "D2": {
+    "cht": "德育學校財團法人德育護理健康學院",
+    "ja": "德育学校財團法人德育護理健康学院",
+    "en": "Deh Yu College of Nursing and Health",
+    "status": "auto"
+  },
+  "D9": {
+    "cht": "建國科技大學",
+    "ja": "建国科技大学",
+    "en": "ChienKuo Technology University",
+    "status": "auto"
+  },
+  "C2": {
+    "cht": "僑光科技大學",
+    "ja": "僑光科技大学",
+    "en": "Overseas Chinese University",
+    "status": "auto"
+  },
+  "B3": {
+    "cht": "景文科技大學",
+    "ja": "景文科技大学",
+    "en": "Jinwen University of Science and Technology",
+    "status": "auto"
+  },
+  "C4": {
+    "cht": "醒吾科技大學",
+    "ja": "醒吾科技大学",
+    "en": "Hsing Wu University of Science and Technology",
+    "status": "auto"
+  },
+  "A9": {
+    "cht": "中華學校財團法人中華科技大學",
+    "ja": "中華学校財團法人中華科技大学",
+    "en": "China University of Science and Technology",
+    "status": "auto"
+  },
+  "C5": {
+    "cht": "德明財經科技大學",
+    "ja": "德明財経科技大学",
+    "en": "Takming University of Science and Technology",
+    "status": "auto"
+  },
+  "B0": {
+    "cht": "大華學校財團法人敏實科技大學",
+    "ja": "大華学校財團法人敏実科技大学",
+    "en": "Minth University of Science and Technology",
+    "status": "auto"
+  },
+  "E4": {
+    "cht": "黎明技術學院",
+    "ja": "黎明技術学院",
+    "en": "LEE-MING INSTITUTE OF TECHNOLOGY",
+    "status": "auto"
+  },
+  "C3": {
+    "cht": "致理科技大學",
+    "ja": "致理科技大学",
+    "en": "Chihlee University of Technology",
+    "status": "auto"
+  },
+  "B2": {
+    "cht": "文藻外語大學",
+    "ja": "文藻外語大学",
+    "en": "Wenzao Ursuline University of Languages",
+    "status": "auto"
+  },
+  "A1": {
+    "cht": "嶺東科技大學",
+    "ja": "嶺東科技大学",
+    "en": "Ling Tung University",
+    "status": "auto"
+  },
+  "D8": {
+    "cht": "龍華科技大學",
+    "ja": "竜華科技大学",
+    "en": "Lunghwa University of Science and Technology",
+    "status": "auto"
+  },
+  "A3": {
+    "cht": "中臺科技大學",
+    "ja": "中台科技大学",
+    "en": "Central Taiwan University of Science and Technology",
+    "status": "auto"
+  },
+  "C0": {
+    "cht": "吳鳳科技大學",
+    "ja": "吳鳳科技大学",
+    "en": "WuFeng University",
+    "status": "auto"
+  },
+  "E1": {
+    "cht": "中華醫事科技大學",
+    "ja": "中華医事科技大学",
+    "en": "Chung Hwa University of Medical Technology",
+    "status": "auto"
+  },
+  "A6": {
+    "cht": "光宇學校財團法人元培醫事科技大學",
+    "ja": "光宇学校財團法人元培医事科技大学",
+    "en": "Yuanpei University of Medical Technology",
+    "status": "auto"
+  },
+  "D5": {
+    "cht": "台北海洋科技大學",
+    "ja": "台北海洋科技大学",
+    "en": "Taipei University of Marine Technology",
+    "status": "auto"
+  },
+  "E6": {
+    "cht": "崇右影藝科技大學",
+    "ja": "崇右影芸科技大学",
+    "en": "Chungyu University of Film and Arts",
+    "status": "auto"
+  },
+  "E2": {
+    "cht": "廣亞學校財團法人育達科技大學",
+    "ja": "広亜学校財團法人育達科技大学",
+    "en": "YU DA UNIVERSITY OF SCIENCE AND TECHNOLOGY",
+    "status": "auto"
+  },
+  "B9": {
+    "cht": "南亞科技學校財團法人南亞技術學院",
+    "ja": "南亜科技学校財團法人南亜技術学院",
+    "en": "Nanya Institute of Technology",
+    "status": "auto"
+  },
+  "C1": {
+    "cht": "東南科技大學",
+    "ja": "東南科技大学",
+    "en": "Tungnan University",
+    "status": "auto"
+  },
+  "C8": {
+    "cht": "宏國德霖科技大學",
+    "ja": "宏国德霖科技大学",
+    "en": "Hungkuo DeLin University of Technology",
+    "status": "auto"
+  },
+  "A5": {
+    "cht": "中信金學校財團法人中信科技大學",
+    "ja": "中信金学校財團法人中信科技大学",
+    "en": "CTBC University of Science and Technology",
+    "status": "auto"
+  },
+  "A0": {
+    "cht": "台鋼學校財團法人台鋼科技大學",
+    "ja": "台鋼学校財團法人台鋼科技大学",
+    "en": "Taiwan Steel University of Science and Technology",
+    "status": "auto"
+  },
+  "C7": {
+    "cht": "美和學校財團法人美和科技大學",
+    "ja": "美和学校財團法人美和科技大学",
+    "en": "Meiho University",
+    "status": "auto"
+  },
+  "A2": {
+    "cht": "聖約翰科技大學",
+    "ja": "聖約翰科技大学",
+    "en": "St. John's University",
+    "status": "auto"
+  },
+  "FF": {
+    "cht": "國立臺灣師範大學僑生先修部",
+    "ja": "国立台湾師範大学僑生先修部",
+    "en": "National Taiwan Normal University Academy of Preparatory Programs for Overseas Compatriot Students",
+    "status": "auto"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "1": { "cht": "資訊學群", "ja": "情報学系", "en": "Information Group" },
+  "2": { "cht": "工程學群", "ja": "工学系", "en": "Engineering Group" },
+  "3": { "cht": "數理化學群", "ja": "数理化学系", "en": "Mathematics, Physics and Chemistry Group" },
+  "4": { "cht": "醫藥衛生學群", "ja": "医療衛生学系", "en": "Medical Health Group" },
+  "5": { "cht": "生命科學學群", "ja": "生命科学系", "en": "Life Science Group" },
+  "6": { "cht": "生物資源學群", "ja": "生物資源学系（農林水産）", "en": "Agriculture, Forestry, Fishery and Husbandry Group" },
+  "7": { "cht": "地球與環境學群", "ja": "地球環境学系", "en": "Earth and Environment Group" },
+  "8": { "cht": "外語學群", "ja": "外国語学系", "en": "Foreign Language Group" },
+  "9": { "cht": "文史哲學群", "ja": "文学・歴史・哲学系", "en": "Literature, History and Philosophy Group" },
+  "10": { "cht": "教育學群", "ja": "教育学系", "en": "Education Group" },
+  "11": { "cht": "法政學群", "ja": "法学・政治学系", "en": "Law and Politics Group" },
+  "12": { "cht": "管理學群", "ja": "経営管理学系", "en": "Management Group" },
+  "13": { "cht": "財經學群", "ja": "金融経済学系", "en": "Finance and Economics Group" },
+  "14": { "cht": "社會與心理學群", "ja": "社会学・心理学系", "en": "Social and Psychology Group" },
+  "15": { "cht": "大眾傳播學群", "ja": "マスコミ・メディア学系", "en": "Mass Communication Group" },
+  "16": { "cht": "建築與設計學群", "ja": "建築・デザイン学系", "en": "Architecture and Design Group" },
+  "17": { "cht": "藝術學群", "ja": "芸術学系", "en": "Fine Art Group" },
+  "18": { "cht": "遊憩與運動學群", "ja": "スポーツ・レジャー学系", "en": "Physical Education and Leisure Group" }
+}
