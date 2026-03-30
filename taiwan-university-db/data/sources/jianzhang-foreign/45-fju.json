@@ -1,0 +1,43 @@
+{
+  "school_id": "45",
+  "school_name": "天主教輔仁大學",
+  "category": "foreign_student",
+  "data_source": "web_research",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://www.oie.fju.edu.tw/",
+  "foreign_admission_url": "https://idsaoie.fju.edu.tw/",
+  "jianzhang_url": "http://idsa.oie.docs.fju.edu.tw/Fall2026/FJCU_115-1Admission.pdf",
+  "jianzhang_year": 115,
+  "application_periods": [
+    {
+      "round": 1,
+      "start": "2026-02-09",
+      "end": "2026-03-05"
+    },
+    {
+      "round": 2,
+      "start": "2026-05-01",
+      "end": "2026-05-31"
+    }
+  ],
+  "application_fee": "NTD 1,600（国内）/ USD 65（海外）",
+  "language_req": {
+    "chinese": "TOCFL A2以上",
+    "english": null
+  },
+  "financial_proof": {
+    "amount": "NTD 200,000",
+    "jpy_estimate": "約100万円"
+  },
+  "tuition_info": "NTD 47,430〜66,990/学期",
+  "required_documents": [
+    "パスポートのコピー",
+    "卒業証明書",
+    "成績証明書",
+    "語学能力証明（TOCFL A2以上）",
+    "財力証明",
+    "学習計画書"
+  ],
+  "scholarship_info": "新入生向け: NTD 10,000/30,000/50,000 per semester（4学期連続）",
+  "notes": "Round 2は5月末まで出願可能。新入生奨学金制度あり"
+}

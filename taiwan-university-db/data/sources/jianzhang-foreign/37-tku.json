@@ -1,0 +1,45 @@
+{
+  "school_id": "37",
+  "school_name": "淡江大學",
+  "category": "foreign_student",
+  "data_source": "web_research",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://www.oieie.tku.edu.tw/",
+  "foreign_admission_url": "https://adms.tku.edu.tw/FrontPointOfEntry.aspx?Sn=53",
+  "jianzhang_url": "2026-2027外國學生招生簡章 Admission handbook PDF（TKU公式サイト内）",
+  "jianzhang_year": 115,
+  "application_periods": [
+    {
+      "round": 1,
+      "start": "2026-02-24",
+      "end": "2026-03-23"
+    },
+    {
+      "round": 2,
+      "start": "2026-04-16",
+      "end": "2026-05-06"
+    },
+    {
+      "round": 3,
+      "start": "2026-05-14",
+      "end": "2026-06-04"
+    }
+  ],
+  "language_req": {
+    "chinese": "TOCFL A2",
+    "english": "CEFR B1 (TOEFL iBT 57 / IELTS 4.0 / TOEIC 550)"
+  },
+  "financial_proof": {
+    "amount": "USD 4,000 or NTD 100,000",
+    "jpy_estimate": "約50万円"
+  },
+  "required_documents": [
+    "パスポートのコピー",
+    "卒業証明書",
+    "成績証明書",
+    "語学能力証明",
+    "財力証明",
+    "簡章PDF参照"
+  ],
+  "notes": "3回の出願チャンス（最多）。英語要件が比較的低い（IELTS 4.0）"
+}

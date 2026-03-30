@@ -513,8 +513,8 @@
     ],
     "last_updated": "2026-03-30",
     "foreign_student": {
-      "oia_url": "https://www.nccu.edu.tw/p/406-1000-22256,r17.php?Lang=zh-tw",
-      "admission_url": "https://www.nccu.edu.tw/p/426-1000-16.php?Lang=zh-tw",
+      "oia_url": "https://oic.nccu.edu.tw/",
+      "admission_url": "https://nccuadmission.nccu.edu.tw/Post/13664",
       "admission_links": [
         {
           "href": "https://www.nccu.edu.tw/p/426-1000-16.php?Lang=zh-tw",
@@ -523,15 +523,43 @@
       ],
       "financial_proof": {
         "amount": "NTD 200,000",
+        "usd_equivalent": "USD 7,000",
         "jpy_estimate": "約100万円"
       },
       "language_req": {
-        "chinese": "TOCFL A2（学部による）",
-        "english": "TOEIC 550（学部による）"
+        "chinese": "TOCFL Superior or HSK 4 推奨",
+        "english": "TOEFL iBT 80 / IELTS 6.0 / TOEIC 700"
       },
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "https://nccuadmission.nccu.edu.tw/Upload/FileManager/d00571ea-530f-44f2-8706-b0beb3c4e559.pdf",
+      "jianzhang_year": 115,
+      "application_periods": [
+        {
+          "round": 1,
+          "start": "2025-09-24",
+          "end": "2025-10-16"
+        },
+        {
+          "round": 2,
+          "start": "2026-02-02",
+          "end": "2026-03-09"
+        }
+      ],
+      "application_fee": "NTD 1,600 / USD 60",
+      "required_documents": [
+        "パスポートのコピー",
+        "卒業証明書",
+        "成績証明書",
+        "語学能力証明（TOCFL/TOEFL/IELTS等）",
+        "財力証明",
+        "学習計画書",
+        "推薦状"
+      ],
+      "tuition_info": "学部: NTD 49,020〜56,860/学期、大学院: NTD 78,910〜118,700/学期",
+      "notes": "NCCUは語学要件の推奨レベルが他校より高い（TOCFL Superior推奨）"
     }
   },
   {
@@ -1820,20 +1848,50 @@
     ],
     "last_updated": "2026-03-30",
     "foreign_student": {
-      "oia_url": "https://www.tku.edu.tw/oia/",
+      "oia_url": "https://www.oieie.tku.edu.tw/",
       "financial_proof": {
-        "amount": "100,000元",
+        "amount": "USD 4,000 or NTD 100,000",
         "jpy_estimate": "約50万円"
       },
       "language_req": {
         "chinese": "TOCFL A2",
-        "english": "CEFR B1以上"
+        "english": "CEFR B1 (TOEFL iBT 57 / IELTS 4.0 / TOEIC 550)"
       },
       "english_program_period": "2026/02/24~03/23",
       "english_program_qualification": "TOEIC 550",
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "admission_url": "https://adms.tku.edu.tw/FrontPointOfEntry.aspx?Sn=53",
+      "jianzhang_url": "2026-2027外國學生招生簡章 Admission handbook PDF（TKU公式サイト内）",
+      "jianzhang_year": 115,
+      "application_periods": [
+        {
+          "round": 1,
+          "start": "2026-02-24",
+          "end": "2026-03-23"
+        },
+        {
+          "round": 2,
+          "start": "2026-04-16",
+          "end": "2026-05-06"
+        },
+        {
+          "round": 3,
+          "start": "2026-05-14",
+          "end": "2026-06-04"
+        }
+      ],
+      "required_documents": [
+        "パスポートのコピー",
+        "卒業証明書",
+        "成績証明書",
+        "語学能力証明",
+        "財力証明",
+        "簡章PDF参照"
+      ],
+      "notes": "3回の出願チャンス（最多）。英語要件が比較的低い（IELTS 4.0）"
     }
   },
   {
@@ -1949,8 +2007,8 @@
     ],
     "last_updated": "2026-03-30",
     "foreign_student": {
-      "oia_url": "https://www.fju.edu.tw/sitemap.jsp?choice=1",
-      "admission_url": "https://www.fju.edu.tw/resource.jsp?labelID=22#",
+      "oia_url": "https://www.oie.fju.edu.tw/",
+      "admission_url": "https://idsaoie.fju.edu.tw/",
       "admission_links": [
         {
           "href": "https://www.fju.edu.tw/resource.jsp?labelID=22#",
@@ -1966,18 +2024,44 @@
         }
       ],
       "financial_proof": {
-        "amount": "20万元",
+        "amount": "NTD 200,000",
         "jpy_estimate": "約100万円"
       },
       "language_req": {
-        "chinese": "A2以上",
-        "english": "CEFR B1以上"
+        "chinese": "TOCFL A2以上",
+        "english": null
       },
       "english_program_period": "2026/02/09~03/05",
       "english_program_qualification": "TOEIC 550",
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "http://idsa.oie.docs.fju.edu.tw/Fall2026/FJCU_115-1Admission.pdf",
+      "jianzhang_year": 115,
+      "application_periods": [
+        {
+          "round": 1,
+          "start": "2026-02-09",
+          "end": "2026-03-05"
+        },
+        {
+          "round": 2,
+          "start": "2026-05-01",
+          "end": "2026-05-31"
+        }
+      ],
+      "application_fee": "NTD 1,600（国内）/ USD 65（海外）",
+      "required_documents": [
+        "パスポートのコピー",
+        "卒業証明書",
+        "成績証明書",
+        "語学能力証明（TOCFL A2以上）",
+        "財力証明",
+        "学習計画書"
+      ],
+      "tuition_info": "NTD 47,430〜66,990/学期",
+      "notes": "Round 2は5月末まで出願可能。新入生奨学金制度あり"
     }
   },
   {
