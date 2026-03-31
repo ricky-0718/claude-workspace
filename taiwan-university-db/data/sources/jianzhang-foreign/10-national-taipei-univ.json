@@ -1,0 +1,13 @@
+{
+  "school_id": "10",
+  "school_name": "國立臺北大學",
+  "category": "foreign_student",
+  "data_source": "auto_discovery",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://new.ntpu.edu.tw/oia/",
+  "foreign_admission_url": "javascript:void(0)",
+  "jianzhang_url": null,
+  "jianzhang_year": 115,
+  "pdf_file": "10-國立臺北大學-115.pdf",
+  "pdf_size_kb": 93
+}
