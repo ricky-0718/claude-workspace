@@ -1,0 +1,2397 @@
+{
+  "discovered_at": "2026-03-30T17:01:32.159Z",
+  "total_schools": 129,
+  "oia_found": 82,
+  "admission_found": 88,
+  "results": [
+    {
+      "school_id": "01",
+      "school_name": "國立臺灣大學",
+      "website": "https://www.ntu.edu.tw/",
+      "oia_url": "https://www.ntu.edu.tw/spotlight/2026/2464_20260319.html",
+      "foreign_admission_url": "https://admissions.ntu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://admissions.ntu.edu.tw/",
+          "text": "招生"
+        },
+        {
+          "href": "https://admissions.ntu.edu.tw/",
+          "text": "招生"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "04",
+      "school_name": "國立暨南國際大學",
+      "website": "https://www.ncnu.edu.tw/",
+      "oia_url": "https://www.ncnu.edu.tw/p/406-1000-33606,r30.php?Lang=zh-tw",
+      "foreign_admission_url": "javascript:void(0)",
+      "admission_links": [
+        {
+          "href": "javascript:void(0)",
+          "text": "招生訊息"
+        },
+        {
+          "href": "https://admission.ncnu.edu.tw/",
+          "text": "招生資訊網首頁"
+        },
+        {
+          "href": "https://exam.ncnu.edu.tw/",
+          "text": "招生網路報名"
+        },
+        {
+          "href": "https://exam.ncnu.edu.tw/ApplyUni/",
+          "text": "申請入學專區"
+        },
+        {
+          "href": "https://exam.ncnu.edu.tw/DisUni/",
+          "text": "分發入學專區"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "07",
+      "school_name": "國立臺灣師範大學",
+      "website": "https://www.ntnu.edu.tw/",
+      "oia_url": "https://www.ntnu.edu.tw/oia/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "11",
+      "school_name": "國立陽明交通大學",
+      "website": "https://www.nycu.edu.tw",
+      "oia_url": "https://www.nycu.edu.tw/oia/ch/index",
+      "foreign_admission_url": "https://www.nycu.edu.tw/oia/ch/app/folder/381",
+      "admission_links": [
+        {
+          "href": "https://www.nycu.edu.tw/oia/ch/app/folder/381",
+          "text": "外國學生"
+        },
+        {
+          "href": "https://www.nycu.edu.tw/oia/ch/app/folder/381",
+          "text": "外國學生"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "17",
+      "school_name": "國立清華大學",
+      "website": "https://www.nthu.edu.tw/",
+      "oia_url": "https://oga.site.nthu.edu.tw/",
+      "foreign_admission_url": "https://apply.nthu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://apply.nthu.edu.tw/",
+          "text": "未來學生"
+        },
+        {
+          "href": "https://oga.site.nthu.edu.tw/#cmb_2934_1",
+          "text": "招生資訊"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "02",
+      "school_name": "國立成功大學",
+      "website": "https://web.ncku.edu.tw/index.php?Lang=zh-tw",
+      "oia_url": "https://web.ncku.edu.tw/p/412-1000-19276.php?Lang=zh-tw",
+      "foreign_admission_url": "https://web.ncku.edu.tw/p/412-1000-211.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://web.ncku.edu.tw/p/412-1000-211.php?Lang=zh-tw",
+          "text": "招生"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "13",
+      "school_name": "國立政治大學",
+      "website": "https://www.nccu.edu.tw/",
+      "oia_url": "https://www.nccu.edu.tw/p/406-1000-22256,r17.php?Lang=zh-tw",
+      "foreign_admission_url": "https://www.nccu.edu.tw/p/426-1000-16.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.nccu.edu.tw/p/426-1000-16.php?Lang=zh-tw",
+          "text": "招生專區"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "09",
+      "school_name": "國立臺灣海洋大學",
+      "website": "https://www.ntou.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "10",
+      "school_name": "國立臺北大學",
+      "website": "https://new.ntpu.edu.tw/",
+      "oia_url": "https://new.ntpu.edu.tw/oia/",
+      "foreign_admission_url": "javascript:void(0)",
+      "admission_links": [
+        {
+          "href": "javascript:void(0)",
+          "text": "GENERAL.申請入學"
+        },
+        {
+          "href": "https://new.ntpu.edu.tw/oia/news/69b11d6d63f5a608851fb42d/%E8%B7%A8%E8%B6%8A%E6%96%87%E5%8C%96%E7%9B%B8%E9%81%87%E5%9C%A8%E5%8C%97%E5%A4%A7%E5%85%B1%E5%89%B5%E9%9D%92%E6%98%A5%E5%9B%9E%E6%86%B6%E2%80%94%E2%80%94%E5%8C%97%E5%A4%A7%E5%9C%8B%E9%9A%9B%E8%99%95%E8%BE%A6%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E8%BF%8E%E6%96%B0%E6%B4%BB%E5%8B%95EncounteringCultures,CreatingMemoriesatNTPUOIAHostsWelcomeEventforInternationalStudents",
+          "text": "跨越文化相遇 在北大共創青春回憶——北大國際處辦外國學生迎新活動"
+        },
+        {
+          "href": "https://new.ntpu.edu.tw/oia/news/69b11d6d63f5a608851fb42d/%E8%B7%A8%E8%B6%8A%E6%96%87%E5%8C%96%E7%9B%B8%E9%81%87%E5%9C%A8%E5%8C%97%E5%A4%A7%E5%85%B1%E5%89%B5%E9%9D%92%E6%98%A5%E5%9B%9E%E6%86%B6%E2%80%94%E2%80%94%E5%8C%97%E5%A4%A7%E5%9C%8B%E9%9A%9B%E8%99%95%E8%BE%A6%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E8%BF%8E%E6%96%B0%E6%B4%BB%E5%8B%95EncounteringCultures,CreatingMemoriesatNTPUOIAHostsWelcomeEventforInternationalStudents",
+          "text": "SYSTEM.NEWS.閱讀全文 關於跨越文化相遇 在北大共創青春回憶——北大國際處辦外國學生迎新活動"
+        },
+        {
+          "href": "https://new.ntpu.edu.tw/oia/news/69c25b2aba76cd07fcaa8e55/%F0%9F%93%A3115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%AC%AC2%E5%AD%B8%E6%9C%9F%E8%B5%B4%E5%A4%96%E4%BA%A4%E6%8F%9B%E7%B0%A1%E7%AB%A0%E5%85%AC%E5%91%8A!%E7%94%B3%E8%AB%8B%E6%97%A5%E6%9C%9F%E8%87%AA115%E5%B9%B44%E6%9C%881%E6%97%A5%E8%B5%B7%E8%87%B3115%E5%B9%B44%E6%9C%8830%E6%97%A516%E6%99%82%E6%AD%A2SpringSemesterofAcademicYear2026ExchangeProgramAnnouncement!",
+          "text": "📣115學年度第2學期赴外交換簡章公告! (申請日期自115年4月1日起至115年4月30日16時止)"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "05",
+      "school_name": "國立中興大學",
+      "website": "https://www.nchu.edu.tw/",
+      "oia_url": "https://oias.nchu.edu.tw/asknchu-ch/",
+      "foreign_admission_url": "https://iss.nchu.edu.tw/ufaq-tag/admission-zh/",
+      "admission_links": [
+        {
+          "href": "https://iss.nchu.edu.tw/ufaq-tag/admission-zh/",
+          "text": "入學 (1)"
+        },
+        {
+          "href": "https://iss.nchu.edu.tw/ufaq-tag/international-student-activity/",
+          "text": "International Student Activity (37)"
+        },
+        {
+          "href": "https://iss.nchu.edu.tw/ufaq-tag/admission/",
+          "text": "Admission (11)"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "06",
+      "school_name": "國立中正大學",
+      "website": "https://www.ccu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://exams.ccu.edu.tw/index.php",
+      "admission_links": [
+        {
+          "href": "https://exams.ccu.edu.tw/index.php",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.cac.edu.tw/cacportal/index.php",
+          "text": "大學甄選入學委員會"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "15",
+      "school_name": "國立中央大學",
+      "website": "https://www.ncu.edu.tw",
+      "oia_url": "https://ncusec.ncu.edu.tw/news/headlines_content.php?H_ID=4644",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "19",
+      "school_name": "國立中山大學",
+      "website": "http://www.nsysu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://www.nsysu.edu.tw/p/412-1000-94.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.nsysu.edu.tw/p/412-1000-94.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.nsysu.edu.tw/#cmb_476_1",
+          "text": "招生公告"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "08",
+      "school_name": "國立東華大學",
+      "website": "http://www.ndhu.edu.tw",
+      "oia_url": "https://oia.ndhu.edu.tw/",
+      "foreign_admission_url": "https://oia.ndhu.edu.tw/p/412-1027-21548.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://oia.ndhu.edu.tw/p/412-1027-21548.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://rc149.ndhu.edu.tw/",
+          "text": "臺灣教育大學系統聯合招生資訊入口網"
+        },
+        {
+          "href": "https://oia.ndhu.edu.tw/p/412-1027-21529.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://oia.ndhu.edu.tw/p/412-1027-21540.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://oia.ndhu.edu.tw/p/406-1027-253618,r6457.php?Lang=zh-tw",
+          "text": "【公告】本校115學年度第1次單獨招收僑生及港澳生申請入學錄取名單"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "03",
+      "school_name": "國立嘉義大學",
+      "website": "https://www.ncyu.edu.tw/",
+      "oia_url": "https://www.ncyu.edu.tw/oia/",
+      "foreign_admission_url": "https://www.ncyu.edu.tw/oia/Subject?nodeId=58425",
+      "admission_links": [
+        {
+          "href": "https://www.ncyu.edu.tw/oia/Subject?nodeId=58425",
+          "text": "招生公告"
+        },
+        {
+          "href": "https://www.ncyu.edu.tw/oia/Subject?nodeId=63027",
+          "text": "申請須知 (除宣傳、推廣及協助學生辦理來臺必要程序外，本校並未委外辦理招生事務。)"
+        },
+        {
+          "href": "https://www.ncyu.edu.tw/oia/Subject?nodeId=62826",
+          "text": "招生簡章"
+        },
+        {
+          "href": "https://www.ncyu.edu.tw/oia/Subject?nodeId=62821",
+          "text": "招生簡章"
+        },
+        {
+          "href": "https://www.ncyu.edu.tw/oia/Subject?nodeId=61336",
+          "text": "強化境外學位生招生"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "23",
+      "school_name": "國立彰化師範大學",
+      "website": "http://www.ncue.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "27",
+      "school_name": "國立高雄師範大學",
+      "website": "http://www.nknu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "80",
+      "school_name": "國立金門大學",
+      "website": "https://www.nqu.edu.tw/",
+      "oia_url": null,
+      "foreign_admission_url": "https://www.nqu.edu.tw/p/412-1000-881.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.nqu.edu.tw/p/412-1000-881.php?Lang=zh-tw",
+          "text": "招生資訊"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "14",
+      "school_name": "國立宜蘭大學",
+      "website": "http://www.niu.edu.tw",
+      "oia_url": "https://isa.niu.edu.tw/",
+      "foreign_admission_url": "javascript:void(0);return false;",
+      "admission_links": [
+        {
+          "href": "javascript:void(0);return false;",
+          "text": "招生入學"
+        },
+        {
+          "href": "https://isa.niu.edu.tw/p/412-1073-5944.php",
+          "text": "招生簡章"
+        },
+        {
+          "href": "https://isa.niu.edu.tw/p/412-1073-5945.php",
+          "text": "入學條件"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "E0",
+      "school_name": "臺北市立大學",
+      "website": "http://www.utaipei.edu.tw/",
+      "oia_url": "http://international.utaipei.edu.tw/index.php",
+      "foreign_admission_url": "https://admission.utaipei.edu.tw/p/412-1033-4307.php?Lang=en",
+      "admission_links": [
+        {
+          "href": "https://admission.utaipei.edu.tw/p/412-1033-4307.php?Lang=en",
+          "text": "學位生入學"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "26",
+      "school_name": "國立臺中教育大學",
+      "website": "https://www.ntcu.edu.tw/",
+      "oia_url": "https://www.ntcu.edu.tw/Errors/Http404",
+      "foreign_admission_url": "https://www.ntcu.edu.tw/Tag?ID=9",
+      "admission_links": [
+        {
+          "href": "https://www.ntcu.edu.tw/Tag?ID=9",
+          "text": "招生"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "F0",
+      "school_name": "國立屏東大學",
+      "website": "https://www.nptu.edu.tw/",
+      "oia_url": null,
+      "foreign_admission_url": "https://admission.nptu.edu.tw/p/426-1005-1.php",
+      "admission_links": [
+        {
+          "href": "https://admission.nptu.edu.tw/p/426-1005-1.php",
+          "text": "入學導航"
+        },
+        {
+          "href": "https://admission.nptu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://admission.nptu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.nptu.edu.tw/#cmb_1085_2",
+          "text": "招生"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "20",
+      "school_name": "國立臺東大學",
+      "website": "https://www.nttu.edu.tw",
+      "oia_url": "https://english.nttu.edu.tw/",
+      "foreign_admission_url": "https://english.nttu.edu.tw/#Dyn_2_4",
+      "admission_links": [
+        {
+          "href": "https://english.nttu.edu.tw/#Dyn_2_4",
+          "text": "Admissions"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "18",
+      "school_name": "國立臺南大學",
+      "website": "https://www.nutn.edu.tw/",
+      "oia_url": "https://www.nutn.edu.tw/oia/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "12",
+      "school_name": "國立高雄大學",
+      "website": "https://www.nuk.edu.tw/",
+      "oia_url": "https://dia.nuk.edu.tw/p/404-1034-41655.php?Lang=zh-tw",
+      "foreign_admission_url": "https://dia.nuk.edu.tw/p/403-1034-1419.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://dia.nuk.edu.tw/p/403-1034-1419.php?Lang=zh-tw",
+          "text": "國際招生訊息"
+        },
+        {
+          "href": "javascript:void(0);return false;",
+          "text": "入學申請Admission"
+        },
+        {
+          "href": "https://dia.nuk.edu.tw/p/403-1034-1419-1.php?Lang=zh-tw",
+          "text": "國際招生訊息International Admissions News"
+        },
+        {
+          "href": "https://rinteradmission.nuk.edu.tw/",
+          "text": "入學申請網站International Admissions Website"
+        },
+        {
+          "href": "https://www.nuk.edu.tw/p/412-1000-221.php?Lang=zh-tw",
+          "text": "招生系所Degree Programs"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "34",
+      "school_name": "國立臺灣藝術大學",
+      "website": "https://www.ntua.edu.tw/",
+      "oia_url": "https://www.ntua.edu.tw/oia/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "28",
+      "school_name": "國立臺北教育大學",
+      "website": "https://www.ntue.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "33",
+      "school_name": "國立臺北藝術大學",
+      "website": "https://w3.tnua.edu.tw/",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "30",
+      "school_name": "國立臺灣體育運動大學",
+      "website": "https://www.ntus.edu.tw",
+      "oia_url": "https://www.ntus.edu.tw/news/index.php?act=article&code=list&ids=139&new_kind_id=6",
+      "foreign_admission_url": "https://www.ntus.edu.tw/news/index.php?act=article&code=list&ids=138&new_kind_id=4",
+      "admission_links": [
+        {
+          "href": "https://www.ntus.edu.tw/news/index.php?act=article&code=list&ids=138&new_kind_id=4",
+          "text": "招生"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "32",
+      "school_name": "國立體育大學",
+      "website": "http://www.ntsu.edu.tw",
+      "oia_url": "https://iec.ntsu.edu.tw/",
+      "foreign_admission_url": "https://admissions.ntsu.edu.tw/app/home.php",
+      "admission_links": [
+        {
+          "href": "https://admissions.ntsu.edu.tw/app/home.php",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://admissions.ntsu.edu.tw/app/home.php",
+          "text": "招生專區 Admissions"
+        },
+        {
+          "href": "https://admissions.ntsu.edu.tw/p/404-1046-62826.php?Lang=zh-tw",
+          "text": ""
+        },
+        {
+          "href": "https://admissions.ntsu.edu.tw/p/404-1046-62826.php?Lang=zh-tw",
+          "text": "115學年度申請入學審查資料項目及資料準備指引 (含書審及面試)"
+        },
+        {
+          "href": "https://www.ntsu.edu.tw/#cmb_23_3",
+          "text": "招生資訊"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "35",
+      "school_name": "國立臺南藝術大學",
+      "website": "https://www.tnnua.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://www.tnnua.edu.tw/p/412-1000-2026.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.tnnua.edu.tw/p/412-1000-2026.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://acad.tnnua.edu.tw/p/406-1003-51875,r2071.php?Lang=zh-tw",
+          "text": "115學年度中國音樂學系入學考試"
+        },
+        {
+          "href": "https://acad.tnnua.edu.tw/p/412-1003-3744.php?Lang=zh-tw",
+          "text": "115學年度音樂學系入學考試"
+        },
+        {
+          "href": "https://www.tnnua.edu.tw/#cmb_1_1",
+          "text": "招生"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "22",
+      "school_name": "國防醫學大學",
+      "website": "https://www.ndmctsgh.edu.tw/",
+      "oia_url": null,
+      "foreign_admission_url": "https://sas.ndmctsgh.edu.tw/IASS/FrontShowAdmissionList.aspx?D=OAS.API&N=OAS.API#",
+      "admission_links": [
+        {
+          "href": "https://sas.ndmctsgh.edu.tw/IASS/FrontShowAdmissionList.aspx?D=OAS.API&N=OAS.API#",
+          "text": "研究所網路報名"
+        },
+        {
+          "href": "https://wwwndmc.ndmutsgh.edu.tw/unit/100143/1861",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://wwwndmc.ndmutsgh.edu.tw/unit/100143/1861",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://wwwndmc.ndmutsgh.edu.tw/unit/100143/1861",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://sas.ndmctsgh.edu.tw/IASS/FrontShowAdmissionList.aspx?D=OAS.API&N=OAS.API#",
+          "text": "研究所網路報名"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "16",
+      "school_name": "國立聯合大學",
+      "website": "http://www.nuu.edu.tw",
+      "oia_url": "http://secretary.nuu.edu.tw/p/404-1003-77785.php?Lang=zh-tw",
+      "foreign_admission_url": "http://enroll.nuu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "http://enroll.nuu.edu.tw/",
+          "text": "招生平台"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "68",
+      "school_name": "中國醫藥大學",
+      "website": "https://cmucia.cmu.edu.tw/admission.html",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "37",
+      "school_name": "淡江大學",
+      "website": "http://www.tku.edu.tw",
+      "oia_url": "https://www.tku.edu.tw/oia/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "61",
+      "school_name": "中原大學",
+      "website": "http://www.cycu.edu.tw",
+      "oia_url": "https://www.cycu.edu.tw/oia/",
+      "foreign_admission_url": "https://icare.cycu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://icare.cycu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://icare.cycu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://icare.cycu.edu.tw/",
+          "text": "招生資訊"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "45",
+      "school_name": "天主教輔仁大學",
+      "website": "https://www.fju.edu.tw/",
+      "oia_url": "https://www.fju.edu.tw/sitemap.jsp?choice=1",
+      "foreign_admission_url": "https://www.fju.edu.tw/resource.jsp?labelID=22#",
+      "admission_links": [
+        {
+          "href": "https://www.fju.edu.tw/resource.jsp?labelID=22#",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://exam.fju.edu.tw/",
+          "text": "招生資訊平台"
+        },
+        {
+          "href": "http://idsa.oie.fju.edu.tw/",
+          "text": "外國學生申請入學"
+        },
+        {
+          "href": "https://www.fju.edu.tw/article.jsp?articleID=8",
+          "text": "入學管道專區"
+        },
+        {
+          "href": "https://fjcuadm.fju.edu.tw/speed.php?id=2",
+          "text": "新生入學專區"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "39",
+      "school_name": "東海大學",
+      "website": "https://www.thu.edu.tw",
+      "oia_url": "javascript:void(0)",
+      "foreign_admission_url": "javascript:void(0)",
+      "admission_links": [
+        {
+          "href": "javascript:void(0)",
+          "text": "各學制招生資訊"
+        },
+        {
+          "href": "https://exam2.thu.edu.tw/EXAM/indextt.jsp",
+          "text": "各學制招生資訊\n                遇見知識 看見未來 最好的選擇趕緊報名\n                東海大學歡迎你"
+        },
+        {
+          "href": "http://csr.thu.edu.tw/",
+          "text": "招生策略中心\n                Let’s have fun at THU"
+        },
+        {
+          "href": "https://www.thu.edu.tw/web/user/user.php?did=1",
+          "text": "新生入學"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "36",
+      "school_name": "中國文化大學",
+      "website": "http://www.pccu.edu.tw",
+      "oia_url": "http://www.pccu.edu.tw/#",
+      "foreign_admission_url": "https://futurestudent.pccu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://futurestudent.pccu.edu.tw/",
+          "text": "招生入學"
+        },
+        {
+          "href": "https://futurestudent.pccu.edu.tw/",
+          "text": "招生入學"
+        },
+        {
+          "href": "http://www.pccu.edu.tw/#1",
+          "text": "中國文化大學112學年度大學申請入學第二階段指定項目甄試資訊"
+        },
+        {
+          "href": "https://futurestudent.pccu.edu.tw/",
+          "text": "招生入學"
+        },
+        {
+          "href": "http://www.pccu.edu.tw/#06",
+          "text": "歡迎近3000位考生應考文大 雨神蒞臨 建議應考小心步伐 考生服務隊隨時回答您的問題\r\n                        112學年度大學申請入學指定項目甄試19、20日登場，各系所家長區、考區，全系動員，提供考生相關服務，目前在大義館、大典館間設有多台胖卡專車..."
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "44",
+      "school_name": "逢甲大學",
+      "website": "https://www.fcu.edu.tw/",
+      "oia_url": "https://freshman.fcu.edu.tw/en/overseas-students/",
+      "foreign_admission_url": "https://isofcu.wixsite.com/enfreshmanguide",
+      "admission_links": [
+        {
+          "href": "https://isofcu.wixsite.com/enfreshmanguide",
+          "text": "New International Students"
+        },
+        {
+          "href": "https://isofcu.wixsite.com/enfreshmanguide",
+          "text": "New International Students"
+        },
+        {
+          "href": "https://admissions-fee.fcu.edu.tw/W710107/StudReply/ReplyForm.aspx#/login",
+          "text": "1.Reply to the study intention"
+        },
+        {
+          "href": "https://dormitory.fcu.edu.tw/newly-arriving-international-undergraduate-students-2/",
+          "text": "5.Apply for a dormitory"
+        },
+        {
+          "href": "https://freshman.fcu.edu.tw/en/overseas-students/lowincome/",
+          "text": "10.Purchasing Insurance & Applying for a Low-Income\n                    \n                Certificate"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "55",
+      "school_name": "東吳大學",
+      "website": "http://www.scu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "57",
+      "school_name": "元智大學",
+      "website": "https://www.yzu.edu.tw/",
+      "oia_url": "https://sites.google.com/g.yzu.edu.tw/yzu-ilcc-web/",
+      "foreign_admission_url": "https://localadmissions.yzu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://localadmissions.yzu.edu.tw/",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://www.yzu.edu.tw/admissions/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://localadmissions.yzu.edu.tw/",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://www.yzu.edu.tw/admissions/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://localadmissions.yzu.edu.tw/",
+          "text": "高中生專區"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "65",
+      "school_name": "長庚大學",
+      "website": "http://www.cgu.edu.tw",
+      "oia_url": "https://www.cgu.edu.tw/oia/",
+      "foreign_admission_url": "https://www.cgu.edu.tw/recruit_intl",
+      "admission_links": [
+        {
+          "href": "https://www.cgu.edu.tw/recruit_intl",
+          "text": "Admission Application"
+        },
+        {
+          "href": "https://www.cgu.edu.tw/oia/ContentSection?nodeId=17012",
+          "text": "Registration Guidelines (Spring 2026) for new students"
+        },
+        {
+          "href": "https://www.cgu.edu.tw/recruit_intl",
+          "text": "Apply to CGU"
+        },
+        {
+          "href": "https://www.cgu.edu.tw/oia/Subject/Detail/76609?nodeId=15080",
+          "text": "【Forwarded】MVC Marketing Specialist Recruitment\r\n                                                    \r\n                                                        Medigen Vaccine Biologics Corporation(MVC) is a Taiwanese company focused on vaccine research and development and biotechnology innovation, dedicated to improving public health and expanding its international footprint. 🌏 Currently, Advanced Vaccines is actively expanding into the Southeast Asian market, responding to growing regional healthcare needs and strengthening its presence in Southeast Asia and its global competitiveness.\r\nJoin us and build your key career strengths in the rapidly growing biotechnology industry. 💪\r\n\r\n【Title】\r\nMarketing Specialist (Vietnam Market)\r\n\r\n【Key Responsibilities】\r\n\r\n\t\r\n\t\tEvent Planning &amp; Execution: Assist in planning and executing product marketing and medical-related activities, including logistics coordination, liaison with relevant departments, and preparation of materials.\r\n\t\r\n\t\r\n\t\tMarket Reporting: Regularly compile summary reports on Vietnam market progress and major marketing activities for internal reference.\r\n\t\r\n\t\r\n\t\tExternal Representation: Represent the company at medical conferences and external networking events in Vietnam.\r\n\t\r\n\t\r\n\t\tRelationship Management: Maintain professional partnerships with medical institutions and experts in Vietnam to support ongoing collaborations.\r\n\t\r\n\t\r\n\t\tMarket Intelligence: Track disease trends and relevant market information; provide timely updates to assist in adjusting marketing strategies.\r\n\t\r\n\t\r\n\t\tOperational Support: Support administrative and communication tasks to ensure a smooth distribution process for products from Taiwan to Vietnam.\r\n\t\r\n\r\n\r\n【Requirements】\r\n\r\n\t\r\n\t\tLanguage Proficiency: Fluent in English and Vietnamese. Candidates with intermediate or higher proficiency in Chinese (Mandarin) are preferred.\r\n\t\r\n\t\r\n\t\tEducational Background: Degree in Biomedical Sciences, Pharmaceuticals, Nursing, or related fields. Bachelor’s or master’s degree holders are welcome; relevant professional experience is highly preferred.\r\n\t\r\n\t\r\n\t\tTravel: Ability to travel to Vietnam as required by business needs.\r\n\t\r\n\t\r\n\t\tTarget Candidates: We welcome 2026 graduating students or Vietnamese professionals currently residing in Taiwan to apply.\r\n\t\r\n\r\n\r\n【More Information】\r\n\r\n\t\r\n\t\tHeadcount：1 position\r\n\t\r\n\t\r\n\t\tLocation：Medigen Vaccine Biologics Taipei Office (Address：4F., No. 508, Sec. 7, Zhongxiao E. Rd., Nangang Dist., Taipei City)\r\n\t\r\n\t\r\n\t\tRelated News: MVC's ENVACGEN® is Granted First Enterovirus A71 Vaccine Marketing Authorization in Vietnam; Joins Forces with Substipharm Biologics to Expand Southeast Asian Market\r\n\t\r\n\r\n\r\n【Application Method (Choose one)】\r\n\r\n\t\r\n\t\tSubmit via 104 Job Bank.\r\n\t\r\n\t\r\n\t\tE-mail CV to HR Janice: janicelai@medigenvac.com"
+        },
+        {
+          "href": "https://www.cgu.edu.tw/oia/Subject/Detail/68864?nodeId=18261",
+          "text": "03\r\n                                    Settling Into CGU: A Dual-Degree Student&#39;s Guide to Campus Life\r\n                                    2025.07.09\r\n                                    \r\n                                        \r\n                        \r\n                        \r\n                        Hey Folks! Let me introduce myself, I am a student of Chang Gung University on a Dual Degree Program. Yes, I am still in bachelor study and I need to finish 2 years of study here in Chang Gung University. To give you a clear picture of my situation, I am a student doing a study in two different universities. My home university is Institut Teknologi Sepuluh Nopember (Indonesia), where I completed my first and second years before coming to Taiwan for my third and final year.\r\n\r\nDue to that program, I am able to enjoy my time in CGU and that’s what I did when I first got here. CGU provides the best facility for its students. From the public transport, modern class, library, student activity room, cinema, even a museum for its study to enjoy. I only know about these facilities on the internet. However, when I arrived at this campus, my expectation was fulfilled. These facilities are very good and help me to adapt very quickly. I even feel like I’m not going abroad, as the people here are nice, the facility is good, and the food is perfect. But the main reason on my adaptation process is this campus facilities.\r\n\r\nThe learning system here also matches with my learning method. I often feel bored when there is a lecture that lasts more than 2 hours. But here, the system where you can have a 10 minutes rest in each hour, it is jaw-dropping for me. Not gonna lie, at first, I’m in awe, because I can keep focus until the very last minute of the class.&nbsp;\r\n\r\nI think you will face the same experience as me when you first come to this beautiful campus. However, it will be good for you if you have insider tips about Chang Gung University. Worry not! I am here to give you tips so that you can adapt easily in a short time.\r\n\r\nMy first suggestion is to explore the campus. You need to know Chang Gung University until the very edge of this campus. You need to do this before the first week of semester starts, so then you won’t feel confused when you want to go to your class. Even though there is an English description in front of class, still, if you don’t explore it first, you will have a hard time finding your class.\r\n\r\nMy second suggestion is to use the campus facilities, especially the library. CGU library has 5th floor, and each floor has different functionality. The 1st floor is the lobby, here is the location of the library administrator. If you want to borrow or return a book, this is the floor you'll be looking for. The 2nd floor is the publication floor, it is filled with thesis of a graduate student. The 3rd and 4th floor is the reading section, the difference is the 3rd floor contains Chinese written literature, whereas the 4th floor is written in English. If you are an international student, 4th floor is your comfort place to study. Finally, the 5th floor, it is the floor where enjoyment is at the max, especially if you are addicted to movies. Here, You can rent a room with your friends and play a movie that is provided by the library. There are a bunch of great movies provided here. If you want to relax for a bit but don’t have time to go outside campus, this is the best place to go.\r\n\r\nMy third suggestion is to join all activities held by the Office of International Affairs (we call it OIA). OIA acts as a support for the international student, they provide campus tour, gathering, vacation, even part-time opportunities. OIA uses outlook or gmail to share information, so be sure to check your email regularly.\r\n\r\nThese three suggestions are the reason why I can comfortably study here without many issues. Adapting also becomes easier as the campus provides the best service and support for me. To end this article, I think no matter who you are, you will find yourself comfortable on this campus. Trust me, this campus will make your study even more enjoyable yet still have high quality of learning."
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "48",
+      "school_name": "世新大學",
+      "website": "https://www.shu.edu.tw/",
+      "oia_url": "https://www.shu.edu.tw/oia/",
+      "foreign_admission_url": "https://www.shu.edu.tw/oia/Admission.aspx",
+      "admission_links": [
+        {
+          "href": "https://www.shu.edu.tw/oia/Admission.aspx",
+          "text": "招生與入學"
+        },
+        {
+          "href": "https://www.shu.edu.tw/oia/Shu-Admmision-apply.html",
+          "text": "Apply"
+        },
+        {
+          "href": "https://www.shu.edu.tw/oia/Admission.aspx",
+          "text": "招生與入學"
+        },
+        {
+          "href": "https://www.shu.edu.tw/oia/Shu-Admmision-apply.html",
+          "text": "Apply"
+        },
+        {
+          "href": "https://www.shu.edu.tw/oia/Admission.aspx",
+          "text": "招生與入學"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "66",
+      "school_name": "中山醫學大學",
+      "website": "http://www.csmu.edu.tw",
+      "oia_url": "https://msg.csmu.edu.tw/news/main2Pagenew.aspx?MessageID=73335",
+      "foreign_admission_url": "https://recruit.csmu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.csmu.edu.tw/",
+          "text": "招生"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "40",
+      "school_name": "實踐大學",
+      "website": "https://www.usc.edu.tw",
+      "oia_url": "https://www.usc.edu.tw/p/412-1000-95.php?Lang=zh-tw",
+      "foreign_admission_url": "https://www.usc.edu.tw/p/412-1000-404.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://www.usc.edu.tw/p/412-1000-404.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://recruit.usc.edu.tw/?p=5217",
+          "text": "Admissions"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "40A",
+      "school_name": "實踐大學(高雄)",
+      "website": "https://www.kh.usc.edu.tw/",
+      "oia_url": "https://www.kh.usc.edu.tw/p/406-1000-53666,r519.php?Lang=zh-tw",
+      "foreign_admission_url": "https://recruit.kh.usc.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.kh.usc.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://recruit.kh.usc.edu.tw/",
+          "text": "招生資訊"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "41",
+      "school_name": "義守大學",
+      "website": "https://www.isu.edu.tw",
+      "oia_url": "https://www.isu.edu.tw/",
+      "foreign_admission_url": "https://www.isu.edu.tw/admissions",
+      "admission_links": [
+        {
+          "href": "https://www.isu.edu.tw/admissions",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://oica.ishouuniversity.com/tw/",
+          "text": "境外生招生"
+        },
+        {
+          "href": "https://www.isu.edu.tw/admissions",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://oica.ishouuniversity.com/tw/",
+          "text": "境外生招生"
+        },
+        {
+          "href": "https://www.isu.edu.tw/admissions/7?year=115&amp;category=1",
+          "text": ""
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "69",
+      "school_name": "臺北醫學大學",
+      "website": "https://www.tmu.edu.tw",
+      "oia_url": "http://oge.tmu.edu.tw/zh-hant/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/%E7%9B%9F%E6%A0%A1%E4%B8%80%E8%A6%BD/",
+      "foreign_admission_url": "https://oge.tmu.edu.tw/zh-hant/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/%E7%9B%9F%E6%A0%A1%E4%B8%80%E8%A6%BD/#",
+      "admission_links": [
+        {
+          "href": "https://oge.tmu.edu.tw/zh-hant/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/%E7%9B%9F%E6%A0%A1%E4%B8%80%E8%A6%BD/#",
+          "text": "外國學生"
+        },
+        {
+          "href": "https://oge.tmu.edu.tw/zh-hant/%e5%a4%96%e5%9c%8b%e5%ad%b8%e7%94%9f%e5%b7%a5%e4%bd%9c%e8%a8%b1%e5%8f%af%e8%ad%89/",
+          "text": "外國學生工作許可證"
+        },
+        {
+          "href": "https://oge.tmu.edu.tw/zh-hant/%e5%a4%96%e5%9c%8b%e5%ad%b8%e7%94%9f%e5%a4%a7%e5%ad%b8%e9%83%a8%e7%94%b3%e8%ab%8b/",
+          "text": "外國學生大學部申請"
+        },
+        {
+          "href": "http://www.admissions.cn/kmmu/",
+          "text": "昆明醫科大學"
+        },
+        {
+          "href": "http://www.admissions.cn/kmmu/",
+          "text": "Kunming Medical University"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "42",
+      "school_name": "靜宜大學",
+      "website": "https://oia.pu.edu.tw/app/home.php",
+      "oia_url": "https://oia.pu.edu.tw/app/home.php#start-C",
+      "foreign_admission_url": "https://oia.pu.edu.tw/p/426-1048-11.php",
+      "admission_links": [
+        {
+          "href": "https://oia.pu.edu.tw/p/426-1048-11.php",
+          "text": "僑外陸生申請入學"
+        },
+        {
+          "href": "https://oia.pu.edu.tw/p/426-1048-42.php?Lang=zh-tw",
+          "text": "國際專修部申請入學"
+        },
+        {
+          "href": "https://oia.pu.edu.tw/p/426-1048-41.php?Lang=zh-tw",
+          "text": "新型專班申請入學"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "46",
+      "school_name": "長榮大學",
+      "website": "http://www.cjcu.edu.tw",
+      "oia_url": "https://www.cjcu.edu.tw/oia/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "43",
+      "school_name": "真理大學",
+      "website": "http://www.au.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "56",
+      "school_name": "開南大學",
+      "website": "http://www.knu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "49",
+      "school_name": "大葉大學",
+      "website": "http://www.dyu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://www.dyu.edu.tw/%7B%7B%20Enroll.ExMainLink%20%7D%7D",
+      "admission_links": [
+        {
+          "href": "https://www.dyu.edu.tw/%7B%7B%20Enroll.ExMainLink%20%7D%7D",
+          "text": "開啟招生訊息"
+        },
+        {
+          "href": "https://www.dyu.edu.tw/news.html?pool_ID=2950",
+          "text": "{{ L.EnrollTitle }}\r\n                              \r\n                              招生訊息"
+        },
+        {
+          "href": "https://www.dyu.edu.tw/%7B%7B%20d.ExLink%20%7D%7D",
+          "text": "招生消息"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "63",
+      "school_name": "大同大學",
+      "website": "https://www.ttu.edu.tw/",
+      "oia_url": "http://www.ttu.edu.tw/p/406-1000-42304,r12.php",
+      "foreign_admission_url": "https://recruit.ttu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.ttu.edu.tw/",
+          "text": "招生資訊"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "62",
+      "school_name": "華梵大學",
+      "website": "http://www.hfu.edu.tw",
+      "oia_url": "http://www.hfu.edu.tw/Front/Announce/Announce-02/News.aspx?id=%2BCcwjg98bKg=&Sn=2369",
+      "foreign_admission_url": "http://www.hfu.edu.tw/Front/Admission/Admissions-01/Page.aspx?id=lAxlbSsJ6R4=",
+      "admission_links": [
+        {
+          "href": "http://www.hfu.edu.tw/Front/Admission/Admissions-01/Page.aspx?id=lAxlbSsJ6R4=",
+          "text": "招生專區"
+        },
+        {
+          "href": "http://www.hfu.edu.tw/FrontPointOfEntry.aspx?Sn=84",
+          "text": "招生簡章與報名"
+        },
+        {
+          "href": "https://edupass.azurewebsites.net/Pages/RegOnline.aspx?Group=01",
+          "text": "入學網路報名"
+        },
+        {
+          "href": "http://www.hfu.edu.tw/FrontPointOfEntry.aspx?Sn=226",
+          "text": "申請入學專區"
+        },
+        {
+          "href": "http://www.hfu.edu.tw/FrontPointOfEntry.aspx?Sn=85",
+          "text": "申請入學審查準備指引"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "60",
+      "school_name": "南華大學",
+      "website": "https://www3.nhu.edu.tw/",
+      "oia_url": "https://www3.nhu.edu.tw/Web/NewsDetail?nid=52372&n=News",
+      "foreign_admission_url": "https://admission3.nhu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://admission3.nhu.edu.tw/",
+          "text": "入學招生"
+        },
+        {
+          "href": "https://admission3.nhu.edu.tw/",
+          "text": "本國學生"
+        },
+        {
+          "href": "https://admission3.nhu.edu.tw/",
+          "text": "就學服務處"
+        },
+        {
+          "href": "https://www3.nhu.edu.tw/Web/Pages?mid=2684&n=%E6%96%B0%E7%94%9F%E5%85%A5%E5%AD%B8",
+          "text": "新生入學"
+        },
+        {
+          "href": "https://admission3.nhu.edu.tw/Web/NewsDetail?mid=5367&nid=50783&tid=1541&n=%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D",
+          "text": "115學年度大學部特殊選才管道面試公告"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "59",
+      "school_name": "玄奘大學",
+      "website": "http://www.hcu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "64",
+      "school_name": "佛光大學",
+      "website": "http://www.fgu.edu.tw/",
+      "oia_url": "https://oica.fgu.edu.tw/?locale=en",
+      "foreign_admission_url": "https://oica.fgu.edu.tw/en/intro1/intro2/ICEC",
+      "admission_links": [
+        {
+          "href": "https://oica.fgu.edu.tw/en/intro1/intro2/ICEC",
+          "text": "International Cooperation and exchange Center (115-1 International Cooperation Center) (115-1 International Student Center)"
+        },
+        {
+          "href": "https://oica.fgu.edu.tw/en/intro1/intro2/IAC",
+          "text": "Cross-Strait Cooperation and Exchange Center (115-1 International Admission Center)"
+        },
+        {
+          "href": "https://oica.fgu.edu.tw/en/admission",
+          "text": "Admission"
+        },
+        {
+          "href": "https://oica.fgu.edu.tw/en/admission/IP",
+          "text": "115學年度國際學程 (2026-2027 International Programs)"
+        },
+        {
+          "href": "https://oica.fgu.edu.tw/en/admission/04",
+          "text": "International Students Application"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "F1",
+      "school_name": "馬偕學校財團法人馬偕醫學大學",
+      "website": "https://www.mmu.edu.tw/",
+      "oia_url": "https://www.mmu.edu.tw/oia/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "53",
+      "school_name": "中信金融管理學院",
+      "website": "http://www.ctbc.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "38",
+      "school_name": "銘傳大學(臺北)",
+      "website": "https://web2.mcu.edu.tw/",
+      "oia_url": "https://academic.mcu.edu.tw/mcuinternationalsymposia/",
+      "foreign_admission_url": "https://admission.wp.mcu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://admission.wp.mcu.edu.tw/",
+          "text": ""
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "38A",
+      "school_name": "銘傳大學(桃園)",
+      "website": "https://web2.mcu.edu.tw/",
+      "oia_url": "https://academic.mcu.edu.tw/mcuinternationalsymposia/",
+      "foreign_admission_url": "https://admission.wp.mcu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://admission.wp.mcu.edu.tw/",
+          "text": ""
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "67",
+      "school_name": "高雄醫學大學",
+      "website": "https://www.kmu.edu.tw",
+      "oia_url": "https://olis.kmu.edu.tw/error.html",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "47",
+      "school_name": "亞洲大學",
+      "website": "http://www.asia.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "70",
+      "school_name": "慈濟大學",
+      "website": "https://www.tcu.edu.tw/",
+      "oia_url": "https://www.tcu.edu.tw/p/412-1033-4850.php?Lang=zh-tw",
+      "foreign_admission_url": "javascript:void(0);",
+      "admission_links": [
+        {
+          "href": "javascript:void(0);",
+          "text": "招生訊息"
+        },
+        {
+          "href": "https://admissions.tcu.edu.tw/?page_id=4183",
+          "text": "大學部招生"
+        },
+        {
+          "href": "https://admissions.tcu.edu.tw/?page_id=22279",
+          "text": "五專部招生"
+        },
+        {
+          "href": "https://cec.tcu.edu.tw/?page_id=3227",
+          "text": "進修二技招生專區"
+        },
+        {
+          "href": "https://admissions.tcu.edu.tw/?page_id=5125",
+          "text": "境外學生招生"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "52",
+      "school_name": "康寧大學",
+      "website": "https://www.ukn.edu.tw/",
+      "oia_url": "https://www.ukn.edu.tw/p/406-1000-41810,r28.php?Lang=zh-tw",
+      "foreign_admission_url": "https://recruit.ukn.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.ukn.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://recruit.ukn.edu.tw/",
+          "text": "招生專區"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "D6",
+      "school_name": "法鼓學校財團法人法鼓文理學院",
+      "website": "https://www.dila.edu.tw/",
+      "oia_url": "https://www-old.dila.edu.tw/en",
+      "foreign_admission_url": "https://www-old.dila.edu.tw/en/Admission",
+      "admission_links": [
+        {
+          "href": "https://www-old.dila.edu.tw/en/Admission",
+          "text": "Admissions"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "F4",
+      "school_name": "臺北基督學院",
+      "website": "http://www.cct.edu.tw",
+      "oia_url": "https://www.cct.edu.tw/Administration/pao/pao.html",
+      "foreign_admission_url": "https://www.cct.edu.tw/mobile/2.html",
+      "admission_links": [
+        {
+          "href": "https://www.cct.edu.tw/mobile/2.html",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://www.cct.edu.tw/Recruitment/recruitment.html",
+          "text": "招生資訊"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "75",
+      "school_name": "國立高雄科技大學",
+      "website": "http://www.nkust.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "78",
+      "school_name": "國立虎尾科技大學",
+      "website": "https://www.nfu.edu.tw/zh/",
+      "oia_url": "https://www.nfu.edu.tw/",
+      "foreign_admission_url": "http://oia.nfu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "http://oia.nfu.edu.tw/",
+          "text": "International Student"
+        },
+        {
+          "href": "https://enrollstudents.nfu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://aac.nfu.edu.tw/",
+          "text": "招生事務中心"
+        },
+        {
+          "href": "https://enrollstudents.nfu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.nfu.edu.tw/zh_tw/ann/job/%E5%9C%8B%EF%A7%B7%E8%99%8E%E5%B0%BE%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E6%8B%9B%E7%94%9F%E4%BA%8B%E5%8B%99%E4%B8%AD%E5%BF%83%E4%BE%9D-%E8%BA%AB%E5%BF%83%E9%9A%9C%E7%A4%99%E8%80%85%E6%AC%8A%E7%9B%8A%E4%BF%9D%E8%AD%B7%E6%B3%95-%E9%80%B2%E7%94%A8%E5%8A%A9%E7%90%86%E5%93%A1%E5%BE%B5%E8%81%98%E5%95%9F%E4%BA%8B-%E5%85%AC%E5%91%8A%E8%87%B3115%E5%B9%B44%E6%9C%887%E6%97%A5%E6%AD%A2-60268029",
+          "text": "國立虎尾科技大學招生事務中心依「身心障礙者權益保護法」進用助理員徵聘啟事 公告至115年4月7日止"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "74",
+      "school_name": "國立屏東科技大學",
+      "website": "https://wp.npust.edu.tw/",
+      "oia_url": "https://presidential-hackathon.taiwan.gov.tw/",
+      "foreign_admission_url": "https://presidential-hackathon.taiwan.gov.tw/@demo2wsx6RFV/wish2024demo@1qaz3EDC/wishPersonalApply.aspx",
+      "admission_links": [
+        {
+          "href": "https://presidential-hackathon.taiwan.gov.tw/@demo2wsx6RFV/wish2024demo@1qaz3EDC/wishPersonalApply.aspx",
+          "text": "自我推薦"
+        },
+        {
+          "href": "https://presidential-hackathon.taiwan.gov.tw/forms/w/wishPersonalApply.aspx",
+          "text": "自我推薦"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "82",
+      "school_name": "國立臺中科技大學",
+      "website": "https://www.nutc.edu.tw/",
+      "oia_url": "https://oia.nutc.edu.tw/",
+      "foreign_admission_url": "https://oia.nutc.edu.tw/p/412-1042-9963.php",
+      "admission_links": [
+        {
+          "href": "https://oia.nutc.edu.tw/p/412-1042-9963.php",
+          "text": "Admissions"
+        },
+        {
+          "href": "https://oia.nutc.edu.tw/p/412-1042-9963.php",
+          "text": "Admissions 境外生入學"
+        },
+        {
+          "href": "https://oia.nutc.edu.tw/p/404-1042-45902.php",
+          "text": "本校外國學生獎助金資訊 NTCUST Scholarship for International Students"
+        },
+        {
+          "href": "https://oia.nutc.edu.tw/#cmb_175_2",
+          "text": "Admissions 僑外生招生"
+        },
+        {
+          "href": "https://www.studyintaiwan.org/how-to-apply/program?q=a3c9TlRDVVNUJnNvcnRieT0w",
+          "text": "Study in Taiwan"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "73",
+      "school_name": "國立臺北科技大學",
+      "website": "https://www.ntut.edu.tw/",
+      "oia_url": null,
+      "foreign_admission_url": "javascript:void(0);",
+      "admission_links": [
+        {
+          "href": "javascript:void(0);",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.ntut.edu.tw/p/404-1007-85221.php",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://aps-stu.ntut.edu.tw/sert/ApplyTranscript/LoginUser",
+          "text": "線上成績單申請"
+        },
+        {
+          "href": "https://www.jctv.ntut.edu.tw/",
+          "text": "技專校院招生委員會聯合會"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "72",
+      "school_name": "國立雲林科技大學",
+      "website": "https://www.yuntech.edu.tw/",
+      "oia_url": "https://admissions-oia.yuntech.edu.tw/intladmission/index/index/applyIntladmissionSn/68",
+      "foreign_admission_url": "https://admissions-oia.yuntech.edu.tw/intladmission/application",
+      "admission_links": [
+        {
+          "href": "https://admissions-oia.yuntech.edu.tw/intladmission/application",
+          "text": "YunTech-Office of International Affairs"
+        },
+        {
+          "href": "https://admissions-oia.yuntech.edu.tw/intladmission/index/login",
+          "text": "Login"
+        },
+        {
+          "href": "https://admissions-oia.yuntech.edu.tw/ckfinder_upload/files/20230823094616.pptx",
+          "text": "Application System Guidebook"
+        },
+        {
+          "href": "https://admissions-oia.yuntech.edu.tw/intladmission/sign.up/index",
+          "text": "CREATE A NEW ACCOUNT"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "D7",
+      "school_name": "國立澎湖科技大學",
+      "website": "https://www.npu.edu.tw",
+      "oia_url": "https://www.npu.edu.tw/error.html?aspxerrorpath=/oia/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "85",
+      "school_name": "國立臺北護理健康大學",
+      "website": "https://www.ntunhs.edu.tw",
+      "oia_url": "https://secr.ntunhs.edu.tw/p/404-1008-81898.php?Lang=zh-tw",
+      "foreign_admission_url": "https://adm-acad.ntunhs.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://adm-acad.ntunhs.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.ntunhs.edu.tw/#cmb_12_4",
+          "text": "招生公告"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "84",
+      "school_name": "國立臺北商業大學",
+      "website": "https://www.ntub.edu.tw",
+      "oia_url": "https://mplngt.ntub.edu.tw/p/404-1040-107904.php?Lang=zh-tw",
+      "foreign_admission_url": "https://mplngt.ntub.edu.tw/p/412-1040-4793.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://mplngt.ntub.edu.tw/p/412-1040-4793.php?Lang=zh-tw",
+          "text": "招生資訊 Admissions"
+        },
+        {
+          "href": "https://mplngt.ntub.edu.tw/p/412-1040-4793.php?Lang=zh-tw",
+          "text": "招生說明 Admissions"
+        },
+        {
+          "href": "https://mplngt.ntub.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MelF3TDNCMFlWODVOekF4TjE4M01UazVOalV4WHpVNU5ETXlMbkJrWmc9PQ==&fname=WW54RPOKIC4441MPHCLKRKZWQOTWWT14QO3435HGTX25LK40FCNKA054WW54FGOKPOPOZX10A404GDXTRKPKTSIG34B0NOYSVXVXDCTSWSB0VSOKUSKKYWFCNPPO44OOHCA0UWIGTWMODC35WSB040MKZTGDQPROWS30IGB4GGOK45USPOWSB510DGFGA0SXKO30B4ICIGRO35WWNPVX04OKYSB4JGUSPKKKICFCXSQOXTKKDGLK54TX1430DGHC20B0YSGCLPJDWSTSNKROGHPO50HGFGOKVWPOTT15A404POXTFCZWEG1034B0NOWSIH35VSTWLKMKXWTWCCTS4550MK44A51500JCWWHGDCKOCG30STEGQKWSQPUXYXA0KP3030B0QOOKLKFCICCC210544EG35YWQO14MKYSWS2410XSVXNPPKOKLKROWXFGQO54DGDCSSLKTTXX04EGNKGDRKNKHGICSSQKCCICIHA1DGCCNKFCYWA4YS10NKXXWW00ZXZX20XSFC14RKDGGGNPIGB0USMK00VXNODCNKTSZSTWB0DCXSGHRK44WWLPFGA0EGGDTW14GDA1PK34CGYSMLA1LOVSA0QOJGA020TSSTB0NPCCA5KKB0FGQKCHZS30LOGCQOROB1MOQPIDLKB0A0B414A0&cg=6726",
+          "text": "115學年度外國學生申請入學招生簡章_NTUB_Admission_Brochure_for_International_Students_Application,_Academic_Year_2026-2027.pdf"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "81",
+      "school_name": "國立勤益科技大學",
+      "website": "http://www.ncut.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "83",
+      "school_name": "國立高雄餐旅大學",
+      "website": "https://www.nkuht.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "F2",
+      "school_name": "國立臺灣戲曲學院",
+      "website": "http://www.tcpa.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "71",
+      "school_name": "國立臺灣科技大學",
+      "website": "http://www.ntust.edu.tw",
+      "oia_url": "https://www.ntust.edu.tw/",
+      "foreign_admission_url": "https://www.admission.ntust.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://www.admission.ntust.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.admission.ntust.edu.tw/p/404-1052-145791.php?Lang=zh-tw",
+          "text": "115學年度博士班115年3月26日9:00起開放報名"
+        },
+        {
+          "href": "https://www.admission.ntust.edu.tw/p/405-1052-145031,c8738.php?Lang=zh-tw",
+          "text": "115年度秋季班產業碩士專班招生115年3月10日9:00起開放報名"
+        },
+        {
+          "href": "https://www.admission.ntust.edu.tw/p/412-1052-8740.php?Lang=zh-tw",
+          "text": "115學年度高中生申請入學資訊"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "87",
+      "school_name": "南臺科技大學",
+      "website": "https://www.stust.edu.tw",
+      "oia_url": "https://www.stust.edu.tw/en/admission/",
+      "foreign_admission_url": "https://www.stust.edu.tw/en/admission/#C",
+      "admission_links": [
+        {
+          "href": "https://www.stust.edu.tw/en/admission/#C",
+          "text": "To the main content area"
+        },
+        {
+          "href": "https://www.stust.edu.tw/en/admission/#U",
+          "text": ":::"
+        },
+        {
+          "href": "https://www.stust.edu.tw/en/admission",
+          "text": "Admission(current)"
+        },
+        {
+          "href": "https://clc.stust.edu.tw/en/node/Admissions",
+          "text": "Chinese Program(current)"
+        },
+        {
+          "href": "https://www.stust.edu.tw/en/admission/#C",
+          "text": ":::"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "94",
+      "school_name": "正修科技大學",
+      "website": "https://www.csu.edu.tw/",
+      "oia_url": "https://oia.csu.edu.tw/",
+      "foreign_admission_url": "https://applycsu.csu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://applycsu.csu.edu.tw/",
+          "text": "入學申請系統"
+        },
+        {
+          "href": "https://oia.csu.edu.tw/p/412-1075-225.php?Lang=zh-tw",
+          "text": "申請入學"
+        },
+        {
+          "href": "https://oia.csu.edu.tw/p/412-1075-225.php?Lang=zh-tw",
+          "text": "招生訊息"
+        },
+        {
+          "href": "https://oia.csu.edu.tw/p/412-1075-225.php?Lang=zh-tw",
+          "text": "申請入學"
+        },
+        {
+          "href": "https://applycsu.csu.edu.tw/",
+          "text": ""
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "86",
+      "school_name": "朝陽科技大學",
+      "website": "http://www.cyut.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "90",
+      "school_name": "嘉藥學校財團法人嘉南藥理大學",
+      "website": "https://www.cnu.edu.tw",
+      "oia_url": "https://www.cnu.edu.tw/content.asp?fid=142&id=969",
+      "foreign_admission_url": "https://www.cnu.edu.tw/content.asp?fid=142",
+      "admission_links": [
+        {
+          "href": "https://www.cnu.edu.tw/content.asp?fid=142",
+          "text": "入學轉學"
+        },
+        {
+          "href": "https://www.cnu.edu.tw/content.asp?fid=142&id=964",
+          "text": "招生公告"
+        },
+        {
+          "href": "https://www.cnu.edu.tw/content-text.asp?fid=142&id=969&funcname=%E6%B8%AF%E6%BE%B3%20/%20%E5%9C%8B%E9%9A%9B%E6%8B%9B%E7%94%9F%20/%20%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8#collapse3",
+          "text": "招生系所"
+        },
+        {
+          "href": "https://www.cnu.edu.tw/content-text.asp?fid=142&id=969&funcname=%E6%B8%AF%E6%BE%B3%20/%20%E5%9C%8B%E9%9A%9B%E6%8B%9B%E7%94%9F%20/%20%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8#collapse4",
+          "text": "招生管道"
+        },
+        {
+          "href": "https://www.cnu.edu.tw/content.asp?fid=142&sid=966&id=1009",
+          "text": "新住民入學"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "88",
+      "school_name": "崑山科技大學",
+      "website": "http://www.ksu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://recruit.ksu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.ksu.edu.tw/",
+          "text": "招生暨新生資訊網"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "A4",
+      "school_name": "台南家專學校財團法人台南應用科技大學",
+      "website": "https://www.tut.edu.tw",
+      "oia_url": "https://oiss-rd.tut.edu.tw/",
+      "foreign_admission_url": "https://oiss-rd.tut.edu.tw/#cmb_279_0",
+      "admission_links": [
+        {
+          "href": "https://oiss-rd.tut.edu.tw/#cmb_279_0",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://oiss-rd.tut.edu.tw/var/file/42/1042/img/1440/539674474.pdf",
+          "text": "招生文宣(簡英雙語版)1"
+        },
+        {
+          "href": "https://oiss-rd.tut.edu.tw/var/file/42/1042/img/1440/651655665.pdf",
+          "text": "招生文宣(簡英雙語版)2"
+        },
+        {
+          "href": "https://oiss-rd.tut.edu.tw/var/file/42/1042/img/1440/805120495.pdf",
+          "text": "招生文宣(繁日雙語版)1"
+        },
+        {
+          "href": "https://oiss-rd.tut.edu.tw/var/file/42/1042/img/1440/192342326.pdf",
+          "text": "招生文宣(繁日雙語版)2"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "B8",
+      "school_name": "城市學校財團法人臺北城市科技大學",
+      "website": "http://www.tpcu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "E5",
+      "school_name": "長庚學校財團法人長庚科技大學",
+      "website": "http://www.cgust.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://recruit.cgust.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.cgust.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.cgust.edu.tw/#cmb_2_1",
+          "text": "招生資訊"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "93",
+      "school_name": "弘光科技大學",
+      "website": "http://www.hk.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "95",
+      "school_name": "健行科技大學",
+      "website": "http://www.uch.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://admissions.uch.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://admissions.uch.edu.tw/",
+          "text": ""
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "A8",
+      "school_name": "南開科技大學",
+      "website": "http://www.nkut.edu.tw",
+      "oia_url": "https://ic.nkut.edu.tw/index.php",
+      "foreign_admission_url": "https://ic.nkut.edu.tw/redirect.php?ID=admission_schedule",
+      "admission_links": [
+        {
+          "href": "https://ic.nkut.edu.tw/redirect.php?ID=admission_schedule",
+          "text": "招生期程"
+        },
+        {
+          "href": "https://ic.nkut.edu.tw/redirect.php?ID=admission_hkmc2",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://ic.nkut.edu.tw/redirect.php?ID=apply_hk1",
+          "text": "申請管道"
+        },
+        {
+          "href": "https://ic.nkut.edu.tw/redirect.php?ID=apply_hk_2",
+          "text": "海外聯招會"
+        },
+        {
+          "href": "https://ic.nkut.edu.tw/redirect.php?ID=apply_hk_3",
+          "text": "獨立招生"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "B7",
+      "school_name": "亞東學校財團法人亞東科技大學",
+      "website": "https://www.aeust.edu.tw/",
+      "oia_url": "https://gla.aeust.edu.tw/?Lang=zh-tw",
+      "foreign_admission_url": "https://recruit.aeust.edu.tw/?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://recruit.aeust.edu.tw/?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://recruit.aeust.edu.tw/p/404-1014-56179.php?Lang=zh-tw",
+          "text": "亞東科技大學115學年度四技申請入學第二階段複試公告"
+        },
+        {
+          "href": "https://www.aeust.edu.tw/#cmb_2_1",
+          "text": "招生"
+        },
+        {
+          "href": "https://recruit.aeust.edu.tw/",
+          "text": "招生資訊網"
+        },
+        {
+          "href": "https://www.aeust.edu.tw/p/404-1000-27835.php",
+          "text": "四技甄選入學實作甄試項目"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "D2",
+      "school_name": "德育學校財團法人德育護理健康學院",
+      "website": "http://www.dyhu.edu.tw",
+      "oia_url": "https://ia.dyhu.edu.tw/",
+      "foreign_admission_url": "https://ia.dyhu.edu.tw/p/412-1009-2356.php",
+      "admission_links": [
+        {
+          "href": "https://ia.dyhu.edu.tw/p/412-1009-2356.php",
+          "text": "國際招生組"
+        },
+        {
+          "href": "https://ia.dyhu.edu.tw/var/file/9/1009/img/538175324.pdf",
+          "text": "招生簡介"
+        },
+        {
+          "href": "https://ia.dyhu.edu.tw/p/412-1009-2356.php",
+          "text": "國際招生組"
+        },
+        {
+          "href": "https://admission.dyhu.edu.tw/",
+          "text": "報名專區"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "D9",
+      "school_name": "建國科技大學",
+      "website": "http://www.ctu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://recruit.ctu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://recruit.ctu.edu.tw/",
+          "text": "查詢招生訊息"
+        },
+        {
+          "href": "https://www.ctu.edu.tw/app/home.php",
+          "text": "進入學校官網"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "C2",
+      "school_name": "僑光科技大學",
+      "website": "http://www.ocu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "B3",
+      "school_name": "景文科技大學",
+      "website": "https://www.just.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "98",
+      "school_name": "中國科技大學",
+      "website": "http://www.cute.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "C4",
+      "school_name": "醒吾科技大學",
+      "website": "https://www.hwu.edu.tw/",
+      "oia_url": "https://choice.hwu.edu.tw/choice/course.html",
+      "foreign_admission_url": "https://b024.hwu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://b024.hwu.edu.tw/",
+          "text": "招生處"
+        },
+        {
+          "href": "https://www.hwu.edu.tw/#",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://b024.hwu.edu.tw/",
+          "text": "醒吾招生專頁"
+        },
+        {
+          "href": "https://www.hwu.edu.tw/Category?CId=3142",
+          "text": "招生訊息與榜單"
+        },
+        {
+          "href": "https://b001.hwu.edu.tw/Post?PId=4205",
+          "text": "各招生管道資訊網"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "96",
+      "school_name": "萬能學校財團法人萬能科技大學",
+      "website": "http://www.vnu.edu.tw",
+      "oia_url": "https://www.vnu.edu.tw/oia/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "89",
+      "school_name": "樹德科技大學",
+      "website": "https://www.stu.edu.tw",
+      "oia_url": "https://www.stu.edu.tw/%E5%9C%8B%E9%9A%9B%E5%AD%B8%E7%94%9F/",
+      "foreign_admission_url": "https://reg.aca.stu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://reg.aca.stu.edu.tw/",
+          "text": "招生訊息"
+        },
+        {
+          "href": "https://freshman.stu.edu.tw/",
+          "text": "新生入學服務網"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "A9",
+      "school_name": "中華學校財團法人中華科技大學",
+      "website": "http://www.cust.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "C5",
+      "school_name": "德明財經科技大學",
+      "website": "https://www.takming.edu.tw/schtm/default.asp",
+      "oia_url": "https://oia.takming.edu.tw/p/426-1036-8.php?Lang=zh-tw",
+      "foreign_admission_url": "https://oia.takming.edu.tw/p/404-1036-14820.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://oia.takming.edu.tw/p/404-1036-14820.php?Lang=zh-tw",
+          "text": "外國學生專班"
+        },
+        {
+          "href": "https://oia.takming.edu.tw/p/404-1036-15143.php?Lang=zh-tw",
+          "text": "一般外國學生"
+        },
+        {
+          "href": "https://oia.takming.edu.tw/p/426-1036-8.php?Lang=zh-tw#cmb_97_1",
+          "text": "最新錄取名單資訊  Admission List"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "B0",
+      "school_name": "大華學校財團法人敏實科技大學",
+      "website": "http://www.mitust.edu.tw",
+      "oia_url": "https://int.mitust.edu.tw/",
+      "foreign_admission_url": "https://acad.mitust.edu.tw/p/412-1004-144.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://acad.mitust.edu.tw/p/412-1004-144.php?Lang=zh-tw",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://int.mitust.edu.tw/p/412-1017-1057.php",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://int.mitust.edu.tw/var/file/17/1017/img/447743668.pdf",
+          "text": "114學年度新南向產學合作國際專班錄取申請入學榜單"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "E4",
+      "school_name": "黎明技術學院",
+      "website": "https://www.lit.edu.tw/",
+      "oia_url": "https://www.lit.edu.tw/international/",
+      "foreign_admission_url": "https://www.lit.edu.tw/recruit/",
+      "admission_links": [
+        {
+          "href": "https://www.lit.edu.tw/recruit/",
+          "text": "招生中心"
+        },
+        {
+          "href": "https://www.lit.edu.tw/iacp/",
+          "text": "境外學生/International student"
+        },
+        {
+          "href": "https://www.lit.edu.tw/international/61367/",
+          "text": "115 學年度外國學生申請入學招生簡章(研究所)/2026-2027 International Students   Application Information Brochure for Admission  (Graduate Program)"
+        },
+        {
+          "href": "https://www.lit.edu.tw/international/61238/",
+          "text": "115學年度外國學生/2026-2027International Student Application Information Brochure for Admission"
+        },
+        {
+          "href": "https://www.lit.edu.tw/international/59177/",
+          "text": "2026年學士班錄取名單公告（外國學生-春季班） Announcement of Admission List for 2026 Bachelor Degree Programs（International Student- Spring Semester）"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "91",
+      "school_name": "明新科技大學",
+      "website": "http://www.must.edu.tw",
+      "oia_url": "https://www.must.edu.tw/#",
+      "foreign_admission_url": "https://www.must.edu.tw/admissions.php",
+      "admission_links": [
+        {
+          "href": "https://www.must.edu.tw/admissions.php",
+          "text": "未來學生"
+        },
+        {
+          "href": "https://www.must.edu.tw/admissions.php",
+          "text": "招生資訊"
+        },
+        {
+          "href": "http://admission.must.edu.tw/",
+          "text": "入學服務"
+        },
+        {
+          "href": "https://www.must.edu.tw/#",
+          "text": "研究所招生訊息"
+        },
+        {
+          "href": "https://admission.must.edu.tw/admission/index.aspx?id=45",
+          "text": "博士班考試入學"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "C3",
+      "school_name": "致理科技大學",
+      "website": "http://www.chihlee.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://exam.chihlee.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://exam.chihlee.edu.tw/",
+          "text": "招生快訊"
+        },
+        {
+          "href": "https://www.chihlee.edu.tw/p/403-1000-606.php?Lang=zh-tw",
+          "text": "招生影片"
+        },
+        {
+          "href": "https://exam.chihlee.edu.tw/",
+          "text": "招生快訊"
+        },
+        {
+          "href": "https://www.chihlee.edu.tw/p/403-1000-606.php?Lang=zh-tw",
+          "text": "招生影片"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "B2",
+      "school_name": "文藻外語大學",
+      "website": "http://www.wzu.edu.tw",
+      "oia_url": "https://www.wzu.edu.tw/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "A1",
+      "school_name": "嶺東科技大學",
+      "website": "http://www.ltu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://aisweb.ltu.edu.tw/eis/",
+      "admission_links": [
+        {
+          "href": "https://aisweb.ltu.edu.tw/eis/",
+          "text": "115入學意願登記"
+        },
+        {
+          "href": "https://ltu1480.video.ltu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://ais.ltu.edu.tw/recnst//",
+          "text": "招生報名系統"
+        },
+        {
+          "href": "https://ltu1480.video.ltu.edu.tw/",
+          "text": "招生專區"
+        },
+        {
+          "href": "https://ais.ltu.edu.tw/ltu_exam/pdf2/web.aspx",
+          "text": "115簡章索引"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "D8",
+      "school_name": "龍華科技大學",
+      "website": "https://www.lhu.edu.tw/",
+      "oia_url": "https://oia.lhu.edu.tw/p/412-1007-274.php?Lang=zh-tw&tr=vn",
+      "foreign_admission_url": "https://oia.lhu.edu.tw/p/412-1007-728.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://oia.lhu.edu.tw/p/412-1007-728.php?Lang=zh-tw",
+          "text": "入學申請"
+        },
+        {
+          "href": "https://oia.lhu.edu.tw/p/412-1007-793.php?Lang=zh-tw",
+          "text": "招生辦法"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "97",
+      "school_name": "明志科技大學",
+      "website": "https://www.mcut.edu.tw/",
+      "oia_url": "https://oia.mcut.edu.tw/?Lang=zh-tw",
+      "foreign_admission_url": "https://oia.mcut.edu.tw/p/412-1036-9005.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://oia.mcut.edu.tw/p/412-1036-9005.php?Lang=zh-tw",
+          "text": "國際招生專區"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "92",
+      "school_name": "輔英科技大學",
+      "website": "https://www.fy.edu.tw/",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "A3",
+      "school_name": "中臺科技大學",
+      "website": "http://www.ctust.edu.tw",
+      "oia_url": "https://oaic.ctust.edu.tw/",
+      "foreign_admission_url": "https://oaic.ctust.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://oaic.ctust.edu.tw/",
+          "text": "招生公告"
+        },
+        {
+          "href": "https://oaic.ctust.edu.tw/var/file/15/1015/img/2167/584842179.pdf",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://oaic.ctust.edu.tw/p/412-1015-5358.php?Lang=zh-tw",
+          "text": "入學管道總表"
+        },
+        {
+          "href": "https://oaic.ctust.edu.tw/var/file/15/1015/img/2348/804798557.pdf",
+          "text": "招生名額總表"
+        },
+        {
+          "href": "https://oaic.ctust.edu.tw/p/403-1015-678.php",
+          "text": "日四技招生公告"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "C0",
+      "school_name": "吳鳳科技大學",
+      "website": "http://www.wfu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://www.wfu.edu.tw/campus_guideline/",
+      "admission_links": [
+        {
+          "href": "https://www.wfu.edu.tw/campus_guideline/",
+          "text": "校園導覽"
+        },
+        {
+          "href": "https://sp.wfu.edu.tw/gradeApply/",
+          "text": "&nbsp;  線上申請成績單"
+        },
+        {
+          "href": "https://www.wfu.edu.tw/campus_guideline/",
+          "text": "校園導覽"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "E1",
+      "school_name": "中華醫事科技大學",
+      "website": "https://www.hwai.edu.tw/",
+      "oia_url": "https://secretary.hwai.edu.tw/p/404-1010-71369.php?Lang=zh-tw",
+      "foreign_admission_url": "https://rd.hwai.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://rd.hwai.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.hwai.edu.tw/#cmb_10_1",
+          "text": "招生快訊"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "A6",
+      "school_name": "光宇學校財團法人元培醫事科技大學",
+      "website": "http://www.ypu.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "https://top.ypu.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://top.ypu.edu.tw/",
+          "text": "招生訊息Admission"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "D5",
+      "school_name": "台北海洋科技大學",
+      "website": "http://www.tumt.edu.tw/bin/home.php",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "E6",
+      "school_name": "崇右影藝科技大學",
+      "website": "http://www.cufa.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "E2",
+      "school_name": "廣亞學校財團法人育達科技大學",
+      "website": "https://www1.ydu.edu.tw/?locale=zh_tw",
+      "oia_url": "https://www1.ydu.edu.tw/?locale=zh_tw/oia/",
+      "foreign_admission_url": "https://oia.ydu.edu.tw/zh_tw/Admission",
+      "admission_links": [
+        {
+          "href": "https://oia.ydu.edu.tw/zh_tw/Admission",
+          "text": "Việt"
+        },
+        {
+          "href": "https://www1.ydu.edu.tw/zh_tw/announcement/admiss1",
+          "text": "考試招生"
+        },
+        {
+          "href": "http://entry.ydu.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www1.ydu.edu.tw/zh_tw/announcement/news102/-%E6%95%99%E8%82%B2%E9%83%A8%E8%BE%A6%E7%90%86115%E5%B9%B4%E6%96%AF%E6%8B%89%E5%A4%AB%E8%AA%9E%E5%A4%8F%E4%BB%A4%E7%87%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%84%E9%81%B8%E7%B0%A1%E7%AB%A0-%E5%8F%8A%E7%94%B3%E8%AB%8B%E8%A1%A8%E7%AD%89%E7%9B%B8%E9%97%9C%E6%96%87%E4%BB%B6-%E8%AB%8B%E5%85%AC%E5%91%8A%E5%91%A8%E7%9F%A5%E4%B8%A6%E9%BC%93%E5%8B%B5%E5%AD%B8%E7%94%9F%E8%B8%B4%E8%BA%8D%E5%A0%B1%E5%90%8D%E5%8F%83%E5%8A%A0-724429",
+          "text": "「教育部辦理115年斯拉夫語夏令營獎學金甄選簡章」及申請表等相關文件，請公告周知並鼓勵學生踴躍報名參加。"
+        },
+        {
+          "href": "https://www1.ydu.edu.tw/zh_tw/announcement/news102/-%E6%95%99%E8%82%B2%E9%83%A8%E8%BE%A6%E7%90%86115%E5%B9%B4%E6%96%AF%E6%8B%89%E5%A4%AB%E8%AA%9E%E5%A4%8F%E4%BB%A4%E7%87%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%84%E9%81%B8%E7%B0%A1%E7%AB%A0-%E5%8F%8A%E7%94%B3%E8%AB%8B%E8%A1%A8%E7%AD%89%E7%9B%B8%E9%97%9C%E6%96%87%E4%BB%B6-%E8%AB%8B%E5%85%AC%E5%91%8A%E5%91%A8%E7%9F%A5%E4%B8%A6%E9%BC%93%E5%8B%B5%E5%AD%B8%E7%94%9F%E8%B8%B4%E8%BA%8D%E5%A0%B1%E5%90%8D%E5%8F%83%E5%8A%A0-724429",
+          "text": "「教育部辦理115年斯拉夫語夏令營獎學金甄選簡章」及申請表等相關文件，請公告周知並鼓勵學生踴躍報名參加。"
+        }
+      ],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "B9",
+      "school_name": "南亞科技學校財團法人南亞技術學院",
+      "website": "http://www.nanya.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "C1",
+      "school_name": "東南科技大學",
+      "website": "https://www.tnu.edu.tw/",
+      "oia_url": "https://www.tnu.edu.tw/oia/",
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "direct_path"
+    },
+    {
+      "school_id": "C8",
+      "school_name": "宏國德霖科技大學",
+      "website": "https://www.hdut.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": "http://registry.hdut.edu.tw/",
+      "admission_links": [
+        {
+          "href": "http://registry.hdut.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.hdut.edu.tw/#cmb_10_3",
+          "text": "招生訊息"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "A5",
+      "school_name": "中信金學校財團法人中信科技大學",
+      "website": "https://www.ctbctech.edu.tw/",
+      "oia_url": "javascript:void(0)",
+      "foreign_admission_url": "https://sdc.ctbctech.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://sdc.ctbctech.edu.tw/",
+          "text": "招生入學"
+        },
+        {
+          "href": "https://sdc.ctbctech.edu.tw/",
+          "text": "招生事宜"
+        },
+        {
+          "href": "https://sdc.ctbctech.edu.tw/",
+          "text": "招生事宜"
+        },
+        {
+          "href": "https://www.ctbctech.edu.tw/#cmb_1_3",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.ctbctech.edu.tw/p/406-1000-234,r16.php?Lang=zh-tw",
+          "text": "2025年大學部招生已開始"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "99",
+      "school_name": "大仁科技大學",
+      "website": "https://www.tajen.edu.tw/?Lang=zh-tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "A0",
+      "school_name": "台鋼學校財團法人台鋼科技大學",
+      "website": "https://www.tsust.edu.tw/",
+      "oia_url": null,
+      "foreign_admission_url": "https://exam.tsust.edu.tw/",
+      "admission_links": [
+        {
+          "href": "https://exam.tsust.edu.tw/",
+          "text": "招生資訊"
+        },
+        {
+          "href": "https://www.tsust.edu.tw/#cmb_18_2",
+          "text": "招生公告"
+        },
+        {
+          "href": "https://www.tsust.edu.tw/p/406-1000-7161,r94.php?Lang=zh-tw",
+          "text": "台鋼科技大學115學年度招生影片"
+        }
+      ],
+      "method": "top_page_admission"
+    },
+    {
+      "school_id": "C7",
+      "school_name": "美和學校財團法人美和科技大學",
+      "website": "http://www.meiho.edu.tw",
+      "oia_url": "https://ieco.meiho.edu.tw/p/404-1009-62947.php?Lang=zh-tw",
+      "foreign_admission_url": "https://ieco.meiho.edu.tw/p/412-1009-217.php?Lang=zh-tw",
+      "admission_links": [
+        {
+          "href": "https://ieco.meiho.edu.tw/p/412-1009-217.php?Lang=zh-tw",
+          "text": "外國學生專區"
+        },
+        {
+          "href": "https://ieco.meiho.edu.tw/p/412-1009-4656.php?Lang=zh-tw",
+          "text": "招生專區"
+        }
+      ],
+      "method": "top_page_link"
+    },
+    {
+      "school_id": "A2",
+      "school_name": "聖約翰科技大學",
+      "website": "http://www.sju.edu.tw",
+      "oia_url": null,
+      "foreign_admission_url": null,
+      "admission_links": [],
+      "method": "not_found"
+    },
+    {
+      "school_id": "FF",
+      "school_name": "國立臺灣師範大學僑生先修部",
+      "website": "https://www.nups.ntnu.edu.tw",
+      "oia_url": "https://www.nups.ntnu.edu.tw/international/",
+      "foreign_admission_url": "https://www.nups.ntnu.edu.tw/international/upfiles/%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0/%E4%B8%AD%E6%96%87-2022%E5%B9%B4%E5%83%91%E7%94%9F%E5%85%88%E4%BF%AE%E9%83%A8%E8%A9%A6%E8%BE%A6%E5%A4%96%E7%B1%8D%E7%94%9F%E5%85%88%E4%BF%AE%E7%8F%AD%E7%B0%A1%E7%AB%A0.pdf",
+      "admission_links": [
+        {
+          "href": "https://www.nups.ntnu.edu.tw/international/upfiles/%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0/%E4%B8%AD%E6%96%87-2022%E5%B9%B4%E5%83%91%E7%94%9F%E5%85%88%E4%BF%AE%E9%83%A8%E8%A9%A6%E8%BE%A6%E5%A4%96%E7%B1%8D%E7%94%9F%E5%85%88%E4%BF%AE%E7%8F%AD%E7%B0%A1%E7%AB%A0.pdf",
+          "text": "招生簡章下載"
+        }
+      ],
+      "method": "direct_path"
+    }
+  ]
+}

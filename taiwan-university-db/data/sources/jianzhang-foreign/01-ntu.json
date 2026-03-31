@@ -1,0 +1,47 @@
+{
+  "school_id": "01",
+  "school_name": "國立臺灣大學",
+  "category": "foreign_student",
+  "data_source": "web_research",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://oia.ntu.edu.tw/",
+  "foreign_admission_url": "https://admissions.ntu.edu.tw/apply/degree-students/international-students/",
+  "jianzhang_url": "https://admissions.ntu.edu.tw/wp-content/uploads/114-1-Admission-Guidelines-for-Intl-Degree-Students_ENG_revised.pdf",
+  "jianzhang_year": 114,
+  "application_periods": [
+    {
+      "round": 1,
+      "start": "2025-10-01",
+      "end": "2025-12-05",
+      "notes": "114學年度ベース推定"
+    },
+    {
+      "round": 2,
+      "start": "2025-12-16",
+      "end": "2026-02-13",
+      "notes": "114學年度ベース推定"
+    }
+  ],
+  "max_applications": 5,
+  "application_fee": "NTD 2,000/学科 (3学科目以降 NTD 1,500)",
+  "language_req": {
+    "chinese": "TOCFL Level 2 (A2) 以上。条件付き入学制度あり",
+    "english": "学科による"
+  },
+  "financial_proof": {
+    "amount": "NTD 200,000",
+    "usd_equivalent": "USD 6,000",
+    "jpy_estimate": "約100万円"
+  },
+  "required_documents": [
+    "パスポートのコピー",
+    "最高学歴の卒業証明書",
+    "最高学歴の成績証明書",
+    "推薦状2通",
+    "志望動機書",
+    "財力証明",
+    "健康診断書",
+    "履歴書 (CV)"
+  ],
+  "notes": "115學年度の正式日程は未公開の可能性。Scribd上に115學年度版の簡章が存在"
+}

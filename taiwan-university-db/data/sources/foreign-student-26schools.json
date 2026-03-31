@@ -1,0 +1,304 @@
+{
+  "source": "Google Spreadsheet 台湾の大学データベース (115年)",
+  "category": "foreign_student",
+  "extracted_at": "2026-03-30T16:49:13.040Z",
+  "schools": {
+    "13": {
+      "school_id": "13",
+      "school_name": "國立政治大學",
+      "financial_proof": {
+        "amount": "NTD 200,000",
+        "jpy_estimate": "約100万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2（学部による）",
+        "english": "TOEIC 550（学部による）"
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "36": {
+      "school_id": "36",
+      "school_name": "中國文化大學",
+      "financial_proof": {
+        "amount": "TWD 100,000",
+        "jpy_estimate": "約50万円"
+      },
+      "language_req": {
+        "chinese": "A2以上",
+        "english": "CEFR B1"
+      },
+      "english_program_period": "2026/02/24~04/15",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "37": {
+      "school_id": "37",
+      "school_name": "淡江大學",
+      "financial_proof": {
+        "amount": "100,000元",
+        "jpy_estimate": "約50万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2",
+        "english": "CEFR B1以上"
+      },
+      "english_program_period": "2026/02/24~03/23",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "38": {
+      "school_id": "38",
+      "school_name": "銘傳大學(臺北)",
+      "financial_proof": {
+        "amount": "195,000元",
+        "jpy_estimate": "約97万円"
+      },
+      "language_req": {
+        "chinese": "B1以上",
+        "english": "TOEIC 550"
+      },
+      "english_program_period": "2026/02/01~05/31",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "40": {
+      "school_id": "40",
+      "school_name": "實踐大學",
+      "financial_proof": {
+        "amount": "120,000元",
+        "jpy_estimate": "約60万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2",
+        "english": "CEFR B1"
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "45": {
+      "school_id": "45",
+      "school_name": "天主教輔仁大學",
+      "financial_proof": {
+        "amount": "20万元",
+        "jpy_estimate": "約100万円"
+      },
+      "language_req": {
+        "chinese": "A2以上",
+        "english": "CEFR B1以上"
+      },
+      "english_program_period": "2026/02/09~03/05",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "48": {
+      "school_id": "48",
+      "school_name": "世新大學",
+      "english_program_period": "2025/12/17~2026/03/04",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "50": {
+      "school_id": "50",
+      "school_name": "義守大學",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "52": {
+      "school_id": "52",
+      "school_name": "康寧大學",
+      "english_program_period": "2026/01/21~02/28",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "53": {
+      "school_id": "53",
+      "school_name": "中信金融管理學院",
+      "english_program_period": "2026/01/01~04/30",
+      "english_program_qualification": "TOEIC 600",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "54": {
+      "school_id": "54",
+      "school_name": "慈濟大學",
+      "english_program_period": "2025/11/20~12/31",
+      "english_program_qualification": "CEFR B1",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "55": {
+      "school_id": "55",
+      "school_name": "東吳大學",
+      "financial_proof": {
+        "amount": "NTD 120,000",
+        "jpy_estimate": "約60万円"
+      },
+      "language_req": {
+        "chinese": "最低TOCFL A2",
+        "english": "最低CEFR A2"
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "56": {
+      "school_id": "56",
+      "school_name": "開南大學",
+      "english_program_period": "2025/10/13~12/05",
+      "english_program_qualification": "TOEIC 600",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "61": {
+      "school_id": "61",
+      "school_name": "中原大學",
+      "financial_proof": {
+        "amount": "USD 4,000",
+        "jpy_estimate": "約62万円"
+      },
+      "language_req": {
+        "chinese": "最低TOCFL A2",
+        "english": "TOEIC 550 / CEFR B1"
+      },
+      "english_program_period": "2025/12/01~2026/04/15",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "68": {
+      "school_id": "68",
+      "school_name": "中國醫藥大學",
+      "financial_proof": {
+        "amount": "USD 5,000",
+        "jpy_estimate": "約78万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2 or B1",
+        "english": null
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "71": {
+      "school_id": "71",
+      "school_name": "國立臺灣科技大學",
+      "language_req": {
+        "chinese": "TOCFL level3以上",
+        "english": "CEFR B1"
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "72": {
+      "school_id": "72",
+      "school_name": "國立雲林科技大學",
+      "language_req": {
+        "chinese": "A2以上（HSKもOK）",
+        "english": "CEFR B1以上"
+      },
+      "english_program_period": "2026/03/02~04/15",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "74": {
+      "school_id": "74",
+      "school_name": "國立屏東科技大學",
+      "english_program_period": "2026/01/01~03/31",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "85": {
+      "school_id": "85",
+      "school_name": "國立臺北護理健康大學",
+      "financial_proof": {
+        "amount": "NTD 100,000",
+        "jpy_estimate": "約50万円"
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "86": {
+      "school_id": "86",
+      "school_name": "朝陽科技大學",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "97": {
+      "school_id": "97",
+      "school_name": "明志科技大學",
+      "english_program_period": "2026/01/01~04/30",
+      "english_program_qualification": "TOEIC 550",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "07": {
+      "school_id": "07",
+      "school_name": "國立臺灣師範大學",
+      "financial_proof": {
+        "amount": "NTD 150,000",
+        "jpy_estimate": "約75万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2",
+        "english": "CEFR B1"
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "02": {
+      "school_id": "02",
+      "school_name": "國立成功大學",
+      "financial_proof": {
+        "amount": "NTD 120,000",
+        "jpy_estimate": "約60万円"
+      },
+      "language_req": {
+        "chinese": "TOCFL A2",
+        "english": "CEFR B2"
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "01": {
+      "school_id": "01",
+      "school_name": "國立臺灣大學",
+      "financial_proof": {
+        "amount": "NTD 200,000",
+        "jpy_estimate": "約100万円"
+      },
+      "language_req": {
+        "chinese": "最低A2（B2望ましい）",
+        "english": "IELTS5.5/TOEFL72/TOEIC785"
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "B7": {
+      "school_id": "B7",
+      "school_name": "亞東學校財團法人亞東科技大學",
+      "financial_proof": {
+        "amount": "3,000米ドル",
+        "jpy_estimate": "約47万円"
+      },
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    },
+    "08": {
+      "school_id": "08",
+      "school_name": "國立東華大學",
+      "english_program_period": "2026/01/02~03/15",
+      "english_program_qualification": "CEFR B1",
+      "data_source": "spreadsheet_115",
+      "category": "foreign_student"
+    }
+  },
+  "total_schools": 26
+}

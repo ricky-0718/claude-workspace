@@ -1,0 +1,32 @@
+---
+import type { TuitionItem } from '../data/loaders';
+
+interface Props {
+  items: TuitionItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-gray-200 text-left">
+          <th class="py-2 pr-4 text-gray-500 font-medium">学部</th>
+          <th class="py-2 pr-4 text-gray-500 font-medium">語学要件</th>
+          <th class="py-2 text-gray-500 font-medium text-right">学費/学期</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items.map(item => (
+          <tr class="border-b border-gray-50">
+            <td class="py-2 pr-4 text-gray-800">{item.faculty}</td>
+            <td class="py-2 pr-4 text-gray-500 text-xs">{item.requirement || '—'}</td>
+            <td class="py-2 text-gray-800 text-right font-medium whitespace-nowrap">{item.amount}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}

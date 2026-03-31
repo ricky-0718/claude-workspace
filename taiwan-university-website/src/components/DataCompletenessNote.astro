@@ -1,0 +1,27 @@
+---
+interface Props {
+  level: 'full' | 'enriched' | 'basic';
+}
+
+const { level } = Astro.props;
+
+const messages: Record<string, { text: string; bg: string }> = {
+  full: { text: '', bg: '' },
+  enriched: {
+    text: 'この大学の情報は一部のみ掲載しています。詳細はLINEでお問い合わせください。',
+    bg: 'bg-gold-light border-gold/20',
+  },
+  basic: {
+    text: 'この大学の日本語情報は限定的です。最新の出願情報はLINEでお問い合わせください。',
+    bg: 'bg-amber-50 border-amber-200',
+  },
+};
+
+const msg = messages[level];
+---
+
+{msg.text && (
+  <div class={`${msg.bg} border rounded-lg p-3 text-xs text-gray-600 leading-relaxed`}>
+    {msg.text}
+  </div>
+)}

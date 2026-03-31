@@ -1,0 +1,41 @@
+{
+  "school_id": "55",
+  "school_name": "東吳大學",
+  "category": "foreign_student",
+  "data_source": "web_research",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://icae.scu.edu.tw/en",
+  "foreign_admission_url": "https://icae.scu.edu.tw/en/admission",
+  "jianzhang_url": null,
+  "jianzhang_year": 115,
+  "application_periods": [
+    {
+      "round": 1,
+      "start": "2026-02-02",
+      "end": "2026-03-27"
+    },
+    {
+      "round": 2,
+      "start": "2026-03-30",
+      "end": "2026-05-08"
+    },
+    {
+      "round": 3,
+      "start": "2026-05-11",
+      "end": "2026-06-30"
+    }
+  ],
+  "language_req": {
+    "chinese": "TOCFL A2以上（推定）",
+    "english": "CEFR A2以上（推定）"
+  },
+  "financial_proof": {
+    "amount": "NTD 120,000",
+    "jpy_estimate": "約60万円"
+  },
+  "tuition_info": "NTD 96,740〜112,920/年（私立だが比較的安価）",
+  "required_documents": [
+    "簡章PDF確認が必要"
+  ],
+  "notes": "3梯次制（出願期間が3回）。外部機関への出願委託禁止方針あり。簡章PDF直リンク未取得"
+}

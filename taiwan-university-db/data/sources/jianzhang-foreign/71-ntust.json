@@ -1,0 +1,46 @@
+{
+  "school_id": "71",
+  "school_name": "國立臺灣科技大學",
+  "category": "foreign_student",
+  "data_source": "web_research",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://www.oia.ntust.edu.tw/",
+  "foreign_admission_url": "https://www.admission.ntust.edu.tw/index.php?Lang=en",
+  "jianzhang_url": "115學年度版 学士班・大学院ともにPDF発見済み",
+  "jianzhang_year": 115,
+  "application_periods": [
+    {
+      "round": 1,
+      "type": "graduate",
+      "start": "2026-01-01",
+      "end": "2026-03-11",
+      "notes": "大学院のみ"
+    },
+    {
+      "round": 1,
+      "type": "undergraduate",
+      "start": "2026-01-29",
+      "end": "2026-04-06",
+      "notes": "学士のみ"
+    }
+  ],
+  "application_fee": "USD 30/学科",
+  "language_req": {
+    "chinese": "学科により異なる",
+    "english": "学科により異なる"
+  },
+  "financial_proof": {
+    "amount": "USD 4,000",
+    "jpy_estimate": "約62万円",
+    "notes": "英文銀行残高証明"
+  },
+  "tuition_info": "NTD 3,340/単位（国立のため安価）",
+  "required_documents": [
+    "パスポートのコピー",
+    "卒業証明書",
+    "成績証明書",
+    "語学能力証明",
+    "財力証明（英文銀行残高証明）"
+  ],
+  "notes": "学部生は奨学金対象外。秋季入学のみ"
+}

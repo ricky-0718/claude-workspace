@@ -1,0 +1,45 @@
+{
+  "school_id": "07",
+  "school_name": "國立臺灣師範大學",
+  "category": "foreign_student",
+  "data_source": "web_research",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://www.ntnu.edu.tw/oia/",
+  "foreign_admission_url": "https://bds.oia.ntnu.edu.tw/bds/web/admission",
+  "application_system_url": "https://bds.oia.ntnu.edu.tw/bds/apply",
+  "jianzhang_url": null,
+  "jianzhang_year": 115,
+  "application_periods": [
+    {
+      "round": 1,
+      "start": "2025-11-03",
+      "end": "2025-12-15",
+      "notes": "修士・博士のみ"
+    },
+    {
+      "round": 2,
+      "start": "2026-01-12",
+      "end": "2026-03-02",
+      "notes": "全学位（学部出願はこちらのみ）"
+    }
+  ],
+  "application_fee": "NTD 1,200/学科",
+  "language_req": {
+    "chinese": "TOCFL A2以上 (HSK・語学学校成績も参考受理)",
+    "english": "学科による"
+  },
+  "financial_proof": {
+    "amount": "NTD 100,000",
+    "jpy_estimate": "約50万円"
+  },
+  "required_documents": [
+    "出願フォーム",
+    "最高学歴の卒業証明書",
+    "最高学歴の成績証明書",
+    "語学能力証明",
+    "財力証明",
+    "学習計画書",
+    "推薦状"
+  ],
+  "notes": "華語教育のトップ校。出願システム独自で簡章はシステム内で閲覧。学部出願は2nd Roundのみ"
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "slug": "information-group",
+    "name": {
+      "cht": "資訊學群",
+      "ja": "情報学系",
+      "en": "Information Group"
+    },
+    "department_count": 169
+  },
+  {
+    "id": 2,
+    "slug": "engineering-group",
+    "name": {
+      "cht": "工程學群",
+      "ja": "工学系",
+      "en": "Engineering Group"
+    },
+    "department_count": 362
+  },
+  {
+    "id": 3,
+    "slug": "mathematics-physics-and-chemistry-group",
+    "name": {
+      "cht": "數理化學群",
+      "ja": "数理化学系",
+      "en": "Mathematics, Physics and Chemistry Group"
+    },
+    "department_count": 110
+  },
+  {
+    "id": 4,
+    "slug": "medical-health-group",
+    "name": {
+      "cht": "醫藥衛生學群",
+      "ja": "医療衛生学系",
+      "en": "Medical Health Group"
+    },
+    "department_count": 223
+  },
+  {
+    "id": 5,
+    "slug": "life-science-group",
+    "name": {
+      "cht": "生命科學學群",
+      "ja": "生命科学系",
+      "en": "Life Science Group"
+    },
+    "department_count": 57
+  },
+  {
+    "id": 6,
+    "slug": "agriculture-forestry-fishery-and-husbandry-group",
+    "name": {
+      "cht": "生物資源學群",
+      "ja": "生物資源学系（農林水産）",
+      "en": "Agriculture, Forestry, Fishery and Husbandry Group"
+    },
+    "department_count": 52
+  },
+  {
+    "id": 7,
+    "slug": "earth-and-environment-group",
+    "name": {
+      "cht": "地球與環境學群",
+      "ja": "地球環境学系",
+      "en": "Earth and Environment Group"
+    },
+    "department_count": 32
+  },
+  {
+    "id": 8,
+    "slug": "foreign-language-group",
+    "name": {
+      "cht": "外語學群",
+      "ja": "外国語学系",
+      "en": "Foreign Language Group"
+    },
+    "department_count": 122
+  },
+  {
+    "id": 9,
+    "slug": "literature-history-and-philosophy-group",
+    "name": {
+      "cht": "文史哲學群",
+      "ja": "文学・歴史・哲学系",
+      "en": "Literature, History and Philosophy Group"
+    },
+    "department_count": 94
+  },
+  {
+    "id": 10,
+    "slug": "education-group",
+    "name": {
+      "cht": "教育學群",
+      "ja": "教育学系",
+      "en": "Education Group"
+    },
+    "department_count": 83
+  },
+  {
+    "id": 11,
+    "slug": "law-and-politics-group",
+    "name": {
+      "cht": "法政學群",
+      "ja": "法学・政治学系",
+      "en": "Law and Politics Group"
+    },
+    "department_count": 55
+  },
+  {
+    "id": 12,
+    "slug": "management-group",
+    "name": {
+      "cht": "管理學群",
+      "ja": "経営管理学系",
+      "en": "Management Group"
+    },
+    "department_count": 351
+  },
+  {
+    "id": 13,
+    "slug": "finance-and-economics-group",
+    "name": {
+      "cht": "財經學群",
+      "ja": "金融経済学系",
+      "en": "Finance and Economics Group"
+    },
+    "department_count": 134
+  },
+  {
+    "id": 14,
+    "slug": "social-and-psychology-group",
+    "name": {
+      "cht": "社會與心理學群",
+      "ja": "社会学・心理学系",
+      "en": "Social and Psychology Group"
+    },
+    "department_count": 89
+  },
+  {
+    "id": 15,
+    "slug": "mass-communication-group",
+    "name": {
+      "cht": "大眾傳播學群",
+      "ja": "マスコミ・メディア学系",
+      "en": "Mass Communication Group"
+    },
+    "department_count": 55
+  },
+  {
+    "id": 16,
+    "slug": "architecture-and-design-group",
+    "name": {
+      "cht": "建築與設計學群",
+      "ja": "建築・デザイン学系",
+      "en": "Architecture and Design Group"
+    },
+    "department_count": 146
+  },
+  {
+    "id": 17,
+    "slug": "fine-art-group",
+    "name": {
+      "cht": "藝術學群",
+      "ja": "芸術学系",
+      "en": "Fine Art Group"
+    },
+    "department_count": 132
+  },
+  {
+    "id": 18,
+    "slug": "physical-education-and-leisure-group",
+    "name": {
+      "cht": "遊憩與運動學群",
+      "ja": "スポーツ・レジャー学系",
+      "en": "Physical Education and Leisure Group"
+    },
+    "department_count": 105
+  }
+]
