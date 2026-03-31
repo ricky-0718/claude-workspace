@@ -1,0 +1,597 @@
+{
+  "processed_at": "2026-03-31T14:26:06.970Z",
+  "target_year": "115學年度",
+  "total_processed": 22,
+  "pdf_downloaded": 14,
+  "results": [
+    {
+      "school_id": "04",
+      "school_name": "國立暨南國際大學",
+      "pdf_found": true,
+      "pdf_filename": "04-國立暨南國際大學-115.pdf",
+      "pdf_url": "https://admission.ncnu.edu.tw/var/file/55/1055/attach/13/pta_23599_5120731_11661.pdf",
+      "pdf_score": 175,
+      "method": "cached",
+      "all_pdf_candidates": [
+        {
+          "url": "https://admission.ncnu.edu.tw/var/file/55/1055/attach/13/pta_23599_5120731_11661.pdf",
+          "text": "115學年度秋季班外國學生申請入學招生簡章2026_Fall_NCNU_Foreign_Student_Admission_Brochure.pdf",
+          "score": 175,
+          "source_page": "https://admission.ncnu.edu.tw/p/406-1055-31441,r608.php?Lang=zh-tw"
+        },
+        {
+          "url": "https://exam.ncnu.edu.tw/doc/R114/113NCNUfaS.pdf",
+          "text": "113學年度春季班外國學生申請入學招生簡章（2025 Spring International Student Admission Brochure）",
+          "score": 120,
+          "source_page": "https://admission.ncnu.edu.tw/p/405-1055-11560,c1563.php?Lang=zh-tw"
+        },
+        {
+          "url": "https://admission.ncnu.edu.tw/var/file/55/1055/attach/46/pta_22702_5940208_50641.pdf",
+          "text": "115學年度國際專修部申請入學招生簡章 International Foundation Program 2026 Admission Brochure.pdf",
+          "score": 115,
+          "source_page": "https://admission.ncnu.edu.tw/p/406-1055-32056,r608.php?Lang=zh-tw"
+        },
+        {
+          "url": "https://exam.ncnu.edu.tw/doc/R114/114NCNUifp.pdf",
+          "text": "114學年度國際專修部申請入學招生簡章（2025 International Foundation Program Admission Brochure）",
+          "score": 70,
+          "source_page": "https://admission.ncnu.edu.tw/p/405-1055-11560,c1563.php?Lang=zh-tw"
+        },
+        {
+          "url": "https://admission.ncnu.edu.tw/var/file/55/1055/attach/66/pta_19227_1597899_31569.pdf",
+          "text": "114學年度新住民入學招生簡章(公告).pdf",
+          "score": 70,
+          "source_page": "https://admission.ncnu.edu.tw/p/406-1055-27614,r611.php?Lang=zh-tw"
+        }
+      ]
+    },
+    {
+      "school_id": "11",
+      "school_name": "國立陽明交通大學",
+      "pdf_found": false,
+      "pdf_filename": null,
+      "pdf_url": null,
+      "pdf_score": 0,
+      "method": "not_found",
+      "all_pdf_candidates": []
+    },
+    {
+      "school_id": "17",
+      "school_name": "國立清華大學",
+      "pdf_found": false,
+      "pdf_filename": null,
+      "pdf_url": null,
+      "pdf_score": 0,
+      "method": "not_found",
+      "all_pdf_candidates": []
+    },
+    {
+      "school_id": "05",
+      "school_name": "國立中興大學",
+      "pdf_found": true,
+      "pdf_filename": "05-國立中興大學-115.pdf",
+      "pdf_url": "https://oia.nchu.edu.tw/images/File/03_Apply_to_NCHU/3-1-Degree-Programs/3-1-2-International-Students/115_Academic_Year_Application_Guidelines_v2.pdf",
+      "pdf_score": 80,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://oia.nchu.edu.tw/images/File/03_Apply_to_NCHU/3-1-Degree-Programs/3-1-2-International-Students/115_Academic_Year_Application_Guidelines_v2.pdf",
+          "text": "連結",
+          "score": 80,
+          "source_page": "https://oia.nchu.edu.tw/index.php/zh/3-apply-to-nchu-tw/3-1-degree-programs-tw/3-1-2-international-students-tw/3-1-2-2-application-procedure-tw"
+        },
+        {
+          "url": "https://oia.nchu.edu.tw/images/File/03_Apply_to_NCHU/3-1-Degree-Programs/3-1-2-International-Students/115_Programs_and_Language_Instruction.pdf",
+          "text": "連結",
+          "score": 80,
+          "source_page": "https://oia.nchu.edu.tw/index.php/zh/3-apply-to-nchu-tw/3-1-degree-programs-tw/3-1-2-international-students-tw/3-1-2-2-application-procedure-tw"
+        },
+        {
+          "url": "https://oia.nchu.edu.tw/images/File/03_Apply_to_NCHU/3-1-Degree-Programs/3-1-2-International-Students/Application_FAQ_view_point.pdf",
+          "text": "",
+          "score": 50,
+          "source_page": "https://oia.nchu.edu.tw/index.php/zh/3-apply-to-nchu-tw/3-1-degree-programs-tw/3-1-2-international-students-tw/3-1-2-2-application-procedure-tw"
+        }
+      ]
+    },
+    {
+      "school_id": "06",
+      "school_name": "國立中正大學",
+      "pdf_found": true,
+      "pdf_filename": "06-國立中正大學-115.pdf",
+      "pdf_url": "https://www.cac.edu.tw/apply115/document/115apply_for_reporter_20260331.pdf",
+      "pdf_score": 75,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://www.cac.edu.tw/apply115/document/115apply_for_reporter_20260331.pdf",
+          "text": "115學年度大學申請入學篩選公告暨審查資料上傳系統開放測試新聞稿",
+          "score": 75,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.cac.edu.tw/apply115/document/115CACReport_20260319_ekdc.pdf",
+          "text": "115學年度大學申請入學招生報名新聞稿。",
+          "score": 75,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://exams.ccu.edu.tw/var/file/32/1032/img/1141/rate115.pdf",
+          "text": "運動項目錄取率請點我",
+          "score": 55,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.cac.edu.tw/apply115/document/115_Video_Interview_01_qtus.pdf",
+          "text": "115學年度大學申請入學招生第二階段離島地區視訊面試試辦校系一覽表",
+          "score": 55,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.cac.edu.tw/apply115/document/115_Video_Interview_02_qtus.pdf",
+          "text": "試辦視訊學校聯絡資訊",
+          "score": 55,
+          "source_page": "direct"
+        }
+      ]
+    },
+    {
+      "school_id": "19",
+      "school_name": "國立中山大學",
+      "pdf_found": false,
+      "pdf_filename": null,
+      "pdf_url": null,
+      "pdf_score": 0,
+      "method": "not_found",
+      "all_pdf_candidates": []
+    },
+    {
+      "school_id": "08",
+      "school_name": "國立東華大學",
+      "pdf_found": true,
+      "pdf_filename": "08-國立東華大學-115.pdf",
+      "pdf_url": "https://rc149.ndhu.edu.tw/var/file/173/1173/img/128923949.pdf",
+      "pdf_score": 70,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://rc149.ndhu.edu.tw/var/file/173/1173/img/128923949.pdf",
+          "text": "臺灣教育大學系統115學年度學士班招生總簡章",
+          "score": 70,
+          "source_page": "https://rc149.ndhu.edu.tw/p/406-1173-247104,r4274.php"
+        },
+        {
+          "url": "https://oia.ndhu.edu.tw/var/file/27/1027/img/4757/219185879.pdf",
+          "text": "附件",
+          "score": 35,
+          "source_page": "direct"
+        },
+        {
+          "url": "http://b027.ndhu.edu.tw/ezfiles/114/1114/img/1832/167078338.pdf",
+          "text": "",
+          "score": 30,
+          "source_page": "direct"
+        },
+        {
+          "url": "http://b027.ndhu.edu.tw/ezfiles/114/1114/img/2637/923200300.pdf",
+          "text": "",
+          "score": 30,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://oia.ndhu.edu.tw/var/file/27/1027/img/4756/269602517.pdf",
+          "text": "Admission Guidelines for Transfer Programs",
+          "score": 20,
+          "source_page": "https://oia.ndhu.edu.tw/p/412-1027-21529.php?Lang=zh-tw"
+        }
+      ]
+    },
+    {
+      "school_id": "03",
+      "school_name": "國立嘉義大學",
+      "pdf_found": false,
+      "pdf_filename": null,
+      "pdf_url": null,
+      "pdf_score": 0,
+      "method": "not_found",
+      "all_pdf_candidates": []
+    },
+    {
+      "school_id": "E0",
+      "school_name": "臺北市立大學",
+      "pdf_found": false,
+      "pdf_filename": null,
+      "pdf_url": null,
+      "pdf_score": 0,
+      "method": "not_found",
+      "all_pdf_candidates": []
+    },
+    {
+      "school_id": "F0",
+      "school_name": "國立屏東大學",
+      "pdf_found": true,
+      "pdf_filename": "F0-國立屏東大學-115.pdf",
+      "pdf_url": "https://oiais.nptu.edu.tw/var/file/90/1090/img/2026-2027AdmissionGuide.pdf",
+      "pdf_score": 85,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://oiais.nptu.edu.tw/var/file/90/1090/img/2026-2027AdmissionGuide.pdf",
+          "text": "招生簡章 Admission Guide",
+          "score": 85,
+          "source_page": "https://oiais.nptu.edu.tw/p/405-1090-133546,c12629.php?Lang=zh-tw"
+        },
+        {
+          "url": "https://oiais.nptu.edu.tw/var/file/90/1090/img/115413047.pdf",
+          "text": "【公告】113學年度春季班外籍生錄取名冊 National Pingtung University 2025 Spring Admission Roster of International Degr",
+          "score": 20,
+          "source_page": "https://oiais.nptu.edu.tw/p/412-1090-12629.php?Lang=zh-tw"
+        },
+        {
+          "url": "https://oiais.nptu.edu.tw/var/file/90/1090/img/381103840.pdf",
+          "text": "【公告】114學年度秋季班外籍生錄取名冊 National Pingtung University 2025 Fall Admission Roster of International Degree",
+          "score": 10,
+          "source_page": "https://oiais.nptu.edu.tw/p/412-1090-12629.php?Lang=zh-tw"
+        }
+      ]
+    },
+    {
+      "school_id": "61",
+      "school_name": "中原大學",
+      "pdf_found": true,
+      "pdf_filename": "61-中原大學-115.pdf",
+      "pdf_url": "https://oraa.cycu.edu.tw/wp-content/uploads/115%E4%B8%AD%E5%8E%9F%E5%A4%A7%E5%AD%B8_%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E6%A0%A1%E7%B3%BB%E5%88%86%E5%89%87_%E9%83%A8%E5%88%861.pdf",
+      "pdf_score": 70,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://oraa.cycu.edu.tw/wp-content/uploads/115%E4%B8%AD%E5%8E%9F%E5%A4%A7%E5%AD%B8_%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E6%A0%A1%E7%B3%BB%E5%88%86%E5%89%87_%E9%83%A8%E5%88%861.pdf",
+          "text": "簡章下載",
+          "score": 70,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://oraa.cycu.edu.tw/wp-content/uploads/115%E4%B8%AD%E5%8E%9F%E5%A4%A7%E5%AD%B8_%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E6%A0%A1%E7%B3%BB%E5%88%86%E5%89%87_%E9%83%A8%E5%88%862.pdf",
+          "text": "簡章下載",
+          "score": 70,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.cycu.edu.tw/wp-content/uploads/%E4%B8%AD%E5%8E%9F%E6%88%90%E7%B8%BE%E5%96%AE20260114.pdf",
+          "text": "中原成績單",
+          "score": 50,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://oraa.cycu.edu.tw/wp-content/uploads/115%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E7%94%84%E8%A9%A6%E6%89%8B%E5%86%8A_%E4%B8%8A%E5%82%B3.pdf",
+          "text": "中原大學115學年度大學申請入學指定項目甄試手冊下載【含注意事項、接駁車、交通指引等】",
+          "score": 45,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://oraa.cycu.edu.tw/wp-content/uploads/115%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E5%AD%B8%E7%BF%92%E6%BA%96%E5%82%99%E5%BB%BA%E8%AD%B0%E6%96%B9%E5%90%91_01%E6%87%89%E7%94%A8%E6%95%B8%E5%AD%B8%E7%B3%BB.pdf",
+          "text": "查看建議方向",
+          "score": 45,
+          "source_page": "direct"
+        }
+      ]
+    },
+    {
+      "school_id": "39",
+      "school_name": "東海大學",
+      "pdf_found": true,
+      "pdf_filename": "39-東海大學-115.pdf",
+      "pdf_url": "https://exam2.thu.edu.tw/EXAM/doc/478105103_public_001.pdf",
+      "pdf_score": 45,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://exam2.thu.edu.tw/EXAM/doc/478105103_public_001.pdf",
+          "text": "115/4/1至4/6 【兒童節/民族掃墓節/溫書假】→全校休假",
+          "score": 45,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://exam2.thu.edu.tw/EXAM/doc/1531258200_public_001.pdf",
+          "text": "115/4/1至4/6 【兒童節/民族掃墓節/溫書假】→全校休假",
+          "score": 45,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://exam2.thu.edu.tw/EXAM/doc/890106638_public_001.pdf",
+          "text": "115/4/1至4/6 【兒童節/民族掃墓節/溫書假】→全校休假",
+          "score": 45,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://exam2.thu.edu.tw/EXAM/doc/2014440032_public_001.pdf",
+          "text": "115/4/1至4/6 【兒童節/民族掃墓節/溫書假】→全校休假",
+          "score": 45,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://exam2.thu.edu.tw/EXAM/doc/506901499_public_001.pdf",
+          "text": "【公告】115/4/1(三)至4/6(一) 兒童節/民族掃墓節/溫書假，全校休假",
+          "score": 45,
+          "source_page": "direct"
+        }
+      ]
+    },
+    {
+      "school_id": "36",
+      "school_name": "中國文化大學",
+      "pdf_found": true,
+      "pdf_filename": "36-中國文化大學-115.pdf",
+      "pdf_url": "http://www.pccu.edu.tw/doc/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8%E6%94%BF%E7%AD%96.pdf",
+      "pdf_score": 20,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "http://www.pccu.edu.tw/doc/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8%E6%94%BF%E7%AD%96.pdf",
+          "text": "資訊安全政策",
+          "score": 20,
+          "source_page": "direct"
+        }
+      ]
+    },
+    {
+      "school_id": "44",
+      "school_name": "逢甲大學",
+      "pdf_found": true,
+      "pdf_filename": "44-逢甲大學-115.pdf",
+      "pdf_url": "https://s3.ap-southeast-1.amazonaws.com/web-content.fcu.edu.tw/wp-content/uploads/sites/111/2025/06/21143519/114%E5%A2%83%E5%A4%96%E6%96%B0%E7%94%9F%E5%AD%B8%E7%94%9F%E5%AE%BF%E8%88%8D%E5%BA%8A%E4%BD%8D%E7%B6%B2%E8%B7%AF%E7%94%B3%E8%AB%8B%E8%AA%AA%E6%98%8EOnline-Dormitory-Application-Instruction.pdf",
+      "pdf_score": 30,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://s3.ap-southeast-1.amazonaws.com/web-content.fcu.edu.tw/wp-content/uploads/sites/111/2025/06/21143519/114%E5%A2%83%E5%A4%96%E6%96%B0%E7%94%9F%E5%AD%B8%E7%94%9F%E5%AE%BF%E8%88%8D%E5%BA%8A%E4%BD%8D%E7%B6%B2%E8%B7%AF%E7%94%B3%E8%AB%8B%E8%AA%AA%E6%98%8EOnline-Dormitory-Application-Instruction.pdf",
+          "text": "3. Find '' Apply dorms and pay the fee '' (MyFCU-> Login ->For New Students ->Things to Do ->Check L",
+          "score": 30,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://s3.ap-southeast-1.amazonaws.com/web-content.fcu.edu.tw/wp-content/uploads/sites/111/2025/09/02114129/E-Tenant-App-User-Guide-1.3e.pdf",
+          "text": "E-Tenant App User Guide",
+          "score": 30,
+          "source_page": "direct"
+        }
+      ]
+    },
+    {
+      "school_id": "57",
+      "school_name": "元智大學",
+      "pdf_found": true,
+      "pdf_filename": "57-元智大學-115.pdf",
+      "pdf_url": "https://www.yzu.edu.tw/admissions/files/PersonalApplication/115/%E5%96%AE%E9%A0%81%E5%85%83%E6%99%BA%E5%A4%A7%E5%AD%B8115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%A4%A7%E5%AD%B8%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E7%AC%AC%E4%BA%8C%E9%9A%8E%E6%AE%B5%E7%94%84%E8%A9%A6%E9%87%8D%E8%A6%81%E4%BA%8B%E9%A0%85%E9%80%9A%E7%9F%A5.pdf",
+      "pdf_score": 55,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://www.yzu.edu.tw/admissions/files/PersonalApplication/115/%E5%96%AE%E9%A0%81%E5%85%83%E6%99%BA%E5%A4%A7%E5%AD%B8115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%A4%A7%E5%AD%B8%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E7%AC%AC%E4%BA%8C%E9%9A%8E%E6%AE%B5%E7%94%84%E8%A9%A6%E9%87%8D%E8%A6%81%E4%BA%8B%E9%A0%85%E9%80%9A%E7%9F%A5.pdf",
+          "text": "元智大學115學年度大學申請入學第二階段甄試重要事項通知(單頁說明)",
+          "score": 55,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.yzu.edu.tw/admissions/files/PersonalApplication/115/NEW%E5%85%83%E6%99%BA%E5%A4%A7%E5%AD%B8115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%A4%A7%E5%AD%B8%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E7%AC%AC%E4%BA%8C%E9%9A%8E%E6%AE%B5%E7%94%84%E8%A9%A6%E9%87%8D%E8%A6%81%E4%BA%8B%E9%A0%85%E9%80%9A%E7%9F%A51150325.pdf",
+          "text": "元智大學115學年度大學申請入學第二階段甄試重要事項通知(詳細日程說明)",
+          "score": 55,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.yzu.edu.tw/admissions/files/PersonalApplication/115/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%85%83%E6%99%BA%E5%A4%A7%E5%AD%B8%E9%9B%A2%E5%B3%B6%E5%9C%B0%E5%8D%80%E8%A6%96%E8%A8%8A%E9%9D%A2%E8%A9%A6%E8%A9%A6%E8%BE%A6%E8%A8%88%E7%95%AB.pdf",
+          "text": "115學年度大學「申請入學」招生離島地區視訊面試試辦計畫",
+          "score": 55,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.yzu.edu.tw/admissions/files/PersonalApplication/115/%E5%85%83%E6%99%BA%E5%A4%A7%E5%AD%B8115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%A4%A7%E5%AD%B8%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E7%AC%AC%E4%BA%8C%E9%9A%8E%E6%AE%B5%E6%8C%87%E5%AE%9A%E9%A0%85%E7%9B%AE%E7%94%84%E8%A9%A6_%E9%9B%A2%E5%B3%B6%E9%9D%A2%E8%A9%A6_%E7%94%B3%E8%AB%8B%E8%A1%A8.pdf",
+          "text": "元智大學115學年度申請入學第二階段指定項目甄試_離島地區考生視訊面試申請表",
+          "score": 55,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.yzu.edu.tw/admissions/files/PersonalApplication/115/%E7%94%B3%E8%AB%8B%E8%A1%A8%E4%B8%80%E5%85%83%E6%99%BA%E5%A4%A7%E5%AD%B8115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%A4%A7%E5%AD%B8%E5%80%8B%E4%BA%BA%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E4%BA%A4%E9%80%9A%E4%BD%8F%E5%AE%BF%E8%A3%9C%E5%8A%A9%E7%94%B3%E8%AB%8B%E8%A1%A8.pdf",
+          "text": "元智大學115學年度大學申請入學 經濟不利學生交通暨住宿費補助申請表",
+          "score": 55,
+          "source_page": "direct"
+        }
+      ]
+    },
+    {
+      "school_id": "48",
+      "school_name": "世新大學",
+      "pdf_found": false,
+      "pdf_filename": null,
+      "pdf_url": null,
+      "pdf_score": 0,
+      "method": "not_found",
+      "all_pdf_candidates": []
+    },
+    {
+      "school_id": "41",
+      "school_name": "義守大學",
+      "pdf_found": false,
+      "pdf_filename": null,
+      "pdf_url": null,
+      "pdf_score": 0,
+      "method": "not_found",
+      "all_pdf_candidates": []
+    },
+    {
+      "school_id": "42",
+      "school_name": "靜宜大學",
+      "pdf_found": true,
+      "pdf_filename": "42-靜宜大學-115.pdf",
+      "pdf_url": "https://oia.pu.edu.tw/var/file/48/1048/img/889609678.pdf",
+      "pdf_score": 95,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://www.oia.pu.edu.tw/wp-content/uploads/2018/01/PU_Information-Sheet-2017-Fall.pdf",
+          "text": "外國學生申請靜宜大學助學金申請表\n\t\t\tInternational Student Providence Grant Application Form",
+          "score": 150,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://oia.pu.edu.tw/var/file/48/1048/img/889609678.pdf",
+          "text": "簡章下載(外國學生)",
+          "score": 95,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://oia.pu.edu.tw/var/file/48/1048/img/1126/637214134.pdf",
+          "text": "2026年秋季入學(115學年度)",
+          "score": 85,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://oia.pu.edu.tw/var/file/48/1048/img/1126/498307755.pdf",
+          "text": "2026年春季入學(114學年度)",
+          "score": 65,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://oia.pu.edu.tw/var/file/48/1048/img/174/Triple-Degree-Flyer_English-2019.pdf",
+          "text": "簡章下載",
+          "score": 40,
+          "source_page": "direct"
+        }
+      ]
+    },
+    {
+      "school_id": "75",
+      "school_name": "國立高雄科技大學",
+      "pdf_found": true,
+      "pdf_filename": "75-國立高雄科技大學-115.pdf",
+      "pdf_url": "https://oia.nkust.edu.tw/images/upload/files/2026%E7%A7%8B%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0%202026%20Fall%20International%20Degree%20Student%20Prospectus.pdf",
+      "pdf_score": 125,
+      "method": "cached",
+      "all_pdf_candidates": [
+        {
+          "url": "https://oia.nkust.edu.tw/images/upload/files/2026%E7%A7%8B%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0%202026%20Fall%20International%20Degree%20Student%20Prospectus.pdf",
+          "text": "",
+          "score": 125,
+          "source_page": "https://oia.nkust.edu.tw/unit-11-268-6.html"
+        },
+        {
+          "url": "https://oia.nkust.edu.tw/images/upload/files/2026%E6%98%A5%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0%202026%20Spring%20International%20Degree%20Student%20Prospectus(1).pdf",
+          "text": "2026 Spring(114-2)",
+          "score": 125,
+          "source_page": "https://oia.nkust.edu.tw/unit-11-268-6.html"
+        },
+        {
+          "url": "https://oia.nkust.edu.tw/images/upload/files/2025%E7%A7%8B%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0%20International%20Degree%20Student%20Prospectus.pdf",
+          "text": "2025 Fall(114-1)",
+          "score": 110,
+          "source_page": "https://oia.nkust.edu.tw/unit-11-268-6.html"
+        },
+        {
+          "url": "https://oia.nkust.edu.tw/images/upload/files/2024%E5%B9%B4%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E7%A7%8B%E5%AD%A3%E7%8F%AD%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A02024_01_11(10).pdf",
+          "text": "2024 Fall(113-1)",
+          "score": 100,
+          "source_page": "https://oia.nkust.edu.tw/unit-11-268-6.html"
+        },
+        {
+          "url": "https://oia.nkust.edu.tw/images/upload/files/2023%E5%B9%B4%E5%A4%96%E5%9C%8B%E5%AD%B8%E7%94%9F%E7%A7%8B%E5%AD%A3%E7%8F%AD%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A01120112(10).pdf",
+          "text": "2023 Fall(112-1)",
+          "score": 100,
+          "source_page": "https://oia.nkust.edu.tw/unit-11-268-6.html"
+        }
+      ]
+    },
+    {
+      "school_id": "74",
+      "school_name": "國立屏東科技大學",
+      "pdf_found": true,
+      "pdf_filename": "74-國立屏東科技大學-115.pdf",
+      "pdf_url": "https://presidential-hackathon.taiwan.gov.tw/upload/%E7%B8%BD%E7%B5%B1%E7%9B%83%E9%BB%91%E5%AE%A2%E6%9D%BE%E8%BE%A6%E7%90%86%E8%A6%81%E9%BB%9E.pdf",
+      "pdf_score": 20,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://presidential-hackathon.taiwan.gov.tw/upload/%E7%B8%BD%E7%B5%B1%E7%9B%83%E9%BB%91%E5%AE%A2%E6%9D%BE%E8%BE%A6%E7%90%86%E8%A6%81%E9%BB%9E.pdf",
+          "text": "總統盃黑客松辦理要點",
+          "score": 20,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://presidential-hackathon.taiwan.gov.tw/upload/2025%E7%B8%BD%E7%B5%B1%E7%9B%83%E9%BB%91%E5%AE%A2%E6%9D%BE_%E7%8D%B2%E7%8D%8E%E5%9C%98%E9%9A%8A%E5%90%8D%E5%96%AE%E5%85%AC%E5%91%8AF.pdf",
+          "text": "2025總統盃黑客松獲獎團隊名單公告",
+          "score": 20,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://presidential-hackathon.taiwan.gov.tw/forms/wish/2025%E7%B8%BD%E7%B5%B1%E7%9B%83%E9%BB%91%E5%AE%A2%E6%9D%BE_%E5%85%AC%E6%B0%91%E8%A8%B1%E9%A1%98%E6%B1%A020%E7%B5%84%E5%9C%98%E9%9A%8A%E5%9B%9E%E8%A6%86%E8%AA%AA%E6%98%8E.pdf",
+          "text": "公民許願池回應說明",
+          "score": 20,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://presidential-hackathon.taiwan.gov.tw/upload/2025%E7%B8%BD%E7%B5%B1%E7%9B%83%E9%BB%91%E5%AE%A2%E6%9D%BE_%E5%88%9D%E5%AF%A9%E5%85%A5%E9%81%B8%E6%8F%90%E6%A1%88%E5%90%8D%E5%96%AE.pdf",
+          "text": "2025總統盃黑客松初審入選提案名單公告",
+          "score": 20,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://presidential-hackathon.taiwan.gov.tw/upload/2025%E6%B0%91%E7%9C%BE%E5%B9%B3%E6%96%B9%E6%8A%95%E7%A5%A8_%E5%85%AC%E5%91%8A%E7%89%88.pdf",
+          "text": "2025民眾平方投票_公告",
+          "score": 20,
+          "source_page": "direct"
+        }
+      ]
+    },
+    {
+      "school_id": "73",
+      "school_name": "國立臺北科技大學",
+      "pdf_found": true,
+      "pdf_filename": "73-國立臺北科技大學-115.pdf",
+      "pdf_url": "https://cnc.ntut.edu.tw/var/file/4/1004/img/1233/ISMS-Policy.pdf",
+      "pdf_score": 20,
+      "method": "downloaded",
+      "all_pdf_candidates": [
+        {
+          "url": "https://cnc.ntut.edu.tw/var/file/4/1004/img/1233/ISMS-Policy.pdf",
+          "text": "資訊安全政策",
+          "score": 20,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.jctv.ntut.edu.tw/downloads/100/jctvweb/orgain1.pdf",
+          "text": "組織規程",
+          "score": 20,
+          "source_page": "direct"
+        },
+        {
+          "url": "https://www.jctv.ntut.edu.tw/downloads/100/jctvweb/orgain2.pdf",
+          "text": "組織架構",
+          "score": 20,
+          "source_page": "direct"
+        }
+      ]
+    },
+    {
+      "school_id": "87",
+      "school_name": "南臺科技大學",
+      "pdf_found": false,
+      "pdf_filename": null,
+      "pdf_url": null,
+      "pdf_score": 0,
+      "method": "not_found",
+      "all_pdf_candidates": [
+        {
+          "url": "https://www.stust.edu.tw/en/admission/files/STUST_Brochure.pdf",
+          "text": "STUST Brochure",
+          "score": 60,
+          "source_page": "https://www.stust.edu.tw/en/admission/"
+        },
+        {
+          "url": "https://www.stust.edu.tw/en/files/STUST_Brochure.pdf",
+          "text": "STUST Brochure",
+          "score": 40,
+          "source_page": "https://www.stust.edu.tw/en/admission"
+        }
+      ]
+    }
+  ]
+}

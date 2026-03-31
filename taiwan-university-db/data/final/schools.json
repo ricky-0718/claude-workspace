@@ -197,7 +197,7 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://www.ncnu.edu.tw/p/406-1000-33606,r30.php?Lang=zh-tw",
+      "oia_url": "https://admission.ncnu.edu.tw/p/405-1055-11560,c1563.php",
       "admission_links": [
         {
           "href": "https://admission.ncnu.edu.tw/",
@@ -211,6 +211,12 @@
           "href": "https://exam.ncnu.edu.tw/ApplyUni/",
           "text": "申請入學專區"
         }
+      ],
+      "admission_url": "https://admission.ncnu.edu.tw/p/406-1055-31441,r608.php",
+      "jianzhang_url": "https://admission.ncnu.edu.tw/var/file/55/1055/attach/13/pta_23599_5120731_11661.pdf",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5019000000,
@@ -370,6 +376,10 @@
           "href": "https://www.nycu.edu.tw/oia/ch/app/folder/381",
           "text": "外國學生"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5180000000,
@@ -430,6 +440,12 @@
           "href": "https://oga.site.nthu.edu.tw/#cmb_2934_1",
           "text": "招生資訊"
         }
+      ],
+      "jianzhang_url": "https://oga.site.nthu.edu.tw/var/file/524/1524/img/4520/847786807.pdf",
+      "jianzhang_year": 115,
+      "notes": "研究所版。学部はIBP (ibp.nthu.edu.tw) が別途あり",
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5002000000,
@@ -728,6 +744,11 @@
           "href": "https://new.ntpu.edu.tw/oia/news/69c25b2aba76cd07fcaa8e55/%F0%9F%93%A3115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%AC%AC2%E5%AD%B8%E6%9C%9F%E8%B5%B4%E5%A4%96%E4%BA%A4%E6%8F%9B%E7%B0%A1%E7%AB%A0%E5%85%AC%E5%91%8A!%E7%94%B3%E8%AB%8B%E6%97%A5%E6%9C%9F%E8%87%AA115%E5%B9%B44%E6%9C%881%E6%97%A5%E8%B5%B7%E8%87%B3115%E5%B9%B44%E6%9C%8830%E6%97%A516%E6%99%82%E6%AD%A2SpringSemesterofAcademicYear2026ExchangeProgramAnnouncement!",
           "text": "📣115學年度第2學期赴外交換簡章公告! (申請日期自115年4月1日起至115年4月30日16時止)"
         }
+      ],
+      "admission_url": "javascript:void(0)",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5015000000
@@ -766,7 +787,7 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://oias.nchu.edu.tw/asknchu-ch/",
+      "oia_url": "https://oia.nchu.edu.tw/",
       "admission_url": "https://iss.nchu.edu.tw/ufaq-tag/admission-zh/",
       "admission_links": [
         {
@@ -781,6 +802,11 @@
           "href": "https://iss.nchu.edu.tw/ufaq-tag/admission/",
           "text": "Admission (11)"
         }
+      ],
+      "jianzhang_url": "https://oia.nchu.edu.tw/images/File/03_Apply_to_NCHU/3-1-Degree-Programs/3-1-2-International-Students/115_Academic_Year.pdf",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5006000000,
@@ -829,7 +855,7 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "admission_url": "https://exams.ccu.edu.tw/index.php",
+      "admission_url": "https://exams.ccu.edu.tw/p/404-1032-60689.php",
       "admission_links": [
         {
           "href": "https://exams.ccu.edu.tw/index.php",
@@ -839,6 +865,11 @@
           "href": "https://www.cac.edu.tw/cacportal/index.php",
           "text": "大學甄選入學委員會"
         }
+      ],
+      "oia_url": "https://oia.ccu.edu.tw/",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5011000000,
@@ -888,7 +919,12 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://ncusec.ncu.edu.tw/news/headlines_content.php?H_ID=4644"
+      "oia_url": "https://www.oia.ncu.edu.tw/",
+      "admission_url": "https://admission.ncu.edu.tw/zh-TW",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
+      ]
     },
     "id_104": 5008000000,
     "student_count": {
@@ -937,7 +973,7 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "admission_url": "https://www.nsysu.edu.tw/p/412-1000-94.php?Lang=zh-tw",
+      "admission_url": "https://exam-oaa.nsysu.edu.tw/p/412-1065-3946.php",
       "admission_links": [
         {
           "href": "https://www.nsysu.edu.tw/p/412-1000-94.php?Lang=zh-tw",
@@ -947,6 +983,11 @@
           "href": "https://www.nsysu.edu.tw/#cmb_476_1",
           "text": "招生公告"
         }
+      ],
+      "oia_url": "https://oia.nsysu.edu.tw/",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5009000000,
@@ -1015,8 +1056,11 @@
       "english_program_period": "2026/01/02~03/15",
       "english_program_qualification": "CEFR B1",
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "https://oia.ndhu.edu.tw/var/file/27/1027/img/4756/293724183.pdf",
+      "jianzhang_year": 115
     },
     "id_104": 5018000000,
     "student_count": {
@@ -1065,7 +1109,7 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://www.ncyu.edu.tw/oia/",
+      "oia_url": "https://website.ncyu.edu.tw/oia/Subject?nodeId=58425",
       "admission_url": "https://www.ncyu.edu.tw/oia/Subject?nodeId=58425",
       "admission_links": [
         {
@@ -1080,6 +1124,11 @@
           "href": "https://www.ncyu.edu.tw/oia/Subject?nodeId=62826",
           "text": "招生簡章"
         }
+      ],
+      "jianzhang_url": "https://website.ncyu.edu.tw/oia/ServerFile/Get/5d4cf434-53df-4089-ac71-e7308963ba94",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5016000000,
@@ -1244,6 +1293,11 @@
           "href": "https://isa.niu.edu.tw/p/412-1073-5945.php",
           "text": "入學條件"
         }
+      ],
+      "admission_url": "javascript:void(0);return false;",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5029000000
@@ -1342,6 +1396,10 @@
           "href": "https://www.ntcu.edu.tw/Tag?ID=9",
           "text": "招生"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5040000000
@@ -1394,6 +1452,12 @@
           "href": "https://admission.nptu.edu.tw/",
           "text": "招生資訊"
         }
+      ],
+      "oia_url": "https://oiais.nptu.edu.tw/",
+      "jianzhang_url": "https://oiais.nptu.edu.tw/var/file/90/1090/img/2026-2027AdmissionGuide.pdf",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5041000000,
@@ -1769,6 +1833,10 @@
           "href": "https://admissions.ntsu.edu.tw/p/404-1046-62826.php?Lang=zh-tw",
           "text": ""
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5035000000
@@ -1818,6 +1886,10 @@
           "href": "https://acad.tnnua.edu.tw/p/412-1003-3744.php?Lang=zh-tw",
           "text": "115學年度音樂學系入學考試"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5033000000
@@ -1965,8 +2037,12 @@
         "english": null
       },
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "oia_url": "https://cmucia.cmu.edu.tw/admission_international.html",
+      "jianzhang_url": "https://web81.cmu.edu.tw/Std_international/docs/Application_Guidelines.pdf",
+      "jianzhang_year": 115
     },
     "id_104": 5091000000,
     "student_count": {
@@ -2168,8 +2244,8 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://www.cycu.edu.tw/oia/",
-      "admission_url": "https://icare.cycu.edu.tw/",
+      "oia_url": "https://oia.cycu.edu.tw/",
+      "admission_url": "https://oia.cycu.edu.tw/?p=9765",
       "admission_links": [
         {
           "href": "https://icare.cycu.edu.tw/",
@@ -2185,18 +2261,22 @@
         }
       ],
       "financial_proof": {
-        "amount": "USD 4,000",
-        "jpy_estimate": "約62万円"
+        "amount": "NTD 120,000",
+        "usd_equivalent": "USD 4,000",
+        "jpy_estimate": "約60万円"
       },
       "language_req": {
-        "chinese": "最低TOCFL A2",
-        "english": "TOEIC 550 / CEFR B1"
+        "chinese": "TOCFL B1以上（中国語授業）",
+        "english": "CEFR B1以上（英語授業）"
       },
       "english_program_period": "2025/12/01~2026/04/15",
       "english_program_qualification": "TOEIC 550",
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "https://oia.cycu.edu.tw/wp-content/uploads/115外國學生秋季班入學申請簡章251104更新.pdf",
+      "jianzhang_year": 115
     },
     "id_104": 5060000000,
     "student_count": {
@@ -2370,6 +2450,12 @@
           "href": "https://www.thu.edu.tw/web/user/user.php?did=1",
           "text": "新生入學"
         }
+      ],
+      "oia_url": "javascript:void(0)",
+      "admission_url": "javascript:void(0)",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5057000000,
@@ -2520,6 +2606,10 @@
           "href": "https://admissions-fee.fcu.edu.tw/W710107/StudReply/ReplyForm.aspx#/login",
           "text": "1.Reply to the study intention"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5063000000,
@@ -2680,8 +2770,8 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://sites.google.com/g.yzu.edu.tw/yzu-ilcc-web/",
-      "admission_url": "https://localadmissions.yzu.edu.tw/",
+      "oia_url": "https://gao.yzu.edu.tw/",
+      "admission_url": "https://gao.yzu.edu.tw/index.php/tw/admissions/int-student",
       "admission_links": [
         {
           "href": "https://localadmissions.yzu.edu.tw/",
@@ -2695,6 +2785,16 @@
           "href": "https://localadmissions.yzu.edu.tw/",
           "text": "招生專區"
         }
+      ],
+      "jianzhang_url": "https://gao.yzu.edu.tw/images/Brochure/115Brochure%20CH.pdf",
+      "jianzhang_year": 115,
+      "financial_proof": {
+        "amount": "NTD 120,000",
+        "usd_equivalent": "USD 4,000",
+        "jpy_estimate": "約60万円"
+      },
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5066000000,
@@ -2795,7 +2895,7 @@
     "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.shu.edu.tw/oia/",
-      "admission_url": "https://www.shu.edu.tw/oia/Admission.aspx",
+      "admission_url": "https://oaa.web.shu.edu.tw/外國學生",
       "admission_links": [
         {
           "href": "https://www.shu.edu.tw/oia/Admission.aspx",
@@ -2813,8 +2913,11 @@
       "english_program_period": "2025/12/17~2026/03/04",
       "english_program_qualification": "TOEIC 550",
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "https://drive.google.com/file/d/1fZnMxAICtV9oQm149sQSCyffzh0McGEP/view",
+      "jianzhang_year": 115
     },
     "id_104": 5071000000,
     "student_count": {
@@ -2868,6 +2971,10 @@
           "href": "https://recruit.csmu.edu.tw/",
           "text": "招生"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5085000000
@@ -2981,6 +3088,10 @@
           "href": "https://recruit.kh.usc.edu.tw/",
           "text": "招生資訊"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5073000000
@@ -3019,7 +3130,7 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://www.isu.edu.tw/",
+      "oia_url": "https://www.isu.edu.tw/admissions",
       "admission_url": "https://www.isu.edu.tw/admissions",
       "admission_links": [
         {
@@ -3034,6 +3145,11 @@
           "href": "https://www.isu.edu.tw/admissions",
           "text": "招生資訊"
         }
+      ],
+      "jianzhang_url": "https://www.isu.edu.tw/storage/files/A9Ki20gtE3VzM0DMORKtAgts21sGxwuo2nmcy9zt.pdf",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5070000000,
@@ -3096,6 +3212,10 @@
           "href": "https://oge.tmu.edu.tw/zh-hant/%e5%a4%96%e5%9c%8b%e5%ad%b8%e7%94%9f%e5%a4%a7%e5%ad%b8%e9%83%a8%e7%94%b3%e8%ab%8b/",
           "text": "外國學生大學部申請"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5084000000
@@ -3134,7 +3254,7 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://oia.pu.edu.tw/app/home.php#start-C",
+      "oia_url": "https://www.oia.pu.edu.tw/",
       "admission_url": "https://oia.pu.edu.tw/p/426-1048-11.php",
       "admission_links": [
         {
@@ -3149,6 +3269,11 @@
           "href": "https://oia.pu.edu.tw/p/426-1048-41.php?Lang=zh-tw",
           "text": "新型專班申請入學"
         }
+      ],
+      "jianzhang_url": "https://oia.pu.edu.tw/var/file/48/1048/img/889609678.pdf",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5064000000,
@@ -3198,7 +3323,12 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://www.cjcu.edu.tw/oia/"
+      "oia_url": "https://dwaa.cjcu.edu.tw/",
+      "jianzhang_url": "https://dweb.cjcu.edu.tw/ShepherdFiles/B2902/Article/20251125094544398.pdf",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
+      ]
     },
     "id_104": 5089000000,
     "student_count": {
@@ -3334,6 +3464,12 @@
           "href": "https://www.dyu.edu.tw/%7B%7B%20d.ExLink%20%7D%7D",
           "text": "招生消息"
         }
+      ],
+      "oia_url": "https://www.dyu.edu.tw/",
+      "jianzhang_url": "https://bulletin.dyu.edu.tw/",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5068000000,
@@ -3439,6 +3575,10 @@
           "href": "https://edupass.azurewebsites.net/Pages/RegOnline.aspx?Group=01",
           "text": "入學網路報名"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5069000000
@@ -3574,6 +3714,10 @@
           "href": "https://oica.fgu.edu.tw/en/admission",
           "text": "Admission"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5134000000
@@ -3784,6 +3928,10 @@
           "href": "https://admission.wp.mcu.edu.tw/",
           "text": ""
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5072000000
@@ -3901,6 +4049,11 @@
           "href": "https://cec.tcu.edu.tw/?page_id=3227",
           "text": "進修二技招生專區"
         }
+      ],
+      "admission_url": "javascript:void(0);",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5083000000
@@ -3952,8 +4105,10 @@
       "english_program_period": "2026/01/21~02/28",
       "english_program_qualification": "TOEIC 550",
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_year": 115
     },
     "id_104": 5100000000
   },
@@ -4088,7 +4243,15 @@
         "amount": "NT$46,000〜53,000/学期"
       }
     ],
-    "ja_description": "2018年創立\n国立科技大学\n12学院\n学生数約26.9,000人\n高雄に位置\n登録率92.51%"
+    "ja_description": "2018年創立\n国立科技大学\n12学院\n学生数約26.9,000人\n高雄に位置\n登録率92.51%",
+    "foreign_student": {
+      "oia_url": "https://oia.nkust.edu.tw/",
+      "jianzhang_url": "https://oia.nkust.edu.tw/images/upload/files/2026秋外國學生招生簡章.pdf",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
+      ]
+    }
   },
   {
     "id": "78",
@@ -4175,7 +4338,7 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://presidential-hackathon.taiwan.gov.tw/",
+      "oia_url": "https://oia.npust.edu.tw/",
       "admission_url": "https://presidential-hackathon.taiwan.gov.tw/@demo2wsx6RFV/wish2024demo@1qaz3EDC/wishPersonalApply.aspx",
       "admission_links": [
         {
@@ -4190,8 +4353,12 @@
       "english_program_period": "2026/01/01~03/31",
       "english_program_qualification": "TOEIC 550",
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_url": "https://oia2.npust.edu.tw/",
+      "jianzhang_year": 114,
+      "notes": "114學年度版。115はまだ未公開の可能性"
     },
     "id_104": 5022000000,
     "student_count": {
@@ -4253,6 +4420,10 @@
           "href": "https://oia.nutc.edu.tw/p/404-1042-45902.php",
           "text": "本校外國學生獎助金資訊 NTCUST Scholarship for International Students"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5044000000
@@ -4319,6 +4490,13 @@
           "href": "https://www.jctv.ntut.edu.tw/",
           "text": "技專校院招生委員會聯合會"
         }
+      ],
+      "oia_url": "https://oia.ntut.edu.tw/",
+      "admission_url": "https://oia.ntut.edu.tw/p/412-1032-17870.php",
+      "jianzhang_url": "https://oia.ntut.edu.tw/var/file/32/1032/img/2026FallAdmissionHandbook.pdf",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5023000000
@@ -4383,8 +4561,10 @@
       "english_program_period": "2026/03/02~04/15",
       "english_program_qualification": "TOEIC 550",
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "jianzhang_year": 115
     },
     "id_104": 5021000000
   },
@@ -4825,7 +5005,7 @@
     ],
     "last_updated": "2026-03-31",
     "foreign_student": {
-      "oia_url": "https://www.stust.edu.tw/en/admission/",
+      "oia_url": "https://www.stust.edu.tw/",
       "admission_url": "https://www.stust.edu.tw/en/admission/#C",
       "admission_links": [
         {
@@ -4840,6 +5020,11 @@
           "href": "https://www.stust.edu.tw/en/admission",
           "text": "Admission(current)"
         }
+      ],
+      "jianzhang_url": "https://webap.stust.edu.tw/IntStudWeb/images/",
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5079000000,
@@ -4901,6 +5086,10 @@
           "href": "https://oia.csu.edu.tw/p/412-1075-225.php?Lang=zh-tw",
           "text": "招生訊息"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5093000000
@@ -4940,8 +5129,12 @@
     "last_updated": "2026-03-31",
     "foreign_student": {
       "data_sources": [
-        "spreadsheet"
-      ]
+        "spreadsheet",
+        "web_research"
+      ],
+      "oia_url": "https://oic.cyut.edu.tw/",
+      "jianzhang_url": "https://icsc.cyut.edu.tw/",
+      "jianzhang_year": 115
     },
     "id_104": 5074000000,
     "student_count": {
@@ -5003,6 +5196,10 @@
           "href": "https://www.cnu.edu.tw/content-text.asp?fid=142&id=969&funcname=%E6%B8%AF%E6%BE%B3%20/%20%E5%9C%8B%E9%9A%9B%E6%8B%9B%E7%94%9F%20/%20%E5%9C%8B%E9%9A%9B%E5%B0%88%E4%BF%AE%E9%83%A8#collapse3",
           "text": "招生系所"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5081000000
@@ -5096,6 +5293,10 @@
           "href": "https://oiss-rd.tut.edu.tw/var/file/42/1042/img/1440/651655665.pdf",
           "text": "招生文宣(簡英雙語版)2"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5103000000
@@ -5249,6 +5450,10 @@
           "href": "https://admissions.uch.edu.tw/",
           "text": ""
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5092000000
@@ -5414,6 +5619,10 @@
           "href": "https://ia.dyhu.edu.tw/p/412-1009-2356.php",
           "text": "國際招生組"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5144000000
@@ -5460,6 +5669,10 @@
           "href": "https://www.ctu.edu.tw/app/home.php",
           "text": "進入學校官網"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5096000000
@@ -5825,6 +6038,10 @@
           "href": "https://int.mitust.edu.tw/var/file/17/1017/img/447743668.pdf",
           "text": "114學年度新南向產學合作國際專班錄取申請入學榜單"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5102000000
@@ -5876,6 +6093,10 @@
           "href": "https://www.lit.edu.tw/international/61367/",
           "text": "115 學年度外國學生申請入學招生簡章(研究所)/2026-2027 International Students   Application Information Brochure for Admission  (Graduate Program)"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5142000000
@@ -5977,6 +6198,10 @@
           "href": "https://exam.chihlee.edu.tw/",
           "text": "招生快訊"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5123000000
@@ -6063,6 +6288,10 @@
           "href": "https://ais.ltu.edu.tw/recnst//",
           "text": "招生報名系統"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5108000000
@@ -6110,6 +6339,10 @@
           "href": "https://oia.lhu.edu.tw/p/412-1007-793.php?Lang=zh-tw",
           "text": "招生辦法"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5086000000
@@ -6242,6 +6475,10 @@
           "href": "https://oaic.ctust.edu.tw/p/412-1015-5358.php?Lang=zh-tw",
           "text": "入學管道總表"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5104000000
@@ -6497,6 +6734,10 @@
           "href": "http://entry.ydu.edu.tw/",
           "text": "招生資訊"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5119000000
@@ -6790,6 +7031,10 @@
           "href": "https://ieco.meiho.edu.tw/p/412-1009-4656.php?Lang=zh-tw",
           "text": "招生專區"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     },
     "id_104": 5132000000
@@ -6866,6 +7111,10 @@
           "href": "https://www.nups.ntnu.edu.tw/international/upfiles/%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0/%E4%B8%AD%E6%96%87-2022%E5%B9%B4%E5%83%91%E7%94%9F%E5%85%88%E4%BF%AE%E9%83%A8%E8%A9%A6%E8%BE%A6%E5%A4%96%E7%B1%8D%E7%94%9F%E5%85%88%E4%BF%AE%E7%8F%AD%E7%B0%A1%E7%AB%A0.pdf",
           "text": "招生簡章下載"
         }
+      ],
+      "jianzhang_year": 115,
+      "data_sources": [
+        "web_research"
       ]
     }
   }

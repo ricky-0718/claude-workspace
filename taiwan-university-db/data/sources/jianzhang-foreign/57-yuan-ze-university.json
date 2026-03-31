@@ -1,0 +1,18 @@
+{
+  "school_id": "57",
+  "school_name": "元智大學",
+  "category": "foreign_student",
+  "data_source": "auto_discovery",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://gao.yzu.edu.tw/",
+  "foreign_admission_url": "https://gao.yzu.edu.tw/index.php/tw/admissions/int-student",
+  "jianzhang_url": "https://gao.yzu.edu.tw/images/Brochure/115Brochure%20CH.pdf",
+  "jianzhang_year": 115,
+  "pdf_file": "57-元智大學-115.pdf",
+  "pdf_size_kb": 464,
+  "financial_proof": {
+    "amount": "NTD 120,000",
+    "usd_equivalent": "USD 4,000",
+    "jpy_estimate": "約60万円"
+  }
+}

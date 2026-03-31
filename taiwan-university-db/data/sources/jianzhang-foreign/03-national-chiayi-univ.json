@@ -1,0 +1,13 @@
+{
+  "school_id": "03",
+  "school_name": "國立嘉義大學",
+  "category": "foreign_student",
+  "data_source": "auto_discovery",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://website.ncyu.edu.tw/oia/Subject?nodeId=58425",
+  "foreign_admission_url": "https://www.ncyu.edu.tw/oia/Subject?nodeId=58425",
+  "jianzhang_url": "https://website.ncyu.edu.tw/oia/ServerFile/Get/5d4cf434-53df-4089-ac71-e7308963ba94",
+  "jianzhang_year": 115,
+  "pdf_file": "03-國立嘉義大學-115.pdf",
+  "pdf_size_kb": 928
+}
