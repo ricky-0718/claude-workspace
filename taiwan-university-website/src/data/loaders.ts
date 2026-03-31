@@ -96,6 +96,26 @@ export interface Quota {
   };
 }
 
+export interface RequiredCourse {
+  grade: number;
+  lessons: string[];
+}
+
+export interface ElectiveCourse {
+  areaName: string;
+  lessons: string;
+}
+
+export interface Curriculum104 {
+  required?: RequiredCourse[];
+  electives?: ElectiveCourse[];
+}
+
+export interface ReferenceLink {
+  name: string;
+  link: string;
+}
+
 export interface Department {
   id: string;
   school_id: string;
@@ -111,6 +131,18 @@ export interface Department {
   group_data?: { cht?: string; en?: string };
   ioh_url?: string;
   translation_status?: string;
+  // 104データ
+  curriculum_104?: Curriculum104;
+  tuition_104?: number;
+  teacher_student_ratio?: number;
+  registration_ratio?: number;
+  deferral_ratio?: number;
+  gender_ratio?: { male: number; female: number };
+  holland_code?: string[];
+  intro_collego?: string;
+  reference_links?: ReferenceLink[];
+  address?: string;
+  source_104?: { schoolId: number; majorId: number; fetched_at: string };
 }
 
 export interface DepartmentGroup {
