@@ -63,20 +63,110 @@ const { dept, school, group } = Astro.props;
 
   <DataCompletenessNote level={school.data_completeness} />
 
+  <!-- Key Stats (104) -->
+  {(dept.tuition_104 || dept.teacher_student_ratio || dept.registration_ratio != null || dept.gender_ratio) && (
+    <section class="mt-6">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {dept.tuition_104 && (
+          <div class="bg-white border border-gray-200 rounded-xl p-3 text-center">
+            <p class="text-xs text-gray-400">学費/学期</p>
+            <p class="text-lg font-bold text-gray-800">NT${dept.tuition_104.toLocaleString()}</p>
+          </div>
+        )}
+        {dept.teacher_student_ratio && (
+          <div class="bg-white border border-gray-200 rounded-xl p-3 text-center">
+            <p class="text-xs text-gray-400">師生比</p>
+            <p class="text-lg font-bold text-gray-800">1:{dept.teacher_student_ratio}</p>
+          </div>
+        )}
+        {dept.registration_ratio != null && (
+          <div class="bg-white border border-gray-200 rounded-xl p-3 text-center">
+            <p class="text-xs text-gray-400">登録率</p>
+            <p class="text-lg font-bold text-gray-800">{dept.registration_ratio}%</p>
+          </div>
+        )}
+        {dept.gender_ratio && (
+          <div class="bg-white border border-gray-200 rounded-xl p-3 text-center">
+            <p class="text-xs text-gray-400">男女比</p>
+            <p class="text-lg font-bold text-gray-800">{dept.gender_ratio.male}:{dept.gender_ratio.female}</p>
+          </div>
+        )}
+      </div>
+      {dept.holland_code && dept.holland_code.length > 0 && (
+        <div class="mt-2 flex items-center gap-2">
+          <span class="text-xs text-gray-400">興味タイプ:</span>
+          {dept.holland_code.map(code => (
+            <span class="text-xs bg-primary-light text-primary px-2 py-0.5 rounded-full font-medium">{code}</span>
+          ))}
+        </div>
+      )}
+    </section>
+  )}
+
   <!-- Introduction -->
-  {dept.introduction && (dept.introduction.cht || dept.introduction.en) && (
+  {(dept.intro_collego || (dept.introduction && (dept.introduction.cht || dept.introduction.en))) && (
     <section class="mt-6">
       <h2 class="text-base font-bold text-gray-800 mb-2">学科紹介</h2>
-      {dept.introduction.en && (
+      {dept.intro_collego && (
+        <div class="bg-white border border-gray-200 rounded-xl p-4">
+          <p class="text-sm text-gray-600 leading-relaxed">{dept.intro_collego}</p>
+          <p class="text-xs text-gray-300 mt-2">出典: ColleGo</p>
+        </div>
+      )}
+      {!dept.intro_collego && dept.introduction?.en && (
         <div class="bg-white border border-gray-200 rounded-xl p-4">
           <p class="text-sm text-gray-600 leading-relaxed">{dept.introduction.en}</p>
         </div>
       )}
-      {dept.introduction.cht && (
+      {dept.introduction?.cht && (
         <details class="mt-2">
           <summary class="text-xs text-gray-400 cursor-pointer hover:text-primary">中文で読む</summary>
           <div class="bg-gray-50 rounded-xl p-4 mt-1">
             <p class="text-sm text-gray-600 leading-relaxed">{dept.introduction.cht}</p>
+          </div>
+        </details>
+      )}
+    </section>
+  )}
+
+  <!-- Curriculum (104) -->
+  {dept.curriculum_104 && (dept.curriculum_104.required?.length || dept.curriculum_104.electives?.length) && (
+    <section class="mt-6">
+      <h2 class="text-base font-bold text-gray-800 mb-2">カリキュラム</h2>
+      <p class="text-xs text-gray-400 mb-3">※ 課程情報は参考用です。最新の情報は公式サイトをご確認ください。</p>
+
+      {/* 必修科目 */}
+      {dept.curriculum_104.required && dept.curriculum_104.required.length > 0 && (
+        <div class="bg-white border border-gray-200 rounded-xl p-4 mb-3">
+          <h3 class="text-sm font-bold text-gray-700 mb-3">必修科目</h3>
+          <div class="space-y-3">
+            {dept.curriculum_104.required.map(r => (
+              <div>
+                <p class="text-xs font-medium text-primary mb-1">{r.grade}年次</p>
+                <div class="flex flex-wrap gap-1.5">
+                  {r.lessons.map(lesson => (
+                    <span class="text-xs bg-gray-50 border border-gray-100 text-gray-700 px-2 py-1 rounded-md">{lesson}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 選修科目 */}
+      {dept.curriculum_104.electives && dept.curriculum_104.electives.length > 0 && (
+        <details class="bg-white border border-gray-200 rounded-xl">
+          <summary class="text-sm font-bold text-gray-700 p-4 cursor-pointer hover:text-primary">
+            選択科目（{dept.curriculum_104.electives.length}分野）
+          </summary>
+          <div class="px-4 pb-4 space-y-3">
+            {dept.curriculum_104.electives.map(e => (
+              <div>
+                <p class="text-xs font-medium text-primary mb-1">{e.areaName}</p>
+                <p class="text-xs text-gray-600 leading-relaxed">{e.lessons}</p>
+              </div>
+            ))}
           </div>
         </details>
       )}
@@ -132,6 +222,19 @@ const { dept, school, group } = Astro.props;
       <a href={dept.ioh_url} target="_blank" rel="noopener noreferrer"
         class="text-sm text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-primary-light transition-colors">
         IOH体験談を見る →
+      </a>
+    )}
+    {dept.reference_links && dept.reference_links.map(ref => (
+      <a href={ref.link} target="_blank" rel="noopener noreferrer"
+        class="text-sm text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-primary-light transition-colors">
+        {ref.name} →
+      </a>
+    ))}
+    {dept.source_104 && (
+      <a href={`https://guide.104.com.tw/career/schoolMajor/${dept.source_104.schoolId}/${dept.source_104.majorId}/introduction/`}
+        target="_blank" rel="noopener noreferrer"
+        class="text-sm text-gray-500 border border-gray-200 rounded-lg px-4 py-2 hover:bg-gray-50 transition-colors">
+        104升學就業地圖 →
       </a>
     )}
   </section>
