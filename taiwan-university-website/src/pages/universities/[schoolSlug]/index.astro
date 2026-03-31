@@ -151,7 +151,7 @@ for (const d of departments) {
     const fs = school.foreign_student;
     const fp = fs?.financial_proof || school.financial_proof;
     const lr = fs?.language_req || school.language_req;
-    const hasData = fp || lr || fs?.application_periods || fs?.required_documents;
+    const hasData = fp || lr || fs?.application_periods || fs?.required_documents || fs?.oia_url || fs?.admission_url || fs?.jianzhang_url;
     return hasData;
   })() && (
     <section class="mt-6 bg-primary-light/50 border border-primary/10 rounded-xl p-4">
@@ -235,8 +235,14 @@ for (const d of departments) {
       )}
 
       {/* 簡章リンク */}
-      {(school.foreign_student?.jianzhang_url || school.foreign_student?.admission_url) && (
+      {(school.foreign_student?.jianzhang_url || school.foreign_student?.admission_url || school.foreign_student?.oia_url) && (
         <div class="mt-4 pt-3 border-t border-primary/10 flex flex-wrap gap-2">
+          {school.foreign_student?.jianzhang_url && (
+            <a href={school.foreign_student.jianzhang_url} target="_blank" rel="noopener noreferrer"
+              class="text-xs text-white bg-primary rounded-lg px-3 py-1.5 hover:bg-primary/90 transition-colors inline-flex items-center gap-1">
+              📄 招生簡章（PDF）{school.foreign_student.jianzhang_year ? `${school.foreign_student.jianzhang_year}年度` : ''} →
+            </a>
+          )}
           {school.foreign_student?.admission_url && (
             <a href={school.foreign_student.admission_url} target="_blank" rel="noopener noreferrer"
               class="text-xs text-primary border border-primary/20 rounded-lg px-3 py-1.5 hover:bg-white transition-colors">

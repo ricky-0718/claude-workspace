@@ -17,7 +17,7 @@ const { title, description, path, ogType } = Astro.props;
 <BaseLayout title={title} description={description} path={path} ogType={ogType}>
   <slot name="head" slot="head" />
   <Header />
-  <main class="max-w-6xl mx-auto px-4 py-6">
+  <main class="max-w-6xl mx-auto px-4 py-6 pb-24 sm:pb-6">
     <slot />
   </main>
   <Footer />
