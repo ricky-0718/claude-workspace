@@ -69,7 +69,7 @@ const { dept, school, group } = Astro.props;
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {dept.tuition_104 && (
           <div class="bg-white border border-gray-200 rounded-xl p-3 text-center">
-            <p class="text-xs text-gray-400">学費/学期</p>
+            <p class="text-xs text-gray-400">学費/学期（参考：本国生）</p>
             <p class="text-lg font-bold text-gray-800">NT${dept.tuition_104.toLocaleString()}</p>
           </div>
         )}
