@@ -1,0 +1,22 @@
+{
+  "school_id": "61",
+  "school_name": "中原大學",
+  "category": "foreign_student",
+  "data_source": "auto_discovery",
+  "researched_at": "2026-03-31",
+  "oia_url": "https://oia.cycu.edu.tw/",
+  "foreign_admission_url": "https://oia.cycu.edu.tw/?p=9765",
+  "jianzhang_url": "https://oia.cycu.edu.tw/wp-content/uploads/115外國學生秋季班入學申請簡章251104更新.pdf",
+  "jianzhang_year": 115,
+  "pdf_file": "61-中原大學-115.pdf",
+  "pdf_size_kb": 1883,
+  "financial_proof": {
+    "amount": "NTD 120,000",
+    "usd_equivalent": "USD 4,000",
+    "jpy_estimate": "約60万円"
+  },
+  "language_req": {
+    "chinese": "TOCFL B1以上（中国語授業）",
+    "english": "CEFR B1以上（英語授業）"
+  }
+}
