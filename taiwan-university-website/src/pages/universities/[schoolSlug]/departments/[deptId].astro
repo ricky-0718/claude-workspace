@@ -107,9 +107,9 @@ const { dept, school, group } = Astro.props;
   {(dept.intro_collego || (dept.introduction && (dept.introduction.cht || dept.introduction.en))) && (
     <section class="mt-6">
       <h2 class="text-base font-bold text-gray-800 mb-2">学科紹介</h2>
-      {dept.intro_collego && (
+      {(dept.intro_collego_ja || dept.intro_collego) && (
         <div class="bg-white border border-gray-200 rounded-xl p-4">
-          <p class="text-sm text-gray-600 leading-relaxed">{dept.intro_collego}</p>
+          <p class="text-sm text-gray-600 leading-relaxed">{dept.intro_collego_ja || dept.intro_collego}</p>
           <p class="text-xs text-gray-300 mt-2">出典: ColleGo</p>
         </div>
       )}
@@ -144,7 +144,7 @@ const { dept, school, group } = Astro.props;
               <div>
                 <p class="text-xs font-medium text-primary mb-1">{r.grade}年次</p>
                 <div class="flex flex-wrap gap-1.5">
-                  {r.lessons.map(lesson => (
+                  {(r.lessons_ja || r.lessons).map(lesson => (
                     <span class="text-xs bg-gray-50 border border-gray-100 text-gray-700 px-2 py-1 rounded-md">{lesson}</span>
                   ))}
                 </div>
@@ -163,8 +163,8 @@ const { dept, school, group } = Astro.props;
           <div class="px-4 pb-4 space-y-3">
             {dept.curriculum_104.electives.map(e => (
               <div>
-                <p class="text-xs font-medium text-primary mb-1">{e.areaName}</p>
-                <p class="text-xs text-gray-600 leading-relaxed">{e.lessons}</p>
+                <p class="text-xs font-medium text-primary mb-1">{e.areaName_ja || e.areaName}</p>
+                <p class="text-xs text-gray-600 leading-relaxed">{Array.isArray(e.lessons_ja || e.lessons) ? (e.lessons_ja || e.lessons).join('、') : (e.lessons_ja || e.lessons)}</p>
               </div>
             ))}
           </div>
