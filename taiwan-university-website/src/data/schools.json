@@ -189,11 +189,13 @@
       "url": "https://oia.ncnu.edu.tw/"
     },
     "department_count": 25,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.ncnu.edu.tw/p/406-1000-33606,r30.php?Lang=zh-tw",
       "admission_links": [
@@ -211,7 +213,18 @@
         }
       ]
     },
-    "id_104": 5019000000
+    "id_104": 5019000000,
+    "student_count": {
+      "foreign": 91,
+      "total": 6512
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$45,000〜56,000/学期"
+      }
+    ],
+    "ja_description": "1906年創立\n国立総合大学\n4学院\n学生数約6.5,000人\n南投に位置\n登録率92.97%"
   },
   {
     "id": "07",
@@ -232,11 +245,13 @@
     "dormitory": {
       "available": true,
       "info_cht": "新生優先分配住宿,在學期間優先申請",
-      "info_en": "New admitted students have the priority for dormitory allocation and the priority for dormitory application during the semester. For more information, please contact NTNU."
+      "info_en": "New admitted students have the priority for dormitory allocation and the priority for dormitory application during the semester. For more information, please contact NTNU.",
+      "info_ja": "新入生は優先的に寮が割り当てられます。在学中も優先申請が可能です。"
     },
     "scholarship": {
       "available": true,
-      "url": "https://bds.oia.ntnu.edu.tw/bds/web/oc-scholarship"
+      "url": "https://bds.oia.ntnu.edu.tw/bds/web/oc-scholarship",
+      "info_ja": "■ NTNU独自奨学金\n学部: 初年度の学費・雑費全額免除\n修士: 初年度全額免除、2年目は学科推薦により継続可\n博士: 初年度全額免除、2年目継続可、3年目は学費のみ免除\n\n■ 教育部台湾奨学金（MOE）\n学部: 月額NT$15,000＋学費一部免除（最長4年）\n修士: 月額NT$20,000＋学費一部免除（最長2年）\n博士: 月額NT$20,000＋学費一部免除（最長4年）\n\n■ 外交部台湾奨学金（MOFA）\n全学位: 月額NT$33,000（最長4年）\n\n■ NSTC大学院研究フェローシップ\n博士1年生: 月額NT$40,000（最長3年）\n\n■ 半導体単位プログラム奨学金\n21単位修了時NT$70,000＋TOCFL B2取得でNT$20,000追加\n\n※ 種類・条件は年度により変動。最新情報は国際事務処サイトを確認"
     },
     "financial_proof": {
       "amount": "NTD 150,000",
@@ -247,12 +262,14 @@
       "english": "CEFR B1"
     },
     "department_count": 37,
-    "data_completeness": "enriched",
+    "data_completeness": "full",
     "data_sources": [
       "hailian",
-      "spreadsheet"
+      "spreadsheet",
+      "moe_opendata",
+      "104"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.ntnu.edu.tw/oia/",
       "financial_proof": {
@@ -295,7 +312,18 @@
       ],
       "notes": "華語教育のトップ校。出願システム独自で簡章はシステム内で閲覧。学部出願は2nd Roundのみ"
     },
-    "id_104": 5004000000
+    "id_104": 5004000000,
+    "ja_description": "1922年創立、台湾トップの教育大学\n華語（中国語）教育の最高峰として世界的に有名\n9学院・59学科、学生数約16,800人\nMRT古亭駅・台電大楼駅から徒歩圏内の好立地\n附属の華語文教学センター（MTC）は世界最大級の中国語学習機関",
+    "student_count": {
+      "total": 16808,
+      "foreign": 666
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$47,000〜55,000/学期"
+      }
+    ]
   },
   {
     "id": "11",
@@ -323,11 +351,13 @@
       "url": "https://oia.nycu.edu.tw/oia/ch/app/data/list?module=nycu0014&id=4681"
     },
     "department_count": 29,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.nycu.edu.tw/oia/ch/index",
       "admission_url": "https://www.nycu.edu.tw/oia/ch/app/folder/381",
@@ -342,7 +372,18 @@
         }
       ]
     },
-    "id_104": 5180000000
+    "id_104": 5180000000,
+    "student_count": {
+      "foreign": 634,
+      "total": 22521
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$50,000〜77,000/学期"
+      }
+    ],
+    "ja_description": "2021年創立\n国立総合大学\n21学院\n学生数約22.5,000人\n台北に位置\n登録率100%"
   },
   {
     "id": "17",
@@ -370,11 +411,13 @@
       "url": "https://oga.site.nthu.edu.tw/p/412-1524-18668.php?Lang=zh-tw"
     },
     "department_count": 34,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://oga.site.nthu.edu.tw/",
       "admission_url": "https://apply.nthu.edu.tw/",
@@ -389,7 +432,18 @@
         }
       ]
     },
-    "id_104": 5002000000
+    "id_104": 5002000000,
+    "student_count": {
+      "foreign": 962,
+      "total": 18393
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$49,000〜57,000/学期"
+      }
+    ],
+    "ja_description": "1911年創立\n国立総合大学\n7学院\n学生数約18.4,000人\n新竹に位置\n登録率100%"
   },
   {
     "id": "02",
@@ -425,12 +479,14 @@
       "english": "CEFR B2"
     },
     "department_count": 45,
-    "data_completeness": "enriched",
+    "data_completeness": "full",
     "data_sources": [
       "hailian",
-      "spreadsheet"
+      "spreadsheet",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://oia.ncku.edu.tw/",
       "admission_url": "https://oia.ncku.edu.tw/p/404-1032-229816.php?Lang=zh-tw",
@@ -476,7 +532,18 @@
       ],
       "notes": "115學年度の招生簡章PDFが既に公開済み。3校中で最も確実なデータ。出願期間が長い（12月〜3月）"
     },
-    "id_104": 5005000000
+    "id_104": 5005000000,
+    "student_count": {
+      "foreign": 884,
+      "total": 23485
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$50,000〜79,000/学期"
+      }
+    ],
+    "ja_description": "1931年創立\n国立総合大学\n9学院\n学生数約23.5,000人\n台南に位置\n登録率100%"
   },
   {
     "id": "13",
@@ -512,12 +579,14 @@
       "english": "TOEIC 550（学部による）"
     },
     "department_count": 43,
-    "data_completeness": "enriched",
+    "data_completeness": "full",
     "data_sources": [
       "hailian",
-      "spreadsheet"
+      "spreadsheet",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://oic.nccu.edu.tw/",
       "admission_url": "https://nccuadmission.nccu.edu.tw/Post/13664",
@@ -567,7 +636,18 @@
       "tuition_info": "学部: NTD 49,020〜56,860/学期、大学院: NTD 78,910〜118,700/学期",
       "notes": "NCCUは語学要件の推奨レベルが他校より高い（TOCFL Superior推奨）"
     },
-    "id_104": 5001000000
+    "id_104": 5001000000,
+    "student_count": {
+      "foreign": 654,
+      "total": 16784
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$49,000〜57,000/学期"
+      }
+    ],
+    "ja_description": "1927年創立\n国立総合大学\n9学院\n学生数約16.8,000人\n台北に位置\n登録率97.45%"
   },
   {
     "id": "09",
@@ -678,11 +758,13 @@
       "url": "https://www.osa.nchu.edu.tw/osa/arm/"
     },
     "department_count": 40,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://oias.nchu.edu.tw/asknchu-ch/",
       "admission_url": "https://iss.nchu.edu.tw/ufaq-tag/admission-zh/",
@@ -701,7 +783,18 @@
         }
       ]
     },
-    "id_104": 5006000000
+    "id_104": 5006000000,
+    "student_count": {
+      "foreign": 470,
+      "total": 15899
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$48,000〜57,000/学期"
+      }
+    ],
+    "ja_description": "1919年創立\n国立総合大学\n9学院\n学生数約15.9,000人\n台中に位置\n登録率99.01%"
   },
   {
     "id": "06",
@@ -728,11 +821,13 @@
       "available": false
     },
     "department_count": 33,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "admission_url": "https://exams.ccu.edu.tw/index.php",
       "admission_links": [
@@ -746,7 +841,18 @@
         }
       ]
     },
-    "id_104": 5011000000
+    "id_104": 5011000000,
+    "student_count": {
+      "foreign": 194,
+      "total": 11397
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$48,000〜56,000/学期"
+      }
+    ],
+    "ja_description": "1989年創立\n国立総合大学\n7学院\n学生数約11.4,000人\n嘉義に位置\n登録率94.95%"
   },
   {
     "id": "15",
@@ -774,15 +880,28 @@
       "url": "https://www.oia.ncu.edu.tw/index.php/tw/international-students-in-school-tw/overseas-chinese-related-links-tw/scholarship-and-bursary-tw.html"
     },
     "department_count": 29,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://ncusec.ncu.edu.tw/news/headlines_content.php?H_ID=4644"
     },
-    "id_104": 5008000000
+    "id_104": 5008000000,
+    "student_count": {
+      "foreign": 392,
+      "total": 12586
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$49,000〜57,000/学期"
+      }
+    ],
+    "ja_description": "1915年創立\n国立総合大学\n8学院\n学生数約12.6,000人\n桃園に位置\n登録率100%"
   },
   {
     "id": "19",
@@ -810,11 +929,13 @@
       "url": "https://oia.nsysu.edu.tw/index.php"
     },
     "department_count": 24,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "admission_url": "https://www.nsysu.edu.tw/p/412-1000-94.php?Lang=zh-tw",
       "admission_links": [
@@ -828,7 +949,18 @@
         }
       ]
     },
-    "id_104": 5009000000
+    "id_104": 5009000000,
+    "student_count": {
+      "foreign": 418,
+      "total": 11204
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$49,000〜58,000/学期"
+      }
+    ],
+    "ja_description": "1924年創立\n国立総合大学\n6学院\n学生数約11.2,000人\n高雄に位置\n登録率96.61%"
   },
   {
     "id": "08",
@@ -856,11 +988,13 @@
       "url": "https://oia.ndhu.edu.tw/p/412-1027-21550.php?Lang=zh-tw"
     },
     "department_count": 46,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://oia.ndhu.edu.tw/",
       "admission_url": "https://oia.ndhu.edu.tw/p/412-1027-21548.php?Lang=zh-tw",
@@ -884,7 +1018,18 @@
         "spreadsheet"
       ]
     },
-    "id_104": 5018000000
+    "id_104": 5018000000,
+    "student_count": {
+      "foreign": 584,
+      "total": 10035
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$47,000〜56,000/学期"
+      }
+    ],
+    "ja_description": "1994年創立\n国立総合大学\n8学院\n学生数約10,000人\n花蓮に位置\n登録率88.88%"
   },
   {
     "id": "03",
@@ -912,11 +1057,13 @@
       "url": "https://ppt.cc/ft8sxx"
     },
     "department_count": 40,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.ncyu.edu.tw/oia/",
       "admission_url": "https://www.ncyu.edu.tw/oia/Subject?nodeId=58425",
@@ -935,7 +1082,18 @@
         }
       ]
     },
-    "id_104": 5016000000
+    "id_104": 5016000000,
+    "student_count": {
+      "foreign": 57,
+      "total": 11103
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$42,000〜49,000/学期"
+      }
+    ],
+    "ja_description": "1919年創立\n国立総合大学\n6学院\n学生数約11.1,000人\n嘉義に位置\n登録率87.03%"
   },
   {
     "id": "23",
@@ -1115,11 +1273,13 @@
       "available": false
     },
     "department_count": 23,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "http://international.utaipei.edu.tw/index.php",
       "admission_url": "https://admission.utaipei.edu.tw/p/412-1033-4307.php?Lang=en",
@@ -1130,7 +1290,18 @@
         }
       ]
     },
-    "id_104": 5178000000
+    "id_104": 5178000000,
+    "student_count": {
+      "foreign": 34,
+      "total": 7840
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$40,000〜48,000/学期"
+      }
+    ],
+    "ja_description": "1896年創立\n国立総合大学\n5学院\n学生数約7.8,000人\n台北に位置\n登録率96.44%"
   },
   {
     "id": "26",
@@ -1201,11 +1372,13 @@
       "url": "https://oiais.nptu.edu.tw/p/412-1090-12954.php?Lang=zh-tw"
     },
     "department_count": 29,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "admission_url": "https://admission.nptu.edu.tw/p/426-1005-1.php",
       "admission_links": [
@@ -1223,7 +1396,18 @@
         }
       ]
     },
-    "id_104": 5041000000
+    "id_104": 5041000000,
+    "student_count": {
+      "foreign": 39,
+      "total": 8697
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$44,000〜51,000/学期"
+      }
+    ],
+    "ja_description": "1940年創立\n国立総合大学\n5学院\n学生数約8.7,000人\n屏東に位置\n登録率91.76%"
   },
   {
     "id": "20",
@@ -1763,12 +1947,14 @@
       "chinese": "TOCFL A2 or B1"
     },
     "department_count": 23,
-    "data_completeness": "enriched",
+    "data_completeness": "full",
     "data_sources": [
       "hailian",
-      "spreadsheet"
+      "spreadsheet",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "financial_proof": {
         "amount": "USD 5,000",
@@ -1782,7 +1968,18 @@
         "spreadsheet"
       ]
     },
-    "id_104": 5091000000
+    "id_104": 5091000000,
+    "student_count": {
+      "foreign": 260,
+      "total": 7514
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$56,000〜71,000/学期"
+      }
+    ],
+    "ja_description": "1958年創立\n私立総合大学\n7学院\n学生数約7.5,000人\n台中に位置\n登録率91.98%"
   },
   {
     "id": "37",
@@ -1962,12 +2159,14 @@
       "english": "TOEIC 550 / CEFR B1"
     },
     "department_count": 43,
-    "data_completeness": "enriched",
+    "data_completeness": "full",
     "data_sources": [
       "hailian",
-      "spreadsheet"
+      "spreadsheet",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.cycu.edu.tw/oia/",
       "admission_url": "https://icare.cycu.edu.tw/",
@@ -1999,7 +2198,18 @@
         "spreadsheet"
       ]
     },
-    "id_104": 5060000000
+    "id_104": 5060000000,
+    "student_count": {
+      "foreign": 548,
+      "total": 16404
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$47,000〜152,000/学期"
+      }
+    ],
+    "ja_description": "1955年創立\n私立総合大学\n7学院\n学生数約16.4,000人\n桃園に位置\n登録率98.66%"
   },
   {
     "id": "45",
@@ -2035,12 +2245,14 @@
       "english": "CEFR B1以上"
     },
     "department_count": 58,
-    "data_completeness": "enriched",
+    "data_completeness": "full",
     "data_sources": [
       "hailian",
-      "spreadsheet"
+      "spreadsheet",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.oie.fju.edu.tw/",
       "admission_url": "https://idsaoie.fju.edu.tw/",
@@ -2098,7 +2310,18 @@
       "tuition_info": "NTD 47,430〜66,990/学期",
       "notes": "Round 2は5月末まで出願可能。新入生奨学金制度あり"
     },
-    "id_104": 5058000000
+    "id_104": 5058000000,
+    "student_count": {
+      "foreign": 323,
+      "total": 25454
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$47,000〜73,000/学期"
+      }
+    ],
+    "ja_description": "1925年創立\n私立総合大学\n11学院\n学生数約25.5,000人\n新北に位置\n登録率95.86%"
   },
   {
     "id": "39",
@@ -2126,11 +2349,13 @@
       "url": "http://oiep.thu.edu.tw/page6/super_pages.php?ID=page602"
     },
     "department_count": 45,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "admission_links": [
         {
@@ -2147,7 +2372,18 @@
         }
       ]
     },
-    "id_104": 5057000000
+    "id_104": 5057000000,
+    "student_count": {
+      "foreign": 570,
+      "total": 15638
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$48,000〜77,000/学期"
+      }
+    ],
+    "ja_description": "1955年創立\n私立総合大学\n9学院\n学生数約15.6,000人\n台中に位置\n登録率94.88%"
   },
   {
     "id": "36",
@@ -2183,12 +2419,14 @@
       "english": "CEFR B1"
     },
     "department_count": 50,
-    "data_completeness": "enriched",
+    "data_completeness": "full",
     "data_sources": [
       "hailian",
-      "spreadsheet"
+      "spreadsheet",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "http://www.pccu.edu.tw/#",
       "admission_url": "https://futurestudent.pccu.edu.tw/",
@@ -2220,7 +2458,18 @@
         "spreadsheet"
       ]
     },
-    "id_104": 5062000000
+    "id_104": 5062000000,
+    "student_count": {
+      "foreign": 517,
+      "total": 16834
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$46,000〜53,000/学期"
+      }
+    ],
+    "ja_description": "1962年創立\n私立総合大学\n12学院\n学生数約16.8,000人\n台北に位置\n登録率85.88%"
   },
   {
     "id": "44",
@@ -2248,11 +2497,13 @@
       "url": "https://osra.fcu.edu.tw/newstudent_scholarship/"
     },
     "department_count": 49,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://freshman.fcu.edu.tw/en/overseas-students/",
       "admission_url": "https://isofcu.wixsite.com/enfreshmanguide",
@@ -2271,7 +2522,18 @@
         }
       ]
     },
-    "id_104": 5063000000
+    "id_104": 5063000000,
+    "student_count": {
+      "foreign": 441,
+      "total": 21420
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$47,000〜150,000/学期"
+      }
+    ],
+    "ja_description": "1961年創立\n私立総合大学\n9学院\n学生数約21.4,000人\n台中に位置\n登録率98.71%"
   },
   {
     "id": "55",
@@ -2410,11 +2672,13 @@
       "url": "https://gao.yzu.edu.tw/index.php/tw/scholarships/int-scholarships"
     },
     "department_count": 24,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://sites.google.com/g.yzu.edu.tw/yzu-ilcc-web/",
       "admission_url": "https://localadmissions.yzu.edu.tw/",
@@ -2433,7 +2697,18 @@
         }
       ]
     },
-    "id_104": 5066000000
+    "id_104": 5066000000,
+    "student_count": {
+      "foreign": 821,
+      "total": 9333
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$48,000〜56,000/学期"
+      }
+    ],
+    "ja_description": "1989年創立\n私立総合大学\n5学院\n学生数約9.3,000人\n桃園に位置\n登録率97.08%"
   },
   {
     "id": "65",
@@ -2511,11 +2786,13 @@
       "available": false
     },
     "department_count": 23,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.shu.edu.tw/oia/",
       "admission_url": "https://www.shu.edu.tw/oia/Admission.aspx",
@@ -2539,7 +2816,18 @@
         "spreadsheet"
       ]
     },
-    "id_104": 5071000000
+    "id_104": 5071000000,
+    "student_count": {
+      "foreign": 128,
+      "total": 10806
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$49,000〜57,000/学期"
+      }
+    ],
+    "ja_description": "1956年創立\n私立総合大学\n4学院\n学生数約10.8,000人\n台北に位置\n登録率97.74%"
   },
   {
     "id": "66",
@@ -2723,11 +3011,13 @@
       "url": "https://sites.google.com/go.isu.edu.tw/ocsa/qna/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91?authuser=0"
     },
     "department_count": 27,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.isu.edu.tw/",
       "admission_url": "https://www.isu.edu.tw/admissions",
@@ -2746,7 +3036,18 @@
         }
       ]
     },
-    "id_104": 5070000000
+    "id_104": 5070000000,
+    "student_count": {
+      "foreign": 993,
+      "total": 10276
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$48,000〜73,000/学期"
+      }
+    ],
+    "ja_description": "1986年創立\n私立総合大学\n8学院\n学生数約10.3,000人\n高雄に位置\n登録率86.84%"
   },
   {
     "id": "69",
@@ -2825,11 +3126,13 @@
       "url": "https://oia.pu.edu.tw/p/426-1048-11.php"
     },
     "department_count": 27,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://oia.pu.edu.tw/app/home.php#start-C",
       "admission_url": "https://oia.pu.edu.tw/p/426-1048-11.php",
@@ -2848,7 +3151,18 @@
         }
       ]
     },
-    "id_104": 5064000000
+    "id_104": 5064000000,
+    "student_count": {
+      "foreign": 683,
+      "total": 10573
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$45,000〜52,000/学期"
+      }
+    ],
+    "ja_description": "1932年創立\n私立総合大学\n5学院\n学生数約10.6,000人\n台中に位置\n登録率97.47%"
   },
   {
     "id": "46",
@@ -2876,15 +3190,28 @@
       "url": "https://dweb.cjcu.edu.tw/overseas_student/article/2855?lang=zh-TW"
     },
     "department_count": 26,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.cjcu.edu.tw/oia/"
     },
-    "id_104": 5089000000
+    "id_104": 5089000000,
+    "student_count": {
+      "foreign": 148,
+      "total": 4078
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$45,000〜56,000/学期"
+      }
+    ],
+    "ja_description": "1993年創立\n私立総合大学\n5学院\n学生数約4.1,000人\n台南に位置\n登録率75.95%"
   },
   {
     "id": "43",
@@ -2985,11 +3312,13 @@
       "url": "http://reg.dyu.edu.tw/unit_index.php?page=2&unit=2950"
     },
     "department_count": 23,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "admission_url": "https://www.dyu.edu.tw/%7B%7B%20Enroll.ExMainLink%20%7D%7D",
       "admission_links": [
@@ -3007,7 +3336,18 @@
         }
       ]
     },
-    "id_104": 5068000000
+    "id_104": 5068000000,
+    "student_count": {
+      "foreign": 150,
+      "total": 3173
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$45,000〜56,000/学期"
+      }
+    ],
+    "ja_description": "1990年創立\n私立総合大学\n7学院\n学生数約3.2,000人\n彰化に位置\n登録率71.17%"
   },
   {
     "id": "63",
@@ -3730,12 +4070,25 @@
       "url": "https://oia.nkust.edu.tw/unit-8-3.html"
     },
     "department_count": 50,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
-    "id_104": 5179000000
+    "last_updated": "2026-03-31",
+    "id_104": 5179000000,
+    "student_count": {
+      "foreign": 270,
+      "total": 26937
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$46,000〜53,000/学期"
+      }
+    ],
+    "ja_description": "2018年創立\n国立科技大学\n12学院\n学生数約26.9,000人\n高雄に位置\n登録率92.51%"
   },
   {
     "id": "78",
@@ -3814,11 +4167,13 @@
       "url": "http://oia.npust.edu.tw/bin/home.php?Lang=zh-tw"
     },
     "department_count": 28,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://presidential-hackathon.taiwan.gov.tw/",
       "admission_url": "https://presidential-hackathon.taiwan.gov.tw/@demo2wsx6RFV/wish2024demo@1qaz3EDC/wishPersonalApply.aspx",
@@ -3838,7 +4193,18 @@
         "spreadsheet"
       ]
     },
-    "id_104": 5022000000
+    "id_104": 5022000000,
+    "student_count": {
+      "foreign": 247,
+      "total": 9707
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$48,000〜55,000/学期"
+      }
+    ],
+    "ja_description": "1924年創立\n国立科技大学\n6学院\n学生数約9.7,000人\n屏東に位置\n登録率85.85%"
   },
   {
     "id": "82",
@@ -3918,51 +4284,27 @@
       "url": "https://oia.ntut.edu.tw/p/412-1032-9284.php?Lang=zh-tw",
       "info_ja": "華語奨学金：TOCFL B以上の成績が必要"
     },
-    "ja_description": "台北中心部に位置する\nMRT忠孝新生駅から徒歩約15分\nキャンパス外には飲食店やビルが多くある\n現在、台湾に上場している企業の責任者は10％以上がこの学校の卒業生であり、多くの起業家を生んでいる",
+    "ja_description": "1911年創立\n国立科技大学\n6学院\n学生数約13.3,000人\n台北に位置\n登録率99.14%",
     "tuition": [
       {
-        "faculty": "機電学部",
-        "requirement": "英語：CEFR B2以上",
-        "amount": "NT$54,837"
-      },
-      {
-        "faculty": "電子学科",
-        "requirement": "英語：CEFR B2以上",
-        "amount": "NT$54,837"
-      },
-      {
-        "faculty": "工学部",
-        "requirement": "英語：CEFR B2以上",
-        "amount": "NT$54,837"
-      },
-      {
-        "faculty": "ビジネスマネジメント学部",
-        "requirement": "英語：CEFR B2以上",
-        "amount": "NT$54,837"
-      },
-      {
-        "faculty": "デザイン学部",
-        "requirement": "英語：CEFR B2以上",
-        "amount": "NT$54,837"
-      },
-      {
-        "faculty": "人文社会学部",
-        "requirement": "英語：CEFR B2以上",
-        "amount": "NT$47,378"
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$47,000〜54,000/学期"
       }
     ],
     "student_count": {
-      "total": 13633,
-      "foreign": 1025,
+      "total": 13276,
+      "foreign": 539,
       "japanese": 10
     },
     "department_count": 25,
-    "data_completeness": "enriched",
+    "data_completeness": "full",
     "data_sources": [
       "hailian",
-      "guide"
+      "guide",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "admission_links": [
         {
@@ -4475,11 +4817,13 @@
       "url": "https://osa.stust.edu.tw/tc/node/oversea_chinese"
     },
     "department_count": 28,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "oia_url": "https://www.stust.edu.tw/en/admission/",
       "admission_url": "https://www.stust.edu.tw/en/admission/#C",
@@ -4498,7 +4842,18 @@
         }
       ]
     },
-    "id_104": 5079000000
+    "id_104": 5079000000,
+    "student_count": {
+      "foreign": 0,
+      "total": 14465
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$47,000〜55,000/学期"
+      }
+    ],
+    "ja_description": "1969年創立\n私立総合大学\n4学院\n学生数約14.5,000人\n台南に位置\n登録率78.86%"
   },
   {
     "id": "94",
@@ -4576,17 +4931,30 @@
       "url": "https://icsc.cyut.edu.tw/p/406-1008-39835,r1426.php?Lang=zh-tw"
     },
     "department_count": 33,
-    "data_completeness": "basic",
+    "data_completeness": "full",
     "data_sources": [
-      "hailian"
+      "hailian",
+      "moe_opendata",
+      "unews"
     ],
-    "last_updated": "2026-03-30",
+    "last_updated": "2026-03-31",
     "foreign_student": {
       "data_sources": [
         "spreadsheet"
       ]
     },
-    "id_104": 5074000000
+    "id_104": 5074000000,
+    "student_count": {
+      "foreign": 956,
+      "total": 13083
+    },
+    "tuition": [
+      {
+        "faculty": "学部全体（外国人学生）",
+        "amount": "NT$40,000〜56,000/学期"
+      }
+    ],
+    "ja_description": "1994年創立\n私立総合大学\n5学院\n学生数約13.1,000人\n台中に位置\n登録率92.3%"
   },
   {
     "id": "90",
