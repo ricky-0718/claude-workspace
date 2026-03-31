@@ -1,314 +1,256 @@
 /**
  * 19-translate-104.js
- * 104データの繁体字テキストを日本語漢字に変換
+ * 104データの繁体字テキストをGoogle翻訳で日本語に翻訳
  *
- * 対象フィールド:
- *   - curriculum_104.required[].lessons[] (科目名)
- *   - curriculum_104.electives[].areaName (分野名)
- *   - curriculum_104.electives[].lessons (科目名リスト)
- *   - intro_collego (ColleGo紹介文)
+ * 翻訳対象:
+ *   1. intro_collego (紹介文) → intro_collego_ja
+ *   2. curriculum_104.required[].lessons[] → lessons_ja[]
+ *   3. curriculum_104.electives[].areaName → areaName_ja
+ *   4. curriculum_104.electives[].lessons → lessons_ja
+ *
+ * キャッシュ: data/translations/104-cache.json に保存（再実行時スキップ）
  */
 
-import { readFile, writeFile } from 'node:fs/promises';
+import translate from 'google-translate-api-x';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const FINAL_DIR = join(__dirname, '..', 'data', 'final');
+const TRANS_DIR = join(__dirname, '..', 'data', 'translations');
+const CACHE_FILE = join(TRANS_DIR, '104-cache.json');
 
-// 繁体字 → 日本語漢字 変換テーブル（07-translate.jsのベース + 科目名用拡張）
-const CHAR_MAP = {
-  // 基本変換（07-translate.jsから）
-  '國': '国', '臺': '台', '學': '学', '灣': '湾', '師': '師', '範': '範',
-  '藝': '芸', '術': '術', '醫': '医', '藥': '薬', '體': '体', '園': '園',
-  '電': '電', '機': '機', '資': '資', '訊': '訊', '應': '応', '經': '経',
-  '營': '営', '濟': '済', '財': '財', '務': '務', '貿': '貿', '際': '際',
-  '環': '環', '護': '護', '養': '養', '農': '農', '漁': '漁', '獸': '獣',
-  '與': 'と', '個': '個', '傳': '伝', '統': '統', '歷': '歴', '設': '設',
-  '計': '計', '語': '語', '數': '数', '專': '専', '實': '実', '踐': '践',
-  '義': '義', '華': '華', '東': '東', '開': '開', '發': '発', '關': '関',
-  '係': '係', '勞': '労', '動': '動', '觀': '観', '導': '導', '輔': '輔',
-  '運': '運', '競': '競', '區': '区', '衛': '衛', '齒': '歯', '獨': '独',
-  '廣': '広', '億': '億', '書': '書', '圖': '図', '衝': '衝', '業': '業',
-  '聯': '連', '總': '総', '點': '点', '類': '類', '項': '項', '組': '組',
-  '龍': '竜', '寶': '宝', '豐': '豊', '佛': '仏',
-  '殘': '残', '壓': '圧', '氣': '気', '轉': '転', '識': '識',
-  '號': '号', '蘭': '蘭', '亞': '亜', '則': '則', '築': '築',
-  '質': '質', '構': '構', '礎': '礎', '變': '変', '邊': '辺',
-  '險': '険', '損': '損', '銀': '銀', '職': '職', '員': '員', '歲': '歳',
-  '錄': '録', '達': '達', '畫': '画', '壽': '寿', '單': '単', '蟲': '虫',
-  '戲': '戯', '劇': '劇', '雜': '雑', '誌': '誌', '會': '会', '鏡': '鏡',
-  '議': '議', '問': '問', '題': '題', '萬': '万',
-  '齡': '齢', '處': '処', '對': '対', '館': '館', '備': '備', '禮': '礼',
+const DELAY_MS = 300;  // リクエスト間遅延（rate limit対策）
+const BATCH_SIZE = 30;  // バッチあたりの科目名数
 
-  // 科目名・学術用語で追加が必要な変換
-  '積': '積', '導': '導', '論': '論', '習': '習', '驗': '験',
-  '練': '練', '複': '複', '雜': '雑', '網': '網', '絡': '絡',
-  '檔': '档', '據': '拠', '產': '産', '為': '為',
-  '盤': '盤', '碟': '碟', '續': '続', '訂': '訂',
-  '靈': '霊', '軟': '軟', '碼': '碼', '礦': '鉱',
-  '鑄': '鋳', '鍛': '鍛', '鋼': '鋼', '鐵': '鉄',
-  '營': '営', '銷': '銷', '選': '選', '擇': '択',
-  '歐': '欧', '亞': '亜', '洲': '洲', '際': '際',
-  '圍': '囲', '廠': '廠', '權': '権', '廳': '庁',
-  '證': '証', '據': '拠', '類': '類', '雲': '雲',
-  '顯': '顕', '響': '響', '測': '測', '訊': '訊',
-  '視': '視', '覺': '覚', '聽': '聴', '聲': '声',
-  '頻': '頻', '頭': '頭', '網': '網', '綱': '綱',
-  '態': '態', '樣': '様', '標': '標', '準': '準',
-  '調': '調', '節': '節', '飾': '飾', '陳': '陳',
-  '雙': '双', '將': '将', '當': '当', '進': '進',
-  '階': '階', '斷': '断', '層': '層', '遞': '逓',
-  '歸': '帰', '納': '納', '項': '項', '邏': '論',
-  '輯': '輯', '據': '拠', '匯': '為', '銜': '銜',
-  '嵌': '嵌', '韌': '靭', '觸': '触', '螢': '蛍',
-  '幕': '幕', '擬': '擬', '繪': '絵', '製': '製',
-  '紋': '紋', '驅': '駆', '遊': '遊', '戲': '戯',
-  '戰': '戦', '從': 'から', '為': '為', '於': 'に',
-  '齊': '斉', '遠': '遠', '臨': '臨', '齊': '斉',
-};
+// キャッシュ読み込み
+async function loadCache() {
+  try { return JSON.parse(await readFile(CACHE_FILE, 'utf-8')); }
+  catch { return {}; }
+}
 
-// 学術用語の固定翻訳（文字変換では不十分な場合）
-const TERM_MAP = {
-  '程式設計': 'プログラミング',
-  '程式語言': 'プログラミング言語',
-  '物件導向': 'オブジェクト指向',
-  '人工智慧': '人工知能',
-  '機器學習': '機械学習',
-  '機器人': 'ロボット',
-  '深度學習': '深層学習',
-  '軟體工程': 'ソフトウェア工学',
-  '軟體': 'ソフトウェア',
-  '硬體': 'ハードウェア',
-  '資料結構': 'データ構造',
-  '資料庫': 'データベース',
-  '資料探勘': 'データマイニング',
-  '大數據': 'ビッグデータ',
-  '雲端運算': 'クラウドコンピューティング',
-  '網路': 'ネットワーク',
-  '計算機': 'コンピュータ',
-  '作業系統': 'オペレーティングシステム',
-  '電腦': 'コンピュータ',
-  '演算法': 'アルゴリズム',
-  '離散數學': '離散数学',
-  '微積分': '微積分',
-  '線性代數': '線形代数',
-  '機率': '確率',
-  '統計學': '統計学',
-  '最佳化': '最適化',
-  '自然語言處理': '自然言語処理',
-  '電腦視覺': 'コンピュータビジョン',
-  '影像處理': '画像処理',
-  '訊號處理': '信号処理',
-  '嵌入式系統': '組み込みシステム',
-  '多媒體': 'マルチメディア',
-  '虛擬實境': 'バーチャルリアリティ',
-  '擴增實境': '拡張現実',
-  '物聯網': 'IoT',
-  '區塊鏈': 'ブロックチェーン',
-  '密碼學': '暗号学',
-  '資訊安全': '情報セキュリティ',
-  '人機互動': 'ヒューマンコンピュータインタラクション',
-  '數位': 'デジタル',
-  '行動': 'モバイル',
-  '智慧': '知能',
-  '等候理論': '待ち行列理論',
-  '分散式系統': '分散システム',
-  '半導體': '半導体',
-  '積體電路': '集積回路',
-  '類比': 'アナログ',
-  '數位訊號': 'デジタル信号',
-  '光電': '光電子',
-  '通訊': '通信',
-  '天線': 'アンテナ',
-  '電磁': '電磁',
-  '控制系統': '制御システム',
-  '自動化': 'オートメーション',
-  '電力系統': '電力システム',
-  '材料科學': '材料科学',
-  '奈米': 'ナノ',
-  '生物技術': 'バイオテクノロジー',
-  '生物資訊': 'バイオインフォマティクス',
-  '基因': '遺伝子',
-  '蛋白質': 'タンパク質',
-  '細胞': '細胞',
-  '分子生物': '分子生物',
-  '有機化學': '有機化学',
-  '無機化學': '無機化学',
-  '分析化學': '分析化学',
-  '物理化學': '物理化学',
-  '高分子': '高分子',
-  '熱力學': '熱力学',
-  '流體力學': '流体力学',
-  '材料力學': '材料力学',
-  '結構': '構造',
-  '土木工程': '土木工学',
-  '建築設計': '建築設計',
-  '都市計畫': '都市計画',
-  '景觀': '景観',
-  '運輸': '運輸',
-  '供應鏈': 'サプライチェーン',
-  '品質管理': '品質管理',
-  '專案管理': 'プロジェクトマネジメント',
-  '行銷': 'マーケティング',
-  '廣告': '広告',
-  '公共關係': '広報',
-  '財務管理': '財務管理',
-  '會計學': '会計学',
-  '經濟學': '経済学',
-  '國際貿易': '国際貿易',
-  '企業管理': '経営管理',
-  '人力資源': '人的資源',
-  '組織行為': '組織行動',
-  '策略管理': '戦略経営',
-  '創業': '起業',
-  '智慧財產權': '知的財産権',
-  '憲法': '憲法',
-  '民法': '民法',
-  '刑法': '刑法',
-  '國際法': '国際法',
-  '心理學': '心理学',
-  '社會學': '社会学',
-  '人類學': '人類学',
-  '哲學': '哲学',
-  '倫理學': '倫理学',
-  '政治學': '政治学',
-  '公共行政': '公共行政',
-  '外交': '外交',
-  '新聞學': 'ジャーナリズム',
-  '傳播': 'コミュニケーション',
-  '電影': '映画',
-  '動畫': 'アニメーション',
-  '設計思維': 'デザイン思考',
-  '使用者經驗': 'ユーザーエクスペリエンス',
-  '介面設計': 'インターフェースデザイン',
-  '互動設計': 'インタラクションデザイン',
-  '遊戲': 'ゲーム',
-  '音樂': '音楽',
-  '舞蹈': 'ダンス',
-  '戲劇': '演劇',
-  '雕塑': '彫刻',
-  '繪畫': '絵画',
-  '攝影': '写真',
-  '陶藝': '陶芸',
-  '文化創意': '文化クリエイティブ',
-  '觀光': '観光',
-  '旅遊': '旅行',
-  '餐飲': '飲食',
-  '休閒': 'レジャー',
-  '幼兒教育': '幼児教育',
-  '特殊教育': '特別支援教育',
-  '課程': 'カリキュラム',
-  '教學': '教育',
-  '諮商': 'カウンセリング',
-  '輔導': 'ガイダンス',
-  '復健': 'リハビリテーション',
-  '職能治療': '作業療法',
-  '物理治療': '理学療法',
-  '護理': '看護',
-  '公共衛生': '公衆衛生',
-  '流行病學': '疫学',
-  '營養': '栄養',
-  '食品科學': '食品科学',
-  '獸醫': '獣医',
-  '園藝': '園芸',
-  '森林': '森林',
-  '水產': '水産',
-  '海洋': '海洋',
-  '地球科學': '地球科学',
-  '大氣': '大気',
-  '天文': '天文',
-};
+// 翻訳（キャッシュ付き）
+async function translateCached(text, cache) {
+  if (!text || text.trim().length === 0) return text;
+  if (cache[text]) return cache[text];
 
-function translateText(text) {
-  if (!text) return text;
-
-  // 1. 固定用語を先に変換（長いものから順に）
-  let result = text;
-  const sortedTerms = Object.entries(TERM_MAP).sort((a, b) => b[0].length - a[0].length);
-  for (const [cht, ja] of sortedTerms) {
-    result = result.split(cht).join(ja);
+  try {
+    const res = await translate(text, { from: 'zh-TW', to: 'ja' });
+    const translated = res.text;
+    cache[text] = translated;
+    return translated;
+  } catch (err) {
+    if (err.message?.includes('429') || err.message?.includes('Too Many')) {
+      // rate limit: wait and retry
+      await new Promise(r => setTimeout(r, 5000));
+      try {
+        const res = await translate(text, { from: 'zh-TW', to: 'ja' });
+        cache[text] = res.text;
+        return res.text;
+      } catch { return text; } // 2回目も失敗なら原文のまま
+    }
+    return text; // エラー時は原文
   }
+}
 
-  // 2. 残りの文字を個別変換
-  let final = '';
-  for (const ch of result) {
-    final += CHAR_MAP[ch] || ch;
+// 科目名をバッチ翻訳（改行区切りでまとめて送信）
+async function translateBatch(items, cache) {
+  // キャッシュ済みを除外
+  const uncached = items.filter(t => !cache[t] && t.trim().length > 0);
+  if (uncached.length === 0) return;
+
+  // 改行区切りでまとめて翻訳
+  const joined = uncached.join('\n');
+  try {
+    const res = await translate(joined, { from: 'zh-TW', to: 'ja' });
+    const results = res.text.split('\n');
+    for (let i = 0; i < uncached.length && i < results.length; i++) {
+      cache[uncached[i]] = results[i].trim();
+    }
+  } catch (err) {
+    // バッチ失敗時は個別に翻訳
+    for (const item of uncached) {
+      await translateCached(item, cache);
+      await new Promise(r => setTimeout(r, DELAY_MS));
+    }
   }
-
-  return final;
 }
 
 async function main() {
-  console.log('=== 104データ日本語翻訳 ===\n');
+  console.log('=== 104データ 日本語翻訳（Google翻訳） ===\n');
+  await mkdir(TRANS_DIR, { recursive: true });
 
   const departments = JSON.parse(await readFile(join(FINAL_DIR, 'departments.json'), 'utf-8'));
+  const cache = await loadCache();
+  const cacheHitsBefore = Object.keys(cache).length;
+  console.log(`キャッシュ: ${cacheHitsBefore}件\n`);
 
-  let translated = 0;
-  let coursesTranslated = 0;
+  // --- Phase 1: 全ユニーク科目名を収集してバッチ翻訳 ---
+  console.log('[Phase 1] 科目名の翻訳...');
+  const allCourseNames = new Set();
+  const allAreaNames = new Set();
 
   for (const dept of departments) {
-    if (!dept.curriculum_104 && !dept.intro_collego) continue;
-
-    // カリキュラム翻訳
-    if (dept.curriculum_104) {
-      // 必修科目
-      if (dept.curriculum_104.required) {
-        for (const r of dept.curriculum_104.required) {
-          r.lessons_ja = r.lessons.map(l => translateText(l));
-          coursesTranslated += r.lessons.length;
-        }
+    if (dept.curriculum_104?.required) {
+      for (const r of dept.curriculum_104.required) {
+        r.lessons.forEach(l => allCourseNames.add(l));
       }
-      // 選修科目
-      if (dept.curriculum_104.electives) {
-        for (const e of dept.curriculum_104.electives) {
-          e.areaName_ja = translateText(e.areaName);
-          if (Array.isArray(e.lessons)) {
-            e.lessons_ja = e.lessons.map(l => translateText(l));
-          } else if (typeof e.lessons === 'string') {
-            e.lessons_ja = translateText(e.lessons);
+    }
+    if (dept.curriculum_104?.electives) {
+      for (const e of dept.curriculum_104.electives) {
+        allAreaNames.add(e.areaName);
+        const lessons = Array.isArray(e.lessons) ? e.lessons : [e.lessons];
+        for (const l of lessons) {
+          if (typeof l === 'string') {
+            l.split('、').forEach(c => { if (c.trim()) allCourseNames.add(c.trim()); });
           }
         }
       }
     }
-
-    // ColleGo紹介文翻訳
-    if (dept.intro_collego) {
-      dept.intro_collego_ja = translateText(dept.intro_collego);
-    }
-
-    translated++;
   }
 
-  // 保存
-  await writeFile(join(FINAL_DIR, 'departments.json'), JSON.stringify(departments, null, 2), 'utf-8');
+  console.log(`  ユニーク科目名: ${allCourseNames.size}件`);
+  console.log(`  ユニーク分野名: ${allAreaNames.size}件`);
 
-  // Webサイト側にもコピー
+  // 分野名を先に翻訳（少ない）
+  const areaArray = [...allAreaNames];
+  const uncachedAreas = areaArray.filter(a => !cache[a]);
+  if (uncachedAreas.length > 0) {
+    console.log(`  分野名翻訳中 (${uncachedAreas.length}件)...`);
+    for (let i = 0; i < uncachedAreas.length; i += BATCH_SIZE) {
+      const batch = uncachedAreas.slice(i, i + BATCH_SIZE);
+      await translateBatch(batch, cache);
+      await new Promise(r => setTimeout(r, DELAY_MS));
+    }
+  }
+
+  // 科目名をバッチ翻訳
+  const courseArray = [...allCourseNames];
+  const uncachedCourses = courseArray.filter(c => !cache[c]);
+  console.log(`  科目名翻訳中 (${uncachedCourses.length}件、キャッシュ済み: ${courseArray.length - uncachedCourses.length}件)...`);
+
+  const startTime = Date.now();
+  for (let i = 0; i < uncachedCourses.length; i += BATCH_SIZE) {
+    const batch = uncachedCourses.slice(i, i + BATCH_SIZE);
+    await translateBatch(batch, cache);
+    await new Promise(r => setTimeout(r, DELAY_MS));
+
+    // 進捗表示（100件ごと）
+    const done = Math.min(i + BATCH_SIZE, uncachedCourses.length);
+    if (done % 300 === 0 || done === uncachedCourses.length) {
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
+      const rate = (done / (Date.now() - startTime) * 1000).toFixed(1);
+      console.log(`  [${done}/${uncachedCourses.length}] ${elapsed}秒 (${rate}件/秒)`);
+    }
+
+    // 1000件ごとにキャッシュ保存（中断対策）
+    if (done % 1000 === 0) {
+      await writeFile(CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8');
+    }
+  }
+
+  // キャッシュ中間保存
+  await writeFile(CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8');
+  console.log(`  科目名翻訳完了\n`);
+
+  // --- Phase 2: 紹介文の翻訳 ---
+  console.log('[Phase 2] 紹介文の翻訳...');
+  const intros = departments.filter(d => d.intro_collego && !cache[d.intro_collego]);
+  console.log(`  未翻訳: ${intros.length}件`);
+
+  const introStart = Date.now();
+  for (let i = 0; i < intros.length; i++) {
+    const dept = intros[i];
+    await translateCached(dept.intro_collego, cache);
+    await new Promise(r => setTimeout(r, DELAY_MS));
+
+    if ((i + 1) % 50 === 0 || i === intros.length - 1) {
+      const elapsed = ((Date.now() - introStart) / 1000).toFixed(0);
+      console.log(`  [${i + 1}/${intros.length}] ${elapsed}秒`);
+      // 中間保存
+      await writeFile(CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8');
+    }
+  }
+
+  // 最終キャッシュ保存
+  await writeFile(CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8');
+  console.log(`  紹介文翻訳完了\n`);
+
+  // --- Phase 3: departments.jsonに翻訳を適用 ---
+  console.log('[Phase 3] 翻訳をdepartments.jsonに適用...');
+  let applied = 0;
+
+  for (const dept of departments) {
+    let changed = false;
+
+    // カリキュラム翻訳
+    if (dept.curriculum_104) {
+      if (dept.curriculum_104.required) {
+        for (const r of dept.curriculum_104.required) {
+          r.lessons_ja = r.lessons.map(l => cache[l] || l);
+        }
+        changed = true;
+      }
+      if (dept.curriculum_104.electives) {
+        for (const e of dept.curriculum_104.electives) {
+          e.areaName_ja = cache[e.areaName] || e.areaName;
+          const lessons = Array.isArray(e.lessons) ? e.lessons : [e.lessons];
+          e.lessons_ja = lessons.map(l => {
+            if (typeof l !== 'string') return l;
+            return l.split('、').map(c => cache[c.trim()] || c.trim()).join('、');
+          });
+          if (!Array.isArray(e.lessons)) {
+            e.lessons_ja = e.lessons_ja[0]; // 元が文字列なら文字列で返す
+          }
+        }
+        changed = true;
+      }
+    }
+
+    // 紹介文翻訳
+    if (dept.intro_collego) {
+      dept.intro_collego_ja = cache[dept.intro_collego] || dept.intro_collego;
+      changed = true;
+    }
+
+    if (changed) applied++;
+  }
+
+  console.log(`  適用: ${applied}学科\n`);
+
+  // --- 保存 ---
+  console.log('保存中...');
+  await writeFile(join(FINAL_DIR, 'departments.json'), JSON.stringify(departments, null, 2), 'utf-8');
   const webDataDir = join(__dirname, '..', '..', 'taiwan-university-website', 'src', 'data');
   await writeFile(join(webDataDir, 'departments.json'), JSON.stringify(departments, null, 2), 'utf-8');
+  console.log('  → departments.json (final + website)\n');
+
+  // --- サマリー ---
+  const newTranslations = Object.keys(cache).length - cacheHitsBefore;
+  console.log('╔══════════════════════════════════════════════╗');
+  console.log('║  翻訳完了                                    ║');
+  console.log('╚══════════════════════════════════════════════╝');
+  console.log(`  新規翻訳: ${newTranslations}件`);
+  console.log(`  キャッシュ合計: ${Object.keys(cache).length}件`);
+  console.log(`  適用学科: ${applied}件`);
 
   // サンプル表示
-  console.log(`翻訳完了: ${translated}学科 / ${coursesTranslated}科目\n`);
-
-  // サンプル出力
-  const samples = departments.filter(d => d.curriculum_104?.required?.length > 0).slice(0, 3);
+  console.log('\n--- サンプル ---');
+  const samples = departments.filter(d => d.intro_collego_ja && d.intro_collego_ja !== d.intro_collego).slice(0, 3);
   for (const d of samples) {
-    console.log(`--- ${d.name.ja}（${d.name.cht}）---`);
-    for (const r of d.curriculum_104.required.slice(0, 2)) {
-      console.log(`  ${r.grade}年次:`);
-      r.lessons.forEach((l, i) => {
-        console.log(`    ${l} → ${r.lessons_ja[i]}`);
-      });
-    }
-    console.log('');
+    console.log(`\n${d.name.ja}:`);
+    console.log(`  中: ${d.intro_collego.substring(0, 80)}...`);
+    console.log(`  日: ${d.intro_collego_ja.substring(0, 80)}...`);
   }
 
-  // ColleGoサンプル
-  const introSample = departments.find(d => d.intro_collego_ja);
-  if (introSample) {
-    console.log(`--- ColleGo紹介文サンプル ---`);
-    console.log(`  中: ${introSample.intro_collego.substring(0, 100)}...`);
-    console.log(`  日: ${introSample.intro_collego_ja.substring(0, 100)}...`);
+  const courseSamples = departments.filter(d => d.curriculum_104?.required?.[0]?.lessons_ja).slice(0, 2);
+  for (const d of courseSamples) {
+    console.log(`\n${d.name.ja} 1年次:`);
+    const r = d.curriculum_104.required[0];
+    r.lessons.slice(0, 5).forEach((l, i) => {
+      console.log(`  ${l} → ${r.lessons_ja[i]}`);
+    });
   }
 }
 
