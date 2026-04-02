@@ -1,0 +1,765 @@
+[
+  {
+    "school_id": "01",
+    "name_cht": "國立臺灣大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/National%20Taiwan%20University%20Library%2020060802.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "04",
+    "name_cht": "國立暨南國際大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Taiwan%20National%20ChiNan%20University.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "07",
+    "name_cht": "國立臺灣師範大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E8%87%BA%E5%B8%AB%E5%A4%A7%E8%A1%8C%E6%94%BF%E5%A4%A7%E6%A8%93%E8%88%87%E8%81%96%E8%AA%95%E6%A8%B9%2020120107.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "11",
+    "name_cht": "國立陽明交通大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/National%20Yang%20Ming%20Chiao%20Tung%20University%2020210203.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "17",
+    "name_cht": "國立清華大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NTHU%20entrance.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "02",
+    "name_cht": "國立成功大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E6%88%90%E5%8A%9F%E5%A4%A7%E5%AD%B8%20026.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "13",
+    "name_cht": "國立政治大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NCCU%20Shiwei%20Hall%2020220815.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "09",
+    "name_cht": "國立臺灣海洋大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NTOU%20main%20gate%2020220922%20(cropped).jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "10",
+    "name_cht": "國立臺北大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NTPU%20Minsheng%20Campus%20maingate%2020061207.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "05",
+    "name_cht": "國立中興大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NCHU%20main%20gate%20front%20view%2020210109.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "15",
+    "name_cht": "國立中央大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Central%20University%20of%20Jhongli%E2%85%A1.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "19",
+    "name_cht": "國立中山大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/2017%20NSYSU%20maingate.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "08",
+    "name_cht": "國立東華大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%9C%8B%E7%AB%8B%E6%9D%B1%E8%8F%AF%E5%A4%A7%E5%AD%B8%E5%9C%96%E6%9B%B8%E9%A4%A8%20National%20Dong%20Hwa%20University%20Library.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "03",
+    "name_cht": "國立嘉義大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/The%20sight%20of%20NCYU%20Lantan%20Campus11813.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "23",
+    "name_cht": "國立彰化師範大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/%E5%9C%8B%E7%AB%8B%E5%BD%B0%E5%8C%96%E5%B8%AB%E7%AF%84%E5%A4%A7%E5%AD%B8%E9%80%B2%E5%BE%B7%E6%A0%A1%E5%8D%80.jpg/960px-%E5%9C%8B%E7%AB%8B%E5%BD%B0%E5%8C%96%E5%B8%AB%E7%AF%84%E5%A4%A7%E5%AD%B8%E9%80%B2%E5%BE%B7%E6%A0%A1%E5%8D%80.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "27",
+    "name_cht": "國立高雄師範大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/The%20main%20gate%20of%20Ho-Ping%20Campus%2C%20National%20Kaohsiung%20Normal%20University%2020101011.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "80",
+    "name_cht": "國立金門大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%9C%8B%E7%AB%8B%E9%87%91%E9%96%80%E5%A4%A7%E5%AD%B8%E7%B6%9C%E5%90%88%E6%95%99%E5%AD%B8%E5%A4%A7%E6%A8%93%2020141231.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "14",
+    "name_cht": "國立宜蘭大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/National_Ilan_University_logo.png",
+    "source": "wikipedia_en",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "E0",
+    "name_cht": "臺北市立大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/UOT_Bo%27ai_Campus_main_gate_20240510.jpg/960px-UOT_Bo%27ai_Campus_main_gate_20240510.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "26",
+    "name_cht": "國立臺中教育大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Taichu_Normal_School.jpg/960px-Taichu_Normal_School.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "F0",
+    "name_cht": "國立屏東大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/%E5%8E%9F%E5%B1%8F%E6%9D%B1%E5%B8%AB%E7%AF%84%E5%AD%B8%E6%A0%A1%E6%A0%A1%E9%95%B7%E5%AE%98%E8%88%8D.JPG/960px-%E5%8E%9F%E5%B1%8F%E6%9D%B1%E5%B8%AB%E7%AF%84%E5%AD%B8%E6%A0%A1%E6%A0%A1%E9%95%B7%E5%AE%98%E8%88%8D.JPG",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "20",
+    "name_cht": "國立臺東大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/National%20Taitung%20University.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "18",
+    "name_cht": "國立臺南大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%8E%9F%E8%87%BA%E5%8D%97%E5%B8%AB%E7%AF%84%E5%AD%B8%E6%A0%A1%E6%9C%AC%E9%A4%A8.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "12",
+    "name_cht": "國立高雄大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/National%20University%20of%20Kaohsiung%20and%20sunflower%20field%2020180305.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "34",
+    "name_cht": "國立臺灣藝術大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%8F%B0%E7%81%A3%E8%97%9D%E8%A1%93%E5%A4%A7%E5%AD%B8%E5%9C%8B%E9%9A%9B%E4%BA%8B%E5%8B%99%E8%99%95%2020150528.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "28",
+    "name_cht": "國立臺北教育大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/NTUE_Gate_20230708.jpg/960px-NTUE_Gate_20230708.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "33",
+    "name_cht": "國立臺北藝術大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/TNUA%20administration%20buildings%20and%20Arts%20forum%2020240324.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "32",
+    "name_cht": "國立體育大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/National_Taiwan_Sport_University_Campus.jpg/960px-National_Taiwan_Sport_University_Campus.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "35",
+    "name_cht": "國立臺南藝術大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Tnnua.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "22",
+    "name_cht": "國防醫學大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/NDMU_logo.png/960px-NDMU_logo.png",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "16",
+    "name_cht": "國立聯合大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/National%20United%20University%20in%20Taiwan.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "68",
+    "name_cht": "中國醫藥大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/CMU%2020061030.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "37",
+    "name_cht": "淡江大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Tku.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "61",
+    "name_cht": "中原大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Chung_Yuan_Christian_University_entrance_20150813.jpg/960px-Chung_Yuan_Christian_University_entrance_20150813.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "45",
+    "name_cht": "天主教輔仁大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/FJU%20Gate01.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "39",
+    "name_cht": "東海大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E8%B7%AF%E6%80%9D%E7%BE%A9%E7%9A%84%E7%90%86%E5%BF%B5.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "36",
+    "name_cht": "中國文化大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Farview%20of%20Chinese%20Culture%20University.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "44",
+    "name_cht": "逢甲大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Rain_in_West_Gate%2C_FCU_Main_Campus_20190817.jpg/960px-Rain_in_West_Gate%2C_FCU_Main_Campus_20190817.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "55",
+    "name_cht": "東吳大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/SCU%20Waishuanghsi%20Campus%20view%20from%20Zhishan%20Road%2020130928.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "65",
+    "name_cht": "長庚大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/CGU%20Medical%20Building%2020040415.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "48",
+    "name_cht": "世新大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/SHU2.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "66",
+    "name_cht": "中山醫學大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E4%B8%AD%E5%B1%B1%E9%86%AB%E5%AD%B8%E5%A4%A7%E5%AD%B8%E6%AD%A3%E9%96%80.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "40",
+    "name_cht": "實踐大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Shih%20Chien%20University%20Main%20Campus%2020151129.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "40A",
+    "name_cht": "實踐大學(高雄)",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Shih%20Chien%20University%20Main%20Campus%2020151129.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "41",
+    "name_cht": "義守大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/%E7%BE%A9%E5%AE%88%E5%A4%A7%E5%AD%B8%E6%A0%A1%E6%9C%AC%E9%83%A8%E6%A0%A1%E9%96%80%E5%85%A5%E5%8F%A3%E8%99%95.jpg/960px-%E7%BE%A9%E5%AE%88%E5%A4%A7%E5%AD%B8%E6%A0%A1%E6%9C%AC%E9%83%A8%E6%A0%A1%E9%96%80%E5%85%A5%E5%8F%A3%E8%99%95.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "69",
+    "name_cht": "臺北醫學大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E8%87%BA%E5%8C%97%E9%86%AB%E5%AD%B8%E5%A4%A7%E5%AD%B8%E6%A0%A1%E9%96%80%E5%8F%A3.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "42",
+    "name_cht": "靜宜大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E9%9D%9C%E5%AE%9C%E5%A4%A7%E5%AD%B8%E6%A0%A1%E9%96%80.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "46",
+    "name_cht": "長榮大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E9%95%B7%E6%A6%AE%E5%A4%A7%E5%AD%B8%E8%A1%8C%E6%94%BF%E5%A4%A7%E6%A8%93.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "43",
+    "name_cht": "真理大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Aletheia%20University%20in%20New%20Taipei%20City.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "56",
+    "name_cht": "開南大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Knu%20YanWenLong%20Meeting%20Center.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "49",
+    "name_cht": "大葉大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Front_view_of_the_main_gate_of_Dayeh_University_in_the_afternoon_on_18_September_2010.jpg/960px-Front_view_of_the_main_gate_of_Dayeh_University_in_the_afternoon_on_18_September_2010.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "63",
+    "name_cht": "大同大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/%E5%A4%A7%E5%90%8C%E5%A4%A7%E5%AD%B8%E5%B0%9A%E5%BF%97%E6%95%99%E8%82%B2%E7%B4%80%E5%BF%B5%E9%A4%A8%E6%AD%A3%E9%9D%A2.JPG/960px-%E5%A4%A7%E5%90%8C%E5%A4%A7%E5%AD%B8%E5%B0%9A%E5%BF%97%E6%95%99%E8%82%B2%E7%B4%80%E5%BF%B5%E9%A4%A8%E6%AD%A3%E9%9D%A2.JPG",
+    "source": "wikipedia_en",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "62",
+    "name_cht": "華梵大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Remote%20view%20of%20Huafan%20University%2020251007.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "60",
+    "name_cht": "南華大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Nanhua_University_Library_%28e%E5%AD%B8%E8%8B%91%29.jpg/960px-Nanhua_University_Library_%28e%E5%AD%B8%E8%8B%91%29.jpg",
+    "source": "wikipedia_en",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "59",
+    "name_cht": "玄奘大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Student%20Activity%20Center%2C%20Hsuan%20Chuang%20College%20of%20Humanities%20and%20Social%20Science%2020060621.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "64",
+    "name_cht": "佛光大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/%E4%BD%9B%E5%85%89%E5%A4%A7%E5%AD%B8%E5%9C%96%E6%9B%B8%E9%A4%A8_-_panoramio.jpg/960px-%E4%BD%9B%E5%85%89%E5%A4%A7%E5%AD%B8%E5%9C%96%E6%9B%B8%E9%A4%A8_-_panoramio.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "53",
+    "name_cht": "中信金融管理學院",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/%E8%88%88%E5%9C%8B%E7%AE%A1%E7%90%86%E5%AD%B8%E9%99%A2%E5%9C%96%E8%B3%87%E5%A4%A7%E6%A8%93_20140821.jpg/960px-%E8%88%88%E5%9C%8B%E7%AE%A1%E7%90%86%E5%AD%B8%E9%99%A2%E5%9C%96%E8%B3%87%E5%A4%A7%E6%A8%93_20140821.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "38",
+    "name_cht": "銘傳大學(臺北)",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/MCU%20Taipei%20Campus%20stele%2020050201.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "38A",
+    "name_cht": "銘傳大學(桃園)",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/MCU%20Taipei%20Campus%20stele%2020050201.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "67",
+    "name_cht": "高雄醫學大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Kaohsiung_Medical_University_2.jpg/960px-Kaohsiung_Medical_University_2.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "47",
+    "name_cht": "亞洲大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E4%BA%9E%E6%B4%B2%E5%A4%A7%E5%AD%B8%20Asia%20University%20-%20panoramio%20(cropped).jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "70",
+    "name_cht": "慈濟大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/The_Buddist_Tzu_Chi_University.JPG/960px-The_Buddist_Tzu_Chi_University.JPG",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "75",
+    "name_cht": "國立高雄科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Cijin%20Campus%20of%20NKUST.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "78",
+    "name_cht": "國立虎尾科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Ffu%20avenue.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "74",
+    "name_cht": "國立屏東科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NPUST%20Gates.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "82",
+    "name_cht": "國立臺中科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/National%20Taichung%20University%20of%20Science%20and%20Technology%20front%20gate.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "73",
+    "name_cht": "國立臺北科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Taipei%20Tech%20Logo-cmyk.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "72",
+    "name_cht": "國立雲林科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/National_Yunlin_University_of_Science_and_Technology_logo.svg/960px-National_Yunlin_University_of_Science_and_Technology_logo.svg.png",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "D7",
+    "name_cht": "國立澎湖科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NPU%20-%20Education%20Building.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "85",
+    "name_cht": "國立臺北護理健康大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NTUNHS%20Campus1.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "84",
+    "name_cht": "國立臺北商業大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/NTUB_Taipei_Campus_main_gate_20190728.jpg/960px-NTUB_Taipei_Campus_main_gate_20190728.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "81",
+    "name_cht": "國立勤益科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/%E5%9C%8B%E7%AB%8B%E5%8B%A4%E7%9B%8A%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8.JPG/960px-%E5%9C%8B%E7%AB%8B%E5%8B%A4%E7%9B%8A%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8.JPG",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "F2",
+    "name_cht": "國立臺灣戲曲學院",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Main%20Gate%20of%20TCPA%20Neihu%20Campus.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "71",
+    "name_cht": "國立臺灣科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%9C%8B%E7%AB%8B%E5%8F%B0%E7%81%A3%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E7%A0%94%E6%8F%9A%E5%A4%A7%E6%A8%93.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "87",
+    "name_cht": "南臺科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/STUT%20Campus.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "94",
+    "name_cht": "正修科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Gate%20and%20Building%20of%20Cheng%20Shiu%20University.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "86",
+    "name_cht": "朝陽科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/CYUT%20img%2007182007.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "90",
+    "name_cht": "嘉藥學校財團法人嘉南藥理大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/%E5%98%89%E8%97%A5%E4%B8%AD%E5%A4%AE%E8%8D%89%E5%9D%AA.jpg/960px-%E5%98%89%E8%97%A5%E4%B8%AD%E5%A4%AE%E8%8D%89%E5%9D%AA.jpg",
+    "source": "wikipedia_en",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "88",
+    "name_cht": "崑山科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Kun%20Shan%20University%20of%20Technology%2002.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "A4",
+    "name_cht": "台南家專學校財團法人台南應用科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/%E5%8D%97%E6%87%89%E5%A4%A7%E5%9C%96%E6%9B%B8%E9%A4%A8.JPG/960px-%E5%8D%97%E6%87%89%E5%A4%A7%E5%9C%96%E6%9B%B8%E9%A4%A8.JPG",
+    "source": "wikipedia_en",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "93",
+    "name_cht": "弘光科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%BC%98%E5%85%89%E7%A7%91%E5%A4%A7.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "95",
+    "name_cht": "健行科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/CHUST%20Library%2020131028.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "B7",
+    "name_cht": "亞東學校財團法人亞東科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/%E4%BA%9E%E6%9D%B1%E6%8A%80%E9%99%A2%E5%81%B4%E9%96%80%E6%A0%A1%E5%BE%BD.jpg/960px-%E4%BA%9E%E6%9D%B1%E6%8A%80%E9%99%A2%E5%81%B4%E9%96%80%E6%A0%A1%E5%BE%BD.jpg",
+    "source": "wikipedia_en",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "D9",
+    "name_cht": "建國科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%BB%BA%E5%9C%8B%E7%A7%91%E5%A4%A7%E6%A0%A1%E5%9C%92%E4%B8%80%E6%99%AF.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "C2",
+    "name_cht": "僑光科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%83%91%E5%85%89%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E5%A4%A7%E9%96%80.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "98",
+    "name_cht": "中國科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/China%20University%20of%20Technology%2020090926.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "C4",
+    "name_cht": "醒吾科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Hsing%20Wu%20University%202017-08-23.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "89",
+    "name_cht": "樹德科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/STU_logo.svg/960px-STU_logo.svg.png",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "A9",
+    "name_cht": "中華學校財團法人中華科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/CUST%20Taipei%20Campus%20West%20Entrance%2020120721.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "C5",
+    "name_cht": "德明財經科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Takming_University_of_Science_and_Technology_logo.svg/960px-Takming_University_of_Science_and_Technology_logo.svg.png",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "B0",
+    "name_cht": "大華學校財團法人敏實科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%A4%A7%E8%8F%AF%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E5%A4%A7%E8%8F%AF%E6%A8%93.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "E4",
+    "name_cht": "黎明技術學院",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Lee-Ming_Institute_of_Technology_gate20160820.JPG/960px-Lee-Ming_Institute_of_Technology_gate20160820.JPG",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "91",
+    "name_cht": "明新科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Mustfront.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "C3",
+    "name_cht": "致理科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Chihlee_University_of_Technology_entrance_20170624.jpg/960px-Chihlee_University_of_Technology_entrance_20170624.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "B2",
+    "name_cht": "文藻外語大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Wenzao%20main%20gate.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "A1",
+    "name_cht": "嶺東科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/LTU-2.JPG&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "D8",
+    "name_cht": "龍華科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Lunghwa_University_of_Science_and_Technology2018Mars_%28cropped%29.jpg/960px-Lunghwa_University_of_Science_and_Technology2018Mars_%28cropped%29.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "97",
+    "name_cht": "明志科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/MCUT.jpg/960px-MCUT.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "C0",
+    "name_cht": "吳鳳科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/%E5%91%89%E9%B3%B3%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%AD%A3%E9%96%8020180116.jpg/960px-%E5%91%89%E9%B3%B3%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%AD%A3%E9%96%8020180116.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "E1",
+    "name_cht": "中華醫事科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/%E4%B8%AD%E8%8F%AF%E9%86%AB%E4%BA%8B%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8.jpg/960px-%E4%B8%AD%E8%8F%AF%E9%86%AB%E4%BA%8B%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8.jpg",
+    "source": "wikipedia_zh",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "A6",
+    "name_cht": "光宇學校財團法人元培醫事科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Guang%20Hui%20Building%2C%20Yuanpei%20University%2020130707.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "D5",
+    "name_cht": "台北海洋科技大學",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/%E5%8F%B0%E5%8C%97%E6%B5%B7%E6%B4%8B%E6%8A%80%E8%A1%93%E5%AD%B8%E9%99%A2DSC_5042.jpg/960px-%E5%8F%B0%E5%8C%97%E6%B5%B7%E6%B4%8B%E6%8A%80%E8%A1%93%E5%AD%B8%E9%99%A2DSC_5042.jpg",
+    "source": "wikipedia_en",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "E6",
+    "name_cht": "崇右影藝科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/2017%20Chungyu%20University%20of%20Film%20and%20Arts.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "E2",
+    "name_cht": "廣亞學校財團法人育達科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Administration%20Building%20of%20YDU.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "B9",
+    "name_cht": "南亞科技學校財團法人南亞技術學院",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Administration_Building_in_Nanya_Institute_of_Technology.jpg/960px-Administration_Building_in_Nanya_Institute_of_Technology.jpg",
+    "source": "wikipedia_en",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "C1",
+    "name_cht": "東南科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E6%9D%B1%E5%8D%97%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E6%A0%A1%E5%9C%92.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "99",
+    "name_cht": "大仁科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%A4%A7%E4%BB%81%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E5%90%B3%E6%8C%AF%E7%91%9E%E6%95%85%E4%BA%8B%E9%A4%A8.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "A0",
+    "name_cht": "台鋼學校財團法人台鋼科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E9%AB%98%E8%8B%91%E6%A0%A1%E5%9C%92%E4%B8%80%E9%9A%85.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "school_id": "C7",
+    "name_cht": "美和學校財團法人美和科技大學",
+    "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Main%20entrance%20to%20the%20campus%20of%20Meiho%20University.jpg&width=800",
+    "source": "wikidata_p18",
+    "license": "CC BY-SA 4.0"
+  }
+]
