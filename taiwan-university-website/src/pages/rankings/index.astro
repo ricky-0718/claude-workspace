@@ -9,14 +9,18 @@ import rankingsData from '../../data/rankings-2026.json';
 
 const rankings = rankingsData.rankings || [];
 
-// Build school slug lookup for linking
+// Build school slug lookup for linking (handle name variants)
 const schoolByName = new Map<string, string>();
 for (const s of schools) {
-  schoolByName.set(s.name.cht, s.resolvedSlug);
+  const slug = s.resolvedSlug || s.slug;
+  schoolByName.set(s.name.cht, slug);
+  // Also index without common prefixes for fuzzy matching
+  const stripped = s.name.cht.replace(/^天主教/, '').replace(/^學校財團法人/, '');
+  if (stripped !== s.name.cht) schoolByName.set(stripped, slug);
 }
 
 function getSlug(nameCht: string): string | null {
-  return schoolByName.get(nameCht) || null;
+  return schoolByName.get(nameCht) || schoolByName.get('天主教' + nameCht) || null;
 }
 
 function formatRank(rank: any): string {
@@ -78,7 +82,7 @@ const byCheers = [...rankings].filter(r => r.cheers != null).sort((a, b) => sort
               <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-16">順位</th>
               <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider">大学名</th>
               <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right">QS Asia</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right">THE</th>
+              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right">THE世界</th>
             </tr>
           </thead>
           <tbody>
