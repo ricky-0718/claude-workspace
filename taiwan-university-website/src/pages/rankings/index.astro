@@ -4,17 +4,15 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import Icon from '../../components/Icon.astro';
 import { schools } from '../../data/loaders';
 
-// Load rankings data directly
 import rankingsData from '../../data/rankings-2026.json';
 
 const rankings = rankingsData.rankings || [];
 
-// Build school slug lookup for linking (handle name variants)
+// Build school slug lookup (handle name variants)
 const schoolByName = new Map<string, string>();
 for (const s of schools) {
   const slug = s.resolvedSlug || s.slug;
   schoolByName.set(s.name.cht, slug);
-  // Also index without common prefixes for fuzzy matching
   const stripped = s.name.cht.replace(/^天主教/, '').replace(/^學校財團法人/, '');
   if (stripped !== s.name.cht) schoolByName.set(stripped, slug);
 }
@@ -28,7 +26,6 @@ function formatRank(rank: any): string {
   return String(rank);
 }
 
-// Sort by QS World rank (numeric first, then ranges, then null)
 function sortKey(rank: any): number {
   if (rank == null) return 99999;
   if (typeof rank === 'number') return rank;
@@ -36,9 +33,10 @@ function sortKey(rank: any): number {
   return match ? parseInt(match[1]) : 99998;
 }
 
-const byQsWorld = [...rankings].sort((a, b) => sortKey(a.qs_world) - sortKey(b.qs_world));
-const byQsAsia = [...rankings].sort((a, b) => sortKey(a.qs_asia) - sortKey(b.qs_asia));
-const byCheers = [...rankings].filter(r => r.cheers != null).sort((a, b) => sortKey(a.cheers) - sortKey(b.cheers));
+const byQsWorld = [...rankings].filter(r => r.qs_world != null).sort((a, b) => sortKey(a.qs_world) - sortKey(b.qs_world));
+const byQsAsia = [...rankings].filter(r => r.qs_asia != null).sort((a, b) => sortKey(a.qs_asia) - sortKey(b.qs_asia));
+const byThe = [...rankings].filter(r => r.the_world != null).sort((a, b) => sortKey(a.the_world) - sortKey(b.the_world));
+const byCheers = [...rankings].filter(r => r.cheers != null || r.yuanjian != null).sort((a, b) => sortKey(a.cheers) - sortKey(b.cheers));
 ---
 
 <PageLayout
@@ -51,7 +49,7 @@ const byCheers = [...rankings].filter(r => r.cheers != null).sort((a, b) => sort
   <div class="mb-8">
     <h1 class="text-2xl sm:text-3xl font-bold text-text">台湾の大学ランキング</h1>
     <p class="text-sm text-text-muted mt-2 max-w-2xl">
-      QS World・QS Asia・THE・Cheers・遠見の5つのランキングを掲載。{rankings.length}校の台湾大学を国際的な視点で比較できます。
+      4つの主要ランキングを掲載。{rankings.length}校の台湾大学を国際的な視点で比較できます。
     </p>
     <div class="mt-4">
       <a href="/rankings/japan-comparison/" class="inline-flex items-center gap-2 text-sm text-primary font-medium hover:underline">
@@ -61,32 +59,31 @@ const byCheers = [...rankings].filter(r => r.cheers != null).sort((a, b) => sort
     </div>
   </div>
 
-  <!-- Tab navigation -->
+  <!-- Tab navigation — 4 tabs -->
   <div class="flex gap-1 border-b border-warm-200 mb-6 overflow-x-auto" id="ranking-tabs">
     <button class="tab-btn active px-4 py-2.5 text-sm font-medium border-b-2 border-primary text-primary whitespace-nowrap" data-tab="qs-world">QS世界</button>
     <button class="tab-btn px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-text-muted hover:text-text whitespace-nowrap" data-tab="qs-asia">QSアジア</button>
-    <button class="tab-btn px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-text-muted hover:text-text whitespace-nowrap" data-tab="cheers">企業人気</button>
+    <button class="tab-btn px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-text-muted hover:text-text whitespace-nowrap" data-tab="the-world">THE世界</button>
+    <button class="tab-btn px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-text-muted hover:text-text whitespace-nowrap" data-tab="employer">企業人気</button>
   </div>
 
-  <!-- QS World Tab -->
+  <!-- ====== QS World ====== -->
   <div class="tab-content" id="tab-qs-world">
     <div class="bg-white border border-warm-200 rounded-2xl overflow-hidden">
       <div class="px-5 py-3 bg-warm-50 border-b border-warm-200">
         <h2 class="text-sm font-bold text-text">QS World University Rankings 2026</h2>
-        <p class="text-xs text-text-muted mt-0.5">Quacquarelli Symonds社による世界大学ランキング</p>
+        <p class="text-xs text-text-muted mt-0.5">Quacquarelli Symonds社による世界大学ランキング（{byQsWorld.length}校掲載）</p>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-warm-200 text-left">
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-16">順位</th>
+              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-20">世界順位</th>
               <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider">大学名</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right">QS Asia</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right">THE世界</th>
             </tr>
           </thead>
           <tbody>
-            {byQsWorld.filter(r => r.qs_world != null).map((r, i) => {
+            {byQsWorld.map((r, i) => {
               const slug = getSlug(r.name_cht);
               return (
                 <tr class={`border-b border-warm-100 last:border-b-0 ${i < 3 ? 'bg-accent-light/30' : ''}`}>
@@ -101,8 +98,6 @@ const byCheers = [...rankings].filter(r => r.cheers != null).sort((a, b) => sort
                     )}
                     <div class="text-xs text-text-muted mt-0.5">{r.name_en}</div>
                   </td>
-                  <td class="px-5 py-3 text-right text-text-muted">{formatRank(r.qs_asia)}</td>
-                  <td class="px-5 py-3 text-right text-text-muted">{formatRank(r.the_world)}</td>
                 </tr>
               );
             })}
@@ -112,24 +107,23 @@ const byCheers = [...rankings].filter(r => r.cheers != null).sort((a, b) => sort
     </div>
   </div>
 
-  <!-- QS Asia Tab -->
+  <!-- ====== QS Asia ====== -->
   <div class="tab-content hidden" id="tab-qs-asia">
     <div class="bg-white border border-warm-200 rounded-2xl overflow-hidden">
       <div class="px-5 py-3 bg-warm-50 border-b border-warm-200">
         <h2 class="text-sm font-bold text-text">QS Asia University Rankings 2026</h2>
-        <p class="text-xs text-text-muted mt-0.5">アジア地域に特化したランキング</p>
+        <p class="text-xs text-text-muted mt-0.5">アジア地域に特化したQSランキング（{byQsAsia.length}校掲載）</p>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-warm-200 text-left">
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-16">Asia</th>
+              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-20">アジア順位</th>
               <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider">大学名</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right">QS World</th>
             </tr>
           </thead>
           <tbody>
-            {byQsAsia.filter(r => r.qs_asia != null).map((r, i) => {
+            {byQsAsia.map((r, i) => {
               const slug = getSlug(r.name_cht);
               return (
                 <tr class={`border-b border-warm-100 last:border-b-0 ${i < 3 ? 'bg-accent-light/30' : ''}`}>
@@ -144,7 +138,6 @@ const byCheers = [...rankings].filter(r => r.cheers != null).sort((a, b) => sort
                     )}
                     <div class="text-xs text-text-muted mt-0.5">{r.name_en}</div>
                   </td>
-                  <td class="px-5 py-3 text-right text-text-muted">{formatRank(r.qs_world)}</td>
                 </tr>
               );
             })}
@@ -154,21 +147,60 @@ const byCheers = [...rankings].filter(r => r.cheers != null).sort((a, b) => sort
     </div>
   </div>
 
-  <!-- Cheers Tab -->
-  <div class="tab-content hidden" id="tab-cheers">
+  <!-- ====== THE World ====== -->
+  <div class="tab-content hidden" id="tab-the-world">
     <div class="bg-white border border-warm-200 rounded-2xl overflow-hidden">
       <div class="px-5 py-3 bg-warm-50 border-b border-warm-200">
-        <h2 class="text-sm font-bold text-text">企業が最も採用したい大学 2026（Cheers / 遠見）</h2>
-        <p class="text-xs text-text-muted mt-0.5">台湾企業が評価する卒業生の質・即戦力度</p>
+        <h2 class="text-sm font-bold text-text">Times Higher Education World University Rankings 2026</h2>
+        <p class="text-xs text-text-muted mt-0.5">英Times Higher Education社による世界大学ランキング（{byThe.length}校掲載）</p>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-warm-200 text-left">
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-16">Cheers</th>
+              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-20">世界順位</th>
               <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider">大学名</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right">遠見</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right">QS World</th>
+            </tr>
+          </thead>
+          <tbody>
+            {byThe.map((r, i) => {
+              const slug = getSlug(r.name_cht);
+              return (
+                <tr class={`border-b border-warm-100 last:border-b-0 ${i < 3 ? 'bg-accent-light/30' : ''}`}>
+                  <td class="px-5 py-3 font-bold text-primary">{formatRank(r.the_world)}</td>
+                  <td class="px-5 py-3">
+                    {slug ? (
+                      <a href={`/universities/${slug}/`} class="text-text hover:text-primary transition-colors font-medium">
+                        {r.name_cht}
+                      </a>
+                    ) : (
+                      <span class="text-text">{r.name_cht}</span>
+                    )}
+                    <div class="text-xs text-text-muted mt-0.5">{r.name_en}</div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== Employer (Cheers + 遠見) ====== -->
+  <div class="tab-content hidden" id="tab-employer">
+    <div class="bg-white border border-warm-200 rounded-2xl overflow-hidden">
+      <div class="px-5 py-3 bg-warm-50 border-b border-warm-200">
+        <h2 class="text-sm font-bold text-text">企業が最も採用したい大学 2026</h2>
+        <p class="text-xs text-text-muted mt-0.5">Cheers天下雑誌・遠見雑誌による台湾企業アンケート（{byCheers.length}校掲載）</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-warm-200 text-left">
+              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-20">Cheers</th>
+              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider">大学名</th>
+              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right w-20">遠見</th>
             </tr>
           </thead>
           <tbody>
@@ -187,8 +219,7 @@ const byCheers = [...rankings].filter(r => r.cheers != null).sort((a, b) => sort
                     )}
                     <div class="text-xs text-text-muted mt-0.5">{r.name_en}</div>
                   </td>
-                  <td class="px-5 py-3 text-right text-text-muted">{formatRank(r.yuanjian)}</td>
-                  <td class="px-5 py-3 text-right text-text-muted">{formatRank(r.qs_world)}</td>
+                  <td class="px-5 py-3 text-right text-text-muted font-medium">{formatRank(r.yuanjian)}</td>
                 </tr>
               );
             })}
