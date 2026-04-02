@@ -1,7 +1,13 @@
 {
   "metadata": {
     "updated": "2026-04-02",
-    "sources": ["QS World 2026", "QS Asia 2026", "THE World 2026", "Cheers 2026", "遠見 2026"]
+    "sources": [
+      "QS World 2026",
+      "QS Asia 2026",
+      "THE World 2026",
+      "Cheers 2026",
+      "遠見 2026"
+    ]
   },
   "rankings": [
     {
@@ -562,56 +568,56 @@
       "name_en": "The University of Tokyo",
       "qs_world": 36,
       "qs_asia": null,
-      "the_world": 26
+      "the_world": null
     },
     {
       "name_ja": "京都大学",
       "name_en": "Kyoto University",
       "qs_world": 57,
       "qs_asia": null,
-      "the_world": 61
+      "the_world": null
     },
     {
       "name_ja": "東京工業大学",
-      "name_en": "Tokyo Institute of Technology",
+      "name_en": "Tokyo Institute of Technology (Tokyo Tech)",
       "qs_world": 85,
       "qs_asia": null,
-      "the_world": "301-350"
+      "the_world": null
     },
     {
       "name_ja": "大阪大学",
       "name_en": "Osaka University",
       "qs_world": 91,
       "qs_asia": null,
-      "the_world": 151
+      "the_world": null
     },
     {
       "name_ja": "東北大学",
       "name_en": "Tohoku University",
       "qs_world": 109,
       "qs_asia": null,
-      "the_world": 103
+      "the_world": null
     },
     {
       "name_ja": "名古屋大学",
       "name_en": "Nagoya University",
       "qs_world": 164,
       "qs_asia": null,
-      "the_world": "201-250"
+      "the_world": null
     },
     {
       "name_ja": "北海道大学",
       "name_en": "Hokkaido University",
       "qs_world": 170,
       "qs_asia": null,
-      "the_world": "351-400"
+      "the_world": null
     },
     {
       "name_ja": "九州大学",
       "name_en": "Kyushu University",
       "qs_world": 170,
       "qs_asia": null,
-      "the_world": "301-350"
+      "the_world": null
     },
     {
       "name_ja": "早稲田大学",
@@ -632,7 +638,7 @@
       "name_en": "University of Tsukuba",
       "qs_world": 350,
       "qs_asia": null,
-      "the_world": "351-400"
+      "the_world": null
     },
     {
       "name_ja": "広島大学",
@@ -645,6 +651,244 @@
       "name_ja": "神戸大学",
       "name_en": "Kobe University",
       "qs_world": 482,
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "一橋大学",
+      "name_en": "Hitotsubashi University",
+      "qs_world": 553,
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "立命館大学",
+      "name_en": "Ritsumeikan University",
+      "qs_world": 680,
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "東京医科歯科大学",
+      "name_en": "Tokyo Medical and Dental University (TMDU)",
+      "qs_world": 697,
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "千葉大学",
+      "name_en": "Chiba University",
+      "qs_world": "791-800",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "東京理科大学",
+      "name_en": "Tokyo University of Science",
+      "qs_world": "801-850",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "東京農工大学",
+      "name_en": "Tokyo University of Agriculture and Technology",
+      "qs_world": "851-900",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "金沢大学",
+      "name_en": "Kanazawa University",
+      "qs_world": "901-950",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "長崎大学",
+      "name_en": "Nagasaki University",
+      "qs_world": "901-950",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "大阪公立大学",
+      "name_en": "Osaka Metropolitan University",
+      "qs_world": "901-950",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "熊本大学",
+      "name_en": "Kumamoto University",
+      "qs_world": "951-1000",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "岡山大学",
+      "name_en": "Okayama University",
+      "qs_world": "951-1000",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "上智大学",
+      "name_en": "Sophia University",
+      "qs_world": "951-1000",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "岐阜大学",
+      "name_en": "Gifu University",
+      "qs_world": "1001-1200",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "九州工業大学",
+      "name_en": "Kyushu Institute of Technology",
+      "qs_world": "1001-1200",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "新潟大学",
+      "name_en": "Niigata University",
+      "qs_world": "1001-1200",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "立命館アジア太平洋大学",
+      "name_en": "Ritsumeikan Asia Pacific University",
+      "qs_world": "1001-1200",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "東京都立大学",
+      "name_en": "Tokyo Metropolitan University",
+      "qs_world": "1001-1200",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "横浜市立大学",
+      "name_en": "Yokohama City University",
+      "qs_world": "1001-1200",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "横浜国立大学",
+      "name_en": "Yokohama National University",
+      "qs_world": "1001-1200",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "同志社大学",
+      "name_en": "Doshisha University",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "群馬大学",
+      "name_en": "Gunma University",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "国際基督教大学",
+      "name_en": "International Christian University",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "鹿児島大学",
+      "name_en": "Kagoshima University",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "京都工芸繊維大学",
+      "name_en": "Kyoto Institute of Technology",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "明治大学",
+      "name_en": "Meiji University",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "名古屋工業大学",
+      "name_en": "Nagoya Institute of Technology (NIT)",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "信州大学",
+      "name_en": "Shinshu University",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "東海大学",
+      "name_en": "Tokai University",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "徳島大学",
+      "name_en": "Tokushima University",
+      "qs_world": "1201-1400",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "青山学院大学",
+      "name_en": "Aoyama Gakuin University",
+      "qs_world": "1401+",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "近畿大学",
+      "name_en": "Kindai University (Kinki University)",
+      "qs_world": "1401+",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "立教大学",
+      "name_en": "Rikkyo University",
+      "qs_world": "1401+",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "創価大学",
+      "name_en": "SOKA University",
+      "qs_world": "1401+",
+      "qs_asia": null,
+      "the_world": null
+    },
+    {
+      "name_ja": "山口大学",
+      "name_en": "Yamaguchi University",
+      "qs_world": "1401+",
       "qs_asia": null,
       "the_world": null
     }
