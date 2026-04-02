@@ -1,104 +1,223 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LineCTA from '../components/LineCTA.astro';
 import GroupCard from '../components/GroupCard.astro';
-import StatCard from '../components/StatCard.astro';
+import Icon from '../components/Icon.astro';
 import { schools, departments, groups } from '../data/loaders';
+
+// Popular universities: prefer schools with rankings data, then data_completeness === 'full'
+const popularSchools = schools
+  .filter(s => s.data_completeness === 'full')
+  .slice(0, 8);
 ---
 
-<PageLayout
+<BaseLayout
   title="台湾大学データベース | 台湾留学101"
-  description="台湾全129大学・2,371学科を日本語で検索。学費・奨学金・寮情報を比較できます。"
+  description="台湾全129大学・2,371学科を日本語で検索。学費・奨学金・寮・ランキング情報を比較できます。"
   path="/"
 >
-  <!-- Hero -->
-  <section class="text-center py-8 sm:py-12">
-    <h1 class="text-2xl sm:text-4xl font-black text-gray-900 leading-tight">
-      台湾の大学を<span class="text-primary">日本語</span>で探せる
-    </h1>
-    <p class="mt-3 text-gray-500 text-sm sm:text-base max-w-lg mx-auto">
-      全{schools.length}大学・{departments.length.toLocaleString()}学科の出願情報を網羅。
-      学群・地域・条件で簡単に検索できます。
-    </p>
+  <Header />
 
-    <!-- Search -->
-    <div class="max-w-md mx-auto mt-6" id="search"></div>
+  <!-- ============================================ -->
+  <!-- HERO — Dark navy + mesh gradient             -->
+  <!-- ============================================ -->
+  <section class="relative overflow-hidden bg-primary py-16 sm:py-24">
+    <!-- Mesh gradient overlay -->
+    <div class="absolute inset-0 opacity-80" style="background: radial-gradient(ellipse at 20% 40%, rgba(255,219,0,0.12) 0%, transparent 50%), radial-gradient(ellipse at 75% 20%, rgba(10,95,166,0.3) 0%, transparent 50%), radial-gradient(ellipse at 50% 90%, rgba(5,150,105,0.08) 0%, transparent 50%);"></div>
+    <!-- Subtle dot pattern -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 24px 24px;"></div>
 
-    <!-- Quick links -->
-    <div class="flex justify-center gap-3 mt-6">
-      <a
-        href="/universities/"
-        class="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-primary-dark transition-colors"
-      >
-        大学一覧を見る
-      </a>
-      <a
-        href="/groups/"
-        class="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-700 px-5 py-2.5 rounded-xl text-sm font-bold hover:border-primary hover:text-primary transition-colors"
-      >
-        学群から探す
-      </a>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-5 gap-10 md:gap-16 items-center">
+        <!-- Left: Copy + Search -->
+        <div class="md:col-span-3">
+          <p class="text-accent text-sm font-bold tracking-wider uppercase mb-4 font-display">
+            Taiwan University Database
+          </p>
+          <h1 class="text-3xl sm:text-5xl font-black text-white leading-[1.15] mb-5">
+            台湾の全大学を、<br class="hidden sm:block" />日本語で比較する
+          </h1>
+          <p class="text-base sm:text-lg text-white/70 max-w-xl mb-8 leading-relaxed">
+            {schools.length}大学・{departments.length.toLocaleString()}学科の学費・出願要件・ランキングを網羅。あなたに合った大学が見つかります。
+          </p>
+
+          <!-- Search bar -->
+          <div class="max-w-lg" id="search"></div>
+
+          <!-- Quick links -->
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="/universities/" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-primary-dark px-5 py-2.5 rounded-lg text-sm font-bold transition-colors duration-150">
+              大学一覧を見る
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/rankings/" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-5 py-2.5 rounded-lg text-sm font-bold transition-colors duration-150 backdrop-blur-sm">
+              ランキングを見る
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Stats Bento Grid -->
+        <div class="md:col-span-2 grid grid-cols-2 gap-3">
+          <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-5">
+            <div class="text-3xl font-bold text-accent font-display">{schools.length}</div>
+            <div class="text-sm text-white/60 mt-1">対応大学</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-5">
+            <div class="text-3xl font-bold text-white font-display">{departments.length.toLocaleString()}</div>
+            <div class="text-sm text-white/60 mt-1">学科データ</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-5">
+            <div class="text-3xl font-bold text-white font-display">{groups.length}</div>
+            <div class="text-sm text-white/60 mt-1">学群分類</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-5">
+            <div class="text-3xl font-bold text-accent font-display">5</div>
+            <div class="text-sm text-white/60 mt-1">ランキング</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="grid grid-cols-3 gap-4 py-6 border-y border-gray-100">
-    <StatCard value={schools.length} label="大学" />
-    <StatCard value={departments.length.toLocaleString()} label="学科" />
-    <StatCard value={groups.length} label="学群" />
-  </section>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6">
 
-  <!-- Groups Grid -->
-  <section class="py-8">
-    <h2 class="text-lg font-bold text-gray-800 mb-4">学群から探す</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-      {groups.map(group => (
-        <GroupCard group={group} />
-      ))}
-    </div>
-  </section>
-
-  <!-- Popular Universities -->
-  <section class="py-8">
-    <h2 class="text-lg font-bold text-gray-800 mb-4">人気の大学</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      {schools.filter(s => s.data_completeness === 'full').slice(0, 6).map(school => (
-        <a
-          href={`/universities/${school.resolvedSlug}/`}
-          class="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-primary hover:shadow-sm transition-all"
-        >
-          <div class="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center text-primary font-bold text-sm shrink-0">
-            {school.name.ja.charAt(0)}
-          </div>
-          <div class="min-w-0">
-            <div class="font-bold text-sm text-gray-800 truncate">{school.name.ja}</div>
-            <div class="text-xs text-gray-400 mt-0.5">{school.region} · {school.department_count || '—'}学科</div>
-          </div>
+    <!-- ============================================ -->
+    <!-- Department Groups Grid                       -->
+    <!-- ============================================ -->
+    <section class="py-14 sm:py-20" data-reveal>
+      <div class="flex items-end justify-between mb-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-text">学群から探す</h2>
+          <p class="text-sm text-text-muted mt-1">{groups.length}分野から興味のある学科を見つけよう</p>
+        </div>
+        <a href="/groups/" class="hidden sm:inline-flex items-center gap-1 text-sm text-primary hover:text-primary-dark font-medium transition-colors">
+          すべて見る
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
-      ))}
-    </div>
-    <div class="text-center mt-4">
-      <a href="/universities/" class="text-sm text-primary hover:underline">
-        全{schools.length}校を見る →
-      </a>
-    </div>
-  </section>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-4">
+        {groups.map(group => (
+          <GroupCard group={group} />
+        ))}
+      </div>
+    </section>
 
-  <!-- CTA -->
-  <section class="bg-primary-light rounded-2xl p-6 sm:p-8 text-center my-8">
-    <h2 class="text-lg font-bold text-gray-800">台湾留学のご相談はLINEで</h2>
-    <p class="text-sm text-gray-500 mt-2 max-w-md mx-auto">
-      志望校選び・出願手続き・奨学金のことなど、お気軽にご相談ください。
-    </p>
-    <a
-      href="https://lin.ee/placeholder"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center gap-2 bg-[#06c755] text-white px-6 py-3 rounded-xl text-sm font-bold mt-4 hover:bg-[#05b34c] transition-colors"
-    >
-      LINEで無料相談する
-    </a>
-  </section>
-</PageLayout>
+    <!-- ============================================ -->
+    <!-- Popular Universities                         -->
+    <!-- ============================================ -->
+    <section class="py-14 sm:py-20 border-t border-warm-200" data-reveal>
+      <div class="flex items-end justify-between mb-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-text">注目の大学</h2>
+          <p class="text-sm text-text-muted mt-1">データが充実している主要大学</p>
+        </div>
+        <a href="/universities/" class="hidden sm:inline-flex items-center gap-1 text-sm text-primary hover:text-primary-dark font-medium transition-colors">
+          全{schools.length}校を見る
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {popularSchools.map(school => (
+          <a
+            href={`/universities/${school.resolvedSlug}/`}
+            class="group block bg-white border border-warm-200 rounded-2xl overflow-hidden hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+          >
+            {/* Image or gradient placeholder */}
+            <div class="h-32 bg-gradient-to-br from-primary/5 to-primary/15 flex items-center justify-center">
+              {school.image?.url ? (
+                <img src={school.image.url} alt={school.name.ja} class="w-full h-full object-cover" loading="lazy" />
+              ) : (
+                <span class="text-4xl font-black text-primary/20">{school.name.ja.charAt(0)}</span>
+              )}
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-text group-hover:text-primary transition-colors text-sm truncate">
+                {school.name.ja}
+              </h3>
+              <p class="text-xs text-text-muted mt-0.5 truncate">{school.name.en}</p>
+              <div class="flex flex-wrap gap-1.5 mt-2.5">
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-warm-100 text-text-secondary">{school.region}</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-warm-100 text-text-secondary">{school.department_count || '—'}学科</span>
+                {school.student_count?.japanese != null && school.student_count.japanese > 0 && (
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-primary-50 text-primary font-medium">
+                    日本人{school.student_count.japanese}名
+                  </span>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-6 sm:hidden">
+        <a href="/universities/" class="text-sm text-primary font-medium hover:underline">
+          全{schools.length}校を見る →
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Features / Why this DB                       -->
+    <!-- ============================================ -->
+    <section class="py-14 sm:py-20 border-t border-warm-200" data-reveal>
+      <h2 class="text-xl sm:text-2xl font-bold text-text text-center mb-10">このデータベースの特徴</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center text-primary mx-auto mb-4">
+            <Icon name="globe" size={24} />
+          </div>
+          <h3 class="font-bold text-text mb-2">全{schools.length}校を完全網羅</h3>
+          <p class="text-sm text-text-muted leading-relaxed">台湾の全大学・全学科を日本語で検索可能。海聯會の公式データをベースに構築。</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center text-primary mx-auto mb-4">
+            <Icon name="document" size={24} />
+          </div>
+          <h3 class="font-bold text-text mb-2">出願情報を一括比較</h3>
+          <p class="text-sm text-text-muted leading-relaxed">学費・TOCFL要件・財力証明・出願期間など、外国人学生に必要な情報を集約。</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center text-primary mx-auto mb-4">
+            <Icon name="chartBar" size={24} />
+          </div>
+          <h3 class="font-bold text-text mb-2">5つのランキング掲載</h3>
+          <p class="text-sm text-text-muted leading-relaxed">QS・THE・Cheers・遠見のランキングデータを統合。日本の大学との比較も可能。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CTA                                          -->
+    <!-- ============================================ -->
+    <section class="py-14 sm:py-20" data-reveal>
+      <div class="bg-gradient-to-br from-primary to-primary-dark rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+        <div class="relative">
+          <h2 class="text-xl sm:text-2xl font-bold text-white mb-3">台湾留学のご相談はLINEで</h2>
+          <p class="text-sm text-white/70 max-w-md mx-auto mb-6">
+            志望校選び・出願手続き・奨学金のことなど、お気軽にご相談ください。
+          </p>
+          <a
+            href="https://lin.ee/placeholder"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-line hover:bg-line-dark text-white px-7 py-3.5 rounded-xl text-base font-bold transition-colors duration-150 shadow-lg shadow-black/20"
+          >
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+            </svg>
+            LINEで無料相談する
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+  <LineCTA />
+</BaseLayout>
 
 <script is:inline>
   window.addEventListener('DOMContentLoaded', function() {
@@ -122,18 +241,32 @@ import { schools, departments, groups } from '../data/loaders';
 </script>
 
 <style is:global>
-  .pagefind-ui__search-input {
+  /* Hero search overrides */
+  #search .pagefind-ui__search-input {
     border-radius: 0.75rem !important;
-    border-color: #e5e7eb !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    background: rgba(255,255,255,0.1) !important;
+    color: #fff !important;
     font-size: 0.875rem !important;
-    padding: 0.75rem 1rem !important;
+    padding: 0.875rem 1rem !important;
+    backdrop-filter: blur(8px);
   }
-  .pagefind-ui__search-input:focus {
-    border-color: #4a6fa5 !important;
-    box-shadow: 0 0 0 2px #e8eef6 !important;
+  #search .pagefind-ui__search-input::placeholder {
+    color: rgba(255,255,255,0.5) !important;
   }
-  .pagefind-ui__result-link {
-    color: #4a6fa5 !important;
+  #search .pagefind-ui__search-input:focus {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 0 0 3px rgba(255,219,0,0.2) !important;
+    background: rgba(255,255,255,0.15) !important;
+  }
+  #search .pagefind-ui__result-link {
+    color: var(--color-primary) !important;
     font-weight: 600 !important;
+  }
+  #search .pagefind-ui__results-area {
+    background: #fff;
+    border-radius: 0.75rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
   }
 </style>

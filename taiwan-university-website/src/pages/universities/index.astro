@@ -16,51 +16,60 @@ const types = getSchoolTypes();
   <Breadcrumb items={[{ label: '大学一覧' }]} />
 
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-    <h1 class="text-xl font-bold text-gray-900">大学一覧 <span class="text-base font-normal text-gray-400">全{schools.length}校</span></h1>
+    <div>
+      <h1 class="text-2xl font-bold text-text">大学一覧</h1>
+      <p class="text-sm text-text-muted mt-1">全{schools.length}校の台湾の大学を検索・比較</p>
+    </div>
   </div>
 
   <!-- Filters -->
-  <div class="flex flex-wrap gap-2 mb-6" id="filters">
-    <select
-      id="filter-region"
-      class="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white text-gray-700 focus:outline-none focus:border-primary"
-    >
-      <option value="">全地域</option>
-      {regions.map(r => <option value={r}>{r}</option>)}
-    </select>
+  <div class="bg-white border border-warm-200 rounded-2xl p-4 mb-6">
+    <div class="flex flex-wrap gap-3" id="filters">
+      <select
+        id="filter-region"
+        class="px-3.5 py-2 text-sm border border-warm-200 rounded-lg bg-warm-50 text-text-secondary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-light transition-colors"
+      >
+        <option value="">全地域</option>
+        {regions.map(r => <option value={r}>{r}</option>)}
+      </select>
 
-    <select
-      id="filter-type"
-      class="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white text-gray-700 focus:outline-none focus:border-primary"
-    >
-      <option value="">全種別</option>
-      {types.map(t => <option value={t}>{t}</option>)}
-    </select>
+      <select
+        id="filter-type"
+        class="px-3.5 py-2 text-sm border border-warm-200 rounded-lg bg-warm-50 text-text-secondary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-light transition-colors"
+      >
+        <option value="">全種別</option>
+        {types.map(t => <option value={t}>{t}</option>)}
+      </select>
 
-    <label class="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-700 border border-gray-200 rounded-lg bg-white cursor-pointer">
-      <input type="checkbox" id="filter-dorm" class="accent-primary" />
-      寮あり
-    </label>
+      <label class="flex items-center gap-2 px-3.5 py-2 text-sm text-text-secondary border border-warm-200 rounded-lg bg-warm-50 cursor-pointer hover:border-primary transition-colors">
+        <input type="checkbox" id="filter-dorm" class="accent-primary w-4 h-4 rounded" />
+        寮あり
+      </label>
 
-    <label class="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-700 border border-gray-200 rounded-lg bg-white cursor-pointer">
-      <input type="checkbox" id="filter-scholarship" class="accent-primary" />
-      奨学金あり
-    </label>
+      <label class="flex items-center gap-2 px-3.5 py-2 text-sm text-text-secondary border border-warm-200 rounded-lg bg-warm-50 cursor-pointer hover:border-primary transition-colors">
+        <input type="checkbox" id="filter-scholarship" class="accent-primary w-4 h-4 rounded" />
+        奨学金あり
+      </label>
+
+      <div class="flex-1"></div>
+
+      <p id="result-count" class="self-center text-sm text-text-muted"></p>
+    </div>
   </div>
 
-  <!-- Count indicator -->
-  <p id="result-count" class="text-sm text-gray-400 mb-4"></p>
-
   <!-- School Grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="school-grid">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="school-grid">
     {schools.map(school => (
       <SchoolCard school={school} />
     ))}
   </div>
 
   <!-- No results -->
-  <div id="no-results" class="hidden text-center py-12 text-gray-400">
-    <p class="text-lg">条件に一致する大学がありません</p>
+  <div id="no-results" class="hidden text-center py-16 text-text-muted">
+    <svg class="w-12 h-12 mx-auto mb-3 text-warm-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+    </svg>
+    <p class="text-lg font-medium">条件に一致する大学がありません</p>
     <p class="text-sm mt-1">フィルターを変更してお試しください</p>
   </div>
 </PageLayout>

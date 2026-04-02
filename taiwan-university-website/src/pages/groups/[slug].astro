@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import Icon from '../../components/Icon.astro';
 import DepartmentRow from '../../components/DepartmentRow.astro';
 import { groups, deptsByGroup, schoolById, type Department, type School, type DepartmentGroup } from '../../data/loaders';
 
@@ -10,7 +11,6 @@ export function getStaticPaths() {
       dept: d,
       school: schoolById.get(d.school_id)!,
     }));
-    // Sort by school name, then department name
     depts.sort((a, b) => {
       const schoolCmp = a.school.name.ja.localeCompare(b.school.name.ja, 'ja');
       return schoolCmp !== 0 ? schoolCmp : a.dept.name.ja.localeCompare(b.dept.name.ja, 'ja');
@@ -34,7 +34,6 @@ interface Props {
 
 const { group, depts } = Astro.props;
 
-// Group by school
 const bySchool = new Map<string, DeptWithSchool[]>();
 for (const item of depts) {
   const list = bySchool.get(item.school.id) || [];
@@ -42,11 +41,11 @@ for (const item of depts) {
   bySchool.set(item.school.id, list);
 }
 
-const icons: Record<number, string> = {
-  1: '💻', 2: '⚙️', 3: '🔬', 4: '🏥', 5: '🧬',
-  6: '🌾', 7: '🌍', 8: '🌐', 9: '📚', 10: '🎓',
-  11: '⚖️', 12: '📊', 13: '💰', 14: '🧠', 15: '📺',
-  16: '🏛️', 17: '🎨', 18: '⚽',
+const iconMap: Record<number, string> = {
+  1: 'computer', 2: 'cog', 3: 'beaker', 4: 'heart', 5: 'dna',
+  6: 'leaf', 7: 'map', 8: 'translate', 9: 'book', 10: 'academicCap',
+  11: 'scale', 12: 'presentationChart', 13: 'bankNote', 14: 'lightBulb', 15: 'film',
+  16: 'library', 17: 'palette', 18: 'running',
 };
 ---
 
@@ -60,23 +59,25 @@ const icons: Record<number, string> = {
     { label: group.name.ja },
   ]} />
 
-  <div class="flex items-center gap-3 mb-6">
-    <span class="text-3xl">{icons[group.id] || '📖'}</span>
+  <div class="flex items-center gap-4 mb-8">
+    <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center text-primary">
+      <Icon name={iconMap[group.id] || 'book'} size={24} />
+    </div>
     <div>
-      <h1 class="text-xl font-bold text-gray-900">{group.name.ja}</h1>
-      <p class="text-sm text-gray-400">{group.name.en} · {depts.length}学科 · {bySchool.size}大学</p>
+      <h1 class="text-2xl font-bold text-text">{group.name.ja}</h1>
+      <p class="text-sm text-text-muted">{group.name.en} / {depts.length}学科 / {bySchool.size}大学</p>
     </div>
   </div>
 
   {[...bySchool.entries()].map(([schoolId, items]) => (
-    <div class="mb-4">
-      <h2 class="text-sm font-medium text-gray-500 mb-2 px-1 flex items-center gap-2">
+    <div class="mb-5" data-reveal>
+      <h2 class="text-sm font-medium text-text-muted mb-2 px-1 flex items-center gap-2">
         <a href={`/universities/${items[0].school.resolvedSlug}/`} class="hover:text-primary transition-colors">
           {items[0].school.name.ja}
         </a>
-        <span class="text-xs text-gray-300">({items.length}学科)</span>
+        <span class="text-xs text-warm-300">({items.length}学科)</span>
       </h2>
-      <div class="bg-white border border-gray-200 rounded-xl divide-y divide-gray-100">
+      <div class="bg-white border border-warm-200 rounded-2xl divide-y divide-warm-100">
         {items.map(({ dept, school }) => (
           <DepartmentRow dept={dept} school={school} />
         ))}

@@ -11,10 +11,10 @@ const styles: Record<string, string> = {
   private: 'bg-private-bg text-private',
   chinese: 'bg-chinese-tag-bg text-chinese-tag',
   english: 'bg-english-tag-bg text-english-tag',
-  interview: 'bg-amber-50 text-amber-700',
+  interview: 'bg-warning-light text-warning',
 };
 ---
 
-<span class={`inline-block px-2 py-0.5 rounded text-xs font-medium ${styles[variant]}`}>
+<span class={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${styles[variant]}`}>
   {label}
 </span>

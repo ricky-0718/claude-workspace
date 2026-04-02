@@ -2,6 +2,8 @@
 import PageLayout from '../../../layouts/PageLayout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import Badge from '../../../components/Badge.astro';
+import Icon from '../../../components/Icon.astro';
+import RankingBadge from '../../../components/RankingBadge.astro';
 import TuitionTable from '../../../components/TuitionTable.astro';
 import DataCompletenessNote from '../../../components/DataCompletenessNote.astro';
 import {
@@ -31,7 +33,6 @@ const { school, departments } = Astro.props;
 const typeLabel = getSchoolTypeLabel(school.type);
 const national = isNational(school.type);
 
-// Group departments by group
 const deptGroups = new Map<string, Department[]>();
 for (const d of departments) {
   const groupName = groupById.get(d.group_id)?.name.ja || '分類なし';
@@ -51,94 +52,124 @@ for (const d of departments) {
     { label: school.name.ja },
   ]} />
 
-  <!-- Header -->
-  <div class="flex items-start gap-4 mb-6">
-    <div class="w-14 h-14 rounded-xl bg-primary-light flex items-center justify-center text-primary font-bold text-xl shrink-0">
-      {school.name.ja.charAt(0)}
-    </div>
-    <div>
-      <h1 class="text-xl sm:text-2xl font-bold text-gray-900">{school.name.ja}</h1>
-      <p class="text-sm text-gray-400 mt-0.5">{school.name.cht} / {school.name.en}</p>
-      <div class="flex flex-wrap gap-1.5 mt-2">
-        <Badge variant={national ? 'national' : 'private'} label={typeLabel} />
-        <span class="inline-block px-2 py-0.5 rounded text-xs bg-gray-100 text-gray-600">{school.region}</span>
+  <!-- ====== Hero Banner ====== -->
+  <div class="relative rounded-2xl overflow-hidden mb-8 bg-gradient-to-br from-primary/5 to-primary/15 h-40 sm:h-52">
+    {school.image?.url ? (
+      <img src={school.image.url} alt={school.name.ja} class="w-full h-full object-cover" />
+    ) : (
+      <div class="w-full h-full flex items-center justify-center">
+        <span class="text-7xl font-black text-primary/10">{school.name.ja.charAt(0)}</span>
       </div>
+    )}
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+      <div class="flex flex-wrap gap-2 mb-2">
+        <Badge variant={national ? 'national' : 'private'} label={typeLabel} />
+        <span class="inline-block px-2.5 py-0.5 rounded-full text-xs bg-white/20 text-white backdrop-blur-sm">{school.region}</span>
+      </div>
+      <h1 class="text-xl sm:text-3xl font-bold text-white">{school.name.ja}</h1>
+      <p class="text-sm text-white/70 mt-0.5">{school.name.cht} / {school.name.en}</p>
     </div>
   </div>
 
   <DataCompletenessNote level={school.data_completeness} />
 
-  <!-- Description -->
+  <!-- ====== Rankings ====== -->
+  {school.rankings && (
+    <section class="mt-6" data-reveal>
+      <h2 class="text-base font-bold text-text mb-3 flex items-center gap-2">
+        <Icon name="trophy" size={18} class="text-primary" />
+        大学ランキング
+      </h2>
+      <RankingBadge rankings={school.rankings} />
+    </section>
+  )}
+
+  <!-- ====== Key Stats Bento ====== -->
+  <section class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6" data-reveal>
+    {school.student_count?.total != null && (
+      <div class="bg-white border border-warm-200 rounded-2xl p-4">
+        <div class="flex items-center gap-2 mb-2">
+          <Icon name="users" size={16} class="text-text-muted" />
+          <span class="text-xs text-text-muted">全学生数</span>
+        </div>
+        <div class="text-xl font-bold text-text">{school.student_count.total.toLocaleString()}</div>
+      </div>
+    )}
+    {school.student_count?.foreign != null && (
+      <div class="bg-white border border-warm-200 rounded-2xl p-4">
+        <div class="flex items-center gap-2 mb-2">
+          <Icon name="globe" size={16} class="text-text-muted" />
+          <span class="text-xs text-text-muted">留学生数</span>
+        </div>
+        <div class="text-xl font-bold text-text">{school.student_count.foreign.toLocaleString()}</div>
+      </div>
+    )}
+    {school.student_count?.japanese != null && (
+      <div class="bg-primary-50 border border-primary-light rounded-2xl p-4">
+        <div class="flex items-center gap-2 mb-2">
+          <Icon name="star" size={16} class="text-primary" />
+          <span class="text-xs text-primary">日本人学生</span>
+        </div>
+        <div class="text-xl font-bold text-primary">{school.student_count.japanese}</div>
+      </div>
+    )}
+    {departments.length > 0 && (
+      <div class="bg-white border border-warm-200 rounded-2xl p-4">
+        <div class="flex items-center gap-2 mb-2">
+          <Icon name="book" size={16} class="text-text-muted" />
+          <span class="text-xs text-text-muted">学科数</span>
+        </div>
+        <div class="text-xl font-bold text-text">{departments.length}</div>
+      </div>
+    )}
+  </section>
+
+  <!-- ====== Description ====== -->
   {school.ja_description && (
-    <section class="mt-6">
-      <h2 class="text-base font-bold text-gray-800 mb-2">大学概要</h2>
-      <div class="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+    <section class="mt-8" data-reveal>
+      <h2 class="text-base font-bold text-text mb-3">大学概要</h2>
+      <div class="text-sm text-text-secondary leading-relaxed whitespace-pre-line bg-white border border-warm-200 rounded-2xl p-5">
         {school.ja_description}
       </div>
     </section>
   )}
 
-  <!-- Key Info Grid -->
-  <section class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
-    {school.student_count?.total != null && (
-      <div class="bg-gray-50 rounded-lg p-3">
-        <div class="text-xs text-gray-500">全学生数</div>
-        <div class="text-lg font-bold text-gray-800 mt-1">{school.student_count.total.toLocaleString()}</div>
-      </div>
-    )}
-    {school.student_count?.foreign != null && (
-      <div class="bg-gray-50 rounded-lg p-3">
-        <div class="text-xs text-gray-500">留学生数</div>
-        <div class="text-lg font-bold text-gray-800 mt-1">{school.student_count.foreign.toLocaleString()}</div>
-      </div>
-    )}
-    {school.student_count?.japanese != null && (
-      <div class="bg-gray-50 rounded-lg p-3">
-        <div class="text-xs text-gray-500">日本人学生</div>
-        <div class="text-lg font-bold text-primary mt-1">{school.student_count.japanese}</div>
-      </div>
-    )}
-    {departments.length > 0 && (
-      <div class="bg-gray-50 rounded-lg p-3">
-        <div class="text-xs text-gray-500">学科数</div>
-        <div class="text-lg font-bold text-gray-800 mt-1">{departments.length}</div>
-      </div>
-    )}
-  </section>
-
-  <!-- Dormitory & Scholarship -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+  <!-- ====== Dormitory & Scholarship ====== -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6" data-reveal>
     {school.dormitory && (
-      <section class="bg-white border border-gray-200 rounded-xl p-4">
-        <h3 class="font-bold text-sm text-gray-800 flex items-center gap-1.5">
-          🏠 寮情報
+      <section class="bg-white border border-warm-200 rounded-2xl p-5">
+        <h3 class="font-bold text-sm text-text flex items-center gap-2">
+          <Icon name="home" size={16} class="text-success" />
+          寮情報
           {school.dormitory.available ? (
-            <span class="text-xs font-normal text-green">（あり）</span>
+            <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-success-light text-success">あり</span>
           ) : (
-            <span class="text-xs font-normal text-gray-400">（なし）</span>
+            <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-warm-100 text-text-muted">なし</span>
           )}
         </h3>
         {school.dormitory.info_ja && (
-          <p class="text-xs text-gray-600 mt-2 leading-relaxed whitespace-pre-line">{school.dormitory.info_ja}</p>
+          <p class="text-xs text-text-secondary mt-3 leading-relaxed whitespace-pre-line">{school.dormitory.info_ja}</p>
         )}
       </section>
     )}
 
     {school.scholarship && (
-      <section class="bg-white border border-gray-200 rounded-xl p-4">
-        <h3 class="font-bold text-sm text-gray-800 flex items-center gap-1.5">
-          🎓 奨学金
+      <section class="bg-white border border-warm-200 rounded-2xl p-5">
+        <h3 class="font-bold text-sm text-text flex items-center gap-2">
+          <Icon name="scholarship" size={16} class="text-warning" />
+          奨学金
           {school.scholarship.available ? (
-            <span class="text-xs font-normal text-green">（あり）</span>
+            <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-accent-light text-warning">あり</span>
           ) : (
-            <span class="text-xs font-normal text-gray-400">（なし）</span>
+            <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-warm-100 text-text-muted">なし</span>
           )}
         </h3>
         {school.scholarship.info_ja && (
-          <p class="text-xs text-gray-600 mt-2 leading-relaxed whitespace-pre-line">{school.scholarship.info_ja}</p>
+          <p class="text-xs text-text-secondary mt-3 leading-relaxed whitespace-pre-line">{school.scholarship.info_ja}</p>
         )}
         {school.scholarship.url && (
-          <a href={school.scholarship.url} target="_blank" rel="noopener noreferrer" class="text-xs text-primary hover:underline mt-2 inline-block">
+          <a href={school.scholarship.url} target="_blank" rel="noopener noreferrer" class="text-xs text-primary hover:underline mt-3 inline-block font-medium">
             奨学金の詳細 →
           </a>
         )}
@@ -146,7 +177,7 @@ for (const d of departments) {
     )}
   </div>
 
-  <!-- Foreign Student Admission (外國學生向け出願情報) -->
+  <!-- ====== Foreign Student Admission ====== -->
   {(() => {
     const fs = school.foreign_student;
     const fp = fs?.financial_proof || school.financial_proof;
@@ -154,79 +185,91 @@ for (const d of departments) {
     const hasData = fp || lr || fs?.application_periods || fs?.required_documents || fs?.oia_url || fs?.admission_url || fs?.jianzhang_url;
     return hasData;
   })() && (
-    <section class="mt-6 bg-primary-light/50 border border-primary/10 rounded-xl p-4">
-      <h2 class="text-base font-bold text-gray-800 mb-1">外国人学生の出願情報</h2>
-      <p class="text-[11px] text-gray-400 mb-3">※ 以下は外國學生（非華僑）向けの情報です</p>
+    <section class="mt-8 bg-primary-50 border border-primary-light rounded-2xl p-5 sm:p-6" data-reveal>
+      <h2 class="text-base font-bold text-text mb-1 flex items-center gap-2">
+        <Icon name="document" size={18} class="text-primary" />
+        外国人学生の出願情報
+      </h2>
+      <p class="text-[11px] text-text-muted mb-4">以下は外國學生（非華僑）向けの情報です</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-        {/* 財力証明 */}
         {(school.foreign_student?.financial_proof || school.financial_proof) && (
-          <div>
-            <div class="text-xs text-gray-500 mb-1">💰 財力証明</div>
-            <div class="text-gray-800 font-medium">
+          <div class="bg-white rounded-xl p-3.5">
+            <div class="text-xs text-text-muted mb-1 flex items-center gap-1.5">
+              <Icon name="currency" size={14} class="text-text-muted" />
+              財力証明
+            </div>
+            <div class="text-text font-medium">
               {school.foreign_student?.financial_proof?.amount || school.financial_proof?.amount}
             </div>
             {(school.foreign_student?.financial_proof?.jpy_estimate || school.financial_proof?.jpy_estimate) && (
-              <div class="text-xs text-gray-400">
+              <div class="text-xs text-text-muted mt-0.5">
                 （{school.foreign_student?.financial_proof?.jpy_estimate || school.financial_proof?.jpy_estimate}）
               </div>
             )}
           </div>
         )}
 
-        {/* 語学要件 */}
         {(school.foreign_student?.language_req?.chinese || school.language_req?.chinese) && (
-          <div>
-            <div class="text-xs text-gray-500 mb-1">🗣️ 中国語要件</div>
-            <div class="text-gray-800">
-              {school.foreign_student?.language_req?.chinese || school.language_req?.chinese}
+          <div class="bg-white rounded-xl p-3.5">
+            <div class="text-xs text-text-muted mb-1 flex items-center gap-1.5">
+              <Icon name="chat" size={14} class="text-text-muted" />
+              中国語要件
             </div>
+            <div class="text-text">{school.foreign_student?.language_req?.chinese || school.language_req?.chinese}</div>
           </div>
         )}
         {(school.foreign_student?.language_req?.english || school.language_req?.english) && (
-          <div>
-            <div class="text-xs text-gray-500 mb-1">🌐 英語要件</div>
-            <div class="text-gray-800">
-              {school.foreign_student?.language_req?.english || school.language_req?.english}
+          <div class="bg-white rounded-xl p-3.5">
+            <div class="text-xs text-text-muted mb-1 flex items-center gap-1.5">
+              <Icon name="globe" size={14} class="text-text-muted" />
+              英語要件
             </div>
+            <div class="text-text">{school.foreign_student?.language_req?.english || school.language_req?.english}</div>
           </div>
         )}
 
-        {/* 出願料 */}
         {school.foreign_student?.application_fee && (
-          <div>
-            <div class="text-xs text-gray-500 mb-1">📋 出願料</div>
-            <div class="text-gray-800">{school.foreign_student.application_fee}</div>
+          <div class="bg-white rounded-xl p-3.5">
+            <div class="text-xs text-text-muted mb-1 flex items-center gap-1.5">
+              <Icon name="clipboard" size={14} class="text-text-muted" />
+              出願料
+            </div>
+            <div class="text-text">{school.foreign_student.application_fee}</div>
           </div>
         )}
       </div>
 
-      {/* 出願期間 */}
       {school.foreign_student?.application_periods && school.foreign_student.application_periods.length > 0 && (
-        <div class="mt-4 pt-3 border-t border-primary/10">
-          <div class="text-xs text-gray-500 mb-2">📅 出願期間</div>
+        <div class="mt-4 pt-4 border-t border-primary-light">
+          <div class="text-xs text-text-muted mb-2 flex items-center gap-1.5">
+            <Icon name="calendar" size={14} class="text-text-muted" />
+            出願期間
+          </div>
           <div class="space-y-1.5">
             {school.foreign_student.application_periods.map(p => (
               <div class="flex items-center gap-2 text-sm">
-                <span class="bg-primary/10 text-primary text-xs px-1.5 py-0.5 rounded">
+                <span class="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full font-medium">
                   第{p.round}回{p.type ? ` (${p.type})` : ''}
                 </span>
-                <span class="text-gray-700">{p.start} 〜 {p.end}</span>
-                {p.notes && <span class="text-xs text-gray-400">{p.notes}</span>}
+                <span class="text-text-secondary">{p.start} 〜 {p.end}</span>
+                {p.notes && <span class="text-xs text-text-muted">{p.notes}</span>}
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {/* 必要書類 */}
       {school.foreign_student?.required_documents && school.foreign_student.required_documents.length > 0 && (
-        <div class="mt-4 pt-3 border-t border-primary/10">
-          <div class="text-xs text-gray-500 mb-2">📄 必要書類</div>
+        <div class="mt-4 pt-4 border-t border-primary-light">
+          <div class="text-xs text-text-muted mb-2 flex items-center gap-1.5">
+            <Icon name="document" size={14} class="text-text-muted" />
+            必要書類
+          </div>
           <ul class="space-y-1">
             {school.foreign_student.required_documents.map(doc => (
-              <li class="flex items-start gap-2 text-sm text-gray-700">
-                <span class="text-primary mt-0.5">•</span>
+              <li class="flex items-start gap-2 text-sm text-text-secondary">
+                <span class="text-primary mt-0.5 shrink-0">&#8226;</span>
                 <span>{doc}</span>
               </li>
             ))}
@@ -234,24 +277,24 @@ for (const d of departments) {
         </div>
       )}
 
-      {/* 簡章リンク */}
       {(school.foreign_student?.jianzhang_url || school.foreign_student?.admission_url || school.foreign_student?.oia_url) && (
-        <div class="mt-4 pt-3 border-t border-primary/10 flex flex-wrap gap-2">
+        <div class="mt-4 pt-4 border-t border-primary-light flex flex-wrap gap-2">
           {school.foreign_student?.jianzhang_url && (
             <a href={school.foreign_student.jianzhang_url} target="_blank" rel="noopener noreferrer"
-              class="text-xs text-white bg-primary rounded-lg px-3 py-1.5 hover:bg-primary/90 transition-colors inline-flex items-center gap-1">
-              📄 招生簡章（PDF）{school.foreign_student.jianzhang_year ? `${school.foreign_student.jianzhang_year}年度` : ''} →
+              class="text-xs text-white bg-primary rounded-lg px-4 py-2 hover:bg-primary-dark transition-colors inline-flex items-center gap-1.5 font-medium">
+              <Icon name="document" size={14} />
+              招生簡章（PDF）{school.foreign_student.jianzhang_year ? `${school.foreign_student.jianzhang_year}年度` : ''} →
             </a>
           )}
           {school.foreign_student?.admission_url && (
             <a href={school.foreign_student.admission_url} target="_blank" rel="noopener noreferrer"
-              class="text-xs text-primary border border-primary/20 rounded-lg px-3 py-1.5 hover:bg-white transition-colors">
+              class="text-xs text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-white transition-colors font-medium">
               外國學生招生ページ →
             </a>
           )}
           {school.foreign_student?.oia_url && (
             <a href={school.foreign_student.oia_url} target="_blank" rel="noopener noreferrer"
-              class="text-xs text-primary border border-primary/20 rounded-lg px-3 py-1.5 hover:bg-white transition-colors">
+              class="text-xs text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-white transition-colors font-medium">
               國際處 →
             </a>
           )}
@@ -260,39 +303,44 @@ for (const d of departments) {
     </section>
   )}
 
-  <!-- Tuition -->
+  <!-- ====== Tuition ====== -->
   {school.tuition && school.tuition.length > 0 && (
-    <section class="mt-6">
-      <h2 class="text-base font-bold text-gray-800 mb-3">学費一覧</h2>
-      <div class="bg-white border border-gray-200 rounded-xl p-4">
+    <section class="mt-8" data-reveal>
+      <h2 class="text-base font-bold text-text mb-3 flex items-center gap-2">
+        <Icon name="currency" size={18} class="text-primary" />
+        学費一覧
+      </h2>
+      <div class="bg-white border border-warm-200 rounded-2xl p-5">
         <TuitionTable items={school.tuition} />
       </div>
     </section>
   )}
 
-  <!-- Departments by Group -->
-  <section class="mt-8">
-    <h2 class="text-base font-bold text-gray-800 mb-4">
-      学科一覧 <span class="text-sm font-normal text-gray-400">（{departments.length}学科）</span>
+  <!-- ====== Departments ====== -->
+  <section class="mt-10" data-reveal>
+    <h2 class="text-base font-bold text-text mb-5 flex items-center gap-2">
+      <Icon name="book" size={18} class="text-primary" />
+      学科一覧
+      <span class="text-sm font-normal text-text-muted">（{departments.length}学科）</span>
     </h2>
     {[...deptGroups.entries()].map(([groupName, depts]) => (
-      <div class="mb-4">
-        <h3 class="text-sm font-medium text-gray-500 mb-2 px-1">{groupName}</h3>
-        <div class="bg-white border border-gray-200 rounded-xl divide-y divide-gray-100">
+      <div class="mb-5">
+        <h3 class="text-sm font-medium text-text-muted mb-2 px-1">{groupName}</h3>
+        <div class="bg-white border border-warm-200 rounded-2xl divide-y divide-warm-100">
           {depts.map(dept => (
             <a
               href={`/universities/${school.resolvedSlug}/departments/${dept.id}/`}
-              class="flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors"
+              class="flex items-center justify-between px-5 py-3.5 hover:bg-warm-50 transition-colors duration-150 first:rounded-t-2xl last:rounded-b-2xl"
             >
               <div class="min-w-0">
-                <div class="text-sm text-gray-800 truncate">{dept.name.ja}</div>
-                <div class="text-xs text-gray-400 truncate mt-0.5">{dept.name.en}</div>
+                <div class="text-sm text-text truncate">{dept.name.ja}</div>
+                <div class="text-xs text-text-muted truncate mt-0.5">{dept.name.en}</div>
               </div>
-              <div class="flex items-center gap-2 shrink-0 ml-2">
+              <div class="flex items-center gap-2 shrink-0 ml-3">
                 {dept.has_eng_taught && (
-                  <span class="px-1.5 py-0.5 text-[10px] rounded bg-english-tag-bg text-english-tag">英語</span>
+                  <span class="px-2 py-0.5 text-[10px] rounded-full bg-english-tag-bg text-english-tag font-medium">英語授業</span>
                 )}
-                <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-warm-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
               </div>
@@ -303,17 +351,17 @@ for (const d of departments) {
     ))}
   </section>
 
-  <!-- External Links -->
-  <section class="mt-6 flex flex-wrap gap-3">
+  <!-- ====== External Links ====== -->
+  <section class="mt-8 flex flex-wrap gap-3" data-reveal>
     {school.website?.cht && (
       <a href={school.website.cht} target="_blank" rel="noopener noreferrer"
-        class="text-sm text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-primary-light transition-colors">
+        class="text-sm text-primary border border-primary/20 rounded-lg px-5 py-2.5 hover:bg-primary-50 transition-colors font-medium">
         公式サイト（中文）→
       </a>
     )}
     {school.website?.en && (
       <a href={school.website.en} target="_blank" rel="noopener noreferrer"
-        class="text-sm text-primary border border-primary/20 rounded-lg px-4 py-2 hover:bg-primary-light transition-colors">
+        class="text-sm text-primary border border-primary/20 rounded-lg px-5 py-2.5 hover:bg-primary-50 transition-colors font-medium">
         公式サイト（English）→
       </a>
     )}

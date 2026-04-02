@@ -2,33 +2,65 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-50 border-t border-gray-200 mt-16 pb-24">
-  <div class="max-w-6xl mx-auto px-4 py-10">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
-      <div>
-        <h3 class="font-bold text-gray-800 mb-3">台湾大学データベース</h3>
-        <p class="text-gray-500 leading-relaxed">
+<footer class="bg-primary text-white mt-20 pb-24 sm:pb-0">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-10">
+      <!-- Brand -->
+      <div class="sm:col-span-2">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center">
+            <span class="text-white font-bold text-base leading-none">台</span>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm tracking-wide">TAIWAN UNIV DB</div>
+            <div class="text-[10px] text-white/60">台湾留学101センター</div>
+          </div>
+        </div>
+        <p class="text-sm text-white/70 leading-relaxed max-w-sm">
           台湾全129大学・2,371学科の情報を日本語で掲載。
-          台湾留学101センターが運営しています。
+          出願要件・学費・奨学金・ランキングを一括比較できます。
         </p>
       </div>
+
+      <!-- Navigation -->
       <div>
-        <h3 class="font-bold text-gray-800 mb-3">カテゴリ</h3>
-        <ul class="space-y-2 text-gray-500">
-          <li><a href="/groups/" class="hover:text-primary transition-colors">学群から探す</a></li>
-          <li><a href="/universities/" class="hover:text-primary transition-colors">大学一覧</a></li>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-white/50 mb-4">探す</h3>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="/universities/" class="text-white/80 hover:text-accent transition-colors">大学一覧</a></li>
+          <li><a href="/groups/" class="text-white/80 hover:text-accent transition-colors">学群から探す</a></li>
+          <li><a href="/rankings/" class="text-white/80 hover:text-accent transition-colors">ランキング</a></li>
+          <li><a href="/rankings/japan-comparison/" class="text-white/80 hover:text-accent transition-colors">日本の大学と比較</a></li>
         </ul>
       </div>
+
+      <!-- Contact -->
       <div>
-        <h3 class="font-bold text-gray-800 mb-3">お問い合わせ</h3>
-        <p class="text-gray-500 leading-relaxed">
-          出願サポートのご相談は<br />
-          LINEでお気軽にどうぞ。
+        <h3 class="text-xs font-bold uppercase tracking-wider text-white/50 mb-4">お問い合わせ</h3>
+        <p class="text-sm text-white/70 leading-relaxed mb-4">
+          志望校選び・出願手続き・奨学金のことなど、お気軽にご相談ください。
         </p>
+        <a
+          href="https://lin.ee/placeholder"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-line hover:bg-line-dark text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+          </svg>
+          LINEで無料相談
+        </a>
       </div>
     </div>
-    <div class="mt-8 pt-6 border-t border-gray-200 text-center text-xs text-gray-400">
-      &copy; {year} 台湾留学101センター. All rights reserved.
+
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-white/40">
+        &copy; {year} 台湾留学101センター. All rights reserved.
+      </p>
+      <p class="text-xs text-white/30">
+        データ出典: 海聯會・各大学公式サイト・104人力銀行
+      </p>
     </div>
   </div>
 </footer>
