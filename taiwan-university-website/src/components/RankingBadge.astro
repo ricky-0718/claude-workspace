@@ -1,0 +1,50 @@
+---
+/**
+ * Displays a compact ranking badge for a university.
+ * Shows the best available ranking with source label.
+ */
+interface Props {
+  rankings?: {
+    qs_world?: { rank: number; year: number };
+    qs_asia?: { rank: number; year: number };
+    the_world?: { rank: number; year: number };
+    cheers?: { rank: number; year: number };
+    yuanjian?: { rank: number; year: number };
+  };
+  compact?: boolean;
+}
+
+const { rankings, compact = false } = Astro.props;
+
+if (!rankings) return;
+
+// Pick the most impressive ranking to show
+type RankEntry = { source: string; rank: number; label: string };
+const entries: RankEntry[] = [];
+
+if (rankings.qs_world?.rank) entries.push({ source: 'QS', rank: rankings.qs_world.rank, label: `QS世界 ${rankings.qs_world.rank}位` });
+if (rankings.qs_asia?.rank) entries.push({ source: 'QS Asia', rank: rankings.qs_asia.rank, label: `QSアジア ${rankings.qs_asia.rank}位` });
+if (rankings.the_world?.rank) entries.push({ source: 'THE', rank: rankings.the_world.rank, label: `THE ${rankings.the_world.rank}位` });
+if (rankings.cheers?.rank) entries.push({ source: 'Cheers', rank: rankings.cheers.rank, label: `企業人気 ${rankings.cheers.rank}位` });
+
+const best = entries[0];
+if (!best) return;
+---
+
+{compact ? (
+  <span class="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold bg-accent-light text-primary rounded-full">
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+    </svg>
+    {best.label}
+  </span>
+) : (
+  <div class="flex flex-wrap gap-2">
+    {entries.map(entry => (
+      <div class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-light rounded-lg">
+        <span class="text-[10px] font-bold text-text-muted uppercase">{entry.source}</span>
+        <span class="text-sm font-bold text-primary">#{entry.rank}</span>
+      </div>
+    ))}
+  </div>
+)}

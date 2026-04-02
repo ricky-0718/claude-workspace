@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import type { DepartmentGroup } from '../data/loaders';
 
 interface Props {
@@ -7,21 +8,40 @@ interface Props {
 
 const { group } = Astro.props;
 
-const icons: Record<number, string> = {
-  1: '💻', 2: '⚙️', 3: '🔬', 4: '🏥', 5: '🧬',
-  6: '🌾', 7: '🌍', 8: '🌐', 9: '📚', 10: '🎓',
-  11: '⚖️', 12: '📊', 13: '💰', 14: '🧠', 15: '📺',
-  16: '🏛️', 17: '🎨', 18: '⚽',
+// Map group IDs to SVG icon names (replacing emojis)
+const iconMap: Record<number, string> = {
+  1: 'computer',         // 情報
+  2: 'cog',              // 工学
+  3: 'beaker',           // 理学
+  4: 'heart',            // 医療
+  5: 'dna',              // 生命科学
+  6: 'leaf',             // 農学
+  7: 'map',              // 地球環境
+  8: 'translate',        // 外国語
+  9: 'book',             // 文学
+  10: 'academicCap',     // 教育
+  11: 'scale',           // 法学
+  12: 'presentationChart', // 社会科学
+  13: 'bankNote',        // 経済
+  14: 'lightBulb',       // 心理
+  15: 'film',            // メディア
+  16: 'library',         // 政治
+  17: 'palette',         // 芸術
+  18: 'running',         // スポーツ
 };
+
+const iconName = iconMap[group.id] || 'book';
 ---
 
 <a
   href={`/groups/${group.slug}/`}
-  class="group block bg-white border border-gray-200 rounded-xl p-4 hover:border-primary hover:shadow-md transition-all"
+  class="group block bg-white border border-warm-200 rounded-2xl p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
 >
-  <div class="text-3xl mb-2">{icons[group.id] || '📖'}</div>
-  <h3 class="font-bold text-gray-800 group-hover:text-primary transition-colors text-sm">
+  <div class="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center text-primary mb-3 group-hover:bg-primary group-hover:text-white transition-colors duration-200">
+    <Icon name={iconName} size={20} />
+  </div>
+  <h3 class="font-bold text-text group-hover:text-primary transition-colors text-sm">
     {group.name.ja}
   </h3>
-  <p class="text-xs text-gray-400 mt-1">{group.department_count}学科</p>
+  <p class="text-xs text-text-muted mt-1">{group.department_count}学科</p>
 </a>

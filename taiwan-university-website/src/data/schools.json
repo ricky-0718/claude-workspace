@@ -161,7 +161,14 @@
       ],
       "notes": "115學年度の正式日程は未公開の可能性。Scribd上に115學年度版の簡章が存在"
     },
-    "id_104": 5003000000
+    "id_104": 5003000000,
+    "rankings": {
+      "qs_world": 63,
+      "qs_asia": 23,
+      "the_world": 140,
+      "cheers": 1,
+      "yuanjian": 2
+    }
   },
   {
     "id": "04",
@@ -230,7 +237,14 @@
         "amount": "NT$45,000〜56,000/学期"
       }
     ],
-    "ja_description": "1906年創立\n国立総合大学\n4学院\n学生数約6.5,000人\n南投に位置\n登録率92.97%"
+    "ja_description": "1906年創立\n国立総合大学\n4学院\n学生数約6.5,000人\n南投に位置\n登録率92.97%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 613,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "07",
@@ -329,7 +343,14 @@
         "faculty": "学部全体（外国人学生）",
         "amount": "NT$47,000〜55,000/学期"
       }
-    ]
+    ],
+    "rankings": {
+      "qs_world": 435,
+      "qs_asia": 80,
+      "the_world": "501-600",
+      "cheers": "12-20",
+      "yuanjian": "12-20"
+    }
   },
   {
     "id": "11",
@@ -393,7 +414,14 @@
         "amount": "NT$50,000〜77,000/学期"
       }
     ],
-    "ja_description": "2021年創立\n国立総合大学\n21学院\n学生数約22.5,000人\n台北に位置\n登録率100%"
+    "ja_description": "2021年創立\n国立総合大学\n21学院\n学生数約22.5,000人\n台北に位置\n登録率100%",
+    "rankings": {
+      "qs_world": 199,
+      "qs_asia": 41,
+      "the_world": "401-500",
+      "cheers": 4,
+      "yuanjian": 3
+    }
   },
   {
     "id": "17",
@@ -459,7 +487,14 @@
         "amount": "NT$49,000〜57,000/学期"
       }
     ],
-    "ja_description": "1911年創立\n国立総合大学\n7学院\n学生数約18.4,000人\n新竹に位置\n登録率100%"
+    "ja_description": "1911年創立\n国立総合大学\n7学院\n学生数約18.4,000人\n新竹に位置\n登録率100%",
+    "rankings": {
+      "qs_world": 176,
+      "qs_asia": 37,
+      "the_world": "401-500",
+      "cheers": 3,
+      "yuanjian": 4
+    }
   },
   {
     "id": "02",
@@ -559,7 +594,14 @@
         "amount": "NT$50,000〜79,000/学期"
       }
     ],
-    "ja_description": "1931年創立\n国立総合大学\n9学院\n学生数約23.5,000人\n台南に位置\n登録率100%"
+    "ja_description": "1931年創立\n国立総合大学\n9学院\n学生数約23.5,000人\n台南に位置\n登録率100%",
+    "rankings": {
+      "qs_world": 203,
+      "qs_asia": 43,
+      "the_world": "501-600",
+      "cheers": 2,
+      "yuanjian": 1
+    }
   },
   {
     "id": "13",
@@ -663,7 +705,14 @@
         "amount": "NT$49,000〜57,000/学期"
       }
     ],
-    "ja_description": "1927年創立\n国立総合大学\n9学院\n学生数約16.8,000人\n台北に位置\n登録率97.45%"
+    "ja_description": "1927年創立\n国立総合大学\n9学院\n学生数約16.8,000人\n台北に位置\n登録率97.45%",
+    "rankings": {
+      "qs_world": 604,
+      "qs_asia": 132,
+      "the_world": "1201-1500",
+      "cheers": 5,
+      "yuanjian": 8
+    }
   },
   {
     "id": "09",
@@ -696,7 +745,14 @@
       "hailian"
     ],
     "last_updated": "2026-03-30",
-    "id_104": 5010000000
+    "id_104": 5010000000,
+    "rankings": {
+      "qs_world": "1201-1400",
+      "qs_asia": 411,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "10",
@@ -751,7 +807,14 @@
         "web_research"
       ]
     },
-    "id_104": 5015000000
+    "id_104": 5015000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 386,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "05",
@@ -820,7 +883,14 @@
         "amount": "NT$48,000〜57,000/学期"
       }
     ],
-    "ja_description": "1919年創立\n国立総合大学\n9学院\n学生数約15.9,000人\n台中に位置\n登録率99.01%"
+    "ja_description": "1919年創立\n国立総合大学\n9学院\n学生数約15.9,000人\n台中に位置\n登録率99.01%",
+    "rankings": {
+      "qs_world": 628,
+      "qs_asia": 128,
+      "the_world": "801-1000",
+      "cheers": 10,
+      "yuanjian": 9
+    }
   },
   {
     "id": "06",
@@ -883,7 +953,14 @@
         "amount": "NT$48,000〜56,000/学期"
       }
     ],
-    "ja_description": "1989年創立\n国立総合大学\n7学院\n学生数約11.4,000人\n嘉義に位置\n登録率94.95%"
+    "ja_description": "1989年創立\n国立総合大学\n7学院\n学生数約11.4,000人\n嘉義に位置\n登録率94.95%",
+    "rankings": {
+      "qs_world": "951-1000",
+      "qs_asia": 183,
+      "the_world": "1201-1500",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "15",
@@ -937,7 +1014,14 @@
         "amount": "NT$49,000〜57,000/学期"
       }
     ],
-    "ja_description": "1915年創立\n国立総合大学\n8学院\n学生数約12.6,000人\n桃園に位置\n登録率100%"
+    "ja_description": "1915年創立\n国立総合大学\n8学院\n学生数約12.6,000人\n桃園に位置\n登録率100%",
+    "rankings": {
+      "qs_world": 587,
+      "qs_asia": 108,
+      "the_world": "501-600",
+      "cheers": 7,
+      "yuanjian": "12-20"
+    }
   },
   {
     "id": "19",
@@ -1001,7 +1085,14 @@
         "amount": "NT$49,000〜58,000/学期"
       }
     ],
-    "ja_description": "1924年創立\n国立総合大学\n6学院\n学生数約11.2,000人\n高雄に位置\n登録率96.61%"
+    "ja_description": "1924年創立\n国立総合大学\n6学院\n学生数約11.2,000人\n高雄に位置\n登録率96.61%",
+    "rankings": {
+      "qs_world": 439,
+      "qs_asia": 72,
+      "the_world": "601-800",
+      "cheers": 6,
+      "yuanjian": 7
+    }
   },
   {
     "id": "08",
@@ -1073,7 +1164,14 @@
         "amount": "NT$47,000〜56,000/学期"
       }
     ],
-    "ja_description": "1994年創立\n国立総合大学\n8学院\n学生数約10,000人\n花蓮に位置\n登録率88.88%"
+    "ja_description": "1994年創立\n国立総合大学\n8学院\n学生数約10,000人\n花蓮に位置\n登録率88.88%",
+    "rankings": {
+      "qs_world": "1001-1200",
+      "qs_asia": 298,
+      "the_world": "1001-1200",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "03",
@@ -1142,7 +1240,14 @@
         "amount": "NT$42,000〜49,000/学期"
       }
     ],
-    "ja_description": "1919年創立\n国立総合大学\n6学院\n学生数約11.1,000人\n嘉義に位置\n登録率87.03%"
+    "ja_description": "1919年創立\n国立総合大学\n6学院\n学生数約11.1,000人\n嘉義に位置\n登録率87.03%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1062,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "23",
@@ -1175,7 +1280,14 @@
       "hailian"
     ],
     "last_updated": "2026-03-30",
-    "id_104": 5013000000
+    "id_104": 5013000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 831,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "27",
@@ -1207,7 +1319,14 @@
       "hailian"
     ],
     "last_updated": "2026-03-30",
-    "id_104": 5012000000
+    "id_104": 5012000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1257,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "80",
@@ -1300,7 +1419,14 @@
         "web_research"
       ]
     },
-    "id_104": 5029000000
+    "id_104": 5029000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 875,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "E0",
@@ -1355,7 +1481,14 @@
         "amount": "NT$40,000〜48,000/学期"
       }
     ],
-    "ja_description": "1896年創立\n国立総合大学\n5学院\n学生数約7.8,000人\n台北に位置\n登録率96.44%"
+    "ja_description": "1896年創立\n国立総合大学\n5学院\n学生数約7.8,000人\n台北に位置\n登録率96.44%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 851,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "26",
@@ -1402,7 +1535,14 @@
         "web_research"
       ]
     },
-    "id_104": 5040000000
+    "id_104": 5040000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1064,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "F0",
@@ -1549,7 +1689,14 @@
     "foreign_student": {
       "oia_url": "https://www.nutn.edu.tw/oia/"
     },
-    "id_104": 5034000000
+    "id_104": 5034000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1065,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "12",
@@ -1600,7 +1747,14 @@
         }
       ]
     },
-    "id_104": 5017000000
+    "id_104": 5017000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 931,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "34",
@@ -1709,7 +1863,14 @@
       "guide"
     ],
     "last_updated": "2026-03-30",
-    "id_104": 5038000000
+    "id_104": 5038000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 878,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "33",
@@ -1984,7 +2145,14 @@
         }
       ]
     },
-    "id_104": 5030000000
+    "id_104": 5030000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1153,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "68",
@@ -2055,7 +2223,14 @@
         "amount": "NT$56,000〜71,000/学期"
       }
     ],
-    "ja_description": "1958年創立\n私立総合大学\n7学院\n学生数約7.5,000人\n台中に位置\n登録率91.98%"
+    "ja_description": "1958年創立\n私立総合大学\n7学院\n学生数約7.5,000人\n台中に位置\n登録率91.98%",
+    "rankings": {
+      "qs_world": "951-1000",
+      "qs_asia": 186,
+      "the_world": "301-350",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "37",
@@ -2199,7 +2374,14 @@
       ],
       "notes": "3回の出願チャンス（最多）。英語要件が比較的低い（IELTS 4.0）"
     },
-    "id_104": 5061000000
+    "id_104": 5061000000,
+    "rankings": {
+      "qs_world": "1001-1200",
+      "qs_asia": 297,
+      "the_world": "1501+",
+      "cheers": 11,
+      "yuanjian": 11
+    }
   },
   {
     "id": "61",
@@ -2289,7 +2471,14 @@
         "amount": "NT$47,000〜152,000/学期"
       }
     ],
-    "ja_description": "1955年創立\n私立総合大学\n7学院\n学生数約16.4,000人\n桃園に位置\n登録率98.66%"
+    "ja_description": "1955年創立\n私立総合大学\n7学院\n学生数約16.4,000人\n桃園に位置\n登録率98.66%",
+    "rankings": {
+      "qs_world": "1201-1400",
+      "qs_asia": 312,
+      "the_world": "1201-1500",
+      "cheers": "12-20",
+      "yuanjian": "12-20"
+    }
   },
   {
     "id": "45",
@@ -2401,7 +2590,14 @@
         "amount": "NT$47,000〜73,000/学期"
       }
     ],
-    "ja_description": "1925年創立\n私立総合大学\n11学院\n学生数約25.5,000人\n新北に位置\n登録率95.86%"
+    "ja_description": "1925年創立\n私立総合大学\n11学院\n学生数約25.5,000人\n新北に位置\n登録率95.86%",
+    "rankings": {
+      "qs_world": "1201-1400",
+      "qs_asia": 378,
+      "the_world": "1201-1500",
+      "cheers": "12-20",
+      "yuanjian": "12-20"
+    }
   },
   {
     "id": "39",
@@ -2469,7 +2665,14 @@
         "amount": "NT$48,000〜77,000/学期"
       }
     ],
-    "ja_description": "1955年創立\n私立総合大学\n9学院\n学生数約15.6,000人\n台中に位置\n登録率94.88%"
+    "ja_description": "1955年創立\n私立総合大学\n9学院\n学生数約15.6,000人\n台中に位置\n登録率94.88%",
+    "rankings": {
+      "qs_world": "1201-1400",
+      "qs_asia": 228,
+      "the_world": "1501+",
+      "cheers": "12-20",
+      "yuanjian": "12-20"
+    }
   },
   {
     "id": "36",
@@ -2555,7 +2758,14 @@
         "amount": "NT$46,000〜53,000/学期"
       }
     ],
-    "ja_description": "1962年創立\n私立総合大学\n12学院\n学生数約16.8,000人\n台北に位置\n登録率85.88%"
+    "ja_description": "1962年創立\n私立総合大学\n12学院\n学生数約16.8,000人\n台北に位置\n登録率85.88%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 576,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "44",
@@ -2623,7 +2833,14 @@
         "amount": "NT$47,000〜150,000/学期"
       }
     ],
-    "ja_description": "1961年創立\n私立総合大学\n9学院\n学生数約21.4,000人\n台中に位置\n登録率98.71%"
+    "ja_description": "1961年創立\n私立総合大学\n9学院\n学生数約21.4,000人\n台中に位置\n登録率98.71%",
+    "rankings": {
+      "qs_world": "1001-1200",
+      "qs_asia": 372,
+      "the_world": "1501+",
+      "cheers": "12-20",
+      "yuanjian": 10
+    }
   },
   {
     "id": "55",
@@ -2734,7 +2951,14 @@
       "tuition_info": "NTD 96,740〜112,920/年（私立だが比較的安価）",
       "notes": "3梯次制（出願期間が3回）。外部機関への出願委託禁止方針あり。簡章PDF直リンク未取得"
     },
-    "id_104": 5059000000
+    "id_104": 5059000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 551,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "57",
@@ -2808,7 +3032,14 @@
         "amount": "NT$48,000〜56,000/学期"
       }
     ],
-    "ja_description": "1989年創立\n私立総合大学\n5学院\n学生数約9.3,000人\n桃園に位置\n登録率97.08%"
+    "ja_description": "1989年創立\n私立総合大学\n5学院\n学生数約9.3,000人\n桃園に位置\n登録率97.08%",
+    "rankings": {
+      "qs_world": "951-1000",
+      "qs_asia": 236,
+      "the_world": "601-800",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "65",
@@ -2859,7 +3090,14 @@
         }
       ]
     },
-    "id_104": 5065000000
+    "id_104": 5065000000,
+    "rankings": {
+      "qs_world": 668,
+      "qs_asia": 235,
+      "the_world": "601-800",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "48",
@@ -2930,7 +3168,14 @@
         "amount": "NT$49,000〜57,000/学期"
       }
     ],
-    "ja_description": "1956年創立\n私立総合大学\n4学院\n学生数約10.8,000人\n台北に位置\n登録率97.74%"
+    "ja_description": "1956年創立\n私立総合大学\n4学院\n学生数約10.8,000人\n台北に位置\n登録率97.74%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1475,
+      "the_world": null,
+      "cheers": "21-30",
+      "yuanjian": null
+    }
   },
   {
     "id": "66",
@@ -3043,6 +3288,13 @@
       "data_sources": [
         "spreadsheet"
       ]
+    },
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 802,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
     }
   },
   {
@@ -3094,7 +3346,14 @@
         "web_research"
       ]
     },
-    "id_104": 5073000000
+    "id_104": 5073000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 802,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "41",
@@ -3163,7 +3422,14 @@
         "amount": "NT$48,000〜73,000/学期"
       }
     ],
-    "ja_description": "1986年創立\n私立総合大学\n8学院\n学生数約10.3,000人\n高雄に位置\n登録率86.84%"
+    "ja_description": "1986年創立\n私立総合大学\n8学院\n学生数約10.3,000人\n高雄に位置\n登録率86.84%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 659,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "69",
@@ -3218,7 +3484,14 @@
         "web_research"
       ]
     },
-    "id_104": 5084000000
+    "id_104": 5084000000,
+    "rankings": {
+      "qs_world": 597,
+      "qs_asia": 131,
+      "the_world": "401-500",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "42",
@@ -3287,7 +3560,14 @@
         "amount": "NT$45,000〜52,000/学期"
       }
     ],
-    "ja_description": "1932年創立\n私立総合大学\n5学院\n学生数約10.6,000人\n台中に位置\n登録率97.47%"
+    "ja_description": "1932年創立\n私立総合大学\n5学院\n学生数約10.6,000人\n台中に位置\n登録率97.47%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 986,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "46",
@@ -3341,7 +3621,14 @@
         "amount": "NT$45,000〜56,000/学期"
       }
     ],
-    "ja_description": "1993年創立\n私立総合大学\n5学院\n学生数約4.1,000人\n台南に位置\n登録率75.95%"
+    "ja_description": "1993年創立\n私立総合大学\n5学院\n学生数約4.1,000人\n台南に位置\n登録率75.95%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 377,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "43",
@@ -3483,7 +3770,14 @@
         "amount": "NT$45,000〜56,000/学期"
       }
     ],
-    "ja_description": "1990年創立\n私立総合大学\n7学院\n学生数約3.2,000人\n彰化に位置\n登録率71.17%"
+    "ja_description": "1990年創立\n私立総合大学\n7学院\n学生数約3.2,000人\n彰化に位置\n登録率71.17%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1419,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "63",
@@ -3526,7 +3820,14 @@
         }
       ]
     },
-    "id_104": 5078000000
+    "id_104": 5078000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1183,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "62",
@@ -3632,7 +3933,14 @@
         }
       ]
     },
-    "id_104": 5076000000
+    "id_104": 5076000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 979,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "59",
@@ -3720,7 +4028,14 @@
         "web_research"
       ]
     },
-    "id_104": 5134000000
+    "id_104": 5134000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 684,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "F1",
@@ -3887,6 +4202,13 @@
       ],
       "tuition_info": "約USD 5,000/年。国際学院は初年度40%免除",
       "notes": "アジア初のMSCHE（米国認定）。全英語の国際学院あり。115學年度版は公開待ち"
+    },
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 830,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
     }
   },
   {
@@ -3934,7 +4256,14 @@
         "web_research"
       ]
     },
-    "id_104": 5072000000
+    "id_104": 5072000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 830,
+      "the_world": "1501+",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "67",
@@ -3969,7 +4298,14 @@
     "foreign_student": {
       "oia_url": "https://olis.kmu.edu.tw/error.html"
     },
-    "id_104": 5075000000
+    "id_104": 5075000000,
+    "rankings": {
+      "qs_world": "1001-1200",
+      "qs_asia": 243,
+      "the_world": "801-1000",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "47",
@@ -4001,7 +4337,14 @@
       "hailian"
     ],
     "last_updated": "2026-03-30",
-    "id_104": 5137000000
+    "id_104": 5137000000,
+    "rankings": {
+      "qs_world": "711-720",
+      "qs_asia": 253,
+      "the_world": "401-500",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "70",
@@ -4251,6 +4594,13 @@
       "data_sources": [
         "web_research"
       ]
+    },
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 472,
+      "the_world": "1501+",
+      "cheers": "12-20",
+      "yuanjian": null
     }
   },
   {
@@ -4302,7 +4652,14 @@
         }
       ]
     },
-    "id_104": 5031000000
+    "id_104": 5031000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1255,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "74",
@@ -4371,7 +4728,14 @@
         "amount": "NT$48,000〜55,000/学期"
       }
     ],
-    "ja_description": "1924年創立\n国立科技大学\n6学院\n学生数約9.7,000人\n屏東に位置\n登録率85.85%"
+    "ja_description": "1924年創立\n国立科技大学\n6学院\n学生数約9.7,000人\n屏東に位置\n登録率85.85%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 673,
+      "the_world": "1501+",
+      "cheers": "21-30",
+      "yuanjian": null
+    }
   },
   {
     "id": "82",
@@ -4426,7 +4790,14 @@
         "web_research"
       ]
     },
-    "id_104": 5044000000
+    "id_104": 5044000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": null,
+      "the_world": null,
+      "cheers": "21-30",
+      "yuanjian": null
+    }
   },
   {
     "id": "73",
@@ -4499,7 +4870,14 @@
         "web_research"
       ]
     },
-    "id_104": 5023000000
+    "id_104": 5023000000,
+    "rankings": {
+      "qs_world": 420,
+      "qs_asia": 88,
+      "the_world": "801-1000",
+      "cheers": 9,
+      "yuanjian": 6
+    }
   },
   {
     "id": "72",
@@ -4566,7 +4944,14 @@
       ],
       "jianzhang_year": 115
     },
-    "id_104": 5021000000
+    "id_104": 5021000000,
+    "rankings": {
+      "qs_world": "1001-1200",
+      "qs_asia": 363,
+      "the_world": "501-600",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "D7",
@@ -4739,7 +5124,14 @@
       "hailian"
     ],
     "last_updated": "2026-03-30",
-    "id_104": 5045000000
+    "id_104": 5045000000,
+    "rankings": {
+      "qs_world": "1201-1400",
+      "qs_asia": 311,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "83",
@@ -4771,7 +5163,15 @@
       "hailian"
     ],
     "last_updated": "2026-03-30",
-    "id_104": 5046000000
+    "id_104": 5046000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": null,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null,
+      "qs_subject_top": "Hospitality and Leisure Management #23"
+    }
   },
   {
     "id": "F2",
@@ -4969,7 +5369,14 @@
       "tuition_info": "NTD 3,340/単位（国立のため安価）",
       "notes": "学部生は奨学金対象外。秋季入学のみ"
     },
-    "id_104": 5020000000
+    "id_104": 5020000000,
+    "rankings": {
+      "qs_world": 345,
+      "qs_asia": 46,
+      "the_world": "401-500",
+      "cheers": 8,
+      "yuanjian": 5
+    }
   },
   {
     "id": "87",
@@ -5147,7 +5554,14 @@
         "amount": "NT$40,000〜56,000/学期"
       }
     ],
-    "ja_description": "1994年創立\n私立総合大学\n5学院\n学生数約13.1,000人\n台中に位置\n登録率92.3%"
+    "ja_description": "1994年創立\n私立総合大学\n5学院\n学生数約13.1,000人\n台中に位置\n登録率92.3%",
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 566,
+      "the_world": "1001-1200",
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "90",
@@ -6240,7 +6654,14 @@
     "foreign_student": {
       "oia_url": "https://www.wzu.edu.tw/"
     },
-    "id_104": 5109000000
+    "id_104": 5109000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": null,
+      "the_world": null,
+      "cheers": "21-30",
+      "yuanjian": null
+    }
   },
   {
     "id": "A1",
@@ -6294,7 +6715,14 @@
         "web_research"
       ]
     },
-    "id_104": 5108000000
+    "id_104": 5108000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": 1344,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null
+    }
   },
   {
     "id": "D8",
@@ -6345,7 +6773,15 @@
         "web_research"
       ]
     },
-    "id_104": 5086000000
+    "id_104": 5086000000,
+    "rankings": {
+      "qs_world": null,
+      "qs_asia": null,
+      "the_world": null,
+      "cheers": null,
+      "yuanjian": null,
+      "yuanjian_category": "私立技專校院トップ"
+    }
   },
   {
     "id": "97",

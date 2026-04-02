@@ -11,18 +11,20 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<nav aria-label="パンくずリスト" class="text-sm text-gray-500 mb-4 overflow-x-auto whitespace-nowrap">
-  <ol class="flex items-center gap-1">
+<nav aria-label="パンくずリスト" class="text-sm text-text-muted mb-6 overflow-x-auto whitespace-nowrap">
+  <ol class="flex items-center gap-1.5">
     <li>
       <a href="/" class="hover:text-primary transition-colors">ホーム</a>
     </li>
-    {items.map((item, i) => (
-      <li class="flex items-center gap-1">
-        <span class="text-gray-300">/</span>
+    {items.map((item) => (
+      <li class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-warm-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
         {item.href ? (
           <a href={item.href} class="hover:text-primary transition-colors">{item.label}</a>
         ) : (
-          <span class="text-gray-800">{item.label}</span>
+          <span class="text-text font-medium">{item.label}</span>
         )}
       </li>
     ))}

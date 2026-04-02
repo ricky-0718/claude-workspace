@@ -12,22 +12,22 @@ const { dept, school, showSchool = false } = Astro.props;
 
 <a
   href={`/universities/${school.resolvedSlug}/departments/${dept.id}/`}
-  class="flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors"
+  class="flex items-center justify-between px-5 py-3.5 hover:bg-warm-50 transition-colors duration-150 first:rounded-t-2xl last:rounded-b-2xl"
 >
   <div class="min-w-0">
-    <div class="text-sm text-gray-800 truncate">{dept.name.ja}</div>
-    <div class="text-xs text-gray-400 mt-0.5 truncate">
+    <div class="text-sm text-text truncate">{dept.name.ja}</div>
+    <div class="text-xs text-text-muted mt-0.5 truncate">
       {showSchool ? school.name.ja : dept.name.en}
     </div>
   </div>
-  <div class="flex items-center gap-2 shrink-0 ml-2">
+  <div class="flex items-center gap-2 shrink-0 ml-3">
     {dept.has_eng_taught && (
-      <span class="px-1.5 py-0.5 text-[10px] rounded bg-english-tag-bg text-english-tag">英語</span>
+      <span class="px-2 py-0.5 text-[10px] rounded-full bg-english-tag-bg text-english-tag font-medium">英語授業</span>
     )}
     {dept.has_interview && (
-      <span class="px-1.5 py-0.5 text-[10px] rounded bg-amber-50 text-amber-700">面接</span>
+      <span class="px-2 py-0.5 text-[10px] rounded-full bg-warning-light text-warning font-medium">面接</span>
     )}
-    <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="w-4 h-4 text-warm-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
     </svg>
   </div>

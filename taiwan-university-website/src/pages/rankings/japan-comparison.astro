@@ -1,0 +1,190 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Icon from '../../components/Icon.astro';
+
+import rankingsData from '../../data/rankings-2026.json';
+
+const twRankings = rankingsData.rankings || [];
+const jpRankings = rankingsData.japan_comparison || [];
+
+// Sort both by QS World
+function sortKey(rank: any): number {
+  if (rank == null) return 99999;
+  if (typeof rank === 'number') return rank;
+  const match = String(rank).match(/^(\d+)/);
+  return match ? parseInt(match[1]) : 99998;
+}
+
+const twSorted = [...twRankings].filter(r => r.qs_world != null).sort((a, b) => sortKey(a.qs_world) - sortKey(b.qs_world));
+const jpSorted = [...jpRankings].sort((a, b) => sortKey(a.qs_world) - sortKey(b.qs_world));
+
+// Build comparison pairs by rank band
+interface ComparisonBand {
+  label: string;
+  taiwan: typeof twRankings;
+  japan: typeof jpRankings;
+}
+
+const bands: ComparisonBand[] = [
+  { label: 'Top 100', taiwan: twSorted.filter(r => sortKey(r.qs_world) <= 100), japan: jpSorted.filter(r => sortKey(r.qs_world) <= 100) },
+  { label: '101-300', taiwan: twSorted.filter(r => sortKey(r.qs_world) > 100 && sortKey(r.qs_world) <= 300), japan: jpSorted.filter(r => sortKey(r.qs_world) > 100 && sortKey(r.qs_world) <= 300) },
+  { label: '301-500', taiwan: twSorted.filter(r => sortKey(r.qs_world) > 300 && sortKey(r.qs_world) <= 500), japan: jpSorted.filter(r => sortKey(r.qs_world) > 300 && sortKey(r.qs_world) <= 500) },
+  { label: '501-700', taiwan: twSorted.filter(r => sortKey(r.qs_world) > 500 && sortKey(r.qs_world) <= 700), japan: jpSorted.filter(r => sortKey(r.qs_world) > 500 && sortKey(r.qs_world) <= 700) },
+];
+
+function formatRank(rank: any): string {
+  if (rank == null) return '—';
+  return String(rank);
+}
+---
+
+<PageLayout
+  title="台湾 vs 日本 大学ランキング比較 2026 | 台湾大学データベース"
+  description="QS World Rankings 2026で台湾と日本の大学を比較。台湾大学は東工大・阪大と同レベル。学費比較も。"
+  path="/rankings/japan-comparison/"
+>
+  <Breadcrumb items={[
+    { label: 'ランキング', href: '/rankings/' },
+    { label: '日本の大学と比較' },
+  ]} />
+
+  <!-- Hero -->
+  <div class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-6 sm:p-10 text-white mb-10 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+    <div class="relative">
+      <p class="text-accent text-xs font-bold uppercase tracking-wider mb-2 font-display">QS World University Rankings 2026</p>
+      <h1 class="text-2xl sm:text-3xl font-bold leading-tight mb-3">
+        台湾の大学は、<br class="sm:hidden" />日本のどのレベル？
+      </h1>
+      <p class="text-sm text-white/70 max-w-2xl leading-relaxed">
+        QS世界大学ランキング2026で台湾と日本の大学を並べて比較。台湾の国立大学は日本の旧帝大・有名私立と同等以上のポジションにあります。
+      </p>
+    </div>
+  </div>
+
+  <!-- Key Insights -->
+  <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12" data-reveal>
+    <div class="bg-white border border-warm-200 rounded-2xl p-5 text-center">
+      <div class="text-2xl font-bold text-primary font-display mb-1">63位</div>
+      <div class="text-sm text-text font-medium">台湾大学（NTU）</div>
+      <div class="text-xs text-text-muted mt-1">東工大（85位）・阪大（91位）より上位</div>
+    </div>
+    <div class="bg-white border border-warm-200 rounded-2xl p-5 text-center">
+      <div class="text-2xl font-bold text-primary font-display mb-1">27校</div>
+      <div class="text-sm text-text font-medium">台湾のQS掲載大学</div>
+      <div class="text-xs text-text-muted mt-1">日本は約50校がQS掲載</div>
+    </div>
+    <div class="bg-white border border-warm-200 rounded-2xl p-5 text-center">
+      <div class="text-2xl font-bold text-success font-display mb-1">1/3</div>
+      <div class="text-sm text-text font-medium">学費は日本の約1/3</div>
+      <div class="text-xs text-text-muted mt-1">同ランク帯でもコスパ圧倒的</div>
+    </div>
+  </section>
+
+  <!-- Side-by-side comparison -->
+  <section data-reveal>
+    <h2 class="text-xl font-bold text-text mb-6 flex items-center gap-2">
+      <Icon name="chartBar" size={20} class="text-primary" />
+      順位帯別 並列比較
+    </h2>
+
+    {bands.filter(b => b.taiwan.length > 0 || b.japan.length > 0).map(band => (
+      <div class="mb-8">
+        <h3 class="text-sm font-bold text-text-muted uppercase tracking-wider mb-3 px-1">
+          QS World {band.label}
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Taiwan column -->
+          <div class="bg-primary-50 border border-primary-light rounded-2xl overflow-hidden">
+            <div class="px-4 py-2.5 bg-primary text-white text-xs font-bold uppercase tracking-wider">
+              台湾
+            </div>
+            <div class="divide-y divide-primary-light">
+              {band.taiwan.length > 0 ? band.taiwan.map(r => (
+                <div class="px-4 py-3 flex items-center justify-between">
+                  <div>
+                    <div class="text-sm font-medium text-text">{r.name_cht}</div>
+                    <div class="text-xs text-text-muted">{r.name_en}</div>
+                  </div>
+                  <span class="text-sm font-bold text-primary">#{formatRank(r.qs_world)}</span>
+                </div>
+              )) : (
+                <div class="px-4 py-6 text-center text-sm text-text-muted">この帯域に該当校なし</div>
+              )}
+            </div>
+          </div>
+
+          <!-- Japan column -->
+          <div class="bg-warm-50 border border-warm-200 rounded-2xl overflow-hidden">
+            <div class="px-4 py-2.5 bg-warm-300 text-text text-xs font-bold uppercase tracking-wider">
+              日本
+            </div>
+            <div class="divide-y divide-warm-200">
+              {band.japan.length > 0 ? band.japan.map(r => (
+                <div class="px-4 py-3 flex items-center justify-between">
+                  <div>
+                    <div class="text-sm font-medium text-text">{r.name_ja}</div>
+                    <div class="text-xs text-text-muted">{r.name_en}</div>
+                  </div>
+                  <span class="text-sm font-bold text-text-secondary">#{formatRank(r.qs_world)}</span>
+                </div>
+              )) : (
+                <div class="px-4 py-6 text-center text-sm text-text-muted">この帯域に該当校なし</div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- Tuition comparison -->
+  <section class="mt-12 bg-white border border-warm-200 rounded-2xl p-6 sm:p-8" data-reveal>
+    <h2 class="text-xl font-bold text-text mb-6 flex items-center gap-2">
+      <Icon name="currency" size={20} class="text-primary" />
+      年間学費の比較
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-primary-50 rounded-xl p-5 text-center">
+        <div class="text-xs text-text-muted uppercase tracking-wider mb-2">台湾（国立）</div>
+        <div class="text-2xl font-bold text-primary">約10〜15万円</div>
+        <div class="text-xs text-text-muted mt-1">NT$25,000〜55,000 / 学期</div>
+      </div>
+      <div class="bg-warm-50 rounded-xl p-5 text-center">
+        <div class="text-xs text-text-muted uppercase tracking-wider mb-2">日本（国立）</div>
+        <div class="text-2xl font-bold text-text">約54万円</div>
+        <div class="text-xs text-text-muted mt-1">入学金28万円 + 授業料54万円</div>
+      </div>
+      <div class="bg-warm-50 rounded-xl p-5 text-center">
+        <div class="text-xs text-text-muted uppercase tracking-wider mb-2">日本（私立）</div>
+        <div class="text-2xl font-bold text-text">約100〜150万円</div>
+        <div class="text-xs text-text-muted mt-1">学部により大きく異なる</div>
+      </div>
+    </div>
+    <p class="text-xs text-text-muted mt-4 text-center">
+      台湾国立大学の学費は日本の国立大学の約1/4〜1/5。同ランク帯の大学に大幅に低い費用で通えます。
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="mt-12 text-center" data-reveal>
+    <p class="text-sm text-text-muted mb-4">台湾留学の費用対効果の高さに興味を持ったら</p>
+    <a
+      href="https://lin.ee/placeholder"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 bg-line hover:bg-line-dark text-white px-7 py-3.5 rounded-xl text-base font-bold transition-colors duration-150"
+    >
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg>
+      LINEで無料相談する
+    </a>
+  </section>
+
+  <!-- Source note -->
+  <p class="text-xs text-text-muted mt-8 text-center">
+    データ出典: QS World University Rankings 2026 / Times Higher Education 2026
+  </p>
+</PageLayout>
