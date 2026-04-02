@@ -31,6 +31,9 @@ const bands: ComparisonBand[] = [
   { label: '101-300', taiwan: twSorted.filter(r => sortKey(r.qs_world) > 100 && sortKey(r.qs_world) <= 300), japan: jpSorted.filter(r => sortKey(r.qs_world) > 100 && sortKey(r.qs_world) <= 300) },
   { label: '301-500', taiwan: twSorted.filter(r => sortKey(r.qs_world) > 300 && sortKey(r.qs_world) <= 500), japan: jpSorted.filter(r => sortKey(r.qs_world) > 300 && sortKey(r.qs_world) <= 500) },
   { label: '501-700', taiwan: twSorted.filter(r => sortKey(r.qs_world) > 500 && sortKey(r.qs_world) <= 700), japan: jpSorted.filter(r => sortKey(r.qs_world) > 500 && sortKey(r.qs_world) <= 700) },
+  { label: '701-1000', taiwan: twSorted.filter(r => sortKey(r.qs_world) > 700 && sortKey(r.qs_world) <= 1000), japan: jpSorted.filter(r => sortKey(r.qs_world) > 700 && sortKey(r.qs_world) <= 1000) },
+  { label: '1001-1200', taiwan: twSorted.filter(r => sortKey(r.qs_world) > 1000 && sortKey(r.qs_world) <= 1200), japan: jpSorted.filter(r => sortKey(r.qs_world) > 1000 && sortKey(r.qs_world) <= 1200) },
+  { label: '1201-1400', taiwan: twSorted.filter(r => sortKey(r.qs_world) > 1200 && sortKey(r.qs_world) <= 1400), japan: jpSorted.filter(r => sortKey(r.qs_world) > 1200 && sortKey(r.qs_world) <= 1400) },
 ];
 
 function formatRank(rank: any): string {
