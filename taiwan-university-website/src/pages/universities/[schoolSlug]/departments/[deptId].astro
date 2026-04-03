@@ -5,10 +5,12 @@ import Badge from '../../../../components/Badge.astro';
 import Icon from '../../../../components/Icon.astro';
 import QuotaDisplay from '../../../../components/QuotaDisplay.astro';
 import DataCompletenessNote from '../../../../components/DataCompletenessNote.astro';
+import JsonLd from '../../../../components/JsonLd.astro';
 import {
   departments, schools, schoolById, groupById,
   type Department, type School, type DepartmentGroup,
 } from '../../../../data/loaders';
+import { buildDepartmentSchema, buildBreadcrumbSchema } from '../../../../utils/jsonld';
 
 export function getStaticPaths() {
   return departments.map(dept => {
@@ -38,6 +40,12 @@ const { dept, school, group } = Astro.props;
   description={`${school.name.ja} ${dept.name.ja}の出願情報・必要書類・面接情報。${group?.name.ja || ''}。`}
   path={`/universities/${school.resolvedSlug}/departments/${dept.id}/`}
 >
+  <JsonLd data={buildDepartmentSchema(dept, school)} slot="head" />
+  <JsonLd data={buildBreadcrumbSchema([
+    { label: '大学一覧', href: '/universities/' },
+    { label: school.name.ja, href: `/universities/${school.resolvedSlug}/` },
+    { label: dept.name.ja },
+  ], `/universities/${school.resolvedSlug}/departments/${dept.id}/`)} slot="head" />
   <Breadcrumb items={[
     { label: '大学一覧', href: '/universities/' },
     { label: school.name.ja, href: `/universities/${school.resolvedSlug}/` },

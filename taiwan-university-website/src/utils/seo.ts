@@ -6,7 +6,7 @@ export interface SEOProps {
 }
 
 const SITE_NAME = '台湾大学データベース | 台湾留学101';
-const SITE_URL = 'https://db.taiwan101.com';
+const SITE_URL = 'https://db.ryugaku101.com';
 
 export function buildTitle(pageTitle: string): string {
   return `${pageTitle} | ${SITE_NAME}`;

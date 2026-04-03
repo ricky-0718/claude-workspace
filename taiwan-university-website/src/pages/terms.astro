@@ -1,0 +1,79 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+---
+
+<PageLayout
+  title="利用規約 | 台湾大学データベース"
+  description="台湾大学データベースの利用規約。データの利用条件、禁止事項、免責事項について。"
+  path="/terms/"
+>
+  <Breadcrumb items={[{ label: '利用規約' }]} />
+
+  <article class="max-w-3xl mx-auto prose prose-slate">
+    <h1 class="text-2xl sm:text-3xl font-bold text-text mb-8">利用規約</h1>
+    <p class="text-sm text-text-muted mb-8">最終更新日: 2026年4月3日</p>
+
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-text mb-3">1. サービスの概要</h2>
+      <p class="text-sm text-text-secondary leading-relaxed mb-3">
+        台湾大学データベース（以下「本サービス」）は、台湾留学101センター（以下「当社」）が運営する、台湾の大学・学科情報を日本語で提供するWebサイトです。
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-text mb-3">2. データの出典と正確性</h2>
+      <p class="text-sm text-text-secondary leading-relaxed mb-3">
+        本サービスに掲載されているデータは、以下の公的機関・データソースから取得しています。
+      </p>
+      <ul class="text-sm text-text-secondary leading-relaxed space-y-1 list-disc list-inside mb-3">
+        <li>海外連合招生委員会（海聯會）</li>
+        <li>各大学の公式サイト・外國學生入学簡章</li>
+        <li>104人力銀行</li>
+        <li>中華民国教育部オープンデータ</li>
+        <li>QS World University Rankings / THE World University Rankings</li>
+      </ul>
+      <p class="text-sm text-text-secondary leading-relaxed">
+        データの正確性には最大限の注意を払っておりますが、最新の情報については各大学の公式サイトをご確認ください。当社はデータの正確性・完全性を保証するものではありません。
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-text mb-3">3. 禁止事項</h2>
+      <p class="text-sm text-text-secondary leading-relaxed mb-3">
+        本サービスのご利用にあたり、以下の行為を禁止します。
+      </p>
+      <ul class="text-sm text-text-secondary leading-relaxed space-y-1 list-disc list-inside">
+        <li>自動化ツール（スクレイパー、クローラー、ボット等）を使用した大量のデータ取得</li>
+        <li>本サービスのデータを無断で複製し、商用目的で利用する行為</li>
+        <li>本サービスのデータを再配布・転載する行為（引用の範囲を超えるもの）</li>
+        <li>本サービスのサーバーに過度な負荷をかける行為</li>
+        <li>本サービスのセキュリティを侵害する行為</li>
+        <li>その他、当社が不適切と判断する行為</li>
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-text mb-3">4. 知的財産権</h2>
+      <p class="text-sm text-text-secondary leading-relaxed">
+        本サービスに掲載されている日本語翻訳、独自の分析・解説、デザイン、及びサイト構成に関する知的財産権は当社に帰属します。個人的な利用の範囲を超えた複製・転載は禁止します。
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-text mb-3">5. 免責事項</h2>
+      <ul class="text-sm text-text-secondary leading-relaxed space-y-2 list-disc list-inside">
+        <li>本サービスの情報を利用したことにより生じた損害について、当社は一切の責任を負いません。</li>
+        <li>出願・入学に関する最終判断は、各大学の公式情報に基づいてご自身で行ってください。</li>
+        <li>本サービスは予告なく内容の変更・停止を行う場合があります。</li>
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-text mb-3">6. お問い合わせ</h2>
+      <p class="text-sm text-text-secondary leading-relaxed">
+        本規約に関するお問い合わせは、当社のLINE公式アカウントまたはWebサイト（ryugaku101.com）よりご連絡ください。
+      </p>
+    </section>
+  </article>
+</PageLayout>

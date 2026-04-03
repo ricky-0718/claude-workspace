@@ -1,0 +1,30 @@
+# Taiwan University Database - db.ryugaku101.com
+# Operated by Taiwan Study Abroad 101 Center
+
+User-agent: *
+Allow: /
+Disallow: /pagefind/
+
+# Block known scraper bots
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# Crawl rate limit for all bots
+Crawl-delay: 2
+
+Sitemap: https://db.ryugaku101.com/sitemap-index.xml
