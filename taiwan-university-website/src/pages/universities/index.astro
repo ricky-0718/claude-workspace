@@ -2,7 +2,9 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import SchoolCard from '../../components/SchoolCard.astro';
+import JsonLd from '../../components/JsonLd.astro';
 import { schools, getRegions, getSchoolTypes } from '../../data/loaders';
+import { buildItemListSchema } from '../../utils/jsonld';
 
 const regions = getRegions();
 const types = getSchoolTypes();
@@ -13,6 +15,10 @@ const types = getSchoolTypes();
   description="台湾全129大学を地域・種別で検索。国立・私立の学費、寮、奨学金情報を日本語で掲載。"
   path="/universities/"
 >
+  <JsonLd data={buildItemListSchema('台湾の大学一覧', schools.map(s => ({
+    name: s.name.ja,
+    url: `/universities/${s.resolvedSlug}/`,
+  })))} slot="head" />
   <Breadcrumb items={[{ label: '大学一覧' }]} />
 
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">

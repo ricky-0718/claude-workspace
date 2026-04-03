@@ -6,11 +6,13 @@ import Icon from '../../../components/Icon.astro';
 import RankingBadge from '../../../components/RankingBadge.astro';
 import TuitionTable from '../../../components/TuitionTable.astro';
 import DataCompletenessNote from '../../../components/DataCompletenessNote.astro';
+import JsonLd from '../../../components/JsonLd.astro';
 import {
   schools, deptsBySchool, groupById,
   getSchoolTypeLabel, isNational,
   type School, type Department,
 } from '../../../data/loaders';
+import { buildSchoolSchema, buildBreadcrumbSchema } from '../../../utils/jsonld';
 
 export function getStaticPaths() {
   return schools.map(school => ({
@@ -47,6 +49,11 @@ for (const d of departments) {
   description={`${school.name.ja}の学費・奨学金・寮・学科一覧。${school.region}にある${typeLabel}大学。`}
   path={`/universities/${school.resolvedSlug}/`}
 >
+  <JsonLd data={buildSchoolSchema(school)} slot="head" />
+  <JsonLd data={buildBreadcrumbSchema([
+    { label: '大学一覧', href: '/universities/' },
+    { label: school.name.ja },
+  ], `/universities/${school.resolvedSlug}/`)} slot="head" />
   <Breadcrumb items={[
     { label: '大学一覧', href: '/universities/' },
     { label: school.name.ja },

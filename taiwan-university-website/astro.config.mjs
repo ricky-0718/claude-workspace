@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import pagefind from 'astro-pagefind';
 
 export default defineConfig({
-  site: 'https://db.taiwan101.com',
+  site: 'https://db.ryugaku101.com',
   output: 'static',
   build: { format: 'directory' },
   integrations: [sitemap(), pagefind()],

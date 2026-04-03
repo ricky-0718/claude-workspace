@@ -5,7 +5,9 @@ import Footer from '../components/Footer.astro';
 import LineCTA from '../components/LineCTA.astro';
 import GroupCard from '../components/GroupCard.astro';
 import Icon from '../components/Icon.astro';
+import JsonLd from '../components/JsonLd.astro';
 import { schools, departments, groups } from '../data/loaders';
+import { buildWebSiteSchema } from '../utils/jsonld';
 
 // Popular universities: prefer schools with rankings data, then data_completeness === 'full'
 const popularSchools = schools
@@ -18,6 +20,7 @@ const popularSchools = schools
   description="台湾全129大学・2,371学科を日本語で検索。学費・奨学金・寮・ランキング情報を比較できます。"
   path="/"
 >
+  <JsonLd data={buildWebSiteSchema()} slot="head" />
   <Header />
 
   <!-- ============================================ -->
