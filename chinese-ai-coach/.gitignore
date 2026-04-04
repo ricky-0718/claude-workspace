@@ -1,0 +1,6 @@
+node_modules/
+data/coach.db
+data/coach.db-wal
+data/coach.db-shm
+data/audio/
+.env

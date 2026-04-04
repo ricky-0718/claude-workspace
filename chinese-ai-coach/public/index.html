@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>台灣華語コーチ</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- ログイン画面 -->
+    <div id="login-screen" class="screen active">
+      <div class="login-container">
+        <h1>台灣華語コーチ</h1>
+        <p class="subtitle">台湾留学のための中国語トレーニング</p>
+        <input type="text" id="login-name" placeholder="お名前">
+        <input type="password" id="login-pass" placeholder="パスコード（4桁）" maxlength="4" inputmode="numeric">
+        <button onclick="login()">はじめる</button>
+        <p class="login-error" id="login-error"></p>
+      </div>
+    </div>
+
+    <!-- メイン画面 -->
+    <div id="main-screen" class="screen">
+      <header>
+        <h2 id="student-name"></h2>
+        <nav>
+          <button class="nav-btn active" data-tab="drill">発音ドリル</button>
+          <button class="nav-btn" data-tab="chat">会話練習</button>
+          <button class="nav-btn" data-tab="tasks">課題</button>
+        </nav>
+      </header>
+
+      <!-- 発音ドリル -->
+      <div id="drill-tab" class="tab active">
+        <div class="drill-card">
+          <div class="drill-target">
+            <p class="hanzi" id="drill-hanzi">媽 麻 馬 罵</p>
+            <p class="pinyin" id="drill-pinyin">mā má mǎ mà</p>
+            <button class="play-btn" onclick="playExample()" id="play-btn">お手本を聞く</button>
+          </div>
+
+          <div class="recorder">
+            <button class="record-btn" id="record-btn" onclick="toggleRecord()">
+              <span id="record-label">録音開始</span>
+            </button>
+            <div class="recording-indicator" id="recording-indicator"></div>
+          </div>
+
+          <div class="score-panel" id="score-panel" style="display:none">
+            <div class="score-row">
+              <span class="score-label">声調</span>
+              <div class="score-bar"><div class="score-fill tone" id="score-tone"></div></div>
+              <span class="score-value" id="score-tone-val"></span>
+            </div>
+            <div class="score-row">
+              <span class="score-label">声母</span>
+              <div class="score-bar"><div class="score-fill initial" id="score-initial"></div></div>
+              <span class="score-value" id="score-initial-val"></span>
+            </div>
+            <div class="score-row">
+              <span class="score-label">韻母</span>
+              <div class="score-bar"><div class="score-fill final" id="score-final"></div></div>
+              <span class="score-value" id="score-final-val"></span>
+            </div>
+            <div class="score-row">
+              <span class="score-label">総合</span>
+              <div class="score-bar"><div class="score-fill overall" id="score-overall"></div></div>
+              <span class="score-value" id="score-overall-val"></span>
+            </div>
+            <div class="word-scores" id="word-scores"></div>
+          </div>
+
+          <div class="drill-nav">
+            <button onclick="prevDrill()">前へ</button>
+            <span id="drill-progress">1 / 10</span>
+            <button onclick="nextDrill()">次へ</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- テキスト会話 -->
+      <div id="chat-tab" class="tab">
+        <div class="chat-messages" id="chat-messages">
+          <div class="msg assistant">
+            <div class="msg-content">
+              <p>你好！我是你的華語老師。請用中文跟我聊天吧！</p>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="chat-input" placeholder="繁體中文で入力..."
+                 onkeydown="if(event.key==='Enter')sendChat()">
+          <button onclick="sendChat()">送信</button>
+        </div>
+      </div>
+
+      <!-- 課題一覧 -->
+      <div id="tasks-tab" class="tab">
+        <div class="task-list" id="task-list">
+          <p class="empty-state">課題はまだありません</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
