@@ -18,9 +18,10 @@ const upload = multer({
 // 発音判定
 router.post('/assess', upload.single('audio'), async (req, res) => {
   try {
-    const { student_id, lesson_id, target_text, target_pinyin } = req.body;
-    if (!student_id || !target_text) {
-      return res.status(400).json({ error: 'student_id and target_text are required' });
+    const student_id = req.student.id;
+    const { lesson_id, target_text, target_pinyin } = req.body;
+    if (!target_text) {
+      return res.status(400).json({ error: 'target_text is required' });
     }
 
     let result;

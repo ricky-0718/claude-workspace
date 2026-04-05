@@ -8,18 +8,37 @@ const { getDb } = require('./db');
 const app = express();
 const PORT = process.env.PORT || 3860;
 
-app.use(cors());
+app.use(cors({
+  origin: true,
+  allowedHeaders: ['Content-Type', 'x-student-token', 'x-session-id', 'x-coach-key'],
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-// 簡易トークン認証ミドルウェア
+// 生徒認証ミドルウェア（セッション検証付き）
 function auth(req, res, next) {
   const token = req.headers['x-student-token'] || req.query.token;
+  const sessionId = req.headers['x-session-id'];
   if (!token) return res.status(401).json({ error: 'Token required' });
 
   const db = getDb();
   const student = db.prepare('SELECT * FROM students WHERE token = ?').get(token);
   if (!student) return res.status(401).json({ error: 'Invalid token' });
+
+  // セッション検証
+  if (sessionId) {
+    const session = db.prepare(
+      'SELECT * FROM sessions WHERE id = ? AND student_id = ?'
+    ).get(sessionId, student.id);
+    if (!session) {
+      return res.status(401).json({
+        error: 'session_expired',
+        message: '別のデバイスでログインされました',
+      });
+    }
+    db.prepare('UPDATE sessions SET last_active = CURRENT_TIMESTAMP WHERE id = ?')
+      .run(sessionId);
+  }
 
   req.student = student;
   next();
@@ -43,13 +62,19 @@ app.post('/api/login', (req, res) => {
   const student = db.prepare('SELECT id, name, level, token FROM students WHERE name = ? AND passcode = ?').get(name.trim(), passcode);
   if (!student) return res.status(401).json({ error: 'お名前またはパスコードが違います' });
 
-  res.json(student);
+  // 既存セッションを全削除 → 新規セッション作成（1デバイス制限）
+  const sessionId = crypto.randomUUID();
+  db.prepare('DELETE FROM sessions WHERE student_id = ?').run(student.id);
+  db.prepare('INSERT INTO sessions (id, student_id, user_agent) VALUES (?, ?, ?)')
+    .run(sessionId, student.id, req.headers['user-agent'] || '');
+
+  res.json({ ...student, session_id: sessionId });
 });
 
-// ルート
-app.use('/api/chat', require('./routes/chat'));
-app.use('/api/speech', require('./routes/speech'));
-app.use('/api/tasks', require('./routes/tasks'));
+// ルート（生徒向けはauth必須）
+app.use('/api/chat', auth, require('./routes/chat'));
+app.use('/api/speech', auth, require('./routes/speech'));
+app.use('/api/tasks', auth, require('./routes/tasks'));
 app.use('/api/dashboard', coachAuth, require('./routes/dashboard'));
 
 // 生徒登録（管理者用）
@@ -82,6 +107,11 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// ダッシュボードページ
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/dashboard.html'));
+});
+
 // SPA fallback (Express v5 syntax)
 app.get('/{*path}', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
@@ -90,4 +120,12 @@ app.get('/{*path}', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Chinese AI Coach running on http://localhost:${PORT}`);
   getDb(); // DB初期化
+
+  // 24時間以上経過したセッションを1時間ごとに削除
+  setInterval(() => {
+    try {
+      const db = getDb();
+      db.prepare("DELETE FROM sessions WHERE last_active < datetime('now', '-1 day')").run();
+    } catch {}
+  }, 60 * 60 * 1000);
 });

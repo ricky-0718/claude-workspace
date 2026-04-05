@@ -1,0 +1,15 @@
+app = "taiwan-chinese-coach"
+primary_region = "nrt"
+
+[build]
+
+[http_service]
+  internal_port = 3860
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[mounts]
+  source = "coach_data"
+  destination = "/data"

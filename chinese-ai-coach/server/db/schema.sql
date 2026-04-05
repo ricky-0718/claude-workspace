@@ -53,6 +53,16 @@ CREATE TABLE IF NOT EXISTS tasks (
   FOREIGN KEY (student_id) REFERENCES students(id)
 );
 
+-- セッション管理（同時ログイン制限）
+CREATE TABLE IF NOT EXISTS sessions (
+  id TEXT PRIMARY KEY,
+  student_id INTEGER NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  last_active DATETIME DEFAULT CURRENT_TIMESTAMP,
+  user_agent TEXT,
+  FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
 -- 講師チェック記録
 CREATE TABLE IF NOT EXISTS coach_reviews (
   id INTEGER PRIMARY KEY,

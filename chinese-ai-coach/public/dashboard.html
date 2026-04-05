@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>講師ダッシュボード | 台灣華語コーチ</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 講師ログイン -->
+    <div id="coach-login" class="coach-login">
+      <div class="login-container">
+        <h1>台灣華語コーチ</h1>
+        <p class="subtitle">講師ダッシュボード</p>
+        <input type="password" id="coach-key-input" placeholder="講師キー">
+        <button onclick="coachLogin()">ログイン</button>
+        <p class="login-error" id="coach-error"></p>
+      </div>
+    </div>
+
+    <!-- ダッシュボード -->
+    <div id="dashboard" style="display:none">
+      <div class="dash-header">
+        <h1>台灣華語コーチ <span class="dash-badge">Dashboard</span></h1>
+        <button class="btn-ghost" onclick="coachLogout()">ログアウト</button>
+      </div>
+
+      <!-- 生徒登録フォーム（トグル表示） -->
+      <div id="add-student-section" class="section" style="display:none">
+        <div class="form-card" style="max-width:480px">
+          <h3>生徒を追加</h3>
+          <input type="text" id="new-student-name" placeholder="名前（ログインに使用）">
+          <input type="text" id="new-student-line" placeholder="LINE名（任意）">
+          <select id="new-student-level">
+            <option value="beginner">初級（beginner）</option>
+            <option value="intermediate">中級（intermediate）</option>
+            <option value="advanced">上級（advanced）</option>
+          </select>
+          <div class="form-actions">
+            <button class="btn-primary" onclick="addStudent()">登録</button>
+            <button class="btn-ghost" onclick="toggleAddStudent()">キャンセル</button>
+          </div>
+        </div>
+
+        <!-- 登録完了 → LINE送信用テキスト -->
+        <div id="student-created-result" class="result-card" style="display:none">
+          <h3>登録完了</h3>
+          <p>以下をLINEで生徒に送ってください：</p>
+          <textarea id="student-line-message" rows="6" readonly></textarea>
+          <button class="btn-primary" onclick="copyLineMessage()">コピー</button>
+          <span id="copy-feedback" class="copy-feedback"></span>
+        </div>
+      </div>
+
+      <!-- 生徒カード一覧 -->
+      <div class="section">
+        <div class="section-header">
+          <h2>生徒一覧</h2>
+          <button class="btn-primary" onclick="toggleAddStudent()">+ 生徒を追加</button>
+        </div>
+        <div class="student-grid" id="student-grid">
+          <p class="empty-state">読み込み中...</p>
+        </div>
+      </div>
+
+      <!-- 生徒詳細（カードクリック時に表示） -->
+      <div id="student-detail" style="display:none">
+        <div class="detail-header">
+          <h2 id="detail-name"></h2>
+          <span class="level-badge" id="detail-level"></span>
+          <button class="btn-ghost" onclick="closeDetail()">閉じる</button>
+        </div>
+
+        <div class="detail-grid">
+          <!-- 直近のドリル -->
+          <div class="detail-card">
+            <h3>発音ドリル履歴</h3>
+            <div id="detail-drills" class="scrollable"></div>
+          </div>
+
+          <!-- チャット履歴 -->
+          <div class="detail-card">
+            <h3>会話履歴</h3>
+            <div id="detail-chats" class="scrollable chat-scroll"></div>
+          </div>
+
+          <!-- 弱点 -->
+          <div class="detail-card">
+            <h3>弱点（声調スコア &lt; 70）</h3>
+            <div id="detail-weak"></div>
+          </div>
+
+          <!-- レビュー履歴 -->
+          <div class="detail-card">
+            <h3>講師レビュー</h3>
+            <div id="detail-reviews"></div>
+          </div>
+        </div>
+
+        <!-- フォーム -->
+        <div class="form-row">
+          <!-- レビュー追加 -->
+          <div class="form-card">
+            <h3>レビューを追加</h3>
+            <input type="text" id="review-coach" placeholder="講師名">
+            <textarea id="review-notes" placeholder="メモ・所感" rows="3"></textarea>
+            <input type="text" id="review-weak" placeholder="弱点（カンマ区切り）">
+            <input type="text" id="review-focus" placeholder="次の学習フォーカス">
+            <button class="btn-primary" onclick="submitReview()">保存</button>
+          </div>
+
+          <!-- 課題作成 -->
+          <div class="form-card">
+            <h3>課題を作成</h3>
+            <select id="task-type">
+              <option value="drill">発音ドリル</option>
+              <option value="chat">会話練習</option>
+              <option value="video">動画視聴</option>
+            </select>
+            <input type="text" id="task-title" placeholder="課題タイトル">
+            <textarea id="task-desc" placeholder="説明" rows="2"></textarea>
+            <input type="date" id="task-due">
+            <button class="btn-primary" onclick="createTask()">作成</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

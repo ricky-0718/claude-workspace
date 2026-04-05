@@ -1,5 +1,6 @@
 // State
 let studentToken = localStorage.getItem('coach_token') || '';
+let sessionId = localStorage.getItem('coach_session_id') || '';
 let studentId = null;
 let studentData = null;
 let currentDrillIndex = 0;
@@ -8,6 +9,27 @@ let audioChunks = [];
 let isRecording = false;
 
 const API = '';
+
+// 認証付きfetchラッパー（セッション検証込み）
+async function apiFetch(url, options = {}) {
+  options.headers = {
+    ...options.headers,
+    'x-student-token': studentData?.token || '',
+    'x-session-id': sessionId,
+  };
+  const res = await fetch(url, options);
+  if (res.status === 401) {
+    const data = await res.clone().json().catch(() => ({}));
+    if (data.error === 'session_expired') {
+      localStorage.removeItem('coach_session_id');
+      localStorage.removeItem('coach_student');
+      alert('別のデバイスでログインされました。再度ログインしてください。');
+      location.reload();
+      return null;
+    }
+  }
+  return res;
+}
 
 // ===== ドリルデータ（台湾華語 — 繁体字） =====
 const drills = [
@@ -50,7 +72,9 @@ async function login() {
 
     studentId = data.id;
     studentData = data;
+    sessionId = data.session_id;
     localStorage.setItem('coach_student', JSON.stringify(data));
+    localStorage.setItem('coach_session_id', data.session_id);
 
     document.getElementById('login-screen').classList.remove('active');
     document.getElementById('main-screen').classList.add('active');
@@ -172,10 +196,11 @@ async function submitAudio(audioBlob) {
   document.getElementById('record-label').textContent = '判定中...';
 
   try {
-    const res = await fetch(`${API}/api/speech/assess`, {
+    const res = await apiFetch(`${API}/api/speech/assess`, {
       method: 'POST',
       body: formData,
     });
+    if (!res) return;
     const result = await res.json();
     showScore(result);
   } catch (err) {
@@ -237,14 +262,12 @@ async function sendChat() {
   appendMessage('user', message);
 
   try {
-    const res = await fetch(`${API}/api/chat/send`, {
+    const res = await apiFetch(`${API}/api/chat/send`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        student_id: studentId || 1,
-        message,
-      }),
+      body: JSON.stringify({ message }),
     });
+    if (!res) return;
     const result = await res.json();
 
     if (result.error) {
@@ -297,7 +320,8 @@ function escapeHtml(text) {
 // ===== 課題 =====
 async function loadTasks() {
   try {
-    const res = await fetch(`${API}/api/tasks/${studentId || 1}`);
+    const res = await apiFetch(`${API}/api/tasks/${studentId || 1}`);
+    if (!res) return;
     const tasks = await res.json();
 
     const container = document.getElementById('task-list');

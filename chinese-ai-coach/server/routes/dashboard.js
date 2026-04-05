@@ -98,4 +98,20 @@ router.post('/review', (req, res) => {
   res.json({ success: true });
 });
 
+// 課題を作成（講師用）
+router.post('/tasks', (req, res) => {
+  const { student_id, lesson_id, task_type, title, description, due_date } = req.body;
+  if (!student_id || !title) {
+    return res.status(400).json({ error: 'student_id and title required' });
+  }
+
+  const db = getDb();
+  const result = db.prepare(`
+    INSERT INTO tasks (student_id, lesson_id, task_type, title, description, due_date)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `).run(student_id, lesson_id || '', task_type || 'drill', title, description || '', due_date || null);
+
+  res.json({ id: result.lastInsertRowid });
+});
+
 module.exports = router;

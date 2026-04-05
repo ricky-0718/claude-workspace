@@ -6,16 +6,14 @@ const claude = require('../services/claude');
 // テキスト会話を送信
 router.post('/send', async (req, res) => {
   try {
-    const { student_id, message, lesson_topic } = req.body;
-    if (!student_id || !message) {
-      return res.status(400).json({ error: 'student_id and message are required' });
+    const { message, lesson_topic } = req.body;
+    const student_id = req.student.id;
+    if (!message) {
+      return res.status(400).json({ error: 'message is required' });
     }
 
     const db = getDb();
-
-    // 生徒の情報を取得
-    const student = db.prepare('SELECT * FROM students WHERE id = ?').get(student_id);
-    if (!student) return res.status(404).json({ error: 'Student not found' });
+    const student = req.student;
 
     // 直近の会話履歴を取得（最新20件）
     const history = db.prepare(

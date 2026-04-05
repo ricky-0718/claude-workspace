@@ -2,7 +2,7 @@ const Database = require('better-sqlite3');
 const fs = require('fs');
 const path = require('path');
 
-const DB_PATH = path.join(__dirname, '../../data/coach.db');
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, '../../data/coach.db');
 const SCHEMA_PATH = path.join(__dirname, 'schema.sql');
 
 let db;
