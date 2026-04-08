@@ -82,6 +82,21 @@ router.get('/students/:id', (req, res) => {
   });
 });
 
+// 生徒のレッスン進捗
+router.get('/students/:id/progress', (req, res) => {
+  const db = getDb();
+  const progress = db.prepare(`
+    SELECT l.id, l.lesson_number, l.title_zh, l.vocab_count,
+           COALESCE(sp.vocab_mastered, 0) as mastered,
+           sp.last_drill_at,
+           (SELECT COUNT(*) FROM grammar_points WHERE lesson_id = l.id) as grammar_count
+    FROM lessons l
+    LEFT JOIN student_progress sp ON sp.lesson_id = l.id AND sp.student_id = ?
+    ORDER BY l.sort_order
+  `).all(req.params.id);
+  res.json(progress);
+});
+
 // 講師レビューを保存
 router.post('/review', (req, res) => {
   const { student_id, coach_name, notes, weak_points, next_focus } = req.body;

@@ -18,6 +18,13 @@ function getDb() {
 
     const schema = fs.readFileSync(SCHEMA_PATH, 'utf-8');
     db.exec(schema);
+
+    // Migration: add current_lesson_id to students
+    try {
+      db.exec("ALTER TABLE students ADD COLUMN current_lesson_id TEXT DEFAULT 'book1-lesson01'");
+    } catch (e) {
+      // Column already exists
+    }
   }
   return db;
 }

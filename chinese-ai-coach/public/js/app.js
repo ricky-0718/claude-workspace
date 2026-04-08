@@ -8,6 +8,11 @@ let mediaRecorder = null;
 let audioChunks = [];
 let isRecording = false;
 
+// Curriculum state
+let currentLessonId = null;
+let lessonVocabulary = [];
+let lessons = [];
+
 const API = '';
 
 // 認証付きfetchラッパー（セッション検証込み）
@@ -30,20 +35,6 @@ async function apiFetch(url, options = {}) {
   }
   return res;
 }
-
-// ===== ドリルデータ（台湾華語 — 繁体字） =====
-const drills = [
-  { hanzi: '媽 麻 馬 罵', pinyin: 'mā má mǎ mà', text: '媽麻馬罵' },
-  { hanzi: '他 她 它', pinyin: 'tā tā tā', text: '他她它' },
-  { hanzi: '你好', pinyin: 'nǐ hǎo', text: '你好' },
-  { hanzi: '謝謝', pinyin: 'xiè xie', text: '謝謝' },
-  { hanzi: '我是日本人', pinyin: 'wǒ shì rì běn rén', text: '我是日本人' },
-  { hanzi: '我想去台灣留學', pinyin: 'wǒ xiǎng qù tái wān liú xué', text: '我想去台灣留學' },
-  { hanzi: '請問捷運站在哪裡', pinyin: 'qǐng wèn jié yùn zhàn zài nǎ lǐ', text: '請問捷運站在哪裡' },
-  { hanzi: '我要一杯珍珠奶茶', pinyin: 'wǒ yào yī bēi zhēn zhū nǎi chá', text: '我要一杯珍珠奶茶' },
-  { hanzi: '今天天氣很好', pinyin: 'jīn tiān tiān qì hěn hǎo', text: '今天天氣很好' },
-  { hanzi: '我的大學在台北', pinyin: 'wǒ de dà xué zài tái běi', text: '我的大學在台北' },
-];
 
 // ===== ログイン =====
 async function login() {
@@ -73,6 +64,7 @@ async function login() {
     studentId = data.id;
     studentData = data;
     sessionId = data.session_id;
+    currentLessonId = data.current_lesson_id || null;
     localStorage.setItem('coach_student', JSON.stringify(data));
     localStorage.setItem('coach_session_id', data.session_id);
 
@@ -80,21 +72,20 @@ async function login() {
     document.getElementById('main-screen').classList.add('active');
     document.getElementById('student-name').textContent = `${data.name} さん`;
 
-    loadDrill();
+    loadLessons();
     loadTasks();
   } catch (err) {
     errorEl.textContent = '通信エラーが発生しました';
   }
 }
 
-// 自動ログイン（前回のセッションを復元）
+// 自動ログイン復元
 try {
   const saved = JSON.parse(localStorage.getItem('coach_student'));
   if (saved) {
     document.getElementById('login-name').value = saved.name;
   }
 } catch {}
-
 
 // ===== タブ切り替え =====
 document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -106,14 +97,102 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
   });
 });
 
+// ===== レッスン選択 =====
+async function loadLessons() {
+  try {
+    const res = await apiFetch(`${API}/api/curriculum/lessons`);
+    if (!res) return;
+    lessons = await res.json();
+
+    const select = document.getElementById('lesson-select');
+    select.innerHTML = '<option value="">レッスンを選択...</option>';
+
+    lessons.forEach(l => {
+      const pct = l.vocab_count > 0 ? Math.round((l.mastered / l.vocab_count) * 100) : 0;
+      const opt = document.createElement('option');
+      opt.value = l.id;
+      opt.textContent = `第${l.lesson_number}課 ${l.title_zh}（${pct}%）`;
+      select.appendChild(opt);
+    });
+
+    // Auto-select current lesson
+    if (currentLessonId) {
+      select.value = currentLessonId;
+      selectLesson(currentLessonId);
+    }
+  } catch (err) {
+    console.error('Failed to load lessons:', err);
+  }
+}
+
+async function selectLesson(lessonId) {
+  if (!lessonId) {
+    document.getElementById('drill-card').style.display = 'none';
+    lessonVocabulary = [];
+    currentLessonId = null;
+    return;
+  }
+
+  currentLessonId = lessonId;
+
+  try {
+    const res = await apiFetch(`${API}/api/curriculum/lessons/${lessonId}/vocabulary`);
+    if (!res) return;
+    lessonVocabulary = await res.json();
+
+    if (lessonVocabulary.length === 0) {
+      document.getElementById('drill-card').style.display = 'none';
+      document.getElementById('lesson-progress-info').textContent = 'この課の単語データはまだありません';
+      return;
+    }
+
+    currentDrillIndex = 0;
+    document.getElementById('drill-card').style.display = '';
+
+    // Show progress info
+    const lesson = lessons.find(l => l.id === lessonId);
+    if (lesson) {
+      const pct = lesson.vocab_count > 0 ? Math.round((lesson.mastered / lesson.vocab_count) * 100) : 0;
+      document.getElementById('lesson-progress-info').innerHTML =
+        `<div class="progress-bar-container">` +
+        `<div class="progress-bar-fill" style="width:${pct}%"></div>` +
+        `</div>` +
+        `<span>${lesson.mastered || 0} / ${lesson.vocab_count} マスター</span>`;
+    }
+
+    loadDrill();
+  } catch (err) {
+    console.error('Failed to load vocabulary:', err);
+  }
+}
+
 // ===== 発音ドリル =====
 function loadDrill() {
-  const drill = drills[currentDrillIndex];
-  document.getElementById('drill-hanzi').textContent = drill.hanzi;
-  document.getElementById('drill-pinyin').textContent = drill.pinyin;
+  if (lessonVocabulary.length === 0) return;
+
+  const item = lessonVocabulary[currentDrillIndex];
+  document.getElementById('drill-hanzi').textContent = item.hanzi;
+  document.getElementById('drill-pinyin').textContent = item.pinyin;
+  document.getElementById('drill-translation').textContent = item.translation_ja;
   document.getElementById('drill-progress').textContent =
-    `${currentDrillIndex + 1} / ${drills.length}`;
+    `${currentDrillIndex + 1} / ${lessonVocabulary.length}`;
   document.getElementById('score-panel').style.display = 'none';
+
+  // Show examples
+  const exContainer = document.getElementById('drill-examples');
+  const examples = item.examples || [];
+  if (examples.length > 0) {
+    exContainer.innerHTML = examples.map(ex => `
+      <div class="example-item">
+        <span class="ex-hanzi">${escapeHtml(ex.hanzi)}</span>
+        <span class="ex-pinyin">${escapeHtml(ex.pinyin)}</span>
+        <span class="ex-ja">${escapeHtml(ex.translation_ja)}</span>
+      </div>
+    `).join('');
+    exContainer.style.display = '';
+  } else {
+    exContainer.style.display = 'none';
+  }
 }
 
 function prevDrill() {
@@ -121,12 +200,13 @@ function prevDrill() {
 }
 
 function nextDrill() {
-  if (currentDrillIndex < drills.length - 1) { currentDrillIndex++; loadDrill(); }
+  if (currentDrillIndex < lessonVocabulary.length - 1) { currentDrillIndex++; loadDrill(); }
 }
 
 function playExample() {
-  const drill = drills[currentDrillIndex];
-  const utterance = new SpeechSynthesisUtterance(drill.text);
+  if (lessonVocabulary.length === 0) return;
+  const item = lessonVocabulary[currentDrillIndex];
+  const utterance = new SpeechSynthesisUtterance(item.hanzi);
   utterance.lang = 'zh-TW';
   utterance.rate = 0.8;
   speechSynthesis.speak(utterance);
@@ -134,11 +214,7 @@ function playExample() {
 
 // 録音
 async function toggleRecord() {
-  if (isRecording) {
-    stopRecording();
-  } else {
-    startRecording();
-  }
+  if (isRecording) { stopRecording(); } else { startRecording(); }
 }
 
 async function startRecording() {
@@ -185,13 +261,14 @@ function stopRecording() {
 }
 
 async function submitAudio(audioBlob) {
-  const drill = drills[currentDrillIndex];
+  if (lessonVocabulary.length === 0) return;
+  const item = lessonVocabulary[currentDrillIndex];
   const formData = new FormData();
   formData.append('audio', audioBlob, 'recording.webm');
   formData.append('student_id', studentId || '1');
-  formData.append('lesson_id', 'tone-basics');
-  formData.append('target_text', drill.text);
-  formData.append('target_pinyin', drill.pinyin);
+  formData.append('lesson_id', currentLessonId || 'free');
+  formData.append('target_text', item.hanzi);
+  formData.append('target_pinyin', item.pinyin);
 
   document.getElementById('record-label').textContent = '判定中...';
 
@@ -216,7 +293,6 @@ function showScore(result) {
   setScore('tone', result.tone);
   setScore('overall', result.overall);
 
-  // word scores
   const wordContainer = document.getElementById('word-scores');
   wordContainer.innerHTML = '';
 
@@ -232,7 +308,6 @@ function showScore(result) {
     });
   }
 
-  // initial/final scores (average from words)
   if (result.words && result.words.length > 0) {
     const avgInitial = Math.round(
       result.words.reduce((s, w) => s + (w.initial_score || 0), 0) / result.words.length
@@ -265,7 +340,7 @@ async function sendChat() {
     const res = await apiFetch(`${API}/api/chat/send`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, lesson_id: currentLessonId }),
     });
     if (!res) return;
     const result = await res.json();

@@ -33,12 +33,24 @@
 
       <!-- 発音ドリル -->
       <div id="drill-tab" class="tab active">
-        <div class="drill-card">
+        <!-- レッスン選択 -->
+        <div class="lesson-selector" id="lesson-selector">
+          <select id="lesson-select" onchange="selectLesson(this.value)">
+            <option value="">レッスンを選択...</option>
+          </select>
+          <div class="lesson-progress-info" id="lesson-progress-info"></div>
+        </div>
+
+        <div class="drill-card" id="drill-card" style="display:none">
           <div class="drill-target">
-            <p class="hanzi" id="drill-hanzi">媽 麻 馬 罵</p>
-            <p class="pinyin" id="drill-pinyin">mā má mǎ mà</p>
+            <p class="hanzi" id="drill-hanzi"></p>
+            <p class="pinyin" id="drill-pinyin"></p>
+            <p class="translation" id="drill-translation"></p>
             <button class="play-btn" onclick="playExample()" id="play-btn">お手本を聞く</button>
           </div>
+
+          <!-- 例文エリア -->
+          <div class="drill-examples" id="drill-examples"></div>
 
           <div class="recorder">
             <button class="record-btn" id="record-btn" onclick="toggleRecord()">

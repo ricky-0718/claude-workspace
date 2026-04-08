@@ -76,6 +76,22 @@ router.post('/assess', upload.single('audio'), async (req, res) => {
       JSON.stringify(result)
     );
 
+    // Update student progress if lesson_id is a real curriculum lesson
+    if (lesson_id && lesson_id.startsWith('book')) {
+      const lesson = db.prepare('SELECT vocab_count FROM lessons WHERE id = ?').get(lesson_id);
+      if (lesson) {
+        db.prepare(`
+          INSERT INTO student_progress (student_id, lesson_id, vocab_total, vocab_mastered, last_drill_at)
+          VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+          ON CONFLICT(student_id, lesson_id) DO UPDATE SET
+            vocab_mastered = CASE WHEN ? >= 80
+              THEN MIN(vocab_mastered + 1, vocab_total)
+              ELSE vocab_mastered END,
+            last_drill_at = CURRENT_TIMESTAMP
+        `).run(student_id, lesson_id, lesson.vocab_count, result.tone >= 80 ? 1 : 0, result.tone);
+      }
+    }
+
     res.json({ ...result, mock: useMock });
   } catch (err) {
     console.error('Speech assessment error:', err);

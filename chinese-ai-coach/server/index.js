@@ -75,6 +75,7 @@ app.post('/api/login', (req, res) => {
 app.use('/api/chat', auth, require('./routes/chat'));
 app.use('/api/speech', auth, require('./routes/speech'));
 app.use('/api/tasks', auth, require('./routes/tasks'));
+app.use('/api/curriculum', auth, require('./routes/curriculum'));
 app.use('/api/dashboard', coachAuth, require('./routes/dashboard'));
 
 // 生徒登録（管理者用）

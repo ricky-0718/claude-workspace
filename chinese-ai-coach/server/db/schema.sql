@@ -75,3 +75,51 @@ CREATE TABLE IF NOT EXISTS coach_reviews (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (student_id) REFERENCES students(id)
 );
+
+-- カリキュラム: 課
+CREATE TABLE IF NOT EXISTS lessons (
+  id TEXT PRIMARY KEY,
+  book INTEGER NOT NULL DEFAULT 1,
+  lesson_number INTEGER NOT NULL,
+  title_zh TEXT NOT NULL,
+  title_ja TEXT,
+  vocab_count INTEGER DEFAULT 0,
+  sort_order INTEGER NOT NULL
+);
+
+-- カリキュラム: 単語
+CREATE TABLE IF NOT EXISTS vocabulary (
+  id INTEGER PRIMARY KEY,
+  lesson_id TEXT NOT NULL,
+  sort_order INTEGER NOT NULL,
+  hanzi TEXT NOT NULL,
+  pinyin TEXT NOT NULL,
+  translation_ja TEXT NOT NULL,
+  examples_json TEXT,
+  FOREIGN KEY (lesson_id) REFERENCES lessons(id)
+);
+
+-- カリキュラム: 文法ポイント
+CREATE TABLE IF NOT EXISTS grammar_points (
+  id INTEGER PRIMARY KEY,
+  lesson_id TEXT NOT NULL,
+  sort_order INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  explanation TEXT,
+  exercises TEXT,
+  answers TEXT,
+  summary TEXT,
+  FOREIGN KEY (lesson_id) REFERENCES lessons(id)
+);
+
+-- 生徒の進捗
+CREATE TABLE IF NOT EXISTS student_progress (
+  id INTEGER PRIMARY KEY,
+  student_id INTEGER NOT NULL,
+  lesson_id TEXT NOT NULL,
+  vocab_mastered INTEGER DEFAULT 0,
+  vocab_total INTEGER DEFAULT 0,
+  last_drill_at DATETIME,
+  FOREIGN KEY (student_id) REFERENCES students(id),
+  UNIQUE(student_id, lesson_id)
+);

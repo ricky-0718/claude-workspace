@@ -6,7 +6,7 @@ const claude = require('../services/claude');
 // テキスト会話を送信
 router.post('/send', async (req, res) => {
   try {
-    const { message, lesson_topic } = req.body;
+    const { message, lesson_topic, lesson_id } = req.body;
     const student_id = req.student.id;
     if (!message) {
       return res.status(400).json({ error: 'message is required' });
@@ -24,8 +24,25 @@ router.post('/send', async (req, res) => {
     const messages = history.map(h => ({ role: h.role, content: h.content }));
     messages.push({ role: 'user', content: message });
 
+    // Build lesson context if lesson_id provided
+    let lessonContext = lesson_topic || '自由會話';
+    if (lesson_id) {
+      const lesson = db.prepare('SELECT * FROM lessons WHERE id = ?').get(lesson_id);
+      const grammar = db.prepare(
+        'SELECT title, explanation FROM grammar_points WHERE lesson_id = ? ORDER BY sort_order LIMIT 5'
+      ).all(lesson_id);
+
+      if (lesson) {
+        lessonContext = `第${lesson.lesson_number}課「${lesson.title_zh}」`;
+        if (grammar.length > 0) {
+          lessonContext += '\n本課的文法重點:\n' +
+            grammar.map((g, i) => `${i + 1}. ${g.title}`).join('\n');
+        }
+      }
+    }
+
     // Claude Haiku 4.5 に送信
-    const result = await claude.chat(messages, student.level, lesson_topic || '自由會話');
+    const result = await claude.chat(messages, student.level, lessonContext);
 
     // ユーザーメッセージをDB保存
     db.prepare(
