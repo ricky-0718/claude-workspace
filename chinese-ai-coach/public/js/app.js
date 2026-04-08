@@ -384,6 +384,7 @@ const SCENARIOS = [
 ];
 
 let currentScenario = null;
+let isNewSession = false;
 
 function loadScenarios() {
   const grid = document.getElementById('scenario-grid');
@@ -434,7 +435,8 @@ function selectScenario(id) {
     `;
   }
 
-  // Clear chat and set opening message
+  // Clear chat and mark as new session
+  isNewSession = true;
   const container = document.getElementById('chat-messages');
   container.innerHTML = '';
   if (currentScenario && currentScenario.id !== 'free') {
@@ -469,8 +471,10 @@ async function sendChat() {
         lesson_id: currentLessonId,
         scenario_id: currentScenario?.id || null,
         scenario_context: currentScenario?.system_context || null,
+        new_session: isNewSession,
       }),
     });
+    isNewSession = false; // Reset after first message
     if (!res) return;
     const result = await res.json();
 
@@ -481,6 +485,7 @@ async function sendChat() {
 
     appendMessage('assistant', result.reply, result.corrections, result.hint_ja);
   } catch (err) {
+    isNewSession = false;
     appendMessage('assistant', '通信エラーが発生しました');
     console.error(err);
   }

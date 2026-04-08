@@ -6,7 +6,7 @@ const claude = require('../services/claude');
 // テキスト会話を送信
 router.post('/send', async (req, res) => {
   try {
-    const { message, lesson_topic, lesson_id, scenario_context } = req.body;
+    const { message, lesson_topic, lesson_id, scenario_context, new_session } = req.body;
     const student_id = req.student.id;
     if (!message) {
       return res.status(400).json({ error: 'message is required' });
@@ -15,14 +15,17 @@ router.post('/send', async (req, res) => {
     const db = getDb();
     const student = req.student;
 
-    // 直近の会話履歴を取得（最新20件）
-    const history = db.prepare(
-      'SELECT role, content FROM chat_logs WHERE student_id = ? ORDER BY id DESC LIMIT 20'
-    ).all(student_id).reverse();
-
-    // Claude用のメッセージ配列を構築
-    const messages = history.map(h => ({ role: h.role, content: h.content }));
-    messages.push({ role: 'user', content: message });
+    // シチュエーション切り替え時は履歴をリセット
+    let messages;
+    if (new_session) {
+      messages = [{ role: 'user', content: message }];
+    } else {
+      const history = db.prepare(
+        'SELECT role, content FROM chat_logs WHERE student_id = ? ORDER BY id DESC LIMIT 20'
+      ).all(student_id).reverse();
+      messages = history.map(h => ({ role: h.role, content: h.content }));
+      messages.push({ role: 'user', content: message });
+    }
 
     // Build lesson context from scenario or lesson
     let lessonContext = lesson_topic || '自由會話';
