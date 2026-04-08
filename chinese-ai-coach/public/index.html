@@ -46,55 +46,122 @@
         </div>
       </div>
 
-      <!-- 単語（発音ドリル）タブ -->
+      <!-- 進捗サマリーバー -->
+      <div id="progress-summary" class="progress-summary" style="display:none">
+        <div class="progress-stat">
+          <span class="stat-value" id="stat-streak">0</span>
+          <span class="stat-label">日連続</span>
+        </div>
+        <div class="progress-stat">
+          <span class="stat-value" id="stat-today">0</span>
+          <span class="stat-label">今日</span>
+        </div>
+        <div class="progress-stat">
+          <span class="stat-value" id="stat-mastered">0</span>
+          <span class="stat-label">習得</span>
+        </div>
+        <div class="progress-stat review-stat" id="review-stat" style="display:none" onclick="startReviewMode()">
+          <span class="stat-value" id="stat-review">0</span>
+          <span class="stat-label">要復習</span>
+        </div>
+      </div>
+
+      <!-- 単語タブ -->
       <div id="drill-tab" class="tab active">
-        <div class="drill-card" id="drill-card" style="display:none">
-          <div class="drill-target" onclick="selectDrillTarget('word')">
-            <p class="hanzi" id="drill-hanzi"></p>
-            <p class="pinyin" id="drill-pinyin"></p>
-            <p class="translation" id="drill-translation"></p>
-            <button class="play-btn" onclick="event.stopPropagation(); playExample()" id="play-btn">お手本を聞く</button>
-          </div>
+        <!-- モード切替 -->
+        <div class="drill-mode-toggle" id="drill-mode-toggle" style="display:none">
+          <button class="mode-btn active" data-mode="drill" onclick="switchDrillMode('drill')">発音ドリル</button>
+          <button class="mode-btn" data-mode="quiz" onclick="switchDrillMode('quiz')">単語クイズ</button>
+        </div>
 
-          <div class="drill-examples" id="drill-examples"></div>
+        <!-- 発音ドリルモード -->
+        <div id="drill-mode" class="drill-mode-content">
+          <div class="drill-card" id="drill-card" style="display:none">
+            <div class="drill-card-nav-wrapper">
+              <button class="card-nav-btn card-nav-prev" onclick="prevDrill()" id="card-prev-btn">‹</button>
+              <div class="drill-target" onclick="selectDrillTarget('word')">
+                <p class="hanzi" id="drill-hanzi"></p>
+                <p class="pinyin" id="drill-pinyin"></p>
+                <p class="translation" id="drill-translation"></p>
+                <div class="drill-audio-btns">
+                  <button class="play-btn" onclick="event.stopPropagation(); playExample()" id="play-btn">お手本を聞く</button>
+                  <button class="play-btn playback-btn" id="playback-btn" style="display:none" onclick="event.stopPropagation(); playRecording()">自分の録音を聞く</button>
+                </div>
+              </div>
+              <button class="card-nav-btn card-nav-next" onclick="nextDrill()" id="card-next-btn">›</button>
+            </div>
 
-          <div class="recorder">
-            <button class="record-btn" id="record-btn" onclick="toggleRecord()">
-              <span id="record-label">録音開始</span>
-            </button>
-            <div class="recording-indicator" id="recording-indicator"></div>
-          </div>
+            <div class="recorder">
+              <button class="record-btn" id="record-btn" onclick="toggleRecord()">
+                <span id="record-label">録音開始</span>
+              </button>
+              <div class="recording-indicator" id="recording-indicator"></div>
+            </div>
 
-          <div class="score-panel" id="score-panel" style="display:none">
-            <div class="score-row">
-              <span class="score-label">声調</span>
-              <div class="score-bar"><div class="score-fill tone" id="score-tone"></div></div>
-              <span class="score-value" id="score-tone-val"></span>
+            <div class="score-panel" id="score-panel" style="display:none">
+              <div class="score-row">
+                <span class="score-label">声調</span>
+                <div class="score-bar"><div class="score-fill tone" id="score-tone"></div></div>
+                <span class="score-value" id="score-tone-val"></span>
+              </div>
+              <div class="score-row">
+                <span class="score-label">声母</span>
+                <div class="score-bar"><div class="score-fill initial" id="score-initial"></div></div>
+                <span class="score-value" id="score-initial-val"></span>
+              </div>
+              <div class="score-row">
+                <span class="score-label">韻母</span>
+                <div class="score-bar"><div class="score-fill final" id="score-final"></div></div>
+                <span class="score-value" id="score-final-val"></span>
+              </div>
+              <div class="score-row">
+                <span class="score-label">総合</span>
+                <div class="score-bar"><div class="score-fill overall" id="score-overall"></div></div>
+                <span class="score-value" id="score-overall-val"></span>
+              </div>
+              <div class="word-scores" id="word-scores"></div>
             </div>
-            <div class="score-row">
-              <span class="score-label">声母</span>
-              <div class="score-bar"><div class="score-fill initial" id="score-initial"></div></div>
-              <span class="score-value" id="score-initial-val"></span>
-            </div>
-            <div class="score-row">
-              <span class="score-label">韻母</span>
-              <div class="score-bar"><div class="score-fill final" id="score-final"></div></div>
-              <span class="score-value" id="score-final-val"></span>
-            </div>
-            <div class="score-row">
-              <span class="score-label">総合</span>
-              <div class="score-bar"><div class="score-fill overall" id="score-overall"></div></div>
-              <span class="score-value" id="score-overall-val"></span>
-            </div>
-            <div class="word-scores" id="word-scores"></div>
-          </div>
 
-          <div class="drill-nav">
-            <button onclick="prevDrill()">前へ</button>
-            <span id="drill-progress">1 / 10</span>
-            <button onclick="nextDrill()">次へ</button>
+            <div class="drill-examples" id="drill-examples"></div>
+
+            <div class="drill-nav">
+              <button onclick="prevDrill()">前へ</button>
+              <span id="drill-progress">1 / 10</span>
+              <button onclick="nextDrill()">次へ</button>
+            </div>
           </div>
         </div>
+
+        <!-- クイズモード -->
+        <div id="quiz-mode" class="drill-mode-content" style="display:none">
+          <div class="quiz-setup" id="quiz-setup">
+            <div class="quiz-type-selector">
+              <button class="quiz-type-btn active" data-type="zh_to_ja" onclick="selectQuizType('zh_to_ja')">中→日</button>
+              <button class="quiz-type-btn" data-type="ja_to_zh" onclick="selectQuizType('ja_to_zh')">日→中</button>
+              <button class="quiz-type-btn" data-type="pinyin_to_zh" onclick="selectQuizType('pinyin_to_zh')">ピンイン→漢字</button>
+            </div>
+            <button class="quiz-start-btn" onclick="startQuiz()">クイズ開始</button>
+          </div>
+
+          <div class="quiz-card" id="quiz-card" style="display:none">
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+            </div>
+            <div class="quiz-counter" id="quiz-counter">1 / 10</div>
+            <div class="quiz-question" id="quiz-question"></div>
+            <div class="quiz-choices" id="quiz-choices"></div>
+          </div>
+
+          <div class="quiz-result" id="quiz-result" style="display:none">
+            <div class="quiz-score-circle" id="quiz-score-circle">
+              <span class="quiz-score-num" id="quiz-score-num">0</span>
+              <span class="quiz-score-label">正解</span>
+            </div>
+            <div class="quiz-result-details" id="quiz-result-details"></div>
+            <button class="quiz-retry-btn" onclick="startQuiz()">もう一度</button>
+          </div>
+        </div>
+
         <p class="empty-state" id="drill-empty">レッスンを選択すると単語ドリルが表示されます</p>
       </div>
 

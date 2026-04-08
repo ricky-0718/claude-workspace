@@ -13,6 +13,16 @@ let currentLessonId = null;
 let lessonVocabulary = [];
 let lessons = [];
 let drillTarget = null; // {hanzi, pinyin} - current target for recording (word or example)
+let lastRecordingBlob = null; // 録音再生用
+let lastRecordingUrl = null;
+
+// Quiz state
+let quizQuestions = [];
+let quizIndex = 0;
+let quizResults = [];
+let quizMode = 'zh_to_ja';
+let currentDrillMode = 'drill'; // 'drill' or 'quiz'
+let isReviewMode = false;
 
 const API = '';
 
@@ -76,6 +86,7 @@ async function login() {
     loadLessons();
     loadScenarios();
     loadTasks();
+    loadStats();
   } catch (err) {
     errorEl.textContent = '通信エラーが発生しました';
   }
@@ -84,8 +95,38 @@ async function login() {
 // 自動ログイン復元
 try {
   const saved = JSON.parse(localStorage.getItem('coach_student'));
-  if (saved) {
+  if (saved && saved.name) {
     document.getElementById('login-name').value = saved.name;
+    // セッションが残っていたら自動ログイン試行
+    const savedSession = localStorage.getItem('coach_session_id');
+    if (saved.token && savedSession) {
+      // apiFetchの401 alertを一時的に無効化して静かに検証
+      const tempToken = saved.token;
+      const tempSession = savedSession;
+      fetch(`${API}/api/curriculum/stats`, {
+        headers: { 'x-student-token': tempToken, 'x-session-id': tempSession },
+      }).then(res => {
+        if (res && res.ok) {
+          studentData = saved;
+          studentId = saved.id;
+          sessionId = tempSession;
+          document.getElementById('login-screen').classList.remove('active');
+          document.getElementById('main-screen').classList.add('active');
+          document.getElementById('student-name').textContent = `${saved.name} さん`;
+          loadLessons();
+          loadScenarios();
+          loadTasks();
+          loadStats();
+        } else {
+          // セッション無効 → クリアしてログイン画面のまま
+          localStorage.removeItem('coach_session_id');
+          localStorage.removeItem('coach_student');
+        }
+      }).catch(() => {
+        localStorage.removeItem('coach_session_id');
+        localStorage.removeItem('coach_student');
+      });
+    }
   }
 } catch {}
 
@@ -154,10 +195,14 @@ async function selectLesson(lessonId) {
         currentDrillIndex = 0;
         document.getElementById('drill-card').style.display = '';
         document.getElementById('drill-empty').style.display = 'none';
+        document.getElementById('drill-mode-toggle').style.display = '';
+        isReviewMode = false;
+        switchDrillMode('drill');
         loadDrill();
       } else {
         document.getElementById('drill-card').style.display = 'none';
         document.getElementById('drill-empty').style.display = '';
+        document.getElementById('drill-mode-toggle').style.display = 'none';
       }
     }
 
@@ -262,6 +307,14 @@ function loadDrill() {
   document.getElementById('drill-progress').textContent =
     `${currentDrillIndex + 1} / ${lessonVocabulary.length}`;
   document.getElementById('score-panel').style.display = 'none';
+  const playbackBtn = document.getElementById('playback-btn');
+  if (playbackBtn) playbackBtn.style.display = 'none';
+
+  // Update card nav buttons
+  const prevBtn = document.getElementById('card-prev-btn');
+  const nextBtn = document.getElementById('card-next-btn');
+  if (prevBtn) prevBtn.disabled = currentDrillIndex === 0;
+  if (nextBtn) nextBtn.disabled = currentDrillIndex >= lessonVocabulary.length - 1;
 
   // Set default drill target to the word itself
   drillTarget = { hanzi: item.hanzi, pinyin: item.pinyin };
@@ -376,6 +429,12 @@ function stopRecording() {
 
 async function submitAudio(audioBlob) {
   if (!drillTarget) return;
+
+  // 録音を保持して再生できるようにする
+  if (lastRecordingUrl) URL.revokeObjectURL(lastRecordingUrl);
+  lastRecordingBlob = audioBlob;
+  lastRecordingUrl = URL.createObjectURL(audioBlob);
+
   const formData = new FormData();
   formData.append('audio', audioBlob, 'recording.webm');
   formData.append('student_id', studentId || '1');
@@ -399,9 +458,22 @@ async function submitAudio(audioBlob) {
   }
 }
 
+function playRecording() {
+  if (!lastRecordingUrl) return;
+  const audio = new Audio(lastRecordingUrl);
+  audio.play();
+}
+
 function showScore(result) {
+  console.log('showScore result:', JSON.stringify(result));
   document.getElementById('record-label').textContent = '録音開始';
   document.getElementById('score-panel').style.display = 'flex';
+
+  // 録音再生ボタンを表示
+  const playbackBtn = document.getElementById('playback-btn');
+  if (playbackBtn && lastRecordingUrl) {
+    playbackBtn.style.display = '';
+  }
 
   setScore('tone', result.tone);
   setScore('overall', result.overall);
@@ -617,6 +689,7 @@ async function loadTasks() {
     const tasks = await res.json();
 
     const container = document.getElementById('task-list');
+    if (!container) return;
     if (!tasks.length) {
       container.innerHTML = '<p class="empty-state">課題はまだありません</p>';
       return;
@@ -637,4 +710,239 @@ async function loadTasks() {
   } catch (err) {
     console.error('Task load error:', err);
   }
+}
+
+// ===== モード切り替え =====
+function switchDrillMode(mode) {
+  currentDrillMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.mode-btn[data-mode="${mode}"]`)?.classList.add('active');
+
+  document.getElementById('drill-mode').style.display = mode === 'drill' ? '' : 'none';
+  document.getElementById('quiz-mode').style.display = mode === 'quiz' ? '' : 'none';
+
+  if (mode === 'quiz') {
+    document.getElementById('quiz-setup').style.display = '';
+    document.getElementById('quiz-card').style.display = 'none';
+    document.getElementById('quiz-result').style.display = 'none';
+  }
+}
+
+// ===== 単語クイズ =====
+function selectQuizType(type) {
+  quizMode = type;
+  document.querySelectorAll('.quiz-type-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.quiz-type-btn[data-type="${type}"]`)?.classList.add('active');
+}
+
+async function startQuiz() {
+  if (!currentLessonId && !isReviewMode) return;
+
+  let url;
+  if (isReviewMode) {
+    // 復習モード: review-queueから出題
+    url = `${API}/api/curriculum/review-queue?limit=10`;
+  } else {
+    url = `${API}/api/curriculum/lessons/${currentLessonId}/quiz?mode=${quizMode}&count=10`;
+  }
+
+  try {
+    const res = await apiFetch(url);
+    if (!res) return;
+    const data = await res.json();
+
+    if (isReviewMode) {
+      // review-queueのデータをクイズ形式に変換
+      if (!data.items || data.items.length < 4) {
+        alert('復習する単語が足りません');
+        return;
+      }
+      quizQuestions = buildReviewQuiz(data.items);
+    } else {
+      if (!data.questions || data.questions.length === 0) {
+        alert('この課の単語が足りません（最低4語必要）');
+        return;
+      }
+      quizQuestions = data.questions;
+    }
+
+    quizIndex = 0;
+    quizResults = [];
+
+    document.getElementById('quiz-setup').style.display = 'none';
+    document.getElementById('quiz-card').style.display = '';
+    document.getElementById('quiz-result').style.display = 'none';
+
+    showQuizQuestion();
+  } catch (err) {
+    console.error('Quiz start error:', err);
+  }
+}
+
+function buildReviewQuiz(items) {
+  return items.map(item => {
+    const wrongPool = items.filter(v => v.vocabulary_id !== item.vocabulary_id);
+    const wrongAnswers = wrongPool.sort(() => Math.random() - 0.5).slice(0, 3);
+
+    // Not enough wrong answers? Duplicate and modify
+    while (wrongAnswers.length < 3) {
+      wrongAnswers.push(items[Math.floor(Math.random() * items.length)]);
+    }
+
+    const question = { hanzi: item.hanzi, pinyin: item.pinyin };
+    const correctAnswer = item.translation_ja;
+    let choices = [correctAnswer, ...wrongAnswers.map(w => w.translation_ja)];
+    choices = [...new Set(choices)]; // Remove duplicates
+    while (choices.length < 4) choices.push('---');
+    choices = choices.sort(() => Math.random() - 0.5);
+
+    return {
+      vocabulary_id: item.vocabulary_id,
+      question,
+      choices,
+      correct_index: choices.indexOf(correctAnswer),
+    };
+  });
+}
+
+function showQuizQuestion() {
+  const q = quizQuestions[quizIndex];
+  const total = quizQuestions.length;
+
+  document.getElementById('quiz-counter').textContent = `${quizIndex + 1} / ${total}`;
+  document.getElementById('quiz-progress-fill').style.width = `${((quizIndex) / total) * 100}%`;
+
+  // Reset choices first
+  const choicesEl = document.getElementById('quiz-choices');
+  choicesEl.innerHTML = '';
+
+  // Show question
+  const questionEl = document.getElementById('quiz-question');
+  if (q.question.hanzi) {
+    questionEl.innerHTML = `<span class="quiz-hanzi">${escapeHtml(q.question.hanzi)}</span>` +
+      (q.question.pinyin ? `<span class="quiz-pinyin">${escapeHtml(q.question.pinyin)}</span>` : '');
+  } else if (q.question.text) {
+    questionEl.innerHTML = `<span class="quiz-text">${escapeHtml(q.question.text)}</span>`;
+  } else if (q.question.pinyin) {
+    questionEl.innerHTML = `<span class="quiz-pinyin-only">${escapeHtml(q.question.pinyin)}</span>`;
+  }
+
+  // Show choices
+  choicesEl.innerHTML = q.choices.map((c, i) =>
+    `<button class="quiz-choice" onclick="answerQuiz(${i})">${escapeHtml(c)}</button>`
+  ).join('');
+}
+
+function answerQuiz(selectedIndex) {
+  const q = quizQuestions[quizIndex];
+  const correct = selectedIndex === q.correct_index;
+
+  quizResults.push({
+    vocabulary_id: q.vocabulary_id,
+    correct,
+    selected: selectedIndex,
+    correct_index: q.correct_index,
+  });
+
+  // Visual feedback
+  const buttons = document.querySelectorAll('.quiz-choice');
+  buttons.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correct_index) btn.classList.add('correct');
+    if (i === selectedIndex && !correct) btn.classList.add('wrong');
+  });
+
+  // Auto-advance after delay
+  setTimeout(() => {
+    quizIndex++;
+    if (quizIndex < quizQuestions.length) {
+      showQuizQuestion();
+    } else {
+      finishQuiz();
+    }
+  }, correct ? 600 : 1200);
+}
+
+async function finishQuiz() {
+  const total = quizResults.length;
+  const correctCount = quizResults.filter(r => r.correct).length;
+  const pct = Math.round((correctCount / total) * 100);
+
+  // Show result
+  document.getElementById('quiz-card').style.display = 'none';
+  document.getElementById('quiz-result').style.display = '';
+
+  const circle = document.getElementById('quiz-score-circle');
+  circle.className = 'quiz-score-circle ' + (pct >= 80 ? 'great' : pct >= 60 ? 'good' : 'needs-work');
+  document.getElementById('quiz-score-num').textContent = `${correctCount}/${total}`;
+
+  // Details: show wrong answers
+  const wrongOnes = quizResults.filter(r => !r.correct);
+  const detailsEl = document.getElementById('quiz-result-details');
+  if (wrongOnes.length > 0) {
+    detailsEl.innerHTML = '<p class="quiz-wrong-header">間違えた単語:</p>' +
+      wrongOnes.map(r => {
+        const q = quizQuestions[quizResults.indexOf(r)];
+        const correctChoice = q.choices[q.correct_index];
+        const questionText = q.question.hanzi || q.question.text || q.question.pinyin;
+        return `<div class="quiz-wrong-item"><span>${escapeHtml(questionText)}</span> → <strong>${escapeHtml(correctChoice)}</strong></div>`;
+      }).join('');
+  } else {
+    detailsEl.innerHTML = '<p class="quiz-perfect">パーフェクト！全問正解！</p>';
+  }
+
+  // Save results to server
+  try {
+    await apiFetch(`${API}/api/curriculum/quiz/result`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ results: quizResults }),
+    });
+    loadStats(); // Refresh stats
+  } catch (err) {
+    console.error('Quiz result save error:', err);
+  }
+}
+
+// ===== 学習進捗 =====
+async function loadStats() {
+  try {
+    const res = await apiFetch(`${API}/api/curriculum/stats`);
+    if (!res) return;
+    const stats = await res.json();
+
+    const summary = document.getElementById('progress-summary');
+    summary.style.display = '';
+
+    document.getElementById('stat-streak').textContent = stats.streak;
+    document.getElementById('stat-today').textContent = stats.today_count;
+    document.getElementById('stat-mastered').textContent = stats.mastered;
+
+    // Review badge
+    const reviewStat = document.getElementById('review-stat');
+    if (stats.needs_review > 0) {
+      reviewStat.style.display = '';
+      document.getElementById('stat-review').textContent = stats.needs_review;
+    } else {
+      reviewStat.style.display = 'none';
+    }
+  } catch (err) {
+    console.error('Stats load error:', err);
+  }
+}
+
+// ===== 復習モード =====
+function startReviewMode() {
+  isReviewMode = true;
+  quizMode = 'zh_to_ja';
+
+  // Switch to drill tab, quiz mode
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.nav-btn[data-tab="drill"]').classList.add('active');
+  document.getElementById('drill-tab').classList.add('active');
+
+  document.getElementById('drill-mode-toggle').style.display = '';
+  switchDrillMode('quiz');
+  startQuiz();
 }

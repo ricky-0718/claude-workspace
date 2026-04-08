@@ -31,17 +31,52 @@ router.post('/assess', upload.single('audio'), async (req, res) => {
       // SpeechSuper APIキーがない場合はモックデータ
       result = mockAssessment(target_text);
     } else {
-      // 実際のAPI呼び出し
+      // SpeechSuper API呼び出し
+      // ブラウザからはWebM/Opusで録音される → ogg/opusとして送信
       const audioBuffer = req.file.buffer;
-      const apiResult = await assessPronunciation(audioBuffer, target_text);
+      const mimeType = req.file.mimetype || '';
+      let audioType = 'wav';
+      let sampleRate = 16000;
+      if (mimeType.includes('webm') || mimeType.includes('ogg') || mimeType.includes('opus')) {
+        audioType = 'ogg';
+        sampleRate = 48000; // WebM/Opus default
+      }
+      const apiResult = await assessPronunciation(audioBuffer, target_text, { audioType, sampleRate });
 
-      result = {
-        overall: apiResult.overall || 0,
-        pronunciation: apiResult.pronunciation || 0,
-        fluency: apiResult.fluency || 0,
-        tone: apiResult.tone || 0,
-        words: apiResult.words || [],
-      };
+      console.log('SpeechSuper raw response:', JSON.stringify(apiResult).substring(0, 500));
+
+      // SpeechSuper response parsing
+      const r = apiResult.result;
+      if (r && r.words) {
+        const words = r.words.map(w => ({
+          word: w.word || '',
+          tone_score: w.scores?.tone ?? w.tone_score ?? 0,
+          initial_score: w.scores?.pronunciation ?? w.pronunciation ?? 0,
+          final_score: w.scores?.overall ?? w.overall ?? 0,
+        }));
+
+        const avgTone = words.length > 0
+          ? Math.round(words.reduce((s, w) => s + w.tone_score, 0) / words.length) : 0;
+        const avgPron = words.length > 0
+          ? Math.round(words.reduce((s, w) => s + w.initial_score, 0) / words.length) : 0;
+
+        result = {
+          overall: Math.round(r.overall ?? avgPron),
+          pronunciation: Math.round(r.pronunciation ?? avgPron),
+          fluency: Math.round(r.fluency ?? 0),
+          tone: avgTone,
+          words,
+        };
+
+        // ノイズ警告があれば追記
+        if (r.warning) {
+          result.warnings = r.warning.map(w => w.message);
+        }
+      } else {
+        console.error('SpeechSuper unexpected response:', JSON.stringify(apiResult).substring(0, 300));
+        result = mockAssessment(target_text);
+        result.api_error = 'Unexpected API response';
+      }
     }
 
     // 音声ファイルを保存（あれ��）

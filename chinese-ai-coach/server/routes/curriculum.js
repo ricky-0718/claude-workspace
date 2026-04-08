@@ -76,4 +76,209 @@ router.post('/progress', (req, res) => {
   res.json({ ok: true });
 });
 
+// ===== クイズ用: レッスンの単語からランダム4択を生成 =====
+router.get('/lessons/:lessonId/quiz', (req, res) => {
+  const db = getDb();
+  const lessonId = req.params.lessonId;
+  const count = Math.min(parseInt(req.query.count) || 10, 30);
+  const mode = req.query.mode || 'zh_to_ja'; // zh_to_ja, ja_to_zh, pinyin_to_zh
+
+  const allVocab = db.prepare(
+    'SELECT id, hanzi, pinyin, translation_ja FROM vocabulary WHERE lesson_id = ? ORDER BY sort_order'
+  ).all(lessonId);
+
+  if (allVocab.length < 4) {
+    return res.json({ error: 'Not enough vocabulary for quiz', questions: [] });
+  }
+
+  // Shuffle and pick quiz items
+  const shuffled = [...allVocab].sort(() => Math.random() - 0.5);
+  const quizItems = shuffled.slice(0, Math.min(count, allVocab.length));
+
+  const questions = quizItems.map(item => {
+    // Get 3 wrong answers from other vocab
+    const wrongPool = allVocab.filter(v => v.id !== item.id);
+    const wrongAnswers = wrongPool.sort(() => Math.random() - 0.5).slice(0, 3);
+
+    let question, correctAnswer, choices;
+
+    if (mode === 'zh_to_ja') {
+      question = { hanzi: item.hanzi, pinyin: item.pinyin };
+      correctAnswer = item.translation_ja;
+      choices = [item.translation_ja, ...wrongAnswers.map(w => w.translation_ja)];
+    } else if (mode === 'ja_to_zh') {
+      question = { text: item.translation_ja };
+      correctAnswer = item.hanzi;
+      choices = [item.hanzi, ...wrongAnswers.map(w => w.hanzi)];
+    } else {
+      question = { pinyin: item.pinyin };
+      correctAnswer = item.hanzi;
+      choices = [item.hanzi, ...wrongAnswers.map(w => w.hanzi)];
+    }
+
+    // Shuffle choices
+    choices = choices.sort(() => Math.random() - 0.5);
+
+    return {
+      vocabulary_id: item.id,
+      question,
+      choices,
+      correct_index: choices.indexOf(correctAnswer),
+    };
+  });
+
+  res.json({ questions, mode });
+});
+
+// ===== クイズ結果を保存（vocab_mastery更新 + SRS計算） =====
+router.post('/quiz/result', (req, res) => {
+  const { results } = req.body; // [{vocabulary_id, correct: bool}]
+  const studentId = req.student.id;
+
+  if (!results || !Array.isArray(results)) {
+    return res.status(400).json({ error: 'results array required' });
+  }
+
+  const db = getDb();
+  const upsert = db.prepare(`
+    INSERT INTO vocab_mastery (student_id, vocabulary_id, correct_count, incorrect_count, last_reviewed_at, next_review_at, ease_factor, interval_days)
+    VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, datetime('now', '+' || ? || ' days'), ?, ?)
+    ON CONFLICT(student_id, vocabulary_id) DO UPDATE SET
+      correct_count = correct_count + ?,
+      incorrect_count = incorrect_count + ?,
+      last_reviewed_at = CURRENT_TIMESTAMP,
+      next_review_at = datetime('now', '+' || ? || ' days'),
+      ease_factor = ?,
+      interval_days = ?
+  `);
+
+  const logActivity = db.prepare(`
+    INSERT INTO activity_log (student_id, activity_type, activity_date, count)
+    VALUES (?, 'quiz', date('now'), 1)
+    ON CONFLICT(student_id, activity_type, activity_date) DO UPDATE SET
+      count = count + 1
+  `);
+
+  const transaction = db.transaction(() => {
+    for (const r of results) {
+      const existing = db.prepare(
+        'SELECT * FROM vocab_mastery WHERE student_id = ? AND vocabulary_id = ?'
+      ).get(studentId, r.vocabulary_id);
+
+      let easeFactor = existing?.ease_factor || 2.5;
+      let interval = existing?.interval_days || 0;
+
+      if (r.correct) {
+        // SM-2: increase interval
+        if (interval === 0) interval = 1;
+        else if (interval === 1) interval = 3;
+        else interval = Math.round(interval * easeFactor);
+        easeFactor = Math.max(1.3, easeFactor + 0.1);
+      } else {
+        // Reset on incorrect
+        interval = 0;
+        easeFactor = Math.max(1.3, easeFactor - 0.2);
+      }
+
+      upsert.run(
+        studentId, r.vocabulary_id,
+        r.correct ? 1 : 0, r.correct ? 0 : 1,
+        interval, easeFactor, interval,
+        r.correct ? 1 : 0, r.correct ? 0 : 1,
+        interval, easeFactor, interval
+      );
+    }
+    logActivity.run(studentId);
+  });
+
+  transaction();
+  res.json({ ok: true });
+});
+
+// ===== 復習キュー（SRS: 期限切れの単語） =====
+router.get('/review-queue', (req, res) => {
+  const db = getDb();
+  const studentId = req.student.id;
+  const limit = Math.min(parseInt(req.query.limit) || 20, 50);
+
+  const items = db.prepare(`
+    SELECT vm.*, v.hanzi, v.pinyin, v.translation_ja, v.lesson_id
+    FROM vocab_mastery vm
+    JOIN vocabulary v ON v.id = vm.vocabulary_id
+    WHERE vm.student_id = ?
+      AND (vm.next_review_at <= datetime('now') OR vm.interval_days = 0)
+    ORDER BY vm.next_review_at ASC
+    LIMIT ?
+  `).all(studentId, limit);
+
+  res.json({ items, count: items.length });
+});
+
+// ===== 学習統計（ストリーク・進捗） =====
+router.get('/stats', (req, res) => {
+  const db = getDb();
+  const studentId = req.student.id;
+
+  // Total mastered / total vocab
+  const totals = db.prepare(`
+    SELECT
+      (SELECT COUNT(*) FROM vocab_mastery WHERE student_id = ? AND correct_count > incorrect_count) as mastered,
+      (SELECT COUNT(*) FROM vocabulary) as total_vocab,
+      (SELECT COUNT(*) FROM vocab_mastery WHERE student_id = ? AND next_review_at <= datetime('now') AND interval_days = 0) as needs_review
+  `).get(studentId, studentId);
+
+  // Today's activity
+  const today = db.prepare(`
+    SELECT COALESCE(SUM(count), 0) as today_count
+    FROM activity_log
+    WHERE student_id = ? AND activity_date = date('now')
+  `).get(studentId);
+
+  // Streak: consecutive days with activity
+  const recentDays = db.prepare(`
+    SELECT DISTINCT activity_date
+    FROM activity_log
+    WHERE student_id = ?
+    ORDER BY activity_date DESC
+    LIMIT 60
+  `).all(studentId);
+
+  let streak = 0;
+  const todayStr = new Date().toISOString().split('T')[0];
+  const dates = recentDays.map(d => d.activity_date);
+
+  for (let i = 0; i < 60; i++) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const dateStr = d.toISOString().split('T')[0];
+    if (dates.includes(dateStr)) {
+      streak++;
+    } else if (i === 0) {
+      // Today hasn't been logged yet, that's ok
+      continue;
+    } else {
+      break;
+    }
+  }
+
+  // Per-lesson progress
+  const lessonProgress = db.prepare(`
+    SELECT l.id, l.lesson_number, l.title_zh, l.vocab_count,
+           COALESCE(sp.vocab_mastered, 0) as mastered
+    FROM lessons l
+    LEFT JOIN student_progress sp ON sp.lesson_id = l.id AND sp.student_id = ?
+    WHERE l.book = 1
+    ORDER BY l.sort_order
+  `).all(studentId);
+
+  res.json({
+    mastered: totals.mastered,
+    total_vocab: totals.total_vocab,
+    needs_review: totals.needs_review,
+    today_count: today.today_count,
+    streak,
+    lesson_progress: lessonProgress,
+  });
+});
+
 module.exports = router;

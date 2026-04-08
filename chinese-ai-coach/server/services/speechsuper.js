@@ -1,113 +1,96 @@
 const crypto = require('crypto');
-const https = require('https');
-const fs = require('fs');
+const FormData = require('form-data');
 
 const APP_KEY = process.env.SPEECHSUPER_APP_KEY;
 const SECRET_KEY = process.env.SPEECHSUPER_SECRET_KEY;
-const BASE_URL = 'https://api.speechsuper.com';
+const BASE_HOST = 'api.speechsuper.com';
+const USER_ID = 'coach_user';
 
-function buildParams(coreType, refText) {
-  const timestamp = Math.floor(Date.now() / 1000).toString();
-  const connectStr = APP_KEY + timestamp + SECRET_KEY;
-  const connectSig = crypto.createHash('sha1').update(connectStr).digest('hex');
+function encrypt(content) {
+  return crypto.createHash('sha1').update(content).digest('hex');
+}
 
-  return {
+function createUUID() {
+  return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 3 | 8);
+    return v.toString(16);
+  }).toUpperCase();
+}
+
+async function assessPronunciation(audioBuffer, refText, options = {}) {
+  // Use word eval for single chars, sentence eval for phrases
+  const coreType = refText.length <= 4
+    ? 'word.eval.promax.cn'
+    : 'sent.eval.promax.cn';
+
+  const timestamp = Date.now().toString();
+  const connectSig = encrypt(APP_KEY + timestamp + SECRET_KEY);
+  const startSig = encrypt(APP_KEY + timestamp + USER_ID + SECRET_KEY);
+
+  const params = {
     connect: {
-      cmd: 'start',
+      cmd: 'connect',
       param: {
-        baseType: 'sent',
-        coreType,
-        res: 'en.sent.score', // will be overridden for Chinese
+        sdk: { version: 16777472, source: 9, protocol: 2 },
+        app: {
+          applicationId: APP_KEY,
+          sig: connectSig,
+          timestamp,
+        },
       },
     },
     start: {
       cmd: 'start',
       param: {
-        coreType,
-        refText,
-        attachAudioUrl: 1,
-        result: {
-          details: {
-            gop_adjust: 1,
-          },
+        app: {
+          applicationId: APP_KEY,
+          sig: startSig,
+          userId: USER_ID,
+          timestamp,
+        },
+        audio: {
+          audioType: options.audioType || 'wav',
+          sampleRate: options.sampleRate || 16000,
+          channel: 1,
+          sampleBytes: 2,
+        },
+        request: {
+          coreType,
+          refText,
+          tokenId: createUUID(),
         },
       },
     },
-    appkey: APP_KEY,
-    timestamp,
-    sig: connectSig,
   };
-}
-
-async function assessPronunciation(audioBuffer, refText, options = {}) {
-  const coreType = options.coreType || 'cn.sent.score';
-
-  const timestamp = Math.floor(Date.now() / 1000).toString();
-  const connectSig = crypto.createHash('sha1')
-    .update(APP_KEY + timestamp + SECRET_KEY)
-    .digest('hex');
-
-  const params = {
-    appkey: APP_KEY,
-    timestamp,
-    sig: connectSig,
-    coreType,
-    refText,
-    audioType: 'wav',
-    audioSampleRate: 16000,
-  };
-
-  // Build multipart form data manually
-  const boundary = '----FormBoundary' + crypto.randomBytes(8).toString('hex');
-
-  const paramsPart = [
-    `--${boundary}`,
-    'Content-Disposition: form-data; name="text"',
-    'Content-Type: application/json',
-    '',
-    JSON.stringify(params),
-  ].join('\r\n');
-
-  const audioPart = [
-    `--${boundary}`,
-    'Content-Disposition: form-data; name="audio"; filename="audio.wav"',
-    'Content-Type: audio/wav',
-    '',
-  ].join('\r\n');
-
-  const ending = `\r\n--${boundary}--\r\n`;
-
-  const paramsBuffer = Buffer.from(paramsPart + '\r\n');
-  const audioPartBuffer = Buffer.from(audioPart);
-  const endingBuffer = Buffer.from(ending);
-  const body = Buffer.concat([paramsBuffer, audioPartBuffer, audioBuffer, endingBuffer]);
 
   return new Promise((resolve, reject) => {
-    const url = new URL(`${BASE_URL}/${coreType}`);
+    const fd = new FormData();
+    fd.append('text', JSON.stringify(params));
+    fd.append('audio', audioBuffer);
 
-    const req = https.request({
-      hostname: url.hostname,
-      path: url.pathname,
+    const submitOptions = {
+      host: BASE_HOST,
+      path: '/' + coreType,
       method: 'POST',
-      headers: {
-        'Content-Type': `multipart/form-data; boundary=${boundary}`,
-        'Content-Length': body.length,
-      },
-    }, (res) => {
-      let data = '';
-      res.on('data', chunk => { data += chunk; });
+      protocol: 'https:',
+      headers: { 'Request-Index': '0' },
+    };
+
+    fd.submit(submitOptions, (err, res) => {
+      if (err) return reject(new Error(err.message));
+
+      const body = [];
+      res.on('data', (chunk) => body.push(chunk));
       res.on('end', () => {
+        const resString = Buffer.concat(body).toString();
         try {
-          resolve(JSON.parse(data));
+          resolve(JSON.parse(resString));
         } catch {
-          reject(new Error('Invalid JSON response: ' + data));
+          reject(new Error('Invalid JSON response: ' + resString.substring(0, 300)));
         }
       });
     });
-
-    req.on('error', reject);
-    req.write(body);
-    req.end();
   });
 }
 

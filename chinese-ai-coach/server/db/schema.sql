@@ -124,3 +124,30 @@ CREATE TABLE IF NOT EXISTS student_progress (
   FOREIGN KEY (student_id) REFERENCES students(id),
   UNIQUE(student_id, lesson_id)
 );
+
+-- 単語マスタリー（クイズ結果 + SRS復習管理）
+CREATE TABLE IF NOT EXISTS vocab_mastery (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  student_id INTEGER NOT NULL,
+  vocabulary_id INTEGER NOT NULL,
+  correct_count INTEGER DEFAULT 0,
+  incorrect_count INTEGER DEFAULT 0,
+  last_reviewed_at DATETIME,
+  next_review_at DATETIME,
+  ease_factor REAL DEFAULT 2.5,
+  interval_days INTEGER DEFAULT 0,
+  UNIQUE(student_id, vocabulary_id),
+  FOREIGN KEY (student_id) REFERENCES students(id),
+  FOREIGN KEY (vocabulary_id) REFERENCES vocabulary(id)
+);
+
+-- 学習アクティビティログ（ストリーク計算用）
+CREATE TABLE IF NOT EXISTS activity_log (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  student_id INTEGER NOT NULL,
+  activity_type TEXT NOT NULL,
+  activity_date DATE NOT NULL,
+  count INTEGER DEFAULT 1,
+  UNIQUE(student_id, activity_type, activity_date),
+  FOREIGN KEY (student_id) REFERENCES students(id)
+);
