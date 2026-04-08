@@ -74,6 +74,7 @@ async function login() {
     document.getElementById('student-name').textContent = `${data.name} さん`;
 
     loadLessons();
+    loadScenarios();
     loadTasks();
   } catch (err) {
     errorEl.textContent = '通信エラーが発生しました';
@@ -356,6 +357,100 @@ function setScore(type, value) {
   if (val) val.textContent = value;
 }
 
+// ===== シチュエーション別会話 =====
+const SCENARIOS = [
+  { id: 'free', title_ja: '自由会話', title_zh: '自由會話', icon: '💭', level: 'all', description_ja: '好きなテーマで自由に会話', system_context: '', key_phrases: [] },
+  // --- Beginner ---
+  { id: 'self_introduction', title_ja: '自己紹介', title_zh: '自我介紹', icon: '👋', level: 'beginner', description_ja: '名前・出身を伝える', system_context: '你是台灣大學的新生，在宿舍大廳遇到剛搬進來的日本留學生。你很友善，主動打招呼並自我介紹。', key_phrases: ['你好，我叫＿＿。','我是日本人。','你是哪裡人？','很高興認識你！'] },
+  { id: 'classroom_greetings', title_ja: '授業で先生に挨拶', title_zh: '在語言課跟老師打招呼', icon: '📚', level: 'beginner', description_ja: '授業の開始・終了時の挨拶', system_context: '你是台灣的華語老師，學生是剛開始學中文的日本留學生。用簡單的中文打招呼，確認學習狀況。', key_phrases: ['老師好！','我聽不懂，可以再說一遍嗎？','請問這個怎麼念？'] },
+  { id: 'convenience_store', title_ja: 'コンビニで買い物', title_zh: '在便利商店買東西', icon: '🏪', level: 'beginner', description_ja: '7-11で飲み物やおにぎりを買う', system_context: '你是全家便利商店的店員，態度親切。問客人需要什麼，結帳時問是否有集點卡，告知金額。', key_phrases: ['這個多少錢？','可以刷卡嗎？','不用袋子，謝謝。','發票給我。'] },
+  { id: 'mrt_navigation', title_ja: '捷運で道を聞く', title_zh: '搭捷運問路', icon: '🚇', level: 'beginner', description_ja: '台北MRTで乗り換えを確認', system_context: '你是台北捷運站的服務人員。一位日本留學生拿著路線圖走過來問路，用簡單中文幫助他。', key_phrases: ['請問去台北101怎麼搭？','在哪裡換車？','要坐幾站？'] },
+  { id: 'lunch_box_shop', title_ja: '便當店で注文', title_zh: '在便當店點餐', icon: '🍱', level: 'beginner', description_ja: 'お弁当のおかずを選ぶ', system_context: '你是便當店的老闆娘，面對外國學生會放慢速度。問對方要什麼飯和配菜。', key_phrases: ['我要一個便當。','白飯還是糙米飯？','不要香菜。','內用還是外帶？'] },
+  { id: 'night_market_food', title_ja: '夜市で屋台グルメ', title_zh: '在夜市點小吃', icon: '🌃', level: 'beginner', description_ja: 'タピオカや臭豆腐を注文', system_context: '你是夜市珍珠奶茶攤老闆，問客人口味、甜度和冰塊量。夜市很吵但你有耐心。', key_phrases: ['一杯珍珠奶茶。','半糖少冰。','這個是什麼？','辣的還是不辣？'] },
+  { id: 'dormitory_checkin', title_ja: '大学寮チェックイン', title_zh: '辦理宿舍入住', icon: '🏠', level: 'beginner', description_ja: '寮の鍵受け取りと規則確認', system_context: '你是大學宿舍管理員，確認學號姓名，說明規則（門禁時間、不能煮東西），給鑰匙和門禁卡。', key_phrases: ['我是新生，來辦入住手續。','門禁是幾點？','WiFi密碼是什麼？'] },
+  { id: 'asking_time_date', title_ja: '日時を確認する', title_zh: '確認日期時間', icon: '📅', level: 'beginner', description_ja: '待ち合わせや予定の確認', system_context: '你是日本留學生的台灣同學，討論下週一起出去玩，確認空閒時間和集合地點。', key_phrases: ['今天幾號？','你禮拜幾有空？','我們三點見面好嗎？'] },
+  // --- Intermediate ---
+  { id: 'university_registration', title_ja: '大学窓口で手続き', title_zh: '在學校辦公室辦手續', icon: '🏫', level: 'intermediate', description_ja: '履修登録や書類申請', system_context: '你是大學國際處職員，接待留學生詢問選課和學生證事宜。聽不懂時會換方式解釋。', key_phrases: ['選課系統什麼時候開放？','需要什麼證件？','什麼時候可以來領？'] },
+  { id: 'scooter_rental', title_ja: '機車をレンタル', title_zh: '租機車', icon: '🛵', level: 'intermediate', description_ja: 'バイクレンタルの契約', system_context: '你是機車租賃店老闆，確認駕照，說明費用、加油方式、還車時間和交通規則。', key_phrases: ['租一天多少錢？','需要國際駕照嗎？','要加哪種油？'] },
+  { id: 'hospital_clinic', title_ja: '病院で受診', title_zh: '去診所看病', icon: '🏥', level: 'intermediate', description_ja: '症状説明と薬の確認', system_context: '你是診所醫生，詢問留學生症狀（頭痛、發燒、肚子痛），告知藥物和服用方式。', key_phrases: ['我頭痛發燒。','這個藥一天吃幾次？','要掛哪一科？'] },
+  { id: 'bank_account', title_ja: '銀行口座を開設', title_zh: '開銀行帳戶', icon: '🏦', level: 'intermediate', description_ja: '口座開設の手続き', system_context: '你是銀行行員，確認證件（護照、居留證），說明開戶程序和網路銀行功能。', key_phrases: ['我想開一個帳戶。','需要帶哪些證件？','可以辦網路銀行嗎？'] },
+  { id: 'part_time_job', title_ja: 'バイトの面接', title_zh: '打工面試', icon: '☕', level: 'intermediate', description_ja: 'カフェで面接を受ける', system_context: '你是咖啡廳店長，正在招募工讀生。問對方中文程度、空閒時間、工作經驗和來打工的理由。', key_phrases: ['我對這份工作很有興趣。','禮拜二和禮拜四可以上班。','時薪是多少？'] },
+  { id: 'landlord_negotiation', title_ja: '家主と賃貸交渉', title_zh: '跟房東談租屋', icon: '🏡', level: 'intermediate', description_ja: 'アパートの条件交渉', system_context: '你是公寓房東，介紹房間條件（租金、押金、附帶設備），確認合約細節。', key_phrases: ['這間包水電嗎？','押金要多少？','合約是幾個月？'] },
+  // --- Advanced ---
+  { id: 'group_project', title_ja: 'グループ課題の議論', title_zh: '小組討論報告', icon: '💬', level: 'advanced', description_ja: 'クラスメートと発表準備', system_context: '你是台灣大學生，和日本留學生討論期末報告的主題、分工和時間。會用年輕人用語如「超棒的」「沒問題啦」。', key_phrases: ['你對哪個主題有興趣？','我負責資料蒐集，你負責簡報，好嗎？'] },
+  { id: 'phone_contract', title_ja: '携帯キャリア契約', title_zh: '辦手機門號', icon: '📱', level: 'advanced', description_ja: 'SIMカードの契約手続き', system_context: '你是中華電信門市人員，介紹留學生專案，說明費率差異、數據流量和合約期間。', key_phrases: ['有沒有留學生專案？','每月可以用多少GB？','需要帶居留證嗎？'] },
+  { id: 'complaint', title_ja: 'トラブル解決', title_zh: '反映問題', icon: '⚠️', level: 'advanced', description_ja: '商品不良などの問題を伝える', system_context: '你是手機維修店老闆，留學生帶壞掉的二手手機來。了解狀況，判斷保固範圍，提出解決方案。', key_phrases: ['買不到一個禮拜就壞了。','在保固範圍內嗎？','可以退費嗎？'] },
+  { id: 'career_networking', title_ja: '台湾企業と交流', title_zh: '與業界人士交流', icon: '💼', level: 'advanced', description_ja: '就職イベントでキャリア相談', system_context: '你是科技公司HR，在就業博覽會。留學生來詢問在台灣就業的可能性。說話正式但親切。', key_phrases: ['貴公司有招募外國人才嗎？','台灣的工作文化跟日本有什麼不同？'] },
+];
+
+let currentScenario = null;
+
+function loadScenarios() {
+  const grid = document.getElementById('scenario-grid');
+  const levels = [
+    { key: 'all', label: '' },
+    { key: 'beginner', label: '初級' },
+    { key: 'intermediate', label: '中級' },
+    { key: 'advanced', label: '上級' },
+  ];
+
+  let html = '';
+  for (const lvl of levels) {
+    const items = SCENARIOS.filter(s => s.level === lvl.key);
+    if (items.length === 0) continue;
+    if (lvl.label) html += `<div class="scenario-level-label">${lvl.label}</div>`;
+    html += items.map(s => `
+      <div class="scenario-card" onclick="selectScenario('${s.id}')">
+        <span class="scenario-icon">${s.icon}</span>
+        <div class="scenario-info">
+          <div class="scenario-title">${escapeHtml(s.title_ja)}</div>
+          <div class="scenario-desc">${escapeHtml(s.description_ja)}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+  grid.innerHTML = html;
+}
+
+function selectScenario(id) {
+  currentScenario = SCENARIOS.find(s => s.id === id) || null;
+
+  // Hide grid, show active indicator
+  document.getElementById('scenario-grid').style.display = 'none';
+  document.getElementById('scenario-back-btn').style.display = '';
+  const activeEl = document.getElementById('scenario-active');
+  activeEl.style.display = '';
+
+  if (currentScenario) {
+    let phrasesHtml = '';
+    if (currentScenario.key_phrases.length > 0) {
+      phrasesHtml = `<div class="scenario-phrases">${currentScenario.key_phrases.map(p => `<span class="phrase-chip">${escapeHtml(p)}</span>`).join('')}</div>`;
+    }
+    activeEl.innerHTML = `
+      <span class="scenario-icon">${currentScenario.icon}</span>
+      <strong>${escapeHtml(currentScenario.title_ja)}</strong>
+      <span class="scenario-zh">${escapeHtml(currentScenario.title_zh)}</span>
+      ${phrasesHtml}
+    `;
+  }
+
+  // Clear chat and set opening message
+  const container = document.getElementById('chat-messages');
+  container.innerHTML = '';
+  if (currentScenario && currentScenario.id !== 'free') {
+    appendMessage('assistant', `【${currentScenario.title_zh}】のロールプレイを始めましょう！中国語で話しかけてみてください。`);
+  } else {
+    appendMessage('assistant', '你好！我是你的華語老師。請用中文跟我聊天吧！');
+  }
+}
+
+function showScenarioList() {
+  document.getElementById('scenario-grid').style.display = '';
+  document.getElementById('scenario-back-btn').style.display = 'none';
+  document.getElementById('scenario-active').style.display = 'none';
+  currentScenario = null;
+}
+
 // ===== テキスト会話 =====
 async function sendChat() {
   const input = document.getElementById('chat-input');
@@ -369,7 +464,12 @@ async function sendChat() {
     const res = await apiFetch(`${API}/api/chat/send`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message, lesson_id: currentLessonId }),
+      body: JSON.stringify({
+        message,
+        lesson_id: currentLessonId,
+        scenario_id: currentScenario?.id || null,
+        scenario_context: currentScenario?.system_context || null,
+      }),
     });
     if (!res) return;
     const result = await res.json();

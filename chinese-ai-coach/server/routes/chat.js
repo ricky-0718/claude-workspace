@@ -6,7 +6,7 @@ const claude = require('../services/claude');
 // テキスト会話を送信
 router.post('/send', async (req, res) => {
   try {
-    const { message, lesson_topic, lesson_id } = req.body;
+    const { message, lesson_topic, lesson_id, scenario_context } = req.body;
     const student_id = req.student.id;
     if (!message) {
       return res.status(400).json({ error: 'message is required' });
@@ -24,9 +24,13 @@ router.post('/send', async (req, res) => {
     const messages = history.map(h => ({ role: h.role, content: h.content }));
     messages.push({ role: 'user', content: message });
 
-    // Build lesson context if lesson_id provided
+    // Build lesson context from scenario or lesson
     let lessonContext = lesson_topic || '自由會話';
-    if (lesson_id) {
+    if (scenario_context) {
+      lessonContext = '【角色扮演場景】\n' + scenario_context +
+        '\n\n重要：你要扮演場景中的角色，不是華語老師。用自然的繁體中文對話，保持角色設定。' +
+        '學生說錯時，先用角色身份回應，然後在corrections中用日文指出錯誤。';
+    } else if (lesson_id) {
       const lesson = db.prepare('SELECT * FROM lessons WHERE id = ?').get(lesson_id);
       const grammar = db.prepare(
         'SELECT title, explanation FROM grammar_points WHERE lesson_id = ? ORDER BY sort_order LIMIT 5'

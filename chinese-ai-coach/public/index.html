@@ -93,6 +93,16 @@
 
       <!-- テキスト会話 -->
       <div id="chat-tab" class="tab">
+        <!-- シチュエーション選択 -->
+        <div class="scenario-selector" id="scenario-selector">
+          <div class="scenario-header">
+            <span>会話モード</span>
+            <button class="scenario-back-btn" id="scenario-back-btn" style="display:none" onclick="showScenarioList()">変更</button>
+          </div>
+          <div class="scenario-grid" id="scenario-grid"></div>
+          <div class="scenario-active" id="scenario-active" style="display:none"></div>
+        </div>
+
         <div class="chat-messages" id="chat-messages">
           <div class="msg assistant">
             <div class="msg-content">
