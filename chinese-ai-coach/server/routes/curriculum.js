@@ -7,14 +7,16 @@ router.get('/lessons', (req, res) => {
   const db = getDb();
   const studentId = req.student.id;
 
+  const book = parseInt(req.query.book) || 1;
   const lessons = db.prepare(`
     SELECT l.*,
            COALESCE(sp.vocab_mastered, 0) as mastered,
            (SELECT COUNT(*) FROM grammar_points WHERE lesson_id = l.id) as grammar_count
     FROM lessons l
     LEFT JOIN student_progress sp ON sp.lesson_id = l.id AND sp.student_id = ?
+    WHERE l.book = ?
     ORDER BY l.sort_order
-  `).all(studentId);
+  `).all(studentId, book);
 
   res.json(lessons);
 });
