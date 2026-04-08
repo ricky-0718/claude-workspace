@@ -52,11 +52,23 @@ async function chat(messages, studentLevel = 'beginner', lessonTopic = '自由�
   const text = response.content[0].text;
 
   try {
-    // Remove markdown code blocks if present
-    const cleaned = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-    return JSON.parse(cleaned);
+    // Try direct JSON parse first
+    return JSON.parse(text.trim());
   } catch {
-    return { reply: text, corrections: [], hint_ja: '' };
+    // Extract JSON object from mixed text (Claude sometimes adds text before/after JSON)
+    const jsonMatch = text.match(/\{[\s\S]*"reply"[\s\S]*\}/);
+    if (jsonMatch) {
+      try {
+        return JSON.parse(jsonMatch[0]);
+      } catch {}
+    }
+    // Last resort: strip markdown code blocks
+    const cleaned = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+    try {
+      return JSON.parse(cleaned);
+    } catch {
+      return { reply: text.replace(/```json[\s\S]*```/g, '').trim(), corrections: [], hint_ja: '' };
+    }
   }
 }
 

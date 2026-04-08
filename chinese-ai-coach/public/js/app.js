@@ -12,6 +12,7 @@ let isRecording = false;
 let currentLessonId = null;
 let lessonVocabulary = [];
 let lessons = [];
+let drillTarget = null; // {hanzi, pinyin} - current target for recording (word or example)
 
 const API = '';
 
@@ -178,12 +179,16 @@ function loadDrill() {
     `${currentDrillIndex + 1} / ${lessonVocabulary.length}`;
   document.getElementById('score-panel').style.display = 'none';
 
-  // Show examples
+  // Set default drill target to the word itself
+  drillTarget = { hanzi: item.hanzi, pinyin: item.pinyin };
+
+  // Show examples (tappable for pronunciation test)
   const exContainer = document.getElementById('drill-examples');
   const examples = item.examples || [];
   if (examples.length > 0) {
-    exContainer.innerHTML = examples.map(ex => `
-      <div class="example-item">
+    exContainer.innerHTML = `<div class="examples-header">例文をタップして発音テスト</div>` +
+      examples.map((ex, i) => `
+      <div class="example-item" onclick="selectDrillTarget('example', ${i})" data-idx="${i}">
         <span class="ex-hanzi">${escapeHtml(ex.hanzi)}</span>
         <span class="ex-pinyin">${escapeHtml(ex.pinyin)}</span>
         <span class="ex-ja">${escapeHtml(ex.translation_ja)}</span>
@@ -203,10 +208,28 @@ function nextDrill() {
   if (currentDrillIndex < lessonVocabulary.length - 1) { currentDrillIndex++; loadDrill(); }
 }
 
-function playExample() {
-  if (lessonVocabulary.length === 0) return;
+function selectDrillTarget(type, index) {
   const item = lessonVocabulary[currentDrillIndex];
-  const utterance = new SpeechSynthesisUtterance(item.hanzi);
+  // Remove active class from all
+  document.querySelectorAll('.example-item').forEach(el => el.classList.remove('active'));
+  document.querySelector('.drill-target')?.classList.remove('dimmed');
+
+  if (type === 'example') {
+    const ex = item.examples[index];
+    drillTarget = { hanzi: ex.hanzi, pinyin: ex.pinyin };
+    document.querySelectorAll('.example-item')[index]?.classList.add('active');
+    document.querySelector('.drill-target')?.classList.add('dimmed');
+    document.getElementById('record-label').textContent = '例文を録音';
+  } else {
+    drillTarget = { hanzi: item.hanzi, pinyin: item.pinyin };
+    document.getElementById('record-label').textContent = '録音開始';
+  }
+  document.getElementById('score-panel').style.display = 'none';
+}
+
+function playExample() {
+  if (!drillTarget) return;
+  const utterance = new SpeechSynthesisUtterance(drillTarget.hanzi);
   utterance.lang = 'zh-TW';
   utterance.rate = 0.8;
   speechSynthesis.speak(utterance);
@@ -261,14 +284,13 @@ function stopRecording() {
 }
 
 async function submitAudio(audioBlob) {
-  if (lessonVocabulary.length === 0) return;
-  const item = lessonVocabulary[currentDrillIndex];
+  if (!drillTarget) return;
   const formData = new FormData();
   formData.append('audio', audioBlob, 'recording.webm');
   formData.append('student_id', studentId || '1');
   formData.append('lesson_id', currentLessonId || 'free');
-  formData.append('target_text', item.hanzi);
-  formData.append('target_pinyin', item.pinyin);
+  formData.append('target_text', drillTarget.hanzi);
+  formData.append('target_pinyin', drillTarget.pinyin);
 
   document.getElementById('record-label').textContent = '判定中...';
 

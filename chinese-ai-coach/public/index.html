@@ -42,11 +42,11 @@
         </div>
 
         <div class="drill-card" id="drill-card" style="display:none">
-          <div class="drill-target">
+          <div class="drill-target" onclick="selectDrillTarget('word')">
             <p class="hanzi" id="drill-hanzi"></p>
             <p class="pinyin" id="drill-pinyin"></p>
             <p class="translation" id="drill-translation"></p>
-            <button class="play-btn" onclick="playExample()" id="play-btn">お手本を聞く</button>
+            <button class="play-btn" onclick="event.stopPropagation(); playExample()" id="play-btn">お手本を聞く</button>
           </div>
 
           <!-- 例文エリア -->
