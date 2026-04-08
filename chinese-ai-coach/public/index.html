@@ -32,14 +32,14 @@
           <div class="lesson-progress-info" id="lesson-progress-info"></div>
         </div>
         <nav>
-          <button class="nav-btn active" data-tab="grammar">文法</button>
-          <button class="nav-btn" data-tab="drill">単語</button>
+          <button class="nav-btn active" data-tab="drill">単語</button>
+          <button class="nav-btn" data-tab="grammar">文法</button>
           <button class="nav-btn" data-tab="chat">会話</button>
         </nav>
       </header>
 
       <!-- 文法タブ -->
-      <div id="grammar-tab" class="tab active">
+      <div id="grammar-tab" class="tab">
         <div id="grammar-content">
           <p class="empty-state" id="grammar-empty">レッスンを選択すると文法ポイントが表示されます</p>
           <div id="grammar-list"></div>
@@ -47,7 +47,7 @@
       </div>
 
       <!-- 単語（発音ドリル）タブ -->
-      <div id="drill-tab" class="tab">
+      <div id="drill-tab" class="tab active">
         <div class="drill-card" id="drill-card" style="display:none">
           <div class="drill-target" onclick="selectDrillTarget('word')">
             <p class="hanzi" id="drill-hanzi"></p>

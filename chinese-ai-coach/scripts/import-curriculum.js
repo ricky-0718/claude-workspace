@@ -238,10 +238,8 @@ function importGrammar(db) {
         db.prepare(`INSERT OR IGNORE INTO lessons (id, book, lesson_number, title_zh, sort_order) VALUES (?, ?, ?, ?, ?)`)
           .run(currentLessonId, 2, num, titleZh, 100 + num);
       }
-      continue;
-    }
-
-    if (sheetName.startsWith('第') && (lessonMatch || kanjiMatch)) {
+      // Don't continue - also import this sheet as a grammar point (falls through below)
+    } else if (sheetName.startsWith('第') && (lessonMatch || kanjiMatch)) {
       currentBook = 1;
       let num;
       if (lessonMatch) {
@@ -254,7 +252,7 @@ function importGrammar(db) {
         grammarOrder[currentLessonId] = grammarOrder[currentLessonId] || 0;
         console.log(`  [LESSON] ${currentLessonId}: ${sheetName}`);
       }
-      continue;
+      // Don't continue - also import this sheet as a grammar point
     }
 
     // This is a grammar point sheet
