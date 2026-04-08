@@ -24,23 +24,30 @@
     <div id="main-screen" class="screen">
       <header>
         <h2 id="student-name"></h2>
-        <nav>
-          <button class="nav-btn active" data-tab="drill">発音ドリル</button>
-          <button class="nav-btn" data-tab="chat">会話練習</button>
-          <button class="nav-btn" data-tab="tasks">課題</button>
-        </nav>
-      </header>
-
-      <!-- 発音ドリル -->
-      <div id="drill-tab" class="tab active">
-        <!-- レッスン選択 -->
-        <div class="lesson-selector" id="lesson-selector">
+        <!-- 共通レッスン選択 -->
+        <div class="global-lesson-selector">
           <select id="lesson-select" onchange="selectLesson(this.value)">
             <option value="">レッスンを選択...</option>
           </select>
           <div class="lesson-progress-info" id="lesson-progress-info"></div>
         </div>
+        <nav>
+          <button class="nav-btn active" data-tab="grammar">文法</button>
+          <button class="nav-btn" data-tab="drill">単語</button>
+          <button class="nav-btn" data-tab="chat">会話</button>
+        </nav>
+      </header>
 
+      <!-- 文法タブ -->
+      <div id="grammar-tab" class="tab active">
+        <div id="grammar-content">
+          <p class="empty-state" id="grammar-empty">レッスンを選択すると文法ポイントが表示されます</p>
+          <div id="grammar-list"></div>
+        </div>
+      </div>
+
+      <!-- 単語（発音ドリル）タブ -->
+      <div id="drill-tab" class="tab">
         <div class="drill-card" id="drill-card" style="display:none">
           <div class="drill-target" onclick="selectDrillTarget('word')">
             <p class="hanzi" id="drill-hanzi"></p>
@@ -49,7 +56,6 @@
             <button class="play-btn" onclick="event.stopPropagation(); playExample()" id="play-btn">お手本を聞く</button>
           </div>
 
-          <!-- 例文エリア -->
           <div class="drill-examples" id="drill-examples"></div>
 
           <div class="recorder">
@@ -89,11 +95,11 @@
             <button onclick="nextDrill()">次へ</button>
           </div>
         </div>
+        <p class="empty-state" id="drill-empty">レッスンを選択すると単語ドリルが表示されます</p>
       </div>
 
-      <!-- テキスト会話 -->
+      <!-- 会話タブ -->
       <div id="chat-tab" class="tab">
-        <!-- シチュエーション選択 -->
         <div class="scenario-selector" id="scenario-selector">
           <div class="scenario-header">
             <span>会話モード</span>
@@ -114,13 +120,6 @@
           <input type="text" id="chat-input" placeholder="繁體中文で入力..."
                  onkeydown="if(event.key==='Enter')sendChat()">
           <button onclick="sendChat()">送信</button>
-        </div>
-      </div>
-
-      <!-- 課題一覧 -->
-      <div id="tasks-tab" class="tab">
-        <div class="task-list" id="task-list">
-          <p class="empty-state">課題はまだありません</p>
         </div>
       </div>
     </div>

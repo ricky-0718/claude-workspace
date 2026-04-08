@@ -130,6 +130,9 @@ async function loadLessons() {
 async function selectLesson(lessonId) {
   if (!lessonId) {
     document.getElementById('drill-card').style.display = 'none';
+    document.getElementById('drill-empty').style.display = '';
+    document.getElementById('grammar-empty').style.display = '';
+    document.getElementById('grammar-list').innerHTML = '';
     lessonVocabulary = [];
     currentLessonId = null;
     return;
@@ -137,21 +140,34 @@ async function selectLesson(lessonId) {
 
   currentLessonId = lessonId;
 
+  // Load vocabulary, grammar in parallel
   try {
-    const res = await apiFetch(`${API}/api/curriculum/lessons/${lessonId}/vocabulary`);
-    if (!res) return;
-    lessonVocabulary = await res.json();
+    const [vocabRes, grammarRes] = await Promise.all([
+      apiFetch(`${API}/api/curriculum/lessons/${lessonId}/vocabulary`),
+      apiFetch(`${API}/api/curriculum/lessons/${lessonId}/grammar`),
+    ]);
 
-    if (lessonVocabulary.length === 0) {
-      document.getElementById('drill-card').style.display = 'none';
-      document.getElementById('lesson-progress-info').textContent = 'この課の単語データはまだありません';
-      return;
+    // Vocabulary
+    if (vocabRes) {
+      lessonVocabulary = await vocabRes.json();
+      if (lessonVocabulary.length > 0) {
+        currentDrillIndex = 0;
+        document.getElementById('drill-card').style.display = '';
+        document.getElementById('drill-empty').style.display = 'none';
+        loadDrill();
+      } else {
+        document.getElementById('drill-card').style.display = 'none';
+        document.getElementById('drill-empty').style.display = '';
+      }
     }
 
-    currentDrillIndex = 0;
-    document.getElementById('drill-card').style.display = '';
+    // Grammar
+    if (grammarRes) {
+      const grammarPoints = await grammarRes.json();
+      loadGrammar(grammarPoints);
+    }
 
-    // Show progress info
+    // Progress info
     const lesson = lessons.find(l => l.id === lessonId);
     if (lesson) {
       const pct = lesson.vocab_count > 0 ? Math.round((lesson.mastered / lesson.vocab_count) * 100) : 0;
@@ -161,10 +177,74 @@ async function selectLesson(lessonId) {
         `</div>` +
         `<span>${lesson.mastered || 0} / ${lesson.vocab_count} マスター</span>`;
     }
-
-    loadDrill();
   } catch (err) {
-    console.error('Failed to load vocabulary:', err);
+    console.error('Failed to load lesson data:', err);
+  }
+}
+
+// ===== 文法 =====
+function loadGrammar(points) {
+  const listEl = document.getElementById('grammar-list');
+  const emptyEl = document.getElementById('grammar-empty');
+
+  if (!points || points.length === 0) {
+    listEl.innerHTML = '';
+    emptyEl.style.display = '';
+    return;
+  }
+  emptyEl.style.display = 'none';
+
+  listEl.innerHTML = points.map((g, i) => {
+    const explanation = (g.explanation || '').replace(/\n/g, '<br>');
+    const hasExercise = g.exercises && g.exercises.trim();
+    const exercises = (g.exercises || '').replace(/\n/g, '<br>');
+    const answers = (g.answers || '').replace(/\n/g, '<br>');
+    const summary = (g.summary || '').replace(/\n/g, '<br>');
+
+    return `
+      <div class="grammar-card">
+        <div class="grammar-header" onclick="toggleGrammar(${i})">
+          <span class="grammar-num">${i + 1}</span>
+          <span class="grammar-title">${escapeHtml(g.title)}</span>
+          <span class="grammar-toggle" id="grammar-toggle-${i}">▼</span>
+        </div>
+        <div class="grammar-body" id="grammar-body-${i}" style="display:none">
+          <div class="grammar-section">
+            <div class="grammar-section-label">解説</div>
+            <div class="grammar-explanation">${explanation}</div>
+          </div>
+          ${hasExercise ? `
+            <div class="grammar-section">
+              <div class="grammar-section-label">練習問題</div>
+              <div class="grammar-exercises">${exercises}</div>
+              <button class="grammar-show-answer" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">答えを見る</button>
+              <div class="grammar-answers" style="display:none">
+                <div class="grammar-section-label">解答</div>
+                ${answers}
+              </div>
+            </div>
+          ` : ''}
+          ${summary ? `
+            <div class="grammar-section grammar-summary">
+              <div class="grammar-section-label">まとめ</div>
+              <div>${summary}</div>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleGrammar(index) {
+  const body = document.getElementById(`grammar-body-${index}`);
+  const toggle = document.getElementById(`grammar-toggle-${index}`);
+  if (body.style.display === 'none') {
+    body.style.display = '';
+    toggle.textContent = '▲';
+  } else {
+    body.style.display = 'none';
+    toggle.textContent = '▼';
   }
 }
 
