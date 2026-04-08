@@ -189,9 +189,12 @@ function loadDrill() {
     exContainer.innerHTML = `<div class="examples-header">例文をタップして発音テスト</div>` +
       examples.map((ex, i) => `
       <div class="example-item" onclick="selectDrillTarget('example', ${i})" data-idx="${i}">
-        <span class="ex-hanzi">${escapeHtml(ex.hanzi)}</span>
-        <span class="ex-pinyin">${escapeHtml(ex.pinyin)}</span>
-        <span class="ex-ja">${escapeHtml(ex.translation_ja)}</span>
+        <div class="ex-text">
+          <span class="ex-hanzi">${escapeHtml(ex.hanzi)}</span>
+          <span class="ex-pinyin">${escapeHtml(ex.pinyin)}</span>
+          <span class="ex-ja">${escapeHtml(ex.translation_ja)}</span>
+        </div>
+        <button class="ex-play-btn" onclick="event.stopPropagation(); playText('${escapeHtml(ex.hanzi).replace(/'/g, "\\'")}')">▶</button>
       </div>
     `).join('');
     exContainer.style.display = '';
@@ -227,12 +230,16 @@ function selectDrillTarget(type, index) {
   document.getElementById('score-panel').style.display = 'none';
 }
 
-function playExample() {
-  if (!drillTarget) return;
-  const utterance = new SpeechSynthesisUtterance(drillTarget.hanzi);
+function playText(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'zh-TW';
   utterance.rate = 0.8;
   speechSynthesis.speak(utterance);
+}
+
+function playExample() {
+  if (!drillTarget) return;
+  playText(drillTarget.hanzi);
 }
 
 // 録音

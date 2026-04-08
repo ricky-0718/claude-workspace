@@ -501,6 +501,28 @@ nav {
   background: rgba(10, 95, 166, 0.15);
   border-left: 3px solid var(--primary);
 }
+.example-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ex-text { flex: 1; display: flex; flex-direction: column; }
+.ex-play-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(10, 95, 166, 0.3);
+  background: rgba(10, 95, 166, 0.08);
+  color: var(--primary);
+  font-size: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.ex-play-btn:hover { background: rgba(10, 95, 166, 0.2); }
 .examples-header {
   font-size: 0.7rem;
   color: var(--text-muted);
