@@ -99,24 +99,6 @@ app.get('/api/admin/students', coachAuth, (req, res) => {
   res.json(db.prepare('SELECT id, name, line_name, level, created_at FROM students').all());
 });
 
-// カリキュラムデータ一括投入（管理者用・一時API）
-app.post('/api/admin/import-curriculum', coachAuth, (req, res) => {
-  const { sql } = req.body;
-  if (!sql) return res.status(400).json({ error: 'sql required' });
-  try {
-    const db = getDb();
-    db.exec(sql);
-    const stats = {
-      lessons: db.prepare('SELECT COUNT(*) as c FROM lessons').get().c,
-      vocabulary: db.prepare('SELECT COUNT(*) as c FROM vocabulary').get().c,
-      grammar: db.prepare('SELECT COUNT(*) as c FROM grammar_points').get().c,
-    };
-    res.json({ success: true, ...stats });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
 // ヘルスチェック
 app.get('/api/health', (req, res) => {
   res.json({
