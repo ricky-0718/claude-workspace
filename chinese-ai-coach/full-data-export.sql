@@ -1086,8 +1086,6 @@ INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,ans
 「数＋量詞＋多＋名詞」は全体的な多さをあいまいに表す。
 このルールをマスターすれば、中国語で「～以上」を使いこなせるようになりますよ！
 それではまた次回お会いしましょう～下次見!','https://www.youtube.com/watch?v=NYFybaV_0vo');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson04',6,'見えた？聞こえた？中国語の「V到」徹底マスター！','','','','',NULL);
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson04',7,'「わかる」の中国語は4種類！？“懂”の使い方を完全マスター！','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson05',1,'「“在”を使って場所を言い表そう！」','② 文法解説：「在 (zài)」＋「場所を表す言葉」
 1. 基本の形
 「主語 + 在 + 場所」
@@ -3146,7 +3144,6 @@ INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,ans
 
 それではまた次回お会いしましょう～下次見!','https://www.youtube.com/watch?v=gQlVxvNuTKc');
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson11',5,'「“給”で広がる表現の幅！相手に何かをする時に使う中国語のポイント」','','','','','https://www.youtube.com/watch?v=cCb5eFj9u_k');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson11',6,'「興味ある？ない？中国語でサラッと言ってみよう！」對……(不)感興趣','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson12',1,'中国語の『用』の使い方をマスターしよう！～「○○を使って」表す便利な表現～','文法の基本構造
 
 ◆ 誰が + 用 + 何を使って + 何をする
@@ -3430,7 +3427,6 @@ INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,ans
 
 
 それではまた次回お会いしましょう～下次見!👋','https://www.youtube.com/watch?v=UeuH6WVGdiQ');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson12',6,'「『〜から始まる』シンプルに言える便利フレーズ！」(S)(+從) + Time/VP + 起，(S)就...','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson13',1,'第13課【V（一）V】動詞の重ね型','🔹【V（一）V】の基本構造
 V（一）Vの形は、動詞（V）を繰り返して使いますが、間に「一」を挟むのが特徴です。
 
@@ -4014,7 +4010,6 @@ zhè ge yuè bǐ shàng ge yuè xià yǔ duō
 
 それではまた次回お会いしましょう～
 下次見！','https://www.youtube.com/watch?v=9a_rZf3IUlU');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson14',4,'やらない→「“讓”の使い方完全理解！人に〜させる／してもらう表現を自在に」','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson15',1,'「跟……一樣／不一樣」の使い方｜“同じ”や“違う”を表す便利な中国語表現！','🟡文法解説：「……跟……一樣／不一樣」
 🌟基本の文型
 👉 A 跟 B 一樣 + 形容詞（形や性質が同じ）
@@ -4233,7 +4228,7 @@ INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,ans
 
 それではまた次回お会いしましょう～
 **下次見！**👋','https://www.youtube.com/watch?v=sw5nvvQLUm0');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson15',4,'「AはBほどじゃない」って中国語でどう言う？『沒有～那麼』の使い方を完全マスター✨','📘 文法解説
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson16',1,'「AはBほどじゃない」って中国語でどう言う？『沒有～那麼』の使い方を完全マスター✨','📘 文法解説
 🔹 基本構造
 A沒有B 那麼／這麼 + 形容詞
 
@@ -4304,8 +4299,8 @@ A + 動詞 + 得 + 沒有 B 那麼／這麼 + 形容詞／量
 ✅ 「～ほどではない」を表現したいときに大活躍！
 
 身近なことを比べるときに、自然に使える表現です。
-どんどん口に出して練習してみましょう！',NULL);
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson15',5,'「離」の使い方徹底マスター！場所の距離感を伝える中国語表現🧭✨','🧠文法解説：「離」の基本構造
+どんどん口に出して練習してみましょう！','https://www.youtube.com/watch?v=rNzjtudYNVU');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson16',2,'「離」の使い方徹底マスター！場所の距離感を伝える中国語表現🧭✨','🧠文法解説：「離」の基本構造
 「離（lí）」は、2つの場所の距離を表すときに使います。
 基本の文型はこちら👇
 
@@ -4374,8 +4369,8 @@ A3
 🔹 「很」「不太」「有點兒」などで距離の程度を調整できる
 🔹 日常会話でよく使う便利な構文です！
 
-ぜひ自分の生活に当てはめて、いろんな距離の言い方を試してみてくださいね😊',NULL);
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson15',6,'「本來／原來……，後來……」で変化を伝える便利フレーズ✨','✏️文法解説
+ぜひ自分の生活に当てはめて、いろんな距離の言い方を試してみてくださいね😊','https://www.youtube.com/watch?v=sm70dxzhUl8');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson16',3,'「本來／原來……，後來……」で変化を伝える便利フレーズ✨','✏️文法解説
 🔹基本構造
 S + 本來／原來 + V(O)，後來 + V(O) + 了
 
@@ -4451,8 +4446,8 @@ A3
 この文型を使えると、自然なストーリーが話せるようになりますよ📈✨
 
 それではまた次回お会いしましょう～
-下次見! 👋',NULL);
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson15',7,'「更」でレベルアップ！中国語で“もっと〜”を自然に伝えよう✨','✏️ 文法解説：「更」の基本構造
+下次見! 👋','https://www.youtube.com/watch?v=aFG6O_h8FoQ');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson16',4,'「更」でレベルアップ！中国語で“もっと〜”を自然に伝えよう✨','✏️ 文法解説：「更」の基本構造
 ✅ 基本構造
 A + 比（bǐ）+ B + 更（gèng）+ 形容詞（Vs）
 
@@ -4511,8 +4506,8 @@ A3
 この文法は日常会話でもめちゃくちゃ使えるので、たくさん練習してみてください！
 
 それではまた次回お会いしましょう～
-下次見! 👋',NULL);
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson15',8,'「～したら、すぐに～する」「了」と「就」の使い方を完全マスター✨','🧠文法解説
+下次見! 👋','https://www.youtube.com/watch?v=XIx3I-L_jRM');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book1-lesson16',5,'「～したら、すぐに～する」「了」と「就」の使い方を完全マスター✨','🧠文法解説
 ✅基本のかたち
 ➡️ 「〜したら、すぐに〜する」
 👉「動作＋了， 就＋次の動作」
@@ -4584,7 +4579,7 @@ A3
 📌日常会話で本当によく使う表現なので、ぜひ今日から使ってみてくださいね！
 
 それではまた次回お会いしましょう～
-下次見！👋',NULL);
+下次見！👋','https://www.youtube.com/watch?v=wUUoo4Jswog');
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson01',1,'「“一下 yí xià” で“ちょっと○○する”をマスターしよう！」','📚 文法解説
 1️⃣ 基本構造
 （主語） + 動詞 + 一下 (+ 目的語)
@@ -4781,22 +4776,24 @@ INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,ans
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson01',7,'同時に2つのことをする時に使える便利な文法！「一邊～一邊～」の使い方','','','','','https://www.youtube.com/watch?v=yhRgUAR9Ff0');
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson01',8,'「雖然……可是……」の使い方をマスターしよう！｜対比を表す便利な表現','','','','','https://www.youtube.com/watch?v=sMts_Q_XfR8');
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson01',9,'相手にやさしく伝えるコツ！中国語の文末「呢」の使い方','','','','','https://www.youtube.com/watch?v=SSCoqA7H6Z4');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',1,'「どれくらい〇〇？を中国語で聞く方法｜“(有)多＋形容詞”パターン解説」','','','','','https://www.youtube.com/watch?v=LTibm-aD6ow');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',2,'「2週間〇〇してない！？中国語の《没V(O)了 / 不V(O)》を完全マスター！」','','','','','https://www.youtube.com/watch?v=tuTeRB_yxXU');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',3,'「誰でも・どこでも」ってどう言うの？中国語の万能フレーズ「疑問詞＋都／也」完全マスター！','','','','','https://www.youtube.com/watch?v=j-RPSgHF_v4');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',4,'また！？中国語の“又”の使い方を完全攻略！','','','','','https://www.youtube.com/watch?v=6TQOuuvnEao');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',5,'『時間＋才＋V』で“思ったより遅い”を表す方法','','','','','https://www.youtube.com/watch?v=O-gkuoR0Pmo');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',6,'「やっと〇〇できた！中国語の『才』で条件と結果を表そう！」','','','','','https://www.youtube.com/watch?v=bjrB1PAjID4');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson03',1,'ふんわり伝える中国語！2音節動詞の重ね型の使い方','','','','','https://www.youtube.com/watch?v=P6bTKtVcD74');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson03',2,'動作の結果を伝える「把＋得」構文！驚き・感動・文句もこれでOK！','','','','','https://www.youtube.com/watch?v=9wg4dCLj8GQ');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',1,'「どれくらい〇〇？を中国語で聞く方法｜“(有)多＋形容詞”パターン解説」','','','','','https://www.youtube.com/watch?v=uqCz1bi9JYU');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',2,'「2週間〇〇してない！？中国語の《没V(O)了 / 不V(O)》を完全マスター！」','','','','','https://www.youtube.com/watch?v=LTibm-aD6ow');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',3,'「誰でも・どこでも」ってどう言うの？中国語の万能フレーズ「疑問詞＋都／也」完全マスター！','','','','','https://www.youtube.com/watch?v=tuTeRB_yxXU');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',4,'また！？中国語の“又”の使い方を完全攻略！','','','','','https://www.youtube.com/watch?v=j-RPSgHF_v4');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',5,'『時間＋才＋V』で“思ったより遅い”を表す方法','','','','','https://www.youtube.com/watch?v=6TQOuuvnEao');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson02',6,'「やっと〇〇できた！中国語の『才』で条件と結果を表そう！」','','','','','https://www.youtube.com/watch?v=O-gkuoR0Pmo');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson03',1,'ふんわり伝える中国語！2音節動詞の重ね型の使い方','','','','','https://www.youtube.com/watch?v=L3PtSjka4JY');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson03',2,'動作の結果を伝える「把＋得」構文！驚き・感動・文句もこれでOK！','','','','','https://www.youtube.com/watch?v=P6bTKtVcD74');
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson03',3,'「〜に見える・聞こえる・感じる」は中国語でこう言う！「〜起來」完全マスター','','','','','https://www.youtube.com/watch?v=4HXeRNGymiE');
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson03',4,'代わりにやってくれる？中国語の「替」の使い方','','','','','https://www.youtube.com/watch?v=K9CSaQSscDU');
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson03',5,'「AもBも好き」ってどう言うの？『除了⋯⋯，還⋯⋯』完全ガイド！','','','','','https://www.youtube.com/watch?v=9iFuLtdMN9E');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',1,'「とにかく○○すぎる！」を中国語で言いたいときの2つの言い方！「得不得了」「極了」の使い分け講座','','','','','https://www.youtube.com/watch?v=R1FVsYMYqiE');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',2,'中国語で“どんどん〜になる”を表す！『越來越』の使い方をマスターしよう！','','','','','https://www.youtube.com/watch?v=R1FVsYMYqiE');
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',3,'「買える？買えない？」をスマートに表現！V得起／V不起の使い方💡','','','','',NULL);
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',4,'「V飽」の使い方｜お腹いっぱい？それとも足りない？一発でわかる文法解説！','','','','',NULL);
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',1,'「とにかく○○すぎる！」を中国語で言いたいときの2つの言い方！「得不得了」「極了」の使い分け講座','','','','','https://www.youtube.com/watch?v=M6kbH1_edrg');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',2,'中国語で“どんどん〜になる”を表す！『越來越』の使い方をマスターしよう！','','','','','https://www.youtube.com/watch?v=zguQoXJAQtU');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',3,'「買える？買えない？」をスマートに表現！V得起／V不起の使い方💡','','','','','https://www.youtube.com/watch?v=mpxxOGZoZjk');
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',4,'「V飽」の使い方｜お腹いっぱい？それとも足りない？一発でわかる文法解説！','','','','','https://www.youtube.com/watch?v=R1FVsYMYqiE');
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',5,'「〜に興味がある」って中国語でどう言うの？『對～有興趣』の使い方をマスターしよう！','','','','',NULL);
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',6,'見えた？聞こえた？中国語の「V到」徹底マスター！','','','','',NULL);
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson04',7,'「わかる」の中国語は4種類！？“懂”の使い方を完全マスター！','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson05',1,'「V著V著，就～了」：気づいたらそうなってた！自然な変化を表す中国語文法🌟','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson05',2,'「只要...就...」で条件表現マスター！〜すれば〜できる中国語文法✨','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson05',3,'「有時候…有時候…」はこう使う！～な時もあれば、～な時もあるを中国語で表そう！','','','','',NULL);
@@ -4841,12 +4838,14 @@ INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,ans
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson11',2,'「“嘛”をつけるだけでネイティブっぽさ爆上がり！」','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson11',3,'「『同じ〜』を言いたいときはコレ！」同 + 一 + M(+N)','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson11',4,'『〜から学ぶ』はこう言う！“從…中”を使いこなそう','','','','',NULL);
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson11',5,'「興味ある？ない？中国語でサラッと言ってみよう！」對……(不)感興趣','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson12',1,'『〜ほどじゃない』をサラッと表現！NP1 + 像/不像 + NP2 + 那麼/這麼 + V','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson12',2,'『〜に向かって』『〜に対して』を自然に言おう！向 + N/NP +','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson12',3,'『なるほど！』『どうりで〜』はコレ！難怪...','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson12',4,'⭐️次回ここからできる？できない？“得了 / 不了”を完全攻略！V 得了/ V不了','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson12',5,'「数えるだけじゃない！“個”の意外な使い方」V 個 + N(O)','','','','',NULL);
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson12',6,'『やらせる！』を中国語でサクッと表す方法！N/NP + 來(+V)','','','','',NULL);
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson12',6,'「『〜から始まる』シンプルに言える便利フレーズ！」(S)(+從) + Time/VP + 起，(S)就...','','','','',NULL);
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson12',7,'『やらせる！』を中国語でサクッと表す方法！N/NP + 來(+V)','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson13',1,'「比較表現の決定版！『〜より〜した方がいい』を自然に話す方法」不如……','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson13',2,'「ちょっとだけ…を表現！中国語で微妙な変化や感情を伝える裏技」Vs 了 (一)點兒','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson13',3,'「“AはBより…”の言い方完全攻略！ネイティブの比較表現をマスター」比、比較、比起來','','','','',NULL);
@@ -4855,8 +4854,9 @@ INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,ans
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson14',1,'「『今まで一度も…したことがない』を中国語で自然に言う方法」從來+ 沒/不','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson14',2,'「〜したらすぐ…！中国語の“タイミング表現”をすぐ使える」當……，就','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson14',3,'「『どうでもいい』『構わない』を中国語でサラッと言えるコツ」無所謂','','','','',NULL);
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson14',4,'「〜して行ってしまった／行けないをマスター！V走シリーズ徹底解説」','','','','',NULL);
-INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson14',5,'「もし〜がなかったら…！中国語で“もしも”を自然に話す表現」要不是','','','','',NULL);
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson14',4,'やらない→「“讓”の使い方完全理解！人に〜させる／してもらう表現を自在に」','','','','',NULL);
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson14',5,'「〜して行ってしまった／行けないをマスター！V走シリーズ徹底解説」','','','','',NULL);
+INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson14',6,'「もし〜がなかったら…！中国語で“もしも”を自然に話す表現」要不是','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson15',1,'「動作の回数や一瞬を表す！中国語の“V(了) + 一 + M”をマスター」','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson15',2,'「下來マジック！『動作の方向・書き留め・止まる』を自在に表現」','','','','',NULL);
 INSERT INTO grammar_points (lesson_id,sort_order,title,explanation,exercises,answers,summary,video_url) VALUES ('book2-lesson15',3,'「『言ったらすぐやる』を中国語で自然に！ネイティブ感満点の表現」','','','','',NULL);
