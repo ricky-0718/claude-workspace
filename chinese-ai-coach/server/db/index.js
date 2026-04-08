@@ -19,11 +19,13 @@ function getDb() {
     const schema = fs.readFileSync(SCHEMA_PATH, 'utf-8');
     db.exec(schema);
 
-    // Migration: add current_lesson_id to students
-    try {
-      db.exec("ALTER TABLE students ADD COLUMN current_lesson_id TEXT DEFAULT 'book1-lesson01'");
-    } catch (e) {
-      // Column already exists
+    // Migrations
+    const migrations = [
+      "ALTER TABLE students ADD COLUMN current_lesson_id TEXT DEFAULT 'book1-lesson01'",
+      "ALTER TABLE grammar_points ADD COLUMN video_url TEXT",
+    ];
+    for (const sql of migrations) {
+      try { db.exec(sql); } catch (e) { /* Column already exists */ }
     }
   }
   return db;

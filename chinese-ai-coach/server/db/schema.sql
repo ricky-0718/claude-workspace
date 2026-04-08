@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS grammar_points (
   exercises TEXT,
   answers TEXT,
   summary TEXT,
+  video_url TEXT,
   FOREIGN KEY (lesson_id) REFERENCES lessons(id)
 );
 

@@ -200,15 +200,18 @@ function loadGrammar(points) {
     const exercises = (g.exercises || '').replace(/\n/g, '<br>');
     const answers = (g.answers || '').replace(/\n/g, '<br>');
     const summary = (g.summary || '').replace(/\n/g, '<br>');
+    const hasVideo = g.video_url && g.video_url.trim();
 
     return `
       <div class="grammar-card">
         <div class="grammar-header" onclick="toggleGrammar(${i})">
           <span class="grammar-num">${i + 1}</span>
           <span class="grammar-title">${escapeHtml(g.title)}</span>
+          ${hasVideo ? '<span class="grammar-video-badge">▶</span>' : ''}
           <span class="grammar-toggle" id="grammar-toggle-${i}">▼</span>
         </div>
         <div class="grammar-body" id="grammar-body-${i}" style="display:none">
+          ${hasVideo ? `<a class="grammar-video-link" href="${g.video_url}" target="_blank" rel="noopener">▶ 動画で学ぶ</a>` : ''}
           <div class="grammar-section">
             <div class="grammar-section-label">解説</div>
             <div class="grammar-explanation">${explanation}</div>

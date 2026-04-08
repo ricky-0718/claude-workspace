@@ -590,6 +590,29 @@ nav {
   color: var(--text-muted);
   flex-shrink: 0;
 }
+.grammar-video-badge {
+  background: #FF0000;
+  color: #fff;
+  font-size: 0.55rem;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.grammar-video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: #FF0000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  transition: opacity 0.2s;
+}
+.grammar-video-link:hover { opacity: 0.85; }
 .grammar-body {
   padding: 0 1rem 1rem;
 }
