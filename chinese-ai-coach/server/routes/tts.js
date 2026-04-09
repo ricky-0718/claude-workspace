@@ -9,24 +9,16 @@ const path = require('path');
 const CACHE_DIR = path.join(__dirname, '../../data/tts-cache');
 if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true });
 
-// 台湾中国語の高品質音声
-const VOICE = 'zh-TW-HsiaoChenNeural';
+// 高品質中国語音声（Xiaoxiao = Microsoft最高品質）
+const VOICE = 'zh-CN-XiaoxiaoNeural';
 
 router.get('/', async (req, res) => {
   const text = req.query.text;
-  const pinyin = req.query.pinyin || '';
   if (!text || text.length > 200) {
     return res.status(400).json({ error: 'text required (max 200 chars)' });
   }
 
-  // ピンイン付きの場合、TTSテキストに声調ガイドを追加（単一文字/短い語の場合）
-  let ttsText = text;
-  if (pinyin && text.length <= 4) {
-    ttsText = `${text}，${pinyin}`;
-  }
-
-  // キャッシュチェック（ピンイン含めてハッシュ）
-  const hash = crypto.createHash('md5').update(ttsText).digest('hex');
+  const hash = crypto.createHash('md5').update(text + VOICE).digest('hex');
   const cachePath = path.join(CACHE_DIR, `${hash}.mp3`);
 
   if (fs.existsSync(cachePath)) {
