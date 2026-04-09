@@ -281,4 +281,36 @@ router.get('/stats', (req, res) => {
   });
 });
 
+// ===== 週間アクティビティ（過去7日） =====
+router.get('/weekly-activity', (req, res) => {
+  const db = getDb();
+  const studentId = req.student.id;
+
+  // 過去7日分の日別アクティビティ
+  const rows = db.prepare(`
+    SELECT activity_date, SUM(count) as total
+    FROM activity_log
+    WHERE student_id = ? AND activity_date >= date('now', '-6 days')
+    GROUP BY activity_date
+    ORDER BY activity_date
+  `).all(studentId);
+
+  // 7日分の配列を作成（データがない日は0）
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const dateStr = d.toISOString().split('T')[0];
+    const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
+    const row = rows.find(r => r.activity_date === dateStr);
+    days.push({
+      date: dateStr,
+      day: dayNames[d.getDay()],
+      count: row ? row.total : 0,
+    });
+  }
+
+  res.json(days);
+});
+
 module.exports = router;

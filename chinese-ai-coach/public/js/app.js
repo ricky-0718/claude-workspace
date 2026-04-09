@@ -1091,6 +1091,105 @@ async function loadStats() {
   }
 }
 
+// ===== 進捗グラフ =====
+let progressGraphsLoaded = false;
+
+function toggleProgressGraph() {
+  const panel = document.getElementById('progress-graphs');
+  const btn = document.getElementById('progress-expand-btn');
+  if (panel.style.display === 'none') {
+    panel.style.display = '';
+    btn.textContent = '閉じる ▲';
+    if (!progressGraphsLoaded) {
+      loadProgressGraphs();
+      progressGraphsLoaded = true;
+    }
+  } else {
+    panel.style.display = 'none';
+    btn.textContent = '詳しく見る ▼';
+  }
+}
+
+async function loadProgressGraphs() {
+  try {
+    const [weeklyRes, statsRes] = await Promise.all([
+      apiFetch(`${API}/api/curriculum/weekly-activity`),
+      apiFetch(`${API}/api/curriculum/stats`),
+    ]);
+    if (weeklyRes) renderWeeklyChart(await weeklyRes.json());
+    if (statsRes) {
+      const stats = await statsRes.json();
+      renderLessonChart(stats.lesson_progress || []);
+    }
+  } catch (err) {
+    console.error('Graph load error:', err);
+  }
+}
+
+function renderWeeklyChart(days) {
+  const container = document.getElementById('weekly-chart');
+  if (!days || days.length === 0) {
+    container.innerHTML = '<p class="empty-state">まだ学習記録がありません</p>';
+    return;
+  }
+
+  const maxCount = Math.max(...days.map(d => d.count), 1);
+  const barWidth = 100 / days.length;
+
+  const svgW = 280;
+  const svgH = 120;
+  const barGap = 6;
+  const bw = (svgW - barGap * (days.length + 1)) / days.length;
+  const chartH = 80;
+
+  let bars = '';
+  let labels = '';
+  days.forEach((d, i) => {
+    const x = barGap + i * (bw + barGap);
+    const h = maxCount > 0 ? (d.count / maxCount) * chartH : 0;
+    const y = chartH - h + 10;
+    const color = d.count > 0 ? '#0A5FA6' : '#E0E0E0';
+
+    bars += `<rect x="${x}" y="${y}" width="${bw}" height="${h}" rx="3" fill="${color}"/>`;
+    if (d.count > 0) {
+      bars += `<text x="${x + bw/2}" y="${y - 4}" text-anchor="middle" font-size="10" fill="#333">${d.count}</text>`;
+    }
+    labels += `<text x="${x + bw/2}" y="${svgH - 2}" text-anchor="middle" font-size="10" fill="#78716C">${d.day}</text>`;
+  });
+
+  container.innerHTML = `
+    <svg viewBox="0 0 ${svgW} ${svgH}" class="chart-svg">
+      ${bars}
+      ${labels}
+    </svg>
+  `;
+}
+
+function renderLessonChart(lessonProgress) {
+  const container = document.getElementById('lesson-chart');
+  if (!lessonProgress || lessonProgress.length === 0) {
+    container.innerHTML = '<p class="empty-state">レッスンデータがありません</p>';
+    return;
+  }
+
+  const rows = lessonProgress.map(l => {
+    const pct = l.vocab_count > 0 ? Math.round((l.mastered / l.vocab_count) * 100) : 0;
+    const label = l.lesson_number === 0 ? 'ピンイン' : `第${l.lesson_number}課`;
+    const color = pct >= 80 ? '#059669' : pct >= 40 ? '#0A5FA6' : '#D97706';
+    return `
+      <div class="lesson-bar-row">
+        <span class="lesson-bar-label">${label}</span>
+        <div class="lesson-bar-track">
+          <div class="lesson-bar-fill" style="width:${pct}%;background:${color}"></div>
+        </div>
+        <span class="lesson-bar-pct">${pct}%</span>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = rows;
+}
+
 // ===== 復習モード =====
 function startReviewMode() {
   isReviewMode = true;

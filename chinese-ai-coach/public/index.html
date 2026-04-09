@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0A5FA6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>台灣華語コーチ</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -63,6 +69,19 @@
         <div class="progress-stat review-stat" id="review-stat" style="display:none" onclick="startReviewMode()">
           <span class="stat-value" id="stat-review">0</span>
           <span class="stat-label">要復習</span>
+        </div>
+        <button class="progress-expand-btn" id="progress-expand-btn" onclick="toggleProgressGraph()">詳しく見る ▼</button>
+      </div>
+
+      <!-- 進捗グラフ（展開エリア） -->
+      <div id="progress-graphs" class="progress-graphs" style="display:none">
+        <div class="graph-section">
+          <div class="graph-title">今週のアクティビティ</div>
+          <div id="weekly-chart" class="weekly-chart"></div>
+        </div>
+        <div class="graph-section">
+          <div class="graph-title">レッスン別マスター率</div>
+          <div id="lesson-chart" class="lesson-chart"></div>
         </div>
       </div>
 
@@ -193,5 +212,10 @@
   </div>
 
   <script src="/js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
 </body>
 </html>
