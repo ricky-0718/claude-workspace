@@ -479,10 +479,10 @@ function loadDrill() {
   // Set default drill target to the word itself
   drillTarget = { hanzi: item.hanzi, pinyin: item.pinyin };
 
-  // Show examples (tappable for pronunciation test)
+  // Show examples (tappable for pronunciation test) — skip for pinyin lesson
   const exContainer = document.getElementById('drill-examples');
   const examples = item.examples || [];
-  if (examples.length > 0) {
+  if (examples.length > 0 && currentLessonId !== 'book1-lesson00') {
     exContainer.innerHTML = `<div class="examples-header">例文をタップして発音テスト</div>` +
       examples.map((ex, i) => `
       <div class="example-item" onclick="selectDrillTarget('example', ${i})" data-idx="${i}">
