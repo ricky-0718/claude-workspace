@@ -19,10 +19,8 @@ function createUUID() {
 }
 
 async function assessPronunciation(audioBuffer, refText, options = {}) {
-  // word.eval = 1文字のみ、2文字以上は sent.eval
-  const coreType = refText.length === 1
-    ? 'word.eval.promax.cn'
-    : 'sent.eval.promax.cn';
+  // sent.evalに統一（word.evalは1文字の声調判定が不安定）
+  const coreType = 'sent.eval.promax.cn';
 
   const timestamp = Date.now().toString();
   const connectSig = encrypt(APP_KEY + timestamp + SECRET_KEY);
