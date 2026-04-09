@@ -1,4 +1,4 @@
-const CACHE_NAME = 'coach-v5';
+const CACHE_NAME = 'coach-v6';
 const STATIC_ASSETS = [
   '/',
   '/css/style.css',

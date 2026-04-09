@@ -553,27 +553,30 @@ function selectDrillTarget(type, index) {
 
 // サーバーサイドTTS（Edge Neural Voice）で再生
 const ttsAudioCache = {};
-async function playText(text) {
+async function playText(text, pinyin) {
   if (!text) return;
 
+  const cacheKey = text + (pinyin || '');
+
   // キャッシュ済みならそのまま再生
-  if (ttsAudioCache[text]) {
-    const audio = new Audio(ttsAudioCache[text]);
+  if (ttsAudioCache[cacheKey]) {
+    const audio = new Audio(ttsAudioCache[cacheKey]);
     audio.play();
     return;
   }
 
   try {
-    const res = await apiFetch(`${API}/api/tts?text=${encodeURIComponent(text)}`);
+    let url = `${API}/api/tts?text=${encodeURIComponent(text)}`;
+    if (pinyin) url += `&pinyin=${encodeURIComponent(pinyin)}`;
+    const res = await apiFetch(url);
     if (!res || !res.ok) throw new Error('TTS failed');
     const blob = await res.blob();
-    const url = URL.createObjectURL(blob);
-    ttsAudioCache[text] = url;
-    const audio = new Audio(url);
+    const blobUrl = URL.createObjectURL(blob);
+    ttsAudioCache[cacheKey] = blobUrl;
+    const audio = new Audio(blobUrl);
     audio.play();
   } catch (err) {
     console.error('TTS error, falling back to browser:', err);
-    // フォールバック: ブラウザ内蔵音声
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'zh-TW';
     utterance.rate = 0.85;
@@ -583,7 +586,7 @@ async function playText(text) {
 
 function playExample() {
   if (!drillTarget) return;
-  playText(drillTarget.hanzi);
+  playText(drillTarget.hanzi, drillTarget.pinyin);
 }
 
 // 録音

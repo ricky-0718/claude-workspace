@@ -14,12 +14,19 @@ const VOICE = 'zh-TW-HsiaoChenNeural';
 
 router.get('/', async (req, res) => {
   const text = req.query.text;
+  const pinyin = req.query.pinyin || '';
   if (!text || text.length > 200) {
     return res.status(400).json({ error: 'text required (max 200 chars)' });
   }
 
-  // キャッシュチェック
-  const hash = crypto.createHash('md5').update(text).digest('hex');
+  // ピンイン付きの場合、TTSテキストに声調ガイドを追加（単一文字/短い語の場合）
+  let ttsText = text;
+  if (pinyin && text.length <= 4) {
+    ttsText = `${text}，${pinyin}`;
+  }
+
+  // キャッシュチェック（ピンイン含めてハッシュ）
+  const hash = crypto.createHash('md5').update(ttsText).digest('hex');
   const cachePath = path.join(CACHE_DIR, `${hash}.mp3`);
 
   if (fs.existsSync(cachePath)) {
