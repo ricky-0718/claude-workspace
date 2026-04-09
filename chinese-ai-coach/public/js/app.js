@@ -155,9 +155,11 @@ async function loadLessons() {
       const pct = l.vocab_count > 0 ? Math.round((l.mastered / l.vocab_count) * 100) : 0;
       const opt = document.createElement('option');
       opt.value = l.id;
-      // 第0課はピンインマスターとして特別表示
+      // 特別レッスンの表示
       if (l.lesson_number === 0) {
         opt.textContent = `🔤 ${l.title_ja || l.title_zh}（${pct}%）`;
+      } else if (l.lesson_number === 99) {
+        opt.textContent = `🎯 ${l.title_ja || l.title_zh}（${pct}%）`;
       } else {
         opt.textContent = `第${l.lesson_number}課 ${l.title_zh}（${pct}%）`;
       }
@@ -208,10 +210,14 @@ async function selectLesson(lessonId) {
     if (vocabRes) {
       lessonVocabulary = await vocabRes.json();
       if (lessonVocabulary.length > 0) {
+        // ピンインドリルはシャッフルして出題
+        if (lessonId === 'book1-pinyin-drill') shuffleVocabulary();
         currentDrillIndex = 0;
         document.getElementById('drill-card').style.display = '';
         document.getElementById('drill-empty').style.display = 'none';
-        document.getElementById('drill-mode-toggle').style.display = '';
+        // ピンインドリルは発音練習のみ（クイズなし）
+        document.getElementById('drill-mode-toggle').style.display =
+          lessonId === 'book1-pinyin-drill' ? 'none' : '';
         isReviewMode = false;
         switchDrillMode('drill');
         loadDrill();
@@ -468,12 +474,29 @@ function toggleGrammar(index) {
 }
 
 // ===== 発音ドリル =====
+let isPinyinDrillMode = false;
+
+function shuffleVocabulary() {
+  for (let i = lessonVocabulary.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [lessonVocabulary[i], lessonVocabulary[j]] = [lessonVocabulary[j], lessonVocabulary[i]];
+  }
+}
+
 function loadDrill() {
   if (lessonVocabulary.length === 0) return;
 
   const item = lessonVocabulary[currentDrillIndex];
-  document.getElementById('drill-hanzi').textContent = item.hanzi;
-  document.getElementById('drill-pinyin').textContent = item.pinyin;
+  isPinyinDrillMode = currentLessonId === 'book1-pinyin-drill';
+
+  if (isPinyinDrillMode) {
+    // ピンイン練習モード: ピンインを大きく、グループ名を小さく
+    document.getElementById('drill-hanzi').textContent = item.pinyin;
+    document.getElementById('drill-pinyin').textContent = '';
+  } else {
+    document.getElementById('drill-hanzi').textContent = item.hanzi;
+    document.getElementById('drill-pinyin').textContent = item.pinyin;
+  }
   document.getElementById('drill-translation').textContent = item.translation_ja;
   document.getElementById('drill-progress').textContent =
     `${currentDrillIndex + 1} / ${lessonVocabulary.length}`;
