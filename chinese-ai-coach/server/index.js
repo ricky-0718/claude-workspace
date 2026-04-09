@@ -77,6 +77,7 @@ app.use('/api/speech', auth, require('./routes/speech'));
 app.use('/api/tasks', auth, require('./routes/tasks'));
 app.use('/api/curriculum', auth, require('./routes/curriculum'));
 app.use('/api/dashboard', coachAuth, require('./routes/dashboard'));
+app.use('/api/tts', auth, require('./routes/tts'));
 
 // 生徒登録（管理者用）
 app.post('/api/admin/students', coachAuth, (req, res) => {

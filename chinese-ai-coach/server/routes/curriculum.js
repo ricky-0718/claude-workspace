@@ -281,6 +281,31 @@ router.get('/stats', (req, res) => {
   });
 });
 
+// ===== レッスン別の最新ドリルスコア =====
+router.get('/lessons/:lessonId/drill-scores', (req, res) => {
+  const db = getDb();
+  const studentId = req.student.id;
+  const lessonId = req.params.lessonId;
+
+  // 各単語の最新スコアを取得
+  const scores = db.prepare(`
+    SELECT target_text, tone_score, overall_score,
+           MAX(created_at) as last_at
+    FROM drill_logs
+    WHERE student_id = ? AND lesson_id = ?
+    GROUP BY target_text
+  `).all(studentId, lessonId);
+
+  const result = {};
+  scores.forEach(s => {
+    result[s.target_text] = {
+      tone: s.tone_score,
+      overall: s.overall_score,
+    };
+  });
+  res.json(result);
+});
+
 // ===== 週間アクティビティ（過去7日） =====
 router.get('/weekly-activity', (req, res) => {
   const db = getDb();

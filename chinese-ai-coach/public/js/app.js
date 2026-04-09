@@ -189,10 +189,20 @@ async function selectLesson(lessonId) {
 
   // Load vocabulary, grammar in parallel
   try {
-    const [vocabRes, grammarRes] = await Promise.all([
+    const [vocabRes, grammarRes, scoresRes] = await Promise.all([
       apiFetch(`${API}/api/curriculum/lessons/${lessonId}/vocabulary`),
       apiFetch(`${API}/api/curriculum/lessons/${lessonId}/grammar`),
+      apiFetch(`${API}/api/curriculum/lessons/${lessonId}/drill-scores`),
     ]);
+
+    // 前回スコアをキャッシュに読み込み
+    if (scoresRes && scoresRes.ok) {
+      const scores = await scoresRes.json();
+      drillScoreCache = {};
+      Object.entries(scores).forEach(([text, s]) => {
+        drillScoreCache[text] = s.tone || s.overall || 0;
+      });
+    }
 
     // Vocabulary
     if (vocabRes) {
@@ -541,31 +551,34 @@ function selectDrillTarget(type, index) {
   document.getElementById('score-panel').style.display = 'none';
 }
 
-let cachedVoice = null;
-function getChineseVoice() {
-  if (cachedVoice) return cachedVoice;
-  const voices = speechSynthesis.getVoices();
-  // 高品質な中国語音声を優先（Edge: Xiaoxiao, iOS: Meijia/Tingting, Chrome: Google系）
-  const preferred = ['Xiaoxiao', 'Xiaochen', 'Meijia', 'Tingting', 'HsiaoChen', 'HsiaoYu', 'Google', 'Zhiyu'];
-  for (const name of preferred) {
-    const v = voices.find(v => v.lang.startsWith('zh') && v.name.includes(name));
-    if (v) { cachedVoice = v; return v; }
-  }
-  // フォールバック: zh-TWまたはzh-CN
-  cachedVoice = voices.find(v => v.lang === 'zh-TW') || voices.find(v => v.lang.startsWith('zh')) || null;
-  return cachedVoice;
-}
-// 音声リスト読み込み完了時にキャッシュ更新
-speechSynthesis.onvoiceschanged = () => { cachedVoice = null; getChineseVoice(); };
+// サーバーサイドTTS（Edge Neural Voice）で再生
+const ttsAudioCache = {};
+async function playText(text) {
+  if (!text) return;
 
-function playText(text) {
-  speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'zh-TW';
-  utterance.rate = 0.85;
-  const voice = getChineseVoice();
-  if (voice) utterance.voice = voice;
-  speechSynthesis.speak(utterance);
+  // キャッシュ済みならそのまま再生
+  if (ttsAudioCache[text]) {
+    const audio = new Audio(ttsAudioCache[text]);
+    audio.play();
+    return;
+  }
+
+  try {
+    const res = await apiFetch(`${API}/api/tts?text=${encodeURIComponent(text)}`);
+    if (!res || !res.ok) throw new Error('TTS failed');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    ttsAudioCache[text] = url;
+    const audio = new Audio(url);
+    audio.play();
+  } catch (err) {
+    console.error('TTS error, falling back to browser:', err);
+    // フォールバック: ブラウザ内蔵音声
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'zh-TW';
+    utterance.rate = 0.85;
+    speechSynthesis.speak(utterance);
+  }
 }
 
 function playExample() {
