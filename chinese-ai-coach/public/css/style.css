@@ -1031,6 +1031,177 @@ nav {
 .quiz-retry-btn:hover { background: var(--primary-dark); }
 .quiz-result-details { margin: 1rem 0; }
 
+/* ===== ピンインルール（第0課） ===== */
+.pinyin-rule-card .grammar-header {
+  background: linear-gradient(135deg, var(--primary-light) 0%, #F0E6FF 100%);
+}
+
+.pinyin-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.pinyin-tip {
+  background: #FFF8E1;
+  border-left: 3px solid var(--warning);
+  padding: 0.6rem 0.8rem;
+  margin: 0.8rem 0;
+  font-size: 0.85rem;
+  border-radius: 0 8px 8px 0;
+  color: var(--text);
+}
+
+/* 声調グリッド */
+.pinyin-tone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.6rem;
+}
+.tone-card {
+  padding: 0.8rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #E5E5E5;
+}
+.tone-card.tone-high-flat { background: #E3F2FD; border-color: #90CAF9; }
+.tone-card.tone-rising { background: #E8F5E9; border-color: #A5D6A7; }
+.tone-card.tone-low { background: #FFF3E0; border-color: #FFCC80; }
+.tone-card.tone-falling { background: #FCE4EC; border-color: #F48FB1; }
+.tone-card.tone-neutral { background: #F5F5F5; border-color: #BDBDBD; }
+
+.tone-symbol { font-size: 2rem; font-weight: 700; margin-bottom: 0.3rem; }
+.tone-label { font-weight: 600; font-size: 0.85rem; color: var(--text); }
+.tone-how { font-size: 0.8rem; color: var(--text-secondary); margin: 0.3rem 0; }
+.tone-example { font-size: 0.75rem; color: var(--text-muted); }
+
+/* 隠れた母音・ü省略テーブル */
+.pinyin-rule-table { display: flex; flex-direction: column; gap: 0.5rem; }
+.rule-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem;
+  background: var(--bg);
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+.rule-written, .rule-actual { text-align: center; }
+.rule-label { display: block; font-size: 0.7rem; color: var(--text-muted); }
+.rule-big { font-size: 1.4rem; font-weight: 700; }
+.rule-correct { color: var(--success); }
+.rule-arrow { font-size: 1.3rem; color: var(--primary); font-weight: 700; }
+.rule-wrong {
+  font-size: 0.8rem;
+  color: var(--danger);
+  background: #FEE2E2;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  margin-left: auto;
+}
+.rule-example-line {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  padding: 0 0.7rem 0.3rem;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+/* 有気音・無気音 */
+.aspiration-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+.aspiration-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg);
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+.asp-pair { display: flex; align-items: center; gap: 0.4rem; }
+.asp-no-air { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+.asp-vs { font-size: 0.8rem; color: var(--text-muted); }
+.asp-air { font-size: 1.3rem; font-weight: 700; color: var(--danger); }
+.asp-label { display: flex; gap: 0.3rem; }
+.asp-tag {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.asp-tag.no-air { background: var(--primary-light); color: var(--primary); }
+.asp-tag.with-air { background: #FEE2E2; color: var(--danger); }
+.asp-example { font-size: 0.8rem; color: var(--text-secondary); }
+
+/* そり舌音 */
+.retroflex-group { margin-bottom: 0.8rem; }
+.retroflex-group-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+  padding-left: 0.3rem;
+}
+.retroflex-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 0.8rem;
+  border-bottom: 1px solid #F0F0F0;
+}
+.retroflex-sound { font-size: 1.2rem; font-weight: 700; min-width: 2rem; color: var(--primary-dark); }
+.retroflex-like { font-size: 0.82rem; color: var(--text-secondary); flex: 1; }
+.retroflex-example { font-size: 0.82rem; color: var(--text-muted); }
+
+/* 声調変化 */
+.tone-change-section {
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #F0F0F0;
+}
+.tone-change-section:last-child { border-bottom: none; }
+.tone-change-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.3rem;
+}
+.tone-change-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.tc-example {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+}
+.tc-written { color: var(--text-muted); text-decoration: line-through; }
+.tc-arrow { color: var(--primary); font-weight: 700; }
+.tc-actual { color: var(--success); font-weight: 600; }
+.tc-meaning { color: var(--text-muted); font-size: 0.8rem; }
+.tc-context { font-weight: 600; color: var(--text); }
+.tc-change { color: var(--success); }
+.tc-eg { color: var(--text-muted); font-size: 0.8rem; }
+
+/* 母音バリエーション */
+.variation-table { display: flex; flex-direction: column; gap: 0.3rem; }
+.variation-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg);
+  border-radius: 8px;
+  align-items: center;
+}
+.var-context { font-size: 0.82rem; font-weight: 600; color: var(--primary-dark); }
+.var-sound { font-size: 0.82rem; color: var(--text); }
+.var-example { font-size: 0.78rem; color: var(--text-muted); }
+
 /* ===== レスポンシブ ===== */
 @media (min-width: 768px) {
   #main-screen { max-width: 600px; margin: 0 auto; }

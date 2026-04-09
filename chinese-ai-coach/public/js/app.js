@@ -154,7 +154,12 @@ async function loadLessons() {
       const pct = l.vocab_count > 0 ? Math.round((l.mastered / l.vocab_count) * 100) : 0;
       const opt = document.createElement('option');
       opt.value = l.id;
-      opt.textContent = `第${l.lesson_number}課 ${l.title_zh}（${pct}%）`;
+      // 第0課はピンインマスターとして特別表示
+      if (l.lesson_number === 0) {
+        opt.textContent = `🔤 ${l.title_ja || l.title_zh}（${pct}%）`;
+      } else {
+        opt.textContent = `第${l.lesson_number}課 ${l.title_zh}（${pct}%）`;
+      }
       select.appendChild(opt);
     });
 
@@ -239,16 +244,49 @@ function loadGrammar(points) {
   }
   emptyEl.style.display = 'none';
 
+  // 第0課のピンインルールはJSON形式 → 専用レンダリング
+  const isPinyin = currentLessonId === 'book1-lesson00';
+
   listEl.innerHTML = points.map((g, i) => {
-    const explanation = (g.explanation || '').replace(/\n/g, '<br>');
-    const hasExercise = g.exercises && g.exercises.trim();
-    const exercises = (g.exercises || '').replace(/\n/g, '<br>');
-    const answers = (g.answers || '').replace(/\n/g, '<br>');
-    const summary = (g.summary || '').replace(/\n/g, '<br>');
     const hasVideo = g.video_url && g.video_url.trim();
+    let bodyContent;
+
+    if (isPinyin) {
+      bodyContent = renderPinyinRule(g);
+    } else {
+      const explanation = (g.explanation || '').replace(/\n/g, '<br>');
+      const hasExercise = g.exercises && g.exercises.trim();
+      const exercises = (g.exercises || '').replace(/\n/g, '<br>');
+      const answers = (g.answers || '').replace(/\n/g, '<br>');
+      const summary = (g.summary || '').replace(/\n/g, '<br>');
+      bodyContent = `
+        ${hasVideo ? `<a class="grammar-video-link" href="${g.video_url}" target="_blank" rel="noopener">▶ 動画で学ぶ</a>` : ''}
+        <div class="grammar-section">
+          <div class="grammar-section-label">解説</div>
+          <div class="grammar-explanation">${explanation}</div>
+        </div>
+        ${hasExercise ? `
+          <div class="grammar-section">
+            <div class="grammar-section-label">練習問題</div>
+            <div class="grammar-exercises">${exercises}</div>
+            <button class="grammar-show-answer" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">答えを見る</button>
+            <div class="grammar-answers" style="display:none">
+              <div class="grammar-section-label">解答</div>
+              ${answers}
+            </div>
+          </div>
+        ` : ''}
+        ${summary ? `
+          <div class="grammar-section grammar-summary">
+            <div class="grammar-section-label">まとめ</div>
+            <div>${summary}</div>
+          </div>
+        ` : ''}
+      `;
+    }
 
     return `
-      <div class="grammar-card">
+      <div class="grammar-card ${isPinyin ? 'pinyin-rule-card' : ''}">
         <div class="grammar-header" onclick="toggleGrammar(${i})">
           <span class="grammar-num">${i + 1}</span>
           <span class="grammar-title">${escapeHtml(g.title)}</span>
@@ -256,32 +294,154 @@ function loadGrammar(points) {
           <span class="grammar-toggle" id="grammar-toggle-${i}">▼</span>
         </div>
         <div class="grammar-body" id="grammar-body-${i}" style="display:none">
-          ${hasVideo ? `<a class="grammar-video-link" href="${g.video_url}" target="_blank" rel="noopener">▶ 動画で学ぶ</a>` : ''}
-          <div class="grammar-section">
-            <div class="grammar-section-label">解説</div>
-            <div class="grammar-explanation">${explanation}</div>
-          </div>
-          ${hasExercise ? `
-            <div class="grammar-section">
-              <div class="grammar-section-label">練習問題</div>
-              <div class="grammar-exercises">${exercises}</div>
-              <button class="grammar-show-answer" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">答えを見る</button>
-              <div class="grammar-answers" style="display:none">
-                <div class="grammar-section-label">解答</div>
-                ${answers}
-              </div>
-            </div>
-          ` : ''}
-          ${summary ? `
-            <div class="grammar-section grammar-summary">
-              <div class="grammar-section-label">まとめ</div>
-              <div>${summary}</div>
-            </div>
-          ` : ''}
+          ${bodyContent}
         </div>
       </div>
     `;
   }).join('');
+}
+
+// ===== ピンインルール専用レンダリング =====
+function renderPinyinRule(grammarPoint) {
+  let data;
+  try { data = JSON.parse(grammarPoint.explanation); } catch { return grammarPoint.explanation || ''; }
+
+  switch (data.type) {
+    case 'tones':
+      return `
+        <p class="pinyin-desc">${data.description}</p>
+        <div class="pinyin-tone-grid">
+          ${data.rules.map(r => `
+            <div class="tone-card tone-${r.pitch}">
+              <div class="tone-symbol">${r.symbol}</div>
+              <div class="tone-label">${r.label}</div>
+              <div class="tone-how">${r.how}</div>
+              <div class="tone-example">${r.example}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+    case 'hidden-vowels':
+      return `
+        <p class="pinyin-desc">${data.description}</p>
+        <div class="pinyin-rule-table">
+          ${data.rules.map(r => `
+            <div class="rule-row">
+              <div class="rule-written">
+                <span class="rule-label">書き方</span>
+                <span class="rule-big">${r.written}</span>
+              </div>
+              <span class="rule-arrow">→</span>
+              <div class="rule-actual">
+                <span class="rule-label">読み方</span>
+                <span class="rule-big rule-correct">${r.actual}</span>
+              </div>
+              <div class="rule-wrong">${r.wrong}</div>
+            </div>
+            <div class="rule-example-line">${r.example}</div>
+          `).join('')}
+        </div>
+      `;
+
+    case 'u-umlaut':
+      return `
+        <p class="pinyin-desc">${data.description}</p>
+        <div class="pinyin-rule-table">
+          ${data.rules.map(r => `
+            <div class="rule-row">
+              <div class="rule-written">
+                <span class="rule-label">書き方</span>
+                <span class="rule-big">${r.written}</span>
+              </div>
+              <span class="rule-arrow">→</span>
+              <div class="rule-actual">
+                <span class="rule-label">読み方</span>
+                <span class="rule-big rule-correct">${r.actual}</span>
+              </div>
+            </div>
+            <div class="rule-example-line">${r.example}：${r.how}</div>
+          `).join('')}
+        </div>
+        ${data.tip ? `<div class="pinyin-tip">💡 ${data.tip}</div>` : ''}
+      `;
+
+    case 'aspiration':
+      return `
+        <p class="pinyin-desc">${data.description}</p>
+        <div class="pinyin-tip">🧻 ${data.howToCheck}</div>
+        <div class="aspiration-grid">
+          ${data.rules.map(r => `
+            <div class="aspiration-row">
+              <div class="asp-pair">
+                <span class="asp-no-air">${r.unaspirated}</span>
+                <span class="asp-vs">vs</span>
+                <span class="asp-air">${r.aspirated}</span>
+              </div>
+              <div class="asp-label">
+                <span class="asp-tag no-air">息なし</span>
+                <span class="asp-tag with-air">息あり</span>
+              </div>
+              <div class="asp-example">${r.example}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+    case 'retroflex':
+      return `
+        <p class="pinyin-desc">${data.description}</p>
+        ${data.rules.map(group => `
+          <div class="retroflex-group">
+            <div class="retroflex-group-title">${group.group}</div>
+            ${group.sounds.map(s => `
+              <div class="retroflex-row">
+                <span class="retroflex-sound">${s.sound}</span>
+                <span class="retroflex-like">${s.like}</span>
+                <span class="retroflex-example">${s.example}</span>
+              </div>
+            `).join('')}
+          </div>
+        `).join('')}
+      `;
+
+    case 'tone-change':
+      return `
+        <p class="pinyin-desc">${data.description}</p>
+        ${data.rules.map(rule => `
+          <div class="tone-change-section">
+            <div class="tone-change-name">${rule.name}</div>
+            <div class="tone-change-desc">${rule.change}</div>
+            <div class="tone-change-examples">
+              ${rule.examples.map(ex => `
+                <div class="tc-example">
+                  ${ex.written ? `<span class="tc-written">${ex.written}</span><span class="tc-arrow">→</span><span class="tc-actual">${ex.actual}</span><span class="tc-meaning">（${ex.meaning}）</span>` : ''}
+                  ${ex.context ? `<span class="tc-context">${ex.context}：</span><span class="tc-change">${ex.change}</span><span class="tc-eg">例：${ex.example}</span>` : ''}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      `;
+
+    case 'vowel-variation':
+    case 'i-variation':
+      return `
+        <p class="pinyin-desc">${data.description}</p>
+        <div class="variation-table">
+          ${data.rules.map(r => `
+            <div class="variation-row">
+              <div class="var-context">${r.context}</div>
+              <div class="var-sound">${r.sound}</div>
+              <div class="var-example">${r.example}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+    default:
+      return grammarPoint.explanation || '';
+  }
 }
 
 function toggleGrammar(index) {
