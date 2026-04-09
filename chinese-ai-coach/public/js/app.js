@@ -527,10 +527,30 @@ function selectDrillTarget(type, index) {
   document.getElementById('score-panel').style.display = 'none';
 }
 
+let cachedVoice = null;
+function getChineseVoice() {
+  if (cachedVoice) return cachedVoice;
+  const voices = speechSynthesis.getVoices();
+  // 高品質な台湾中国語音声を優先（Edge: Xiaoxiao/Xiaochen, Chrome: Google系）
+  const preferred = ['Xiaoxiao', 'Xiaochen', 'HsiaoChen', 'HsiaoYu', 'Google', 'Zhiyu'];
+  for (const name of preferred) {
+    const v = voices.find(v => v.lang.startsWith('zh') && v.name.includes(name));
+    if (v) { cachedVoice = v; return v; }
+  }
+  // フォールバック: zh-TWまたはzh-CN
+  cachedVoice = voices.find(v => v.lang === 'zh-TW') || voices.find(v => v.lang.startsWith('zh')) || null;
+  return cachedVoice;
+}
+// 音声リスト読み込み完了時にキャッシュ更新
+speechSynthesis.onvoiceschanged = () => { cachedVoice = null; getChineseVoice(); };
+
 function playText(text) {
+  speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'zh-TW';
-  utterance.rate = 0.8;
+  utterance.rate = 0.85;
+  const voice = getChineseVoice();
+  if (voice) utterance.voice = voice;
   speechSynthesis.speak(utterance);
 }
 
