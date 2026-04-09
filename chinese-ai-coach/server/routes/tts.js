@@ -18,10 +18,7 @@ router.get('/', async (req, res) => {
     return res.status(400).json({ error: 'text required (max 200 chars)' });
   }
 
-  // 1文字は短すぎて声調が聞き取りにくい → 2回繰り返す
-  const ttsText = text.length === 1 ? `${text}。${text}。` : text;
-
-  const hash = crypto.createHash('md5').update(ttsText + VOICE).digest('hex');
+  const hash = crypto.createHash('md5').update(text + VOICE + 'slow').digest('hex');
   const cachePath = path.join(CACHE_DIR, `${hash}.mp3`);
 
   if (fs.existsSync(cachePath)) {
@@ -34,7 +31,10 @@ router.get('/', async (req, res) => {
     const tts = new MsEdgeTTS();
     await tts.setMetadata(VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
 
-    const { audioStream } = tts.toStream(ttsText);
+    // SSMLでゆっくり読み上げ（1文字は特にゆっくり）
+    const rate = text.length === 1 ? 'slow' : 'medium';
+    const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN"><voice name="${VOICE}"><prosody rate="${rate}">${text}</prosody></voice></speak>`;
+    const { audioStream } = tts.rawToStream(ssml);
     const chunks = [];
 
     audioStream.on('data', (chunk) => chunks.push(chunk));
