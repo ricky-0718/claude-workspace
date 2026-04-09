@@ -456,6 +456,21 @@ function renderPinyinRule(grammarPoint) {
         </div>
       `;
 
+    case 'pinyin-chart':
+      return `
+        <p class="pinyin-desc">${data.description}</p>
+        ${data.groups.map(g => `
+          <div class="chart-group">
+            <div class="chart-group-name">${g.name}</div>
+            <div class="chart-syllables">
+              ${g.syllables.map(s => `
+                <button class="chart-syl-btn" onclick="playText('${s}')">${s}</button>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      `;
+
     default:
       return grammarPoint.explanation || '';
   }

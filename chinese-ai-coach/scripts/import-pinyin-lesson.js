@@ -174,6 +174,37 @@ const pinyinRules = [
       ],
     }),
   },
+  {
+    title: 'ピンイン全音節表',
+    explanation: JSON.stringify({
+      type: 'pinyin-chart',
+      description: '声母（子音）×韻母（母音）の全組み合わせ。タップで音声を聞けます',
+      groups: [
+        { name: 'ゼロ声母（子音なし）', syllables: ['a','ai','an','e','er','wa','wai','wan','wang','wei','wen','wo','wu','yan','yang','yao','ye','yi','yin','ying','yong','you','yu','yuan','yue','yun'] },
+        { name: 'b（息なし）', syllables: ['ba','bai','ban','bang','bao','bei','ben','bi','bian','biao','bie','bin','bing','bo','bu'] },
+        { name: 'p（息あり）', syllables: ['pa','pai','pan','pang','pao','peng','pi','pian','piao','ping'] },
+        { name: 'm', syllables: ['ma','mai','man','mang','mao','me','mei','men','mian','ming','mo','mu'] },
+        { name: 'f', syllables: ['fa','fan','fang','fei','fen','feng','fu'] },
+        { name: 'd（息なし）', syllables: ['da','dai','dan','dang','dao','de','dei','deng','di','dian','ding','dong','dou','du','duan','dui','duo'] },
+        { name: 't（息あり）', syllables: ['ta','tai','tan','tang','te','ti','tian','tiao','tie','ting','tong','tou','tu'] },
+        { name: 'n', syllables: ['na','nai','nan','nao','ne','neng','ni','nian','niao','nin','niu','nü'] },
+        { name: 'l', syllables: ['lai','lan','lao','le','lei','leng','li','lian','liang','liao','lin','ling','liu','long','lou','lu','lü'] },
+        { name: 'g（息なし）', syllables: ['gai','gan','gang','gao','ge','gei','gen','geng','gong','gou','gu','guai','guan','gui','guo'] },
+        { name: 'k（息あり）', syllables: ['ka','kai','kan','kang','kao','ke','kong','kou','ku','kuai'] },
+        { name: 'h', syllables: ['hai','han','hang','hao','he','hei','hen','hong','hou','hu','hua','huai','huan','huang','hui','hun','huo'] },
+        { name: 'j（息なし）', syllables: ['ji','jia','jian','jiang','jiao','jie','jin','jing','jiu','ju','jue'] },
+        { name: 'q（息あり）', syllables: ['qi','qian','qiao','qie','qin','qing','qiu','qu','qun'] },
+        { name: 'x', syllables: ['xi','xia','xian','xiang','xiao','xie','xin','xing','xiong','xiu','xu','xue'] },
+        { name: 'zh（舌を巻く・息なし）', syllables: ['zhan','zhang','zhao','zhe','zhen','zhi','zhong','zhou','zhu','zhuan','zhun','zhuo'] },
+        { name: 'ch（舌を巻く・息あり）', syllables: ['cha','chang','chao','che','cheng','chi','chu','chuan','chuang','chun'] },
+        { name: 'sh（舌を巻く）', syllables: ['sha','shai','shan','shang','shao','she','shei','shen','sheng','shi','shou','shu','shuang','shui','shuo'] },
+        { name: 'r（巻き舌）', syllables: ['ran','re','ren','ri','rong','rou','ru'] },
+        { name: 'z（息なし）', syllables: ['za','zai','zao','zen','zi','zou','zu','zui','zuo'] },
+        { name: 'c（息あり）', syllables: ['cai','can','ce','ci','cong','cuo'] },
+        { name: 's', syllables: ['sai','se','si','song','sou','su','suan','sui','suo'] },
+      ],
+    }),
+  },
 ];
 
 // grammar_points に投入
@@ -236,6 +267,65 @@ const practiceVocab = [
   // 声調変化
   { hanzi: '你好', pinyin: 'nǐ hǎo', translation_ja: 'こんにちは（3+3→ní hǎo）', examples: [{ zh: '你好嗎？', pinyin: 'nǐ hǎo ma?', ja: '元気ですか？' }] },
   { hanzi: '不是', pinyin: 'bú shì', translation_ja: '違う（不+4声→bú）', examples: [{ zh: '不是我', pinyin: 'bú shì wǒ', ja: '私じゃない' }] },
+
+  // ===== 全音節練習（声母グループ別） =====
+  // b/p ペア
+  { hanzi: '爸', pinyin: 'bà', translation_ja: 'お父さん（b＝息なし）', examples: [] },
+  { hanzi: '杯', pinyin: 'bēi', translation_ja: 'コップ', examples: [] },
+  { hanzi: '跑', pinyin: 'pǎo', translation_ja: '走る（p＝息あり）', examples: [] },
+  { hanzi: '朋', pinyin: 'péng', translation_ja: '友（朋友）', examples: [] },
+  // d/t ペア
+  { hanzi: '大', pinyin: 'dà', translation_ja: '大きい（d＝息なし）', examples: [] },
+  { hanzi: '都', pinyin: 'dōu', translation_ja: '全部', examples: [] },
+  { hanzi: '他', pinyin: 'tā', translation_ja: '彼（t＝息あり）', examples: [] },
+  { hanzi: '聽', pinyin: 'tīng', translation_ja: '聞く', examples: [] },
+  // g/k ペア
+  { hanzi: '高', pinyin: 'gāo', translation_ja: '高い（g＝息なし）', examples: [] },
+  { hanzi: '國', pinyin: 'guó', translation_ja: '国', examples: [] },
+  { hanzi: '看', pinyin: 'kàn', translation_ja: '見る（k＝息あり）', examples: [] },
+  { hanzi: '開', pinyin: 'kāi', translation_ja: '開く', examples: [] },
+  // j/q/x
+  { hanzi: '家', pinyin: 'jiā', translation_ja: '家（j＝息なし）', examples: [] },
+  { hanzi: '錢', pinyin: 'qián', translation_ja: 'お金（q＝息あり）', examples: [] },
+  { hanzi: '學', pinyin: 'xué', translation_ja: '学ぶ', examples: [] },
+  { hanzi: '想', pinyin: 'xiǎng', translation_ja: '思う・したい', examples: [] },
+  // zh/ch/sh/r（そり舌音）
+  { hanzi: '住', pinyin: 'zhù', translation_ja: '住む（zh＝舌を巻く）', examples: [] },
+  { hanzi: '找', pinyin: 'zhǎo', translation_ja: '探す', examples: [] },
+  { hanzi: '車', pinyin: 'chē', translation_ja: '車（ch＝舌巻き＋息）', examples: [] },
+  { hanzi: '長', pinyin: 'cháng', translation_ja: '長い', examples: [] },
+  { hanzi: '說', pinyin: 'shuō', translation_ja: '話す（sh＝舌を巻く）', examples: [] },
+  { hanzi: '熱', pinyin: 'rè', translation_ja: '暑い（r＝巻き舌）', examples: [] },
+  // z/c/s（舌歯音）
+  { hanzi: '做', pinyin: 'zuò', translation_ja: 'する（z＝息なし）', examples: [] },
+  { hanzi: '菜', pinyin: 'cài', translation_ja: '料理（c＝息あり）', examples: [] },
+  { hanzi: '三', pinyin: 'sān', translation_ja: '3', examples: [] },
+  { hanzi: '送', pinyin: 'sòng', translation_ja: '送る', examples: [] },
+  // n/l
+  { hanzi: '你', pinyin: 'nǐ', translation_ja: 'あなた', examples: [] },
+  { hanzi: '南', pinyin: 'nán', translation_ja: '南', examples: [] },
+  { hanzi: '來', pinyin: 'lái', translation_ja: '来る', examples: [] },
+  { hanzi: '老', pinyin: 'lǎo', translation_ja: '年をとった', examples: [] },
+  // m/f
+  { hanzi: '買', pinyin: 'mǎi', translation_ja: '買う', examples: [] },
+  { hanzi: '飯', pinyin: 'fàn', translation_ja: 'ご飯', examples: [] },
+  // h
+  { hanzi: '好', pinyin: 'hǎo', translation_ja: '良い', examples: [] },
+  { hanzi: '會', pinyin: 'huì', translation_ja: 'できる', examples: [] },
+  { hanzi: '還', pinyin: 'hái', translation_ja: 'まだ', examples: [] },
+  // ゼロ声母
+  { hanzi: '我', pinyin: 'wǒ', translation_ja: '私', examples: [] },
+  { hanzi: '要', pinyin: 'yào', translation_ja: 'ほしい・したい', examples: [] },
+  { hanzi: '有', pinyin: 'yǒu', translation_ja: 'ある・いる', examples: [] },
+  { hanzi: '一', pinyin: 'yī', translation_ja: '1', examples: [] },
+  { hanzi: '五', pinyin: 'wǔ', translation_ja: '5', examples: [] },
+  // 難しい発音
+  { hanzi: '日', pinyin: 'rì', translation_ja: '日（巻き舌r＋特殊i）', examples: [] },
+  { hanzi: '四', pinyin: 'sì', translation_ja: '4（舌歯s＋特殊i）', examples: [] },
+  { hanzi: '十', pinyin: 'shí', translation_ja: '10（そり舌sh＋特殊i）', examples: [] },
+  { hanzi: '字', pinyin: 'zì', translation_ja: '文字（舌歯z＋特殊i）', examples: [] },
+  { hanzi: '知', pinyin: 'zhī', translation_ja: '知る（そり舌zh＋特殊i）', examples: [] },
+  { hanzi: '吃', pinyin: 'chī', translation_ja: '食べる（そり舌ch＋特殊i）', examples: [] },
 ];
 
 // 単語投入

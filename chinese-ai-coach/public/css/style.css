@@ -1216,6 +1216,36 @@ nav {
 .tc-change { color: var(--success); }
 .tc-eg { color: var(--text-muted); font-size: 0.8rem; }
 
+/* ピンイン全音節表 */
+.chart-group { margin-bottom: 1rem; }
+.chart-group-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.4rem;
+  padding-left: 0.2rem;
+}
+.chart-syllables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.chart-syl-btn {
+  background: var(--bg);
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+  color: var(--text);
+  min-width: 2.8rem;
+  text-align: center;
+}
+.chart-syl-btn:active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+}
+
 /* 母音バリエーション */
 .variation-table { display: flex; flex-direction: column; gap: 0.3rem; }
 .variation-row {
