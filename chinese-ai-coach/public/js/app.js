@@ -23,6 +23,7 @@ let quizResults = [];
 let quizMode = 'zh_to_ja';
 let currentDrillMode = 'drill'; // 'drill' or 'quiz'
 let isReviewMode = false;
+let drillScoreCache = {}; // {hanzi: lastToneScore}
 
 const API = '';
 
@@ -467,6 +468,19 @@ function loadDrill() {
   document.getElementById('drill-progress').textContent =
     `${currentDrillIndex + 1} / ${lessonVocabulary.length}`;
   document.getElementById('score-panel').style.display = 'none';
+
+  // 前回スコアバッジ表示
+  const lastScore = drillScoreCache[item.hanzi];
+  const badgeEl = document.getElementById('drill-last-score');
+  if (badgeEl) {
+    if (lastScore !== undefined) {
+      const cls = lastScore >= 80 ? 'good' : lastScore >= 60 ? 'ok' : 'bad';
+      badgeEl.innerHTML = `前回: <span class="last-score-val ${cls}">${lastScore}</span>`;
+      badgeEl.style.display = '';
+    } else {
+      badgeEl.style.display = 'none';
+    }
+  }
   const playbackBtn = document.getElementById('playback-btn');
   if (playbackBtn) playbackBtn.style.display = 'none';
 
@@ -531,8 +545,8 @@ let cachedVoice = null;
 function getChineseVoice() {
   if (cachedVoice) return cachedVoice;
   const voices = speechSynthesis.getVoices();
-  // 高品質な台湾中国語音声を優先（Edge: Xiaoxiao/Xiaochen, Chrome: Google系）
-  const preferred = ['Xiaoxiao', 'Xiaochen', 'HsiaoChen', 'HsiaoYu', 'Google', 'Zhiyu'];
+  // 高品質な中国語音声を優先（Edge: Xiaoxiao, iOS: Meijia/Tingting, Chrome: Google系）
+  const preferred = ['Xiaoxiao', 'Xiaochen', 'Meijia', 'Tingting', 'HsiaoChen', 'HsiaoYu', 'Google', 'Zhiyu'];
   for (const name of preferred) {
     const v = voices.find(v => v.lang.startsWith('zh') && v.name.includes(name));
     if (v) { cachedVoice = v; return v; }
@@ -632,6 +646,8 @@ async function submitAudio(audioBlob) {
     if (!res) return;
     const result = await res.json();
     showScore(result);
+    loadStats(); // 進捗を即時更新
+    progressGraphsLoaded = false; // グラフも次回開いた時に再取得
   } catch (err) {
     console.error('Assessment error:', err);
     document.getElementById('record-label').textContent = '録音開始';
@@ -648,6 +664,9 @@ function showScore(result) {
   console.log('showScore result:', JSON.stringify(result));
   document.getElementById('record-label').textContent = '録音開始';
   document.getElementById('score-panel').style.display = 'flex';
+
+  // 前回スコアをキャッシュ
+  if (drillTarget) drillScoreCache[drillTarget.hanzi] = result.tone || result.overall || 0;
 
   // 録音再生ボタンを表示
   const playbackBtn = document.getElementById('playback-btn');
@@ -996,15 +1015,17 @@ function showQuizQuestion() {
   const choicesEl = document.getElementById('quiz-choices');
   choicesEl.innerHTML = '';
 
-  // Show question
+  // Show question with audio button
   const questionEl = document.getElementById('quiz-question');
+  const audioBtn = `<button class="quiz-audio-btn" onclick="event.stopPropagation(); playText('${escapeHtml(q.question.hanzi || q.question.text || '').replace(/'/g, "\\'")}')">🔊</button>`;
   if (q.question.hanzi) {
     questionEl.innerHTML = `<span class="quiz-hanzi">${escapeHtml(q.question.hanzi)}</span>` +
-      (q.question.pinyin ? `<span class="quiz-pinyin">${escapeHtml(q.question.pinyin)}</span>` : '');
+      (q.question.pinyin ? `<span class="quiz-pinyin">${escapeHtml(q.question.pinyin)}</span>` : '') +
+      audioBtn;
   } else if (q.question.text) {
-    questionEl.innerHTML = `<span class="quiz-text">${escapeHtml(q.question.text)}</span>`;
+    questionEl.innerHTML = `<span class="quiz-text">${escapeHtml(q.question.text)}</span>` + audioBtn;
   } else if (q.question.pinyin) {
-    questionEl.innerHTML = `<span class="quiz-pinyin-only">${escapeHtml(q.question.pinyin)}</span>`;
+    questionEl.innerHTML = `<span class="quiz-pinyin-only">${escapeHtml(q.question.pinyin)}</span>` + audioBtn;
   }
 
   // Show choices
@@ -1079,6 +1100,7 @@ async function finishQuiz() {
       body: JSON.stringify({ results: quizResults }),
     });
     loadStats(); // Refresh stats
+    progressGraphsLoaded = false;
   } catch (err) {
     console.error('Quiz result save error:', err);
   }

@@ -233,11 +233,40 @@ nav {
   gap: 0.8rem;
 }
 .score-label {
-  width: 40px;
+  width: 70px;
   font-size: 0.8rem;
   color: var(--text-muted);
   flex-shrink: 0;
 }
+.score-note {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0.3rem 0 0.5rem;
+  padding: 0;
+}
+.drill-last-score {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+.last-score-val { font-weight: 700; }
+.last-score-val.good { color: var(--success); }
+.last-score-val.ok { color: var(--warning); }
+.last-score-val.bad { color: var(--danger); }
+
+.quiz-audio-btn {
+  background: none;
+  border: 1px solid var(--primary-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.quiz-audio-btn:active { background: var(--primary-light); }
+
 .score-bar {
   flex: 1;
   height: 8px;
