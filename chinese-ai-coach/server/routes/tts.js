@@ -18,7 +18,10 @@ router.get('/', async (req, res) => {
     return res.status(400).json({ error: 'text required (max 200 chars)' });
   }
 
-  const hash = crypto.createHash('md5').update(text + VOICE).digest('hex');
+  // 1文字は短すぎて声調が聞き取りにくい → 2回繰り返す
+  const ttsText = text.length === 1 ? `${text}。${text}。` : text;
+
+  const hash = crypto.createHash('md5').update(ttsText + VOICE).digest('hex');
   const cachePath = path.join(CACHE_DIR, `${hash}.mp3`);
 
   if (fs.existsSync(cachePath)) {
@@ -31,7 +34,7 @@ router.get('/', async (req, res) => {
     const tts = new MsEdgeTTS();
     await tts.setMetadata(VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
 
-    const { audioStream } = tts.toStream(text);
+    const { audioStream } = tts.toStream(ttsText);
     const chunks = [];
 
     audioStream.on('data', (chunk) => chunks.push(chunk));
