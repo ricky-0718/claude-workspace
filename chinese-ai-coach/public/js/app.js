@@ -594,6 +594,8 @@ async function toggleRecord() {
   if (isRecording) { stopRecording(); } else { startRecording(); }
 }
 
+let recordStartTime = 0;
+
 async function startRecording() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
@@ -601,6 +603,7 @@ async function startRecording() {
     });
 
     audioChunks = [];
+    recordStartTime = Date.now();
     mediaRecorder = new MediaRecorder(stream, {
       mimeType: MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
         ? 'audio/webm;codecs=opus' : 'audio/webm'
@@ -612,7 +615,36 @@ async function startRecording() {
 
     mediaRecorder.onstop = async () => {
       stream.getTracks().forEach(t => t.stop());
+      const duration = Date.now() - recordStartTime;
+
+      // 0.5秒未満は無効
+      if (duration < 500) {
+        document.getElementById('record-label').textContent = '録音開始';
+        return;
+      }
+
       const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+
+      // 音量チェック: 小さすぎる場合はスキップ
+      try {
+        const arrayBuf = await audioBlob.arrayBuffer();
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const decoded = await audioCtx.decodeAudioData(arrayBuf);
+        const data = decoded.getChannelData(0);
+        let sum = 0;
+        for (let i = 0; i < data.length; i++) sum += Math.abs(data[i]);
+        const avg = sum / data.length;
+        audioCtx.close();
+
+        if (avg < 0.005) {
+          document.getElementById('record-label').textContent = '音声が小さすぎます';
+          setTimeout(() => { document.getElementById('record-label').textContent = '録音開始'; }, 2000);
+          return;
+        }
+      } catch (e) {
+        // デコード失敗時はそのまま送信
+      }
+
       await submitAudio(audioBlob);
     };
 
