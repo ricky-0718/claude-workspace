@@ -61,7 +61,6 @@ const pinyinRules = [
       rules: [
         { written: 'ui', actual: 'ウェイ（uei）', wrong: '✕ ウイ', example: 'duì（対）→ ドゥウェイ', practice: ['duì', 'guì', 'huí', 'shuǐ'] },
         { written: 'iu', actual: 'イオウ（iou）', wrong: '✕ イウ', example: 'liú（流）→ リィオウ', practice: ['liú', 'niú', 'jiǔ', 'xiū'] },
-        { written: 'un', actual: 'ウェン（uen）', wrong: '✕ ウン', example: 'lùn（論）→ ルゥエン', practice: ['lùn', 'cūn', 'chūn', 'shùn'] },
         { written: 'ian', actual: 'イエン（ien）', wrong: '✕ イアン', example: 'diàn（電）→ ディエン', practice: ['diàn', 'tiān', 'jiàn', 'qián'] },
       ],
     }),
@@ -212,9 +211,6 @@ const practiceVocab = [
   // 隠れた母音 iu = イオウ
   { hanzi: '牛', pinyin: 'niú', translation_ja: '牛（iu→イオウ）', examples: [{ zh: '牛肉', pinyin: 'niúròu', ja: '牛肉' }] },
   { hanzi: '九', pinyin: 'jiǔ', translation_ja: '9（iu→イオウ）', examples: [{ zh: '九月', pinyin: 'jiǔ yuè', ja: '9月' }] },
-
-  // 隠れた母音 un = ウェン
-  { hanzi: '春', pinyin: 'chūn', translation_ja: '春（un→ウェン）', examples: [{ zh: '春天', pinyin: 'chūntiān', ja: '春' }] },
 
   // 隠れた母音 ian = イエン
   { hanzi: '天', pinyin: 'tiān', translation_ja: '天・日（ian→イエン）', examples: [{ zh: '今天', pinyin: 'jīntiān', ja: '今日' }] },
