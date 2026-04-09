@@ -19,8 +19,8 @@ function createUUID() {
 }
 
 async function assessPronunciation(audioBuffer, refText, options = {}) {
-  // Use word eval for single chars, sentence eval for phrases
-  const coreType = refText.length <= 4
+  // word.eval = 1文字のみ、2文字以上は sent.eval
+  const coreType = refText.length === 1
     ? 'word.eval.promax.cn'
     : 'sent.eval.promax.cn';
 
