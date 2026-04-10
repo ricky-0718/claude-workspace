@@ -1548,7 +1548,7 @@ async function generateScoreCard(data) {
     <line x1="300" y1="120" x2="300" y2="230" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
     ${level_name ? `<rect x="220" y="210" width="160" height="28" rx="14" fill="#FFDB00"/>
     <text x="300" y="230" text-anchor="middle" fill="#333" font-family="sans-serif" font-size="13" font-weight="bold">Lv.${level_num} ${level_name}</text>` : ''}
-    <text x="300" y="310" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="12">taiwan-chinese-coach.fly.dev</text>
+    <text x="300" y="310" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="12">chinese.ryugaku101.com</text>
   </svg>`;
 
   const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
@@ -1601,7 +1601,7 @@ async function shareMyScore() {
         await navigator.share({ text: shareText, files: [file] });
         return;
       }
-      await navigator.share({ text: shareText, url: 'https://taiwan-chinese-coach.fly.dev' });
+      await navigator.share({ text: shareText, url: 'https://chinese.ryugaku101.com' });
       return;
     } catch (e) {
       if (e.name === 'AbortError') return;
@@ -1624,7 +1624,7 @@ async function shareQuizScore() {
 
   if (navigator.share) {
     try {
-      await navigator.share({ text: shareText, url: 'https://taiwan-chinese-coach.fly.dev' });
+      await navigator.share({ text: shareText, url: 'https://chinese.ryugaku101.com' });
       return;
     } catch (e) {
       if (e.name === 'AbortError') return;
