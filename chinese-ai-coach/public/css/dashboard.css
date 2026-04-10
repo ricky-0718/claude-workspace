@@ -363,3 +363,84 @@
   .dash-header { padding: 1rem; }
   .section { padding: 1rem; }
 }
+
+/* ===== 招待コード ===== */
+.invite-section { margin-bottom: 1.5rem; }
+.invite-section-title {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+.invite-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+.invite-card {
+  background: var(--bg-card);
+  border: 1px solid #E8E3DC;
+  border-radius: 10px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.invite-card.used {
+  opacity: 0.6;
+  background: var(--bg-input);
+}
+.invite-code {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--primary);
+}
+.invite-card.used .invite-code {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+.invite-expires, .invite-used-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.invite-used-by {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.invite-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #E8E3DC;
+  background: white;
+  cursor: pointer;
+  color: var(--text);
+}
+.btn-sm:hover { background: var(--bg-input); }
+.btn-danger { color: var(--danger); border-color: var(--danger); }
+.btn-danger:hover { background: rgba(220,38,38,0.05); }
+
+/* ===== ダッシュボードToast ===== */
+.dash-toast {
+  position: fixed;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  background: var(--primary);
+  z-index: 10000;
+  transition: bottom 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.dash-toast.show { bottom: 20px; }

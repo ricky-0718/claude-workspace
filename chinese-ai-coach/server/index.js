@@ -7,6 +7,7 @@ const { getDb } = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 3860;
+const FREE_LIMITS = { chat: 10, speech: 5 };
 
 app.use(cors({
   origin: true,
@@ -53,13 +54,77 @@ function coachAuth(req, res, next) {
   next();
 }
 
+function usageLimit(type) {
+  return (req, res, next) => {
+    if (req.student.plan !== 'free') return next();
+    const db = getDb();
+    db.prepare(`INSERT INTO daily_usage (student_id, usage_date) VALUES (?, date('now')) ON CONFLICT(student_id, usage_date) DO NOTHING`).run(req.student.id);
+    const usage = db.prepare(`SELECT ${type}_count FROM daily_usage WHERE student_id = ? AND usage_date = date('now')`).get(req.student.id);
+    const count = usage?.[`${type}_count`] || 0;
+    const limit = FREE_LIMITS[type];
+    if (count >= limit) {
+      return res.status(429).json({ error: 'daily_limit_reached', type, used: count, limit });
+    }
+    db.prepare(`UPDATE daily_usage SET ${type}_count = ${type}_count + 1 WHERE student_id = ? AND usage_date = date('now')`).run(req.student.id);
+    res.setHeader('X-Usage-Remaining', String(limit - count - 1));
+    res.setHeader('X-Usage-Limit', String(limit));
+    next();
+  };
+}
+
+// セルフサインアップ（招待コード制）
+app.post('/api/register', (req, res) => {
+  const { invite_code, name, passcode } = req.body;
+  if (!invite_code || !name || !passcode) {
+    return res.status(400).json({ error: '全ての項目を入力してください' });
+  }
+  if (passcode.length !== 4 || !/^\d{4}$/.test(passcode)) {
+    return res.status(400).json({ error: 'パスコードは4桁の数字で入力してください' });
+  }
+
+  const db = getDb();
+  const code = db.prepare(
+    "SELECT * FROM invite_codes WHERE code = ? AND used_by IS NULL AND (expires_at IS NULL OR expires_at > datetime('now'))"
+  ).get(invite_code.trim().toUpperCase());
+  if (!code) {
+    return res.status(400).json({ error: '招待コードが無効です。期限切れまたは使用済みの可能性があります' });
+  }
+
+  // 同名チェック
+  const existing = db.prepare('SELECT id FROM students WHERE name = ?').get(name.trim());
+  if (existing) {
+    return res.status(400).json({ error: 'このお名前は既に登録されています。別のお名前を使用してください' });
+  }
+
+  const token = crypto.randomBytes(16).toString('hex');
+  const register = db.transaction(() => {
+    const result = db.prepare(
+      'INSERT INTO students (name, token, passcode, plan, invite_code_id) VALUES (?, ?, ?, ?, ?)'
+    ).run(name.trim(), token, passcode, 'free', code.id);
+    db.prepare('UPDATE invite_codes SET used_by = ?, used_at = datetime(?) WHERE id = ?')
+      .run(result.lastInsertRowid, new Date().toISOString(), code.id);
+    return result;
+  });
+
+  try {
+    const result = register();
+    const studentId = result.lastInsertRowid;
+    const sessionId = crypto.randomUUID();
+    db.prepare('INSERT INTO sessions (id, student_id, user_agent) VALUES (?, ?, ?)')
+      .run(sessionId, studentId, req.headers['user-agent'] || '');
+    res.json({ id: studentId, name: name.trim(), token, plan: 'free', session_id: sessionId });
+  } catch (err) {
+    res.status(500).json({ error: '登録に失敗しました' });
+  }
+});
+
 // 生徒ログイン
 app.post('/api/login', (req, res) => {
   const { name, passcode } = req.body;
   if (!name || !passcode) return res.status(400).json({ error: 'name and passcode required' });
 
   const db = getDb();
-  const student = db.prepare('SELECT id, name, level, token FROM students WHERE name = ? AND passcode = ?').get(name.trim(), passcode);
+  const student = db.prepare('SELECT id, name, level, token, plan FROM students WHERE name = ? AND passcode = ?').get(name.trim(), passcode);
   if (!student) return res.status(401).json({ error: 'お名前またはパスコードが違います' });
 
   // 既存セッションを全削除 → 新規セッション作成（1デバイス制限）
@@ -71,9 +136,48 @@ app.post('/api/login', (req, res) => {
   res.json({ ...student, session_id: sessionId });
 });
 
+// 招待コード管理（ダッシュボードルーターより先に定義）
+app.post('/api/dashboard/invite-codes/batch', coachAuth, (req, res) => {
+  const { count = 10, expires_days = 30 } = req.body;
+  const db = getDb();
+  const codes = [];
+  const insert = db.prepare('INSERT INTO invite_codes (code, expires_at) VALUES (?, datetime(?, ?))');
+  const batchInsert = db.transaction(() => {
+    for (let i = 0; i < Math.min(count, 100); i++) {
+      const code = crypto.randomBytes(4).toString('hex').toUpperCase();
+      insert.run(code, 'now', `+${expires_days} days`);
+      codes.push(code);
+    }
+  });
+  try {
+    batchInsert();
+    res.json({ codes, expires_days });
+  } catch (err) {
+    res.status(500).json({ error: 'コード生成に失敗しました' });
+  }
+});
+
+app.get('/api/dashboard/invite-codes', coachAuth, (req, res) => {
+  const db = getDb();
+  const codes = db.prepare(`
+    SELECT ic.*, s.name as used_by_name
+    FROM invite_codes ic
+    LEFT JOIN students s ON ic.used_by = s.id
+    ORDER BY ic.created_at DESC
+  `).all();
+  res.json(codes);
+});
+
+app.delete('/api/dashboard/invite-codes/:id', coachAuth, (req, res) => {
+  const db = getDb();
+  const result = db.prepare('DELETE FROM invite_codes WHERE id = ? AND used_by IS NULL').run(req.params.id);
+  if (result.changes === 0) return res.status(400).json({ error: '使用済みのコードは削除できません' });
+  res.json({ ok: true });
+});
+
 // ルート（生徒向けはauth必須）
-app.use('/api/chat', auth, require('./routes/chat'));
-app.use('/api/speech', auth, require('./routes/speech'));
+app.use('/api/chat', auth, usageLimit('chat'), require('./routes/chat'));
+app.use('/api/speech', auth, usageLimit('speech'), require('./routes/speech'));
 app.use('/api/tasks', auth, require('./routes/tasks'));
 app.use('/api/curriculum', auth, require('./routes/curriculum'));
 app.use('/api/dashboard', coachAuth, require('./routes/dashboard'));
@@ -123,7 +227,7 @@ app.get('/{*path}', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Chinese AI Coach running on http://localhost:${PORT}`);
+  console.log(`台湾スピーク running on http://localhost:${PORT}`);
   getDb(); // DB初期化
 
   // 24時間以上経過したセッションを1時間ごとに削除

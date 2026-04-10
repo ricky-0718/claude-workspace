@@ -1,7 +1,7 @@
 {
-  "name": "台灣華語コーチ",
-  "short_name": "華語コーチ",
-  "description": "台湾留学のための中国語トレーニング",
+  "name": "台湾スピーク",
+  "short_name": "台湾スピーク",
+  "description": "台湾で通じる中国語アプリ",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAF8F5",

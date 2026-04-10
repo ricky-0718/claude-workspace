@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>講師ダッシュボード | 台灣華語コーチ</title>
+  <title>講師ダッシュボード | 台湾スピーク</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/dashboard.css">
 </head>
@@ -12,7 +12,7 @@
     <!-- 講師ログイン -->
     <div id="coach-login" class="coach-login">
       <div class="login-container">
-        <h1>台灣華語コーチ</h1>
+        <h1>台湾スピーク</h1>
         <p class="subtitle">講師ダッシュボード</p>
         <input type="password" id="coach-key-input" placeholder="講師キー">
         <button onclick="coachLogin()">ログイン</button>
@@ -23,7 +23,7 @@
     <!-- ダッシュボード -->
     <div id="dashboard" style="display:none">
       <div class="dash-header">
-        <h1>台灣華語コーチ <span class="dash-badge">Dashboard</span></h1>
+        <h1>台湾スピーク <span class="dash-badge">Dashboard</span></h1>
         <button class="btn-ghost" onclick="coachLogout()">ログアウト</button>
       </div>
 
@@ -61,6 +61,24 @@
           <button class="btn-primary" onclick="toggleAddStudent()">+ 生徒を追加</button>
         </div>
         <div class="student-grid" id="student-grid">
+          <p class="empty-state">読み込み中...</p>
+        </div>
+      </div>
+
+      <!-- 招待コード管理 -->
+      <div class="section">
+        <div class="section-header">
+          <h2>招待コード</h2>
+          <div style="display:flex;gap:8px;align-items:center">
+            <select id="invite-expires-days">
+              <option value="7">7日間有効</option>
+              <option value="30" selected>30日間有効</option>
+              <option value="90">90日間有効</option>
+            </select>
+            <button class="btn-primary" onclick="generateInviteCodes()">10件生成</button>
+          </div>
+        </div>
+        <div id="invite-codes-list">
           <p class="empty-state">読み込み中...</p>
         </div>
       </div>

@@ -6,23 +6,39 @@
   <meta name="theme-color" content="#0A5FA6">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>台灣華語コーチ</title>
+  <title>台湾スピーク</title>
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
   <link rel="apple-touch-icon" href="/icons/icon-192.png">
-  <link rel="stylesheet" href="/css/style.css?v=14">
+  <link rel="stylesheet" href="/css/style.css?v=15">
 </head>
 <body>
   <div id="app">
     <!-- ログイン画面 -->
     <div id="login-screen" class="screen active">
       <div class="login-container">
-        <h1>台灣華語コーチ</h1>
-        <p class="subtitle">台湾留学のための中国語トレーニング</p>
-        <input type="text" id="login-name" placeholder="お名前">
-        <input type="password" id="login-pass" placeholder="パスコード（4桁）" maxlength="4" inputmode="numeric">
-        <button onclick="login()">はじめる</button>
-        <p class="login-error" id="login-error"></p>
+        <h1>台湾スピーク</h1>
+        <p class="subtitle">台湾で通じる中国語アプリ</p>
+
+        <!-- ログインビュー -->
+        <div id="login-view">
+          <input type="text" id="login-name" placeholder="お名前">
+          <input type="password" id="login-pass" placeholder="パスコード（4桁）" maxlength="4" inputmode="numeric">
+          <button onclick="login()">ログイン</button>
+          <p class="login-error" id="login-error"></p>
+          <p class="login-switch">はじめての方は<a href="#" onclick="showRegisterView(); return false;">新規登録</a></p>
+        </div>
+
+        <!-- 新規登録ビュー -->
+        <div id="register-view" style="display:none">
+          <input type="text" id="reg-code" placeholder="招待コード" maxlength="8" style="text-transform:uppercase">
+          <input type="text" id="reg-name" placeholder="お名前">
+          <input type="password" id="reg-pass" placeholder="パスコード（4桁）" maxlength="4" inputmode="numeric">
+          <input type="password" id="reg-pass2" placeholder="パスコード（確認）" maxlength="4" inputmode="numeric">
+          <button onclick="register()">アカウントを作成</button>
+          <p class="login-error" id="reg-error"></p>
+          <p class="login-switch">アカウントをお持ちの方は<a href="#" onclick="showLoginView(); return false;">ログイン</a></p>
+        </div>
       </div>
     </div>
 
@@ -213,14 +229,14 @@
     </div>
   </div>
 
-  <script src="/js/app.js?v=14"></script>
+  <script src="/js/app.js?v=15"></script>
   <script>
     if ('serviceWorker' in navigator) {
       // 古いSWを削除して最新に更新
       navigator.serviceWorker.getRegistrations().then(regs => {
         regs.forEach(r => r.update());
       });
-      navigator.serviceWorker.register('/sw.js?v=14').catch(() => {});
+      navigator.serviceWorker.register('/sw.js?v=15').catch(() => {});
     }
   </script>
 </body>

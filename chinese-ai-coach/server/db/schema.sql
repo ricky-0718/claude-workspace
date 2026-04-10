@@ -151,3 +151,25 @@ CREATE TABLE IF NOT EXISTS activity_log (
   UNIQUE(student_id, activity_type, activity_date),
   FOREIGN KEY (student_id) REFERENCES students(id)
 );
+
+-- 招待コード
+CREATE TABLE IF NOT EXISTS invite_codes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  code TEXT UNIQUE NOT NULL,
+  used_by INTEGER,
+  used_at DATETIME,
+  expires_at DATETIME,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (used_by) REFERENCES students(id)
+);
+
+-- 日次使用量
+CREATE TABLE IF NOT EXISTS daily_usage (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  student_id INTEGER NOT NULL,
+  usage_date DATE NOT NULL DEFAULT (date('now')),
+  chat_count INTEGER DEFAULT 0,
+  speech_count INTEGER DEFAULT 0,
+  UNIQUE(student_id, usage_date),
+  FOREIGN KEY (student_id) REFERENCES students(id)
+);

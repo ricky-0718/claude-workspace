@@ -23,6 +23,8 @@ function getDb() {
     const migrations = [
       "ALTER TABLE students ADD COLUMN current_lesson_id TEXT DEFAULT 'book1-lesson01'",
       "ALTER TABLE grammar_points ADD COLUMN video_url TEXT",
+      "ALTER TABLE students ADD COLUMN plan TEXT DEFAULT 'free'",
+      "ALTER TABLE students ADD COLUMN invite_code_id INTEGER",
     ];
     for (const sql of migrations) {
       try { db.exec(sql); } catch (e) { /* Column already exists */ }

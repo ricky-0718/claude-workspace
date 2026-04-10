@@ -271,6 +271,13 @@ router.get('/stats', (req, res) => {
     ORDER BY l.sort_order
   `).all(studentId);
 
+  // 使用状況を追加
+  const todayUsage = db.prepare(
+    "SELECT chat_count, speech_count FROM daily_usage WHERE student_id = ? AND usage_date = date('now')"
+  ).get(studentId) || { chat_count: 0, speech_count: 0 };
+
+  const plan = req.student.plan || 'free';
+
   res.json({
     mastered: totals.mastered,
     total_vocab: totals.total_vocab,
@@ -278,6 +285,9 @@ router.get('/stats', (req, res) => {
     today_count: today.today_count,
     streak,
     lesson_progress: lessonProgress,
+    plan,
+    today_usage: todayUsage,
+    limits: { chat: 10, speech: 5 },
   });
 });
 

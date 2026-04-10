@@ -1,4 +1,4 @@
-const CACHE_NAME = 'coach-v15';
+const CACHE_NAME = 'taiwanspeak-v1';
 const STATIC_ASSETS = [
   '/',
   '/css/style.css',

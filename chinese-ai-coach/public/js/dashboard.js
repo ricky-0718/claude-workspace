@@ -16,6 +16,7 @@ async function coachLogin() {
     document.getElementById('coach-login').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
     loadStudents();
+    loadInviteCodes();
   } catch { errEl.textContent = '通信エラー'; }
 }
 
@@ -30,6 +31,7 @@ if (coachKey) {
   document.getElementById('coach-login').style.display = 'none';
   document.getElementById('dashboard').style.display = 'block';
   loadStudents();
+  loadInviteCodes();
 }
 
 // API呼び出しヘルパー
@@ -204,7 +206,7 @@ async function submitReview() {
   });
 
   if (res.ok) {
-    alert('レビューを保存しました');
+    showDashToast('レビューを保存しました');
     document.getElementById('review-notes').value = '';
     document.getElementById('review-weak').value = '';
     document.getElementById('review-focus').value = '';
@@ -224,7 +226,7 @@ async function createTask() {
     due_date: document.getElementById('task-due').value || null,
   };
 
-  if (!body.title) { alert('タイトルを入力してください'); return; }
+  if (!body.title) { showDashToast('タイトルを入力してください'); return; }
 
   const res = await dashFetch('/api/dashboard/tasks', {
     method: 'POST',
@@ -232,7 +234,7 @@ async function createTask() {
   });
 
   if (res.ok) {
-    alert('課題を作成しました');
+    showDashToast('課題を作成しました');
     document.getElementById('task-title').value = '';
     document.getElementById('task-desc').value = '';
     document.getElementById('task-due').value = '';
@@ -253,7 +255,7 @@ async function addStudent() {
   const line_name = document.getElementById('new-student-line').value.trim();
   const level = document.getElementById('new-student-level').value;
 
-  if (!name) { alert('名前を入力してください'); return; }
+  if (!name) { showDashToast('名前を入力してください'); return; }
 
   const res = await dashFetch('/api/admin/students', {
     method: 'POST',
@@ -262,14 +264,14 @@ async function addStudent() {
 
   if (!res.ok) {
     const err = await res.json();
-    alert('登録失敗: ' + (err.error || '不明なエラー'));
+    showDashToast('登録失敗: ' + (err.error || '不明なエラー'));
     return;
   }
 
   const data = await res.json();
   const appUrl = `${location.origin}`;
 
-  const lineMsg = `【台灣華語コーチ】アカウントを作成しました！
+  const lineMsg = `【台湾スピーク】アカウントを作成しました！
 
 下のURLからログインしてください。
 ${appUrl}
@@ -312,4 +314,96 @@ function fmtDate(d) {
   if (!d) return '';
   const dt = new Date(d);
   return `${dt.getMonth()+1}/${dt.getDate()} ${dt.getHours()}:${String(dt.getMinutes()).padStart(2,'0')}`;
+}
+
+// ===== 招待コード管理 =====
+async function loadInviteCodes() {
+  const res = await dashFetch('/api/dashboard/invite-codes');
+  const codes = await res.json();
+  const container = document.getElementById('invite-codes-list');
+
+  if (!codes.length) {
+    container.innerHTML = '<p class="empty-state">招待コードがありません。「10件生成」ボタンで作成してください。</p>';
+    return;
+  }
+
+  const unused = codes.filter(c => !c.used_by);
+  const used = codes.filter(c => c.used_by);
+
+  let html = '';
+
+  if (unused.length) {
+    html += `<div class="invite-section">
+      <h3 class="invite-section-title">未使用（${unused.length}件）</h3>
+      <div class="invite-grid">
+        ${unused.map(c => `
+          <div class="invite-card">
+            <span class="invite-code">${esc(c.code)}</span>
+            <span class="invite-expires">${c.expires_at ? fmtDate(c.expires_at) + 'まで' : '無期限'}</span>
+            <div class="invite-actions">
+              <button class="btn-sm" onclick="copyCode('${esc(c.code)}')">コピー</button>
+              <button class="btn-sm btn-danger" onclick="deleteCode(${c.id})">削除</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  }
+
+  if (used.length) {
+    html += `<div class="invite-section">
+      <h3 class="invite-section-title">使用済（${used.length}件）</h3>
+      <div class="invite-grid">
+        ${used.map(c => `
+          <div class="invite-card used">
+            <span class="invite-code">${esc(c.code)}</span>
+            <span class="invite-used-by">${esc(c.used_by_name)} が使用</span>
+            <span class="invite-used-date">${fmtDate(c.used_at)}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+async function generateInviteCodes() {
+  const expiresDays = document.getElementById('invite-expires-days').value;
+  const res = await dashFetch('/api/dashboard/invite-codes/batch', {
+    method: 'POST',
+    body: JSON.stringify({ count: 10, expires_days: parseInt(expiresDays) }),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    showDashToast(`${data.codes.length}件の招待コードを生成しました`);
+    loadInviteCodes();
+  }
+}
+
+async function deleteCode(id) {
+  const res = await dashFetch(`/api/dashboard/invite-codes/${id}`, { method: 'DELETE' });
+  if (res.ok) {
+    loadInviteCodes();
+  }
+}
+
+function copyCode(code) {
+  navigator.clipboard.writeText(code).then(() => {
+    showDashToast(`コード ${code} をコピーしました`);
+  });
+}
+
+function showDashToast(msg) {
+  const existing = document.querySelector('.dash-toast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.className = 'dash-toast';
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('show'));
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
 }

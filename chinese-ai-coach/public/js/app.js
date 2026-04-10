@@ -27,6 +27,37 @@ let drillScoreCache = {}; // {hanzi: lastToneScore}
 
 const API = '';
 
+// ===== Toast通知 =====
+function showToast(message, type = 'info') {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('show'));
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+function showLimitModal(type, used, limit) {
+  const existing = document.querySelector('.limit-overlay');
+  if (existing) existing.remove();
+  const typeNames = { chat: '会話', speech: '発音評価' };
+  const typeName = typeNames[type] || type;
+  const overlay = document.createElement('div');
+  overlay.className = 'limit-overlay';
+  overlay.innerHTML = `
+    <div class="limit-modal">
+      <h3>本日の${typeName}は終了です</h3>
+      <p>無料プランでは1日${limit}回まで${typeName}できます。<br>今日は${used}回使用しました。<br>明日またチャレンジしてください！</p>
+      <button onclick="this.closest('.limit-overlay').remove()">OK</button>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
 // 認証付きfetchラッパー（セッション検証込み）
 async function apiFetch(url, options = {}) {
   options.headers = {
@@ -40,8 +71,15 @@ async function apiFetch(url, options = {}) {
     if (data.error === 'session_expired') {
       localStorage.removeItem('coach_session_id');
       localStorage.removeItem('coach_student');
-      alert('別のデバイスでログインされました。再度ログインしてください。');
+      showToast('別のデバイスでログインされました。再度ログインしてください。', 'error');
       location.reload();
+      return null;
+    }
+  }
+  if (res.status === 429) {
+    const data = await res.clone().json().catch(() => ({}));
+    if (data.error === 'daily_limit_reached') {
+      showLimitModal(data.type, data.used, data.limit);
       return null;
     }
   }
@@ -88,6 +126,74 @@ async function login() {
     loadScenarios();
     loadTasks();
     loadStats();
+  } catch (err) {
+    errorEl.textContent = '通信エラーが発生しました';
+  }
+}
+
+// ===== 新規登録 =====
+function showRegisterView() {
+  document.getElementById('login-view').style.display = 'none';
+  document.getElementById('register-view').style.display = 'block';
+  document.getElementById('reg-error').textContent = '';
+}
+
+function showLoginView() {
+  document.getElementById('register-view').style.display = 'none';
+  document.getElementById('login-view').style.display = 'block';
+  document.getElementById('login-error').textContent = '';
+}
+
+async function register() {
+  const code = document.getElementById('reg-code').value.trim().toUpperCase();
+  const name = document.getElementById('reg-name').value.trim();
+  const pass = document.getElementById('reg-pass').value.trim();
+  const pass2 = document.getElementById('reg-pass2').value.trim();
+  const errorEl = document.getElementById('reg-error');
+  errorEl.textContent = '';
+
+  if (!code || !name || !pass) {
+    errorEl.textContent = '全ての項目を入力してください';
+    return;
+  }
+  if (pass !== pass2) {
+    errorEl.textContent = 'パスコードが一致しません';
+    return;
+  }
+  if (pass.length !== 4 || !/^\d{4}$/.test(pass)) {
+    errorEl.textContent = 'パスコードは4桁の数字で入力してください';
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/api/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ invite_code: code, name, passcode: pass }),
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      errorEl.textContent = data.error || '登録に失敗しました';
+      return;
+    }
+
+    // 登録成功 → 自動ログイン
+    studentId = data.id;
+    studentData = data;
+    sessionId = data.session_id;
+    localStorage.setItem('coach_student', JSON.stringify(data));
+    localStorage.setItem('coach_session_id', data.session_id);
+
+    document.getElementById('login-screen').classList.remove('active');
+    document.getElementById('main-screen').classList.add('active');
+    document.getElementById('student-name').textContent = `${data.name} さん`;
+
+    loadLessons();
+    loadScenarios();
+    loadTasks();
+    loadStats();
+    showToast('アカウントを作成しました！', 'success');
   } catch (err) {
     errorEl.textContent = '通信エラーが発生しました';
   }
@@ -692,7 +798,7 @@ async function startRecording() {
     document.getElementById('record-label').textContent = '録音中...';
     document.getElementById('recording-indicator').classList.add('active');
   } catch (err) {
-    alert('マイクへのアクセスが必要です');
+    showToast('マイクへのアクセスが必要です', 'error');
     console.error(err);
   }
 }
@@ -1039,13 +1145,13 @@ async function startQuiz() {
     if (isReviewMode) {
       // review-queueのデータをクイズ形式に変換
       if (!data.items || data.items.length < 4) {
-        alert('復習する単語が足りません');
+        showToast('復習する単語が足りません', 'info');
         return;
       }
       quizQuestions = buildReviewQuiz(data.items);
     } else {
       if (!data.questions || data.questions.length === 0) {
-        alert('この課の単語が足りません（最低4語必要）');
+        showToast('この課の単語が足りません（最低4語必要）', 'info');
         return;
       }
       quizQuestions = data.questions;
@@ -1213,6 +1319,23 @@ async function loadStats() {
       document.getElementById('stat-review').textContent = stats.needs_review;
     } else {
       reviewStat.style.display = 'none';
+    }
+
+    // 使用制限バッジ表示
+    if (stats.plan === 'free' && stats.daily_usage) {
+      const chatNav = document.querySelector('[data-tab="chat"]');
+      const drillNav = document.querySelector('[data-tab="drill"]');
+      if (chatNav) {
+        const chatRemaining = (stats.limits?.chat || 10) - (stats.daily_usage.chat_count || 0);
+        const existingBadge = chatNav.querySelector('.usage-badge');
+        if (existingBadge) existingBadge.remove();
+        if (chatRemaining <= 3) {
+          const badge = document.createElement('span');
+          badge.className = `usage-badge${chatRemaining <= 0 ? ' depleted' : ''}`;
+          badge.textContent = chatRemaining <= 0 ? '制限' : `残${chatRemaining}`;
+          chatNav.appendChild(badge);
+        }
+      }
     }
   } catch (err) {
     console.error('Stats load error:', err);
