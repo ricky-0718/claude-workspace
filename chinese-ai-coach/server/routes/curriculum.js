@@ -2,21 +2,121 @@ const express = require('express');
 const router = express.Router();
 const { getDb } = require('../db');
 
+// レベル定義
+const LEVELS = [
+  { level: 1, name: '入門者', min: 0 },
+  { level: 2, name: '旅行者', min: 50 },
+  { level: 3, name: '留学生', min: 150 },
+  { level: 4, name: '台湾通', min: 300 },
+  { level: 5, name: 'マスター', min: 500 },
+];
+
+function getLevel(mastered) {
+  for (let i = LEVELS.length - 1; i >= 0; i--) {
+    if (mastered >= LEVELS[i].min) return LEVELS[i];
+  }
+  return LEVELS[0];
+}
+
+// 実績定義
+const ACHIEVEMENT_DEFS = [
+  { key: 'first_drill', label: '初めての発音', icon: '🎤', check: (s) => s.total_drills >= 1 },
+  { key: 'mastered_10', label: '10語マスター', icon: '📚', check: (s) => s.mastered >= 10 },
+  { key: 'mastered_50', label: '50語マスター', icon: '🎓', check: (s) => s.mastered >= 50 },
+  { key: 'mastered_100', label: '100語マスター', icon: '💯', check: (s) => s.mastered >= 100 },
+  { key: 'mastered_300', label: '300語マスター', icon: '🏆', check: (s) => s.mastered >= 300 },
+  { key: 'streak_3', label: '3日連続', icon: '🔥', check: (s) => s.streak >= 3 },
+  { key: 'streak_7', label: '7日連続', icon: '⚡', check: (s) => s.streak >= 7 },
+  { key: 'streak_30', label: '30日連続', icon: '👑', check: (s) => s.streak >= 30 },
+  { key: 'score_80', label: '発音80点突破', icon: '🎯', check: (s) => s.best_score >= 80 },
+  { key: 'score_95', label: '発音95点突破', icon: '✨', check: (s) => s.best_score >= 95 },
+  { key: 'quiz_perfect', label: 'クイズ全問正解', icon: '💎', check: (s) => s.perfect_quizzes >= 1 },
+  { key: 'level_2', label: '旅行者レベル到達', icon: '✈️', check: (s) => s.mastered >= 50 },
+  { key: 'level_3', label: '留学生レベル到達', icon: '🎒', check: (s) => s.mastered >= 150 },
+  { key: 'level_4', label: '台湾通レベル到達', icon: '🇹🇼', check: (s) => s.mastered >= 300 },
+];
+
+function checkAchievements(studentId, db) {
+  const stats = {};
+
+  // 習得数
+  const m = db.prepare("SELECT COUNT(*) as c FROM vocab_mastery WHERE student_id = ? AND correct_count >= 3").get(studentId);
+  stats.mastered = m?.c || 0;
+
+  // ドリル回数
+  const d = db.prepare("SELECT COUNT(*) as c FROM drill_logs WHERE student_id = ?").get(studentId);
+  stats.total_drills = d?.c || 0;
+
+  // ストリーク
+  const dates = db.prepare(
+    "SELECT DISTINCT activity_date FROM activity_log WHERE student_id = ? ORDER BY activity_date DESC"
+  ).all(studentId).map(r => r.activity_date);
+  let streak = 0;
+  if (dates.length > 0) {
+    const today = new Date().toISOString().split('T')[0];
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+    if (dates[0] === today || dates[0] === yesterday) {
+      streak = 1;
+      for (let i = 1; i < dates.length; i++) {
+        const prev = new Date(dates[i - 1]);
+        const curr = new Date(dates[i]);
+        const diff = (prev - curr) / 86400000;
+        if (diff === 1) streak++;
+        else break;
+      }
+    }
+  }
+  stats.streak = streak;
+
+  // 最高スコア
+  const bs = db.prepare("SELECT MAX(overall_score) as best FROM drill_logs WHERE student_id = ?").get(studentId);
+  stats.best_score = bs?.best || 0;
+
+  // 完璧クイズ回数（Phase 2で実装拡張予定）
+  stats.perfect_quizzes = 0;
+
+  const newAchievements = [];
+  const existing = db.prepare("SELECT achievement_key FROM achievements WHERE student_id = ?").all(studentId).map(r => r.achievement_key);
+
+  for (const def of ACHIEVEMENT_DEFS) {
+    if (existing.includes(def.key)) continue;
+    if (def.check(stats)) {
+      db.prepare("INSERT OR IGNORE INTO achievements (student_id, achievement_key) VALUES (?, ?)").run(studentId, def.key);
+      newAchievements.push({ key: def.key, label: def.label, icon: def.icon });
+    }
+  }
+
+  return newAchievements;
+}
+
 // レッスン一覧（生徒の進捗付き）
+// ?book=N でフィルター。未指定時は全レッスン（教科書・旅行パック含む）を返す
 router.get('/lessons', (req, res) => {
   const db = getDb();
   const studentId = req.student.id;
 
-  const book = parseInt(req.query.book) || 1;
-  const lessons = db.prepare(`
-    SELECT l.*,
-           COALESCE(sp.vocab_mastered, 0) as mastered,
-           (SELECT COUNT(*) FROM grammar_points WHERE lesson_id = l.id) as grammar_count
-    FROM lessons l
-    LEFT JOIN student_progress sp ON sp.lesson_id = l.id AND sp.student_id = ?
-    WHERE l.book = ?
-    ORDER BY l.sort_order
-  `).all(studentId, book);
+  let lessons;
+  if (req.query.book !== undefined) {
+    const book = parseInt(req.query.book);
+    lessons = db.prepare(`
+      SELECT l.*,
+             COALESCE(sp.vocab_mastered, 0) as mastered,
+             (SELECT COUNT(*) FROM grammar_points WHERE lesson_id = l.id) as grammar_count
+      FROM lessons l
+      LEFT JOIN student_progress sp ON sp.lesson_id = l.id AND sp.student_id = ?
+      WHERE l.book = ?
+      ORDER BY l.sort_order
+    `).all(studentId, book);
+  } else {
+    lessons = db.prepare(`
+      SELECT l.*,
+             COALESCE(sp.vocab_mastered, 0) as mastered,
+             (SELECT COUNT(*) FROM grammar_points WHERE lesson_id = l.id) as grammar_count
+      FROM lessons l
+      LEFT JOIN student_progress sp ON sp.lesson_id = l.id AND sp.student_id = ?
+      ORDER BY l.sort_order
+    `).all(studentId);
+  }
 
   res.json(lessons);
 });
@@ -73,7 +173,8 @@ router.post('/progress', (req, res) => {
   db.prepare('UPDATE students SET current_lesson_id = ? WHERE id = ?')
     .run(lesson_id, studentId);
 
-  res.json({ ok: true });
+  const newAchievements = checkAchievements(studentId, db);
+  res.json({ ok: true, new_achievements: newAchievements });
 });
 
 // ===== クイズ用: レッスンの単語からランダム4択を生成 =====
@@ -192,7 +293,8 @@ router.post('/quiz/result', (req, res) => {
   });
 
   transaction();
-  res.json({ ok: true });
+  const newAchievements = checkAchievements(studentId, db);
+  res.json({ ok: true, new_achievements: newAchievements });
 });
 
 // ===== 復習キュー（SRS: 期限切れの単語） =====
@@ -288,6 +390,9 @@ router.get('/stats', (req, res) => {
     plan,
     today_usage: todayUsage,
     limits: { chat: 10, speech: 5 },
+    level: getLevel(totals.mastered),
+    next_level: LEVELS.find(l => l.min > (totals.mastered || 0)) || null,
+    achievements: db.prepare("SELECT achievement_key, achieved_at FROM achievements WHERE student_id = ?").all(studentId),
   });
 });
 
@@ -346,6 +451,18 @@ router.get('/weekly-activity', (req, res) => {
   }
 
   res.json(days);
+});
+
+// ===== 実績一覧 =====
+router.get('/achievements', (req, res) => {
+  const db = getDb();
+  const studentId = req.student.id;
+  const earned = db.prepare("SELECT achievement_key, achieved_at FROM achievements WHERE student_id = ?").all(studentId);
+  const all = ACHIEVEMENT_DEFS.map(d => ({
+    ...d,
+    earned: earned.find(e => e.achievement_key === d.key)?.achieved_at || null,
+  }));
+  res.json(all);
 });
 
 module.exports = router;

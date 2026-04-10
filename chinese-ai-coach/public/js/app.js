@@ -58,6 +58,58 @@ function showLimitModal(type, used, limit) {
   document.body.appendChild(overlay);
 }
 
+// ===== ゲーミフィケーション =====
+function showConfetti() {
+  const colors = ['#FFDB00', '#0A5FA6', '#059669', '#DC2626', '#7C3AED', '#FF6B6B'];
+  for (let i = 0; i < 40; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animation = `confetti-fall ${1.5 + Math.random() * 2}s ease-in forwards`;
+    piece.style.animationDelay = Math.random() * 0.5 + 's';
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 4000);
+  }
+}
+
+function showAchievementBanner(achievement) {
+  const existing = document.querySelector('.achievement-banner');
+  if (existing) existing.remove();
+  const banner = document.createElement('div');
+  banner.className = 'achievement-banner';
+  banner.innerHTML = `<span class="achievement-icon">${achievement.icon}</span>${achievement.label}`;
+  document.body.appendChild(banner);
+  requestAnimationFrame(() => banner.classList.add('show'));
+  showConfetti();
+  setTimeout(() => {
+    banner.classList.remove('show');
+    setTimeout(() => banner.remove(), 500);
+  }, 3500);
+}
+
+function handleNewAchievements(achievements) {
+  if (!achievements || !achievements.length) return;
+  let delay = 0;
+  achievements.forEach(a => {
+    setTimeout(() => showAchievementBanner(a), delay);
+    delay += 4000;
+  });
+}
+
+function updateLevelBadge(level) {
+  if (!level) return;
+  let badge = document.getElementById('level-badge-display');
+  if (!badge) {
+    badge = document.createElement('span');
+    badge.id = 'level-badge-display';
+    badge.className = 'level-badge-display';
+    const nameEl = document.getElementById('student-name');
+    if (nameEl) nameEl.appendChild(badge);
+  }
+  badge.textContent = `Lv.${level.level} ${level.name}`;
+}
+
 // 認証付きfetchラッパー（セッション検証込み）
 async function apiFetch(url, options = {}) {
   options.headers = {
@@ -257,19 +309,42 @@ async function loadLessons() {
     const select = document.getElementById('lesson-select');
     select.innerHTML = '<option value="">レッスンを選択...</option>';
 
+    // book別にグループ分け
+    const bookGroups = {
+      1: { label: '教科書コース', items: [] },
+      2: { label: '文法講座', items: [] },
+      3: { label: '旅行パック', items: [] },
+    };
+
     lessons.forEach(l => {
       const pct = l.vocab_count > 0 ? Math.round((l.mastered / l.vocab_count) * 100) : 0;
       const opt = document.createElement('option');
       opt.value = l.id;
       // 特別レッスンの表示
-      if (l.lesson_number === 0) {
+      if (l.book === 3) {
+        opt.textContent = `✈ ${l.title_ja || l.title_zh}（${pct}%）`;
+      } else if (l.lesson_number === 0) {
         opt.textContent = `🔤 ${l.title_ja || l.title_zh}（${pct}%）`;
       } else if (l.lesson_number === 99) {
         opt.textContent = `🎯 ${l.title_ja || l.title_zh}（${pct}%）`;
       } else {
         opt.textContent = `第${l.lesson_number}課 ${l.title_zh}（${pct}%）`;
       }
-      select.appendChild(opt);
+      const group = bookGroups[l.book];
+      if (group) {
+        group.items.push(opt);
+      } else {
+        select.appendChild(opt);
+      }
+    });
+
+    // optgroupとして追加（itemsが存在するbookのみ）
+    Object.values(bookGroups).forEach(group => {
+      if (group.items.length === 0) return;
+      const optgroup = document.createElement('optgroup');
+      optgroup.label = group.label;
+      group.items.forEach(opt => optgroup.appendChild(opt));
+      select.appendChild(optgroup);
     });
 
     // Auto-select current lesson
@@ -838,6 +913,7 @@ async function submitAudio(audioBlob) {
     if (!res) return;
     const result = await res.json();
     showScore(result);
+    if (result.new_achievements) handleNewAchievements(result.new_achievements);
     loadStats(); // 進捗を即時更新
     progressGraphsLoaded = false; // グラフも次回開いた時に再取得
   } catch (err) {
@@ -1286,11 +1362,15 @@ async function finishQuiz() {
 
   // Save results to server
   try {
-    await apiFetch(`${API}/api/curriculum/quiz/result`, {
+    const res = await apiFetch(`${API}/api/curriculum/quiz/result`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ results: quizResults }),
     });
+    if (res) {
+      const result = await res.json();
+      if (result.new_achievements) handleNewAchievements(result.new_achievements);
+    }
     loadStats(); // Refresh stats
     progressGraphsLoaded = false;
   } catch (err) {
@@ -1305,6 +1385,7 @@ async function loadStats() {
     if (!res) return;
     const stats = await res.json();
 
+    currentStatsCache = stats;
     const summary = document.getElementById('progress-summary');
     summary.style.display = '';
 
@@ -1337,6 +1418,9 @@ async function loadStats() {
         }
       }
     }
+
+    // レベルバッジ
+    if (stats.level) updateLevelBadge(stats.level);
   } catch (err) {
     console.error('Stats load error:', err);
   }
@@ -1439,6 +1523,115 @@ function renderLessonChart(lessonProgress) {
   }).join('');
 
   container.innerHTML = rows;
+}
+
+// ===== シェア機能 =====
+let currentStatsCache = null; // loadStatsで更新
+
+async function generateScoreCard(data) {
+  const { mastered, streak, level_name, level_num } = data;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
+    <defs>
+      <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#0A5FA6"/>
+        <stop offset="100%" style="stop-color:#084B84"/>
+      </linearGradient>
+    </defs>
+    <rect width="600" height="340" rx="24" fill="url(#bg)"/>
+    <text x="300" y="55" text-anchor="middle" fill="white" font-family="sans-serif" font-size="28" font-weight="bold">台湾スピーク</text>
+    <text x="300" y="80" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="sans-serif" font-size="14">台湾で通じる中国語アプリ</text>
+    <rect x="50" y="100" width="500" height="150" rx="16" fill="rgba(255,255,255,0.1)"/>
+    <text x="175" y="155" text-anchor="middle" fill="#FFDB00" font-family="sans-serif" font-size="52" font-weight="bold">${mastered}</text>
+    <text x="175" y="185" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="sans-serif" font-size="16">語マスター</text>
+    <text x="425" y="155" text-anchor="middle" fill="#FFDB00" font-family="sans-serif" font-size="52" font-weight="bold">${streak}</text>
+    <text x="425" y="185" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="sans-serif" font-size="16">日連続</text>
+    <line x1="300" y1="120" x2="300" y2="230" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    ${level_name ? `<rect x="220" y="210" width="160" height="28" rx="14" fill="#FFDB00"/>
+    <text x="300" y="230" text-anchor="middle" fill="#333" font-family="sans-serif" font-size="13" font-weight="bold">Lv.${level_num} ${level_name}</text>` : ''}
+    <text x="300" y="310" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="12">taiwan-chinese-coach.fly.dev</text>
+  </svg>`;
+
+  const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 600;
+      canvas.height = 340;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob(resolve, 'image/png');
+      URL.revokeObjectURL(url);
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      resolve(null);
+    };
+    img.src = url;
+  });
+}
+
+async function shareMyScore() {
+  if (!currentStatsCache) {
+    showToast('データを読み込み中...', 'info');
+    return;
+  }
+
+  const data = {
+    mastered: currentStatsCache.mastered || 0,
+    streak: currentStatsCache.streak || 0,
+    level_name: currentStatsCache.level?.name || '',
+    level_num: currentStatsCache.level?.level || 1,
+  };
+
+  const pngBlob = await generateScoreCard(data);
+  if (!pngBlob) {
+    showToast('画像の生成に失敗しました', 'error');
+    return;
+  }
+
+  const shareText = `台湾スピークで${data.mastered}語マスター！🔥${data.streak}日連続学習中 #台湾スピーク`;
+
+  if (navigator.share) {
+    try {
+      const file = new File([pngBlob], 'taiwanspeak-score.png', { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ text: shareText, files: [file] });
+        return;
+      }
+      await navigator.share({ text: shareText, url: 'https://taiwan-chinese-coach.fly.dev' });
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+    }
+  }
+
+  // Fallback: download + copy text
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(pngBlob);
+  link.download = 'taiwanspeak-score.png';
+  link.click();
+  try { await navigator.clipboard.writeText(shareText); } catch {}
+  showToast('画像をダウンロードしました。SNSに投稿してください！', 'success');
+}
+
+async function shareQuizScore() {
+  const scoreNum = document.getElementById('quiz-score-num')?.textContent || '0';
+  const total = quizQuestions.length || 10;
+  const shareText = `台湾スピーク 単語クイズ ${scoreNum}/${total}問正解！ #台湾スピーク`;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ text: shareText, url: 'https://taiwan-chinese-coach.fly.dev' });
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+    }
+  }
+  try { await navigator.clipboard.writeText(shareText); } catch {}
+  showToast('テキストをコピーしました！', 'success');
 }
 
 // ===== 復習モード =====

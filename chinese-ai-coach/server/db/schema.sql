@@ -173,3 +173,13 @@ CREATE TABLE IF NOT EXISTS daily_usage (
   UNIQUE(student_id, usage_date),
   FOREIGN KEY (student_id) REFERENCES students(id)
 );
+
+-- 実績
+CREATE TABLE IF NOT EXISTS achievements (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  student_id INTEGER NOT NULL,
+  achievement_key TEXT NOT NULL,
+  achieved_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE(student_id, achievement_key),
+  FOREIGN KEY (student_id) REFERENCES students(id)
+);
