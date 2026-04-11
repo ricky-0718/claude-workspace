@@ -389,7 +389,7 @@ router.get('/stats', (req, res) => {
     lesson_progress: lessonProgress,
     plan,
     today_usage: todayUsage,
-    limits: { chat: 10, speech: 5 },
+    limits: { chat: 10, speech: 10 },
     level: getLevel(totals.mastered),
     next_level: LEVELS.find(l => l.min > (totals.mastered || 0)) || null,
     achievements: db.prepare("SELECT achievement_key, achieved_at FROM achievements WHERE student_id = ?").all(studentId),

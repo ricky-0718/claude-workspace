@@ -7,7 +7,7 @@ const { getDb } = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 3860;
-const FREE_LIMITS = { chat: 10, speech: 5 };
+const FREE_LIMITS = { chat: 10, speech: 10 };
 
 app.use(cors({
   origin: true,
