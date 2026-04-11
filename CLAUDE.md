@@ -1,5 +1,33 @@
 # CLAUDE.md
 
+## セッション開始時の確認事項（必読）
+
+新しいセッション（Claude Code本体 or Paperclipエージェント）を開始する際は、以下を必ず確認すること。これにより、本体セッションとPaperclip間で「いま何が起きているか」の認識ギャップを防ぐ。
+
+1. **`tasks/CURRENT-STATE.md`** — 現在のActive Focus、Next Actions、Blockers
+2. **`tasks/activity-log.md` の直近10件** — 最近の作業履歴（誰が・いつ・何をしたか）
+3. **メモリインデックス**（セッションに応じて）
+   - Claude Code本体（Windows）: `C:/Users/newgo/.claude/projects/C--Users-newgo-Claude-/memory/MEMORY.md`（自動ロード）
+   - Paperclipエージェント（WSL）: `/mnt/c/Users/newgo/.claude/projects/C--Users-newgo-Claude-/memory/MEMORY.md`（明示的に Read する）
+
+## 作業完了時の記録（必読）
+
+重要な作業を完了したら、以下を更新してから終わること：
+
+1. **`tasks/activity-log.md`** に作業内容を追記（フォーマットはファイル冒頭参照）
+2. **`tasks/CURRENT-STATE.md`** の Active Focus と Next Actions を更新
+3. 必要に応じて個人メモリ（本体は自動メモリシステム、Paperclipは `/home/ricky/.paperclip/` 内）を更新
+
+**目的**: 本体セッションとPaperclipエージェントは会話履歴を共有できない。唯一の共有層はリポジトリ内のファイル。CURRENT-STATEとactivity-logを必ず更新することで、次のセッション（どちらの側から来ても）が同じ地点から始められる。
+
+## Paperclip 環境について
+
+- **稼働場所**: WSL2 Ubuntu（rickyユーザー）、http://localhost:3100
+- **会社ID**: 台湾留学101センター（`ea247fa6-c3e2-43cd-ae90-73ca87a93b1e`）
+- **Workspace bind**: `/home/ricky/workspace` → `/mnt/c/Users/newgo/Claude用/`（シンボリックリンク）
+- **Paperclipエージェントがリポジトリを触る際は** 必ず `/home/ricky/workspace/` 経由でアクセスする（`/mnt/c/...` 直接参照はパス表記が面倒なため非推奨）
+- Paperclip側からWindows側のファイルを編集しても即時反映される（共有FS）
+
 ## User Preferences
 - **Language**: Japanese. Always respond in Japanese.
 - **Browser**: ALWAYS use Edge. NEVER attempt to connect to Chrome. NEVER call switch_browser. Always call tabs_context_mcp directly.
@@ -87,6 +115,7 @@
 - Run tests, check logs, demonstrate correctness
 - Ask yourself: "Would a staff engineer approve this?"
 - Diff behavior between main and your changes when relevant
+- レビューやフィードバックを受けたら、お追従せずまず技術的に検証する。「その通りですね！」は禁止。正しいか確認してから同意する
 
 ### 5. Demand Elegance (Balanced)
 - For non-trivial changes: pause and ask "is there a more elegant way?"
