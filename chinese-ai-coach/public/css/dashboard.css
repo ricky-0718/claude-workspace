@@ -463,6 +463,24 @@
   opacity: 0.6;
   background: var(--bg-input);
 }
+.invite-card.shared {
+  background: linear-gradient(135deg, #F3F8FD 0%, #E6F0FA 100%);
+  border: 1.5px solid var(--primary);
+}
+.invite-code.shared {
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+.invite-shared-stats {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.invite-exhausted {
+  font-size: 0.75rem;
+  color: var(--danger);
+  font-weight: 600;
+}
 .invite-code {
   font-family: 'Courier New', monospace;
   font-size: 1.1rem;

@@ -15,6 +15,17 @@ app.use(cors({
   origin: true,
   allowedHeaders: ['Content-Type', 'x-student-token', 'x-session-id', 'x-coach-key'],
 }));
+
+// 旧ドメインからの301リダイレクト（chinese.ryugaku101.com → taiwanspeak.ryugaku101.com）
+// APIパスは除外（PWAの既存セッションを壊さないため）
+app.use((req, res, next) => {
+  if (req.hostname === 'chinese.ryugaku101.com' && !req.path.startsWith('/api/')) {
+    // ルート（/）は /app へ。それ以外のパスはそのまま引き継ぐ
+    const target = req.path === '/' ? '/app' : req.path;
+    return res.redirect(301, `https://taiwanspeak.ryugaku101.com${target}${req.originalUrl.includes('?') ? req.originalUrl.substring(req.originalUrl.indexOf('?')) : ''}`);
+  }
+  next();
+});
 app.use(express.json({ limit: '5mb' }));
 // 静的ファイル: index.htmlの自動配信は無効化（/ は LP を明示的に返すため）
 app.use(express.static(path.join(__dirname, '../public'), { index: false }));
@@ -100,9 +111,17 @@ app.post('/api/register', (req, res) => {
   }
 
   const db = getDb();
-  const code = db.prepare(
-    "SELECT * FROM invite_codes WHERE code = ? AND used_by IS NULL AND (expires_at IS NULL OR expires_at > datetime('now'))"
-  ).get(invite_code.trim().toUpperCase());
+  // 検索: 期限切れでなく、かつ(単発コードで未使用 OR 共有コードで残回数あり)
+  const code = db.prepare(`
+    SELECT *, COALESCE(max_uses, 1) AS max_uses_eff FROM invite_codes
+    WHERE code = ?
+    AND (expires_at IS NULL OR expires_at > datetime('now'))
+    AND use_count < COALESCE(max_uses, 1)
+    AND (
+      COALESCE(max_uses, 1) > 1  -- 共有コード
+      OR used_by IS NULL         -- 単発コードで未使用
+    )
+  `).get(invite_code.trim().toUpperCase());
   if (!code) {
     return res.status(400).json({ error: '招待コードが無効です。期限切れまたは使用済みの可能性があります' });
   }
@@ -120,8 +139,13 @@ app.post('/api/register', (req, res) => {
     const result = db.prepare(
       'INSERT INTO students (name, token, passcode, plan, invite_code_id, trial_ends_at) VALUES (?, ?, ?, ?, ?, ?)'
     ).run(name.trim(), token, passcode, 'trial', code.id, trialEndsAt);
-    db.prepare('UPDATE invite_codes SET used_by = ?, used_at = datetime(?) WHERE id = ?')
-      .run(result.lastInsertRowid, new Date().toISOString(), code.id);
+    // 単発コードは従来通り used_by を刻印。共有コードは use_count のみ増やす
+    if (code.max_uses_eff === 1) {
+      db.prepare('UPDATE invite_codes SET used_by = ?, used_at = datetime(?), use_count = use_count + 1 WHERE id = ?')
+        .run(result.lastInsertRowid, new Date().toISOString(), code.id);
+    } else {
+      db.prepare('UPDATE invite_codes SET use_count = use_count + 1 WHERE id = ?').run(code.id);
+    }
     return result;
   });
 
@@ -166,6 +190,34 @@ app.post('/api/login', (req, res) => {
     .run(sessionId, student.id, req.headers['user-agent'] || '');
 
   res.json({ ...student, session_id: sessionId });
+});
+
+// 共有招待コード作成（カスタム文字列＋複数回使用可）
+app.post('/api/dashboard/invite-codes/shared', coachAuth, (req, res) => {
+  const { code, max_uses = 100, expires_days = 60 } = req.body;
+  if (!code || typeof code !== 'string') {
+    return res.status(400).json({ error: 'コード文字列を指定してください' });
+  }
+  const clean = code.trim().toUpperCase();
+  if (!/^[A-Z0-9]{3,20}$/.test(clean)) {
+    return res.status(400).json({ error: 'コードは英数字3〜20文字で指定してください' });
+  }
+  const maxUsesNum = parseInt(max_uses, 10);
+  if (!Number.isFinite(maxUsesNum) || maxUsesNum < 2 || maxUsesNum > 10000) {
+    return res.status(400).json({ error: '最大使用回数は2〜10000の範囲で指定してください' });
+  }
+  const db = getDb();
+  // 既存チェック
+  const existing = db.prepare('SELECT id FROM invite_codes WHERE code = ?').get(clean);
+  if (existing) return res.status(400).json({ error: '同じコードが既に存在します' });
+  try {
+    const result = db.prepare(
+      'INSERT INTO invite_codes (code, expires_at, max_uses, use_count) VALUES (?, datetime(?, ?), ?, 0)'
+    ).run(clean, 'now', `+${expires_days} days`, maxUsesNum);
+    res.json({ id: result.lastInsertRowid, code: clean, max_uses: maxUsesNum, expires_days });
+  } catch (err) {
+    res.status(500).json({ error: '作成に失敗しました' });
+  }
 });
 
 // 招待コード管理（ダッシュボードルーターより先に定義）

@@ -392,18 +392,41 @@ async function loadInviteCodes() {
   const container = document.getElementById('invite-codes-list');
 
   if (!codes.length) {
-    container.innerHTML = '<p class="empty-state">招待コードがありません。「10件生成」ボタンで作成してください。</p>';
+    container.innerHTML = '<p class="empty-state">招待コードがありません。「共有コード作成」または「10件生成」ボタンで作成してください。</p>';
     return;
   }
 
-  const unused = codes.filter(c => !c.used_by);
-  const used = codes.filter(c => c.used_by);
+  // 共有コード(max_uses>1) / 単発未使用 / 単発使用済 の3種類に分ける
+  const shared = codes.filter(c => (c.max_uses || 1) > 1);
+  const unused = codes.filter(c => (c.max_uses || 1) === 1 && !c.used_by);
+  const used = codes.filter(c => (c.max_uses || 1) === 1 && c.used_by);
 
   let html = '';
 
+  if (shared.length) {
+    html += `<div class="invite-section">
+      <h3 class="invite-section-title">共有コード（${shared.length}件）</h3>
+      <div class="invite-grid">
+        ${shared.map(c => {
+          const remaining = (c.max_uses || 1) - (c.use_count || 0);
+          return `
+          <div class="invite-card shared">
+            <span class="invite-code shared">${esc(c.code)}</span>
+            <span class="invite-shared-stats">${c.use_count || 0} / ${c.max_uses} 使用</span>
+            <span class="invite-expires">${c.expires_at ? fmtDate(c.expires_at) + 'まで' : '無期限'}</span>
+            <div class="invite-actions">
+              <button class="btn-sm" onclick="copyCode('${esc(c.code)}')">コピー</button>
+              ${remaining > 0 ? '' : '<span class="invite-exhausted">枠切れ</span>'}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }
+
   if (unused.length) {
     html += `<div class="invite-section">
-      <h3 class="invite-section-title">未使用（${unused.length}件）</h3>
+      <h3 class="invite-section-title">単発コード 未使用（${unused.length}件）</h3>
       <div class="invite-grid">
         ${unused.map(c => `
           <div class="invite-card">
@@ -421,7 +444,7 @@ async function loadInviteCodes() {
 
   if (used.length) {
     html += `<div class="invite-section">
-      <h3 class="invite-section-title">使用済（${used.length}件）</h3>
+      <h3 class="invite-section-title">単発コード 使用済（${used.length}件）</h3>
       <div class="invite-grid">
         ${used.map(c => `
           <div class="invite-card used">
@@ -435,6 +458,34 @@ async function loadInviteCodes() {
   }
 
   container.innerHTML = html;
+}
+
+// 共有コード作成フォーム表示
+function openSharedCodeForm() {
+  document.getElementById('shared-code-form').style.display = 'block';
+  document.getElementById('shared-code-str').focus();
+}
+function closeSharedCodeForm() {
+  document.getElementById('shared-code-form').style.display = 'none';
+  document.getElementById('shared-code-str').value = '';
+}
+async function createSharedCode() {
+  const code = document.getElementById('shared-code-str').value.trim().toUpperCase();
+  const max_uses = parseInt(document.getElementById('shared-code-max').value, 10);
+  const expires_days = parseInt(document.getElementById('shared-code-days').value, 10);
+  if (!code) { showDashToast('コード文字列を入力してください'); return; }
+  const res = await dashFetch('/api/dashboard/invite-codes/shared', {
+    method: 'POST',
+    body: JSON.stringify({ code, max_uses, expires_days }),
+  });
+  if (res.ok) {
+    showDashToast(`共有コード「${code}」を作成しました`);
+    closeSharedCodeForm();
+    loadInviteCodes();
+  } else {
+    const err = await res.json().catch(() => ({}));
+    showDashToast(err.error || '作成失敗');
+  }
 }
 
 async function generateInviteCodes() {

@@ -37,6 +37,9 @@ function getDb() {
         created_at TEXT DEFAULT (datetime('now')),
         FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL
       )`,
+      // 招待コードを再利用可能に。max_uses=1は単発、>1は共有コード
+      "ALTER TABLE invite_codes ADD COLUMN max_uses INTEGER DEFAULT 1",
+      "ALTER TABLE invite_codes ADD COLUMN use_count INTEGER DEFAULT 0",
     ];
     for (const sql of migrations) {
       try { db.exec(sql); } catch (e) { /* Column already exists */ }
