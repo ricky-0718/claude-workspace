@@ -88,13 +88,18 @@
 .card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.4rem;
   margin-bottom: 1rem;
 }
 .card-name {
   font-weight: 600;
   font-size: 1rem;
   color: var(--text);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .level-badge {
   font-size: 0.75rem;
@@ -103,6 +108,73 @@
   background: var(--primary-light);
   color: var(--primary);
   font-weight: 500;
+}
+
+/* プランバッジ */
+.plan-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.plan-badge.plan-free {
+  background: #E8E3DC;
+  color: #8B8578;
+}
+.plan-badge.plan-trial {
+  background: linear-gradient(135deg, #C4E8FF 0%, #7EC4FF 100%);
+  color: #0A5FA6;
+  box-shadow: 0 1px 3px rgba(126, 196, 255, 0.3);
+}
+.plan-badge.plan-premium {
+  background: linear-gradient(135deg, #FFD76E 0%, #FFB84D 100%);
+  color: #6B4A00;
+  box-shadow: 0 1px 3px rgba(255, 184, 77, 0.3);
+}
+
+/* ===== フィードバック一覧 ===== */
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+}
+.feedback-item {
+  background: var(--bg-card);
+  border: 1px solid #E8E3DC;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.feedback-item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.feedback-item-name {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.88rem;
+}
+.feedback-item-stars {
+  color: #FFB84D;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+}
+.feedback-item-date {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.feedback-item-content {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 .card-stats {
   display: grid;
@@ -155,7 +227,8 @@
   font-size: 1.2rem;
   color: var(--primary);
 }
-.detail-header .btn-ghost { margin-left: auto; }
+.detail-header #detail-plan-toggle { margin-left: auto; }
+.detail-header .btn-ghost:not(#detail-plan-toggle) { /* 閉じるボタンは自然配置 */ }
 
 .detail-grid {
   display: grid;

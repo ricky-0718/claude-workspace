@@ -25,6 +25,18 @@ function getDb() {
       "ALTER TABLE grammar_points ADD COLUMN video_url TEXT",
       "ALTER TABLE students ADD COLUMN plan TEXT DEFAULT 'free'",
       "ALTER TABLE students ADD COLUMN invite_code_id INTEGER",
+      // トライアル期限（ISO8601 datetime文字列）。NULLならトライアル適用なし
+      "ALTER TABLE students ADD COLUMN trial_ends_at TEXT",
+      // フィードバック収集テーブル
+      `CREATE TABLE IF NOT EXISTS feedback (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        student_id INTEGER,
+        rating INTEGER,
+        content TEXT NOT NULL,
+        category TEXT,
+        created_at TEXT DEFAULT (datetime('now')),
+        FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL
+      )`,
     ];
     for (const sql of migrations) {
       try { db.exec(sql); } catch (e) { /* Column already exists */ }

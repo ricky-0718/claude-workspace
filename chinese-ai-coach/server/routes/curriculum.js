@@ -379,6 +379,13 @@ router.get('/stats', (req, res) => {
   ).get(studentId) || { chat_count: 0, speech_count: 0 };
 
   const plan = req.student.plan || 'free';
+  const trialEndsAt = req.student.trial_ends_at || null;
+  // トライアル残日数（切り上げ）。期限切れや未設定は null
+  let trialDaysLeft = null;
+  if (plan === 'trial' && trialEndsAt) {
+    const msLeft = new Date(trialEndsAt).getTime() - Date.now();
+    if (msLeft > 0) trialDaysLeft = Math.ceil(msLeft / (24 * 60 * 60 * 1000));
+  }
 
   res.json({
     mastered: totals.mastered,
@@ -388,6 +395,8 @@ router.get('/stats', (req, res) => {
     streak,
     lesson_progress: lessonProgress,
     plan,
+    trial_ends_at: trialEndsAt,
+    trial_days_left: trialDaysLeft,
     today_usage: todayUsage,
     limits: { chat: 10, speech: 10 },
     level: getLevel(totals.mastered),

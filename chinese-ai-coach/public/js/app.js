@@ -42,6 +42,74 @@ function showToast(message, type = 'info') {
   }, 3000);
 }
 
+// ===== フィードバック機構 =====
+let feedbackRating = 0;
+
+function showFeedbackFab() {
+  const fab = document.getElementById('feedback-fab');
+  if (fab) fab.style.display = 'flex';
+}
+
+function openFeedback() {
+  const modal = document.getElementById('feedback-modal');
+  if (!modal) return;
+  modal.style.display = 'flex';
+  // リセット
+  feedbackRating = 0;
+  renderFeedbackStars();
+  const ta = document.getElementById('feedback-text');
+  if (ta) ta.value = '';
+  // スター click binding
+  document.querySelectorAll('#feedback-stars span').forEach(s => {
+    s.onclick = () => {
+      feedbackRating = parseInt(s.dataset.rate, 10);
+      renderFeedbackStars();
+    };
+  });
+}
+
+function closeFeedback() {
+  const modal = document.getElementById('feedback-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+function renderFeedbackStars() {
+  document.querySelectorAll('#feedback-stars span').forEach(s => {
+    const rate = parseInt(s.dataset.rate, 10);
+    s.textContent = rate <= feedbackRating ? '★' : '☆';
+    s.classList.toggle('active', rate <= feedbackRating);
+  });
+}
+
+async function submitFeedback() {
+  const content = (document.getElementById('feedback-text')?.value || '').trim();
+  if (content.length < 3) {
+    showToast('3文字以上入力してください', 'error');
+    return;
+  }
+  try {
+    const headers = { 'Content-Type': 'application/json' };
+    if (studentData?.token) headers['x-student-token'] = studentData.token;
+    const res = await fetch(`${API}/api/feedback`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        content,
+        rating: feedbackRating > 0 ? feedbackRating : null,
+      }),
+    });
+    if (res.ok) {
+      closeFeedback();
+      showToast('フィードバックを送信しました。ありがとうございます！', 'success');
+    } else {
+      const err = await res.json().catch(() => ({}));
+      showToast(err.error || '送信に失敗しました', 'error');
+    }
+  } catch {
+    showToast('通信エラーが発生しました', 'error');
+  }
+}
+
 function showLimitModal(type, used, limit) {
   const existing = document.querySelector('.limit-overlay');
   if (existing) existing.remove();
@@ -173,6 +241,7 @@ async function login() {
     document.getElementById('login-screen').classList.remove('active');
     document.getElementById('main-screen').classList.add('active');
     document.getElementById('student-name').textContent = `${data.name} さん`;
+    showFeedbackFab();
 
     loadLessons();
     loadScenarios();
@@ -240,6 +309,7 @@ async function register() {
     document.getElementById('login-screen').classList.remove('active');
     document.getElementById('main-screen').classList.add('active');
     document.getElementById('student-name').textContent = `${data.name} さん`;
+    showFeedbackFab();
 
     loadLessons();
     loadScenarios();
@@ -272,6 +342,7 @@ try {
           document.getElementById('login-screen').classList.remove('active');
           document.getElementById('main-screen').classList.add('active');
           document.getElementById('student-name').textContent = `${saved.name} さん`;
+          showFeedbackFab();
           loadLessons();
           loadScenarios();
           loadTasks();
@@ -328,7 +399,8 @@ async function loadLessons() {
       } else if (l.lesson_number === 99) {
         opt.textContent = `🎯 ${l.title_ja || l.title_zh}（${pct}%）`;
       } else {
-        opt.textContent = `第${l.lesson_number}課 ${l.title_zh}（${pct}%）`;
+        const titleSuffix = l.title_zh ? ` ${l.title_zh}` : '';
+        opt.textContent = `第${l.lesson_number}課${titleSuffix}（${pct}%）`;
       }
       const group = bookGroups[l.book];
       if (group) {
@@ -1402,12 +1474,23 @@ async function loadStats() {
       reviewStat.style.display = 'none';
     }
 
-    // 使用制限バッジ表示
-    if (stats.plan === 'free' && stats.daily_usage) {
+    // トライアルバナー表示（plan=trialのみ）
+    const trialBanner = document.getElementById('trial-banner');
+    if (trialBanner) {
+      if (stats.plan === 'trial' && stats.trial_days_left && stats.trial_days_left > 0) {
+        trialBanner.style.display = '';
+        const daysEl = document.getElementById('trial-days-left');
+        if (daysEl) daysEl.textContent = `残り ${stats.trial_days_left} 日`;
+      } else {
+        trialBanner.style.display = 'none';
+      }
+    }
+
+    // 使用制限バッジ表示（free時のみ。trial/premiumは無制限なので非表示）
+    if (stats.plan === 'free' && stats.today_usage) {
       const chatNav = document.querySelector('[data-tab="chat"]');
-      const drillNav = document.querySelector('[data-tab="drill"]');
       if (chatNav) {
-        const chatRemaining = (stats.limits?.chat || 10) - (stats.daily_usage.chat_count || 0);
+        const chatRemaining = (stats.limits?.chat || 10) - (stats.today_usage.chat_count || 0);
         const existingBadge = chatNav.querySelector('.usage-badge');
         if (existingBadge) existingBadge.remove();
         if (chatRemaining <= 3) {
@@ -1548,7 +1631,7 @@ async function generateScoreCard(data) {
     <line x1="300" y1="120" x2="300" y2="230" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
     ${level_name ? `<rect x="220" y="210" width="160" height="28" rx="14" fill="#FFDB00"/>
     <text x="300" y="230" text-anchor="middle" fill="#333" font-family="sans-serif" font-size="13" font-weight="bold">Lv.${level_num} ${level_name}</text>` : ''}
-    <text x="300" y="310" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="12">chinese.ryugaku101.com</text>
+    <text x="300" y="310" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="12">taiwanspeak.ryugaku101.com</text>
   </svg>`;
 
   const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
@@ -1601,7 +1684,7 @@ async function shareMyScore() {
         await navigator.share({ text: shareText, files: [file] });
         return;
       }
-      await navigator.share({ text: shareText, url: 'https://chinese.ryugaku101.com' });
+      await navigator.share({ text: shareText, url: 'https://taiwanspeak.ryugaku101.com' });
       return;
     } catch (e) {
       if (e.name === 'AbortError') return;
@@ -1624,7 +1707,7 @@ async function shareQuizScore() {
 
   if (navigator.share) {
     try {
-      await navigator.share({ text: shareText, url: 'https://chinese.ryugaku101.com' });
+      await navigator.share({ text: shareText, url: 'https://taiwanspeak.ryugaku101.com' });
       return;
     } catch (e) {
       if (e.name === 'AbortError') return;

@@ -7,10 +7,12 @@ const db = new Database(DB_PATH);
 const videos = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', '.playwright-mcp', 'playlist-videos.json'), 'utf8'));
 
 // 1. Create all book2 lessons
+// NOTE: title_zh は空文字にしておく。UIは「文法講座」グループ下に「第N課」として表示する。
+// 「2冊目第N課」と入れると UI が「文法講座 > 第N課 2冊目第N課」のように重複してしまう
 for (let i = 1; i <= 16; i++) {
   const lid = `book2-lesson${String(i).padStart(2, '0')}`;
   db.prepare('INSERT OR IGNORE INTO lessons (id,book,lesson_number,title_zh,sort_order,vocab_count) VALUES (?,2,?,?,?,0)')
-    .run(lid, i, `2冊目第${i}課`, 100 + i);
+    .run(lid, i, '', 100 + i);
 }
 
 // 2. Video → book2 lesson map

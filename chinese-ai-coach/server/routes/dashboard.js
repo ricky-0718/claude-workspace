@@ -113,6 +113,18 @@ router.post('/review', (req, res) => {
   res.json({ success: true });
 });
 
+// プラン変更（free ⇔ premium）
+router.patch('/students/:id/plan', (req, res) => {
+  const { plan } = req.body;
+  if (!['free', 'premium'].includes(plan)) {
+    return res.status(400).json({ error: 'plan は free または premium を指定してください' });
+  }
+  const db = getDb();
+  const result = db.prepare('UPDATE students SET plan = ? WHERE id = ?').run(plan, req.params.id);
+  if (result.changes === 0) return res.status(404).json({ error: '生徒が見つかりません' });
+  res.json({ ok: true, plan });
+});
+
 // 課題を作成（講師用）
 router.post('/tasks', (req, res) => {
   const { student_id, lesson_id, task_type, title, description, due_date } = req.body;

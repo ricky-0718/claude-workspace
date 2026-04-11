@@ -1,6 +1,6 @@
-const CACHE_NAME = 'taiwanspeak-v2';
+const CACHE_NAME = 'taiwanspeak-v4';
 const STATIC_ASSETS = [
-  '/',
+  '/app',
   '/css/style.css',
   '/js/app.js',
   '/manifest.json',

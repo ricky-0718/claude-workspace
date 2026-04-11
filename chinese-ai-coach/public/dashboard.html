@@ -65,6 +65,17 @@
         </div>
       </div>
 
+      <!-- フィードバック一覧 -->
+      <div class="section">
+        <div class="section-header">
+          <h2>フィードバック</h2>
+          <button class="btn-ghost" onclick="loadFeedback()">更新</button>
+        </div>
+        <div id="feedback-list">
+          <p class="empty-state">読み込み中...</p>
+        </div>
+      </div>
+
       <!-- 招待コード管理 -->
       <div class="section">
         <div class="section-header">
@@ -88,6 +99,8 @@
         <div class="detail-header">
           <h2 id="detail-name"></h2>
           <span class="level-badge" id="detail-level"></span>
+          <span class="plan-badge" id="detail-plan"></span>
+          <button class="btn-ghost" id="detail-plan-toggle" onclick="togglePlan()"></button>
           <button class="btn-ghost" onclick="closeDetail()">閉じる</button>
         </div>
 

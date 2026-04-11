@@ -17,6 +17,7 @@ async function coachLogin() {
     document.getElementById('dashboard').style.display = 'block';
     loadStudents();
     loadInviteCodes();
+    loadFeedback();
   } catch { errEl.textContent = '通信エラー'; }
 }
 
@@ -32,6 +33,7 @@ if (coachKey) {
   document.getElementById('dashboard').style.display = 'block';
   loadStudents();
   loadInviteCodes();
+  loadFeedback();
 }
 
 // API呼び出しヘルパー
@@ -56,10 +58,18 @@ async function loadStudents() {
 
   grid.innerHTML = students.map(s => {
     const toneClass = s.avg_tone >= 80 ? 'good' : s.avg_tone >= 60 ? 'ok' : 'needs-work';
+    const plan = s.plan || 'free';
+    const daysLeft = trialDaysLeft(s);
+    const planLabel = plan === 'premium'
+      ? '無制限'
+      : plan === 'trial'
+        ? (daysLeft > 0 ? `trial ${daysLeft}日` : 'trial切れ')
+        : 'free';
     return `
       <div class="student-card" onclick="selectStudent(${s.id})">
         <div class="card-header">
           <span class="card-name">${esc(s.name)}</span>
+          <span class="plan-badge plan-${plan}">${planLabel}</span>
           <span class="level-badge">${esc(s.level)}</span>
         </div>
         <div class="card-stats">
@@ -110,14 +120,19 @@ function renderSparkline(data) {
   </svg>`;
 }
 
+// 選択中の生徒データをキャッシュ（プラン切替時に参照）
+let selectedStudentData = null;
+
 // 生徒詳細
 async function selectStudent(id) {
   selectedStudentId = id;
   const res = await dashFetch(`/api/dashboard/students/${id}`);
   const data = await res.json();
+  selectedStudentData = data.student;
 
   document.getElementById('detail-name').textContent = data.student.name;
   document.getElementById('detail-level').textContent = data.student.level;
+  renderPlanUI(data.student.plan || 'free');
   document.getElementById('student-detail').style.display = 'block';
   document.getElementById('student-detail').scrollIntoView({ behavior: 'smooth' });
 
@@ -182,9 +197,63 @@ async function selectStudent(id) {
   }
 }
 
+// トライアル残日数を計算（期限切れや未設定は 0）
+function trialDaysLeft(student) {
+  if (!student || student.plan !== 'trial' || !student.trial_ends_at) return 0;
+  const ms = new Date(student.trial_ends_at).getTime() - Date.now();
+  return ms > 0 ? Math.ceil(ms / (24 * 60 * 60 * 1000)) : 0;
+}
+
+// プランバッジとボタンのラベルを更新
+function renderPlanUI(plan) {
+  const badge = document.getElementById('detail-plan');
+  const days = trialDaysLeft(selectedStudentData);
+  if (plan === 'premium') {
+    badge.textContent = '無制限';
+  } else if (plan === 'trial') {
+    badge.textContent = days > 0 ? `trial 残${days}日` : 'trial切れ';
+  } else {
+    badge.textContent = 'free';
+  }
+  badge.className = `plan-badge plan-${plan}`;
+
+  const btn = document.getElementById('detail-plan-toggle');
+  // trial中もボタンは「無制限にする」＝premium昇格を可能に
+  btn.textContent = plan === 'premium' ? 'free に戻す' : '無制限にする';
+}
+
+// プラン切替（free/trial → premium, premium → free）
+async function togglePlan() {
+  if (!selectedStudentId || !selectedStudentData) return;
+  const currentPlan = selectedStudentData.plan || 'free';
+  // premium → free、それ以外（free / trial / trial切れ）→ premium
+  const nextPlan = currentPlan === 'premium' ? 'free' : 'premium';
+
+  const confirmMsg = nextPlan === 'premium'
+    ? `${selectedStudentData.name} さんを無制限プランに変更しますか？（トライアル期限なしで永久無制限）`
+    : `${selectedStudentData.name} さんをfreeプラン（1日10回制限）に戻しますか？`;
+  if (!confirm(confirmMsg)) return;
+
+  const res = await dashFetch(`/api/dashboard/students/${selectedStudentId}/plan`, {
+    method: 'PATCH',
+    body: JSON.stringify({ plan: nextPlan }),
+  });
+
+  if (res.ok) {
+    selectedStudentData.plan = nextPlan;
+    renderPlanUI(nextPlan);
+    showDashToast(nextPlan === 'premium' ? '無制限プランに変更しました' : 'freeプランに戻しました');
+    loadStudents(); // 一覧のバッジも更新
+  } else {
+    const err = await res.json();
+    showDashToast('変更失敗: ' + (err.error || '不明なエラー'));
+  }
+}
+
 function closeDetail() {
   document.getElementById('student-detail').style.display = 'none';
   selectedStudentId = null;
+  selectedStudentData = null;
 }
 
 // レビュー送信
@@ -392,6 +461,36 @@ function copyCode(code) {
   navigator.clipboard.writeText(code).then(() => {
     showDashToast(`コード ${code} をコピーしました`);
   });
+}
+
+// ===== フィードバック一覧 =====
+async function loadFeedback() {
+  const container = document.getElementById('feedback-list');
+  if (!container) return;
+  try {
+    const res = await dashFetch('/api/dashboard/feedback');
+    if (!res.ok) { container.innerHTML = '<p class="empty-state">読み込み失敗</p>'; return; }
+    const rows = await res.json();
+    if (!rows.length) {
+      container.innerHTML = '<p class="empty-state">まだフィードバックはありません</p>';
+      return;
+    }
+    container.innerHTML = `<div class="feedback-grid">${rows.map(f => {
+      const stars = f.rating ? '★'.repeat(f.rating) + '☆'.repeat(5 - f.rating) : '';
+      const name = f.student_name ? esc(f.student_name) : '<i>匿名</i>';
+      return `
+        <div class="feedback-item">
+          <div class="feedback-item-head">
+            <span class="feedback-item-name">${name}</span>
+            ${stars ? `<span class="feedback-item-stars">${stars}</span>` : ''}
+            <span class="feedback-item-date">${fmtDate(f.created_at)}</span>
+          </div>
+          <p class="feedback-item-content">${esc(f.content)}</p>
+        </div>`;
+    }).join('')}</div>`;
+  } catch {
+    container.innerHTML = '<p class="empty-state">読み込みエラー</p>';
+  }
 }
 
 function showDashToast(msg) {

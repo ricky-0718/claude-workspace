@@ -8,9 +8,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>台湾スピーク</title>
   <link rel="manifest" href="/manifest.json">
-  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
-  <link rel="apple-touch-icon" href="/icons/icon-192.png">
-  <link rel="stylesheet" href="/css/style.css?v=16">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png?v=2">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png?v=2">
+  <link rel="stylesheet" href="/css/style.css?v=17">
 </head>
 <body>
   <div id="app">
@@ -66,6 +66,13 @@
           <p class="empty-state" id="grammar-empty">レッスンを選択すると文法ポイントが表示されます</p>
           <div id="grammar-list"></div>
         </div>
+      </div>
+
+      <!-- トライアル残日数バナー（plan=trial時のみ表示） -->
+      <div id="trial-banner" class="trial-banner" style="display:none">
+        <span class="trial-icon">✨</span>
+        <span class="trial-text">プレミアム体験中</span>
+        <span class="trial-days" id="trial-days-left"></span>
       </div>
 
       <!-- 進捗サマリーバー -->
@@ -231,14 +238,46 @@
     </div>
   </div>
 
-  <script src="/js/app.js?v=16"></script>
+  <!-- フィードバックFAB（画面右下に常駐） -->
+  <button id="feedback-fab" class="feedback-fab" onclick="openFeedback()" title="フィードバックを送る" style="display:none">💬</button>
+
+  <!-- フィードバックモーダル -->
+  <div id="feedback-modal" class="feedback-modal" style="display:none">
+    <div class="feedback-modal-bg" onclick="closeFeedback()"></div>
+    <div class="feedback-modal-box">
+      <button class="feedback-close" onclick="closeFeedback()">×</button>
+      <h3>フィードバックを送る</h3>
+      <p class="feedback-sub">アプリの感想・不具合・要望などを自由にお書きください</p>
+
+      <div class="feedback-rating">
+        <span class="feedback-rating-label">使い心地（任意）</span>
+        <div class="feedback-stars" id="feedback-stars">
+          <span data-rate="1">☆</span>
+          <span data-rate="2">☆</span>
+          <span data-rate="3">☆</span>
+          <span data-rate="4">☆</span>
+          <span data-rate="5">☆</span>
+        </div>
+      </div>
+
+      <textarea id="feedback-text" placeholder="例: 文法講座の動画が分かりやすかったです。音声評価がもう少し細かく出るとうれしいです。" rows="5"></textarea>
+
+      <div class="feedback-actions">
+        <button class="feedback-cancel" onclick="closeFeedback()">キャンセル</button>
+        <button class="feedback-submit" onclick="submitFeedback()">送信</button>
+      </div>
+      <p class="feedback-privacy">* 送信後は運営のみが閲覧します</p>
+    </div>
+  </div>
+
+  <script src="/js/app.js?v=17"></script>
   <script>
     if ('serviceWorker' in navigator) {
       // 古いSWを削除して最新に更新
       navigator.serviceWorker.getRegistrations().then(regs => {
         regs.forEach(r => r.update());
       });
-      navigator.serviceWorker.register('/sw.js?v=16').catch(() => {});
+      navigator.serviceWorker.register('/sw.js?v=17').catch(() => {});
     }
   </script>
 </body>
