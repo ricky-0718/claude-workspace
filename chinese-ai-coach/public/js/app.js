@@ -383,7 +383,7 @@ async function loadLessons() {
     // book別にグループ分け
     const bookGroups = {
       1: { label: '教科書コース', items: [] },
-      2: { label: '文法講座', items: [] },
+      2: { label: '時代華語2冊目', items: [] },
       3: { label: '旅行パック', items: [] },
     };
 

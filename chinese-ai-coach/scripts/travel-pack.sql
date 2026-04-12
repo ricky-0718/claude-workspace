@@ -46,10 +46,10 @@ INSERT INTO vocabulary (lesson_id, sort_order, hanzi, pinyin, translation_ja, ex
  '[{"hanzi":"到台北101大概要多少錢？","pinyin":"dào tái běi yī líng yī dà gài yào duō shǎo qián?","translation_ja":"台北101までだいたいいくらですか？"}]'),
 
 ('travel-airport', 6,
- '這班捷運幾點最後一班？',
- 'zhè bān jié yùn jǐ diǎn zuì hòu yī bān?',
- 'このMRTの終電は何時ですか？',
- '[{"hanzi":"最後一班捷運是幾點？","pinyin":"zuì hòu yī bān jié yùn shì jǐ diǎn?","translation_ja":"終電は何時ですか？"}]'),
+ '捷運最後一班是幾點？',
+ 'jié yùn zuì hòu yī bān shì jǐ diǎn?',
+ 'MRTの終電は何時ですか？',
+ '[{"hanzi":"最後一班公車是幾點？","pinyin":"zuì hòu yī bān gōng chē shì jǐ diǎn?","translation_ja":"最終バスは何時ですか？"}]'),
 
 ('travel-airport', 7,
  '請問要在哪裡轉車？',
@@ -160,9 +160,9 @@ INSERT INTO vocabulary (lesson_id, sort_order, hanzi, pinyin, translation_ja, ex
  '[{"hanzi":"有免費的地圖可以拿嗎？","pinyin":"yǒu miǎn fèi de dì tú kě yǐ ná ma?","translation_ja":"無料の地図はありますか？"}]'),
 
 ('travel-airport', 25,
- '請問去淡水怎麼坐？',
- 'qǐng wèn qù dàn shuǐ zěn me zuò?',
- '淡水へはどうやって乗れば行けますか？',
+ '請問去淡水怎麼搭？',
+ 'qǐng wèn qù dàn shuǐ zěn me dā?',
+ '淡水へはどうやって行けますか？',
  '[{"hanzi":"淡水線的終點站是淡水嗎？","pinyin":"dàn shuǐ xiàn de zhōng diǎn zhàn shì dàn shuǐ ma?","translation_ja":"淡水線の終点は淡水ですか？"}]');
 
 -- ===================================================
@@ -185,7 +185,7 @@ INSERT INTO vocabulary (lesson_id, sort_order, hanzi, pinyin, translation_ja, ex
  '不要太辣。',
  'bú yào tài là.',
  'あまり辛くしないでください。',
- '[{"hanzi":"可以不要加辣嗎？","pinyin":"kě yǐ bú yào jiā là ma?","translation_ja":"唐辛子を入れないでもらえますか？"}]'),
+ '[{"hanzi":"可以不加辣嗎？","pinyin":"kě yǐ bù jiā là ma?","translation_ja":"辛みを入れないでもらえますか？"}]'),
 
 ('travel-food', 4,
  '可以刷卡嗎？',
@@ -520,15 +520,15 @@ INSERT INTO vocabulary (lesson_id, sort_order, hanzi, pinyin, translation_ja, ex
  '[{"hanzi":"我的手機也不見了。","pinyin":"wǒ de shǒu jī yě bú jiàn le.","translation_ja":"携帯電話もなくなりました。"}]'),
 
 ('travel-emergency', 8,
- '請問日本在台灣的辦事處在哪裡？',
- 'qǐng wèn rì běn zài tái wān de bàn shì chù zài nǎ lǐ?',
- '台湾にある日本の事務所（台北駐日経済文化代表処）はどこですか？',
+ '請問日本台灣交流協會在哪裡？',
+ 'qǐng wèn rì běn tái wān jiāo liú xié huì zài nǎ lǐ?',
+ '日本台湾交流協会はどこですか？',
  '[{"hanzi":"我需要去日本台灣交流協會辦理補發護照。","pinyin":"wǒ xū yào qù rì běn tái wān jiāo liú xié huì bàn lǐ bǔ fā hù zhào.","translation_ja":"日本台湾交流協会でパスポートの再発行手続きをする必要があります。"}]'),
 
 ('travel-emergency', 9,
- '我的頭很暈。',
- 'wǒ de tóu hěn yūn.',
- '頭がひどくぼんやりします（めまいがします）。',
+ '我頭很暈。',
+ 'wǒ tóu hěn yūn.',
+ '頭がくらくらします（めまいがします）。',
  '[{"hanzi":"我可能中暑了。","pinyin":"wǒ kě néng zhòng shǔ le.","translation_ja":"熱中症にかかったかもしれません。"}]'),
 
 ('travel-emergency', 10,
