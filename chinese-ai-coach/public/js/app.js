@@ -1355,15 +1355,18 @@ function showQuizQuestion() {
   const choicesEl = document.getElementById('quiz-choices');
   choicesEl.innerHTML = '';
 
-  // Show question with audio button
+  // Show question with audio button (only when Chinese audio is available)
   const questionEl = document.getElementById('quiz-question');
-  const audioBtn = `<button class="quiz-audio-btn" onclick="event.stopPropagation(); playText('${escapeHtml(q.question.hanzi || q.question.text || '').replace(/'/g, "\\'")}')">🔊</button>`;
+  const hasChineseAudio = !!q.question.hanzi || !!q.question.pinyin;
+  const audioBtn = hasChineseAudio
+    ? `<button class="quiz-audio-btn" onclick="event.stopPropagation(); playText('${escapeHtml(q.question.hanzi || q.question.pinyin).replace(/'/g, "\\'")}')">🔊</button>`
+    : '';
   if (q.question.hanzi) {
     questionEl.innerHTML = `<span class="quiz-hanzi">${escapeHtml(q.question.hanzi)}</span>` +
       (q.question.pinyin ? `<span class="quiz-pinyin">${escapeHtml(q.question.pinyin)}</span>` : '') +
       audioBtn;
   } else if (q.question.text) {
-    questionEl.innerHTML = `<span class="quiz-text">${escapeHtml(q.question.text)}</span>` + audioBtn;
+    questionEl.innerHTML = `<span class="quiz-text">${escapeHtml(q.question.text)}</span>`;
   } else if (q.question.pinyin) {
     questionEl.innerHTML = `<span class="quiz-pinyin-only">${escapeHtml(q.question.pinyin)}</span>` + audioBtn;
   }
@@ -1444,6 +1447,7 @@ async function finishQuiz() {
       if (result.new_achievements) handleNewAchievements(result.new_achievements);
     }
     loadStats(); // Refresh stats
+    loadLessons(); // Refresh lesson mastery percentages
     progressGraphsLoaded = false;
   } catch (err) {
     console.error('Quiz result save error:', err);

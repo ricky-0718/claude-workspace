@@ -100,20 +100,24 @@ router.get('/lessons', (req, res) => {
     const book = parseInt(req.query.book);
     lessons = db.prepare(`
       SELECT l.*,
-             COALESCE(sp.vocab_mastered, 0) as mastered,
+             (SELECT COUNT(*) FROM vocab_mastery vm
+              JOIN vocabulary v ON v.id = vm.vocabulary_id
+              WHERE v.lesson_id = l.id AND vm.student_id = ?
+                AND vm.correct_count > vm.incorrect_count) as mastered,
              (SELECT COUNT(*) FROM grammar_points WHERE lesson_id = l.id) as grammar_count
       FROM lessons l
-      LEFT JOIN student_progress sp ON sp.lesson_id = l.id AND sp.student_id = ?
       WHERE l.book = ?
       ORDER BY l.sort_order
     `).all(studentId, book);
   } else {
     lessons = db.prepare(`
       SELECT l.*,
-             COALESCE(sp.vocab_mastered, 0) as mastered,
+             (SELECT COUNT(*) FROM vocab_mastery vm
+              JOIN vocabulary v ON v.id = vm.vocabulary_id
+              WHERE v.lesson_id = l.id AND vm.student_id = ?
+                AND vm.correct_count > vm.incorrect_count) as mastered,
              (SELECT COUNT(*) FROM grammar_points WHERE lesson_id = l.id) as grammar_count
       FROM lessons l
-      LEFT JOIN student_progress sp ON sp.lesson_id = l.id AND sp.student_id = ?
       ORDER BY l.sort_order
     `).all(studentId);
   }
@@ -363,12 +367,14 @@ router.get('/stats', (req, res) => {
     }
   }
 
-  // Per-lesson progress
+  // Per-lesson progress (vocab_mastery based)
   const lessonProgress = db.prepare(`
     SELECT l.id, l.lesson_number, l.title_zh, l.vocab_count,
-           COALESCE(sp.vocab_mastered, 0) as mastered
+           (SELECT COUNT(*) FROM vocab_mastery vm
+            JOIN vocabulary v ON v.id = vm.vocabulary_id
+            WHERE v.lesson_id = l.id AND vm.student_id = ?
+              AND vm.correct_count > vm.incorrect_count) as mastered
     FROM lessons l
-    LEFT JOIN student_progress sp ON sp.lesson_id = l.id AND sp.student_id = ?
     WHERE l.book = 1
     ORDER BY l.sort_order
   `).all(studentId);

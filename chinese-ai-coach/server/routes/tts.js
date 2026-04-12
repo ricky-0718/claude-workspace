@@ -9,8 +9,8 @@ const path = require('path');
 const CACHE_DIR = path.join(__dirname, '../../data/tts-cache');
 if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true });
 
-// 高品質中国語音声（Xiaoxiao = Microsoft最高品質）
-const VOICE = 'zh-CN-XiaoxiaoNeural';
+// 台湾華語音声（HsiaoChen = 台湾マンダリン女性、自然な台湾アクセント）
+const VOICE = 'zh-TW-HsiaoChenNeural';
 
 // ピンイン → 代表漢字マッピング（TTSが英語として読むのを防止）
 const PINYIN_TO_CHAR = {
@@ -65,7 +65,7 @@ router.get('/', async (req, res) => {
 
     // SSMLでゆっくり読み上げ（1文字は特にゆっくり）
     const rate = text.length === 1 ? 'slow' : 'medium';
-    const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN"><voice name="${VOICE}"><prosody rate="${rate}">${text}</prosody></voice></speak>`;
+    const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-TW"><voice name="${VOICE}"><prosody rate="${rate}">${text}</prosody></voice></speak>`;
     const { audioStream } = tts.rawToStream(ssml);
     const chunks = [];
 
