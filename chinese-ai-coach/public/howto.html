@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A5FA6">
+  <title>使い方ガイド — 台湾スピーク</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png?v=2">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png?v=2">
+  <link rel="stylesheet" href="/css/lp.css?v=1">
+  <style>
+    /* ==================== howto page only ==================== */
+    .howto-hero {
+      padding: 64px 0 48px;
+      background: linear-gradient(180deg, #F3F8FD 0%, var(--bg) 100%);
+      text-align: center;
+    }
+    .howto-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .howto-hero .lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .steps { padding: 64px 0 96px; }
+    .steps-list {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 900;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(10, 95, 166, 0.2);
+    }
+    .step-body h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .step-body p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .step-body .step-detail {
+      list-style: none;
+      padding: 0;
+    }
+    .step-body .step-detail li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .step-body .step-detail li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .step-mock {
+      background: var(--primary-light);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 12px;
+    }
+
+    .howto-cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #0A5FA6 0%, #074A82 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .howto-cta h2 {
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .howto-cta p {
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .howto-cta .code-box {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+    .howto-cta .btn-primary-large {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    }
+    .howto-cta .btn-primary-large:hover {
+      background: #fff;
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--primary); }
+    .back-link::before {
+      content: "\2190";
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 640px) {
+      .howto-hero { padding: 48px 0 32px; }
+      .steps { padding: 40px 0 64px; }
+      .step {
+        grid-template-columns: 44px 1fr;
+        gap: 16px;
+      }
+      .step-num { width: 44px; height: 44px; font-size: 1rem; }
+      .howto-cta { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ==================== Header ==================== -->
+  <header class="lp-header">
+    <div class="container header-inner">
+      <a href="/lp.html" class="logo">
+        <img src="/icons/icon-192.png?v=2" alt="台湾スピーク" width="40" height="40">
+        <span>台湾スピーク</span>
+      </a>
+      <nav class="header-nav">
+        <a href="/lp.html#features">機能</a>
+        <a href="/lp.html#pricing">料金</a>
+        <a href="/lp.html#faq">FAQ</a>
+        <a href="/app" class="btn-header">ログイン</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== Hero ==================== -->
+  <section class="howto-hero">
+    <div class="container">
+      <a href="/lp.html" class="back-link">LPに戻る</a>
+      <h1>台湾スピークの使い方</h1>
+      <p class="lead">5分で始められる、台湾華語の毎日練習</p>
+    </div>
+  </section>
+
+  <!-- ==================== Steps ==================== -->
+  <section class="steps">
+    <div class="container">
+      <div class="steps-list">
+
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h2>招待コードで無料登録</h2>
+            <p>招待コードを入力して、お名前とパスコードを決めるだけ。クレジットカード不要、30秒で完了します。</p>
+            <ul class="step-detail">
+              <li>アプリを開く（ブラウザでアクセス、またはホーム画面に追加）</li>
+              <li>招待コード <strong>ALLINONE</strong> を入力</li>
+              <li>名前とパスコード（4桁）を設定して完了</li>
+            </ul>
+            <div class="step-mock">[ 登録画面のスクリーンショット — 後日追加 ]</div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h2>単語タブで発音ドリル</h2>
+            <p>各レッスンの単語をAIがリアルタイム採点。声調（四声）が正しいか、すぐにフィードバックが返ってきます。</p>
+            <ul class="step-detail">
+              <li>レッスンを選ぶと単語カードが表示される</li>
+              <li>マイクボタンを押して発音する</li>
+              <li>AIが声調スコア・流暢度・正確度を即座に判定</li>
+              <li>弱点の単語は自動で復習リストに追加される</li>
+            </ul>
+            <div class="step-mock">[ 発音ドリル画面のスクリーンショット — 後日追加 ]</div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h2>文法タブで動画解説を見る</h2>
+            <p>各課の文法ポイントを動画と例文で解説。「一下」「把」「被」などの使い分けを体系的に学べます。</p>
+            <ul class="step-detail">
+              <li>文法タブを開き、学びたい課を選択</li>
+              <li>動画で解説を視聴（日本語字幕付き）</li>
+              <li>例文を見ながら使い方を確認</li>
+            </ul>
+            <div class="step-mock">[ 文法タブ画面のスクリーンショット — 後日追加 ]</div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h2>会話タブでAIロールプレイ</h2>
+            <p>AIネイティブが繁體字で返答。文法ミスや大陸用語の使用は日本語でやさしく指摘してくれます。</p>
+            <ul class="step-detail">
+              <li>会話タブを開き、シナリオを選ぶ（または自由会話）</li>
+              <li>中国語でメッセージを入力（音声入力も可）</li>
+              <li>AIが返答しつつ、間違いがあれば日本語で解説</li>
+              <li>台湾の大学生活・夜市・授業シーンなど実践的な場面設定</li>
+            </ul>
+            <div class="step-mock">[ 会話タブ画面のスクリーンショット — 後日追加 ]</div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h2>進捗タブで成果を確認</h2>
+            <p>学習の継続日数、レッスンごとの習得率、獲得バッジが一目で分かります。</p>
+            <ul class="step-detail">
+              <li>総学習時間・連続日数・レベルをひと目で確認</li>
+              <li>レッスンごとの単語マスター率をチェック</li>
+              <li>14種類の実績バッジで学習モチベーションを維持</li>
+            </ul>
+            <div class="step-mock">[ 進捗タブ画面のスクリーンショット — 後日追加 ]</div>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h2>旅行パックで旅行前の備え</h2>
+            <p>空港・夜市・ホテル・緊急時の100フレーズを集中特訓。台湾旅行の直前対策に最適です。</p>
+            <ul class="step-detail">
+              <li>空港と交通、夜市と美食、宿泊と買い物、緊急時の4カテゴリ</li>
+              <li>各フレーズに台湾華語の音声付き</li>
+              <li>クイズで覚えたかチェックできる</li>
+            </ul>
+            <div class="step-mock">[ 旅行パック画面のスクリーンショット — 後日追加 ]</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="howto-cta">
+    <div class="container">
+      <h2>今すぐ始めてみましょう</h2>
+      <p>招待コード：</p>
+      <div class="code-box">ALLINONE</div>
+      <br><br>
+      <a href="/app" class="btn-primary-large">アプリを開く</a>
+    </div>
+  </section>
+
+  <!-- ==================== Footer ==================== -->
+  <footer class="lp-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="/icons/icon-192.png?v=2" alt="台湾スピーク" width="32" height="32">
+        <span>台湾スピーク</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="/app">アプリ</a>
+        <a href="/lp.html#features">機能</a>
+        <a href="/lp.html#pricing">料金</a>
+        <a href="/lp.html#faq">FAQ</a>
+        <a href="/howto.html">使い方</a>
+      </nav>
+      <p class="footer-copy">&copy; 台湾留学101センター. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

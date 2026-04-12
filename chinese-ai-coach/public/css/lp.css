@@ -192,6 +192,22 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(10, 95, 166, 0.35);
 }
+.btn-howto {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 10px 24px;
+  border: 2px solid var(--primary);
+  border-radius: 999px;
+  transition: all 0.25s;
+}
+.btn-howto:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
 .hero-note, .final-note {
   font-size: 0.8rem;
   color: var(--text-muted);
