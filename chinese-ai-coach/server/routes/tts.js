@@ -63,8 +63,8 @@ router.get('/', async (req, res) => {
     const tts = new MsEdgeTTS();
     await tts.setMetadata(VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
 
-    // SSMLでゆっくり読み上げ（1文字は特にゆっくり）
-    const rate = text.length === 1 ? 'slow' : 'medium';
+    // 全てゆっくり読み上げ（学習者向け）
+    const rate = text.length === 1 ? 'x-slow' : 'slow';
     const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-TW"><voice name="${VOICE}"><prosody rate="${rate}">${text}</prosody></voice></speak>`;
     const { audioStream } = tts.rawToStream(ssml);
     const chunks = [];

@@ -383,7 +383,7 @@ async function loadLessons() {
     // book別にグループ分け
     const bookGroups = {
       1: { label: '教科書コース', items: [] },
-      2: { label: '時代華語2冊目', items: [] },
+      2: { label: 'レッスン２', items: [] },
       3: { label: '旅行パック', items: [] },
     };
 
@@ -419,10 +419,13 @@ async function loadLessons() {
       select.appendChild(optgroup);
     });
 
-    // Auto-select current lesson
+    // Auto-select current lesson (skip full reload if quiz result is showing)
     if (currentLessonId) {
       select.value = currentLessonId;
-      selectLesson(currentLessonId);
+      const quizResultVisible = document.getElementById('quiz-result')?.style.display !== 'none';
+      if (!quizResultVisible) {
+        selectLesson(currentLessonId);
+      }
     }
   } catch (err) {
     console.error('Failed to load lessons:', err);
@@ -495,7 +498,7 @@ async function selectLesson(lessonId) {
         `<div class="progress-bar-container">` +
         `<div class="progress-bar-fill" style="width:${pct}%"></div>` +
         `</div>` +
-        `<span>${lesson.mastered || 0} / ${lesson.vocab_count} マスター</span>`;
+        `<span>${lesson.mastered || 0} / ${lesson.vocab_count} マスター（クイズで正解すると上がります）</span>`;
     }
   } catch (err) {
     console.error('Failed to load lesson data:', err);
@@ -1355,12 +1358,13 @@ function showQuizQuestion() {
   const choicesEl = document.getElementById('quiz-choices');
   choicesEl.innerHTML = '';
 
-  // Show question with audio button (only when Chinese audio is available)
+  // Show question with audio button
   const questionEl = document.getElementById('quiz-question');
-  const hasChineseAudio = !!q.question.hanzi || !!q.question.pinyin;
-  const audioBtn = hasChineseAudio
-    ? `<button class="quiz-audio-btn" onclick="event.stopPropagation(); playText('${escapeHtml(q.question.hanzi || q.question.pinyin).replace(/'/g, "\\'")}')">🔊</button>`
-    : '';
+  // For pinyin→hanzi mode: play the correct hanzi (not the pinyin string)
+  const audioTarget = q.question.hanzi || q.choices[q.correct_index];
+  const audioBtn = q.question.text
+    ? ''  // ja→zh mode: no audio for Japanese text
+    : `<button class="quiz-audio-btn" onclick="event.stopPropagation(); playText('${escapeHtml(audioTarget).replace(/'/g, "\\'")}')">🔊</button>`;
   if (q.question.hanzi) {
     questionEl.innerHTML = `<span class="quiz-hanzi">${escapeHtml(q.question.hanzi)}</span>` +
       (q.question.pinyin ? `<span class="quiz-pinyin">${escapeHtml(q.question.pinyin)}</span>` : '') +
@@ -1396,7 +1400,7 @@ function answerQuiz(selectedIndex) {
     if (i === selectedIndex && !correct) btn.classList.add('wrong');
   });
 
-  // Auto-advance after delay
+  // Auto-advance (result screen does NOT auto-advance — user taps buttons)
   setTimeout(() => {
     quizIndex++;
     if (quizIndex < quizQuestions.length) {
@@ -1404,7 +1408,7 @@ function answerQuiz(selectedIndex) {
     } else {
       finishQuiz();
     }
-  }, correct ? 600 : 1200);
+  }, correct ? 800 : 1500);
 }
 
 async function finishQuiz() {
