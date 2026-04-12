@@ -533,7 +533,7 @@ function loadGrammar(points) {
       const answers = (g.answers || '').replace(/\n/g, '<br>');
       const summary = (g.summary || '').replace(/\n/g, '<br>');
       bodyContent = `
-        ${hasVideo ? `<a class="grammar-video-link" href="${g.video_url}" target="_blank" rel="noopener">▶ 動画で学ぶ</a>` : ''}
+        ${hasVideo ? `<div class="grammar-video-embed"><iframe src="https://www.youtube.com/embed/${g.video_url.match(/(?:v=|youtu\.be\/)([^&?]+)/)?.[1] || ''}" frameborder="0" allowfullscreen loading="lazy"></iframe></div>` : ''}
         <div class="grammar-section">
           <div class="grammar-section-label">解説</div>
           <div class="grammar-explanation">${explanation}</div>
