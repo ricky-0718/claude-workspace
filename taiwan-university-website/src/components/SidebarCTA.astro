@@ -6,7 +6,7 @@ interface Props {
 
 const { pageType = 'top', schoolSlug } = Astro.props;
 
-const baseLineUrl = 'https://lin.ee/placeholder';
+const baseLineUrl = 'https://sub.ryugaku101.com/line/open/25Cs24s6JgYa';
 const params = new URLSearchParams({ src: 'db', page: pageType });
 if (schoolSlug) params.set('school', schoolSlug);
 const lineUrl = `${baseLineUrl}?${params.toString()}`;
