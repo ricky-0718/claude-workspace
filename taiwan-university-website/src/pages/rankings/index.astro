@@ -2,6 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import Icon from '../../components/Icon.astro';
+import InlineCTA from '../../components/InlineCTA.astro';
 import { schools } from '../../data/loaders';
 
 import rankingsData from '../../data/rankings-2026.json';
@@ -43,6 +44,7 @@ const byCheers = [...rankings].filter(r => r.cheers != null || r.yuanjian != nul
   title="台湾の大学ランキング 2026年版 | 台湾大学データベース"
   description="QS・THE・Cheers・遠見の最新ランキングで台湾の大学を比較。世界順位・アジア順位・企業人気ランキングを一覧。"
   path="/rankings/"
+  pageType="rankings"
 >
   <Breadcrumb items={[{ label: 'ランキング' }]} />
 
@@ -233,6 +235,12 @@ const byCheers = [...rankings].filter(r => r.cheers != null || r.yuanjian != nul
   <p class="text-xs text-text-muted mt-6 text-center">
     データ出典: QS TopUniversities / Times Higher Education / Cheers天下雑誌 / 遠見雑誌（2026年版）
   </p>
+
+  <InlineCTA
+    heading="評定3.0でも国立大学に合格した実績あり"
+    body="自分の成績でどの大学に入れるか、無料ガイドブックで確認できます。費用・語学要件・出願手順まで1冊で網羅。"
+    pageType="rankings"
+  />
 </PageLayout>
 
 <script>

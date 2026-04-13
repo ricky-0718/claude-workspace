@@ -6,6 +6,7 @@ import Icon from '../../../components/Icon.astro';
 import RankingBadge from '../../../components/RankingBadge.astro';
 import TuitionTable from '../../../components/TuitionTable.astro';
 import DataCompletenessNote from '../../../components/DataCompletenessNote.astro';
+import InlineCTA from '../../../components/InlineCTA.astro';
 import JsonLd from '../../../components/JsonLd.astro';
 import {
   schools, deptsBySchool, groupById,
@@ -48,6 +49,8 @@ for (const d of departments) {
   title={`${school.name.ja} | 台湾大学データベース`}
   description={`${school.name.ja}の学費・奨学金・寮・学科一覧。${school.region}にある${typeLabel}大学。`}
   path={`/universities/${school.resolvedSlug}/`}
+  pageType="univ-detail"
+  schoolSlug={school.resolvedSlug}
 >
   <JsonLd data={buildSchoolSchema(school)} slot="head" />
   <JsonLd data={buildBreadcrumbSchema([
@@ -309,6 +312,14 @@ for (const d of departments) {
       )}
     </section>
   )}
+
+  <!-- ====== Inline CTA (after admission info) ====== -->
+  <InlineCTA
+    heading={`${school.name.ja}への出願、何から始めればいいかわからない方へ`}
+    body="出願準備のステップを無料ガイドブックで確認できます。費用・語学要件・必要書類まで、1冊で全体像がわかります。"
+    pageType="univ-detail"
+    schoolSlug={school.resolvedSlug}
+  />
 
   <!-- ====== Tuition ====== -->
   {school.tuition && school.tuition.length > 0 && (
