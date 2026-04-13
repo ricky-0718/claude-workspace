@@ -1,0 +1,702 @@
+[
+  {
+    "id": 874,
+    "lesson_id": "travel-airport",
+    "hanzi": "請問捷運站怎麼走？",
+    "pinyin": "qǐng wèn jié yùn zhàn zěn me zǒu?",
+    "examples_json": "[{\"hanzi\":\"請問，最近的捷運站在哪裡？\",\"pinyin\":\"qǐng wèn, zuì jìn de jié yùn zhàn zài nǎ lǐ?\",\"translation_ja\":\"すみません、一番近いMRT駅はどこですか？\"}]"
+  },
+  {
+    "id": 875,
+    "lesson_id": "travel-airport",
+    "hanzi": "我要去台北車站。",
+    "pinyin": "wǒ yào qù tái běi chē zhàn.",
+    "examples_json": "[{\"hanzi\":\"請問到台北車站要多久？\",\"pinyin\":\"qǐng wèn dào tái běi chē zhàn yào duō jiǔ?\",\"translation_ja\":\"台北駅までどのくらいかかりますか？\"}]"
+  },
+  {
+    "id": 876,
+    "lesson_id": "travel-airport",
+    "hanzi": "悠遊卡在哪裡買？",
+    "pinyin": "yōu yóu kǎ zài nǎ lǐ mǎi?",
+    "examples_json": "[{\"hanzi\":\"悠遊卡可以在便利商店買到。\",\"pinyin\":\"yōu yóu kǎ kě yǐ zài biàn lì shāng diàn mǎi dào.\",\"translation_ja\":\"悠遊カードはコンビニで買えますよ。\"}]"
+  },
+  {
+    "id": 877,
+    "lesson_id": "travel-airport",
+    "hanzi": "請幫我叫計程車。",
+    "pinyin": "qǐng bāng wǒ jiào jì chéng chē.",
+    "examples_json": "[{\"hanzi\":\"我想叫一台計程車去市區。\",\"pinyin\":\"wǒ xiǎng jiào yī tái jì chéng chē qù shì qū.\",\"translation_ja\":\"市内までタクシーに乗りたいのですが。\"}]"
+  },
+  {
+    "id": 878,
+    "lesson_id": "travel-airport",
+    "hanzi": "到市區要多少錢？",
+    "pinyin": "dào shì qū yào duō shǎo qián?",
+    "examples_json": "[{\"hanzi\":\"到台北101大概要多少錢？\",\"pinyin\":\"dào tái běi yī líng yī dà gài yào duō shǎo qián?\",\"translation_ja\":\"台北101までだいたいいくらですか？\"}]"
+  },
+  {
+    "id": 879,
+    "lesson_id": "travel-airport",
+    "hanzi": "捷運最後一班是幾點？",
+    "pinyin": "jié yùn zuì hòu yī bān shì jǐ diǎn?",
+    "examples_json": "[{\"hanzi\":\"最後一班公車是幾點？\",\"pinyin\":\"zuì hòu yī bān gōng chē shì jǐ diǎn?\",\"translation_ja\":\"最終バスは何時ですか？\"}]"
+  },
+  {
+    "id": 880,
+    "lesson_id": "travel-airport",
+    "hanzi": "請問要在哪裡轉車？",
+    "pinyin": "qǐng wèn yào zài nǎ lǐ zhuǎn chē?",
+    "examples_json": "[{\"hanzi\":\"在哪一站可以換乘紅線？\",\"pinyin\":\"zài nǎ yī zhàn kě yǐ huàn chéng hóng xiàn?\",\"translation_ja\":\"どの駅で赤線に乗り換えられますか？\"}]"
+  },
+  {
+    "id": 881,
+    "lesson_id": "travel-airport",
+    "hanzi": "一張票多少錢？",
+    "pinyin": "yī zhāng piào duō shǎo qián?",
+    "examples_json": "[{\"hanzi\":\"到西門站一張票多少錢？\",\"pinyin\":\"dào xī mén zhàn yī zhāng piào duō shǎo qián?\",\"translation_ja\":\"西門駅まで一枚いくらですか？\"}]"
+  },
+  {
+    "id": 882,
+    "lesson_id": "travel-airport",
+    "hanzi": "行李可以放在這裡嗎？",
+    "pinyin": "xíng lǐ kě yǐ fàng zài zhè lǐ ma?",
+    "examples_json": "[{\"hanzi\":\"請問有行李寄放服務嗎？\",\"pinyin\":\"qǐng wèn yǒu xíng lǐ jì fàng fú wù ma?\",\"translation_ja\":\"荷物の一時預かりサービスはありますか？\"}]"
+  },
+  {
+    "id": 883,
+    "lesson_id": "travel-airport",
+    "hanzi": "請問廁所在哪裡？",
+    "pinyin": "qǐng wèn cè suǒ zài nǎ lǐ?",
+    "examples_json": "[{\"hanzi\":\"這附近有廁所嗎？\",\"pinyin\":\"zhè fù jìn yǒu cè suǒ ma?\",\"translation_ja\":\"この辺りにトイレはありますか？\"}]"
+  },
+  {
+    "id": 884,
+    "lesson_id": "travel-airport",
+    "hanzi": "請給我一張收據。",
+    "pinyin": "qǐng gěi wǒ yī zhāng shōu jù.",
+    "examples_json": "[{\"hanzi\":\"可以開收據嗎？\",\"pinyin\":\"kě yǐ kāi shōu jù ma?\",\"translation_ja\":\"領収書を発行していただけますか？\"}]"
+  },
+  {
+    "id": 885,
+    "lesson_id": "travel-airport",
+    "hanzi": "我要去桃園國際機場。",
+    "pinyin": "wǒ yào qù táo yuán guó jì jī chǎng.",
+    "examples_json": "[{\"hanzi\":\"請問搭哪班機場捷運可以到桃園機場？\",\"pinyin\":\"qǐng wèn dā nǎ bān jī chǎng jié yùn kě yǐ dào táo yuán jī chǎng?\",\"translation_ja\":\"桃園空港に行くにはどのエアポートMRTに乗ればいいですか？\"}]"
+  },
+  {
+    "id": 886,
+    "lesson_id": "travel-airport",
+    "hanzi": "公車幾號去夜市？",
+    "pinyin": "gōng chē jǐ hào qù yè shì?",
+    "examples_json": "[{\"hanzi\":\"請問去士林夜市要搭幾號公車？\",\"pinyin\":\"qǐng wèn qù shì lín yè shì yào dā jǐ hào gōng chē?\",\"translation_ja\":\"士林夜市に行くには何番のバスに乗ればいいですか？\"}]"
+  },
+  {
+    "id": 887,
+    "lesson_id": "travel-airport",
+    "hanzi": "請在這裡停車。",
+    "pinyin": "qǐng zài zhè lǐ tíng chē.",
+    "examples_json": "[{\"hanzi\":\"麻煩在前面路口停一下。\",\"pinyin\":\"má fán zài qián miàn lù kǒu tíng yī xià.\",\"translation_ja\":\"すみません、前の交差点で止めてください。\"}]"
+  },
+  {
+    "id": 888,
+    "lesson_id": "travel-airport",
+    "hanzi": "我搭錯車了。",
+    "pinyin": "wǒ dā cuò chē le.",
+    "examples_json": "[{\"hanzi\":\"我好像搭錯方向了。\",\"pinyin\":\"wǒ hǎo xiàng dā cuò fāng xiàng le.\",\"translation_ja\":\"方向を乗り間違えたみたいです。\"}]"
+  },
+  {
+    "id": 889,
+    "lesson_id": "travel-airport",
+    "hanzi": "這裡可以刷悠遊卡嗎？",
+    "pinyin": "zhè lǐ kě yǐ shuā yōu yóu kǎ ma?",
+    "examples_json": "[{\"hanzi\":\"公車上可以用悠遊卡付款嗎？\",\"pinyin\":\"gōng chē shàng kě yǐ yòng yōu yóu kǎ fù kuǎn ma?\",\"translation_ja\":\"バスの中で悠遊カードで支払えますか？\"}]"
+  },
+  {
+    "id": 890,
+    "lesson_id": "travel-airport",
+    "hanzi": "請問這班車有到故宮嗎？",
+    "pinyin": "qǐng wèn zhè bān chē yǒu dào gù gōng ma?",
+    "examples_json": "[{\"hanzi\":\"請問去故宮要在哪裡下車？\",\"pinyin\":\"qǐng wèn qù gù gōng yào zài nǎ lǐ xià chē?\",\"translation_ja\":\"故宮に行くにはどこで降りればいいですか？\"}]"
+  },
+  {
+    "id": 891,
+    "lesson_id": "travel-airport",
+    "hanzi": "下一班車幾點來？",
+    "pinyin": "xià yī bān chē jǐ diǎn lái?",
+    "examples_json": "[{\"hanzi\":\"下一班捷運幾分鐘後來？\",\"pinyin\":\"xià yī bān jié yùn jǐ fēn zhōng hòu lái?\",\"translation_ja\":\"次のMRTは何分後に来ますか？\"}]"
+  },
+  {
+    "id": 892,
+    "lesson_id": "travel-airport",
+    "hanzi": "請問這附近有停車場嗎？",
+    "pinyin": "qǐng wèn zhè fù jìn yǒu tíng chē chǎng ma?",
+    "examples_json": "[{\"hanzi\":\"停車費一小時多少錢？\",\"pinyin\":\"tíng chē fèi yī xiǎo shí duō shǎo qián?\",\"translation_ja\":\"駐車料金は1時間いくらですか？\"}]"
+  },
+  {
+    "id": 893,
+    "lesson_id": "travel-airport",
+    "hanzi": "我要租腳踏車。",
+    "pinyin": "wǒ yào zū jiǎo tà chē.",
+    "examples_json": "[{\"hanzi\":\"請問YouBike站在哪裡？\",\"pinyin\":\"qǐng wèn YouBike zhàn zài nǎ lǐ?\",\"translation_ja\":\"YouBikeステーションはどこですか？\"}]"
+  },
+  {
+    "id": 894,
+    "lesson_id": "travel-airport",
+    "hanzi": "請問往九份怎麼去？",
+    "pinyin": "qǐng wèn wǎng jiǔ fèn zěn me qù?",
+    "examples_json": "[{\"hanzi\":\"從台北去九份大概要多久？\",\"pinyin\":\"cóng tái běi qù jiǔ fèn dà gài yào duō jiǔ?\",\"translation_ja\":\"台北から九份まで大体どのくらいかかりますか？\"}]"
+  },
+  {
+    "id": 895,
+    "lesson_id": "travel-airport",
+    "hanzi": "我在哪裡可以換錢？",
+    "pinyin": "wǒ zài nǎ lǐ kě yǐ huàn qián?",
+    "examples_json": "[{\"hanzi\":\"這裡的匯率怎麼樣？\",\"pinyin\":\"zhè lǐ de huì lǜ zěn me yàng?\",\"translation_ja\":\"ここの両替レートはどうですか？\"}]"
+  },
+  {
+    "id": 896,
+    "lesson_id": "travel-airport",
+    "hanzi": "可以幫我拍照嗎？",
+    "pinyin": "kě yǐ bāng wǒ pāi zhào ma?",
+    "examples_json": "[{\"hanzi\":\"麻煩幫我們拍一張合照。\",\"pinyin\":\"má fán bāng wǒ men pāi yī zhāng hé zhào.\",\"translation_ja\":\"すみません、一緒に写真を撮っていただけますか？\"}]"
+  },
+  {
+    "id": 897,
+    "lesson_id": "travel-airport",
+    "hanzi": "請問觀光服務中心在哪裡？",
+    "pinyin": "qǐng wèn guān guāng fú wù zhōng xīn zài nǎ lǐ?",
+    "examples_json": "[{\"hanzi\":\"有免費的地圖可以拿嗎？\",\"pinyin\":\"yǒu miǎn fèi de dì tú kě yǐ ná ma?\",\"translation_ja\":\"無料の地図はありますか？\"}]"
+  },
+  {
+    "id": 898,
+    "lesson_id": "travel-airport",
+    "hanzi": "請問去淡水怎麼搭？",
+    "pinyin": "qǐng wèn qù dàn shuǐ zěn me dā?",
+    "examples_json": "[{\"hanzi\":\"淡水線的終點站是淡水嗎？\",\"pinyin\":\"dàn shuǐ xiàn de zhōng diǎn zhàn shì dàn shuǐ ma?\",\"translation_ja\":\"淡水線の終点は淡水ですか？\"}]"
+  },
+  {
+    "id": 949,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請幫我叫救護車！",
+    "pinyin": "qǐng bāng wǒ jiào jiù hù chē!",
+    "examples_json": "[{\"hanzi\":\"有人受傷了，請快點叫救護車！\",\"pinyin\":\"yǒu rén shòu shāng le, qǐng kuài diǎn jiào jiù hù chē!\",\"translation_ja\":\"怪我人がいます、すぐに救急車を呼んでください！\"}]"
+  },
+  {
+    "id": 950,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我的護照不見了。",
+    "pinyin": "wǒ de hù zhào bú jiàn le.",
+    "examples_json": "[{\"hanzi\":\"我把護照弄丟了，怎麼辦？\",\"pinyin\":\"wǒ bǎ hù zhào nòng diū le, zěn me bàn?\",\"translation_ja\":\"パスポートをなくしてしまいました、どうすればいいですか？\"}]"
+  },
+  {
+    "id": 951,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我迷路了。",
+    "pinyin": "wǒ mí lù le.",
+    "examples_json": "[{\"hanzi\":\"我不知道怎麼回飯店。\",\"pinyin\":\"wǒ bù zhī dào zěn me huí fàn diàn.\",\"translation_ja\":\"ホテルに戻る方法がわかりません。\"}]"
+  },
+  {
+    "id": 952,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我不舒服。",
+    "pinyin": "wǒ bù shū fu.",
+    "examples_json": "[{\"hanzi\":\"我肚子很痛，請幫我看一下。\",\"pinyin\":\"wǒ dù zi hěn tòng, qǐng bāng wǒ kàn yī xià.\",\"translation_ja\":\"お腹がとても痛いので、診てもらえますか？\"}]"
+  },
+  {
+    "id": 953,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請幫我叫警察！",
+    "pinyin": "qǐng bāng wǒ jiào jǐng chá!",
+    "examples_json": "[{\"hanzi\":\"有人偷了我的錢包，請叫警察！\",\"pinyin\":\"yǒu rén tōu le wǒ de qián bāo, qǐng jiào jǐng chá!\",\"translation_ja\":\"財布が盗まれました、警察を呼んでください！\"}]"
+  },
+  {
+    "id": 954,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請問最近的醫院在哪裡？",
+    "pinyin": "qǐng wèn zuì jìn de yī yuàn zài nǎ lǐ?",
+    "examples_json": "[{\"hanzi\":\"附近有診所嗎？\",\"pinyin\":\"fù jìn yǒu zhěn suǒ ma?\",\"translation_ja\":\"近くにクリニックはありますか？\"}]"
+  },
+  {
+    "id": 955,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我的錢包被偷了。",
+    "pinyin": "wǒ de qián bāo bèi tōu le.",
+    "examples_json": "[{\"hanzi\":\"我的手機也不見了。\",\"pinyin\":\"wǒ de shǒu jī yě bú jiàn le.\",\"translation_ja\":\"携帯電話もなくなりました。\"}]"
+  },
+  {
+    "id": 956,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請問日本台灣交流協會在哪裡？",
+    "pinyin": "qǐng wèn rì běn tái wān jiāo liú xié huì zài nǎ lǐ?",
+    "examples_json": "[{\"hanzi\":\"我需要去日本台灣交流協會辦理補發護照。\",\"pinyin\":\"wǒ xū yào qù rì běn tái wān jiāo liú xié huì bàn lǐ bǔ fā hù zhào.\",\"translation_ja\":\"日本台湾交流協会でパスポートの再発行手続きをする必要があります。\"}]"
+  },
+  {
+    "id": 957,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我頭很暈。",
+    "pinyin": "wǒ tóu hěn yūn.",
+    "examples_json": "[{\"hanzi\":\"我可能中暑了。\",\"pinyin\":\"wǒ kě néng zhòng shǔ le.\",\"translation_ja\":\"熱中症にかかったかもしれません。\"}]"
+  },
+  {
+    "id": 958,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請幫我找翻譯。",
+    "pinyin": "qǐng bāng wǒ zhǎo fān yì.",
+    "examples_json": "[{\"hanzi\":\"有人會說日文嗎？\",\"pinyin\":\"yǒu rén huì shuō rì wén ma?\",\"translation_ja\":\"日本語を話せる人はいますか？\"}]"
+  },
+  {
+    "id": 959,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請問這附近有藥局嗎？",
+    "pinyin": "qǐng wèn zhè fù jìn yǒu yào jú ma?",
+    "examples_json": "[{\"hanzi\":\"我需要買止痛藥。\",\"pinyin\":\"wǒ xū yào mǎi zhǐ tòng yào.\",\"translation_ja\":\"鎮痛剤を買う必要があります。\"}]"
+  },
+  {
+    "id": 960,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我對這個藥物過敏。",
+    "pinyin": "wǒ duì zhè ge yào wù guò mǐn.",
+    "examples_json": "[{\"hanzi\":\"我有藥物過敏，請告訴醫生。\",\"pinyin\":\"wǒ yǒu yào wù guò mǐn, qǐng gào sù yī shēng.\",\"translation_ja\":\"薬のアレルギーがあります、医師に伝えてください。\"}]"
+  },
+  {
+    "id": 961,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請問警察局在哪裡？",
+    "pinyin": "qǐng wèn jǐng chá jú zài nǎ lǐ?",
+    "examples_json": "[{\"hanzi\":\"我需要去警察局報案。\",\"pinyin\":\"wǒ xū yào qù jǐng chá jú bào àn.\",\"translation_ja\":\"警察署に被害届を出しに行く必要があります。\"}]"
+  },
+  {
+    "id": 962,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我需要報失竊。",
+    "pinyin": "wǒ xū yào bào shī qiè.",
+    "examples_json": "[{\"hanzi\":\"請給我一份報案證明。\",\"pinyin\":\"qǐng gěi wǒ yī fèn bào àn zhèng míng.\",\"translation_ja\":\"被害届の証明書をください。\"}]"
+  },
+  {
+    "id": 963,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我的行李不見了。",
+    "pinyin": "wǒ de xíng lǐ bú jiàn le.",
+    "examples_json": "[{\"hanzi\":\"我在機場的行李找不到了。\",\"pinyin\":\"wǒ zài jī chǎng de xíng lǐ zhǎo bú dào le.\",\"translation_ja\":\"空港で荷物が見つかりません。\"}]"
+  },
+  {
+    "id": 964,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請幫我打電話給飯店。",
+    "pinyin": "qǐng bāng wǒ dǎ diàn huà gěi fàn diàn.",
+    "examples_json": "[{\"hanzi\":\"可以幫我聯絡我的飯店嗎？\",\"pinyin\":\"kě yǐ bāng wǒ lián luò wǒ de fàn diàn ma?\",\"translation_ja\":\"私のホテルに連絡してもらえますか？\"}]"
+  },
+  {
+    "id": 965,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我需要緊急就醫。",
+    "pinyin": "wǒ xū yào jǐn jí jiù yī.",
+    "examples_json": "[{\"hanzi\":\"請帶我去急診室。\",\"pinyin\":\"qǐng dài wǒ qù jí zhěn shì.\",\"translation_ja\":\"救急外来に連れて行ってください。\"}]"
+  },
+  {
+    "id": 966,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請問附近有ATM嗎？",
+    "pinyin": "qǐng wèn fù jìn yǒu ATM ma?",
+    "examples_json": "[{\"hanzi\":\"這個ATM可以刷外國卡嗎？\",\"pinyin\":\"zhè ge ATM kě yǐ shuā wài guó kǎ ma?\",\"translation_ja\":\"このATMは外国のカードを使えますか？\"}]"
+  },
+  {
+    "id": 967,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我的信用卡被吞了。",
+    "pinyin": "wǒ de xìn yòng kǎ bèi tūn le.",
+    "examples_json": "[{\"hanzi\":\"ATM把我的卡吞了，怎麼辦？\",\"pinyin\":\"ATM bǎ wǒ de kǎ tūn le, zěn me bàn?\",\"translation_ja\":\"ATMにカードを飲み込まれてしまいました、どうすればいいですか？\"}]"
+  },
+  {
+    "id": 968,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我需要找人幫我翻譯。",
+    "pinyin": "wǒ xū yào zhǎo rén bāng wǒ fān yì.",
+    "examples_json": "[{\"hanzi\":\"這裡有人會講日文嗎？\",\"pinyin\":\"zhè lǐ yǒu rén huì jiǎng rì wén ma?\",\"translation_ja\":\"ここに日本語を話せる人はいますか？\"}]"
+  },
+  {
+    "id": 969,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我發燒了。",
+    "pinyin": "wǒ fā shāo le.",
+    "examples_json": "[{\"hanzi\":\"我燒到三十九度，需要就醫。\",\"pinyin\":\"wǒ shāo dào sān shí jiǔ dù, xū yào jiù yī.\",\"translation_ja\":\"39度の熱があります、受診が必要です。\"}]"
+  },
+  {
+    "id": 970,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請問台灣的急救電話是幾號？",
+    "pinyin": "qǐng wèn tái wān de jí jiù diàn huà shì jǐ hào?",
+    "examples_json": "[{\"hanzi\":\"台灣的警察電話是110，救護車是119。\",\"pinyin\":\"tái wān de jǐng chá diàn huà shì yī yī líng, jiù hù chē shì yī yī jiǔ.\",\"translation_ja\":\"台湾の警察は110番、救急車は119番です。\"}]"
+  },
+  {
+    "id": 971,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請幫我通知家人。",
+    "pinyin": "qǐng bāng wǒ tōng zhī jiā rén.",
+    "examples_json": "[{\"hanzi\":\"這是我的緊急聯絡人電話。\",\"pinyin\":\"zhè shì wǒ de jǐn jí lián luò rén diàn huà.\",\"translation_ja\":\"これが私の緊急連絡先の電話番号です。\"}]"
+  },
+  {
+    "id": 972,
+    "lesson_id": "travel-emergency",
+    "hanzi": "我有買旅遊保險。",
+    "pinyin": "wǒ yǒu mǎi lǚ yóu bǎo xiǎn.",
+    "examples_json": "[{\"hanzi\":\"我需要保險理賠的相關文件。\",\"pinyin\":\"wǒ xū yào bǎo xiǎn lǐ péi de xiāng guān wén jiàn.\",\"translation_ja\":\"保険の請求に必要な書類が必要です。\"}]"
+  },
+  {
+    "id": 973,
+    "lesson_id": "travel-emergency",
+    "hanzi": "請讓我坐下來休息一下。",
+    "pinyin": "qǐng ràng wǒ zuò xià lái xiū xi yī xià.",
+    "examples_json": "[{\"hanzi\":\"我感覺有點不舒服，可以先坐下嗎？\",\"pinyin\":\"wǒ gǎn jué yǒu diǎn bù shū fu, kě yǐ xiān zuò xià ma?\",\"translation_ja\":\"少し体の具合が悪いので、先に座ってもいいですか？\"}]"
+  },
+  {
+    "id": 899,
+    "lesson_id": "travel-food",
+    "hanzi": "請問這個多少錢？",
+    "pinyin": "qǐng wèn zhè ge duō shǎo qián?",
+    "examples_json": "[{\"hanzi\":\"這一份多少錢？\",\"pinyin\":\"zhè yī fèn duō shǎo qián?\",\"translation_ja\":\"これ一つはいくらですか？\"}]"
+  },
+  {
+    "id": 900,
+    "lesson_id": "travel-food",
+    "hanzi": "我要一份臭豆腐。",
+    "pinyin": "wǒ yào yī fèn chòu dòu fu.",
+    "examples_json": "[{\"hanzi\":\"臭豆腐有幾種口味？\",\"pinyin\":\"chòu dòu fu yǒu jǐ zhǒng kǒu wèi?\",\"translation_ja\":\"臭豆腐は何種類の味がありますか？\"}]"
+  },
+  {
+    "id": 901,
+    "lesson_id": "travel-food",
+    "hanzi": "不要太辣。",
+    "pinyin": "bú yào tài là.",
+    "examples_json": "[{\"hanzi\":\"可以不加辣嗎？\",\"pinyin\":\"kě yǐ bù jiā là ma?\",\"translation_ja\":\"辛みを入れないでもらえますか？\"}]"
+  },
+  {
+    "id": 902,
+    "lesson_id": "travel-food",
+    "hanzi": "可以刷卡嗎？",
+    "pinyin": "kě yǐ shuā kǎ ma?",
+    "examples_json": "[{\"hanzi\":\"這裡接受信用卡嗎？\",\"pinyin\":\"zhè lǐ jiē shòu xìn yòng kǎ ma?\",\"translation_ja\":\"クレジットカードは使えますか？\"}]"
+  },
+  {
+    "id": 903,
+    "lesson_id": "travel-food",
+    "hanzi": "這個怎麼吃？",
+    "pinyin": "zhè ge zěn me chī?",
+    "examples_json": "[{\"hanzi\":\"珍珠奶茶怎麼喝比較好？\",\"pinyin\":\"zhēn zhū nǎi chá zěn me hē bǐ jiào hǎo?\",\"translation_ja\":\"タピオカミルクティーはどうやって飲むのがベストですか？\"}]"
+  },
+  {
+    "id": 904,
+    "lesson_id": "travel-food",
+    "hanzi": "請給我一杯珍珠奶茶。",
+    "pinyin": "qǐng gěi wǒ yī bēi zhēn zhū nǎi chá.",
+    "examples_json": "[{\"hanzi\":\"珍珠奶茶要幾分糖？\",\"pinyin\":\"zhēn zhū nǎi chá yào jǐ fēn táng?\",\"translation_ja\":\"タピオカミルクティーは何割の甘さにしますか？\"}]"
+  },
+  {
+    "id": 905,
+    "lesson_id": "travel-food",
+    "hanzi": "我對花生過敏。",
+    "pinyin": "wǒ duì huā shēng guò mǐn.",
+    "examples_json": "[{\"hanzi\":\"這道菜裡面有花生嗎？\",\"pinyin\":\"zhè dào cài lǐ miàn yǒu huā shēng ma?\",\"translation_ja\":\"この料理の中にピーナッツは入っていますか？\"}]"
+  },
+  {
+    "id": 906,
+    "lesson_id": "travel-food",
+    "hanzi": "幫我打包，謝謝。",
+    "pinyin": "bāng wǒ dǎ bāo, xiè xie.",
+    "examples_json": "[{\"hanzi\":\"可以幫我外帶嗎？\",\"pinyin\":\"kě yǐ bāng wǒ wài dài ma?\",\"translation_ja\":\"テイクアウトにできますか？\"}]"
+  },
+  {
+    "id": 907,
+    "lesson_id": "travel-food",
+    "hanzi": "請問有素食的選擇嗎？",
+    "pinyin": "qǐng wèn yǒu sù shí de xuǎn zé ma?",
+    "examples_json": "[{\"hanzi\":\"我吃素，請問有什麼可以吃？\",\"pinyin\":\"wǒ chī sù, qǐng wèn yǒu shén me kě yǐ chī?\",\"translation_ja\":\"私はベジタリアンなのですが、何が食べられますか？\"}]"
+  },
+  {
+    "id": 908,
+    "lesson_id": "travel-food",
+    "hanzi": "推薦什麼好吃的？",
+    "pinyin": "tuī jiàn shén me hǎo chī de?",
+    "examples_json": "[{\"hanzi\":\"這裡最有名的是什麼？\",\"pinyin\":\"zhè lǐ zuì yǒu míng de shì shén me?\",\"translation_ja\":\"ここで一番有名なのは何ですか？\"}]"
+  },
+  {
+    "id": 909,
+    "lesson_id": "travel-food",
+    "hanzi": "再來一碗，謝謝。",
+    "pinyin": "zài lái yī wǎn, xiè xie.",
+    "examples_json": "[{\"hanzi\":\"可以再加麵嗎？\",\"pinyin\":\"kě yǐ zài jiā miàn ma?\",\"translation_ja\":\"麺を追加できますか？\"}]"
+  },
+  {
+    "id": 910,
+    "lesson_id": "travel-food",
+    "hanzi": "我要一個便當。",
+    "pinyin": "wǒ yào yī ge biàn dāng.",
+    "examples_json": "[{\"hanzi\":\"今天的便當有什麼口味？\",\"pinyin\":\"jīn tiān de biàn dāng yǒu shén me kǒu wèi?\",\"translation_ja\":\"今日の弁当はどんな種類がありますか？\"}]"
+  },
+  {
+    "id": 911,
+    "lesson_id": "travel-food",
+    "hanzi": "請問幾點打烊？",
+    "pinyin": "qǐng wèn jǐ diǎn dǎ yàng?",
+    "examples_json": "[{\"hanzi\":\"你們今天幾點關門？\",\"pinyin\":\"nǐ men jīn tiān jǐ diǎn guān mén?\",\"translation_ja\":\"今日は何時に閉店しますか？\"}]"
+  },
+  {
+    "id": 912,
+    "lesson_id": "travel-food",
+    "hanzi": "這是我第一次吃這個。",
+    "pinyin": "zhè shì wǒ dì yī cì chī zhè ge.",
+    "examples_json": "[{\"hanzi\":\"這個味道很特別，我很喜歡。\",\"pinyin\":\"zhè ge wèi dào hěn tè bié, wǒ hěn xǐ huān.\",\"translation_ja\":\"この味は独特で、とても気に入りました。\"}]"
+  },
+  {
+    "id": 913,
+    "lesson_id": "travel-food",
+    "hanzi": "可以少放一點鹽嗎？",
+    "pinyin": "kě yǐ shǎo fàng yī diǎn yán ma?",
+    "examples_json": "[{\"hanzi\":\"可以少油少鹽嗎？\",\"pinyin\":\"kě yǐ shǎo yóu shǎo yán ma?\",\"translation_ja\":\"油と塩を少なめにしてもらえますか？\"}]"
+  },
+  {
+    "id": 914,
+    "lesson_id": "travel-food",
+    "hanzi": "這個是什麼？",
+    "pinyin": "zhè ge shì shén me?",
+    "examples_json": "[{\"hanzi\":\"這個料理有什麼特色？\",\"pinyin\":\"zhè ge liào lǐ yǒu shén me tè sè?\",\"translation_ja\":\"この料理の特徴は何ですか？\"}]"
+  },
+  {
+    "id": 915,
+    "lesson_id": "travel-food",
+    "hanzi": "滷肉飯一份多少錢？",
+    "pinyin": "lǔ ròu fàn yī fèn duō shǎo qián?",
+    "examples_json": "[{\"hanzi\":\"滷肉飯是台灣的代表小吃。\",\"pinyin\":\"lǔ ròu fàn shì tái wān de dài biǎo xiǎo chī.\",\"translation_ja\":\"魯肉飯は台湾を代表する屋台料理です。\"}]"
+  },
+  {
+    "id": 916,
+    "lesson_id": "travel-food",
+    "hanzi": "牛肉麵的湯頭很棒。",
+    "pinyin": "niú ròu miàn de tāng tóu hěn bàng.",
+    "examples_json": "[{\"hanzi\":\"這碗牛肉麵真的很好吃。\",\"pinyin\":\"zhè wǎn niú ròu miàn zhēn de hěn hǎo chī.\",\"translation_ja\":\"この牛肉麺は本当においしいです。\"}]"
+  },
+  {
+    "id": 917,
+    "lesson_id": "travel-food",
+    "hanzi": "請問可以加辣嗎？",
+    "pinyin": "qǐng wèn kě yǐ jiā là ma?",
+    "examples_json": "[{\"hanzi\":\"我喜歡吃辣，可以加很多辣嗎？\",\"pinyin\":\"wǒ xǐ huān chī là, kě yǐ jiā hěn duō là ma?\",\"translation_ja\":\"辛いのが好きなので、辛みをたくさん入れてもらえますか？\"}]"
+  },
+  {
+    "id": 918,
+    "lesson_id": "travel-food",
+    "hanzi": "請問有菜單嗎？",
+    "pinyin": "qǐng wèn yǒu cài dān ma?",
+    "examples_json": "[{\"hanzi\":\"請給我看菜單。\",\"pinyin\":\"qǐng gěi wǒ kàn cài dān.\",\"translation_ja\":\"メニューを見せていただけますか？\"}]"
+  },
+  {
+    "id": 919,
+    "lesson_id": "travel-food",
+    "hanzi": "這個味道好極了！",
+    "pinyin": "zhè ge wèi dào hǎo jí le!",
+    "examples_json": "[{\"hanzi\":\"真的很好吃，謝謝你。\",\"pinyin\":\"zhēn de hěn hǎo chī, xiè xie nǐ.\",\"translation_ja\":\"本当においしかったです、ありがとう。\"}]"
+  },
+  {
+    "id": 920,
+    "lesson_id": "travel-food",
+    "hanzi": "請問這裡可以內用嗎？",
+    "pinyin": "qǐng wèn zhè lǐ kě yǐ nèi yòng ma?",
+    "examples_json": "[{\"hanzi\":\"我想內用，有位子嗎？\",\"pinyin\":\"wǒ xiǎng nèi yòng, yǒu wèi zi ma?\",\"translation_ja\":\"店内で食べたいのですが、空席はありますか？\"}]"
+  },
+  {
+    "id": 921,
+    "lesson_id": "travel-food",
+    "hanzi": "我要買十個小籠包。",
+    "pinyin": "wǒ yào mǎi shí ge xiǎo lóng bāo.",
+    "examples_json": "[{\"hanzi\":\"小籠包要等多久？\",\"pinyin\":\"xiǎo lóng bāo yào děng duō jiǔ?\",\"translation_ja\":\"小籠包はどのくらい待ちますか？\"}]"
+  },
+  {
+    "id": 922,
+    "lesson_id": "travel-food",
+    "hanzi": "找我三十塊，謝謝。",
+    "pinyin": "zhǎo wǒ sān shí kuài, xiè xie.",
+    "examples_json": "[{\"hanzi\":\"我付一百塊，請找錢。\",\"pinyin\":\"wǒ fù yī bǎi kuài, qǐng zhǎo qián.\",\"translation_ja\":\"100元払います、お釣りをください。\"}]"
+  },
+  {
+    "id": 923,
+    "lesson_id": "travel-food",
+    "hanzi": "我吃飽了，非常好吃。",
+    "pinyin": "wǒ chī bǎo le, fēi cháng hǎo chī.",
+    "examples_json": "[{\"hanzi\":\"下次還想再來吃。\",\"pinyin\":\"xià cì hái xiǎng zài lái chī.\",\"translation_ja\":\"また次回も食べに来たいです。\"}]"
+  },
+  {
+    "id": 924,
+    "lesson_id": "travel-hotel",
+    "hanzi": "我有預約，姓名是⋯⋯",
+    "pinyin": "wǒ yǒu yù yuē, xìng míng shì……",
+    "examples_json": "[{\"hanzi\":\"我預約了一間雙人房。\",\"pinyin\":\"wǒ yù yuē le yī jiān shuāng rén fáng.\",\"translation_ja\":\"ダブルルームを一室予約しました。\"}]"
+  },
+  {
+    "id": 925,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問幾點可以入住？",
+    "pinyin": "qǐng wèn jǐ diǎn kě yǐ rù zhù?",
+    "examples_json": "[{\"hanzi\":\"我可以早一點辦理入住嗎？\",\"pinyin\":\"wǒ kě yǐ zǎo yī diǎn bàn lǐ rù zhù ma?\",\"translation_ja\":\"早めにチェックインできますか？\"}]"
+  },
+  {
+    "id": 926,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問有Wi-Fi嗎？",
+    "pinyin": "qǐng wèn yǒu Wi-Fi ma?",
+    "examples_json": "[{\"hanzi\":\"Wi-Fi的密碼是什麼？\",\"pinyin\":\"Wi-Fi de mì mǎ shì shén me?\",\"translation_ja\":\"Wi-Fiのパスワードは何ですか？\"}]"
+  },
+  {
+    "id": 927,
+    "lesson_id": "travel-hotel",
+    "hanzi": "房間的冷氣壞了。",
+    "pinyin": "fáng jiān de lěng qì huài le.",
+    "examples_json": "[{\"hanzi\":\"我的房間冷氣不冷，可以派人來看看嗎？\",\"pinyin\":\"wǒ de fáng jiān lěng qì bù lěng, kě yǐ pài rén lái kàn kàn ma?\",\"translation_ja\":\"部屋のエアコンが効かないのですが、見に来てもらえますか？\"}]"
+  },
+  {
+    "id": 928,
+    "lesson_id": "travel-hotel",
+    "hanzi": "可以換一間房間嗎？",
+    "pinyin": "kě yǐ huàn yī jiān fáng jiān ma?",
+    "examples_json": "[{\"hanzi\":\"這間房間有點吵，可以換嗎？\",\"pinyin\":\"zhè jiān fáng jiān yǒu diǎn chǎo, kě yǐ huàn ma?\",\"translation_ja\":\"この部屋は少しうるさいので、替えていただけますか？\"}]"
+  },
+  {
+    "id": 929,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問幾點退房？",
+    "pinyin": "qǐng wèn jǐ diǎn tuì fáng?",
+    "examples_json": "[{\"hanzi\":\"我可以延遲退房嗎？\",\"pinyin\":\"wǒ kě yǐ yán chí tuì fáng ma?\",\"translation_ja\":\"チェックアウトを遅らせることはできますか？\"}]"
+  },
+  {
+    "id": 930,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請幫我叫一下Morning Call。",
+    "pinyin": "qǐng bāng wǒ jiào yī xià Morning Call.",
+    "examples_json": "[{\"hanzi\":\"請在明天早上七點叫我起床。\",\"pinyin\":\"qǐng zài míng tiān zǎo shàng qī diǎn jiào wǒ qǐ chuáng.\",\"translation_ja\":\"明朝7時にモーニングコールをお願いします。\"}]"
+  },
+  {
+    "id": 931,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請再給我一條毛巾。",
+    "pinyin": "qǐng zài gěi wǒ yī tiáo máo jīn.",
+    "examples_json": "[{\"hanzi\":\"請多給我一套盥洗用品。\",\"pinyin\":\"qǐng duō gěi wǒ yī tào guàn xǐ yòng pǐn.\",\"translation_ja\":\"アメニティセットをもう一つください。\"}]"
+  },
+  {
+    "id": 932,
+    "lesson_id": "travel-hotel",
+    "hanzi": "我要在便利商店買東西。",
+    "pinyin": "wǒ yào zài biàn lì shāng diàn mǎi dōng xi.",
+    "examples_json": "[{\"hanzi\":\"附近有全家或7-11嗎？\",\"pinyin\":\"fù jìn yǒu quán jiā huò 7-11 ma?\",\"translation_ja\":\"近くにファミリーマートか711はありますか？\"}]"
+  },
+  {
+    "id": 933,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問這個可以試穿嗎？",
+    "pinyin": "qǐng wèn zhè ge kě yǐ shì chuān ma?",
+    "examples_json": "[{\"hanzi\":\"有沒有大一號的？\",\"pinyin\":\"yǒu méi yǒu dà yī hào de?\",\"translation_ja\":\"一つ大きいサイズはありますか？\"}]"
+  },
+  {
+    "id": 934,
+    "lesson_id": "travel-hotel",
+    "hanzi": "這個有沒有別的顏色？",
+    "pinyin": "zhè ge yǒu méi yǒu bié de yán sè?",
+    "examples_json": "[{\"hanzi\":\"有沒有紅色的款式？\",\"pinyin\":\"yǒu méi yǒu hóng sè de kuǎn shì?\",\"translation_ja\":\"赤いデザインはありますか？\"}]"
+  },
+  {
+    "id": 935,
+    "lesson_id": "travel-hotel",
+    "hanzi": "可以打折嗎？",
+    "pinyin": "kě yǐ dǎ zhé ma?",
+    "examples_json": "[{\"hanzi\":\"今天有什麼優惠嗎？\",\"pinyin\":\"jīn tiān yǒu shén me yōu huì ma?\",\"translation_ja\":\"今日は何かお得なサービスはありますか？\"}]"
+  },
+  {
+    "id": 936,
+    "lesson_id": "travel-hotel",
+    "hanzi": "這個我不需要袋子。",
+    "pinyin": "zhè ge wǒ bù xū yào dài zi.",
+    "examples_json": "[{\"hanzi\":\"不用袋子，謝謝。\",\"pinyin\":\"bú yòng dài zi, xiè xie.\",\"translation_ja\":\"袋は結構です、ありがとうございます。\"}]"
+  },
+  {
+    "id": 937,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問這附近有藥妝店嗎？",
+    "pinyin": "qǐng wèn zhè fù jìn yǒu yào zhuāng diàn ma?",
+    "examples_json": "[{\"hanzi\":\"Watson's在哪裡？\",\"pinyin\":\"Watson's zài nǎ lǐ?\",\"translation_ja\":\"ワトソンズはどこですか？\"}]"
+  },
+  {
+    "id": 938,
+    "lesson_id": "travel-hotel",
+    "hanzi": "我要退貨。",
+    "pinyin": "wǒ yào tuì huò.",
+    "examples_json": "[{\"hanzi\":\"這個壞了，可以換一個嗎？\",\"pinyin\":\"zhè ge huài le, kě yǐ huàn yī ge ma?\",\"translation_ja\":\"これが壊れているのですが、交換してもらえますか？\"}]"
+  },
+  {
+    "id": 939,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問這裡可以寄送到日本嗎？",
+    "pinyin": "qǐng wèn zhè lǐ kě yǐ jì sòng dào rì běn ma?",
+    "examples_json": "[{\"hanzi\":\"國際快遞需要幾天？\",\"pinyin\":\"guó jì kuài dì xū yào jǐ tiān?\",\"translation_ja\":\"国際便は何日かかりますか？\"}]"
+  },
+  {
+    "id": 940,
+    "lesson_id": "travel-hotel",
+    "hanzi": "我的房卡不能用。",
+    "pinyin": "wǒ de fáng kǎ bù néng yòng.",
+    "examples_json": "[{\"hanzi\":\"我的房卡需要重新設定。\",\"pinyin\":\"wǒ de fáng kǎ xū yào chóng xīn shè dìng.\",\"translation_ja\":\"ルームキーを再設定する必要があります。\"}]"
+  },
+  {
+    "id": 941,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問有保險箱嗎？",
+    "pinyin": "qǐng wèn yǒu bǎo xiǎn xiāng ma?",
+    "examples_json": "[{\"hanzi\":\"我想把護照放在保險箱裡。\",\"pinyin\":\"wǒ xiǎng bǎ hù zhào fàng zài bǎo xiǎn xiāng lǐ.\",\"translation_ja\":\"パスポートを金庫に入れたいのですが。\"}]"
+  },
+  {
+    "id": 942,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問早餐幾點開始？",
+    "pinyin": "qǐng wèn zǎo cān jǐ diǎn kāi shǐ?",
+    "examples_json": "[{\"hanzi\":\"早餐包含在房費裡嗎？\",\"pinyin\":\"zǎo cān bāo hán zài fáng fèi lǐ ma?\",\"translation_ja\":\"朝食は宿泊料金に含まれていますか？\"}]"
+  },
+  {
+    "id": 943,
+    "lesson_id": "travel-hotel",
+    "hanzi": "附近有超市嗎？",
+    "pinyin": "fù jìn yǒu chāo shì ma?",
+    "examples_json": "[{\"hanzi\":\"全聯福利中心在哪裡？\",\"pinyin\":\"quán lián fú lì zhōng xīn zài nǎ lǐ?\",\"translation_ja\":\"全聯（スーパー）はどこですか？\"}]"
+  },
+  {
+    "id": 944,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問有洗衣機可以用嗎？",
+    "pinyin": "qǐng wèn yǒu xǐ yī jī kě yǐ yòng ma?",
+    "examples_json": "[{\"hanzi\":\"自助洗衣機在哪一層？\",\"pinyin\":\"zì zhù xǐ yī jī zài nǎ yī céng?\",\"translation_ja\":\"コインランドリーは何階にありますか？\"}]"
+  },
+  {
+    "id": 945,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問可以幫我保管行李嗎？",
+    "pinyin": "qǐng wèn kě yǐ bāng wǒ bǎo guǎn xíng lǐ ma?",
+    "examples_json": "[{\"hanzi\":\"退房後可以寄放行李到下午嗎？\",\"pinyin\":\"tuì fáng hòu kě yǐ jì fàng xíng lǐ dào xià wǔ ma?\",\"translation_ja\":\"チェックアウト後も午後まで荷物を預かってもらえますか？\"}]"
+  },
+  {
+    "id": 946,
+    "lesson_id": "travel-hotel",
+    "hanzi": "這個多少錢？",
+    "pinyin": "zhè ge duō shǎo qián?",
+    "examples_json": "[{\"hanzi\":\"這款商品有打折嗎？\",\"pinyin\":\"zhè kuǎn shāng pǐn yǒu dǎ zhé ma?\",\"translation_ja\":\"この商品は割引されていますか？\"}]"
+  },
+  {
+    "id": 947,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請給我發票。",
+    "pinyin": "qǐng gěi wǒ fā piào.",
+    "examples_json": "[{\"hanzi\":\"可以給我電子發票嗎？\",\"pinyin\":\"kě yǐ gěi wǒ diàn zǐ fā piào ma?\",\"translation_ja\":\"電子レシートにしていただけますか？\"}]"
+  },
+  {
+    "id": 948,
+    "lesson_id": "travel-hotel",
+    "hanzi": "請問有免費的停車位嗎？",
+    "pinyin": "qǐng wèn yǒu miǎn fèi de tíng chē wèi ma?",
+    "examples_json": "[{\"hanzi\":\"飯店有提供停車服務嗎？\",\"pinyin\":\"fàn diàn yǒu tí gōng tíng chē fú wù ma?\",\"translation_ja\":\"ホテルは駐車サービスを提供していますか？\"}]"
+  }
+]

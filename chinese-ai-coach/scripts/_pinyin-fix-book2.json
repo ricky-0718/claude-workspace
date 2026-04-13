@@ -1,0 +1,6736 @@
+[
+  {
+    "id": 974,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "起來",
+    "pinyin": "qǐ lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 975,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "背",
+    "pinyin": "bèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 976,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "疼",
+    "pinyin": "téng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 977,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "一下",
+    "pinyin": "yī xià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 978,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "還是",
+    "pinyin": "hái shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 979,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "最好",
+    "pinyin": "zuì hǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 980,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "或是",
+    "pinyin": "huò shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 981,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "藥房",
+    "pinyin": "yào fáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 982,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "藥局",
+    "pinyin": "yào jú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 983,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "不但",
+    "pinyin": "bù dàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 984,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "溫柔",
+    "pinyin": "wēn róu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 985,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "客氣",
+    "pinyin": "kè qi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 986,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "愉快",
+    "pinyin": "yú kuài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 987,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "安全",
+    "pinyin": "ān quán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 988,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "舞會",
+    "pinyin": "wǔ huì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 989,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "當然",
+    "pinyin": "dāng rán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 990,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "約會",
+    "pinyin": "yuē huì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 991,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "害怕",
+    "pinyin": "hài pà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 992,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "敢",
+    "pinyin": "gǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 993,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "剛好",
+    "pinyin": "gāng hǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 994,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "動物園",
+    "pinyin": "dòng wù yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 995,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "開玩笑",
+    "pinyin": "kāi wán xiào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 996,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "完",
+    "pinyin": "wán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 997,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "摸",
+    "pinyin": "mō",
+    "examples_json": "[]"
+  },
+  {
+    "id": 998,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "好像",
+    "pinyin": "hǎo xiàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 999,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "怎麼了",
+    "pinyin": "zěn me le",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1000,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "一個人",
+    "pinyin": "yī gè rén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1001,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "怎麼辦",
+    "pinyin": "zěn me bàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1002,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "害羞",
+    "pinyin": "hài xiū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1003,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "大學生",
+    "pinyin": "dà xué shēng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1004,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "小學生",
+    "pinyin": "xiǎo xué shēng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1005,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "熟",
+    "pinyin": "shú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1006,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "危險",
+    "pinyin": "wēi xiǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1007,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "一直",
+    "pinyin": "yī zhí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1008,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "不久",
+    "pinyin": "bù jiǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1009,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "心",
+    "pinyin": "xīn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1010,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "跳",
+    "pinyin": "tiào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1011,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "個性",
+    "pinyin": "gè xìng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1012,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "趕快",
+    "pinyin": "gǎn kuài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1013,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "結束",
+    "pinyin": "jié shù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1014,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "散步",
+    "pinyin": "sàn bù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1015,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "拉",
+    "pinyin": "lā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1016,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "幸運",
+    "pinyin": "xìng yùn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1017,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "雖然",
+    "pinyin": "suī rán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1018,
+    "lesson_id": "book2-lesson01",
+    "hanzi": "腳",
+    "pinyin": "jiǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1019,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "得",
+    "pinyin": "děi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1020,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "家事",
+    "pinyin": "jiā shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1021,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "開學",
+    "pinyin": "kāi xué",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1022,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "球賽",
+    "pinyin": "qiú sài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1023,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "把",
+    "pinyin": "bǎ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1024,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "擦",
+    "pinyin": "cā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1025,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "碗筷",
+    "pinyin": "wǎn kuài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1026,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "筷子",
+    "pinyin": "kuài zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1027,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "刀叉",
+    "pinyin": "dāo chā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1028,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "刀(子)",
+    "pinyin": "dāo (zi)",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1029,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "叉(子)",
+    "pinyin": "chā (zi)",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1030,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "湯匙",
+    "pinyin": "tāng chí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1031,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "要",
+    "pinyin": "yào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1032,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "客人",
+    "pinyin": "kè rén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1033,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "乾",
+    "pinyin": "gān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1034,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "丟",
+    "pinyin": "diū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1035,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "著急",
+    "pinyin": "zháo jí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1036,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "髒",
+    "pinyin": "zāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1037,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "叫",
+    "pinyin": "jiào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1038,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "打掃",
+    "pinyin": "dǎ sǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1039,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "一點/一點兒",
+    "pinyin": "yī diǎn / yī diǎn r",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1040,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "應該",
+    "pinyin": "yīng gāi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1041,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "掃地",
+    "pinyin": "sǎo dì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1042,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "地",
+    "pinyin": "dì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1043,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "暑假",
+    "pinyin": "shǔ jià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1044,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "才",
+    "pinyin": "cái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1045,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "亂",
+    "pinyin": "luàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1046,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "念書",
+    "pinyin": "niàn shū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1047,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "念/唸",
+    "pinyin": "niàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1048,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "小說",
+    "pinyin": "xiǎo shuō",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1049,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "可惜",
+    "pinyin": "kě xí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1050,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "有用",
+    "pinyin": "yǒu yòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1051,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "擦乾",
+    "pinyin": "cā gān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1052,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "沒辦法",
+    "pinyin": "méi bàn fǎ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1053,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "哈哈哈",
+    "pinyin": "hā hā hā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1054,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "出門",
+    "pinyin": "chū mén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1055,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "看見",
+    "pinyin": "kàn jiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1056,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "袋子",
+    "pinyin": "dài zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1057,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "發現",
+    "pinyin": "fā xiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1058,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "垃圾",
+    "pinyin": "lè sè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1059,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "下",
+    "pinyin": "xià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1060,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "上",
+    "pinyin": "shàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1061,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "急",
+    "pinyin": "jí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1062,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "回去",
+    "pinyin": "huí qù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1063,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "空氣",
+    "pinyin": "kōng qì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1064,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "味道",
+    "pinyin": "wèi dào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1065,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "臭",
+    "pinyin": "chòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1066,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "到處",
+    "pinyin": "dào chù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1067,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "蟲子",
+    "pinyin": "chóng zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1068,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "全部",
+    "pinyin": "quán bù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1069,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "倒",
+    "pinyin": "dào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1070,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "才",
+    "pinyin": "cái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1071,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "鄰居",
+    "pinyin": "lín jū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1072,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "不用",
+    "pinyin": "bù yòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1073,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "牆",
+    "pinyin": "qiáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1074,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "垃圾桶",
+    "pinyin": "lè sè tǒng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1075,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "小時候",
+    "pinyin": "xiǎo shí hòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1076,
+    "lesson_id": "book2-lesson02",
+    "hanzi": "牆上",
+    "pinyin": "qiáng shàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1077,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "租",
+    "pinyin": "zū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1078,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "公寓",
+    "pinyin": "gōng yù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1079,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "房東",
+    "pinyin": "fáng dōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1080,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "出來",
+    "pinyin": "chū lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1081,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "陪",
+    "pinyin": "péi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1082,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "層",
+    "pinyin": "céng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1083,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "出租",
+    "pinyin": "chū zū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1084,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "上去",
+    "pinyin": "shàng qù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1085,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "臥室/臥房",
+    "pinyin": "wò shì / wò fáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1086,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "書桌",
+    "pinyin": "shū zhuō",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1087,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "書架",
+    "pinyin": "shū jià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1088,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "書房",
+    "pinyin": "shū fáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1089,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "衣櫃",
+    "pinyin": "yī guì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1090,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "掛",
+    "pinyin": "guà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1091,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "冰箱",
+    "pinyin": "bīng xiāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1092,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "洗衣機",
+    "pinyin": "xǐ yī jī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1093,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "那邊",
+    "pinyin": "nà biān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1094,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "看起來",
+    "pinyin": "kàn qǐ lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1095,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "起來",
+    "pinyin": "qǐ lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1096,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "便利商店",
+    "pinyin": "biàn lì shāng diàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1097,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "便利",
+    "pinyin": "biàn lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1098,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "替",
+    "pinyin": "tì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1099,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "裝",
+    "pinyin": "zhuāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1100,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "費用",
+    "pinyin": "fèi yòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1101,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "聽起來",
+    "pinyin": "tīng qǐ lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1102,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "房租",
+    "pinyin": "fáng zū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1103,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "包括",
+    "pinyin": "bāo kuò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1104,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "水費",
+    "pinyin": "shuǐ fèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1105,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "電費",
+    "pinyin": "diàn fèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1106,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "電",
+    "pinyin": "diàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1107,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "押金",
+    "pinyin": "yā jīn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1108,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "討論",
+    "pinyin": "tǎo lùn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1109,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "一會兒",
+    "pinyin": "yī huì r",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1110,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "這邊",
+    "pinyin": "zhè biān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1111,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "獎學金",
+    "pinyin": "jiǎng xué jīn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1112,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "剩",
+    "pinyin": "shèng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1113,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "滿意",
+    "pinyin": "mǎn yì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1114,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "留學生",
+    "pinyin": "liú xué shēng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1115,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "留學",
+    "pinyin": "liú xué",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1116,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "好幾",
+    "pinyin": "hǎo jǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1117,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "願意",
+    "pinyin": "yuàn yì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1118,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "簽約",
+    "pinyin": "qiān yuē",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1119,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "過來",
+    "pinyin": "guò lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1120,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "過去",
+    "pinyin": "guò qù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1121,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "護照",
+    "pinyin": "hù zhào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1122,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "鑰匙",
+    "pinyin": "yào shi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1123,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "搬",
+    "pinyin": "bān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1124,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "室友",
+    "pinyin": "shì yǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1125,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "總是",
+    "pinyin": "zǒng shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1126,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "半夜",
+    "pinyin": "bàn yè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1127,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "燈",
+    "pinyin": "dēng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1128,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "吵",
+    "pinyin": "chǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1129,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "除了",
+    "pinyin": "chú le",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1130,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "習慣",
+    "pinyin": "xí guàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1131,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "還",
+    "pinyin": "hái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1132,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "弄",
+    "pinyin": "nòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1133,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "順利",
+    "pinyin": "shùn lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1134,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "資料",
+    "pinyin": "zī liào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1135,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "剩下",
+    "pinyin": "shèng xià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1136,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "國外",
+    "pinyin": "guó wài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1137,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "生活",
+    "pinyin": "shēng huó",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1138,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "收",
+    "pinyin": "shōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1139,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "搬家",
+    "pinyin": "bān jiā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1140,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "沒想到",
+    "pinyin": "méi xiǎng dào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1141,
+    "lesson_id": "book2-lesson03",
+    "hanzi": "租屋網站",
+    "pinyin": "zū wū wǎng zhàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1142,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "逛",
+    "pinyin": "guàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1143,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "忽然",
+    "pinyin": "hū rán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1144,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "小吃",
+    "pinyin": "xiǎo chī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1145,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "出口",
+    "pinyin": "chū kǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1146,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "剛",
+    "pinyin": "gāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1147,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "姓",
+    "pinyin": "xìng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1148,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "就",
+    "pinyin": "jiù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1149,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "各",
+    "pinyin": "gè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1150,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "殺價",
+    "pinyin": "shā jià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1151,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "殺",
+    "pinyin": "shā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1152,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "招牌",
+    "pinyin": "zhāo pái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1153,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "遊客",
+    "pinyin": "yóu kè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1154,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "豆腐",
+    "pinyin": "dòu fu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1155,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "炸",
+    "pinyin": "zhá",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1156,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "雞排",
+    "pinyin": "jī pái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1157,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "香",
+    "pinyin": "xiāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1158,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "習慣",
+    "pinyin": "xí guàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1159,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "糖",
+    "pinyin": "táng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1160,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "選",
+    "pinyin": "xuǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1161,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "無",
+    "pinyin": "wú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1162,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "加",
+    "pinyin": "jiā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1163,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "加上",
+    "pinyin": "jiā shàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1164,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "加起來",
+    "pinyin": "jiā qǐ lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1165,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "冰塊/冰塊兒",
+    "pinyin": "bīng kuài / bīng kuài r",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1166,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "推薦",
+    "pinyin": "tuī jiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1167,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "辣",
+    "pinyin": "là",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1168,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "酸",
+    "pinyin": "suān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1169,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "鹹",
+    "pinyin": "xián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1170,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "苦",
+    "pinyin": "kǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1171,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "聞",
+    "pinyin": "wén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1172,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "討厭",
+    "pinyin": "tǎo yàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1173,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "其實",
+    "pinyin": "qí shí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1174,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "試",
+    "pinyin": "shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1175,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "臭豆腐",
+    "pinyin": "chòu dòu fu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1176,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "蚵仔煎",
+    "pinyin": "é zǎi jiān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1177,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "特別是",
+    "pinyin": "tè bié shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1178,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "文化",
+    "pinyin": "wén huà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1179,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "一般",
+    "pinyin": "yī bān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1180,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "大概",
+    "pinyin": "dà gài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1181,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "吃喝玩樂",
+    "pinyin": "chī hē wán lè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1182,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "擠",
+    "pinyin": "jǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1183,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "不得了",
+    "pinyin": "bù dé liǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1184,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "旅遊",
+    "pinyin": "lǚ yóu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1185,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "越",
+    "pinyin": "yuè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1186,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "逛街",
+    "pinyin": "guàng jiē",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1187,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "了解/瞭解",
+    "pinyin": "liǎo jiě",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1188,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "做法/作法",
+    "pinyin": "zuò fǎ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1189,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "價錢",
+    "pinyin": "jià qián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1190,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "起",
+    "pinyin": "qǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1191,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "烤",
+    "pinyin": "kǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1192,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "魷魚",
+    "pinyin": "yóu yú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1193,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "芒果",
+    "pinyin": "máng guǒ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1194,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "冰",
+    "pinyin": "bīng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1195,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "西瓜",
+    "pinyin": "xī guā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1196,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "生意",
+    "pinyin": "shēng yi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1197,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "吃飽",
+    "pinyin": "chī bǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1198,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "飽",
+    "pinyin": "bǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1199,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "無聊",
+    "pinyin": "wú liáo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1200,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "講價",
+    "pinyin": "jiǎng jià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1201,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "寺廟",
+    "pinyin": "sì miào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1202,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "比如(說)",
+    "pinyin": "bǐ rú (shuō)",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1203,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "廟",
+    "pinyin": "miào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1204,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "值得",
+    "pinyin": "zhí de",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1205,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "鹹酥雞",
+    "pinyin": "xián sū jī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1206,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "滷肉飯",
+    "pinyin": "lǔ ròu fàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1207,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "豆花",
+    "pinyin": "dòu huā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1208,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "芒果冰",
+    "pinyin": "máng guǒ bīng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1209,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "龍山寺",
+    "pinyin": "lóng shān sì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1210,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "華西街",
+    "pinyin": "huá xī jiē",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1211,
+    "lesson_id": "book2-lesson04",
+    "hanzi": "極了",
+    "pinyin": "jí le",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1212,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "社區",
+    "pinyin": "shè qū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1213,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "白天",
+    "pinyin": "bái tiān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1214,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "被",
+    "pinyin": "bèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1215,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "小偷",
+    "pinyin": "xiǎo tōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1216,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "偷",
+    "pinyin": "tōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1217,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "負責",
+    "pinyin": "fù zé",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1218,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "安全",
+    "pinyin": "ān quán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1219,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "大門",
+    "pinyin": "dà mén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1220,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "草地",
+    "pinyin": "cǎo dì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1221,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "辦",
+    "pinyin": "bàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1222,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "晴天",
+    "pinyin": "qíng tiān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1223,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "野餐",
+    "pinyin": "yě cān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1224,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "餐",
+    "pinyin": "cān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1225,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "露營",
+    "pinyin": "lù yíng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1226,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "雲",
+    "pinyin": "yún",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1227,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "躺",
+    "pinyin": "tǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1228,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "星星",
+    "pinyin": "xīng xīng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1229,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "感覺",
+    "pinyin": "gǎn jué",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1230,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "輕鬆",
+    "pinyin": "qīng sōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1231,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "睡著",
+    "pinyin": "shuì zháo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1232,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "陽光",
+    "pinyin": "yáng guāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1233,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "香味",
+    "pinyin": "xiāng wèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1234,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "座",
+    "pinyin": "zuò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1235,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "球場",
+    "pinyin": "qiú chǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1236,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "游泳池",
+    "pinyin": "yóu yǒng chí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1237,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "校友",
+    "pinyin": "xiào yǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1238,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "只要",
+    "pinyin": "zhǐ yào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1239,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "請客",
+    "pinyin": "qǐng kè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1240,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "牛排",
+    "pinyin": "niú pái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1241,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "紅綠燈",
+    "pinyin": "hóng lǜ dēng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1242,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "幸福",
+    "pinyin": "xìng fú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1243,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "市",
+    "pinyin": "shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1244,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "郊區",
+    "pinyin": "jiāo qū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1245,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "長大",
+    "pinyin": "zhǎng dà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1246,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "巴士",
+    "pinyin": "bā shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1247,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "還好",
+    "pinyin": "hái hǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1248,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "班",
+    "pinyin": "bān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1249,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "要不然",
+    "pinyin": "yào bu rán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1250,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "麻煩",
+    "pinyin": "má fán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1251,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "經過",
+    "pinyin": "jīng guò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1252,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "人員",
+    "pinyin": "rén yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1253,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "花園",
+    "pinyin": "huā yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1254,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "新鮮",
+    "pinyin": "xīn xiān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1255,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "像",
+    "pinyin": "xiàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1256,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "書店",
+    "pinyin": "shū diàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1257,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "停車場",
+    "pinyin": "tíng chē chǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1258,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "停",
+    "pinyin": "tíng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1259,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "圓",
+    "pinyin": "yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1260,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "月亮",
+    "pinyin": "yuè liàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1261,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "月餅",
+    "pinyin": "yuè bǐng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1262,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "餅",
+    "pinyin": "bǐng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1263,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "真是",
+    "pinyin": "zhēn shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1264,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "中秋節",
+    "pinyin": "zhōng qiū jié",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1265,
+    "lesson_id": "book2-lesson05",
+    "hanzi": "台北市",
+    "pinyin": "tái běi shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1266,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "不同",
+    "pinyin": "bù tóng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1267,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "差不多",
+    "pinyin": "chà bu duō",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1268,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "不過",
+    "pinyin": "bú guò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1269,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "目的",
+    "pinyin": "mù dì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1270,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "合唱",
+    "pinyin": "hé chàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1271,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "錯",
+    "pinyin": "cuò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1272,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "隔壁",
+    "pinyin": "gé bì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1273,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "跳",
+    "pinyin": "tiào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1274,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "地板",
+    "pinyin": "dì bǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1275,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "動",
+    "pinyin": "dòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1276,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "學會",
+    "pinyin": "xué huì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1277,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "歌曲",
+    "pinyin": "gē qǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1278,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "拿手",
+    "pinyin": "ná shǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1279,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "歌星",
+    "pinyin": "gē xīng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1280,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "機器",
+    "pinyin": "jī qì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1281,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "分數",
+    "pinyin": "fēn shù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1282,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "可怕",
+    "pinyin": "kě pà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1283,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "弄錯",
+    "pinyin": "nòng cuò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1284,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "差",
+    "pinyin": "chà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1285,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "低",
+    "pinyin": "dī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1286,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "方法",
+    "pinyin": "fāng fǎ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1287,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "興奮",
+    "pinyin": "xīng fèn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1288,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "地",
+    "pinyin": "de",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1289,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "棒",
+    "pinyin": "bàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1290,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "好好/好好兒",
+    "pinyin": "hǎo hǎo / hǎo hāor",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1291,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "想到",
+    "pinyin": "xiǎng dào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1292,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "香水",
+    "pinyin": "xiāng shuǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1293,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "束",
+    "pinyin": "shù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1294,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "玫瑰",
+    "pinyin": "méi guī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1295,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "別",
+    "pinyin": "bié",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1296,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "罐",
+    "pinyin": "guàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1297,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "啤酒",
+    "pinyin": "pí jiǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1298,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "喔",
+    "pinyin": "ō",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1299,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "消息",
+    "pinyin": "xiāo xī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1300,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "KTV",
+    "pinyin": "K T V",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1301,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "吃到飽",
+    "pinyin": "chī dào bǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1302,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "打分數",
+    "pinyin": "dǎ fēn shù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1303,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "不少",
+    "pinyin": "bù shǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1304,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "隨時",
+    "pinyin": "suí shí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1305,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "前",
+    "pinyin": "qián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1306,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "後",
+    "pinyin": "hòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1307,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "才",
+    "pinyin": "cái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1308,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "假日",
+    "pinyin": "jià rì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1309,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "平日",
+    "pinyin": "píng rì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1310,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "客滿",
+    "pinyin": "kè mǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1311,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "利用",
+    "pinyin": "lì yòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1312,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "時",
+    "pinyin": "shí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1313,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "省錢",
+    "pinyin": "shěng qián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1314,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "特色",
+    "pinyin": "tè sè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1315,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "各式各樣",
+    "pinyin": "gè shì gè yàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1316,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "不必",
+    "pinyin": "bù bì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1317,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "樂器",
+    "pinyin": "yuè qì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1318,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "讓",
+    "pinyin": "ràng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1319,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "生氣",
+    "pinyin": "shēng qì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1320,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "傷心",
+    "pinyin": "shāng xīn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1321,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "哭",
+    "pinyin": "kū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1322,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "選擇",
+    "pinyin": "xuǎn zé",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1323,
+    "lesson_id": "book2-lesson06",
+    "hanzi": "卡拉OK",
+    "pinyin": "kǎ lā OK",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1324,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "前年",
+    "pinyin": "qián nián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1325,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "包",
+    "pinyin": "bāo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1326,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "當地",
+    "pinyin": "dāng dì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1327,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "名產",
+    "pinyin": "míng chǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1328,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "明信片",
+    "pinyin": "míng xìn piàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1329,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "訂",
+    "pinyin": "dìng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1330,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "免費",
+    "pinyin": "miǎn fèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1331,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "無線網路",
+    "pinyin": "wú xiàn wǎng lù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1332,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "美麗",
+    "pinyin": "měi lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1333,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "美",
+    "pinyin": "měi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1334,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "毛",
+    "pinyin": "máo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1335,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "讓",
+    "pinyin": "ràng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1336,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "正在",
+    "pinyin": "zhèng zài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1337,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "公路",
+    "pinyin": "gōng lù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1338,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "石頭",
+    "pinyin": "shí tóu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1339,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "掉",
+    "pinyin": "diào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1340,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "下來",
+    "pinyin": "xià lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1341,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "一下子/一下",
+    "pinyin": "yī xià zi / yī xià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1342,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "光",
+    "pinyin": "guāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1343,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "鐵路",
+    "pinyin": "tiě lù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1344,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "鐵",
+    "pinyin": "tiě",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1345,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "網頁",
+    "pinyin": "wǎng yè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1346,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "訂位",
+    "pinyin": "dìng wèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1347,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "底",
+    "pinyin": "dǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1348,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "出發",
+    "pinyin": "chū fā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1349,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "國家公園",
+    "pinyin": "guó jiā gōng yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1350,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "爬",
+    "pinyin": "pá",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1351,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "座位",
+    "pinyin": "zuò wèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1352,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "位子",
+    "pinyin": "wèi zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1353,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "記",
+    "pinyin": "jì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1354,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "日期",
+    "pinyin": "rì qī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1355,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "民宿",
+    "pinyin": "mín sù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1356,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "蘇花公路",
+    "pinyin": "sū huā gōng lù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1357,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "台灣鐵路局/台鐵",
+    "pinyin": "tái wān tiě lù jú / tái tiě",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1358,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "太魯閣號",
+    "pinyin": "tài lǔ gé hào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1359,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "掉下來",
+    "pinyin": "diào xià lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1360,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "記下來",
+    "pinyin": "jì xià lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1361,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "計畫/劃",
+    "pinyin": "jì huà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1362,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "春假",
+    "pinyin": "chūn jià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1363,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "森林",
+    "pinyin": "sēn lín",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1364,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "走走",
+    "pinyin": "zǒu zǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1365,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "草",
+    "pinyin": "cǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1366,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "暖和",
+    "pinyin": "nuǎn huo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1367,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "行李",
+    "pinyin": "xíng lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1368,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "大衣",
+    "pinyin": "dà yī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1369,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "外套",
+    "pinyin": "wài tào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1370,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "雨衣",
+    "pinyin": "yǔ yī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1371,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "內衣",
+    "pinyin": "nèi yī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1372,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "團體",
+    "pinyin": "tuán tǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1373,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "自由",
+    "pinyin": "zì yóu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1374,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "趕",
+    "pinyin": "gǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1375,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "當天",
+    "pinyin": "dāng tiān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1376,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "留",
+    "pinyin": "liú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1377,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "國內",
+    "pinyin": "guó nèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1378,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "不少",
+    "pinyin": "bù shǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1379,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "信用卡",
+    "pinyin": "xìn yòng kǎ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1380,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "放心",
+    "pinyin": "fàng xīn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1381,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "趁(著)",
+    "pinyin": "chèn (zhe)",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1382,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "樣子",
+    "pinyin": "yàng zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1383,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "成功",
+    "pinyin": "chéng gōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1384,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "機票",
+    "pinyin": "jī piào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1385,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "阿里山",
+    "pinyin": "ā lǐ shān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1386,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "嘉義",
+    "pinyin": "jiā yì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1387,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "阿里山小火車",
+    "pinyin": "ā lǐ shān xiǎo huǒ chē",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1388,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "遊樂區",
+    "pinyin": "yóu lè qū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1389,
+    "lesson_id": "book2-lesson07",
+    "hanzi": "內衣褲",
+    "pinyin": "nèi yī kù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1390,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "貼紙",
+    "pinyin": "tiē zhǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1391,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "貼",
+    "pinyin": "tiē",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1392,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "豆漿",
+    "pinyin": "dòu jiāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1393,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "盒子",
+    "pinyin": "hé zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1394,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "盒",
+    "pinyin": "hé",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1395,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "店員",
+    "pinyin": "diàn yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1396,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "差",
+    "pinyin": "chà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1397,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "娃娃",
+    "pinyin": "wá wa",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1398,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "它",
+    "pinyin": "tā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1399,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "它們",
+    "pinyin": "tā men",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1400,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "滿",
+    "pinyin": "mǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1401,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "連",
+    "pinyin": "lián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1402,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "得到",
+    "pinyin": "dé dào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1403,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "那樣",
+    "pinyin": "nà yàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1404,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "海報",
+    "pinyin": "hǎi bào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1405,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "吸引",
+    "pinyin": "xī yǐn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1406,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "商人",
+    "pinyin": "shāng rén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1407,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "心理",
+    "pinyin": "xīn lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1408,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "尺",
+    "pinyin": "chǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1409,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "牙刷",
+    "pinyin": "yá shuā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1410,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "卡通人物",
+    "pinyin": "kǎ tōng rén wù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1411,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "卡通",
+    "pinyin": "kǎ tōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1412,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "人物",
+    "pinyin": "rén wù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1413,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "喜愛",
+    "pinyin": "xǐ ài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1414,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "只好",
+    "pinyin": "zhǐ hǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1415,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "花",
+    "pinyin": "huā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1416,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "開始",
+    "pinyin": "kāi shǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1417,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "為了",
+    "pinyin": "wèi le",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1418,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "顧客",
+    "pinyin": "gù kè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1419,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "變成",
+    "pinyin": "biàn chéng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1420,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "所有",
+    "pinyin": "suǒ yǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1421,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "這樣",
+    "pinyin": "zhè yàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1422,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "那樣",
+    "pinyin": "nà yàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1423,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "類",
+    "pinyin": "lèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1424,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "影響",
+    "pinyin": "yǐng xiǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1425,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "增加",
+    "pinyin": "zēng jiā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1426,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "紀念",
+    "pinyin": "jì niàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1427,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "史努比",
+    "pinyin": "shǐ nǔ bǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1428,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "一開始",
+    "pinyin": "yī kāi shǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1429,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "想出(來)",
+    "pinyin": "xiǎng chū (lái)",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1430,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "吸引力",
+    "pinyin": "xī yǐn lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1431,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "變",
+    "pinyin": "biàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1432,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "打瞌睡",
+    "pinyin": "dǎ kē shuì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1433,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "以為",
+    "pinyin": "yǐ wéi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1434,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "發生",
+    "pinyin": "fā shēng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1435,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "連續劇",
+    "pinyin": "lián xù jù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1436,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "關係",
+    "pinyin": "guān xi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1437,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "韓式",
+    "pinyin": "hán shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1438,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "服裝",
+    "pinyin": "fú zhuāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1439,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "帽子",
+    "pinyin": "mào zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1440,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "毛衣",
+    "pinyin": "máo yī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1441,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "化妝品",
+    "pinyin": "huà zhuāng pǐn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1442,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "商品",
+    "pinyin": "shāng pǐn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1443,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "化妝",
+    "pinyin": "huà zhuāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1444,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "保養",
+    "pinyin": "bǎo yǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1445,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "後年",
+    "pinyin": "hòu nián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1446,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "遊學",
+    "pinyin": "yóu xué",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1447,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "影集",
+    "pinyin": "yǐng jí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1448,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "平常",
+    "pinyin": "píng cháng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1449,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "方式",
+    "pinyin": "fāng shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1450,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "改變",
+    "pinyin": "gǎi biàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1451,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "韓流",
+    "pinyin": "hán liú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1452,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "韓劇",
+    "pinyin": "hán jù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1453,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "日劇",
+    "pinyin": "rì jù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1454,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "愛上",
+    "pinyin": "ài shàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1455,
+    "lesson_id": "book2-lesson08",
+    "hanzi": "跟上",
+    "pinyin": "gēn shàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1456,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "鐘",
+    "pinyin": "zhōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1457,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "到",
+    "pinyin": "dào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1458,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "翻",
+    "pinyin": "fān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1459,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "頁",
+    "pinyin": "yè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1460,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "三明治",
+    "pinyin": "sān míng zhì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1461,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "門",
+    "pinyin": "mén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1462,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "課堂",
+    "pinyin": "kè táng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1463,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "期末",
+    "pinyin": "qī mò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1464,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "口試",
+    "pinyin": "kǒu shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1465,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "篇",
+    "pinyin": "piān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1466,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "作文",
+    "pinyin": "zuò wén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1467,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "用功",
+    "pinyin": "yòng gōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1468,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "當",
+    "pinyin": "dāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1469,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "修",
+    "pinyin": "xiū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1470,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "教授",
+    "pinyin": "jiào shòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1471,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "知識",
+    "pinyin": "zhī shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1472,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "豐富",
+    "pinyin": "fēng fù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1473,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "教法",
+    "pinyin": "jiào fǎ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1474,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "系",
+    "pinyin": "xì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1475,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "文法",
+    "pinyin": "wén fǎ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1476,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "筆試",
+    "pinyin": "bǐ shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1477,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "交",
+    "pinyin": "jiāo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1478,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "報告",
+    "pinyin": "bào gào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1479,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "認真",
+    "pinyin": "rèn zhēn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1480,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "字典",
+    "pinyin": "zì diǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1481,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "翻譯",
+    "pinyin": "fān yì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1482,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "翻",
+    "pinyin": "fān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1483,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "題",
+    "pinyin": "tí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1484,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "努力",
+    "pinyin": "nǔ lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1485,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "能力",
+    "pinyin": "néng lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1486,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "將來",
+    "pinyin": "jiāng lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1487,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "夠",
+    "pinyin": "gòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1488,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "加油",
+    "pinyin": "jiā yóu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1489,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "義大利",
+    "pinyin": "yì dà lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1490,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "期末考",
+    "pinyin": "qī mò kǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1491,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "交換",
+    "pinyin": "jiāo huàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1492,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "中心",
+    "pinyin": "zhōng xīn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1493,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "漢語",
+    "pinyin": "hàn yǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1494,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "漢字",
+    "pinyin": "hàn zì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1495,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "聲調",
+    "pinyin": "shēng diào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1496,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "部分/份",
+    "pinyin": "bù fèn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1497,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "生字",
+    "pinyin": "shēng zì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1498,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "清楚",
+    "pinyin": "qīng chǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1499,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "造句",
+    "pinyin": "zào jù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1500,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "報告",
+    "pinyin": "bào gào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1501,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "表達",
+    "pinyin": "biǎo dá",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1502,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "意見",
+    "pinyin": "yì jiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1503,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "錯字",
+    "pinyin": "cuò zì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1504,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "交",
+    "pinyin": "jiāo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1505,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "語法",
+    "pinyin": "yǔ fǎ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1506,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "借",
+    "pinyin": "jiè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1507,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "還",
+    "pinyin": "huán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1508,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "迷路",
+    "pinyin": "mí lù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1509,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "感動",
+    "pinyin": "gǎn dòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1510,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "煩惱",
+    "pinyin": "fán nǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1511,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "建議",
+    "pinyin": "jiàn yì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1512,
+    "lesson_id": "book2-lesson09",
+    "hanzi": "華語(文)中心",
+    "pinyin": "huá yǔ (wén) zhōng xīn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1513,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "健身",
+    "pinyin": "jiàn shēn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1514,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "頭痛",
+    "pinyin": "tóu tòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1515,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "拉肚子",
+    "pinyin": "lā dù zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1516,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "看病",
+    "pinyin": "kàn bìng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1517,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "老是",
+    "pinyin": "lǎo shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1518,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "改",
+    "pinyin": "gǎi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1519,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "健身房",
+    "pinyin": "jiàn shēn fáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1520,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "從小",
+    "pinyin": "cóng xiǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1521,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "操場",
+    "pinyin": "cāo chǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1522,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "體育",
+    "pinyin": "tǐ yù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1523,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "腿",
+    "pinyin": "tuǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1524,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "脖子",
+    "pinyin": "bó zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1525,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "死",
+    "pinyin": "sǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1526,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "誇張",
+    "pinyin": "kuā zhāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1527,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "叫",
+    "pinyin": "jiào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1528,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "救護車",
+    "pinyin": "jiù hù chē",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1529,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "送",
+    "pinyin": "sòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1530,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "救命",
+    "pinyin": "jiù mìng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1531,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "救",
+    "pinyin": "jiù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1532,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "照",
+    "pinyin": "zhào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1533,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "教練",
+    "pinyin": "jiào liàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1534,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "變",
+    "pinyin": "biàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1535,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "體重",
+    "pinyin": "tǐ zhòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1536,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "減",
+    "pinyin": "jiǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1537,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "下",
+    "pinyin": "xià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1538,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "年紀",
+    "pinyin": "nián jì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1539,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "男人",
+    "pinyin": "nán rén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1540,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "女人",
+    "pinyin": "nǚ rén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1541,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "老人",
+    "pinyin": "lǎo rén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1542,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "青菜",
+    "pinyin": "qīng cài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1543,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "漢堡",
+    "pinyin": "hàn bǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1544,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "薯條",
+    "pinyin": "shǔ tiáo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1545,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "餅乾",
+    "pinyin": "bǐng gān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1546,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "飲食",
+    "pinyin": "yǐn shí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1547,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "油",
+    "pinyin": "yóu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1548,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "鹽",
+    "pinyin": "yán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1549,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "可樂",
+    "pinyin": "kě lè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1550,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "開水",
+    "pinyin": "kāi shuǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1551,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "來不及",
+    "pinyin": "lái bu jí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1552,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "來得及",
+    "pinyin": "lái de jí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1553,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "三餐",
+    "pinyin": "sān cān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1554,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "餐",
+    "pinyin": "cān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1555,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "國王",
+    "pinyin": "guó wáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1556,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "到底",
+    "pinyin": "dào dǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1557,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "活",
+    "pinyin": "huó",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1558,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "訓練",
+    "pinyin": "xùn liàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1559,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "慢跑",
+    "pinyin": "màn pǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1560,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "開夜車",
+    "pinyin": "kāi yè chē",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1561,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "好處",
+    "pinyin": "hǎo chù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1562,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "壞處",
+    "pinyin": "huài chù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1563,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "或許",
+    "pinyin": "huò xǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1564,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "經常",
+    "pinyin": "jīng cháng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1565,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "體力",
+    "pinyin": "tǐ lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1566,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "力",
+    "pinyin": "lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1567,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "精神",
+    "pinyin": "jīng shén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1568,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "幫助",
+    "pinyin": "bāng zhù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1569,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "改善",
+    "pinyin": "gǎi shàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1570,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "情況",
+    "pinyin": "qíng kuàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1571,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "讓",
+    "pinyin": "ràng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1572,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "堂",
+    "pinyin": "táng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1573,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "繼續",
+    "pinyin": "jì xù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1574,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "建議",
+    "pinyin": "jiàn yì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1575,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "病人",
+    "pinyin": "bìng rén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1576,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "病",
+    "pinyin": "bìng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1577,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "恢復",
+    "pinyin": "huī fù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1578,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "活動",
+    "pinyin": "huó dòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1579,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "難過",
+    "pinyin": "nán guò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1580,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "脫",
+    "pinyin": "tuō",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1581,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "牛仔褲",
+    "pinyin": "niú zǎi kù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1582,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "運動服",
+    "pinyin": "yùn dòng fú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1583,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "的話",
+    "pinyin": "de huà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1584,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "睡午覺",
+    "pinyin": "shuì wǔ jiào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1585,
+    "lesson_id": "book2-lesson10",
+    "hanzi": "脫下",
+    "pinyin": "tuō xià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1586,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "社團",
+    "pinyin": "shè tuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1587,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "校園",
+    "pinyin": "xiào yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1588,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "擺",
+    "pinyin": "bǎi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1589,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "攤子",
+    "pinyin": "tān zi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1590,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "社員",
+    "pinyin": "shè yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1591,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "遍",
+    "pinyin": "biàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1592,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "選擇",
+    "pinyin": "xuǎn zé",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1593,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "立刻",
+    "pinyin": "lì kè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1594,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "鋼琴",
+    "pinyin": "gāng qín",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1595,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "功夫",
+    "pinyin": "gōng fu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1596,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "感興趣",
+    "pinyin": "gǎn xìng qù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1597,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "藝術",
+    "pinyin": "yì shù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1598,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "嘛",
+    "pinyin": "ma",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1599,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "厲害",
+    "pinyin": "lì hài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1600,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "保護",
+    "pinyin": "bǎo hù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1601,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "勇敢",
+    "pinyin": "yǒng gǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1602,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "吉他",
+    "pinyin": "jí tā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1603,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "愛心",
+    "pinyin": "ài xīn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1604,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "服務",
+    "pinyin": "fú wù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1605,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "技巧",
+    "pinyin": "jì qiǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1606,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "複習",
+    "pinyin": "fù xí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1607,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "同",
+    "pinyin": "tóng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1608,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "地球",
+    "pinyin": "dì qiú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1609,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "互相",
+    "pinyin": "hù xiāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1610,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "戀愛",
+    "pinyin": "liàn ài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1611,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "中華文化",
+    "pinyin": "zhōng huá wén huà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1612,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "看出來",
+    "pinyin": "kàn chū lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1613,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "談戀愛",
+    "pinyin": "tán liàn ài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1614,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "安排",
+    "pinyin": "ān pái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1615,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "安養院",
+    "pinyin": "ān yǎng yuàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1616,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "刷",
+    "pinyin": "shuā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1617,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "馬桶",
+    "pinyin": "mǎ tǒng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1618,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "育幼院",
+    "pinyin": "yù yòu yuàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1619,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "照顧",
+    "pinyin": "zhào gù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1620,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "刷牙",
+    "pinyin": "shuā yá",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1621,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "美術",
+    "pinyin": "měi shù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1622,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "外邊",
+    "pinyin": "wài biān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1623,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "檢查",
+    "pinyin": "jiǎn chá",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1624,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "處理",
+    "pinyin": "chǔ lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1625,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "掛號",
+    "pinyin": "guà hào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1626,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "住院",
+    "pinyin": "zhù yuàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1627,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "出院",
+    "pinyin": "chū yuàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1628,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "等",
+    "pinyin": "děng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1629,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "病房",
+    "pinyin": "bìng fáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1630,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "關心",
+    "pinyin": "guān xīn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1631,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "收穫",
+    "pinyin": "shōu huò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1632,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "極",
+    "pinyin": "jí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1633,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "重視",
+    "pinyin": "zhòng shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1634,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "美好",
+    "pinyin": "měi hǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1635,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "未來",
+    "pinyin": "wèi lái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1636,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "成長",
+    "pinyin": "chéng zhǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1637,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "中",
+    "pinyin": "zhōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1638,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "寶貴",
+    "pinyin": "bǎo guì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1639,
+    "lesson_id": "book2-lesson11",
+    "hanzi": "意義",
+    "pinyin": "yì yì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1640,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "職員",
+    "pinyin": "zhí yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1641,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "職業",
+    "pinyin": "zhí yè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1642,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "研究所",
+    "pinyin": "yán jiū suǒ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1643,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "研究",
+    "pinyin": "yán jiū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1644,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "課程",
+    "pinyin": "kè chéng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1645,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "通知",
+    "pinyin": "tōng zhī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1646,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "廣告",
+    "pinyin": "guǎng gào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1647,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "設計",
+    "pinyin": "shè jì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1648,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "想法",
+    "pinyin": "xiǎng fǎ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1649,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "聽力",
+    "pinyin": "tīng lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1650,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "會話",
+    "pinyin": "huì huà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1651,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "所",
+    "pinyin": "suǒ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1652,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "外語",
+    "pinyin": "wài yǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1653,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "學院",
+    "pinyin": "xué yuàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1654,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "哲學",
+    "pinyin": "zhé xué",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1655,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "專業",
+    "pinyin": "zhuān yè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1656,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "困難",
+    "pinyin": "kùn nán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1657,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "起",
+    "pinyin": "qǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1658,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "助理",
+    "pinyin": "zhù lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1659,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "向",
+    "pinyin": "xiàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1660,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "貿易",
+    "pinyin": "mào yì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1661,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "保險",
+    "pinyin": "bǎo xiǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1662,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "經理",
+    "pinyin": "jīng lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1663,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "管理",
+    "pinyin": "guǎn lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1664,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "員工",
+    "pinyin": "yuán gōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1665,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "開會",
+    "pinyin": "kāi huì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1666,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "會",
+    "pinyin": "huì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1667,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "加班",
+    "pinyin": "jiā bān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1668,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "研究",
+    "pinyin": "yán jiū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1669,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "難怪",
+    "pinyin": "nán guài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1670,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "退休",
+    "pinyin": "tuì xiū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1671,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "說真的",
+    "pinyin": "shuō zhēn de",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1672,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "再說",
+    "pinyin": "zài shuō",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1673,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "教書",
+    "pinyin": "jiāo shū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1674,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "鄉下",
+    "pinyin": "xiāng xià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1675,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "種",
+    "pinyin": "zhǒng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1676,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "剪",
+    "pinyin": "jiǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1677,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "都市",
+    "pinyin": "dū shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1678,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "襯衫",
+    "pinyin": "chèn shān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1679,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "打工",
+    "pinyin": "dǎ gōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1680,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "植物",
+    "pinyin": "zhí wù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1681,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "個",
+    "pinyin": "gè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1682,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "正式",
+    "pinyin": "zhèng shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1683,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "存",
+    "pinyin": "cún",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1684,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "學費",
+    "pinyin": "xué fèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1685,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "做事",
+    "pinyin": "zuò shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1686,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "成熟",
+    "pinyin": "chéng shú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1687,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "強",
+    "pinyin": "qiáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1688,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "加強",
+    "pinyin": "jiā qiáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1689,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "服務生/服務員",
+    "pinyin": "fú wù shēng / fú wù yuán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1690,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "夜裡(裏)",
+    "pinyin": "yè lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1691,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "樂觀",
+    "pinyin": "lè guān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1692,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "相信",
+    "pinyin": "xiāng xìn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1693,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "通知",
+    "pinyin": "tōng zhī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1694,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "敬",
+    "pinyin": "jìng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1695,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "自我推薦",
+    "pinyin": "zì wǒ tuī jiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1696,
+    "lesson_id": "book2-lesson12",
+    "hanzi": "敬上",
+    "pinyin": "jìng shàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1697,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "筆電(筆記型電腦)",
+    "pinyin": "bǐ diàn (bǐ jì xíng diàn nǎo)",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1698,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "產品",
+    "pinyin": "chǎn pǐn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1699,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "平板(平板電腦)",
+    "pinyin": "píng bǎn (píng bǎn diàn nǎo)",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1700,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "差別",
+    "pinyin": "chā bié",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1701,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "說明",
+    "pinyin": "shuō míng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1702,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "功能",
+    "pinyin": "gōng néng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1703,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "輕",
+    "pinyin": "qīng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1704,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "出差",
+    "pinyin": "chū chāi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1705,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "不如",
+    "pinyin": "bù rú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1706,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "大多數",
+    "pinyin": "dà duō shù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1707,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "背包",
+    "pinyin": "bèi bāo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1708,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "不管",
+    "pinyin": "bù guǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1709,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "跟",
+    "pinyin": "gēn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1710,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "好用",
+    "pinyin": "hǎo yòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1711,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "新聞",
+    "pinyin": "xīn wén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1712,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "抱怨",
+    "pinyin": "bào yuàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1713,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "電池",
+    "pinyin": "diàn chí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1714,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "正常",
+    "pinyin": "zhèng cháng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1715,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "保證",
+    "pinyin": "bǎo zhèng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1716,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "修理",
+    "pinyin": "xiū lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1717,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "恐怕",
+    "pinyin": "kǒng pà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1718,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "改天",
+    "pinyin": "gǎi tiān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1719,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "傳真機",
+    "pinyin": "chuán zhēn jī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1720,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "傳真",
+    "pinyin": "chuán zhēn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1721,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "打折",
+    "pinyin": "dǎ zhé",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1722,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "超過",
+    "pinyin": "chāo guò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1723,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "把握",
+    "pinyin": "bǎ wò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1724,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "大約",
+    "pinyin": "dà yuē",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1725,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "能夠",
+    "pinyin": "néng gòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1726,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "真",
+    "pinyin": "zhēn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1727,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "皮",
+    "pinyin": "pí",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1728,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "上班族",
+    "pinyin": "shàng bān zú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1729,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "保證書",
+    "pinyin": "bǎo zhèng shū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1730,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "打聽",
+    "pinyin": "dǎ tīng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1731,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "有道理",
+    "pinyin": "yǒu dào lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1732,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "道理",
+    "pinyin": "dào lǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1733,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "前",
+    "pinyin": "qián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1734,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "後",
+    "pinyin": "hòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1735,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "認為",
+    "pinyin": "rèn wéi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1736,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "比",
+    "pinyin": "bǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1737,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "價格",
+    "pinyin": "jià gé",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1738,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "窮",
+    "pinyin": "qióng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1739,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "不見(了)",
+    "pinyin": "bú jiàn (le)",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1740,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "愛惜",
+    "pinyin": "ài xī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1741,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "零用錢",
+    "pinyin": "líng yòng qián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1742,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "逼",
+    "pinyin": "bī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1743,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "省",
+    "pinyin": "shěng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1744,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "答應",
+    "pinyin": "dā yìng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1745,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "差(一)點兒",
+    "pinyin": "chà (yī) diǎnr",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1746,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "糊塗",
+    "pinyin": "hú tu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1747,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "白",
+    "pinyin": "bái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1748,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "麻煩",
+    "pinyin": "má fán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1749,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "科技",
+    "pinyin": "kē jì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1750,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "發現",
+    "pinyin": "fā xiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1751,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "解決",
+    "pinyin": "jiě jué",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1752,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "光華商場",
+    "pinyin": "guāng huá shāng chǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1753,
+    "lesson_id": "book2-lesson13",
+    "hanzi": "3C產品",
+    "pinyin": "3C chǎn pǐn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1754,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "春節",
+    "pinyin": "chūnjié",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1755,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "要求",
+    "pinyin": "yāoqiú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1756,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "修改",
+    "pinyin": "xiūgǎi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1757,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "完成",
+    "pinyin": "wánchéng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1758,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "寒假",
+    "pinyin": "hánjià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1759,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "過年",
+    "pinyin": "guò nián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1760,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "除夕",
+    "pinyin": "chúxī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1761,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "接著",
+    "pinyin": "jiēzhe",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1762,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "爺爺",
+    "pinyin": "yéye",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1763,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "奶奶",
+    "pinyin": "nǎinai",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1764,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "拜拜",
+    "pinyin": "bài bai",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1765,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "拜年",
+    "pinyin": "bài nián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1766,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "拜",
+    "pinyin": "bài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1767,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "祖先",
+    "pinyin": "zǔxiān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1768,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "聚",
+    "pinyin": "jù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1769,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "煮",
+    "pinyin": "zhǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1770,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "水餃",
+    "pinyin": "shuǐjiǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1771,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "炒",
+    "pinyin": "chǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1772,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "米粉",
+    "pinyin": "mǐfěn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1773,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "煎",
+    "pinyin": "jiān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1774,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "蘿蔔",
+    "pinyin": "luóbo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1775,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "等等",
+    "pinyin": "děngděng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1776,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "發財",
+    "pinyin": "fā cái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1777,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "橘子",
+    "pinyin": "júzi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1778,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "更加",
+    "pinyin": "gèngjiā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1779,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "響",
+    "pinyin": "xiǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1780,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "舅舅",
+    "pinyin": "jiùjiu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1781,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "舅媽",
+    "pinyin": "jiùmā",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1782,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "親切",
+    "pinyin": "qīnqiè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1783,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "相當",
+    "pinyin": "xiāngdāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1784,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "溫暖",
+    "pinyin": "wēnnuǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1785,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "感謝",
+    "pinyin": "gǎnxiè",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1786,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "年夜飯",
+    "pinyin": "nián yè fàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1787,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "年糕",
+    "pinyin": "niángāo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1788,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "發糕",
+    "pinyin": "fāgāo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1789,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "蘿蔔糕",
+    "pinyin": "luóbogāo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1790,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "年年有餘",
+    "pinyin": "nián nián yǒu yú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1791,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "年年高升",
+    "pinyin": "nián nián gāo shēng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1792,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "平平安安",
+    "pinyin": "píng píng ān ān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1793,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "大吉大利",
+    "pinyin": "dà jí dà lì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1794,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "從前",
+    "pinyin": "cóngqián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1795,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "怪獸",
+    "pinyin": "guàishòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1796,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "當",
+    "pinyin": "dāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1797,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "鴨(子)",
+    "pinyin": "yā(zi)",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1798,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "過日子",
+    "pinyin": "guò rìzi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1799,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "老太太",
+    "pinyin": "lǎo tàitai",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1800,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "離開",
+    "pinyin": "líkāi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1801,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "讓",
+    "pinyin": "ràng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1802,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "無所謂",
+    "pinyin": "wúsuǒwèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1803,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "米",
+    "pinyin": "mǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1804,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "口",
+    "pinyin": "kǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1805,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "出現",
+    "pinyin": "chūxiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1806,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "分",
+    "pinyin": "fēn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1807,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "可憐",
+    "pinyin": "kělián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1808,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "竹子",
+    "pinyin": "zhúzi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1809,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "節",
+    "pinyin": "jié",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1810,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "燒",
+    "pinyin": "shāo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1811,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "火",
+    "pinyin": "huǒ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1812,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "聽見",
+    "pinyin": "tīngjiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1813,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "嚇",
+    "pinyin": "xià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1814,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "亮",
+    "pinyin": "liàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1815,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "要不是",
+    "pinyin": "yàobúshì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1816,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "放",
+    "pinyin": "fàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1817,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "鞭炮",
+    "pinyin": "biānpào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1818,
+    "lesson_id": "book2-lesson14",
+    "hanzi": "春聯",
+    "pinyin": "chūnlián",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1819,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "可",
+    "pinyin": "kě",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1820,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "遇到",
+    "pinyin": "yù dào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1821,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "船/船兒",
+    "pinyin": "chuán/chuánr",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1822,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "橋",
+    "pinyin": "qiáo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1823,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "吵架",
+    "pinyin": "chǎo jià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1824,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "吵",
+    "pinyin": "chǎo",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1825,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "推",
+    "pinyin": "tuī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1826,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "激動",
+    "pinyin": "jīdòng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1827,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "打架",
+    "pinyin": "dǎ jià",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1828,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "小朋友",
+    "pinyin": "xiǎopéngyǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1829,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "指",
+    "pinyin": "zhǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1830,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "禮貌",
+    "pinyin": "lǐmào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1831,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "有禮貌",
+    "pinyin": "yǒu lǐmào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1832,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "東方",
+    "pinyin": "dōngfāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1833,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "西方",
+    "pinyin": "xīfāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1834,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "南方",
+    "pinyin": "nánfāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1835,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "北方",
+    "pinyin": "běifāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1836,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "溫度",
+    "pinyin": "wēndù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1837,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "度",
+    "pinyin": "dù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1838,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "感覺",
+    "pinyin": "gǎnjué",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1839,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "涼快",
+    "pinyin": "liángkuai",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1840,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "回答",
+    "pinyin": "huídá",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1841,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "永遠",
+    "pinyin": "yǒngyuǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1842,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "例子",
+    "pinyin": "lìzi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1843,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "教育",
+    "pinyin": "jiàoyù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1844,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "希望",
+    "pinyin": "xīwàng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1845,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "孔子",
+    "pinyin": "Kǒngzǐ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1846,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "教師節",
+    "pinyin": "jiàoshī jié",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1847,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "子路",
+    "pinyin": "Zǐlù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1848,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "孔廟",
+    "pinyin": "Kǒng miào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1849,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "必須",
+    "pinyin": "bìxū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1850,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "偉大",
+    "pinyin": "wěidà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1851,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "教師",
+    "pinyin": "jiàoshī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1852,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "紀念",
+    "pinyin": "jìniàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1853,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "節日",
+    "pinyin": "jiérì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1854,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "曾經",
+    "pinyin": "céngjīng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1855,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "曾",
+    "pinyin": "céng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1856,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "和",
+    "pinyin": "hé",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1857,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "政治",
+    "pinyin": "zhèngzhì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1858,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "理想",
+    "pinyin": "lǐxiǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1859,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "輩子",
+    "pinyin": "bèizi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1860,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "君王",
+    "pinyin": "jūnwáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1861,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "接受",
+    "pinyin": "jiēshòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1862,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "等待",
+    "pinyin": "děngdài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1863,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "任何",
+    "pinyin": "rènhé",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1864,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "信",
+    "pinyin": "xìn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1865,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "明白",
+    "pinyin": "míngbái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1866,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "不得不",
+    "pinyin": "bùdébù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1867,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "古代",
+    "pinyin": "gǔdài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1868,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "思想",
+    "pinyin": "sīxiǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1869,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "保守",
+    "pinyin": "bǎoshǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1870,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "背景",
+    "pinyin": "bèijǐng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1871,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "笨",
+    "pinyin": "bèn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1872,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "表現",
+    "pinyin": "biǎoxiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1873,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "程度",
+    "pinyin": "chéngdù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1874,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "做人",
+    "pinyin": "zuò rén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1875,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "影響",
+    "pinyin": "yǐngxiǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1876,
+    "lesson_id": "book2-lesson15",
+    "hanzi": "做人做事",
+    "pinyin": "zuò rén zuò shì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1877,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "舉辦",
+    "pinyin": "jǔbàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1878,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "舉",
+    "pinyin": "jǔ",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1879,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "內容",
+    "pinyin": "nèiróng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1880,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "或",
+    "pinyin": "huò",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1881,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "表演",
+    "pinyin": "biǎoyǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1882,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "民族",
+    "pinyin": "mínzú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1883,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "傳統",
+    "pinyin": "chuántǒng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1884,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "玩具",
+    "pinyin": "wánjù",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1885,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "仔細",
+    "pinyin": "zǐxì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1886,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "怪",
+    "pinyin": "guài",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1887,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "嚐",
+    "pinyin": "cháng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1888,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "個人",
+    "pinyin": "gèrén",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1889,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "口味",
+    "pinyin": "kǒuwèi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1890,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "吹",
+    "pinyin": "chuī",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1891,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "笛子",
+    "pinyin": "dízi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1892,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "其中",
+    "pinyin": "qízhōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1893,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "風俗",
+    "pinyin": "fēngsú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1894,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "亞洲",
+    "pinyin": "Yàzhōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1895,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "歐洲",
+    "pinyin": "Ōuzhōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1896,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "非洲",
+    "pinyin": "Fēizhōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1897,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "美洲",
+    "pinyin": "Měizhōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1898,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "大洋洲",
+    "pinyin": "Dàyángzhōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1899,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "交流",
+    "pinyin": "jiāoliú",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1900,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "家庭",
+    "pinyin": "jiātíng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1901,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "半天",
+    "pinyin": "bàntiān",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1902,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "地點",
+    "pinyin": "dìdiǎn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1903,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "禮堂",
+    "pinyin": "lǐtáng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1904,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "堂",
+    "pinyin": "táng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1905,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "會場",
+    "pinyin": "huìchǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1906,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "報名",
+    "pinyin": "bào míng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1907,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "世界文化日",
+    "pinyin": "shìjiè wénhuà rì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1908,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "納豆",
+    "pinyin": "nàdòu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1909,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "得很",
+    "pinyin": "de hěn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1910,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "邀請",
+    "pinyin": "yāoqǐng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1911,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "安排",
+    "pinyin": "ānpái",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1912,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "東北",
+    "pinyin": "dōngběi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1913,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "西北",
+    "pinyin": "xīběi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1914,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "東南",
+    "pinyin": "dōngnán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1915,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "西南",
+    "pinyin": "xīnán",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1916,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "鬆餅",
+    "pinyin": "sōngbǐng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1917,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "影片",
+    "pinyin": "yǐngpiàn",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1918,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "許多",
+    "pinyin": "xǔduō",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1919,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "校長",
+    "pinyin": "xiàozhǎng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1920,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "親自",
+    "pinyin": "qīnzì",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1921,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "當中",
+    "pinyin": "dāngzhōng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1922,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "拍",
+    "pinyin": "pāi",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1923,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "葡萄",
+    "pinyin": "pútao",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1924,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "活潑",
+    "pinyin": "huópō",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1925,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "大方",
+    "pinyin": "dàfāng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1926,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "笑話",
+    "pinyin": "xiàohuà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1927,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "微笑",
+    "pinyin": "wēixiào",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1928,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "地區",
+    "pinyin": "dìqū",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1929,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "只有",
+    "pinyin": "zhǐyǒu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1930,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "觀察",
+    "pinyin": "guānchá",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1931,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "批評",
+    "pinyin": "pīpíng",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1932,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "披薩",
+    "pinyin": "pīsà",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1933,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "五大洲",
+    "pinyin": "wǔ dà zhōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1934,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "中美洲",
+    "pinyin": "Zhōng Měizhōu",
+    "examples_json": "[]"
+  },
+  {
+    "id": 1935,
+    "lesson_id": "book2-lesson16",
+    "hanzi": "拍手叫好",
+    "pinyin": "pāishǒu jiào hǎo",
+    "examples_json": "[]"
+  }
+]
