@@ -9,9 +9,11 @@ interface Props {
   description: string;
   path: string;
   ogType?: string;
+  pageType?: string;
+  schoolSlug?: string;
 }
 
-const { title, description, path, ogType } = Astro.props;
+const { title, description, path, ogType, pageType = 'top', schoolSlug } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} path={path} ogType={ogType}>
@@ -21,5 +23,5 @@ const { title, description, path, ogType } = Astro.props;
     <slot />
   </main>
   <Footer />
-  <LineCTA />
+  <LineCTA pageType={pageType} schoolSlug={schoolSlug} />
 </BaseLayout>
