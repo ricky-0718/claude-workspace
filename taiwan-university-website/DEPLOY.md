@@ -26,5 +26,12 @@ npx wrangler pages deploy dist --project-name=taiwan-university-db
 
 ## 5. 更新デプロイ（以降毎回）
 ```bash
-npx astro build && npx wrangler pages deploy dist --project-name=taiwan-university-db
+npm run deploy
 ```
+
+これは内部で `astro build && wrangler pages deploy dist --project-name=taiwan-university-db --branch=main --commit-dirty=true` を実行する。
+
+### 重要: なぜ `--branch=main` が必須か
+- Cloudflare Pagesのproductionブランチは `main` に設定されている
+- 我々は `master` ブランチで開発しているため、`--branch=main` フラグなしだとPreview扱いになり、`db.ryugaku101.com` に反映されない
+- `npm run deploy` を使えばこの罠を回避できる（素の `wrangler pages deploy` は使わない）

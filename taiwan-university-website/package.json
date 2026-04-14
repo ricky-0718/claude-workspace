@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "sync-data": "node scripts/copy-data.js"
+    "sync-data": "node scripts/copy-data.js",
+    "deploy": "astro build && wrangler pages deploy dist --project-name=taiwan-university-db --branch=main --commit-dirty=true"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
