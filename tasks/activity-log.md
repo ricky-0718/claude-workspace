@@ -21,6 +21,31 @@
 
 ---
 
+### 2026-04-15 17:50 - Edgeダウンロード不具合の恒久修正（4つのレジストリポリシー）
+- **Actor**: Claude Code本体 + User
+- **Type**: Issue + Setup
+- **Summary**: 「PDFがPDFとしてダウンロードできずUUIDファイル名になる／ファイルを開くが無反応」現象を、Edge History DB 調査で根本原因を特定し、4つのポリシーを HKLM に適用して恒久修正
+- **Details**:
+  - **原因1（SmartScreen検疫）**: 全ダウンロードの47%が `danger_type=4` でブロックされUUIDファイル名化。edu.tw / freee / Drive / chatgpt / yzu.edu.tw 等多数のサイトで発生
+  - **原因2（Big5→CP932エンコード不一致）**: 台湾NTCU等の古いサーバーがContent-Dispositionに文字コード指定なしBig5を送信。日本語Windows環境のEdgeがCP932で誤解釈しファイル名mojibake＋ピリオド消失
+  - **原因3（PDF外部ハンドラ無反応）**: Edge の「ファイルを開く」ボタンが外部ハンドラ起動をトライするもサイレント失敗
+  - **調査手法**: `%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\History` SQLite DB の `downloads` テーブルを Python sqlite3 で解析。`danger_type`, `interrupt_reason`, `mime_type`, `target_path`, `tab_url` で失敗パターンを特定
+  - **適用ポリシー（HKLM\SOFTWARE\Policies\Microsoft\Edge）**:
+    - `SmartScreenEnabled=0` — SmartScreen全体OFF
+    - `SafeBrowsingProtectionLevel=0` — Chromium Safe Browsing OFF
+    - `SafeBrowsingAllowlistDomains`: edu.tw, gov.tw（冗長だが再ON時の備え）
+    - `AlwaysOpenPdfExternally=0` — PDFはEdge内蔵ビューアで開く
+  - **Big5 mojibake はEdge設定で修正不可能と判明**（OS locale依存）。NTCU特有の狭い問題のため、ユーザー判断で FileSystemWatcher 実装は見送り
+  - **Windows Defender本体のリアルタイムスキャンは別プロセスで動いているので、SmartScreen OFF でもマルウェア検知は維持される**
+- **Files**:
+  - `C:\Users\newgo\AppData\Local\Temp\edge-smartscreen-disable.reg`（適用）
+  - `C:\Users\newgo\AppData\Local\Temp\edge-smartscreen-disable-revert.reg`（復元用）
+  - `C:\Users\newgo\AppData\Local\Temp\edge-open-pdf-inline.reg`（適用）
+  - `C:\Users\newgo\AppData\Local\Temp\edge-smartscreen-allowlist.reg`（allowlist、先行投入）
+- **Related**: `reference_edge_download_fixes`（新規メモリ）
+
+---
+
 ### 2026-04-15 16:55 - おさるさんにファネル方向性を相談（LP「イベント感」の器選択）
 - **Actor**: Claude Code本体 + User
 - **Type**: Decision（外部相談・返信待ち）
@@ -40,6 +65,21 @@
 - **Related**: `project_1oku_roadmap`, `project_guidebook_funnel_pivot`, `knowledge/marketing/osaru-methodology`, `reference_kpi_dashboard`
 
 ---
+
+### 2026-04-15 19:00 - 上野航 提案書 最終版納品
+- **Actor**: Claude Code本体 + User
+- **Type**: Task（完了）
+- **Summary**: 16:50版から6回のフィードバック反映を経て納品。航本人に送付済み。
+- **Details**:
+  - 16:55: 出願料記載を全削除（4/14の削除指示を書き直し時に復活させてしまった）
+  - 17:40: 「5校まで」「優先順位別おすすめ」「定員情報」を全削除、出願料弊社負担＋出願無制限を明記
+  - 18:17: 輔仁を「國際溝通與科技創新」（外国人出願不可）→「**跨領域全英語學士學位學程 BPIS**」に学科差し替え。CEFR B1要件・学費 NT$71,360/学期に修正
+  - 19:28: 出願スケジュールを日付昇順に並び替え、不揃いだった「〜」プレフィックスを統一
+  - 19:40: 「〜するのがベスト」等の命令調を敬語＋選択委ねる表現に修正
+  - 19:50: 日本円換算注記削除（表に併記がないため不要）
+- **Drive**: File ID `1B4GzWIo-Nh9umHqNscr1OD00-qLi0A3c` を6回上書きアップロード（URL不変）。最終 1,111,368 bytes
+- **Memory化**: `feedback_ueno_unlimited_applications.md` 強化、`feedback_rewrite_check_past_removals.md` 新規、`feedback_proposal_tone_polite.md` 新規
+- **Related**: Asana 1214021516535483（タスク本体）
 
 ### 2026-04-15 16:50 - 上野航 提案書 ファクトチェック＆更新（Asanaレビュー反映）
 - **Actor**: Claude Code本体
