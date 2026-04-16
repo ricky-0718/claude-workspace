@@ -1,0 +1,60 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import RankingTable from '../../components/RankingTable.astro';
+import InlineCTA from '../../components/InlineCTA.astro';
+import { buildSchoolSlugResolver, getQsWorldRows } from '../../utils/rankingHelpers';
+
+const rows = getQsWorldRows();
+const getSlug = buildSchoolSlugResolver();
+---
+
+<PageLayout
+  title="QS World University Rankings 2026 台湾大学順位 | 台湾大学データベース"
+  description="QS世界大学ランキング2026年版の台湾大学一覧。台湾大学（NTU）をはじめ、世界順位で台湾の大学を比較。"
+  path="/rankings/qs-world/"
+  pageType="rankings"
+>
+  <Breadcrumb items={[
+    { label: 'ランキング', href: '/rankings/' },
+    { label: 'QS世界' }
+  ]} />
+
+  <div class="mb-8">
+    <h1 class="text-2xl sm:text-3xl font-bold text-text">QS世界大学ランキング 2026（台湾）</h1>
+    <p class="text-sm text-text-muted mt-2 max-w-2xl">
+      Quacquarelli Symonds（QS）社が毎年発表する世界大学ランキング。学術評価・雇用主評価・論文引用数・国際性など6つの指標で評価されます。
+      日本でも知名度が高く、台湾の大学の国際的なポジションを把握する代表的な指標です。
+    </p>
+  </div>
+
+  <RankingTable
+    title="QS World University Rankings 2026"
+    description="Quacquarelli Symonds社による世界大学ランキング"
+    primaryLabel="世界順位"
+    rows={rows}
+    getSlug={getSlug}
+  />
+
+  <p class="text-xs text-text-muted mt-6 text-center">
+    データ出典: QS TopUniversities（2026年版）
+  </p>
+
+  <div class="mt-8 flex flex-wrap gap-3 justify-center text-sm">
+    <a href="/rankings/qs-asia/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      QSアジアランキングを見る →
+    </a>
+    <a href="/rankings/the/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      THE世界ランキングを見る →
+    </a>
+    <a href="/rankings/cheers/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      企業採用ランキングを見る →
+    </a>
+  </div>
+
+  <InlineCTA
+    heading="評定3.0でも国立大学に合格した実績あり"
+    body="自分の成績でどの大学に入れるか、無料ガイドブックで確認できます。費用・語学要件・出願手順まで1冊で網羅。"
+    pageType="rankings"
+  />
+</PageLayout>

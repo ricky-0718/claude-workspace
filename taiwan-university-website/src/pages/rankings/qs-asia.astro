@@ -1,0 +1,60 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import RankingTable from '../../components/RankingTable.astro';
+import InlineCTA from '../../components/InlineCTA.astro';
+import { buildSchoolSlugResolver, getQsAsiaRows } from '../../utils/rankingHelpers';
+
+const rows = getQsAsiaRows();
+const getSlug = buildSchoolSlugResolver();
+---
+
+<PageLayout
+  title="QS Asia University Rankings 2026 台湾大学順位 | 台湾大学データベース"
+  description="QSアジア大学ランキング2026年版の台湾大学一覧。アジア地域における台湾の大学の位置付けを比較。"
+  path="/rankings/qs-asia/"
+  pageType="rankings"
+>
+  <Breadcrumb items={[
+    { label: 'ランキング', href: '/rankings/' },
+    { label: 'QSアジア' }
+  ]} />
+
+  <div class="mb-8">
+    <h1 class="text-2xl sm:text-3xl font-bold text-text">QSアジア大学ランキング 2026（台湾）</h1>
+    <p class="text-sm text-text-muted mt-2 max-w-2xl">
+      QS社がアジア地域に特化して発表する大学ランキング。
+      アジア圏での位置付けを知りたい場合、QS世界ランキングよりこちらの方が日本・韓国・シンガポール等の競合大学との比較がしやすい指標です。
+    </p>
+  </div>
+
+  <RankingTable
+    title="QS Asia University Rankings 2026"
+    description="アジア地域に特化したQSランキング"
+    primaryLabel="アジア順位"
+    rows={rows}
+    getSlug={getSlug}
+  />
+
+  <p class="text-xs text-text-muted mt-6 text-center">
+    データ出典: QS TopUniversities（2026年版）
+  </p>
+
+  <div class="mt-8 flex flex-wrap gap-3 justify-center text-sm">
+    <a href="/rankings/qs-world/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      QS世界ランキングを見る →
+    </a>
+    <a href="/rankings/the/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      THE世界ランキングを見る →
+    </a>
+    <a href="/rankings/cheers/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      企業採用ランキングを見る →
+    </a>
+  </div>
+
+  <InlineCTA
+    heading="アジア圏トップ校も視野に入れるなら"
+    body="QSアジア上位の大学に合格するための出願戦略を、無料ガイドブックで解説。語学要件・必要書類・スケジュールまで網羅。"
+    pageType="rankings"
+  />
+</PageLayout>
