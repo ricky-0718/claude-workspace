@@ -1,0 +1,61 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import RankingTable from '../../components/RankingTable.astro';
+import InlineCTA from '../../components/InlineCTA.astro';
+import { buildSchoolSlugResolver, getCheersRows } from '../../utils/rankingHelpers';
+
+const rows = getCheersRows();
+const getSlug = buildSchoolSlugResolver();
+---
+
+<PageLayout
+  title="台湾企業が採用したい大学ランキング 2026（Cheers・遠見）| 台湾大学データベース"
+  description="Cheers天下雑誌・遠見雑誌による台湾企業アンケートに基づく採用人気大学ランキング。卒業後のキャリアを重視する人向け。"
+  path="/rankings/cheers/"
+  pageType="rankings"
+>
+  <Breadcrumb items={[
+    { label: 'ランキング', href: '/rankings/' },
+    { label: '企業採用ランキング' }
+  ]} />
+
+  <div class="mb-8">
+    <h1 class="text-2xl sm:text-3xl font-bold text-text">台湾企業の採用人気ランキング 2026</h1>
+    <p class="text-sm text-text-muted mt-2 max-w-2xl">
+      Cheers（天下雑誌）・遠見雑誌が台湾企業の人事担当者に実施する「もっとも採用したい大学」アンケートの結果。
+      台湾現地で就職を目指す場合、国際ランキングより企業の採用実績・評価を反映したこのランキングが実務的に役立ちます。
+    </p>
+  </div>
+
+  <RankingTable
+    title="企業が最も採用したい大学 2026"
+    description="Cheers天下雑誌・遠見雑誌による台湾企業アンケート"
+    primaryLabel="Cheers"
+    secondaryLabel="遠見"
+    rows={rows}
+    getSlug={getSlug}
+  />
+
+  <p class="text-xs text-text-muted mt-6 text-center">
+    データ出典: Cheers天下雑誌 / 遠見雑誌（2026年版）
+  </p>
+
+  <div class="mt-8 flex flex-wrap gap-3 justify-center text-sm">
+    <a href="/rankings/qs-world/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      QS世界ランキングを見る →
+    </a>
+    <a href="/rankings/qs-asia/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      QSアジアランキングを見る →
+    </a>
+    <a href="/rankings/the/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      THE世界ランキングを見る →
+    </a>
+  </div>
+
+  <InlineCTA
+    heading="台湾で就職を目指すなら企業人気校をチェック"
+    body="Cheers・遠見上位校の出願難易度・TOCFL要件・日本人受入実績を、無料ガイドブックで解説。"
+    pageType="rankings"
+  />
+</PageLayout>

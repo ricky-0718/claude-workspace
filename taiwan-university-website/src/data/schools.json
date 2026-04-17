@@ -17,7 +17,6 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "保障僑生入學第一學期可優先住宿，請逕洽本校學生住宿服務組，網址：https://osa_dorm.ntu.edu.tw/",
       "info_en": "National Taiwan University guarantees overseas students' accommodation on campus for the first semester. For details, please refer to the website of Student Housing Service Division: https://osa_dorm.ntu.edu.tw/",
       "info_ja": "校内: NT$7,900 − 46,800\n校外: NT$36,000 − 72,000"
     },
@@ -651,7 +650,6 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "一、大學部(學士班)：大一、大二僑生係本校學生宿舍優先分配對象，大三以上學生須申請參與抽籤。\r\n二、研究所(碩博士班)：僑生及港澳生就讀本校碩士班者，提供四學期的保障住宿；博士班則提供八學期的保障住宿。",
       "info_en": "1. Bachelor：Overseas Chinese undergraduate students in the first-year and Second-year have the priority to be assigned a bed in on-campus dormitories. The third-year or above Overseas Chinese undergraduate students need to go through the lottery process.\r\n2.Graduate school：Overseas Chinese students are guaranteed on-campus dormitories for four semesters in master's programs and for eight semesters in Ph.D. programs."
     },
     "scholarship": {
@@ -767,7 +765,7 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "海大宿舍：保障僑生，申請即住！\r\n\r\n宿舍資訊： 全校 5 棟宿舍，共 2,885 床位（皆為四人房）。\r\n僑生專屬： 床位有限，但我們保障僑生！在學期間，只要完成申請即「保證入住」，免抽籤。\r\n立即申請： 詳情請見海大住宿輔導組：https://stu.ntou.edu.tw/p/412-1023-7545.php?Lang=zh-tw",
+      "info_cht": "宿舍資訊： 全校 5 棟宿舍，共 2,885 床位（皆為四人房）。\n立即申請： 詳情請見海大住宿輔導組：https://stu.ntou.edu.tw/p/412-1023-7545.php?Lang=zh-tw",
       "info_en": "NTOU Dorms: Guaranteed Housing for Overseas Students!\r\n\r\nDorm Stats: 5 dorm buildings, 2,885 beds (4-person rooms).\r\nYour Guarantee: While beds are limited, NTOU guarantees housing for all Overseas Chinese students. Simply complete your application during the academic semester—no lottery required!\r\nApply Now: For details, visit the Student Housing Section: https://stu.ntou.edu.tw/p/412-1023-7545.php?Lang=zh-tw"
     },
     "scholarship": {
@@ -1096,7 +1094,6 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "本校備有校內宿舍，僑生、港澳生優先安排住宿。",
       "info_en": "Students may submit application forms for housing after being admitted. Priority will be given to overseas students, as well as Hong Kong and Macau students."
     },
     "scholarship": {
@@ -1426,7 +1423,7 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "住宿空間男、女均為四人房。大一、大二僑生在學期間全期保障住宿，第一年無條件可申請全額獎助學金，即學雜費繳費後全額退費。",
+      "info_cht": "住宿空間男、女均為四人房。",
       "info_en": "The accommodation for both male and female students consists of four-person rooms. First and second-year Overseas Chinese students are guaranteed on campus accommodation. In the first year, all Overseas Chinese students are entitled to a FULL scholarship which includes a full refund of paid tuition ."
     },
     "scholarship": {
@@ -1536,7 +1533,7 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "保障僑生住宿\r\n博愛校區：每學期5,500元（含住宿費4,500元、網路費1,000元）。\r\n天母校區：4人房每人每學期10,000元（含住宿費9,000元、網路費1,000元）、6人房每人每學期8,500元（含住宿費7,500元、網路費1,000元）。",
+      "info_cht": "博愛校區：每學期5,500元（含住宿費4,500元、網路費1,000元）。\r\n天母校區：4人房每人每學期10,000元（含住宿費9,000元、網路費1,000元）、6人房每人每學期8,500元（含住宿費7,500元、網路費1,000元）。",
       "info_en": "Guaranteed accommodation of overseas Chinese students\r\nStandard charge for Bo Ai Campus Accommodation: NT$5500 （accommodation fee NT$4,500元 & internet rate NT$1000）.\r\nStandard charge for Tian-Mu Campus Accommodation: \r\nFour-bed room - NT$10,000/per person（accommodation fee NT$9,000元 & internet rate NT$1000）、Six-bed room - NT$8,500/per person（accommodation fee NT$7,500元 & internet rate NT$1000）."
     },
     "scholarship": {
@@ -1736,7 +1733,6 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "僑生及港澳生保證住宿",
       "info_en": "Campus accommodation is preserved for overseas Chinese, Hong Kong and Macao students."
     },
     "scholarship": {
@@ -1894,7 +1890,6 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "僑生優先分配住宿(延修生除外)",
       "info_en": "New students are given priority to accommodation."
     },
     "scholarship": {
@@ -3050,7 +3045,7 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "僑生入學第一年保證住舍；第二年以上依規定時間自行提出申請，如具特殊情形，得以特殊個案優先提出申請。詳情請逕洽本校學生住宿中心 \r\nhttp://web-ch.scu.edu.tw/housing",
+      "info_cht": "詳情請逕洽本校學生住宿中心 \r\nhttp://web-ch.scu.edu.tw/housing",
       "info_en": "Overseas students are guaranteed accommodation in their first year of enrollment. From the second year onwards, they must apply according to the specified schedule. In special circumstances, students may be given priority to apply as a special case. For more details, please directly contact the university's Student Housing Center.  \r\nhttps://web-en.scu.edu.tw/housing/web_page/267"
     },
     "scholarship": {
@@ -3173,7 +3168,6 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "本校學生宿舍男女兼收，僑生新生可優先申請住宿。",
       "info_en": "YZU provides separate dormitories for male and female students, with priority given to new Overseas Chinese students in the application process."
     },
     "scholarship": {
@@ -3674,7 +3668,7 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "(1)大學部：僑生大學部自三年級起即不予保障。\r\n(2)研究所：以第一年來臺就讀之新生為限，且由研究所新生床位預留保障男一床、女一床，申請人數超過預留時以抽籤方式決定。\r\n※申請資格及保障依臺北醫學大學學生宿舍住宿申請及管理辦法辦理。",
+      "info_cht": "(2)研究所：以第一年來臺就讀之新生為限，且由研究所新生床位預留保障男一床、女一床，申請人數超過預留時以抽籤方式決定。\r\n※申請資格及保障依臺北醫學大學學生宿舍住宿申請及管理辦法辦理。",
       "info_en": "(1)Undergraduate: guaranteed beds for overseas Chinese students are not available after year 3\r\n(2)Postgraduate: Guaranteed beds are only available for students who came to Taiwan for the first time, and are limited to two beds (one for male and the other for female)\r\n※please refer to the TMU Dormitory Application and Management Guidelines for eligibility and other conditions"
     },
     "scholarship": {
@@ -4936,7 +4930,6 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "本校備有學生宿舍，並保障新生住宿；依目前住宿辦法，僑生及港澳生第一年住宿免費，第二~四年半價，未盡事宜悉依本校學生宿舍相關規定辦理，詳情逕洽本校生活輔導組，網址：https://nfuosa.nfu.edu.tw/life.html",
       "info_en": "The school offers dormitory accommodation, and guarantees a dormitory place for new students. According to the University’s accommodation policy, overseas students and Hong Kong and Macau students receive free dormitory accommodation in their first year and half-price dormitory accommodation from their second to fourth years. Issues not covered by this Guide shall be covered by the relevant University regulations concerning student dormitories. For more details, refer to the Division of Life Guidance: https://nfuosa.nfu.edu.tw/life.html."
     },
     "scholarship": {
@@ -5147,7 +5140,7 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "在臺北市和新北市區內，國立臺北科技大學擁有不同的學生宿舍，包含校區宿舍(東校區宿舍)及非校區宿舍(新北宿舍及南港宿舍)。房間皆為4人一間，每間房間提供電話和網路服務，在學期一開始必須繳交宿舍費用，僑生享有半價優惠，每學期約需5000元，此費用不包含寒、暑假期住宿。新生可申請宿舍住宿，前二年享有保障，第一年保障以東校區宿舍為主，第二學年起男性保障以新北宿舍為主，女性以南港宿舍為主，第三年開始由抽籤決定入住，因此第三學年開始，學生應有校外住宿的準備。臺北科技大學擁有最後分配住宿的權力。\r\n\r\n申請方式: 在確認入學後，新生可在回覆就讀意願時，同時回覆是否想要住宿於臺北科技大學宿舍。",
+      "info_cht": "在臺北市和新北市區內，國立臺北科技大學擁有不同的學生宿舍，包含校區宿舍(東校區宿舍)及非校區宿舍(新北宿舍及南港宿舍)。新生可申請宿舍住宿，前二年享有保障，第一年保障以東校區宿舍為主，第二學年起男性保障以新北宿舍為主，女性以南港宿舍為主，第三年開始由抽籤決定入住，因此第三學年開始，學生應有校外住宿的準備。臺北科技大學擁有最後分配住宿的權力。\n申請方式: 在確認入學後，新生可在回覆就讀意願時，同時回覆是否想要住宿於臺北科技大學宿舍。",
       "info_en": "Taipei Tech Dormitories include different residence halls that are situated on campus as well as various locations around the Taipei City and New Taipei City areas. The average traveling time from Taipei Tech Dormitories that are situated at other locations to the campus is approximately 35 minutes via Taipei Metro.  Four people per room. Each room is equipped with a telephone and internet service. Dormitory fees (around NT$5,000) must be paid at the beginning of each semester and do not include the cost of staying during winter and summer breaks. New students are eligible to apply to reside at Taipei Tech Dormitories for the first two years. All new international students who have applied for Taipei Tech Dormitories will be allocated to the On-campus Dormitory for the first year. For the second year, male students who have applied for Taipei Tech Dormitories will be allocated to the residence hall at the Off-campus Dormitory, a.k.a. Xinbei Dormitory. Females will be allocated to Nangang Dormitory.  Residence spaces at Taipei Tech Dormitories from the 3rd year onwards will be decided by lottery and not guaranteed to all. Students entering their 3rd year of study should be prepared to reside elsewhere. The decision of residence hall allocation rests with Taipei Tech.",
       "info_ja": "女子寮: 9,000元\n男子寮: 7,850元"
     },
@@ -6026,7 +6019,6 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "僑生新生優先保留宿舍",
       "info_en": "Priority is given to freshmen for applying accommodation."
     },
     "scholarship": {
@@ -6529,7 +6521,7 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "本校宿舍提供829個床位，分計有女生宿舍，可住427人；男生宿舍，可住402人。 境外生（包含僑生、港澳生）大學四年提申請，保證四年提供校內宿舍。提供良好的住宿環境及管理品質，從宿舍家庭化導入，達到住宿生能力社會化的目標。 一、人性化的設施－提供網路、空調、餐廳及相關生活所需的設備，滿足學生全方位的需求。 二、制度化的管理－專職輔導員愛心與細心照顧，建制嚴格的門禁管制系統，輔以教官與校安人員的協助，確保住宿品質及優質安全管理。 三、客製化的服務－依學生需求，建立必要的協助與輔導機制，定期辦理住宿生座談、各種節慶活動，增進社會能力的學習效率。",
+      "info_cht": "本校宿舍提供829個床位，分計有女生宿舍，可住427人；男生宿舍，可住402人。提供良好的住宿環境及管理品質，從宿舍家庭化導入，達到住宿生能力社會化的目標。 一、人性化的設施－提供網路、空調、餐廳及相關生活所需的設備，滿足學生全方位的需求。 二、制度化的管理－專職輔導員愛心與細心照顧，建制嚴格的門禁管制系統，輔以教官與校安人員的協助，確保住宿品質及優質安全管理。 三、客製化的服務－依學生需求，建立必要的協助與輔導機制，定期辦理住宿生座談、各種節慶活動，增進社會能力的學習效率。",
       "info_en": "We offer 829 beds, including 427 beds for female and 402 beds for male. Magazines and newspapers are available in the reception room on the first floor. There are study rooms and student lounges with cable TV on each floor. Cafeteria and snack shop are available on the first floor. Access control and surveillance systems are controlled by EasyCard. Dormitory is equipped with monitors, automatic lighting, fire extinguishers, fire hydrants and descent machines. On-site laundry facility and fridge are available on each floor. Each room contains air conditioner and internet access with single-size bed."
     },
     "scholarship": {
@@ -7982,7 +7974,7 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "僑生暨港澳生入學第一學期免住宿費，第二學期後依學業成績得申請減免。\r\n一、全額減免（減免全部住宿費）：前一學期之學業成績及操行成績均達 75 分以上者。\r\n二、半額減免（減免二分之一住宿費）：前一學期之學業成績及操行成績均達 70 分以上者。\r\n\r\n2025年住宿費參考：(1)男生宿舍：每學期新臺幣9,000元，4人一間、公共衛浴設備；(2)女生宿舍：每學期新臺幣12,000元，4人一間、獨立衛浴設備。含網路費，水電另外依使用額度計費。",
+      "info_cht": "一、全額減免（減免全部住宿費）：前一學期之學業成績及操行成績均達 75 分以上者。\r\n二、半額減免（減免二分之一住宿費）：前一學期之學業成績及操行成績均達 70 分以上者。\n2025年住宿費參考：(1)男生宿舍：每學期新臺幣9,000元，4人一間、公共衛浴設備；(2)女生宿舍：每學期新臺幣12,000元，4人一間、獨立衛浴設備。含網路費，水電另外依使用額度計費。",
       "info_en": "Each room has 4 beds. First year the fee exempt for Overseas Chinese, HK and Macao students, for the following years the exemption is based on the academic achievements.  The fee in 2025: NT$9,000/male with public bathroom; NT$12,000/female with private bathroom. The Internet is free, the utilities is charged according to the usage of each room."
     },
     "scholarship": {
@@ -8038,7 +8030,6 @@
     },
     "dormitory": {
       "available": true,
-      "info_cht": "港澳僑生保障住宿，並提供一年免費住宿(提供年限視學制而定)",
       "info_en": "Accommodation is guaranteed for students from Hong Kong, Macao and overseas Chinese, and one year of free accommodation is provided (the number of years provided depends on the academic system)"
     },
     "scholarship": {
@@ -8052,51 +8043,5 @@
     ],
     "last_updated": "2026-03-30",
     "id_104": 5112000000
-  },
-  {
-    "id": "FF",
-    "slug": "national-taiwan-normal-university-academy-of-preparatory-pro",
-    "name": {
-      "cht": "國立臺灣師範大學僑生先修部",
-      "ja": "国立台湾師範大学僑生先修部",
-      "en": "National Taiwan Normal University Academy of Preparatory Programs for Overseas Compatriot Students"
-    },
-    "type": "僑生先修部",
-    "region": "新北",
-    "address": "244014新北市林口區仁愛路一段2號",
-    "phone": "886-2-77498888",
-    "website": {
-      "cht": "https://www.nups.ntnu.edu.tw",
-      "en": "https://www.nups.ntnu.edu.tw/en"
-    },
-    "dormitory": {
-      "available": true,
-      "info_cht": "所有學生保障住宿，每間房間可容納4位學生，每間寢室均提供冷氣(另外計費)、床架、書桌及衣櫃，宿舍均有無線網路。\r\n※床墊、棉被、枕頭及生活用品可在校內商店或校外商店自行購買。",
-      "info_en": "All students are guaranteed accommodation. \r\nEach bedroom can accommodate four students. \r\nEach bedroom is equipped with air conditioning(billed separately), bed frames, desks, and wardrobes.\r\nAll dormitories have wireless internet access.\r\n※Mattresses, blankets, pillows, and daily necessities can be purchased at on-campus or off-campus stores."
-    },
-    "scholarship": {
-      "available": true,
-      "url": "https://www.nups.ntnu.edu.tw/scholarships-tuition-2"
-    },
-    "department_count": 3,
-    "data_completeness": "basic",
-    "data_sources": [
-      "hailian"
-    ],
-    "last_updated": "2026-03-30",
-    "foreign_student": {
-      "oia_url": "https://www.nups.ntnu.edu.tw/international/",
-      "admission_url": "https://www.nups.ntnu.edu.tw/international/upfiles/%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0/%E4%B8%AD%E6%96%87-2022%E5%B9%B4%E5%83%91%E7%94%9F%E5%85%88%E4%BF%AE%E9%83%A8%E8%A9%A6%E8%BE%A6%E5%A4%96%E7%B1%8D%E7%94%9F%E5%85%88%E4%BF%AE%E7%8F%AD%E7%B0%A1%E7%AB%A0.pdf",
-      "admission_links": [
-        {
-          "href": "https://www.nups.ntnu.edu.tw/international/upfiles/%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0/%E4%B8%AD%E6%96%87-2022%E5%B9%B4%E5%83%91%E7%94%9F%E5%85%88%E4%BF%AE%E9%83%A8%E8%A9%A6%E8%BE%A6%E5%A4%96%E7%B1%8D%E7%94%9F%E5%85%88%E4%BF%AE%E7%8F%AD%E7%B0%A1%E7%AB%A0.pdf",
-          "text": "招生簡章下載"
-        }
-      ],
-      "jianzhang_year": 115,
-      "data_sources": [
-        "web_research"
-      ]
-    }
   }
 ]

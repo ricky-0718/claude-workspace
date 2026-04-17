@@ -3,264 +3,125 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import Icon from '../../components/Icon.astro';
 import InlineCTA from '../../components/InlineCTA.astro';
-import { schools } from '../../data/loaders';
+import { getQsWorldRows, getQsAsiaRows, getTheWorldRows, getCheersRows } from '../../utils/rankingHelpers';
 
-import rankingsData from '../../data/rankings-2026.json';
+const qsWorldCount = getQsWorldRows().length;
+const qsAsiaCount = getQsAsiaRows().length;
+const theCount = getTheWorldRows().length;
+const cheersCount = getCheersRows().length;
 
-const rankings = rankingsData.rankings || [];
-
-// Build school slug lookup (handle name variants)
-const schoolByName = new Map<string, string>();
-for (const s of schools) {
-  const slug = s.resolvedSlug || s.slug;
-  schoolByName.set(s.name.cht, slug);
-  const stripped = s.name.cht.replace(/^天主教/, '').replace(/^學校財團法人/, '');
-  if (stripped !== s.name.cht) schoolByName.set(stripped, slug);
-}
-
-function getSlug(nameCht: string): string | null {
-  return schoolByName.get(nameCht) || schoolByName.get('天主教' + nameCht) || null;
-}
-
-function formatRank(rank: any): string {
-  if (rank == null) return '—';
-  return String(rank);
-}
-
-function sortKey(rank: any): number {
-  if (rank == null) return 99999;
-  if (typeof rank === 'number') return rank;
-  const match = String(rank).match(/^(\d+)/);
-  return match ? parseInt(match[1]) : 99998;
-}
-
-const byQsWorld = [...rankings].filter(r => r.qs_world != null).sort((a, b) => sortKey(a.qs_world) - sortKey(b.qs_world));
-const byQsAsia = [...rankings].filter(r => r.qs_asia != null).sort((a, b) => sortKey(a.qs_asia) - sortKey(b.qs_asia));
-const byThe = [...rankings].filter(r => r.the_world != null).sort((a, b) => sortKey(a.the_world) - sortKey(b.the_world));
-const byCheers = [...rankings].filter(r => r.cheers != null || r.yuanjian != null).sort((a, b) => sortKey(a.cheers) - sortKey(b.cheers));
+const rankingCards = [
+  {
+    href: '/rankings/qs-world/',
+    title: 'QS世界大学ランキング',
+    subtitle: 'QS World University Rankings 2026',
+    count: qsWorldCount,
+    description: '世界的に最も参照される大学ランキング。学術評価・雇用主評価・論文引用数・国際性など6つの指標で評価。',
+    useCase: '台湾の大学の国際的なポジションを知りたい方に',
+  },
+  {
+    href: '/rankings/qs-asia/',
+    title: 'QSアジア大学ランキング',
+    subtitle: 'QS Asia University Rankings 2026',
+    count: qsAsiaCount,
+    description: 'QS社がアジア地域に特化して発表。日本・韓国・シンガポール等の大学と比較しやすい指標。',
+    useCase: 'アジア圏での大学選びを検討している方に',
+  },
+  {
+    href: '/rankings/the/',
+    title: 'THE世界大学ランキング',
+    subtitle: 'Times Higher Education 2026',
+    count: theCount,
+    description: '教育・研究・論文引用・国際性・産業連携の5項目13指標で評価。研究志向の大学が高評価。',
+    useCase: '研究力の高い大学を選びたい方に',
+  },
+  {
+    href: '/rankings/cheers/',
+    title: '企業採用人気ランキング',
+    subtitle: 'Cheers天下雑誌・遠見雑誌 2026',
+    count: cheersCount,
+    description: '台湾企業の人事担当者アンケートに基づく「採用したい大学」ランキング。',
+    useCase: '台湾現地で就職を目指す方に',
+  },
+];
 ---
 
 <PageLayout
-  title="台湾の大学ランキング 2026年版 | 台湾大学データベース"
-  description="QS・THE・Cheers・遠見の最新ランキングで台湾の大学を比較。世界順位・アジア順位・企業人気ランキングを一覧。"
+  title="台湾の大学ランキング 2026年版（QS・THE・Cheers）| 台湾大学データベース"
+  description="台湾の大学を4つの主要ランキング（QS世界・QSアジア・THE世界・Cheers企業採用）で比較。国際評価・研究力・就職実績の観点で最適な大学を見つけられます。"
   path="/rankings/"
   pageType="rankings"
 >
   <Breadcrumb items={[{ label: 'ランキング' }]} />
 
-  <div class="mb-8">
+  <div class="mb-10">
     <h1 class="text-2xl sm:text-3xl font-bold text-text">台湾の大学ランキング</h1>
     <p class="text-sm text-text-muted mt-2 max-w-2xl">
-      4つの主要ランキングを掲載。{rankings.length}校の台湾大学を国際的な視点で比較できます。
+      台湾の大学を4つの主要ランキングで比較できます。それぞれ評価基準が異なるため、「国際性を重視するか」「研究力を重視するか」「就職実績を重視するか」で参照すべきランキングが変わります。
     </p>
-    <div class="mt-4">
-      <a href="/rankings/japan-comparison/" class="inline-flex items-center gap-2 text-sm text-primary font-medium hover:underline">
-        <Icon name="chartBar" size={16} />
-        日本の大学と比較する →
+  </div>
+
+  <!-- Ranking cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+    {rankingCards.map(card => (
+      <a
+        href={card.href}
+        class="group bg-white border border-warm-200 rounded-2xl p-6 hover:border-primary hover:shadow-md transition-all"
+      >
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <h2 class="text-lg font-bold text-text group-hover:text-primary transition-colors">{card.title}</h2>
+            <p class="text-xs text-text-muted mt-0.5">{card.subtitle}</p>
+          </div>
+          <span class="text-xs font-bold bg-warm-50 text-text-muted px-2.5 py-1 rounded-full whitespace-nowrap">
+            {card.count}校
+          </span>
+        </div>
+        <p class="text-sm text-text-muted leading-relaxed mb-3">{card.description}</p>
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-text-muted">{card.useCase}</span>
+          <span class="text-primary font-medium group-hover:underline inline-flex items-center gap-1">
+            一覧を見る
+            <Icon name="chevronRight" size={14} />
+          </span>
+        </div>
       </a>
-    </div>
+    ))}
   </div>
 
-  <!-- Tab navigation — 4 tabs -->
-  <div class="flex gap-1 border-b border-warm-200 mb-6 overflow-x-auto" id="ranking-tabs">
-    <button class="tab-btn active px-4 py-2.5 text-sm font-medium border-b-2 border-primary text-primary whitespace-nowrap" data-tab="qs-world">QS世界</button>
-    <button class="tab-btn px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-text-muted hover:text-text whitespace-nowrap" data-tab="qs-asia">QSアジア</button>
-    <button class="tab-btn px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-text-muted hover:text-text whitespace-nowrap" data-tab="the-world">THE世界</button>
-    <button class="tab-btn px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-text-muted hover:text-text whitespace-nowrap" data-tab="employer">企業人気</button>
-  </div>
-
-  <!-- ====== QS World ====== -->
-  <div class="tab-content" id="tab-qs-world">
-    <div class="bg-white border border-warm-200 rounded-2xl overflow-hidden">
-      <div class="px-5 py-3 bg-warm-50 border-b border-warm-200">
-        <h2 class="text-sm font-bold text-text">QS World University Rankings 2026</h2>
-        <p class="text-xs text-text-muted mt-0.5">Quacquarelli Symonds社による世界大学ランキング（{byQsWorld.length}校掲載）</p>
+  <!-- Japan comparison link -->
+  <div class="bg-gradient-to-r from-accent-light/40 to-warm-50 border border-warm-200 rounded-2xl p-6 mb-10">
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white flex items-center justify-center text-primary">
+        <Icon name="chartBar" size={24} />
       </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="border-b border-warm-200 text-left">
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-20">世界順位</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider">大学名</th>
-            </tr>
-          </thead>
-          <tbody>
-            {byQsWorld.map((r, i) => {
-              const slug = getSlug(r.name_cht);
-              return (
-                <tr class={`border-b border-warm-100 last:border-b-0 ${i < 3 ? 'bg-accent-light/30' : ''}`}>
-                  <td class="px-5 py-3 font-bold text-primary">{formatRank(r.qs_world)}</td>
-                  <td class="px-5 py-3">
-                    {slug ? (
-                      <a href={`/universities/${slug}/`} class="text-text hover:text-primary transition-colors font-medium">
-                        {r.name_cht}
-                      </a>
-                    ) : (
-                      <span class="text-text">{r.name_cht}</span>
-                    )}
-                    <div class="text-xs text-text-muted mt-0.5">{r.name_en}</div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div class="flex-1">
+        <h2 class="text-base font-bold text-text mb-1">日本の大学と比較する</h2>
+        <p class="text-sm text-text-muted mb-3">
+          「台湾の国立大学は日本のどのレベル？」を可視化。QS世界ランキングで日本と台湾の大学を横並びで比較できます。
+        </p>
+        <a href="/rankings/japan-comparison/" class="inline-flex items-center gap-1.5 text-sm text-primary font-medium hover:underline">
+          日本 vs 台湾の比較を見る
+          <Icon name="chevronRight" size={14} />
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- ====== QS Asia ====== -->
-  <div class="tab-content hidden" id="tab-qs-asia">
-    <div class="bg-white border border-warm-200 rounded-2xl overflow-hidden">
-      <div class="px-5 py-3 bg-warm-50 border-b border-warm-200">
-        <h2 class="text-sm font-bold text-text">QS Asia University Rankings 2026</h2>
-        <p class="text-xs text-text-muted mt-0.5">アジア地域に特化したQSランキング（{byQsAsia.length}校掲載）</p>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="border-b border-warm-200 text-left">
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-20">アジア順位</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider">大学名</th>
-            </tr>
-          </thead>
-          <tbody>
-            {byQsAsia.map((r, i) => {
-              const slug = getSlug(r.name_cht);
-              return (
-                <tr class={`border-b border-warm-100 last:border-b-0 ${i < 3 ? 'bg-accent-light/30' : ''}`}>
-                  <td class="px-5 py-3 font-bold text-primary">{formatRank(r.qs_asia)}</td>
-                  <td class="px-5 py-3">
-                    {slug ? (
-                      <a href={`/universities/${slug}/`} class="text-text hover:text-primary transition-colors font-medium">
-                        {r.name_cht}
-                      </a>
-                    ) : (
-                      <span class="text-text">{r.name_cht}</span>
-                    )}
-                    <div class="text-xs text-text-muted mt-0.5">{r.name_en}</div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <!-- How to use rankings -->
+  <div class="bg-white border border-warm-200 rounded-2xl p-6 mb-10">
+    <h2 class="text-base font-bold text-text mb-3">ランキングの使い分け方</h2>
+    <ul class="space-y-2.5 text-sm text-text-muted">
+      <li class="flex gap-2"><span class="text-primary font-bold">・</span><span><strong class="text-text">国際的な知名度を重視する場合：</strong>QS世界ランキングが最も参照される</span></li>
+      <li class="flex gap-2"><span class="text-primary font-bold">・</span><span><strong class="text-text">アジア圏での進路を考える場合：</strong>QSアジアで他アジア諸国と比較</span></li>
+      <li class="flex gap-2"><span class="text-primary font-bold">・</span><span><strong class="text-text">研究者・大学院進学を視野に：</strong>THE世界ランキングが研究実績に強い</span></li>
+      <li class="flex gap-2"><span class="text-primary font-bold">・</span><span><strong class="text-text">台湾現地で就職を目指す：</strong>Cheers・遠見の企業採用ランキング</span></li>
+    </ul>
   </div>
-
-  <!-- ====== THE World ====== -->
-  <div class="tab-content hidden" id="tab-the-world">
-    <div class="bg-white border border-warm-200 rounded-2xl overflow-hidden">
-      <div class="px-5 py-3 bg-warm-50 border-b border-warm-200">
-        <h2 class="text-sm font-bold text-text">Times Higher Education World University Rankings 2026</h2>
-        <p class="text-xs text-text-muted mt-0.5">英Times Higher Education社による世界大学ランキング（{byThe.length}校掲載）</p>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="border-b border-warm-200 text-left">
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-20">世界順位</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider">大学名</th>
-            </tr>
-          </thead>
-          <tbody>
-            {byThe.map((r, i) => {
-              const slug = getSlug(r.name_cht);
-              return (
-                <tr class={`border-b border-warm-100 last:border-b-0 ${i < 3 ? 'bg-accent-light/30' : ''}`}>
-                  <td class="px-5 py-3 font-bold text-primary">{formatRank(r.the_world)}</td>
-                  <td class="px-5 py-3">
-                    {slug ? (
-                      <a href={`/universities/${slug}/`} class="text-text hover:text-primary transition-colors font-medium">
-                        {r.name_cht}
-                      </a>
-                    ) : (
-                      <span class="text-text">{r.name_cht}</span>
-                    )}
-                    <div class="text-xs text-text-muted mt-0.5">{r.name_en}</div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- ====== Employer (Cheers + 遠見) ====== -->
-  <div class="tab-content hidden" id="tab-employer">
-    <div class="bg-white border border-warm-200 rounded-2xl overflow-hidden">
-      <div class="px-5 py-3 bg-warm-50 border-b border-warm-200">
-        <h2 class="text-sm font-bold text-text">企業が最も採用したい大学 2026</h2>
-        <p class="text-xs text-text-muted mt-0.5">Cheers天下雑誌・遠見雑誌による台湾企業アンケート（{byCheers.length}校掲載）</p>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="border-b border-warm-200 text-left">
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider w-20">Cheers</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider">大学名</th>
-              <th class="px-5 py-3 text-xs font-medium text-text-muted uppercase tracking-wider text-right w-20">遠見</th>
-            </tr>
-          </thead>
-          <tbody>
-            {byCheers.map((r, i) => {
-              const slug = getSlug(r.name_cht);
-              return (
-                <tr class={`border-b border-warm-100 last:border-b-0 ${i < 3 ? 'bg-accent-light/30' : ''}`}>
-                  <td class="px-5 py-3 font-bold text-primary">{formatRank(r.cheers)}</td>
-                  <td class="px-5 py-3">
-                    {slug ? (
-                      <a href={`/universities/${slug}/`} class="text-text hover:text-primary transition-colors font-medium">
-                        {r.name_cht}
-                      </a>
-                    ) : (
-                      <span class="text-text">{r.name_cht}</span>
-                    )}
-                    <div class="text-xs text-text-muted mt-0.5">{r.name_en}</div>
-                  </td>
-                  <td class="px-5 py-3 text-right text-text-muted font-medium">{formatRank(r.yuanjian)}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Data note -->
-  <p class="text-xs text-text-muted mt-6 text-center">
-    データ出典: QS TopUniversities / Times Higher Education / Cheers天下雑誌 / 遠見雑誌（2026年版）
-  </p>
 
   <InlineCTA
-    heading="評定3.0でも国立大学に合格した実績あり"
-    body="自分の成績でどの大学に入れるか、無料ガイドブックで確認できます。費用・語学要件・出願手順まで1冊で網羅。"
+    heading="ランキングだけで大学は決められない"
+    body="出願要件・語学レベル・日本人受入実績・学費の全てを考慮した進路選びを、無料ガイドブックで解説。"
     pageType="rankings"
   />
 </PageLayout>
-
-<script>
-  const tabs = document.querySelectorAll('.tab-btn');
-  const contents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = (tab as HTMLElement).dataset.tab;
-
-      tabs.forEach(t => {
-        t.classList.remove('active', 'border-primary', 'text-primary');
-        t.classList.add('border-transparent', 'text-text-muted');
-      });
-      tab.classList.add('active', 'border-primary', 'text-primary');
-      tab.classList.remove('border-transparent', 'text-text-muted');
-
-      contents.forEach(c => {
-        c.classList.toggle('hidden', c.id !== `tab-${target}`);
-      });
-    });
-  });
-</script>

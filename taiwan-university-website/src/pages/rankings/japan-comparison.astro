@@ -93,13 +93,34 @@ function formatRank(rank: any): string {
     </h2>
 
     {bands.filter(b => b.taiwan.length > 0 || b.japan.length > 0).map(band => (
-      <div class="mb-8">
+      <div class="mb-8" data-comparison-band>
         <h3 class="text-sm font-bold text-text-muted uppercase tracking-wider mb-3 px-1">
           QS World {band.label}
         </h3>
+
+        <!-- Mobile-only tab switcher -->
+        <div class="sm:hidden flex border-b border-warm-200 mb-3" role="tablist">
+          <button
+            type="button"
+            class="comp-tab flex-1 py-2 text-xs font-bold text-primary border-b-2 border-primary -mb-px transition-colors"
+            data-tab="tw"
+            aria-selected="true"
+          >
+            台湾 ({band.taiwan.length})
+          </button>
+          <button
+            type="button"
+            class="comp-tab flex-1 py-2 text-xs font-bold text-text-muted border-b-2 border-transparent -mb-px transition-colors"
+            data-tab="jp"
+            aria-selected="false"
+          >
+            日本 ({band.japan.length})
+          </button>
+        </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <!-- Taiwan column -->
-          <div class="bg-primary-50 border border-primary-light rounded-2xl overflow-hidden">
+          <div class="comp-pane bg-primary-50 border border-primary-light rounded-2xl overflow-hidden" data-pane="tw">
             <div class="px-4 py-2.5 bg-primary text-white text-xs font-bold uppercase tracking-wider">
               台湾
             </div>
@@ -118,8 +139,8 @@ function formatRank(rank: any): string {
             </div>
           </div>
 
-          <!-- Japan column -->
-          <div class="bg-warm-50 border border-warm-200 rounded-2xl overflow-hidden">
+          <!-- Japan column (hidden on mobile by default; tab toggle reveals) -->
+          <div class="comp-pane bg-warm-50 border border-warm-200 rounded-2xl overflow-hidden hidden sm:block" data-pane="jp">
             <div class="px-4 py-2.5 bg-warm-300 text-text text-xs font-bold uppercase tracking-wider">
               日本
             </div>
@@ -141,6 +162,38 @@ function formatRank(rank: any): string {
       </div>
     ))}
   </section>
+
+  <script is:inline>
+    // Mobile-only tab toggle for comparison bands.
+    // Event delegation: one listener handles all bands.
+    document.addEventListener('click', (event) => {
+      const btn = event.target.closest('.comp-tab');
+      if (!btn) return;
+      const band = btn.closest('[data-comparison-band]');
+      if (!band) return;
+      const target = btn.dataset.tab;
+
+      // Update tab button states
+      band.querySelectorAll('.comp-tab').forEach((b) => {
+        const isActive = b.dataset.tab === target;
+        b.setAttribute('aria-selected', String(isActive));
+        b.classList.toggle('text-primary', isActive);
+        b.classList.toggle('border-primary', isActive);
+        b.classList.toggle('text-text-muted', !isActive);
+        b.classList.toggle('border-transparent', !isActive);
+      });
+
+      // Toggle pane visibility (mobile only — sm: classes keep both visible on desktop)
+      band.querySelectorAll('.comp-pane').forEach((pane) => {
+        if (pane.dataset.pane === target) {
+          pane.classList.remove('hidden');
+        } else {
+          pane.classList.add('hidden');
+          pane.classList.add('sm:block');
+        }
+      });
+    });
+  </script>
 
   <!-- Tuition comparison -->
   <section class="mt-12 bg-white border border-warm-200 rounded-2xl p-6 sm:p-8" data-reveal>
@@ -174,7 +227,7 @@ function formatRank(rank: any): string {
   <section class="mt-12 text-center" data-reveal>
     <p class="text-sm text-text-muted mb-4">台湾留学の費用対効果の高さに興味を持ったら</p>
     <a
-      href="https://sub.ryugaku101.com/line/open/25Cs24s6JgYa/l0yyCyX2euWG"
+      href="https://sub.ryugaku101.com/line/open/25Cs24s6JgYa/l0yyCyX2euWG?src=db&page=ranking-comparison"
       target="_blank"
       rel="noopener noreferrer"
       class="inline-flex items-center gap-2 bg-line hover:bg-line-dark text-white px-7 py-3.5 rounded-xl text-base font-bold transition-colors duration-150"

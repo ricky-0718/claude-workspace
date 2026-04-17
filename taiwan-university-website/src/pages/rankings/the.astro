@@ -1,0 +1,61 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import RankingTable from '../../components/RankingTable.astro';
+import InlineCTA from '../../components/InlineCTA.astro';
+import { buildSchoolSlugResolver, getTheWorldRows } from '../../utils/rankingHelpers';
+
+const rows = getTheWorldRows();
+const getSlug = buildSchoolSlugResolver();
+---
+
+<PageLayout
+  title="THE世界大学ランキング 2026 台湾大学順位 | 台湾大学データベース"
+  description="Times Higher Education世界大学ランキング2026年版の台湾大学一覧。教育・研究・論文引用・国際性の観点で評価。"
+  path="/rankings/the/"
+  pageType="rankings"
+>
+  <Breadcrumb items={[
+    { label: 'ランキング', href: '/rankings/' },
+    { label: 'THE世界' }
+  ]} />
+
+  <div class="mb-8">
+    <h1 class="text-2xl sm:text-3xl font-bold text-text">THE世界大学ランキング 2026（台湾）</h1>
+    <p class="text-sm text-text-muted mt-2 max-w-2xl">
+      英Times Higher Education（THE）社による世界大学ランキング。
+      教育環境・研究力・論文引用・国際性・産業連携の5項目13指標で評価され、QSランキングと並ぶ国際的な基準です。
+      研究志向の強い大学ほど高評価になる傾向があります。
+    </p>
+  </div>
+
+  <RankingTable
+    title="Times Higher Education World University Rankings 2026"
+    description="英Times Higher Education社による世界大学ランキング"
+    primaryLabel="世界順位"
+    rows={rows}
+    getSlug={getSlug}
+  />
+
+  <p class="text-xs text-text-muted mt-6 text-center">
+    データ出典: Times Higher Education（2026年版）
+  </p>
+
+  <div class="mt-8 flex flex-wrap gap-3 justify-center text-sm">
+    <a href="/rankings/qs-world/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      QS世界ランキングを見る →
+    </a>
+    <a href="/rankings/qs-asia/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      QSアジアランキングを見る →
+    </a>
+    <a href="/rankings/cheers/" class="px-4 py-2 rounded-full border border-warm-200 hover:border-primary hover:text-primary transition-colors">
+      企業採用ランキングを見る →
+    </a>
+  </div>
+
+  <InlineCTA
+    heading="研究力の高い大学を選ぶなら"
+    body="THE上位校の出願要件・研究分野・日本人受入枠を、無料ガイドブックで解説。"
+    pageType="rankings"
+  />
+</PageLayout>
