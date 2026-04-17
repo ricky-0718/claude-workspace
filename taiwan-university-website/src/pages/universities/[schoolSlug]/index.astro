@@ -322,15 +322,44 @@ for (const d of departments) {
   />
 
   <!-- ====== Tuition ====== -->
-  {school.tuition && school.tuition.length > 0 && (
+  {(school.foreign_tuition || (school.tuition && school.tuition.length > 0)) && (
     <section class="mt-8" data-reveal>
       <h2 class="text-base font-bold text-text mb-3 flex items-center gap-2">
         <Icon name="currency" size={18} class="text-primary" />
         学費一覧
       </h2>
-      <div class="bg-white border border-warm-200 rounded-2xl p-5">
-        <TuitionTable items={school.tuition} />
-      </div>
+
+      {school.foreign_tuition && (
+        <div class="bg-primary/5 border border-primary/15 rounded-2xl p-5 mb-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-primary">留学生の学費（1学期あたり）</h3>
+            {school.foreign_tuition.confidence === 'high' && (
+              <span class="shrink-0 text-[10px] font-medium bg-green-100 text-green-700 rounded-full px-2 py-0.5">公式データ</span>
+            )}
+            {school.foreign_tuition.confidence === 'medium' && (
+              <span class="shrink-0 text-[10px] font-medium bg-yellow-100 text-yellow-700 rounded-full px-2 py-0.5">参考値</span>
+            )}
+          </div>
+          <p class="text-lg font-bold text-text">{school.foreign_tuition.undergraduate_per_semester}</p>
+          {school.foreign_tuition.jpy_equivalent && (
+            <p class="text-sm text-text-muted mt-0.5">{school.foreign_tuition.jpy_equivalent}</p>
+          )}
+          {school.foreign_tuition.notes && (
+            <p class="text-xs text-text-muted mt-2">{school.foreign_tuition.notes}</p>
+          )}
+          <p class="text-[10px] text-text-muted/60 mt-2">
+            出典: {school.foreign_tuition.source_url ? (
+              <a href={school.foreign_tuition.source_url} target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">{school.foreign_tuition.source}</a>
+            ) : school.foreign_tuition.source}
+          </p>
+        </div>
+      )}
+
+      {school.tuition && school.tuition.length > 0 && (
+        <div class="bg-white border border-warm-200 rounded-2xl p-5">
+          <TuitionTable items={school.tuition} />
+        </div>
+      )}
     </section>
   )}
 

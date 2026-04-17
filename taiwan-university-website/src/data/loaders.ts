@@ -60,6 +60,16 @@ export interface ForeignStudent {
   admission_links?: { href: string; text: string }[];
 }
 
+export interface ForeignTuition {
+  undergraduate_per_semester: string;
+  jpy_equivalent?: string;
+  source: string;
+  source_url?: string;
+  extracted_at: string;
+  confidence: 'high' | 'medium' | 'low';
+  notes?: string;
+}
+
 export interface School {
   id: string;
   slug: string;
@@ -76,6 +86,7 @@ export interface School {
   language_req?: { chinese?: string; english?: string };
   ja_description?: string;
   tuition?: TuitionItem[];
+  foreign_tuition?: ForeignTuition;
   student_count?: StudentCount;
   department_count?: number;
   data_completeness: 'full' | 'enriched' | 'basic';
