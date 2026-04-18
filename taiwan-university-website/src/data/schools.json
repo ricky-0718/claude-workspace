@@ -354,7 +354,8 @@
     "ja_description": "1922年創立、台湾トップの教育大学\n華語（中国語）教育の最高峰として世界的に有名\n9学院・59学科、学生数約16,800人\nMRT古亭駅・台電大楼駅から徒歩圏内の好立地\n附属の華語文教学センター（MTC）は世界最大級の中国語学習機関",
     "student_count": {
       "total": 16808,
-      "foreign": 666
+      "foreign": 666,
+      "japanese": 114
     },
     "tuition": [
       {
@@ -437,8 +438,9 @@
     },
     "id_104": 5180000000,
     "student_count": {
+      "total": 22521,
       "foreign": 634,
-      "total": 22521
+      "japanese": 11
     },
     "tuition": [
       {
@@ -524,8 +526,9 @@
     },
     "id_104": 5002000000,
     "student_count": {
+      "total": 18393,
       "foreign": 962,
-      "total": 18393
+      "japanese": 51
     },
     "tuition": [
       {
@@ -769,8 +772,9 @@
     },
     "id_104": 5001000000,
     "student_count": {
+      "total": 16784,
       "foreign": 654,
-      "total": 16784
+      "japanese": 84
     },
     "tuition": [
       {
@@ -929,6 +933,11 @@
       "jpy_equivalent": "約23~26万円/学期",
       "source_url": "https://www.overseas.edu.tw/en/school/national-taipei-university/",
       "notes": "国立。overseas.edu.tw年額45,691~52,668が学期額の可能性も高い（NCU同水準の国立大）"
+    },
+    "student_count": {
+      "total": 10277,
+      "foreign": 461,
+      "japanese": 12
     }
   },
   {
@@ -1227,8 +1236,9 @@
     },
     "id_104": 5009000000,
     "student_count": {
+      "total": 11204,
       "foreign": 418,
-      "total": 11204
+      "japanese": 17
     },
     "tuition": [
       {
@@ -1676,8 +1686,9 @@
     },
     "id_104": 5178000000,
     "student_count": {
+      "total": 7840,
       "foreign": 34,
-      "total": 7840
+      "japanese": 8
     },
     "tuition": [
       {
@@ -1987,6 +1998,11 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/National%20University%20of%20Kaohsiung%20and%20sunflower%20field%2020180305.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立高雄大學 キャンパス"
+    },
+    "student_count": {
+      "total": 5986,
+      "foreign": 246,
+      "japanese": 22
     }
   },
   {
@@ -2027,6 +2043,11 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%8F%B0%E7%81%A3%E8%97%9D%E8%A1%93%E5%A4%A7%E5%AD%B8%E5%9C%8B%E9%9A%9B%E4%BA%8B%E5%8B%99%E8%99%95%2020150528.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立臺灣藝術大學 キャンパス"
+    },
+    "student_count": {
+      "total": 5614,
+      "foreign": 317,
+      "japanese": 16
     }
   },
   {
@@ -2252,6 +2273,11 @@
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/National_Taiwan_Sport_University_Campus.jpg/960px-National_Taiwan_Sport_University_Campus.jpg",
       "attribution": "CC BY-SA 4.0 via Chinese Wikipedia",
       "alt": "國立體育大學 キャンパス"
+    },
+    "student_count": {
+      "total": 2733,
+      "foreign": 93,
+      "japanese": 1
     }
   },
   {
@@ -2757,8 +2783,9 @@
     },
     "id_104": 5060000000,
     "student_count": {
+      "total": 16404,
       "foreign": 548,
-      "total": 16404
+      "japanese": 113
     },
     "tuition": [
       {
@@ -2890,8 +2917,9 @@
     },
     "id_104": 5058000000,
     "student_count": {
+      "total": 25454,
       "foreign": 323,
-      "total": 25454
+      "japanese": 63
     },
     "tuition": [
       {
@@ -2979,8 +3007,9 @@
     },
     "id_104": 5057000000,
     "student_count": {
+      "total": 15638,
       "foreign": 570,
-      "total": 15638
+      "japanese": 68
     },
     "tuition": [
       {
@@ -3086,8 +3115,9 @@
     },
     "id_104": 5062000000,
     "student_count": {
+      "total": 16834,
       "foreign": 517,
-      "total": 16834
+      "japanese": 94
     },
     "tuition": [
       {
@@ -3166,8 +3196,9 @@
     },
     "id_104": 5063000000,
     "student_count": {
+      "total": 21420,
       "foreign": 441,
-      "total": 21420
+      "japanese": 146
     },
     "tuition": [
       {
@@ -3693,6 +3724,11 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Shih%20Chien%20University%20Main%20Campus%2020151129.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "實踐大學 キャンパス"
+    },
+    "student_count": {
+      "total": 11875,
+      "foreign": 600,
+      "japanese": 106
     }
   },
   {
@@ -4700,6 +4736,11 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/MCU%20Taipei%20Campus%20stele%2020050201.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "銘傳大學(臺北) キャンパス"
+    },
+    "student_count": {
+      "total": 18256,
+      "foreign": 2063,
+      "japanese": 86
     }
   },
   {
