@@ -172,6 +172,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/National%20Taiwan%20University%20Library%2020060802.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立臺灣大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 50,460~62,100",
+      "source": "114學年度 國際學生學費標準表",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約25~31万円/学期",
+      "source_url": "https://admissions.ntu.edu.tw/fees-scholarships/tuition-fees/",
+      "notes": "文系50,460、理工系58,520~58,940、医学系62,100"
     }
   },
   {
@@ -364,6 +373,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E8%87%BA%E5%B8%AB%E5%A4%A7%E8%A1%8C%E6%94%BF%E5%A4%A7%E6%A8%93%E8%88%87%E8%81%96%E8%AA%95%E6%A8%B9%2020120107.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立臺灣師範大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 56,000",
+      "source": "NTNU OIA FAQ（外国人学生向け）",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約28万円/学期",
+      "source_url": "https://bds.oia.ntnu.edu.tw/bds/en/web/faq-1",
+      "notes": "全学部一律年間NTD 112,000（学期56,000）。overseas.edu.twの47,180~55,200は僑生レート"
     }
   },
   {
@@ -440,6 +458,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/National%20Yang%20Ming%20Chiao%20Tung%20University%2020210203.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立陽明交通大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 49,540~60,220",
+      "source": "NYCU OIA公式ページ",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約25~30万円/学期",
+      "source_url": "https://oia.nycu.edu.tw/oia/en/app/artwebsite/view?module=artwebsite&id=793&serno=956748ed-280d-465c-a69e-c9ce53c2561e",
+      "notes": "医学部230,280、歯学部210,480は別格。一般学部は49,540~60,220"
     }
   },
   {
@@ -518,6 +545,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NTHU%20entrance.JPG&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立清華大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 49,000~57,000",
+      "source": "overseas.edu.tw + 既存データ照合",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約25~29万円/学期",
+      "source_url": "https://oga.site.nthu.edu.tw/p/412-1524-18672.php?Lang=zh-tw",
+      "notes": "学費基数+単位制。overseas.edu.tw年額48,740~57,260を外国人2倍換算"
     }
   },
   {
@@ -630,6 +666,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E6%88%90%E5%8A%9F%E5%A4%A7%E5%AD%B8%20026.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立成功大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 45,071~71,891",
+      "source": "overseas.edu.tw 外国人学生年額÷2",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約23~36万円/学期",
+      "source_url": "https://www.overseas.edu.tw/school/ncku/",
+      "notes": "文系45,071、理工系53,583、医学部71,891。overseas.edu.twで明示的にInternational studentsと記載"
     }
   },
   {
@@ -745,6 +790,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NCCU%20Shiwei%20Hall%2020220815.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立政治大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 49,020~56,860",
+      "source": "overseas.edu.tw + 115學年度招生簡章",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約25~28万円/学期",
+      "source_url": "https://www.overseas.edu.tw/school/national-chengchi-university/",
+      "notes": "overseas.edu.twで学期額として明示。簡章のtuition_infoとも一致"
     }
   },
   {
@@ -790,6 +844,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NTOU%20main%20gate%2020220922%20(cropped).jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立臺灣海洋大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 48,280~55,620",
+      "source": "NTOU教務処Fee Information + 外国人2倍ルール",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約24~28万円/学期",
+      "source_url": "https://academic.ntou.edu.tw/p/412-1005-3458.php?Lang=en",
+      "notes": "国立。公式サイトの本国生学期額24,140~27,810を外国人2倍ルールで換算"
     }
   },
   {
@@ -857,6 +920,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NTPU%20Minsheng%20Campus%20maingate%2020061207.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立臺北大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 45,691~52,668",
+      "source": "overseas.edu.tw 年額×外国人2倍ルール",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約23~26万円/学期",
+      "source_url": "https://www.overseas.edu.tw/en/school/national-taipei-university/",
+      "notes": "国立。overseas.edu.tw年額45,691~52,668が学期額の可能性も高い（NCU同水準の国立大）"
     }
   },
   {
@@ -938,6 +1010,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NCHU%20main%20gate%20front%20view%2020210109.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立中興大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 45,691~56,876",
+      "source": "NCHU OIA Tuition Fees page",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約23~28万円/学期",
+      "source_url": "https://oia.nchu.edu.tw/index.php/zh/2-prospective-students-tw/2-4-fees-and-financing-tw/2-4-1-tuition-fees-tw",
+      "notes": "文系45,691、管理/法政46,091~48,430、理工55,304~55,754、獣医56,876。外国人=本国生×2を明示"
     }
   },
   {
@@ -1008,6 +1089,15 @@
       "the_world": "1201-1500",
       "cheers": null,
       "yuanjian": null
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 48,000~56,000",
+      "source": "既存schools.json（外国人学生ラベル付き）+ 類似国立大比較",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約24~28万円/学期",
+      "source_url": "https://oia.ccu.edu.tw/",
+      "notes": "NCU/NCHUと同水準の国立大学。公式PDF未取得のため既存データと類似校比較で検証"
     }
   },
   {
@@ -1074,6 +1164,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Central%20University%20of%20Jhongli%E2%85%A1.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立中央大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 45,691~53,183",
+      "source": "NCU Admissions公式ページ",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約23~27万円/学期",
+      "source_url": "https://cis.ncu.edu.tw/admissions/menu.content/view/sn/79",
+      "notes": "文系45,691、管理46,091、工学52,668、理学53,183"
     }
   },
   {
@@ -1149,6 +1248,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/2017%20NSYSU%20maingate.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立中山大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 49,460~57,880",
+      "source": "overseas.edu.tw 外国人2倍換算",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約25~29万円/学期",
+      "source_url": "https://www.overseas.edu.tw/school/national-sun-yat-sen-university/",
+      "notes": "文系49,460、管理50,260、理工57,420~57,880。医学部は142,318(後学士)"
     }
   },
   {
@@ -1233,6 +1341,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%9C%8B%E7%AB%8B%E6%9D%B1%E8%8F%AF%E5%A4%A7%E5%AD%B8%E5%9C%96%E6%9B%B8%E9%A4%A8%20National%20Dong%20Hwa%20University%20Library.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立東華大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 48,000~55,580",
+      "source": "overseas.edu.tw + 外国人2倍ルール",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約24~28万円/学期",
+      "source_url": "https://www.overseas.edu.tw/school/national-dong-hwa-university/",
+      "notes": "国立。overseas.edu.tw年額を外国人2倍換算。花蓮のため生活費は比較的安い"
     }
   },
   {
@@ -2385,6 +2502,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/CMU%2020061030.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "中國醫藥大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 56,126~65,425",
+      "source": "CMU公式学費標準表（113學年度）",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約28~33万円/学期",
+      "source_url": "https://adm02.cmu.edu.tw/acc_doc/standard/1130702update.pdf",
+      "notes": "私立医大。薬学/公衆衛生56,126、医学/中医63,808、歯学65,425。外国人も同額"
     }
   },
   {
@@ -2541,6 +2667,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Tku.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "淡江大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 46,880~54,720",
+      "source": "TKU校務情報公開ページ（113學年度）",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約23~27万円/学期",
+      "source_url": "https://info.tku.edu.tw/allowance.aspx",
+      "notes": "私立。文系46,880、工学/AI 54,720。外国人も本国生と同額。健保NTD 4,956別途"
     }
   },
   {
@@ -2643,6 +2778,15 @@
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Chung_Yuan_Christian_University_entrance_20150813.jpg/960px-Chung_Yuan_Christian_University_entrance_20150813.jpg",
       "attribution": "CC BY-SA 4.0 via Chinese Wikipedia",
       "alt": "中原大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 46,060~54,870",
+      "source": "overseas.edu.tw 年額÷2",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約23~27万円/学期",
+      "source_url": "https://www.overseas.edu.tw/en/school/chung-yuan-christian-university/",
+      "notes": "私立。法学46,060、工学/電資/デザイン54,870。overseas.edu.twの年額を半分に換算"
     }
   },
   {
@@ -2767,6 +2911,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/FJU%20Gate01.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "天主教輔仁大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 47,430~66,990",
+      "source": "115學年度 外國學生招生簡章 + overseas.edu.tw",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約24~33万円/学期",
+      "source_url": "http://idsa.oie.docs.fju.edu.tw/Fall2026/FJCU_115-1Admission.pdf",
+      "notes": "私立。overseas.edu.tw年額94,860~145,000 → 学期47,430~72,500"
     }
   },
   {
@@ -2847,6 +3000,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E8%B7%AF%E6%80%9D%E7%BE%A9%E7%9A%84%E7%90%86%E5%BF%B5.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "東海大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 48,217~69,020",
+      "source": "THU会計処 + 国際学院公式",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約24~35万円/学期",
+      "source_url": "https://account.thu.edu.tw/",
+      "notes": "私立。文系48,217~50,510。国際学院IBA/IDP 69,020、SSM 76,800は別料金"
     }
   },
   {
@@ -3025,6 +3187,15 @@
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Rain_in_West_Gate%2C_FCU_Main_Campus_20190817.jpg/960px-Rain_in_West_Gate%2C_FCU_Main_Campus_20190817.jpg",
       "attribution": "CC BY-SA 4.0 via Chinese Wikipedia",
       "alt": "逢甲大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 47,080~65,960",
+      "source": "overseas.edu.tw 年額÷2",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約24~33万円/学期",
+      "source_url": "https://www.overseas.edu.tw/en/school/feng-chia-university/",
+      "notes": "私立。人文47,080、工学54,970、建築65,960。104學年度以降外国人は本国生の1.2倍ルール"
     }
   },
   {
@@ -3228,6 +3399,15 @@
       "the_world": "601-800",
       "cheers": null,
       "yuanjian": null
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 47,080~56,239",
+      "source": "overseas.edu.tw + studyabroadaide.com",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約24~28万円/学期",
+      "source_url": "https://gao.yzu.edu.tw/",
+      "notes": "私立。外国人は本国生の1.2倍の可能性あり。人文47,080、工学/電機56,239"
     }
   },
   {
@@ -3291,6 +3471,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/CGU%20Medical%20Building%2020040415.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "長庚大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 38,758~59,547",
+      "source": "CGU国際学生募集公式ページ",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約19~30万円/学期",
+      "source_url": "https://www.cgu.edu.tw/recruit_intl/Contents?nodeId=15117",
+      "notes": "私立。管理38,758、工学44,537、医学46,807、中医59,547。長庚グループ支援で比較的安価"
     }
   },
   {
@@ -3715,6 +3904,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E8%87%BA%E5%8C%97%E9%86%AB%E5%AD%B8%E5%A4%A7%E5%AD%B8%E6%A0%A1%E9%96%80%E5%8F%A3.JPG&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "臺北醫學大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 53,450~75,000",
+      "source": "TMU OGE + 二次情報源",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約27~38万円/学期",
+      "source_url": "https://oge.tmu.edu.tw/admission/graduate/fees-scholarships/",
+      "notes": "私立医大。大学院53,450確認済み、学部は医学系で75,000程度と推定"
     }
   },
   {
@@ -3862,6 +4060,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E9%95%B7%E6%A6%AE%E5%A4%A7%E5%AD%B8%E8%A1%8C%E6%94%BF%E5%A4%A7%E6%A8%93.JPG&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "長榮大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 45,150~56,000",
+      "source": "CJCU公式境外生招生ページ（114學年度）",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約23~28万円/学期",
+      "source_url": "https://dweb.cjcu.edu.tw/overseas_student/article/7074",
+      "notes": "私立。人文45,150、管理46,210、資訊設計50,730~52,740、健康科学56,000"
     }
   },
   {
@@ -4599,6 +4806,15 @@
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Kaohsiung_Medical_University_2.jpg/960px-Kaohsiung_Medical_University_2.jpg",
       "attribution": "CC BY-SA 4.0 via Chinese Wikipedia",
       "alt": "高雄醫學大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 45,514~71,159",
+      "source": "KMU公式学費ページ",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約23~36万円/学期",
+      "source_url": "https://info.kmu.edu.tw/index.php/adjustment/tuition-fees-grants/charges",
+      "notes": "私立医大。人文45,514、医学55,848~71,159。2005年以降学費据え置き"
     }
   },
   {
@@ -4643,6 +4859,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E4%BA%9E%E6%B4%B2%E5%A4%A7%E5%AD%B8%20Asia%20University%20-%20panoramio%20(cropped).jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "亞洲大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 47,170~57,160",
+      "source": "AU CIAE公式ページ",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約24~29万円/学期",
+      "source_url": "https://ciae.asia.edu.tw/en/APPLICATION01/ESTIMATEDCOSTS",
+      "notes": "私立。管理47,800、情報電機54,870、医療健康57,160"
     }
   },
   {
@@ -5205,6 +5430,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Taipei%20Tech%20Logo-cmyk.jpg&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立臺北科技大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 47,378~54,837",
+      "source": "NTUT OIA Tuition and Fees page",
+      "extracted_at": "2026-04-17",
+      "confidence": "high",
+      "jpy_equivalent": "約24~27万円/学期",
+      "source_url": "https://oia.ntut.edu.tw/p/412-1032-13790.php?Lang=en",
+      "notes": "工学系中心。人文社会47,378、工学/電資54,837"
     }
   },
   {
@@ -5284,6 +5518,15 @@
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/National_Yunlin_University_of_Science_and_Technology_logo.svg/960px-National_Yunlin_University_of_Science_and_Technology_logo.svg.png",
       "attribution": "CC BY-SA 4.0 via Chinese Wikipedia",
       "alt": "國立雲林科技大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 48,364~55,690",
+      "source": "overseas.edu.tw 年額×2倍ルール",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約24~28万円/学期",
+      "source_url": "https://www.overseas.edu.tw/en/school/national-yunlin-university-of-science-and-technology/",
+      "notes": "国立科技大学。overseas.edu.tw僑生年額に外国人2倍ルール適用。人文/管理48,364、工学/デザイン55,690"
     }
   },
   {
@@ -5484,6 +5727,15 @@
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/%E5%9C%8B%E7%AB%8B%E5%8B%A4%E7%9B%8A%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8.JPG/960px-%E5%9C%8B%E7%AB%8B%E5%8B%A4%E7%9B%8A%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8.JPG",
       "attribution": "CC BY-SA 4.0 via Chinese Wikipedia",
       "alt": "國立勤益科技大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 44,000~47,000",
+      "source": "overseas.edu.tw + 二次情報源推定",
+      "extracted_at": "2026-04-17",
+      "confidence": "low",
+      "jpy_equivalent": "約22~24万円/学期",
+      "source_url": "https://www.overseas.edu.tw/en/school/national-qinyi-university-of-science-and-technology/",
+      "notes": "国立科技大学。公式PDF未取得。overseas.edu.tw + standyou.comのUSD 2,800~3,000/年から推定"
     }
   },
   {
@@ -5739,6 +5991,15 @@
       "url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/%E5%9C%8B%E7%AB%8B%E5%8F%B0%E7%81%A3%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E7%A0%94%E6%8F%9A%E5%A4%A7%E6%A8%93.JPG&width=800",
       "attribution": "CC BY-SA 4.0 via Wikimedia Commons (Wikidata P18)",
       "alt": "國立臺灣科技大學 キャンパス"
+    },
+    "foreign_tuition": {
+      "undergraduate_per_semester": "NTD 48,680~56,780",
+      "source": "overseas.edu.tw 外国人学生年額",
+      "extracted_at": "2026-04-17",
+      "confidence": "medium",
+      "jpy_equivalent": "約24~28万円/学期",
+      "source_url": "https://www.overseas.edu.tw/school/national-taiwan-university-of-science-and-technology/",
+      "notes": "人文社会48,680、工学/電資/デザイン56,780、管理49,400"
     }
   },
   {
