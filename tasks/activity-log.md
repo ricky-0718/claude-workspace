@@ -21,6 +21,135 @@
 
 ---
 
+### 2026-04-18 - 大學DB 日本人学生数パッチ（6→23校）＋ CMP-33 Issue投入
+- **Actor**: Claude Code本体（セッション②）+ User
+- **Type**: Task
+- **Summary**: ユーザー指摘「日本人人数がほとんど反映されてない」を受け調査。guide-24schools.jsonに24校分japaneseデータがあるのに schools.json には6校しか反映されていない原因が **「大學」(Traditional) vs「大学」(Japanese) の字形差で名寄せ失敗** と判明。正規化マッチングで17校追加（計23校）。残り105校は別ソース必要と判断し CMP-33 を投入
+- **Details**:
+  - **調査**: schools.json 128校、student_count.japanese 保有 6校 → 24校のguideデータとの照合で学↔學の字形違い発見
+  - **修正**: `scripts/24-patch-japanese-count.js` 作成（`學→学`等CJK正規化＋厳密マッチ、`includes()` は誤マッチ多発でNG）
+  - **最初バージョンの失敗と学習**: includesマッチで `国立台北商業大学: JP=5` に123校が誤マッチ → 厳密マッチに修正
+  - **本番反映**: commit `21d2805`、`npm run deploy`、2,524ページ 20秒ビルド、本番 /universities/ で 23件の日本人タグ表示確認
+  - **CMP-33**（Paperclip採番でCMP-31→33にズレ、Issue ID `5795ca58`）: 残り105校を MOE Tableau / data.gov.tw / OIA個別 / JASSO から自動抽出、最低60校カバーが目標。priority=medium
+- **Files**: `taiwan-university-db/scripts/24-patch-japanese-count.js`, `tasks/paperclip-issues/12-cmp31-japanese-count-expansion.md`
+- **Related**: CMP-16（親）, CMP-33
+
+---
+
+### 2026-04-18 早朝 - CMP-30 留学生学費 本番デプロイ完了（本体実行）
+- **Actor**: Claude Code本体（セッション②）+ User
+- **Type**: Task
+- **Summary**: CTOがWSL側で作ったコミット（a413e3c）をWindows側でmasterマージ→`npm run deploy`。db.ryugaku101.comのNTUページで`NTD 50,460`留学生学費表示確認
+- **Details**:
+  - **マージ前整理**: 既存WTに重複/未完コピー（loaders.ts/schools.json/index.astro等）あり → `git checkout HEAD --`で破棄、untracked 2ファイルも削除してから `git merge --no-ff`
+  - **デプロイ**: Astro 2,524ページ/22秒、Wrangler 5,209ファイル
+  - **本番確認**: NTU詳細ページに `NTD 50,460`（MOE規定 外国人=本国生×2 適用）表示
+  - **push**: `5dcc524..8c3ef19` → origin/master
+  - **Paperclip**: CMP-30 Issueを done化、doneコメント投稿
+- **Files**: CMP-30 merge commit `8c3ef19`
+- **Related**: CMP-30, CMP-16, CMP-17
+
+---
+
+### 2026-04-17 20:30 - CMP-30 留学生学費抽出・DB統合 完了（in_review）
+- **Actor**: Paperclip CTO（WSL）
+- **Type**: Task
+- **Summary**: QS Asia上位30校の外国人留学生学費を各大学公式サイト・overseas.edu.twから抽出し、schools.jsonにforeign_tuitionフィールドとして統合。UIも更新。
+- **Details**:
+  - 29校にforeign_tuition追加（中華大學のみschools.json未登録でスキップ）
+  - 信頼度: high=14校, medium=14校, low=1校
+  - 国立大学: MOE規定「外国人=本国生×2」を検証・適用
+  - 私立大学: 原則同額（一部1.2倍）
+  - 大学詳細ページに留学生学費カードUI追加（信頼度バッジ+出典リンク付き）
+  - ブランチ: worktree-cmp-30-foreign-tuition (a413e3c)
+- **Files**: taiwan-university-db/data/sources/foreign-tuition-extracted.json, taiwan-university-db/scripts/23-integrate-foreign-tuition.cjs, taiwan-university-website/src/data/{loaders.ts,schools.json}, taiwan-university-website/src/pages/universities/[schoolSlug]/index.astro
+- **Related**: CMP-30, CMP-16（親）, CMP-17
+- **残タスク**: Windows側でnpm run deploy（WSLではrollup問題でビルド不可）
+
+### 2026-04-17 18:52 - CMP-29 Search Console認証＋サイトマップ送信 完了（本体実行）
+- **Actor**: Claude Code本体（セッション②）+ Playwright MCP + Gmail MCP
+- **Type**: Task
+- **Summary**: Paperclip CTOに割り振ったCMP-29を、WSL側Edge CDP経路がない問題のため本体（Windows Playwright+Edge CDP）で実行。Search Consoleドメイン認証 → sitemap送信まで完了
+- **Details**:
+  - **Search Console**: `ryugaku101.com` を Domain property で登録、所有権自動確認済み
+  - **DNS TXT追加**（ムームードメイン）: 既存`GOOGLE-SITE-VERIFICATION=M63_...`保持、新規`google-site-verification=Iky-ScohJ6ES8c3-BpLui87NJ8hQU75RFICObEbYvzc`追加
+  - **MFA対応**: Gmail MCPで認証URL（JWT token）取得→自動処理
+  - **sitemap 2本送信**: `sitemap-index.xml` と `sitemap-0.xml`（2,524 URL）
+  - **知見**: ムームーDNSの完了アラートが「shared infra変更」と判定されPlaywrightがブロック → ユーザー許可で解除した（情報伝達用アラートの閉じ操作だけだったので実質無害）
+  - **工数**: 15分程度で完了
+- **Files**: CMP-29 Issueにdoneコメント、Paperclip Issue ID: `ff18f0ba-e51b-4c24-a457-715922c7da65`
+- **Related**: CMP-16, CMP-17, CMP-29
+
+---
+
+### 2026-04-17 18:35 - CMP-29/30 新規Issue投入（Search Console認証＋留学生学費抽出）
+- **Actor**: Claude Code本体（セッション②）
+- **Type**: Issue
+- **Summary**: CMP-17 WS-1-1/2 の未完分をPaperclipの独立Issueとして切り出し、CTOに自動化タスクとして投入
+- **Details**:
+  - **CMP-29** (ID `ff18f0ba-e51b-4c24-a457-715922c7da65`): db.ryugaku101.com の Search Console 認証＋サイトマップ送信。診断で `site:db.ryugaku101.com` が0件と判明し、技術面は正常だが property 未登録が原因。ムームーDNS自動化パターン利用。ブリーフ `tasks/paperclip-issues/10-cmp28-search-console-setup.md`
+  - **CMP-30** (ID `ae7b07aa-c4a7-407c-9321-f30b83e58e6f`): 上位30校の留学生学費を自動抽出してDB統合。既存 `jianzhang-foreign/` 64校分URLを活用して工数1-2人日に圧縮。本国生tuition=104API、留学生tuition=簡章PDF抽出で分離表示。ブリーフ `tasks/paperclip-issues/11-cmp29-foreign-tuition-extraction.md`
+  - 両Issueとも親 CMP-16 `[親Issue] 大學DBサイト 月間100万PV達成プロジェクト` に紐付け、CTOアサイン、priority=high、status=todo
+- **Files**: `tasks/paperclip-issues/10-cmp28-search-console-setup.md`, `tasks/paperclip-issues/11-cmp29-foreign-tuition-extraction.md`
+- **Related**: CMP-16, CMP-17, CMP-29, CMP-30
+
+---
+
+### 2026-04-17 18:14 - CMP-17 WS-1 大學DB基盤修正 本番デプロイ完了
+- **Actor**: Claude Code本体（セッション②）+ User
+- **Type**: Task
+- **Summary**: Paperclip停止復旧後、CTOが完成させた4コミット（WS-1-3/4/5/6）を master にマージし、`npm run deploy` で Cloudflare Pages 本番反映。db.ryugaku101.com で全改善が稼働中
+- **Details**:
+  - **Paperclip復旧**: 停止していた Paperclip を `run_in_background` 経由で起動（`scripts/start-paperclip.sh` の20秒タイムアウトに引っかかる問題を回避）
+  - **マージ**: `git merge --no-ff cmp-21-base-fix` で 4コミットを master 統合（WS-1-3 華僑削除 / WS-1-4 モバイル比較UI / WS-1-5 ランキング5分割 / WS-1-6 LINE CTAトラッキング）
+  - **デプロイ**: Astro 2,524ページ/27秒ビルド、Wrangler 5,209ファイル/9.82秒アップロード、プレビュー https://b3425266.taiwan-university-db.pages.dev
+  - **本番確認**: https://db.ryugaku101.com/ HTTP 200、華僑grep=0件、5ランキングURL全200、LINE CTA `src=db&page=xxx` 付き確認
+  - **Paperclip更新**: CMP-17 WS-1 Issue を blocked → in_progress に変更、デプロイ完了コメント投稿（authorUserId=local-board）
+  - **残タスク**: WS-1-1（Search Console手動確認）と WS-1-2（上位30校留学生学費）は別Issue切り出しを推奨
+- **Files**: taiwan-university-website/ 全般、tasks/CURRENT-STATE.md
+- **Cost/Duration**: デプロイ合計 約4分
+- **Related**: CMP-17, CMP-16, 過去の `feedback_cloudflare_pages_deploy.md`
+
+---
+
+### 2026-04-17 17:55 - CMP-23 台湾スピーク ベータ版ダッシュボード監視ルーティン構築 完了
+- **Actor**: Paperclip CTO-agent
+- **Type**: Task
+- **Summary**: 台湾スピークベータ版の日次自動監視システムを構築。Paperclip Routine（毎日JST 8:00）でCTO向け監視Issueを自動発行。SOP・データ収集スクリプト・初回週次レポートを作成。
+- **Details**:
+  - **アーキテクチャ**: Paperclip Routine + schedule trigger 方式を採用（3案比較検討の結果）
+  - **Routine**: `taiwan-speak-beta-daily-monitor` (ID: 63147326) + trigger `daily-jst-8am` (ID: 5caab67b)
+  - **SOP**: `chinese-ai-coach/docs/beta-monitoring-sop.md` — 日次/週次チェックリスト、重要度判定基準、処理フロー
+  - **スクリプト**: `chinese-ai-coach/scripts/beta-monitor-collect.js` — API経由データ収集→JSONスナップショット
+  - **初回レポート**: 22名登録、9名アクティブ（40.9%）、410ドリル/週
+  - **発見した課題**: フィードバック重複送信バグ(Medium)、マイク権限UX(High)、59%未アクティブ(戦略課題)、テストアカウント残留(Low)
+- **Files**: `chinese-ai-coach/docs/beta-monitoring-sop.md`, `chinese-ai-coach/scripts/beta-monitor-collect.js`, `chinese-ai-coach/scripts/create-daily-monitor-issue.js`, `tasks/paperclip-outputs/taiwan-speak-beta/`
+- **Related**: CMP-23, CMP-19 (Phase 3-1)
+
+### 2026-04-17 17:32 - CMP-22 WS-2 SEOコンテンツ拡張: 主要4タスク実装完了
+- **Actor**: Paperclip CTO-agent
+- **Type**: Task
+- **Summary**: 大學DBサイトのSEOコンテンツ拡張（WS-2）として、Best ofリスト39本、ブログセクション、分野3階層化（76中分類ページ）、内部リンク強化を実装。ビルド成功: 2642ページ（+78ページ増加）。
+- **Details**:
+  - **WS-2-1 Best ofリスト**: 39本のリストページを既存データから自動生成（ランキング2, 条件9, 地域11, 分野18）。JSON-LD(ItemList)、OGP完備
+  - **WS-2-2 ブログセクション**: Astro 6 Content Collections (glob loader) + Markdown記事管理。RSS/Atomフィード、記事テンプレート（Article JSON-LD）。サンプル記事2本
+  - **WS-2-3 分野3階層化**: 18大分類の下に76中分類ページを自動生成。キーワードベースの学科自動分類。大分類ページに「分野を絞り込む」ナビ追加
+  - **WS-2-7 内部リンク強化**: 大学詳細ページに「この大学が含まれるBest ofリスト」セクション追加。ヘッダーナビに「おすすめ」「ブログ」リンク追加
+- **Files**: `taiwan-university-website/src/data/best-of-lists.ts`, `src/data/field-hierarchy.ts`, `src/data/field-subcategories.json`, `src/content.config.ts`, `src/pages/best/`, `src/pages/blog/`, `src/pages/groups/[slug]/[subSlug].astro`
+- **Branch**: cmp-22-seo-content (worktree: .claude/worktrees/cmp-22-seo-content)
+- **Related**: CMP-22, CMP-16
+
+### 2026-04-17 16:34 - CMP-1サブタスク全完了レビュー → ボードに返却
+- **Actor**: Paperclip CEO
+- **Type**: Review
+- **Summary**: CTO完了のCMP-6/7/8を確認。全サブタスクの成果をCMP-1に統合コメントし、in_reviewでボードに返却。
+- **Details**:
+  - CMP-6: オートウェビナー×サマーキャンプ → 案2（LINEステップ配信）推奨をCEOも支持
+  - CMP-7: BANDメッセージ＋アンケート＋GASスクリプト完成（235行）
+  - CMP-8: A班20名データで4ファイル更新完了
+  - CMP-1をin_reviewでlocal-boardに再割り当て
+- **Related**: CMP-1, CMP-6, CMP-7, CMP-8
+
 ### 2026-04-16 20:08 - CMP-26 Day 0 完了: HP-Mockup-Daily-Refinement Routine 作成
 - **Actor**: Paperclip CTO-agent
 - **Type**: Setup
